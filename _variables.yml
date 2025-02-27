@@ -1,0 +1,98 @@
+zoom_url: "https://georgetown.zoom.us/j/94931835080?pwd=f9xg1L66RDOXjoySuPCSCLK1adbJwM.1"
+feedback_url: "https://forms.gle/s35xJBf8Dj6XR5pr8"
+recording_url: https://georgetown.hosted.panopto.com/Panopto/Pages/Sessions/List.aspx?folderID=d240de45-5abb-4eea-8b13-b2590063001d
+w01:
+  weeknum: 1
+  title: "Introduction to the Course"
+  footer: "Introduction to the Course"
+  date-md: "Jan 15"
+w02:
+  weeknum: 2
+  title: "Machine Learning, Training Data, and Bias"
+  footer: "Machine Learning, Training Data, and Bias"
+  date-md: "Jan 22"
+w03:
+  weeknum: 3
+  title: "Ethical Frameworks: Rights, Discrimination, and Fairness"
+  footer: "Ethical Frameworks"
+  date-md: "Jan 29"
+w04:
+  weeknum: 4
+  title: "(Descriptive) Fairness in AI"
+  footer: "(Descriptive) Fairness in AI"
+  date-md: "Feb 5"
+w05:
+  weeknum: 5
+  title: "Context-Sensitive Fairness"
+  footer: "Context-Sensitive Fairness"
+  date-md: "Feb 12"
+w06:
+  weeknum: 6
+  title: "Causality in Ethics and Policy"
+  footer: "Causality in Ethics and Policy"
+  date-md: "Feb 19"
+w07:
+  weeknum: 7
+  title: "In-Class Midterm: Data Ethics, Fairness, Privacy, Causality"
+  footer: "In-Class Midterm"
+  date-md: "Feb 26"
+w08:
+  weeknum: 8
+  title: "Privacy Policies, Incomplete Contracts, and Power"
+  footer: "Privacy Policies, Incomplete Contracts, and Power"
+  date-md: "Mar 12"
+w09:
+  weeknum: 9
+  title: "From Data Ethics to Data Policy"
+  footer: "From Data Ethics to Data Policy"
+  date-md: "Mar 19"
+w10:
+  weeknum: 10
+  title: "Econometric Policy Evaluation and Inverse Fairness"
+  footer: "Econometric Policy Evaluation, Inverse Fairness"
+  date-md: "Mar 26"
+w11:
+  weeknum: 11
+  title: "Fairness vs. Social Welfare"
+  footer: "Fairness vs. Social Welfare"
+  date-md: "Apr 2"
+w12:
+  weeknum: 12
+  title: "Project Talk, Causality and Identity Formation"
+  footer: "Project Talk, Causality and Identity Formation"
+  date-md: "Apr 9"
+w13:
+  weeknum: 13
+  title: "Applications: Race, Class, Gender, Sexuality, and Disability (Data Feminism)"
+  footer: "Data Feminism"
+  date-md: "Apr 16"
+w14:
+  weeknum: 14
+  title: "Republican Liberty and the Kindly Slavemaster"
+  footer: "Republican Liberty"
+  date-md: "Apr 23"
+hw1:
+  title: "Nuts and Bolts for Fairness in AI"
+  date-md: "Feb 9 (Friday), 5:59pm EST"
+  date-full: "Friday, **February 9**"
+  url: "https://classroom.google.com/c/NzQzMjkyMzg4NjIw/a/NzQ3NDA0MDQ5MjU3/details"
+hw2:
+  title: "Context-Sensitive Fairness"
+  date-md: "Feb 21 (Friday), 5:59pm EST"
+  date-full: "Friday, **February 21**"
+  url: "#"
+hw3:
+  title: "Privacy Policies as Incomplete Contracts"
+  date-md: "Apr 12 (Friday), 5:59pm EDT"
+  date-full: "Friday, **April 12**"
+  url: "#"
+hw4:
+  title: "Policy Evaluation"
+  date-md: "Apr 26 (Friday), 5:59pm EDT"
+  date-full: "Friday, **April 26**"
+  url: "#"
+final:
+  title: "Final Policy Whitepaper"
+  date-md: "May 10 (Friday), 5:59pm EDT"
+  date-full: "Friday, **May 10**"
+  url: "#"

@@ -1,0 +1,1 @@
+The **fundamental problem of causal inference** here is a simple one: it is logically impossible to observe the same belligerent with high and low levels of military inequality simultaneously. Nor can we randomly assign military inequality to belligerents in a grand experiment. 

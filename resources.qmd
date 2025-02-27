@@ -1,0 +1,33 @@
+---
+title: "Resources"
+bibliography: "_DSAN5650.bib"
+---
+
+## Normative vs. Descriptive / Ethical Frameworks
+
+### General / High-Level Overviews
+
+* @hare_language_1952, *The Language of Morals* \[[PDF](https://www.dropbox.com/scl/fi/ida3a4sc6rutfrckz2rxt/R.-M.-Hare-The-Language-of-Morals-Oxford-University-Press-1952.pdf?rlkey=pfnhm8g4hxqogdo9egfqvhln8&dl=1)\]
+    * This is **the** canonical book that explains, in excruciating but necessary detail, the linguistic "core" of the descriptive-versus-normative distinction. It's overkill to read from cover-to-cover if you just want the gist of the concepts, but if you're curious about how we can develop a "logic" of normative statements like we have for descriptive statements, this is the key text imo!
+* @korsgaard_sources_1996, *The Sources of Normativity* \[[PDF](https://www.dropbox.com/scl/fi/xlhda31dbc2m32rvrcci6/The-Sources-of-Normativity-Christine-M.-Korsgaard.pdf?rlkey=7li5rkrluoqyokmh386y5a82c&dl=1)\]
+    * This is... definitely up there among my favorite books of all time on this topic (after wading through many of them during the PhD exam gauntlet I mentioned in Week 1): it does what I wish every ethical-philosophy book did, which is, continuing to ask **but *why*?!?** to every theory of ethical justification, until it reaches a perspective which (not coincidentally) is quite close to the perspective we adopt early on in this course!
+* @roemer_theories_1996, *Theories of Distributive Justice* \[[PDF](https://www.dropbox.com/scl/fi/9ihy7f04qvg1o684uxecx/John_E._Roemer-_Theories_of_Distributive_Justice-BookFi.org.pdf?rlkey=c7g0jictkvmoktokp3p4jhvcr&dl=1)\]
+    * I won't lie to you, this book is pretty brutal in terms of being a mathematical "deep dive" into how the ethical frameworks we discuss in this class can be built up from a set of axioms. So, I don't recommend the whole thing (that's why there are two more Roemer books in this section, which are more applied looks at particular ethical frameworks!)
+    * The two parts we will draw on, which I *do* therefore recommend, are the explanations of **utility functions** in Chapter 1 and of **Social Welfare Functionals** in Chapter 4
+
+### Particular Examples / Frameworks
+
+* @roemer_free_1988, *Free to Lose: An Introduction to Marxist Economic Philosophy* \[[PDF](https://www.dropbox.com/scl/fi/2bh9ydhvpjvk7369qrf6y/John_E._Roemer-_Free_to_Lose.pdf?rlkey=drao1xt5sse02hrm6ld3ypidn&dl=1)\]
+* @anderson_private_2017, *Private Government: How Employers Rule Our Lives (And Why We Don't Talk About It)* \[[PDF](https://www.dropbox.com/scl/fi/a7y3unk7aumb71mor4xo6/Anderson-Elizabeth-Private-Government.pdf?rlkey=w57vr6kv5rjo9mfb8j1kpdzd4&dl=1)\] \[[EPUB](https://www.dropbox.com/scl/fi/hxo3r8acdjusf69k0sxg6/Private-Government_-How-Employe-Elizabeth-Anderson.epub?rlkey=5yhut4etml2ysivfc1tte774u&dl=1)\] \[[MOBI](https://www.dropbox.com/scl/fi/p6sjlo7j1i17ml1s64rp4/Private-Government_-How-Employe-Elizabeth-Anderson.mobi?rlkey=hbnvgi2c0a5ko8i3egt924sb3&dl=1)\]
+* @rawls_theory_1971, *A Theory of Justice* \[[PDF](https://www.dropbox.com/scl/fi/6gfh08zzyhiyki1tyt9fa/John_Rawls-_A_Theory_of_Justice-Revised.pdf?rlkey=3lwpncxz1f8hxzhrdvr9wwn6m&dl=1)\]
+* @roemer_equality_1998, *Equality of Opportunity* \[[PDF](https://www.dropbox.com/scl/fi/dnomgm32s9c4o5kxv9eoz/John-E.-Roemer-Equality-of-Opportunity.pdf?rlkey=hifos73t2ryt9wlsit83wlp4f&dl=1)\]
+
+## Fairness in AI / Context-Sensitive Fairness
+
+* @barocas_fairness_2023, *Fairness and Machine Learning: Limitations and Opportunities* \[[PDF](https://fairmlbook.org/pdf/fairmlbook.pdf)\]
+    * This will be our main reference during this portion of the course, and is [available for free](https://fairmlbook.org/) (legally!) online!
+* @kasy_fairness_2021, "Fairness, Equality, and Power in Algorithmic Decision-Making", *FAccT '21: Proceedings of the 2021 ACM Conference on Fairness, Accountability, and Transparency* \[[PDF](https://maxkasy.github.io/home/files/papers/fairness_equality_power.pdf)\]
+
+## Econometric Policy Evaluation
+
+* @bjorkegren_machine_2022, "(Machine) Learning what Policymakers Value", *EAAMO (Equity and Access in Algorithms, Mechanisms, and Optimization)* \[[PDF](https://www.jblumenstock.com/files/papers/bbk_2021_eaamo.pdf)\]

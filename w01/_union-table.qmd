@@ -1,0 +1,37 @@
+
+$$
+\begin{align*}
+\pi_i(d_i, d_{-i}) &= \alpha d_Ad_B - d_A = 2d_Ad_B - d_A
+\end{align*}
+$$
+
+```{=html}
+<table>
+<thead>
+  <tr>
+    <th></th>
+    <th></th>
+    <th colspan="2" align="center">Employee B</th>
+  </tr>
+</thead>
+<tbody>
+  <tr>
+    <td></td>
+    <td></td>
+    <td>Pay 1</td>
+    <td>Pay 0</td>
+  </tr>
+  <tr>
+    <td rowspan="4" style="vertical-align: middle;"><span data-qmd="**Employee A**"></span></td>
+    <td>Pay 1</td>
+    <td><span data-qmd="$\pi_A = 3, \pi_B = 3$"></span></td>
+    <td><span data-qmd="$\pi_A = 0, \pi_B = 1$"></span></td>
+  </tr>
+  <tr>
+    <td>Pay 0</td>
+    <td>1, 1</td>
+    <td>0, 0</td>
+  </tr>
+</tbody>
+</table>
+```

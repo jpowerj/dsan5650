@@ -1,0 +1,214 @@
+---
+title: "Syllabus"
+bibliography: "_DSAN5650.bib"
+format:
+  html:
+    link-external-icon: true
+    link-external-newwindow: true
+---
+
+**Welcome to DSAN 5650: Causal Inference for Computational Social Science at Georgetown University!**
+
+The course meets on **Wednesdays from 3:30-6pm in the [Walsh Building](https://maps.app.goo.gl/fVVfDFpp4MEuukXa9), Room 498**
+
+## Course Staff
+
+* Prof. Jeff Jacobs, [`jj1088@georgetown.edu`](mailto:jj1088@georgetown.edu)
+  * Office hours (Click to schedule): [Tuesdays, 3:30-6:30pm](https://jjacobs.me/meet)
+* TA Marie Vaughan, [`mev71@georgetown.edu`](mailto:mev71@georgetown.edu)
+* TA Sam Sofman, [`sbs106@georgetown.edu`](mailto:sbs106@georgetown.edu)
+
+## Course Description
+
+This graduate-level course will train students to navigate the landscape of ethical issues which arise at each step of the data science process, with an eye towards developing policy recommendations for governments and organizations seeking expert advice on how to tackle these issues from a regulatory perspective. Students will explore and critically evaluate a range of data-related issues in contemporary society, such as responsible data collection, algorithmic bias, privacy, transparency, accountability, democratic participation in data usage and data-driven decisions, and the ethical implications of emerging technologies like artificial intelligence and machine learning (self-driving cars, ChatGPT, crowd-sourced training data, etc.).
+
+Beginning with a set of historical case studies—instances in which scientists, engineers, and policymakers have been forced to re-evaluate their ethical intuitions in light of technological developments (nuclear power, use of social media platforms to organize protests and influence political outcomes, deployment of facial recognition software and predictive AI by police and military forces)—the course then introduces a set of general ethical frameworks (consequentialism, deontological ethics, and virtue ethics), challenging students to consider their relative strengths and weaknesses for addressing modern technological-ethical dilemmas faced by businesses, healthcare organizations, governments, and academic institutions. After a final portion of the course linking these ethical frameworks with practical regulatory and policy considerations, students will write and present a policy whitepaper analyzing a data-ethical issue of particular interest to them, integrating ethical perspectives, regulatory principles, and domain knowledge into a recommendation of best practices for the relevant agency, firm, or institution.
+
+The course will thus equip students with a robust ethical "toolbox" for conscientiously gathering, interpreting, and extracting meaning from data throughout their careers as data scientists, while respecting privacy, fairness, transparency, democratic accountability, and other social concerns. *Prerequisites: None. 3 credits*.
+
+## Course Overview
+
+The course revolves around three "pillars", which we'll examine individually before bringing them together for your final projects at the end of the class: high-level ethical issues in data science, general ethical frameworks, and public policy applications.
+
+### Data Science
+
+A portion of the course will focus on introductions to cutting-edge technologies like self-driving cars, ChatGPT, facial detection algorithms, and various applications of AI to police and military technologies. For this portion, we'll draw fairly often from the contents of the following books:
+
+* @perez_invisible_2019: *Invisible Women: Data Bias in a World Designed for Men*.
+* Catherine D'Ignazio and Lauren F. Klein (2020). <i><a href='https://data-feminism.mitpress.mit.edu/' target='_blank'>Data Feminism</a></i>. Cambridge, MA: MIT Press. [Free, open-source!]
+* Cathy O'Neil (2016). *[Weapons of Math Destruction](https://en.wikipedia.org/wiki/Weapons_of_Math_Destruction)*. New York, NY: Crown Books.
+
+Since there are plenty of in-depth resources available to you (e.g., other Georgetown courses!) for learning the *technical details* of these technologies, our goal in this course will be to learn just the particular *aspects* of each technology which are most relevant to the ethical and policy issues they present.
+
+For example, we will look at Neural Netwok-based Machine Learning algorithms, but we will focus specifically on how the **performance** of these algorithms on a given task depends crucially on the existence of effective **training data** for that task. The breakthroughs in Artificial Intelligence which have had an immense impact on society over the past few decades, for example, have **not** come about because of new algorithms (neural networks, for example, have been around since the 1950s). Rather, they have come about because of the massive, exponential increase in the amount of **data** available to **train** these already-existing algorithms: for example, data scraped from across the entire web, or from millions of scanned books, or from Wikipedia's massive collection of articles. This means, therefore, that these algorithms simply **encode** pre-existing human biases into algorithmically-derived "rules", thus motivating the next pillar of the course: Ethics!
+
+### Ethics
+
+For the ethics-focused portion of the course, we'll be reading selections from the following textbook:
+
+* Lewis Vaughn and Louis P. Pojman (2021). <i><a href='https://global.oup.com/ushe/product/the-moral-life-9780197610060?cc=us&lang=en&' target='_blank'>The Moral Life: An Introductory Reader in Ethics and Literature</a></i>. Oxford, UK: Oxford University Press. [<a href='https://www.dropbox.com/scl/fi/edx5t4xedli9pcfxm3330/Louis-P.-Pojman-The-Moral-Life_-An-Introductory-Reader-in-Ethics-and-Literature.pdf?rlkey=6pwuvdfed6m8mzp3d0l5rsajv&dl=1' target='_blank'>PDF</a>]
+
+From the vast array of readings contained in this collection, we'll look at both "standard" ethical readings from e.g. Jeremy Bentham and Immanuel Kant plus readings from literary sources like Ursula Le Guin and Ambrose Bierce.
+
+### Public Policy
+
+For the final piece of the course we will take the **technological developments** discussed the first portion, analyze them using the **ethical frameworks** discussed in the second portion, and come to **conclusions** as to what types of things lawmakers, governments, and civil society organizations (NGOs, for example, and Think Tanks) can do **in practice** to address the ethical issues raised by these technologies. This means that, specifically, the recommended final project for the course will be a **Policy Whitepaper**, where you will choose a particular institution and make a **recommendation** to them in terms of how they can use their power (for example, the power to pass laws) to most effectively address an ethical issue that you believe is important.
+
+For this portion of the class we'll have to draw on a wide range of different readings, depending on what particular subdomains of public policy are most interesting to you all, but as a general textbook on ethics in data science which does focus a good amount on **policy** specifically, we will look at:
+
+* Anne L. Washington (2023). <i><a href=' https://annewashington.com/book-ethical-data-science-prediction-in-the-public-interest/' target='_blank'>Ethical Data Science: Prediction in the Public Interest</a></i>. New York, NY: Oxford University Press.
+
+Now that you have an overview of the trajectory of the course, the following section contains the particulars of what we'll be reading and working on each week!
+
+## Schedule
+
+The following is a rough map of what we will work through together throughout the semester; given that **everyone learns at a different pace**, my aim is to leave us with a good amount of **flexibility** in terms of how much time we spend on each topic: if I find that it takes me longer than a week to convey a certain topic in sufficient depth, for example, then I view it as a strength rather than a weakness of the course that we can then rearrange the calendar below by adding an extra week on that particular topic! Similarly, if it seems like I am spending too much time on a topic, to the point that students seem bored or impatient to move onto the next topic, we can move a topic intended for the next week to the current week!
+
+```{=html}
+<table class='sticky-table'>
+<thead>
+<tr class='sticky-head'>
+    <th>Unit</th>
+    <th>Week</th>
+    <th>Date</th>
+    <th>Topic</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+    <td><span data-qmd="**Unit 1**: Ethical Frameworks"></span></td>
+    <td>1</td>
+    <td><span data-qmd="{{< var w01.date-md >}}"></span></td>
+    <td><span data-qmd="[{{< var w01.title >}}](./w01/)"></span></td>
+</tr>
+<tr>
+    <td></td>
+    <td>2</td>
+    <td><span data-qmd="{{< var w02.date-md >}}"></span></td>
+    <td><span data-qmd="[{{< var w02.title >}}](./w02/)"></span></td>
+</tr>
+<tr class='new-unit'>
+    <td><span data-qmd="**Unit 2**: Fairness in AI"></span></td>
+    <td>3</td>
+    <td><span data-qmd="{{< var w03.date-md >}}"></span></td>
+    <td><span data-qmd="[{{< var w03.title >}}](./w03/)"></span></td>
+</tr>
+<tr>
+    <td></td>
+    <td></td>
+    <td><span data-qmd="*Jan 31 (Friday), 5:59pm EST*"></span></td>
+    <td><span data-qmd="*[Deliverable] <a href='{{< var hw1.url >}}' target='_blank'>HW1: {{< var hw1.title >}}</a>*"></span></td>
+</tr>
+<tr>
+    <td></td>
+    <td>4</td>
+    <td><span data-qmd="{{< var w04.date-md >}}"></span></td>
+    <td><span data-qmd="[{{< var w04.title >}}](./w04/)"></span></td>
+</tr>
+<tr>
+    <td></td>
+    <td>5</td>
+    <td><span data-qmd="{{< var w05.date-md >}}"></span></td>
+    <td><span data-qmd="[{{< var w05.title >}}](./w05/)"></span></td>
+</tr>
+<tr>
+    <td></td>
+    <td>6</td>
+    <td><span data-qmd="{{< var w06.date-md >}}"></span></td>
+    <td><span data-qmd="[{{<var w06.title >}}](./w06/)"></span></td>
+</tr>
+<tr>
+    <td></td>
+    <td></td>
+    <td><span data-qmd="*Feb 21 (Friday), 5:59pm EST*"></span></td>
+    <td><span data-qmd="*[Deliverable] <a href='{{< var hw2.url >}}' target='_blank'>HW2: {{< var hw2.title >}}</a>*"></span></td>
+</tr>
+<tr class='new-unit'>
+    <td><span data-qmd="**Midterm**"></span></td>
+    <td>7</td>
+    <td><span data-qmd="{{< var w07.date-md >}}"></span></td>
+    <td><span data-qmd="[{{< var w07.title >}}](./w07/)"></span></td>
+</tr>
+<tr>
+    <td></td>
+    <td></td>
+    <td><span data-qmd="*Mar 6*"></span></td>
+    <td><span data-qmd="*No Class (Spring Break)*"></span></td>
+</tr>
+<tr class='new-unit'>
+    <td><span data-qmd="**Unit 3:** Policy Frameworks"></span></td>
+    <td>8</td>
+    <td><span data-qmd="{{< var w08.date-md >}}"></span></td>
+    <td><span data-qmd="[{{< var w08.title >}}](./w08/)"></span></td>
+</tr>
+<tr>
+    <td></td>
+    <td>9</td>
+    <td><span data-qmd="{{< var w09.date-md >}}"></span></td>
+    <td><span data-qmd="[{{< var w09.title >}}](./w09/)"></span></td>
+</tr>
+<tr>
+    <td></td>
+    <td>10</td>
+    <td><span data-qmd="{{< var w10.date-md >}}"></span></td>
+    <td><span data-qmd="[{{< var w10.title >}}](./w10/)"></span></td>
+</tr>
+<tr>
+    <td></td>
+    <td>11</td>
+    <td><span data-qmd="{{< var w11.date-md >}}"></span></td>
+    <td><span data-qmd="[{{< var w11.title >}}](./w11/)"></span></td>
+</tr>
+<tr class='new-unit'>
+    <td><span data-qmd="**Unit 4**: Applications"></span></td>
+    <td>12</td>
+    <td><span data-qmd="{{< var w12.date-md >}}"></span></td>
+    <td><span data-qmd="{{< var w12.title >}}"></span></td>
+</tr>
+<tr>
+    <td></td>
+    <td>13</td>
+    <td><span data-qmd="{{< var w13.date-md >}}"></span></td>
+    <td><span data-qmd="{{< var w13.title >}}"></span></td>
+</tr>
+<tr>
+    <td></td>
+    <td>14</td>
+    <td><span data-qmd="{{< var w14.date-md >}}"></span></td>
+    <td><span data-qmd="{{< var w14.title >}}"></span></td>
+</tr>
+<tr>
+    <td></td>
+    <td></td>
+    <td><span data-qmd="*May 10 (Friday)*"></span></td>
+    <td><span data-qmd="*[Deliverable] [Policy Whitepaper](./final.qmd)*"></span></td>
+</tr>
+</tbody>
+</table>
+```
+
+## Assignments and Grading
+
+The main assignment in the course will be your **policy whitepaper**, submitted at the end of the semester. However, there will also be a midterm exam and a series of assignments which exist to let you explore each of the modules of the course, in turn.
+
+| Assignment | Due Date | % of Grade |
+| - | - | - |
+| <a href='{{< var hw1.url >}}' target='_blank'>HW1: {{< var hw1.title >}} <i class='bi bi-box-arrow-up-right ps-1'></i></a> | {{< var hw1.date-full >}} | 10% |
+| <a href='{{< var hw2.url >}}' target='_blank'>HW2: {{< var hw2.title >}} <i class='bi bi-box-arrow-up-right ps-1'></i></a> | {{< var hw2.date-full >}} | 10% |
+| Midterm | Wednesday, **February 28** | 30% |
+| <a href='{{< var hw3.url >}}' target='_blank'>HW3: {{< var hw3.title >}} <i class='bi bi-box-arrow-up-right ps-1'></i></a> | {{< var hw3.date-full >}} | 10% |
+| HW4: {{< var hw4.title >}} | {{< var hw4.date-full >}} | 10% |
+| [Policy Whitepaper](./final.qmd) | Friday, **May 10** | 30% |
+
+: {tbl-colwidths="[55,25,20]"}
+
+### Homework Lateness Policy
+
+After the due date, for each **homework** assignment, you will have a grace period of 24 hours to submit the assignment without a lateness penalty. After this 24-hour grace period, late penalties will be applied based on the following scale (unless you obtain an excused lateness from one of the instructional staff!):
+
+* 0 to 24 hours late: no penalty
+* 24 to 30 hours late: 2.5% penalty
+* 30 to 42 hours late: 5% penalty
+* 42 to 54 hours late: 10% penalty
+* 54 to 66 hours late: 20% penalty
+* More than 66 hours late: Assignment submissions no longer accepted (without instructor approval)

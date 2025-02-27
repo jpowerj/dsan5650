@@ -1,0 +1,83 @@
+project:
+  type: website
+  output-dir: docs
+  pre-render: _pre-set-updated.py
+
+website:
+  title: "DSAN 5650"
+  favicon: favicon.png
+  repo-url: "https://github.com/jpowerj/dsan5650"
+  repo-actions: [source]
+  repo-link-target: "_blank"
+  sidebar:
+    id: mainnav
+    title: "DSAN 5650: Causal Inference for Computational Social Science"
+    footer: "*Updated {{< env DSAN5650_LAST_UPDATED \"2025-05-08\" >}}*"
+    contents:
+      - text: "<i class='bi bi-house pe-1'></i> Home"
+        href: index.qmd
+      - text: "Syllabus"
+        href: syllabus.qmd
+      - text: "Resources"
+        href: resources.qmd
+      - text: "Writeups"
+        href: writeups/index.qmd
+      - text: "Assignments"
+        href: assignments.qmd
+      - text: "Midterm"
+        href: midterm.qmd
+      - text: "Final Project"
+        href: final.qmd
+      - text: "Zoom Link <i class='bi bi-box-arrow-up-right ps-1'></i>"
+        href: "https://georgetown.zoom.us/j/94931835080?pwd=f9xg1L66RDOXjoySuPCSCLK1adbJwM.1"
+        target: "_blank"
+      - text: "Recordings <i class='bi bi-box-arrow-up-right ps-1'></i>"
+        href: "https://georgetown.hosted.panopto.com/Panopto/Pages/Sessions/List.aspx?folderID=d240de45-5abb-4eea-8b13-b2590063001d"
+        target: "_blank"
+      - "---"
+      - text: "Week 1: {{< var w01.date-md >}}"
+        href: "w01/index.qmd"
+      # - text: "Week 2: {{< var w02.date-md >}}"
+      #   href: "w02/index.qmd"
+      # - text: "Week 3: {{< var w03.date-md >}}"
+      #   href: "w03/index.qmd"
+      # - text: "Week 4: {{< var w04.date-md >}}"
+      #   href: "w04/index.qmd"
+      # - text: "Week 5: {{< var w05.date-md >}}"
+      #   href: "w05/index.qmd"
+      # - text: "Week 6: {{< var w06.date-md >}}"
+      #   href: "w06/index.qmd"
+      # - text: "Week 7: {{< var w07.date-md >}}"
+      #   href: "w07/index.qmd"
+      # - text: "Week 8: {{< var w08.date-md >}}"
+      #   href: "w08/index.qmd"
+      # - text: "Week 9: {{< var w09.date-md >}}"
+      #   href: "w09/index.qmd"
+      # - text: "Week 10: {{< var w10.date-md >}}"
+      #   href: "w10/index.qmd"
+      # - text: "Week 11: {{< var w11.date-md >}}"
+      #   href: "w11/index.qmd"
+      # - text: "Week 12: {{< var w12.date-md >}}"
+      #   href: "w12/index.qmd"
+      - "---"
+      - text: "Google Classroom <i class='bi bi-box-arrow-up-right ps-1'></i>"
+        href: "https://classroom.google.com/c/NzQzMjkyMzg4NjIw?cjc=ilkwdqn"
+        target: "_blank"
+      - text: "Office Hours <i class='bi bi-box-arrow-up-right ps-1'></i>"
+        href: "https://jjacobs.me/meet"
+        target: "_blank"
+      - text: "Suggestion Box <i class='bi bi-box-arrow-up-right ps-1'></i>"
+        href: "https://forms.gle/s35xJBf8Dj6XR5pr8"
+        target: "_blank"
+
+format:
+  html:
+    theme:
+      light: default
+      dark: darkly
+    css: "/dsan-globals/jjstyles.css"
+    toc: true
+    link-external-newwindow: true
+    link-external-icon: true
+    include-in-header:
+      text: "<script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js' integrity='sha512-v2CJ7UaYy4JwqLDIrZUI/4hqeoQieOmAZNXBeQyjo21dadnwR+8ZaIJVT8EE2iyI61OV8e6M8PP2/4hpQINQ/g==' crossorigin='anonymous' referrerpolicy='no-referrer'></script><link rel='stylesheet' type='text/css' href='https://cdn.jsdelivr.net/gh/dreampulse/computer-modern-web-font@master/fonts.css'><script src='/sidebar.js'></script>"

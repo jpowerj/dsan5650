@@ -1,0 +1,34 @@
+---
+title: "DSAN 5450: Data Ethics and Policy"
+subtitle: "Wednesdays 3:30-6pm, Walsh 498"
+author: "Jeff Jacobs ([`jj1088@georgetown.edu`](mailto:jj1088@georgetown.edu))"
+institute: "Georgetown University, Spring 2025"
+listing:
+  sort-ui: false
+  filter-ui: false
+  type: table
+  include:
+    categories: "{Class Sessions}"
+  fields: [title,date]
+  sort: "lecnum asc"
+  table-hover: true
+#  date-format: full
+  date-format: "MMMM D"
+---
+
+Welcome to the homepage for ***DSAN 5450: Data Ethics and Policy*** at Georgetown University, for the Spring 2025 semester!
+
+The course meets on **Wednesdays from 3:30pm to 6:00pm** in the **<a href='https://maps.app.goo.gl/fVVfDFpp4MEuukXa9' target='_blank'>Walsh Building</a>**, **Room 498**.
+
+Check out the [**syllabus**](syllabus.qmd) (or any other link in the sidebar) for more info! Or, use the following links to view notes for individual weeks:
+
+::: {#listing}
+:::
+
+**Course Description:**
+
+This graduate-level course will train students to navigate the landscape of ethical issues which arise at each step of the data science process, with an eye towards developing policy recommendations for governments and organizations seeking expert advice on how to tackle these issues from a regulatory perspective. Students will explore and critically evaluate a range of data-related issues in contemporary society, such as responsible data collection, algorithmic bias, privacy, transparency, accountability, democratic participation in data usage and data-driven decisions, and the ethical implications of emerging technologies like artificial intelligence and machine learning (self-driving cars, ChatGPT, crowd-sourced training data, etc.).
+
+Beginning with a set of historical case studies—instances in which scientists, engineers, and policymakers have been forced to re-evaluate their ethical intuitions in light of technological developments (nuclear power, use of social media platforms to organize protests and influence political outcomes, deployment of facial recognition software and predictive AI by police and military forces)—the course then introduces a set of general ethical frameworks (consequentialism, deontological ethics, and virtue ethics), challenging students to consider their relative strengths and weaknesses for addressing modern technological-ethical dilemmas faced by businesses, healthcare organizations, governments, and academic institutions. After a final portion of the course linking these ethical frameworks with practical regulatory and policy considerations, students will write and present a policy whitepaper analyzing a data-ethical issue of particular interest to them, integrating ethical perspectives, regulatory principles, and domain knowledge into a recommendation of best practices for the relevant agency, firm, or institution.
+
+The course will thus equip students with a robust ethical "toolbox" for conscientiously gathering, interpreting, and extracting meaning from data throughout their careers as data scientists, while respecting privacy, fairness, transparency, democratic accountability, and other social concerns. *Prerequisites: None. 3 credits*.

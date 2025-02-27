@@ -1,0 +1,216 @@
+---
+title: "DSAN 5450 Midterm Study Guide"
+author: "Jeff Jacobs"
+sidebar: mainnav
+date: 2025-05-18
+bibliography: "./_DSAN5650.bib"
+relevance: "Midterm"
+categories:
+  - "Extra Writeups"
+format:
+  html:
+    df-print: kable
+    html-math-method: mathjax
+---
+
+## Overview
+
+The DSAN 5450 in-class midterm will start at **3:30pm on Wednesday, February 26th**. It is intended to take only 1.5 hours, but you will have 3 hours to take it just in case, so that it will be due by **6:30pm**.
+
+We've covered a lot of... sometimes-disjointed topics thus far, so our goal for the midterm is to emphasize the most important takeaways from across the first six weeks of the class, by putting them in your brain's short-term memory **one more time** before we dive into the second, policy-focused half of the course when you come back from spring break! As a reminder, there is a very good reason to continually try and **re-remember** the same course topics, coming from studies of long-term memory retention:
+
+<center>
+<img width="60%" src="https://jpj.georgetown.domains/dsan5450-scratch/midterm/spaced_rep.jpg"></img>
+</center>
+
+## Part 1: High-Level Data Ethics Considerations
+
+This part corresponds roughly to the first two sessions of the course, where we talked about key "high-level" questions in data ethics.
+
+### (1.1) The Library of Missing Datasets
+
+Why does some information **already exist** in the form of nicely-formatted, easily-accessible datasets, while other information does not?
+
+* Here the specific reference in class was to the <a href='https://mimionuoha.com/the-library-of-missing-datasets' target='_blank'>Library of Missing Datasets</a>, so you can check out the photos at that link for examples of missing datasets.
+* The midterm question here could, therefore, ask you to think through the process by which a certain dataset **came into existence** as (e.g.) a clean, easily-available `.csv` file, and/or why another set of data might not exist in this form.
+
+### (1.2) Operationalization
+
+What types of data-ethical issues arise because of the "gap" between **conceptual** variables and **operationalized** variables?
+
+* Here the main reference for you is <a href='https://jjacobs.me/dsan5450/w02/slides.html#/operationalization' target='_blank'>this slide</a> from Week 2
+
+* For the possible midterm question here, specifically, you should focus on the idea behind the book on the right side of that slide: "Mis-Measuring Our Lives". That book points out the gap between the conceptual variable **[economic well-being]** and its **operationalization** as **[GDP]**.
+  * So, for the midterm, we might ask you to consider a conceptual variable like "fairness" or "privacy", and think through different ways they could be operationalized as measurable quantities.
+
+## Part 2: Ethical Frameworks
+
+### (2.1) Descriptive vs. Normative
+
+I think you all did a great job of demonstrating that you understand this distinction, through homeworks and discussions (in class and in office hours)! So, on this topic I think you can just review the basic "gist" of how this works:
+
+**Two types of *Descriptive* statements:**
+
+* **Non-implicational statements** that describe facts, like $1 + 1 = 2$, are *descriptive* but *indeterminate* without a set of axioms (definitions for the symbols, in this case)
+* **Implicational statements** that describe facts, like $ZFC \implies 1 + 1 = 2$, are *descriptive* and also *determinate* (in this case, determinately true)
+
+**Two types of *Normative* statements:**
+
+* When the statements are not **descriptions** of empirically/observationally (and intersubjectively) verifiable predicates about how things **are** ("Grass is green"), but are instead **prescriptions** of how things **ought** to be ("Grass ought to be green"/"It is good for grass to be green and bad for grass to be blue"), they have additional **normative** dimensions
+* However, in the same way that the descriptive statement $1 + 1 = 2$ goes from indeterminate to determine when we provide a set of **axioms**, normative statements are also transformed from indeterminate to determinate when we provide an **ethical framework** within which the normative statement can be evaluated.
+
+### (2.2) Consequentialism vs. Deontological Ethics
+
+This portion would also very much involve the **two most common concrete versions** of these two ethical frameworks:
+
+* **Utilitarianism** as the most common consequentialist framework
+* **Kantian Ethics** as the most common deontological-ethical framework
+
+On the latter two points specifically, I didn't make the distinction as clearly as I should have in class, so I'm making it here!
+
+**Question 2.5** from **Homework 1** provided the following statement:
+
+> «Lying is bad, since you wouldn't want others to lie to you.»
+
+And then, between Consequentialism and Deontological Ethics, the correct answer was that this statement is more straightforwardly implied by **Deontological Ethics**. I know this one is particularly difficult to think through, but I wanted to highlight it here because this is the question that really reveals the subtle-but-important distinction between these two systems:
+
+* A **consequentialist** approach to "resolving" a dilemma around lying would, crucially, be based on a **prediction** of the **actual consequences** that would result from a possible choice, whereas
+* A **deontological** approach differs from this in considering **what makes a possible choice good or bad in-and-of-itself**, **without** reference to the predicted consequences.
+
+The reason I phrase the distinction in this way is because, in the above statement, you can focus on the portion after the word "since" ("since you wouldn't want others to lie to you"):
+
+* Within a **consequentialist** framework, this reasoning would **not** itself constitute a justification for not lying, since it would have to be **paired with** a statement like "If I lie, then it is likely that others will lie to me", which is **not true in general!** The idiom of a <a href='https://www.merriam-webster.com/dictionary/white%20lie' target='_blank'>"white lie"</a>, for example, comes precisely from the fact that there are often times when we feel like we **should** lie to people to avoid the **consequence** of hurting them.
+* Within a **deontological** framework, on the other hand, this reasoning **would** constitute a justification for not lying, since it corresponds precisely to the **rule** that was mentioned in the prior two questions: Kant's **Categorical Imperative**.
+* This **Categorical Imperative** rule is of special interest, relative to the full set of "ethical rules" you could imagine using, because it is a rule for making ethical decisions **without reference to the consequences** of a particular choice:
+  * Instead of **predicting** what might happen if I make this choice, and judging whether it is an ethical choice on that basis...
+  * I now **imagine** what would happen **hypothetically** if **everyone else in the world** made the choice, **whether or not** my action would in fact make everyone else in the world make the same choice!
+
+I hope that explanation, and the reference to "white lies" as an example, can help make it more clear why the answer to Question 2.5 was "Deontological Ethics". As one final point, to make it super concrete:
+
+* The reason why the answer is **not** Consequentialism here is because, a Consequentialist might **agree** that "I wouldn't want others to lie to me", and yet also think "But that's **not** a good reason to not lie, since I could lie here without it **causing** others to lie to me."
+* That is what would enable "white lies" to be acceptable under consequentialism: since you only consider the predicted consequences of your action in the "real world", rather than in a hypothetical world where everyone does the same action, you are then able to move to a comparison of whether the **benefits** of lying outweigh the **costs** of lying, as one way to make the decision (by "calculating" the consequences!).
+
+## Part 3: Context-Free Fairness and Proxy Variables
+
+Here the main idea will be to think through the fairness definitions introduced in this part:
+
+* Fairness Through Unawareness (Removing "sensitive" variables from the dataset)
+* Fairness as Equalized Positive Rate
+* Fairness as Equalized False Positive Rate
+* Fairness as Equalized False Negative Rate
+* Fairness as Calibration
+
+And especially to be able to understand the "simple" cases when these might work, but also the non-simple cases where these fail to capture what we'd like a robust / **actually-usable** fairness measure to capture. Some straightforward questions to guide you in this thinking for this part would be, e.g.:
+
+* Can we have **all** of these measures at once?
+  * Short answer: No. But, you should also have some degree of intuition from class about **why** we can't (the impossibility results)
+* The first four are probably more straightforward, as things we can achieve by dropping variables (Unawarness) or by reading the entries in a confusion matrix. **Calibration**, however, requires a bit more thought:
+  * How is calibration defined? The most succinct definition would just be: the requirement that the value of the **risk score $r(X)$** that "underlies" the decision-making algorithm (in that it is used to produce our predictions $\widehat{Y}$) is itself a **probability** value---namely, the probability that a person with attributes $X$ has associated outcome $Y$.
+  * Why is calibration **desirable**? Why does it help us in terms of assessing fairness? The definition in the previous bullet point is not very easy-to-understand (to me, at least), so that I interpret it as just a requirement that **the risk score "tracks" the relationship between $X$ and $Y$ in a direct way**: for example, high values of $\Pr(Y \mid X)$ mean high values of the underlying representation $r(X)$ that is used to generate $\widehat{Y}$ as a prediction of $Y$.
+  * Viewed in this way, then, I hope it makes sense that this property would be **desirable** in terms of **interpretability**: it means that, if we wanted to know why our prediction algorithm was producing some specific prediction $\widehat{Y}_i$ for a person with attributes $X_i$, we could "open up the black box" of the algorithm and look directly at the **risk score** $r(X_i)$ with respect to the **risk score function $r(\cdot)$ in general**, to see **why** it produced such a high/low value of $\widehat{Y}_i$.
+  * I know even that last point can still be confusing, so to me the final "piece" for understanding is to think about how: if we **didn't** have calibration, then we would have **no natural way of interpreting the risk function $r(\cdot)$**. Since without calibration it is not **constrained** to represent a probability, it could take on any value---$\pi$, $-1000$, $\sqrt{2^{100}}$---and we would have no way of knowing the relationship between these values and the resulting predictions $\widehat{Y}$; no way of knowing, for example, why plugging in a person with characteristics $X_i$ produced $r(X_i) = \pi$ which then led to the prediction $\widehat{Y}_i = 1$, to detain this person until trial!
+
+## Part 4: Context-Sensitive Fairness
+
+We spent some amount of time **critiquing** the fairness definitions mentioned in the previous section. This was not for the sake of judging whether they're "good" or "bad" as such, but rather, for the sake of **understanding specifically what they're missing**. Two different characterizations of what they're missing give us our two key **context-sensitive** approaches to fairness, discussed in the next two sections:
+
+### (4.1) Individual-Similarity-Based Fairness
+
+1. The Context-Free measures fail to consider how **satisfying a criterion** (e.g., Equalized False Positive Rate) at a **group level** could trample over the rights of **individuals**.
+
+The illustration of this failure that I mentioned in class boiled down to:
+
+* Let $A_i$ represent a sensitive attribute of individuals, such that $A_i = 0$ if person $i$ is white, and $A_i = 1$ if person $i$ is black.
+* If a police department finds itself failing to satisfy a fairness criterion like Equality of Positive Rates, in the sense that their arrest rate $r_1$ for individuals with $A_i = 1$ is higher than their arrest rate $r_0$ for individuals with $A_i = 0$, then...
+* They can quickly "resolve" this failure and satisfy the criterion by running outside and arresting the first $N$ white people they see, where $N$ is the number of additional white arrestees that would be necessary to make $r_0 = r_1$.
+
+However, as this illustration hopefully makes clear, this procedure would allow **satisfaction of the group-level fairness criterion**, but only at the **expense** of violating our intuitive notions of **fairness towards individuals**.
+
+Although there are lots and lots of ways that this notion of **individual-level fairness** could be incorporated into the Context-Free fairness measures to make them Context-Sensitive, one of the most popular and straightforward ways is by constructing an **indiviudal-similarity-based** fairness measure, and then using it to constrain the space of possible decisions by enforcing the rule that:
+
+::: {.callout-tip title="Fairness Through Awareness [@dwork_fairness_2011]"}
+
+**Individuals who are similar with respect to a task should be classified similarly.**
+
+:::
+
+The first thing I want you to note about this approach is that it specifically aims to resolve the issue we've already seen with **utilitarianism**, namely, that
+  * Optimizing **society-level** desiderata (like "overall happiness") may lead to
+  * **individuals** being brutally mistreated (e.g., having their rights violated)
+
+You can also hopefully see how this notion (Fairness Through Awarness) could provide a Rawls-style **ordering**: individual fairness **lexically prior** to group-level fairness (optimize group-level fairness once individual-level is satisfied).
+
+Then lastly, as you saw on HW2, this general notion of Fairness Through Awareness can be **operationalized** as a measurable quantity by, for example, implementing what is generally called **metric fairness**: Given a similarity metric $m: \mathcal{I} \times \mathcal{I} \rightarrow \mathbb{R}$, where $\mathcal{I}$ is the set of all individuals,
+
+$$
+|D_i - D_j| \leq m(i, j)
+$$
+
+for all pairs of individuals $(i, j)$. Or in other words, that the difference between the **decisions** $D_i$ and $D_j$ should be **bounded above** by the **similarity** $m(i,j)$ between $i$ and $j$.
+
+This, to me, is already slightly more than you need to know for the midterm, but if you want to dive into this Context-Sensitive approach specifically, Section 5.1 of @mitchell_algorithmic_2021 has a really great discussion of **Metric Fairness** specifically.
+
+### (4.2) Causal Fairness
+
+This is the capital-B capital-D Big Deal approach to fairness, in my view, but you've already heard enough about that in class and on HW2!
+
+So, for the midterm, instead I will just say that the key thing I want you to be comfortable with for now is **drawing and interpreting Causal Diagrams** like the ones I've shown in the slides and drawn on the board in class.
+
+First and foremost, if you absorb the [Quick Intro to Probabilistic Graphical Models](./writeups/pgm-intro/index.qmd) writeup, you are most of the way there to understanding Causal Diagrams in general, since (sweeping some details under the rug) these Causal Diagrams are primarily just PGMs where we interpret the **edges** (the **arrows** in the PGMs) as hypothesized **causal effects**.
+
+Thus, for the midterm, my first goal is to test your ability to read these PGMs and understand what they're **positing** ("saying") about the world. For example, if I give you a hypothesis like
+
+* $H_1$: Individual $i$ was arrested because they are black
+
+You should be able to "translate" this into a causal diagram based on:
+
+* A random variable $Y_i$ representing whether or not an individual $i$ was arrested (where we use the letter $Y$ here speicifcally because we're representing an **outcome** that we're hoping to **explain**)
+* A random variable $A_i$ representing the race of individual $i$, and
+* An edge $A_i \rightarrow Y_i$, representing the **hypothesis** that individual $i$'s specific $A_i$ value ($A_i = a_i$) is what caused $Y_i$ to take on individual $i$'s specific $Y_i$ value ($Y_i = y_i = 1$, in this case).
+
+Then, once you're comfortable with this process of "implementing" hypotheses by constructing causal diagrams, the only other thing I think will be important for the midterm is your ability to **adjudicate between** two or more such diagrams on the basis of their plausibility.
+
+What I mean by that is... keep in mind the definition of causality that was given in a slide in class:
+
+::: {.callout-tip title="Defining Causality [@hume_treatise_1739]"}
+
+$X$ causes $Y$ if and only if:
+
+1. $X$ *temporally precedes* $Y$ and
+2. 
+    * In **two worlds** $W_0$ and $W_1$ where
+    * everything is exactly the same **except that** $X = 0$ in $W_0$ and $X = 1$ in $W_1$,
+    * $Y = 0$ in $W_0$ and $Y = 1$ in $W_1$.
+
+:::
+
+You should be able to use this definition to (for example) **eliminate implausible causal diagrams**, namely, causal diagrams which violate the basic predicates within this definition. So, for example, say I gave you the following causal diagram as a causal hypothesis regarding **how toasters toast a piece of bread $i$**:
+
+* $T_i$ is a Random Variable which is $0$ if the bread has not yet been placed in the toaster and $1$ if has been placed in the toaster,
+* $C_i$ is a Random Variable which is $0$ if the bread is not cooked, and $1$ if the bread is cooked, and
+* There is an arrow $C_i \rightarrow T_i$
+
+You should be able to identify this as an **implausible** causal diagram---meaning, a causal diagram representing an **implausible** hypothesis about how toasters work, relative to the Humean notion of causality---since in our observations of how toasters work, the bread being placed in the toaster ($\text{do}(T_i = 1)$) occurs **before** the bread being cooked $C_i = 1$, temporally.
+
+## Part 5: Doin Thangs (Causality Continued)
+
+Short story short, the example from the end of our most recent meeting, where we showed how it's possible to have:
+
+* $\Pr(Y = 1) = p_y$, and
+* $\Pr(Y = 1 \mid X = 1) \neq p_y$, and yet
+* $\Pr(Y = 1 \mid \text{do}(X = 1)) = p_y$,
+
+Thus revealing the fact that $\Pr(Y = 1 \mid X = 1)$ does **not** capture the causal effect of $X$ on $Y$ in this case, which is just one specific instance of the general maxim you already know, that **correlation does not imply causation**.
+
+And yet, with this $\text{do}(E)$ operator (where $E$ is some probabilistic event), we have something **concrete** that we can use to start figuring out **when** observing a correlation **does** allow us to infer a causal effect!
+
+The actual figuring-out will have to wait until after the midterm. But I want you to have that notion in your head when you see the $\text{do}(\cdot)$ operator and/or a causal diagram: that these are the tools that are going to allow us to **bridge this gap** between **correlation** and **causation**, something that **probability theory alone** (i.e., the stuff you may have learned in DSAN 5100) **cannot do!**
+
+As a preview, which I mentioned at the very very end of the "do-calculus" example I went through on the board: @pearl_causality_2000 is literally a gigantic book that meticulously works through **all possible causal diagrams**[^euclid] and proves a massively important theorem that we'll see after the midterm, which tells us **precisely what conditions need to be met (in a given causal system) for us to be able to infer causal effects from conditional probabilities**.
+
+[^euclid]: Not like, one-by-one, but by mathematically characterizing all of the possibilities, like how we can say that *«Assuming Euclid's 5th Postulate, the interior angles of a triangle sum to 180&deg;»*, despite not having gone one-by-one through every triangle.
+
+## References
+
+::: {#refs}
+:::
