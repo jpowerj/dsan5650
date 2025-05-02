@@ -6,8 +6,10 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
+<meta name="author" content="Jeff Jacobs">
+<meta name="dcterms.date" content="2025-05-01">
 
-<title>Syllabus – DSAN 5650</title>
+<title>Higher-Order DAGs via Block Models – DSAN 5650</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -23,25 +25,25 @@ ul.task-list li input[type="checkbox"] {
 </style>
 
 
-<script src="site_libs/quarto-nav/quarto-nav.js"></script>
-<script src="site_libs/quarto-nav/headroom.min.js"></script>
-<script src="site_libs/clipboard/clipboard.min.js"></script>
-<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
-<script src="site_libs/quarto-search/fuse.min.js"></script>
-<script src="site_libs/quarto-search/quarto-search.js"></script>
-<meta name="quarto:offset" content="./">
-<link href="./favicon.png" rel="icon" type="image/png">
-<script src="site_libs/quarto-html/quarto.js"></script>
-<script src="site_libs/quarto-html/popper.min.js"></script>
-<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
-<script src="site_libs/quarto-html/anchor.min.js"></script>
-<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-549806ee2085284f45b00abea8c6df48.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-dark-8ea72dc5fed832574809a9c94082fbbb.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
-<script src="site_libs/bootstrap/bootstrap.min.js"></script>
-<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap-79108a0fc1995748cbd19a5b0e3e3e7c.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
-<link href="site_libs/bootstrap/bootstrap-dark-b2511bcbb01c2159fd96a78deb42ffd9.min.css" rel="prefetch" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../">
+<link href="../../favicon.png" rel="icon" type="image/png">
+<script src="../../site_libs/quarto-html/quarto.js"></script>
+<script src="../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-549806ee2085284f45b00abea8c6df48.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-dark-8ea72dc5fed832574809a9c94082fbbb.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../site_libs/bootstrap/bootstrap-79108a0fc1995748cbd19a5b0e3e3e7c.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="../../site_libs/bootstrap/bootstrap-dark-b2511bcbb01c2159fd96a78deb42ffd9.min.css" rel="prefetch" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
 <script id="quarto-search-options" type="application/json">{
   "location": "sidebar",
   "copy-button": false,
@@ -69,39 +71,10 @@ ul.task-list li input[type="checkbox"] {
     "search-label": "Search"
   }
 }</script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js" integrity="sha512-v2CJ7UaYy4JwqLDIrZUI/4hqeoQieOmAZNXBeQyjo21dadnwR+8ZaIJVT8EE2iyI61OV8e6M8PP2/4hpQINQ/g==" crossorigin="anonymous" referrerpolicy="no-referrer"></script><link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/gh/dreampulse/computer-modern-web-font@master/fonts.css"><script src="./sidebar.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js" integrity="sha512-v2CJ7UaYy4JwqLDIrZUI/4hqeoQieOmAZNXBeQyjo21dadnwR+8ZaIJVT8EE2iyI61OV8e6M8PP2/4hpQINQ/g==" crossorigin="anonymous" referrerpolicy="no-referrer"></script><link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/gh/dreampulse/computer-modern-web-font@master/fonts.css"><script src="../../sidebar.js"></script>
 
-  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
-  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
 
-<script type="text/javascript">
-const typesetMath = (el) => {
-  if (window.MathJax) {
-    // MathJax Typeset
-    window.MathJax.typeset([el]);
-  } else if (window.katex) {
-    // KaTeX Render
-    var mathElements = el.getElementsByClassName("math");
-    var macros = [];
-    for (var i = 0; i < mathElements.length; i++) {
-      var texText = mathElements[i].firstChild;
-      if (mathElements[i].tagName == "SPAN") {
-        window.katex.render(texText.data, mathElements[i], {
-          displayMode: mathElements[i].classList.contains('display'),
-          throwOnError: false,
-          macros: macros,
-          fleqn: false
-        });
-      }
-    }
-  }
-}
-window.Quarto = {
-  typesetMath
-};
-</script>
-
-<link rel="stylesheet" href="./dsan-globals/jjstyles.css">
+<link rel="stylesheet" href="../../dsan-globals/jjstyles.css">
 </head>
 
 <body class="nav-sidebar floating">
@@ -113,7 +86,9 @@ window.Quarto = {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./syllabus.html">Syllabus</a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item">
+      DSAN 5650: Causal Inference for Computational Social Science
+      </li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -128,7 +103,7 @@ window.Quarto = {
   <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
     <div class="pt-lg-2 mt-2 text-left sidebar-header">
     <div class="sidebar-title mb-0 py-0">
-      <a href="./">DSAN 5650: Causal Inference for Computational Social Science</a> 
+      <a href="../../">DSAN 5650: Causal Inference for Computational Social Science</a> 
         <div class="sidebar-tools-main">
   <a href="" class="quarto-color-scheme-toggle quarto-navigation-tool  px-1" onclick="window.quartoToggleColorScheme(); return false;" title="Toggle dark mode"><i class="bi"></i></a>
 </div>
@@ -143,43 +118,43 @@ window.Quarto = {
     <ul class="list-unstyled mt-1">
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./index.html" class="sidebar-item-text sidebar-link">
+  <a href="../../index.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><i class="bi bi-house pe-1"></i> Home</span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./syllabus.html" class="sidebar-item-text sidebar-link active">
+  <a href="../../syllabus.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Syllabus</span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./resources.html" class="sidebar-item-text sidebar-link">
+  <a href="../../resources.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Resources</span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./writeups/index.html" class="sidebar-item-text sidebar-link">
+  <a href="../../writeups/index.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Writeups</span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./assignments.html" class="sidebar-item-text sidebar-link">
+  <a href="../../assignments.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Assignments</span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./midterm.html" class="sidebar-item-text sidebar-link">
+  <a href="../../midterm.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Midterm</span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./final.html" class="sidebar-item-text sidebar-link">
+  <a href="../../final.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Final Project</span></a>
   </div>
 </li>
@@ -198,7 +173,7 @@ window.Quarto = {
         <li class="px-0"><hr class="sidebar-divider hi "></li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./w01/index.html" class="sidebar-item-text sidebar-link">
+  <a href="../../w01/index.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Week 1: May 21</span></a>
   </div>
 </li>
@@ -228,35 +203,37 @@ window.Quarto = {
 </div></div></nav>
 <div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        <nav id="TOC" role="doc-toc" class="toc-active">
-    <h2 id="toc-title">On this page</h2>
-   
-  <ul>
-  <li><a href="#course-staff" id="toc-course-staff" class="nav-link active" data-scroll-target="#course-staff">Course Staff</a></li>
-  <li><a href="#course-description" id="toc-course-description" class="nav-link" data-scroll-target="#course-description">Course Description</a></li>
-  <li><a href="#course-overview" id="toc-course-overview" class="nav-link" data-scroll-target="#course-overview">Course Overview</a></li>
-  <li><a href="#schedule" id="toc-schedule" class="nav-link" data-scroll-target="#schedule">Schedule</a></li>
-  <li><a href="#assignments-and-grading" id="toc-assignments-and-grading" class="nav-link" data-scroll-target="#assignments-and-grading">Assignments and Grading</a>
-  <ul class="collapse">
-  <li><a href="#homework-lateness-policy" id="toc-homework-lateness-policy" class="nav-link" data-scroll-target="#homework-lateness-policy">Homework Lateness Policy</a></li>
-  </ul></li>
-  </ul>
-<div class="toc-actions"><ul><li><a href="https://github.com/jpowerj/dsan5650/blob/main/syllabus.qmd" target="_blank" class="toc-action"><i class="bi bi-github"></i>View source</a></li></ul></div></nav>
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
+        
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Syllabus</h1>
-</div>
+<h1 class="title">Higher-Order DAGs via Block Models</h1>
+  <div class="quarto-categories">
+    <div class="quarto-category">Extra Writeups</div>
+  </div>
+  </div>
 
 
 
 <div class="quarto-title-meta">
 
+    <div>
+    <div class="quarto-title-meta-heading">Author</div>
+    <div class="quarto-title-meta-contents">
+             <p>Jeff Jacobs </p>
+          </div>
+  </div>
     
+    <div>
+    <div class="quarto-title-meta-heading">Published</div>
+    <div class="quarto-title-meta-contents">
+      <p class="date">May 1, 2025</p>
+    </div>
+  </div>
   
     
   </div>
@@ -266,247 +243,10 @@ window.Quarto = {
 </header>
 
 
-<p><strong>Welcome to DSAN 5650: Causal Inference for Computational Social Science at Georgetown University!</strong></p>
-<p>The course meets on <strong>Wednesdays from 6:30-9pm online via <a href="https://maps.app.goo.gl/fVVfDFpp4MEuukXa9">Zoom</a></strong></p>
-<section id="course-staff" class="level2">
-<h2 class="anchored" data-anchor-id="course-staff">Course Staff</h2>
-<ul>
-<li>Prof.&nbsp;Jeff Jacobs, <a href="mailto:jj1088@georgetown.edu"><code>jj1088@georgetown.edu</code></a>
-<ul>
-<li>Office hours (Click to schedule): <a href="https://jjacobs.me/meet">Tuesdays, 3:30-6:30pm</a></li>
-</ul></li>
-<li>TA Courtney Green, <a href="mailto:crg123@georgetown.edu"><code>crg123@georgetown.edu</code></a>
-<ul>
-<li>Office hours by appointment</li>
-</ul></li>
-<li>TA Li-Wen Hu, <a href="mailto:lh1078@georgetown.edu"><code>lh1078@georgetown.edu</code></a>
-<ul>
-<li>Office hours by appointment</li>
-</ul></li>
-</ul>
-</section>
-<section id="course-description" class="level2">
-<h2 class="anchored" data-anchor-id="course-description">Course Description</h2>
-<p>This course provides students with the opportunity to take the analytical skills, machine learning algorithms, and statistical methods learned throughout their first year in the program and explore how they can be employed towards carrying out rigorous, original research in the behavioral and social sciences. With a particular emphasis on tackling the additional challenges which arise when moving from associational to causal inference, particularly when only observational (as opposed to experimental) data is available, students will become proficient in cutting-edge causal Machine Learning techniques such as propensity score matching, synthetic controls, causal program evaluation, inverse social welfare function estimation from panel data, and Double-Debiased Machine Learning.</p>
-<p>In-class examples will cover continuous, discrete-choice, and textual data from a wide swath of social and behavioral sciences: economics, political science, sociology, anthropology, quantitative history, and digital humanities. After gaining experience through in-class labs and homework assignments focused on reproducing key findings from recent journal articles in each of these disciplines, students will spend the final weeks of the course on a final project demonstrating their ability to develop, evaluate, and test the robustness of a causal hypothesis.</p>
-<p><em>Prerequisites: DSAN 5000, DSAN 5100 (DSAN 5300 recommended but not required)</em></p>
-</section>
-<section id="course-overview" class="level2">
-<h2 class="anchored" data-anchor-id="course-overview">Course Overview</h2>
-<p>The fundamental building block for the course is the idea of a <strong>Data-Generating Process (DGP)</strong>. You may have encountered this concept in passing during other DSAN courses (for example, in DSAN 5100, a phrase like “Assume <span class="math inline">\(X\)</span> is drawn i.i.d. from a Normal distribution with mean <span class="math inline">\(\mu\)</span> and variance <span class="math inline">\(\sigma^2\)</span>” is a statement characterizing the DGP of a Random Variable <span class="math inline">\(X\)</span>), but in this course we will “zoom in” on this concept rather than treating it like a black box or a footnote to e.g.&nbsp;a theorem like the Law of Large Numbers.</p>
-<p>This deep dive into DGPs is necessary for us here, since our goal in the course is <strong>to move from <em>associational</em> statements</strong> like “an increase of <span class="math inline">\(X\)</span> by one unit is associated with an increase of <span class="math inline">\(Y\)</span> by <span class="math inline">\(\beta\)</span> units” to <strong><em>causal</em> statements</strong> like “increasing <span class="math inline">\(X\)</span> by one unit <em>causes</em> <span class="math inline">\(Y\)</span> to increase by <span class="math inline">\(\beta\)</span> units”. As you’ll see in Week 1, the tools from probability theory and statistics that you learned in DSAN 5100—Random Variables, Cumulative Distribution Functions, Conditional Probability, and so on—are necessary but <strong>not <em>sufficient</em></strong> to analyze data from a causal perspective.</p>
-<p>For example, if we use our tools from DSAN 5000 and DSAN 5100 on some dataset to discover that:</p>
-<ul>
-<li>The probability that some event <span class="math inline">\(E_1\)</span> occurs is <span class="math inline">\(\Pr(E_1) = 0.5\)</span>, and</li>
-<li>The probability that <span class="math inline">\(E_1\)</span> occurs <strong>conditional on</strong> another event <span class="math inline">\(E_0\)</span> occurring is <span class="math inline">\(\Pr(E_1 \mid E_0) = 0.75\)</span>,</li>
-</ul>
-<p>we unfortunately cannot infer from these two pieces of information that the occurrence of <span class="math inline">\(E_0\)</span> <strong>causes</strong> an increase in the likelihood of <span class="math inline">\(E_1\)</span> occurring.</p>
-<p>This issue (that <strong>conditional probabilities</strong> could not be interpreted causally) at first represented a kind of dead end for scientists interested in employing probability theory to study causal relationships… In recent decades, however, researchers have built up what amounts to an additional “layer” of modeling tools which augment the existing machinery of probability theory to address causality head-on!<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a></p>
-<p>For instance, a modeling approach called <strong>“<span class="math inline">\(\textsf{do}\)</span>-Calculus”</strong>, that we will learn in this class, <em>extends</em> the core operations and definitions of probability theory to allow such an move to deriving causality! It does this by introducing a <span class="math inline">\(\textsf{do}(\cdot)\)</span> operator that can be applied to Random Variables like <span class="math inline">\(X\)</span>, with e.g.&nbsp;<span class="math inline">\(\textsf{do}(X = 5)\)</span> representing the event wherein someone has <strong>intervened</strong> in a <strong>Data-Generating Process</strong> to <strong>force</strong> the value of <span class="math inline">\(X\)</span> to be 5.</p>
-<p>With this operator in hand (that is, used alongside an explicit model of a DGP satisfying a set of underlying axioms which are slightly more strict than the axioms of probability theory), it turns out that we <em>can</em> make causal inferences using a very similar pair of facts! If we know that:</p>
-<ul>
-<li>The probability that some event <span class="math inline">\(E_1\)</span> occurs is <span class="math inline">\(\Pr(E_1) = 0.5\)</span>, and</li>
-<li>The probability that <span class="math inline">\(E_1\)</span> occurs <strong>conditional on</strong> the event <span class="math inline">\(\textsf{do}(E_0)\)</span> occurring is <span class="math inline">\(\Pr(E_1 \mid \textsf{do}(E_0)) = 0.75\)</span>,</li>
-</ul>
-<p><strong>now</strong> we can actually draw the inference that the occurrence of <span class="math inline">\(E_0\)</span> <strong>caused</strong> an increase in the likelihood of <span class="math inline">\(E_1\)</span> occurring!</p>
-<p>This stylized comparison (between what’s possible using “core” probability theory and what’s possible when we augment it with additional causal modeling tools) serves as our basic motivation for the course, so that from Week 2 onwards we build upon this foundation to reach the three learning goals described in the next section!</p>
-</section>
-<section id="schedule" class="level2">
-<h2 class="anchored" data-anchor-id="schedule">Schedule</h2>
-<p>The following is a rough map of what we will work through together throughout the semester; given that <strong>everyone learns at a different pace</strong>, my aim is to leave us with a good amount of <strong>flexibility</strong> in terms of how much time we spend on each topic: if I find that it takes me longer than a week to convey a certain topic in sufficient depth, for example, then I view it as a strength rather than a weakness of the course that we can then rearrange the calendar below by adding an extra week on that particular topic! Similarly, if it seems like I am spending too much time on a topic, to the point that students seem bored or impatient to move onto the next topic, we can move a topic intended for the next week to the current week!</p>
-<table class="sticky-table caption-top table" data-quarto-postprocess="true">
-<thead>
-<tr class="sticky-head header">
-<th data-quarto-table-cell-role="th">Unit</th>
-<th data-quarto-table-cell-role="th">Week</th>
-<th data-quarto-table-cell-role="th">Date</th>
-<th data-quarto-table-cell-role="th">Topic</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td><strong>Unit 1</strong>: Ethical Frameworks</td>
-<td>1</td>
-<td>May 21</td>
-<td><a href="./w01/">Introduction to the Course</a></td>
-</tr>
-<tr class="even">
-<td></td>
-<td>2</td>
-<td>Jan 22</td>
-<td><a href="./w02/">Machine Learning, Training Data, and Bias</a></td>
-</tr>
-<tr class="new-unit odd">
-<td><strong>Unit 2</strong>: Fairness in AI</td>
-<td>3</td>
-<td>Jan 29</td>
-<td><a href="./w03/">Ethical Frameworks: Rights, Discrimination, and Fairness</a></td>
-</tr>
-<tr class="even">
-<td></td>
-<td></td>
-<td><em>Jan 31 (Friday), 5:59pm EST</em></td>
-<td><em>[Deliverable] <a href="https://classroom.google.com/c/NzQzMjkyMzg4NjIw/a/NzQ3NDA0MDQ5MjU3/details" target="_blank">HW1: Nuts and Bolts for Fairness in AI</a></em></td>
-</tr>
-<tr class="odd">
-<td></td>
-<td>4</td>
-<td>Feb 5</td>
-<td><a href="./w04/">(Descriptive) Fairness in AI</a></td>
-</tr>
-<tr class="even">
-<td></td>
-<td>5</td>
-<td>Feb 12</td>
-<td><a href="./w05/">Context-Sensitive Fairness</a></td>
-</tr>
-<tr class="odd">
-<td></td>
-<td>6</td>
-<td>Feb 19</td>
-<td><a href="./w06/">Causality in Ethics and Policy</a></td>
-</tr>
-<tr class="even">
-<td></td>
-<td></td>
-<td><em>Feb 21 (Friday), 5:59pm EST</em></td>
-<td><em>[Deliverable] <a href="#" target="_blank">HW2: Context-Sensitive Fairness</a></em></td>
-</tr>
-<tr class="new-unit odd">
-<td><strong>Midterm</strong></td>
-<td>7</td>
-<td>Feb 26</td>
-<td><a href="./w07/">In-Class Midterm: Data Ethics, Fairness, Privacy, Causality</a></td>
-</tr>
-<tr class="even">
-<td></td>
-<td></td>
-<td><em>Mar 6</em></td>
-<td><em>No Class (Spring Break)</em></td>
-</tr>
-<tr class="new-unit odd">
-<td><strong>Unit 3:</strong> Policy Frameworks</td>
-<td>8</td>
-<td>Mar 12</td>
-<td><a href="./w08/">Privacy Policies, Incomplete Contracts, and Power</a></td>
-</tr>
-<tr class="even">
-<td></td>
-<td>9</td>
-<td>Mar 19</td>
-<td><a href="./w09/">From Data Ethics to Data Policy</a></td>
-</tr>
-<tr class="odd">
-<td></td>
-<td>10</td>
-<td>Mar 26</td>
-<td><a href="./w10/">Econometric Policy Evaluation and Inverse Fairness</a></td>
-</tr>
-<tr class="even">
-<td></td>
-<td>11</td>
-<td>Apr 2</td>
-<td><a href="./w11/">Fairness vs.&nbsp;Social Welfare</a></td>
-</tr>
-<tr class="new-unit odd">
-<td><strong>Unit 4</strong>: Applications</td>
-<td>12</td>
-<td>Apr 9</td>
-<td>Project Talk, Causality and Identity Formation</td>
-</tr>
-<tr class="even">
-<td></td>
-<td>13</td>
-<td>Apr 16</td>
-<td>Applications: Race, Class, Gender, Sexuality, and Disability (Data Feminism)</td>
-</tr>
-<tr class="odd">
-<td></td>
-<td>14</td>
-<td>Apr 23</td>
-<td>Republican Liberty and the Kindly Slavemaster</td>
-</tr>
-<tr class="even">
-<td></td>
-<td></td>
-<td><em>May 10 (Friday)</em></td>
-<td><em>[Deliverable] <a href="./final.html">Policy Whitepaper</a></em></td>
-</tr>
-</tbody>
-</table>
-</section>
-<section id="assignments-and-grading" class="level2">
-<h2 class="anchored" data-anchor-id="assignments-and-grading">Assignments and Grading</h2>
-<p>The main assignment in the course will be your <strong>policy whitepaper</strong>, submitted at the end of the semester. However, there will also be a midterm exam and a series of assignments which exist to let you explore each of the modules of the course, in turn.</p>
-<table class="caption-top table">
-<colgroup>
-<col style="width: 55%">
-<col style="width: 25%">
-<col style="width: 20%">
-</colgroup>
-<thead>
-<tr class="header">
-<th>Assignment</th>
-<th>Due Date</th>
-<th>% of Grade</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td><a href="https://classroom.google.com/c/NzQzMjkyMzg4NjIw/a/NzQ3NDA0MDQ5MjU3/details" target="_blank">HW1: Nuts and Bolts for Fairness in AI <i class="bi bi-box-arrow-up-right ps-1"></i></a></td>
-<td><p>Friday, <strong>February 9</strong></p></td>
-<td>10%</td>
-</tr>
-<tr class="even">
-<td><a href="#" target="_blank">HW2: Context-Sensitive Fairness <i class="bi bi-box-arrow-up-right ps-1"></i></a></td>
-<td><p>Friday, <strong>February 21</strong></p></td>
-<td>10%</td>
-</tr>
-<tr class="odd">
-<td>Midterm</td>
-<td>Wednesday, <strong>February 28</strong></td>
-<td>30%</td>
-</tr>
-<tr class="even">
-<td><a href="#" target="_blank">HW3: Privacy Policies as Incomplete Contracts <i class="bi bi-box-arrow-up-right ps-1"></i></a></td>
-<td><p>Friday, <strong>April 12</strong></p></td>
-<td>10%</td>
-</tr>
-<tr class="odd">
-<td>HW4: Policy Evaluation</td>
-<td><p>Friday, <strong>April 26</strong></p></td>
-<td>10%</td>
-</tr>
-<tr class="even">
-<td><a href="./final.html">Policy Whitepaper</a></td>
-<td>Friday, <strong>May 10</strong></td>
-<td>30%</td>
-</tr>
-</tbody>
-</table>
-<section id="homework-lateness-policy" class="level3">
-<h3 class="anchored" data-anchor-id="homework-lateness-policy">Homework Lateness Policy</h3>
-<p>After the due date, for each <strong>homework</strong> assignment, you will have a grace period of 24 hours to submit the assignment without a lateness penalty. After this 24-hour grace period, late penalties will be applied based on the following scale (unless you obtain an excused lateness from one of the instructional staff!):</p>
-<ul>
-<li>0 to 24 hours late: no penalty</li>
-<li>24 to 30 hours late: 2.5% penalty</li>
-<li>30 to 42 hours late: 5% penalty</li>
-<li>42 to 54 hours late: 10% penalty</li>
-<li>54 to 66 hours late: 20% penalty</li>
-<li>More than 66 hours late: Assignment submissions no longer accepted (without instructor approval)</li>
-</ul>
 
 
-</section>
-</section>
 
-
-<div id="quarto-appendix" class="default"><section id="footnotes" class="footnotes footnotes-end-of-document" role="doc-endnotes"><h2 class="anchored quarto-appendix-heading">Footnotes</h2>
-
-<ol>
-<li id="fn1"><p><span class="citation" data-cites="pearl_causality_2001">(<a href="#ref-pearl_causality_2001" role="doc-biblioref"><strong>pearl_causality_2001?</strong></a>)</span> represents a key work in this field of research, as it essentially brought together different pieces of causal models into one unified, rigorous framework.<a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
-</ol>
-</section></div></main> <!-- /main -->
+</main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
 window.document.addEventListener("DOMContentLoaded", function (event) {
   const toggleBodyColorMode = (bsSheetEl) => {
@@ -1080,4 +820,4 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 
 
 
-<footer class="footer"><div class="nav-footer"><div class="nav-footer-center"><div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/jpowerj/dsan5650/blob/main/syllabus.qmd" target="_blank" class="toc-action"><i class="bi bi-github"></i>View source</a></li></ul></div></div></div></footer></body></html>
+<footer class="footer"><div class="nav-footer"><div class="nav-footer-center"><div class="toc-actions"><ul><li><a href="https://github.com/jpowerj/dsan5650/blob/main/writeups/blockmodels/index.qmd" target="_blank" class="toc-action"><i class="bi bi-github"></i>View source</a></li></ul></div></div></div></footer></body></html>

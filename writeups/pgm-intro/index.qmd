@@ -1,0 +1,73 @@
+---
+title: "A Quick Introduction to Probabilistic Graphical Models"
+author: "Jeff Jacobs"
+sidebar: mainnav
+date: 2024-02-18
+relevance: "Weeks 5-7 (Causality)"
+categories:
+  - "Extra Writeups"
+format:
+  html:
+    df-print: kable
+    html-math-method: mathjax
+---
+
+A Probabilistic Graphical Model (PGM) is just a formal mathematical representation of a **data-generating process**. So, if we wanted to model the relationship between weather and a person's choice of whether to go out and party or stay in and watch a movie on a given Saturday evening, we could begin by proposing the following data-generating process:
+
+1. A person $i$ looks out the window and observes the weather.
+2. If the weather is sunny, $i$ goes out to a party. Otherwise, $i$ stays in and watches a movie.
+
+Now, given the description of a PGM given above (nodes as variables, edges as relationships between variables), we can perform the move alluded to in the previous section: we can convert our data-generating process into a PGM, by defining nodes (variables) and edges (relationships) as follows:
+
+* A Random Variable $W$ which can take on values in $\mathcal{R}_W = \{\textsf{Sunny}, \textsf{Rainy}\}$
+* A Random Variable $Y$ which can take on values in $\mathcal{R}_Y = \{\textsf{Go Out}, \textsf{Stay In}\}$, and 
+* An edge $W \rightarrow Y$ from $W$ to $Y$ which encodes the intuition that one is more likely to go out if it's sunny than if it's rainy via the probability distribution:
+  * $\Pr(Y = \textsf{Go Out} \mid W = \textsf{Sunny}) = 0.75$
+  * $\Pr(Y = \textsf{Stay In} \mid W = \textsf{Sunny}) = 0.25$
+  * $\Pr(Y = \textsf{Go Out} \mid W = \textsf{Rainy}) = 0.25$
+  * $\Pr(Y = \textsf{Stay In} \mid W = \textsf{Rainy}) = 0.75$.
+
+The resulting PGM, in graphical form[^graphical], is presented below, followed by the Conditional Probability Table describing the edge from the $W$ node to the $Y$ node.
+
+![](images/pgm.svg){fig-align="center" width="40%"}
+
+| | $Y = \textsf{Go Out}$ | $Y = \textsf{Stay In}$ |
+|-:|:-:|:-:|
+| $W = \textsf{Sunny}$ | 0.75 | 0.25 |
+| $W = \textsf{Rainy}$ | 0.25 | 0.75 |
+
+PGMs can help us make inferences about the world in the face of incomplete information, which is the situation in nearly every real-world problem. The key tool here is the separation of nodes into two categories: **observed** (represented graphically as a shaded node) and **latent** (represented graphically as an unshaded node).
+
+Thus we can now use our model as a weather-inference machine: if we observe that the person we're modeling is out at a party with us, what can we infer from this information about the weather outside? We can draw this situation as a PGM with shaded and unshaded nodes, as in the figure below, and then use Bayes' Rule to perform calculations over the network, to see how the observed information about the person at the party "flows" back into the node representing the weather.
+
+![](images/pgm_yobs.svg){fig-align="center" width="40%"}
+
+Keeping in mind that Bayes' Rule tells us, for any two events $A$ and $B$, how to use information about $\Pr(B \mid A)$ to obtain information about $\Pr(A \mid B)$:
+
+$$
+\Pr(A \mid B) = \frac{\Pr(B \mid A)\Pr(A)}{\Pr(B)},
+$$
+
+
+We can now apply this rule to obtain our new probability distribution over the weather, taking into account the new information that the person has chosen to go out:
+
+$$
+\begin{align*}
+&\Pr(W = \textsf{Sunny} \mid Y = \textsf{Go Out}) 
+= \frac{\Pr(Y = \textsf{Go Out} \mid W = \textsf{Sunny})}{\Pr(Y = \textsf{Go Out})} \\
+= &\frac{\Pr(Y = \textsf{Go Out} \mid W = \textsf{Sunny})}{\Pr(Y = \textsf{Go Out} \mid W = \textsf{Sunny}) + \Pr(Y = \textsf{Go Out} \mid W = \textsf{Rainy})}
+\end{align*}
+$$
+
+And now we simply plug in the information we already have from our conditional probability table to obtain our new (conditional) probability of interest:
+
+$$
+\begin{align*}
+\Pr(W = \textsf{Sunny} \mid Y = \textsf{Go Out}) &= \frac{(0.8)(0.5)}{(0.8)(0.5) + (0.1)(0.5)} \\
+&= \frac{0.4}{0.4 + 0.05} = \frac{0.4}{0.45} \approx 0.89.
+\end{align*}
+$$
+
+We have learned something interesting: now that we've observed the person out at a party, the probability that it is sunny out jumps from $0.5$ (called the **"prior"** estimate of $W$, i.e., our best guess without any other relevant information) to $0.89$ (called the **"posterior"** estimate of $W$, i.e., our best guess after incorporating relevant information).
+
+[^graphical]: The term "Graphical" in Probabilistic Graphical Model is not used in the same sense as the "graphical" we're used to from vernacular English. Capital-G Graphical denotes that the Probabilistic Model is represented as a Graph, a well-defined mathematical object consisting of nodes and edges, which does not have to be represented graphically (though it could be, like in our example here with circles and arrows). In fact, when a computer program is estimating a PGM, it is by definition not in a graphical form---it's in the form of 0s and 1s, stored in the computer's memory.

@@ -81,9 +81,9 @@ ul.task-list li input[type="checkbox"] {
     }
 
     const options = {
-      valueNames: ['listing-title','listing-date','listing-relevance','listing-categories',{ data: ['index'] },{ data: ['categories'] }],
+      valueNames: ['listing-title','listing-date','listing-relevance','listing-categories',{ data: ['index'] },{ data: ['categories'] },{ data: ['listing-date-sort'] },{ data: ['listing-title-sort'] }],
       
-      searchColumns: [],
+      searchColumns: ["listing-date","listing-title","listing-author"],
     };
 
     window['quarto-listings'] = window['quarto-listings'] || {};
@@ -230,7 +230,7 @@ window.Quarto = {
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../w01/index.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Week 1: Jan 15</span></a>
+ <span class="menu-text">Week 1: May 21</span></a>
   </div>
 </li>
         <li class="px-0"><hr class="sidebar-divider hi "></li>
@@ -255,13 +255,13 @@ window.Quarto = {
     </ul>
     </div>
 <div class="quarto-sidebar-footer"><div class="sidebar-footer-item">
-<p><em>Updated 2025-02-27, 01:09:51 PM</em></p>
+<p><em>Updated 2025-05-02, 04:54:11 PM</em></p>
 </div></div></nav>
 <div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
         
-    <h5 class="quarto-listing-category-title">Categories</h5><div class="quarto-listing-category category-default"><div class="category" data-category="">All <span class="quarto-category-count">(0)</span></div></div></div>
+    <h5 class="quarto-listing-category-title">Categories</h5><div class="quarto-listing-category category-default"><div class="category" data-category="">All <span class="quarto-category-count">(2)</span></div><div class="category" data-category="RXh0cmElMjBXcml0ZXVwcw==">Extra Writeups <span class="quarto-category-count">(2)</span></div></div></div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
@@ -290,6 +290,22 @@ window.Quarto = {
 
 <div class="quarto-listing quarto-listing-container-table" id="listing-listing">
 <div class="listing-actions-group">
+   <div class="input-group input-group-sm quarto-listing-sort">
+     <span class="input-group-text"><i class="bi bi-sort-down"></i></span>
+     <select id="listing-listing-sort" class="form-select" aria-label="Order By" onchange="window['quarto-listings']['listing-listing'].sort(this.options[this.selectedIndex].value, { order: this.options[this.selectedIndex].getAttribute('data-direction')})">
+       <option value="" disabled="" selected="" hidden="">Order By</option>
+       <option value="index" data-direction="asc">Default</option>
+         <option value="listing-date-sort" data-direction="asc">
+          Last Updated - Oldest
+        </option>
+         <option value="listing-date-sort" data-direction="desc">
+          Last Updated - Newest
+        </option>
+         <option value="listing-title-sort" data-direction="asc">
+          Title
+        </option>
+     </select>
+  </div>
     <div class="input-group input-group-sm quarto-listing-filter">
       <span class="input-group-text"><i class="bi bi-search"></i></span>
       <input type="text" class="search form-control" placeholder="Filter">
@@ -299,10 +315,10 @@ window.Quarto = {
 <thead>
 <tr>
 <th>
-Title
+<a class="sort" data-sort="listing-title-sort" onclick="if (this.classList.contains('sort-asc')) { this.classList.add('sort-desc'); this.classList.remove('sort-asc') } else { this.classList.add('sort-asc'); this.classList.remove('sort-desc')} return false;">Title</a>
 </th>
 <th>
-Last Updated
+<a class="sort" data-sort="listing-date-sort" onclick="if (this.classList.contains('sort-asc')) { this.classList.add('sort-desc'); this.classList.remove('sort-asc') } else { this.classList.add('sort-asc'); this.classList.remove('sort-desc')} return false;">Last Updated</a>
 </th>
 <th>
 Relevant To
@@ -313,6 +329,36 @@ Category
 </tr>
 </thead>
 <tbody class="list">
+<tr data-index="0" data-categories="RXh0cmElMjBXcml0ZXVwcw==" data-listing-date-sort="1746072000000" data-listing-file-modified-sort="1746144048275" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="1" data-listing-title-sort="Higher-Order DAGs via Block Models" data-listing-filename-sort="index.qmd" onclick="href = this.querySelector('a').getAttribute('href');
+ if (href) { window.location=href ; return false; }">
+<td>
+<a href="../writeups/blockmodels/index.html" class="title listing-title">Higher-Order DAGs via Block Models</a>
+</td>
+<td>
+<span class="listing-date">Thursday, May 1, 2025</span>
+</td>
+<td>
+<span class="listing-relevance">Weeks 5-7 (Causality)</span>
+</td>
+<td>
+<span class="listing-categories">Extra Writeups</span>
+</td>
+</tr>
+<tr data-index="1" data-categories="RXh0cmElMjBXcml0ZXVwcw==" data-listing-date-sort="1708232400000" data-listing-file-modified-sort="1746143974425" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="4" data-listing-word-count-sort="733" data-listing-title-sort="A Quick Introduction to Probabilistic Graphical Models" data-listing-filename-sort="index.qmd" onclick="href = this.querySelector('a').getAttribute('href');
+ if (href) { window.location=href ; return false; }">
+<td>
+<a href="../writeups/pgm-intro/index.html" class="title listing-title">A Quick Introduction to Probabilistic Graphical Models</a>
+</td>
+<td>
+<span class="listing-date">Sunday, February 18, 2024</span>
+</td>
+<td>
+<span class="listing-relevance">Weeks 5-7 (Causality)</span>
+</td>
+<td>
+<span class="listing-categories">Extra Writeups</span>
+</td>
+</tr>
 </tbody>
 </table>
 <div class="listing-no-matching d-none">

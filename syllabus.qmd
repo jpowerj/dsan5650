@@ -15,7 +15,10 @@ The course meets on **Wednesdays from 6:30-9pm online via [Zoom](https://maps.ap
 
 * Prof. Jeff Jacobs, [`jj1088@georgetown.edu`](mailto:jj1088@georgetown.edu)
   * Office hours (Click to schedule): [Tuesdays, 3:30-6:30pm](https://jjacobs.me/meet)
-* TAs: TBD
+* TA Courtney Green, [`crg123@georgetown.edu`](mailto:crg123@georgetown.edu)
+  * Office hours by appointment
+* TA Li-Wen Hu, [`lh1078@georgetown.edu`](mailto:lh1078@georgetown.edu)
+  * Office hours by appointment
 
 ## Course Description
 
@@ -27,37 +30,29 @@ In-class examples will cover continuous, discrete-choice, and textual data from 
 
 ## Course Overview
 
-The course revolves around three "pillars", which we'll examine individually before bringing them together for your final projects at the end of the class: high-level ethical issues in data science, general ethical frameworks, and public policy applications.
+The fundamental building block for the course is the idea of a **Data-Generating Process (DGP)**. You may have encountered this concept in passing during other DSAN courses (for example, in DSAN 5100, a phrase like "Assume $X$ is drawn i.i.d. from a Normal distribution with mean $\mu$ and variance $\sigma^2$" is a statement characterizing the DGP of a Random Variable $X$), but in this course we will "zoom in" on this concept rather than treating it like a black box or a footnote to e.g. a theorem like the Law of Large Numbers.
 
-### Data Science
+This deep dive into DGPs is necessary for us here, since our goal in the course is **to move from *associational* statements** like "an increase of $X$ by one unit is associated with an increase of $Y$ by $\beta$ units" to ***causal* statements** like "increasing $X$ by one unit *causes* $Y$ to increase by $\beta$ units". As you'll see in Week 1, the tools from probability theory and statistics that you learned in DSAN 5100---Random Variables, Cumulative Distribution Functions, Conditional Probability, and so on---are necessary but **not *sufficient*** to analyze data from a causal perspective.
 
-A portion of the course will focus on introductions to cutting-edge technologies like self-driving cars, ChatGPT, facial detection algorithms, and various applications of AI to police and military technologies. For this portion, we'll draw fairly often from the contents of the following books:
+For example, if we use our tools from DSAN 5000 and DSAN 5100 on some dataset to discover that:
 
-* @perez_invisible_2019: *Invisible Women: Data Bias in a World Designed for Men*.
-* Catherine D'Ignazio and Lauren F. Klein (2020). <i><a href='https://data-feminism.mitpress.mit.edu/' target='_blank'>Data Feminism</a></i>. Cambridge, MA: MIT Press. [Free, open-source!]
-* Cathy O'Neil (2016). *[Weapons of Math Destruction](https://en.wikipedia.org/wiki/Weapons_of_Math_Destruction)*. New York, NY: Crown Books.
+* The probability that some event $E_1$ occurs is $\Pr(E_1) = 0.5$, and
+* The probability that $E_1$ occurs **conditional on** another event $E_0$ occurring is $\Pr(E_1 \mid E_0) = 0.75$,
 
-Since there are plenty of in-depth resources available to you (e.g., other Georgetown courses!) for learning the *technical details* of these technologies, our goal in this course will be to learn just the particular *aspects* of each technology which are most relevant to the ethical and policy issues they present.
+we unfortunately cannot infer from these two pieces of information that the occurrence of $E_0$ **causes** an increase in the likelihood of $E_1$ occurring.
 
-For example, we will look at Neural Netwok-based Machine Learning algorithms, but we will focus specifically on how the **performance** of these algorithms on a given task depends crucially on the existence of effective **training data** for that task. The breakthroughs in Artificial Intelligence which have had an immense impact on society over the past few decades, for example, have **not** come about because of new algorithms (neural networks, for example, have been around since the 1950s). Rather, they have come about because of the massive, exponential increase in the amount of **data** available to **train** these already-existing algorithms: for example, data scraped from across the entire web, or from millions of scanned books, or from Wikipedia's massive collection of articles. This means, therefore, that these algorithms simply **encode** pre-existing human biases into algorithmically-derived "rules", thus motivating the next pillar of the course: Ethics!
+This issue (that **conditional probabilities** could not be interpreted causally) at first represented a kind of dead end for scientists interested in employing probability theory to study causal relationships... In recent decades, however, researchers have built up what amounts to an additional "layer" of modeling tools which augment the existing machinery of probability theory to address causality head-on!^[@pearl_causality_2001 represents a key work in this field of research, as it essentially brought together different pieces of causal models into one unified, rigorous framework.]
 
-### Ethics
+For instance, a modeling approach called **"$\textsf{do}$-Calculus"**, that we will learn in this class, *extends* the core operations and definitions of probability theory to allow such an move to deriving causality! It does this by introducing a $\textsf{do}(\cdot)$ operator that can be applied to Random Variables like $X$, with e.g. $\textsf{do}(X = 5)$ representing the event wherein someone has **intervened** in a **Data-Generating Process** to **force** the value of $X$ to be 5.
 
-For the ethics-focused portion of the course, we'll be reading selections from the following textbook:
+With this operator in hand (that is, used alongside an explicit model of a DGP satisfying a set of underlying axioms which are slightly more strict than the axioms of probability theory), it turns out that we *can* make causal inferences using a very similar pair of facts! If we know that:
 
-* Lewis Vaughn and Louis P. Pojman (2021). <i><a href='https://global.oup.com/ushe/product/the-moral-life-9780197610060?cc=us&lang=en&' target='_blank'>The Moral Life: An Introductory Reader in Ethics and Literature</a></i>. Oxford, UK: Oxford University Press. [<a href='https://www.dropbox.com/scl/fi/edx5t4xedli9pcfxm3330/Louis-P.-Pojman-The-Moral-Life_-An-Introductory-Reader-in-Ethics-and-Literature.pdf?rlkey=6pwuvdfed6m8mzp3d0l5rsajv&dl=1' target='_blank'>PDF</a>]
+* The probability that some event $E_1$ occurs is $\Pr(E_1) = 0.5$, and
+* The probability that $E_1$ occurs **conditional on** the event $\textsf{do}(E_0)$ occurring is $\Pr(E_1 \mid \textsf{do}(E_0)) = 0.75$,
 
-From the vast array of readings contained in this collection, we'll look at both "standard" ethical readings from e.g. Jeremy Bentham and Immanuel Kant plus readings from literary sources like Ursula Le Guin and Ambrose Bierce.
+**now** we can actually draw the inference that the occurrence of $E_0$ **caused** an increase in the likelihood of $E_1$ occurring!
 
-### Public Policy
-
-For the final piece of the course we will take the **technological developments** discussed the first portion, analyze them using the **ethical frameworks** discussed in the second portion, and come to **conclusions** as to what types of things lawmakers, governments, and civil society organizations (NGOs, for example, and Think Tanks) can do **in practice** to address the ethical issues raised by these technologies. This means that, specifically, the recommended final project for the course will be a **Policy Whitepaper**, where you will choose a particular institution and make a **recommendation** to them in terms of how they can use their power (for example, the power to pass laws) to most effectively address an ethical issue that you believe is important.
-
-For this portion of the class we'll have to draw on a wide range of different readings, depending on what particular subdomains of public policy are most interesting to you all, but as a general textbook on ethics in data science which does focus a good amount on **policy** specifically, we will look at:
-
-* Anne L. Washington (2023). <i><a href=' https://annewashington.com/book-ethical-data-science-prediction-in-the-public-interest/' target='_blank'>Ethical Data Science: Prediction in the Public Interest</a></i>. New York, NY: Oxford University Press.
-
-Now that you have an overview of the trajectory of the course, the following section contains the particulars of what we'll be reading and working on each week!
+This stylized comparison (between what's possible using "core" probability theory and what's possible when we augment it with additional causal modeling tools) serves as our basic motivation for the course, so that from Week 2 onwards we build upon this foundation to reach the three learning goals described in the next section!
 
 ## Schedule
 

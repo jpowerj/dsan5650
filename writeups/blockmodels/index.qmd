@@ -1,0 +1,14 @@
+---
+title: "Higher-Order DAGs via Block Models"
+author: "Jeff Jacobs"
+sidebar: mainnav
+date: 2025-05-01
+relevance: "Weeks 5-7 (Causality)"
+categories:
+  - "Extra Writeups"
+format:
+  html:
+    df-print: kable
+    html-math-method: mathjax
+---
+

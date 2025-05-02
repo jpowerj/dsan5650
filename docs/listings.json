@@ -7,6 +7,9 @@
   },
   {
     "listing": "/writeups/index.html",
-    "items": []
+    "items": [
+      "/writeups/blockmodels/index.html",
+      "/writeups/pgm-intro/index.html"
+    ]
   }
 ]
