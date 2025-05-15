@@ -20,7 +20,27 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
-</style>
+/* CSS for citations */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+  margin-bottom: 0em;
+}
+.hanging-indent div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}</style>
 
 
 <script src="site_libs/quarto-nav/quarto-nav.js"></script>
@@ -224,7 +244,7 @@ window.Quarto = {
     </ul>
     </div>
 <div class="quarto-sidebar-footer"><div class="sidebar-footer-item">
-<p><em>Updated 2025-05-02, 04:54:11 PM</em></p>
+<p><em>Updated 2025-05-14, 10:30:30 PM</em></p>
 </div></div></nav>
 <div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
@@ -236,6 +256,7 @@ window.Quarto = {
   <li><a href="#course-staff" id="toc-course-staff" class="nav-link active" data-scroll-target="#course-staff">Course Staff</a></li>
   <li><a href="#course-description" id="toc-course-description" class="nav-link" data-scroll-target="#course-description">Course Description</a></li>
   <li><a href="#course-overview" id="toc-course-overview" class="nav-link" data-scroll-target="#course-overview">Course Overview</a></li>
+  <li><a href="#main-textbooks-resources" id="toc-main-textbooks-resources" class="nav-link" data-scroll-target="#main-textbooks-resources">Main Textbooks / Resources</a></li>
   <li><a href="#schedule" id="toc-schedule" class="nav-link" data-scroll-target="#schedule">Schedule</a></li>
   <li><a href="#assignments-and-grading" id="toc-assignments-and-grading" class="nav-link" data-scroll-target="#assignments-and-grading">Assignments and Grading</a>
   <ul class="collapse">
@@ -279,7 +300,7 @@ window.Quarto = {
 <ul>
 <li>Office hours by appointment</li>
 </ul></li>
-<li>TA Li-Wen Hu, <a href="mailto:lh1078@georgetown.edu"><code>lh1078@georgetown.edu</code></a>
+<li>TA Wendy Hu, <a href="mailto:lh1078@georgetown.edu"><code>lh1078@georgetown.edu</code></a>
 <ul>
 <li>Office hours by appointment</li>
 </ul></li>
@@ -311,6 +332,24 @@ window.Quarto = {
 <p><strong>now</strong> we can actually draw the inference that the occurrence of <span class="math inline">\(E_0\)</span> <strong>caused</strong> an increase in the likelihood of <span class="math inline">\(E_1\)</span> occurring!</p>
 <p>This stylized comparison (between what’s possible using “core” probability theory and what’s possible when we augment it with additional causal modeling tools) serves as our basic motivation for the course, so that from Week 2 onwards we build upon this foundation to reach the three learning goals described in the next section!</p>
 </section>
+<section id="main-textbooks-resources" class="level2">
+<h2 class="anchored" data-anchor-id="main-textbooks-resources">Main Textbooks / Resources</h2>
+<p>Unlike the case for topics like calculus or <a href="https://www.statlearning.com/">statistical learning</a>, this field is too new (and exciting! with new methods being developed month-to-month) to have a single set of “established” textbooks. Thus, the main collection of resources (books, papers, and explanatory videos) we’ll draw on for this class are available on the <a href="./resources.html">resources page</a>. However, there are three “core” textbooks you can draw on which best align with the topics in this course:</p>
+<ul>
+<li>Morgan and Winship, <em>Counterfactuals and Causal Inference: Methods and Principles for Social Research</em> <span class="citation" data-cites="morgan_counterfactuals_2015">(<a href="#ref-morgan_counterfactuals_2015" role="doc-biblioref">Morgan and Winship 2015</a>)</span> [<a href="https://www.dropbox.com/scl/fi/rmuw9yw0gflg9wprufzu4/Counterfactuals-and-Causal-Inference.pdf?rlkey=gpzpuqgmzgsdwo18j22pl6yiw&amp;dl=1">PDF</a>]
+<ul>
+<li>The book which comes closest to being an all-encompassing, single textbook for the class. It brings together different “strands” of causal modeling research (since each field—economics, bioinformatics, sociology, etc.—tends to use its own notation and vocabulary), unifying them into a single approach. The only reason we can’t use it as <em>the</em> main textbook is because it hasn’t been updated since 2015, and most of the assignments in this class use computational tools from 2018 onwards!</li>
+</ul></li>
+<li>Angrist and Pischke, <em>Mastering ’Metrics: The Path from Cause to Effect</em> <span class="citation" data-cites="angrist_mastering_2014">(<a href="#ref-angrist_mastering_2014" role="doc-biblioref">Angrist and Pischke 2014</a>)</span> [<a href="https://www.dropbox.com/scl/fi/3xa9tfswmv1w8ez54prtk/Joshua-D.-Angrist-J-rn-Steffen-Pischke-Mastering-Metrics.pdf?rlkey=2w0ipphrgxrejd7ddkv1wd635&amp;dl=1">PDF</a>]
+<ul>
+<li>This book is included as the second of the three “core” texts mainly because, it uses the language of causality specific to Econometrics, the language that is most familiar to me from my PhD training in Political Economy. However, if you tend to learn better by example, it also does a good job of foregrounding specific examples (like evaluating charter schools and community policing policies), so that the methods emerging naturally from attempts to solve these puzzles when association methods like linear regression fail to capture their causal linkages.</li>
+</ul></li>
+<li>Pearl and Mackenzie, <em>The Book of Why: The New Science of Cause and Effect</em> <span class="citation" data-cites="pearl_book_2018">(<a href="#ref-pearl_book_2018" role="doc-biblioref">Pearl and Mackenzie 2018</a>)</span> [<a href="https://www.dropbox.com/scl/fi/0r7kg7hwibztvfnby8vdg/The-Book-of-Why.epub?rlkey=czdiw5mku5uamjdiwyyzlpmdr&amp;dl=1">EPUB</a>]
+<ul>
+<li>This book contrasts with the Angrist and Pischke book in using the language of causality formed within <em>Computer Science</em> rather than Economics. It can be a good starting point especially if you’re unfamiliar with the heavy use of <em>diagrams</em> for scientific modeling—basically, whereas Angrist and Pischke’s first instinct is to use (sometimes informal) <em>equations</em> like <span class="math inline">\(y = mx + b\)</span> to explain steps in the procedures, Pearl and Mackenzie’s instinct would be to instead use something like <span class="math inline">\(x \overset{m, b}{\longrightarrow} y\)</span> to represent the same concept (in this case, a line with slope <span class="math inline">\(m\)</span> and intercept <span class="math inline">\(b\)</span>!).</li>
+</ul></li>
+</ul>
+</section>
 <section id="schedule" class="level2">
 <h2 class="anchored" data-anchor-id="schedule">Schedule</h2>
 <p>The following is a rough map of what we will work through together throughout the semester; given that <strong>everyone learns at a different pace</strong>, my aim is to leave us with a good amount of <strong>flexibility</strong> in terms of how much time we spend on each topic: if I find that it takes me longer than a week to convey a certain topic in sufficient depth, for example, then I view it as a strength rather than a weakness of the course that we can then rearrange the calendar below by adding an extra week on that particular topic! Similarly, if it seems like I am spending too much time on a topic, to the point that students seem bored or impatient to move onto the next topic, we can move a topic intended for the next week to the current week!</p>
@@ -325,112 +364,88 @@ window.Quarto = {
 </thead>
 <tbody>
 <tr class="odd">
-<td><strong>Unit 1</strong>: Ethical Frameworks</td>
+<td><strong>Unit 1</strong>: The Language of Causal Modeling</td>
 <td>1</td>
 <td>May 21</td>
-<td><a href="./w01/">Introduction to the Course</a></td>
+<td><a href="./w01/">The Language of Causal Modeling</a></td>
 </tr>
 <tr class="even">
 <td></td>
 <td>2</td>
-<td>Jan 22</td>
-<td><a href="./w02/">Machine Learning, Training Data, and Bias</a></td>
+<td>May 28</td>
+<td><a href="./w02/">Probabilistic Graphical Models (PGMs)</a></td>
 </tr>
 <tr class="new-unit odd">
-<td><strong>Unit 2</strong>: Fairness in AI</td>
+<td><strong>Unit 2</strong>: Matching Apples to Apples</td>
 <td>3</td>
-<td>Jan 29</td>
-<td><a href="./w03/">Ethical Frameworks: Rights, Discrimination, and Fairness</a></td>
+<td>Jun 4</td>
+<td><a href="./w03/"></a></td>
 </tr>
 <tr class="even">
-<td></td>
-<td></td>
-<td><em>Jan 31 (Friday), 5:59pm EST</em></td>
-<td><em>[Deliverable] <a href="https://classroom.google.com/c/NzQzMjkyMzg4NjIw/a/NzQ3NDA0MDQ5MjU3/details" target="_blank">HW1: Nuts and Bolts for Fairness in AI</a></em></td>
-</tr>
-<tr class="odd">
 <td></td>
 <td>4</td>
-<td>Feb 5</td>
-<td><a href="./w04/">(Descriptive) Fairness in AI</a></td>
-</tr>
-<tr class="even">
-<td></td>
-<td>5</td>
-<td>Feb 12</td>
-<td><a href="./w05/">Context-Sensitive Fairness</a></td>
+<td>Jun 11</td>
+<td><a href="./w04/"></a></td>
 </tr>
 <tr class="odd">
 <td></td>
-<td>6</td>
-<td>Feb 19</td>
-<td><a href="./w06/">Causality in Ethics and Policy</a></td>
+<td>5</td>
+<td>Jun 18</td>
+<td><a href="./w05/"></a></td>
 </tr>
 <tr class="even">
 <td></td>
-<td></td>
-<td><em>Feb 21 (Friday), 5:59pm EST</em></td>
-<td><em>[Deliverable] <a href="#" target="_blank">HW2: Context-Sensitive Fairness</a></em></td>
+<td>6</td>
+<td>Jun 25</td>
+<td><a href="./w06/"></a></td>
 </tr>
 <tr class="new-unit odd">
 <td><strong>Midterm</strong></td>
 <td>7</td>
-<td>Feb 26</td>
-<td><a href="./w07/">In-Class Midterm: Data Ethics, Fairness, Privacy, Causality</a></td>
+<td>Jul 2</td>
+<td><a href="./w07/">In-Class Midterm: Causal Models and Statistical Matching</a></td>
 </tr>
-<tr class="even">
-<td></td>
-<td></td>
-<td><em>Mar 6</em></td>
-<td><em>No Class (Spring Break)</em></td>
-</tr>
-<tr class="new-unit odd">
-<td><strong>Unit 3:</strong> Policy Frameworks</td>
+<tr class="new-unit even">
+<td><strong>Unit 3:</strong> Double-Debiased Machine Learning</td>
 <td>8</td>
-<td>Mar 12</td>
-<td><a href="./w08/">Privacy Policies, Incomplete Contracts, and Power</a></td>
+<td>Jul 9</td>
+<td><a href="./w08/"></a></td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td></td>
 <td>9</td>
-<td>Mar 19</td>
-<td><a href="./w09/">From Data Ethics to Data Policy</a></td>
+<td>Jul 16</td>
+<td><a href="./w09/"></a></td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td></td>
 <td>10</td>
-<td>Mar 26</td>
-<td><a href="./w10/">Econometric Policy Evaluation and Inverse Fairness</a></td>
-</tr>
-<tr class="even">
-<td></td>
-<td>11</td>
-<td>Apr 2</td>
-<td><a href="./w11/">Fairness vs.&nbsp;Social Welfare</a></td>
-</tr>
-<tr class="new-unit odd">
-<td><strong>Unit 4</strong>: Applications</td>
-<td>12</td>
-<td>Apr 9</td>
-<td>Project Talk, Causality and Identity Formation</td>
-</tr>
-<tr class="even">
-<td></td>
-<td>13</td>
-<td>Apr 16</td>
-<td>Applications: Race, Class, Gender, Sexuality, and Disability (Data Feminism)</td>
+<td>Jul 23</td>
+<td><a href="./w10/"></a></td>
 </tr>
 <tr class="odd">
 <td></td>
-<td>14</td>
-<td>Apr 23</td>
-<td>Republican Liberty and the Kindly Slavemaster</td>
+<td>11</td>
+<td>Jul 30</td>
+<td><a href="./w11/"></a></td>
+</tr>
+<tr class="new-unit even">
+<td><strong>Unit 4</strong>: Applications</td>
+<td>12</td>
+<td>Aug 6</td>
+<td>Final Project Details</td>
+</tr>
+<tr class="odd">
+<td></td>
+<td>13</td>
+<td>Aug 13</td>
+<td></td>
 </tr>
 <tr class="even">
 <td></td>
 <td></td>
 <td><em>May 10 (Friday)</em></td>
-<td><em>[Deliverable] <a href="./final.html">Policy Whitepaper</a></em></td>
+<td><em>[Deliverable] <a href="./final.html">Final Project</a></em></td>
 </tr>
 </tbody>
 </table>
@@ -453,12 +468,12 @@ window.Quarto = {
 </thead>
 <tbody>
 <tr class="odd">
-<td><a href="https://classroom.google.com/c/NzQzMjkyMzg4NjIw/a/NzQ3NDA0MDQ5MjU3/details" target="_blank">HW1: Nuts and Bolts for Fairness in AI <i class="bi bi-box-arrow-up-right ps-1"></i></a></td>
-<td><p>Friday, <strong>February 9</strong></p></td>
+<td><a href="https://classroom.google.com/c/NzQzMjkyMzg4NjIw/a/NzQ3NDA0MDQ5MjU3/details">HW1: Causal Modeling via DAGs and PGMs</a></td>
+<td><p>Friday, <strong>May 30</strong></p></td>
 <td>10%</td>
 </tr>
 <tr class="even">
-<td><a href="#" target="_blank">HW2: Context-Sensitive Fairness <i class="bi bi-box-arrow-up-right ps-1"></i></a></td>
+<td><a href="#">HW2: TBD</a></td>
 <td><p>Friday, <strong>February 21</strong></p></td>
 <td>10%</td>
 </tr>
@@ -468,17 +483,17 @@ window.Quarto = {
 <td>30%</td>
 </tr>
 <tr class="even">
-<td><a href="#" target="_blank">HW3: Privacy Policies as Incomplete Contracts <i class="bi bi-box-arrow-up-right ps-1"></i></a></td>
-<td><p>Friday, <strong>April 12</strong></p></td>
+<td><a href="#">HW3: TBD</a></td>
+<td><p>TBD</p></td>
 <td>10%</td>
 </tr>
 <tr class="odd">
-<td>HW4: Policy Evaluation</td>
-<td><p>Friday, <strong>April 26</strong></p></td>
+<td><a href="{{ var hw4.url }}">HW4: TBD</a></td>
+<td><p>TBD</p></td>
 <td>10%</td>
 </tr>
 <tr class="even">
-<td><a href="./final.html">Policy Whitepaper</a></td>
+<td><a href="./final.html">Final Project</a></td>
 <td>Friday, <strong>May 10</strong></td>
 <td>30%</td>
 </tr>
@@ -497,14 +512,28 @@ window.Quarto = {
 </ul>
 
 
+
 </section>
 </section>
 
 
-<div id="quarto-appendix" class="default"><section id="footnotes" class="footnotes footnotes-end-of-document" role="doc-endnotes"><h2 class="anchored quarto-appendix-heading">Footnotes</h2>
+<div id="quarto-appendix" class="default"><section class="quarto-appendix-contents" role="doc-bibliography" id="quarto-bibliography"><h2 class="anchored quarto-appendix-heading">References</h2><div id="refs" class="references csl-bib-body hanging-indent" data-entry-spacing="0" role="list">
+<div id="ref-angrist_mastering_2014" class="csl-entry" role="listitem">
+Angrist, Joshua D., and Jörn-Steffen Pischke. 2014. <em>Mastering ’<span>Metrics</span>: <span>The Path</span> from <span>Cause</span> to <span>Effect</span></em>. Princeton University Press.
+</div>
+<div id="ref-morgan_counterfactuals_2015" class="csl-entry" role="listitem">
+Morgan, Stephen L., and Christopher Winship. 2015. <em>Counterfactuals and <span>Causal Inference</span>: <span>Methods</span> and <span>Principles</span> for <span>Social Research</span></em>. Cambridge University Press.
+</div>
+<div id="ref-pearl_causality_2000" class="csl-entry" role="listitem">
+Pearl, Judea. 2000. <em>Causality: <span>Models</span>, <span>Reasoning</span>, and <span>Inference</span></em>. Cambridge University Press.
+</div>
+<div id="ref-pearl_book_2018" class="csl-entry" role="listitem">
+Pearl, Judea, and Dana Mackenzie. 2018. <em>The <span>Book</span> of <span>Why</span>: <span>The New Science</span> of <span>Cause</span> and <span>Effect</span></em>. Basic Books.
+</div>
+</div></section><section id="footnotes" class="footnotes footnotes-end-of-document" role="doc-endnotes"><h2 class="anchored quarto-appendix-heading">Footnotes</h2>
 
 <ol>
-<li id="fn1"><p><span class="citation" data-cites="pearl_causality_2001">(<a href="#ref-pearl_causality_2001" role="doc-biblioref"><strong>pearl_causality_2001?</strong></a>)</span> represents a key work in this field of research, as it essentially brought together different pieces of causal models into one unified, rigorous framework.<a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn1"><p><span class="citation" data-cites="pearl_causality_2000">Pearl (<a href="#ref-pearl_causality_2000" role="doc-biblioref">2000</a>)</span> represents a key work in this field of research, as it essentially brought together different pieces of causal models into one unified, rigorous framework.<a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
 </ol>
 </section></div></main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">

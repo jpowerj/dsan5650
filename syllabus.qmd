@@ -17,7 +17,7 @@ The course meets on **Wednesdays from 6:30-9pm online via [Zoom](https://maps.ap
   * Office hours (Click to schedule): [Tuesdays, 3:30-6:30pm](https://jjacobs.me/meet)
 * TA Courtney Green, [`crg123@georgetown.edu`](mailto:crg123@georgetown.edu)
   * Office hours by appointment
-* TA Li-Wen Hu, [`lh1078@georgetown.edu`](mailto:lh1078@georgetown.edu)
+* TA Wendy Hu, [`lh1078@georgetown.edu`](mailto:lh1078@georgetown.edu)
   * Office hours by appointment
 
 ## Course Description
@@ -41,7 +41,7 @@ For example, if we use our tools from DSAN 5000 and DSAN 5100 on some dataset to
 
 we unfortunately cannot infer from these two pieces of information that the occurrence of $E_0$ **causes** an increase in the likelihood of $E_1$ occurring.
 
-This issue (that **conditional probabilities** could not be interpreted causally) at first represented a kind of dead end for scientists interested in employing probability theory to study causal relationships... In recent decades, however, researchers have built up what amounts to an additional "layer" of modeling tools which augment the existing machinery of probability theory to address causality head-on!^[@pearl_causality_2001 represents a key work in this field of research, as it essentially brought together different pieces of causal models into one unified, rigorous framework.]
+This issue (that **conditional probabilities** could not be interpreted causally) at first represented a kind of dead end for scientists interested in employing probability theory to study causal relationships... In recent decades, however, researchers have built up what amounts to an additional "layer" of modeling tools which augment the existing machinery of probability theory to address causality head-on!^[@pearl_causality_2000 represents a key work in this field of research, as it essentially brought together different pieces of causal models into one unified, rigorous framework.]
 
 For instance, a modeling approach called **"$\textsf{do}$-Calculus"**, that we will learn in this class, *extends* the core operations and definitions of probability theory to allow such an move to deriving causality! It does this by introducing a $\textsf{do}(\cdot)$ operator that can be applied to Random Variables like $X$, with e.g. $\textsf{do}(X = 5)$ representing the event wherein someone has **intervened** in a **Data-Generating Process** to **force** the value of $X$ to be 5.
 
@@ -53,6 +53,17 @@ With this operator in hand (that is, used alongside an explicit model of a DGP s
 **now** we can actually draw the inference that the occurrence of $E_0$ **caused** an increase in the likelihood of $E_1$ occurring!
 
 This stylized comparison (between what's possible using "core" probability theory and what's possible when we augment it with additional causal modeling tools) serves as our basic motivation for the course, so that from Week 2 onwards we build upon this foundation to reach the three learning goals described in the next section!
+
+## Main Textbooks / Resources
+
+Unlike the case for topics like calculus or [statistical learning](https://www.statlearning.com/), this field is too new (and exciting! with new methods being developed month-to-month) to have a single set of "established" textbooks. Thus, the main collection of resources (books, papers, and explanatory videos) we'll draw on for this class are available on the [resources page](./resources.qmd). However, there are three "core" textbooks you can draw on which best align with the topics in this course:
+
+* Morgan and Winship, *Counterfactuals and Causal Inference: Methods and Principles for Social Research* [@morgan_counterfactuals_2015] \[[PDF](https://www.dropbox.com/scl/fi/rmuw9yw0gflg9wprufzu4/Counterfactuals-and-Causal-Inference.pdf?rlkey=gpzpuqgmzgsdwo18j22pl6yiw&dl=1)\]
+    * The book which comes closest to being an all-encompassing, single textbook for the class. It brings together different "strands" of causal modeling research (since each field---economics, bioinformatics, sociology, etc.---tends to use its own notation and vocabulary), unifying them into a single approach. The only reason we can't use it as *the* main textbook is because it hasn't been updated since 2015, and most of the assignments in this class use computational tools from 2018 onwards!
+* Angrist and Pischke, *Mastering 'Metrics: The Path from Cause to Effect* [@angrist_mastering_2014] \[[PDF](https://www.dropbox.com/scl/fi/3xa9tfswmv1w8ez54prtk/Joshua-D.-Angrist-J-rn-Steffen-Pischke-Mastering-Metrics.pdf?rlkey=2w0ipphrgxrejd7ddkv1wd635&dl=1)\]
+    * This book is included as the second of the three "core" texts mainly because, it uses the language of causality specific to Econometrics, the language that is most familiar to me from my PhD training in Political Economy. However, if you tend to learn better by example, it also does a good job of foregrounding specific examples (like evaluating charter schools and community policing policies), so that the methods emerging naturally from attempts to solve these puzzles when association methods like linear regression fail to capture their causal linkages.
+* Pearl and Mackenzie, *The Book of Why: The New Science of Cause and Effect* [@pearl_book_2018] \[[EPUB](https://www.dropbox.com/scl/fi/0r7kg7hwibztvfnby8vdg/The-Book-of-Why.epub?rlkey=czdiw5mku5uamjdiwyyzlpmdr&dl=1)\]
+    * This book contrasts with the Angrist and Pischke book in using the language of causality formed within *Computer Science* rather than Economics. It can be a good starting point especially if you're unfamiliar with the heavy use of *diagrams* for scientific modeling---basically, whereas Angrist and Pischke's first instinct is to use (sometimes informal) *equations* like $y = mx + b$ to explain steps in the procedures, Pearl and Mackenzie's instinct would be to instead use something like $x \overset{m, b}{\longrightarrow} y$ to represent the same concept (in this case, a line with slope $m$ and intercept $b$!).
 
 ## Schedule
 
@@ -70,7 +81,7 @@ The following is a rough map of what we will work through together throughout th
 </thead>
 <tbody>
 <tr>
-    <td><span data-qmd="**Unit 1**: Ethical Frameworks"></span></td>
+    <td><span data-qmd="**Unit 1**: The Language of Causal Modeling"></span></td>
     <td>1</td>
     <td><span data-qmd="{{< var w01.date-md >}}"></span></td>
     <td><span data-qmd="[{{< var w01.title >}}](./w01/)"></span></td>
@@ -82,17 +93,17 @@ The following is a rough map of what we will work through together throughout th
     <td><span data-qmd="[{{< var w02.title >}}](./w02/)"></span></td>
 </tr>
 <tr class='new-unit'>
-    <td><span data-qmd="**Unit 2**: Fairness in AI"></span></td>
+    <td><span data-qmd="**Unit 2**: Matching Apples to Apples"></span></td>
     <td>3</td>
     <td><span data-qmd="{{< var w03.date-md >}}"></span></td>
     <td><span data-qmd="[{{< var w03.title >}}](./w03/)"></span></td>
 </tr>
-<tr>
+<!-- <tr>
     <td></td>
     <td></td>
     <td><span data-qmd="*Jan 31 (Friday), 5:59pm EST*"></span></td>
     <td><span data-qmd="*[Deliverable] <a href='{{< var hw1.url >}}' target='_blank'>HW1: {{< var hw1.title >}}</a>*"></span></td>
-</tr>
+</tr> -->
 <tr>
     <td></td>
     <td>4</td>
@@ -111,26 +122,20 @@ The following is a rough map of what we will work through together throughout th
     <td><span data-qmd="{{< var w06.date-md >}}"></span></td>
     <td><span data-qmd="[{{<var w06.title >}}](./w06/)"></span></td>
 </tr>
-<tr>
+<!-- <tr>
     <td></td>
     <td></td>
     <td><span data-qmd="*Feb 21 (Friday), 5:59pm EST*"></span></td>
     <td><span data-qmd="*[Deliverable] <a href='{{< var hw2.url >}}' target='_blank'>HW2: {{< var hw2.title >}}</a>*"></span></td>
-</tr>
+</tr> -->
 <tr class='new-unit'>
     <td><span data-qmd="**Midterm**"></span></td>
     <td>7</td>
     <td><span data-qmd="{{< var w07.date-md >}}"></span></td>
     <td><span data-qmd="[{{< var w07.title >}}](./w07/)"></span></td>
 </tr>
-<tr>
-    <td></td>
-    <td></td>
-    <td><span data-qmd="*Mar 6*"></span></td>
-    <td><span data-qmd="*No Class (Spring Break)*"></span></td>
-</tr>
 <tr class='new-unit'>
-    <td><span data-qmd="**Unit 3:** Policy Frameworks"></span></td>
+    <td><span data-qmd="**Unit 3:** Double-Debiased Machine Learning"></span></td>
     <td>8</td>
     <td><span data-qmd="{{< var w08.date-md >}}"></span></td>
     <td><span data-qmd="[{{< var w08.title >}}](./w08/)"></span></td>
@@ -167,15 +172,9 @@ The following is a rough map of what we will work through together throughout th
 </tr>
 <tr>
     <td></td>
-    <td>14</td>
-    <td><span data-qmd="{{< var w14.date-md >}}"></span></td>
-    <td><span data-qmd="{{< var w14.title >}}"></span></td>
-</tr>
-<tr>
-    <td></td>
     <td></td>
     <td><span data-qmd="*May 10 (Friday)*"></span></td>
-    <td><span data-qmd="*[Deliverable] [Policy Whitepaper](./final.qmd)*"></span></td>
+    <td><span data-qmd="*[Deliverable] [Final Project](./final.qmd)*"></span></td>
 </tr>
 </tbody>
 </table>
@@ -187,12 +186,12 @@ The main assignment in the course will be your **policy whitepaper**, submitted 
 
 | Assignment | Due Date | % of Grade |
 | - | - | - |
-| <a href='{{< var hw1.url >}}' target='_blank'>HW1: {{< var hw1.title >}} <i class='bi bi-box-arrow-up-right ps-1'></i></a> | {{< var hw1.date-full >}} | 10% |
-| <a href='{{< var hw2.url >}}' target='_blank'>HW2: {{< var hw2.title >}} <i class='bi bi-box-arrow-up-right ps-1'></i></a> | {{< var hw2.date-full >}} | 10% |
+| [HW1: {{< var hw1.title >}}]({{< var hw1.url >}}) | {{< var hw1.date-full >}} | 10% |
+| [HW2: {{< var hw2.title >}}]({{< var hw2.url >}}) | {{< var hw2.date-full >}} | 10% |
 | Midterm | Wednesday, **February 28** | 30% |
-| <a href='{{< var hw3.url >}}' target='_blank'>HW3: {{< var hw3.title >}} <i class='bi bi-box-arrow-up-right ps-1'></i></a> | {{< var hw3.date-full >}} | 10% |
-| HW4: {{< var hw4.title >}} | {{< var hw4.date-full >}} | 10% |
-| [Policy Whitepaper](./final.qmd) | Friday, **May 10** | 30% |
+| [HW3: {{< var hw3.title >}}]({{< var hw3.url >}}) | {{< var hw3.date-full >}} | 10% |
+| [HW4: {{< var hw4.title >}}]({{ var hw4.url }}) | {{< var hw4.date-full >}} | 10% |
+| [Final Project](./final.qmd) | Friday, **May 10** | 30% |
 
 : {tbl-colwidths="[55,25,20]"}
 
