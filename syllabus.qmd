@@ -1,10 +1,22 @@
 ---
-title: "Syllabus"
+title: "DSAN 5650"
+subtitle: "Causal Inference for Computational Social Science"
+times: "Wednesdays 6:30-9pm, Online"
+author: "Prof. Jeff Jacobs"
+email: "jj1088@georgetown.edu"
+term: "Summer 2025, Georgetown University"
+# latex-auto-install: false
 bibliography: "_DSAN5650.bib"
 format:
   html:
     link-external-icon: true
     link-external-newwindow: true
+#   pdf:
+#     output-file: "DSAN5650_Summer2025_Syllabus.pdf"
+#     template-partials:
+#       - title.tex
+#     title-meta: "DSAN 5650 Syllabus - Summer 2025"
+#     documentclass: "scrartcl"
 ---
 
 **Welcome to DSAN 5650: Causal Inference for Computational Social Science at Georgetown University!**

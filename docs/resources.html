@@ -20,7 +20,27 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
-</style>
+/* CSS for citations */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+  margin-bottom: 0em;
+}
+.hanging-indent div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}</style>
 
 
 <script src="site_libs/quarto-nav/quarto-nav.js"></script>
@@ -71,6 +91,35 @@ ul.task-list li input[type="checkbox"] {
 }</script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js" integrity="sha512-v2CJ7UaYy4JwqLDIrZUI/4hqeoQieOmAZNXBeQyjo21dadnwR+8ZaIJVT8EE2iyI61OV8e6M8PP2/4hpQINQ/g==" crossorigin="anonymous" referrerpolicy="no-referrer"></script><link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/gh/dreampulse/computer-modern-web-font@master/fonts.css"><script src="./sidebar.js"></script>
 
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN") {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
 
 <link rel="stylesheet" href="./dsan-globals/jjstyles.css">
 </head>
@@ -132,30 +181,6 @@ ul.task-list li input[type="checkbox"] {
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./writeups/index.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Writeups</span></a>
-  </div>
-</li>
-        <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./assignments.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Assignments</span></a>
-  </div>
-</li>
-        <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./midterm.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Midterm</span></a>
-  </div>
-</li>
-        <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./final.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Final Project</span></a>
-  </div>
-</li>
-        <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
   <a href="https://georgetown.zoom.us/j/94931835080?pwd=f9xg1L66RDOXjoySuPCSCLK1adbJwM.1" class="sidebar-item-text sidebar-link" target="_blank">
  <span class="menu-text">Zoom Link <i class="bi bi-box-arrow-up-right ps-1"></i></span></a>
   </div>
@@ -195,7 +220,7 @@ ul.task-list li input[type="checkbox"] {
     </ul>
     </div>
 <div class="quarto-sidebar-footer"><div class="sidebar-footer-item">
-<p><em>Updated 2025-05-14, 10:39:46 PM</em></p>
+<p><em>Updated 2025-05-14, 11:12:52 PM</em></p>
 </div></div></nav>
 <div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
@@ -204,12 +229,7 @@ ul.task-list li input[type="checkbox"] {
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#normative-vs.-descriptive-ethical-frameworks" id="toc-normative-vs.-descriptive-ethical-frameworks" class="nav-link active" data-scroll-target="#normative-vs.-descriptive-ethical-frameworks">Normative vs.&nbsp;Descriptive / Ethical Frameworks</a>
-  <ul class="collapse">
-  <li><a href="#general-high-level-overviews" id="toc-general-high-level-overviews" class="nav-link" data-scroll-target="#general-high-level-overviews">General / High-Level Overviews</a></li>
-  <li><a href="#particular-examples-frameworks" id="toc-particular-examples-frameworks" class="nav-link" data-scroll-target="#particular-examples-frameworks">Particular Examples / Frameworks</a></li>
-  </ul></li>
-  <li><a href="#fairness-in-ai-context-sensitive-fairness" id="toc-fairness-in-ai-context-sensitive-fairness" class="nav-link" data-scroll-target="#fairness-in-ai-context-sensitive-fairness">Fairness in AI / Context-Sensitive Fairness</a></li>
+  <li><a href="#core-textbooks" id="toc-core-textbooks" class="nav-link active" data-scroll-target="#core-textbooks">Core Textbooks</a></li>
   <li><a href="#econometric-policy-evaluation" id="toc-econometric-policy-evaluation" class="nav-link" data-scroll-target="#econometric-policy-evaluation">Econometric Policy Evaluation</a></li>
   </ul>
 <div class="toc-actions"><ul><li><a href="https://github.com/jpowerj/dsan5650/blob/main/resources.qmd" target="_blank" class="toc-action"><i class="bi bi-github"></i>View source</a></li></ul></div></nav>
@@ -236,44 +256,21 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
-<section id="normative-vs.-descriptive-ethical-frameworks" class="level2">
-<h2 class="anchored" data-anchor-id="normative-vs.-descriptive-ethical-frameworks">Normative vs.&nbsp;Descriptive / Ethical Frameworks</h2>
-<section id="general-high-level-overviews" class="level3">
-<h3 class="anchored" data-anchor-id="general-high-level-overviews">General / High-Level Overviews</h3>
+<section id="core-textbooks" class="level2">
+<h2 class="anchored" data-anchor-id="core-textbooks">Core Textbooks</h2>
 <ul>
-<li><span class="citation" data-cites="hare_language_1952">(<a href="#ref-hare_language_1952" role="doc-biblioref"><strong>hare_language_1952?</strong></a>)</span>, <em>The Language of Morals</em> [<a href="https://www.dropbox.com/scl/fi/ida3a4sc6rutfrckz2rxt/R.-M.-Hare-The-Language-of-Morals-Oxford-University-Press-1952.pdf?rlkey=pfnhm8g4hxqogdo9egfqvhln8&amp;dl=1">PDF</a>]
+<li>Morgan and Winship, <em>Counterfactuals and Causal Inference: Methods and Principles for Social Research</em> <span class="citation" data-cites="morgan_counterfactuals_2015">(<a href="#ref-morgan_counterfactuals_2015" role="doc-biblioref">Morgan and Winship 2015</a>)</span> [<a href="https://www.dropbox.com/scl/fi/rmuw9yw0gflg9wprufzu4/Counterfactuals-and-Causal-Inference.pdf?rlkey=gpzpuqgmzgsdwo18j22pl6yiw&amp;dl=1">PDF</a>]
 <ul>
-<li>This is <strong>the</strong> canonical book that explains, in excruciating but necessary detail, the linguistic “core” of the descriptive-versus-normative distinction. It’s overkill to read from cover-to-cover if you just want the gist of the concepts, but if you’re curious about how we can develop a “logic” of normative statements like we have for descriptive statements, this is the key text imo!</li>
+<li>The book which comes closest to being an all-encompassing, single textbook for the class. It brings together different “strands” of causal modeling research (since each field—economics, bioinformatics, sociology, etc.—tends to use its own notation and vocabulary), unifying them into a single approach. The only reason we can’t use it as <em>the</em> main textbook is because it hasn’t been updated since 2015, and most of the assignments in this class use computational tools from 2018 onwards!</li>
 </ul></li>
-<li><span class="citation" data-cites="korsgaard_sources_1996">(<a href="#ref-korsgaard_sources_1996" role="doc-biblioref"><strong>korsgaard_sources_1996?</strong></a>)</span>, <em>The Sources of Normativity</em> [<a href="https://www.dropbox.com/scl/fi/xlhda31dbc2m32rvrcci6/The-Sources-of-Normativity-Christine-M.-Korsgaard.pdf?rlkey=7li5rkrluoqyokmh386y5a82c&amp;dl=1">PDF</a>]
+<li>Angrist and Pischke, <em>Mastering ’Metrics: The Path from Cause to Effect</em> <span class="citation" data-cites="angrist_mastering_2014">(<a href="#ref-angrist_mastering_2014" role="doc-biblioref">Angrist and Pischke 2014</a>)</span> [<a href="https://www.dropbox.com/scl/fi/3xa9tfswmv1w8ez54prtk/Joshua-D.-Angrist-J-rn-Steffen-Pischke-Mastering-Metrics.pdf?rlkey=2w0ipphrgxrejd7ddkv1wd635&amp;dl=1">PDF</a>]
 <ul>
-<li>This is… definitely up there among my favorite books of all time on this topic (after wading through many of them during the PhD exam gauntlet I mentioned in Week 1): it does what I wish every ethical-philosophy book did, which is, continuing to ask <strong>but <em>why</em>?!?</strong> to every theory of ethical justification, until it reaches a perspective which (not coincidentally) is quite close to the perspective we adopt early on in this course!</li>
+<li>This book is included as the second of the three “core” texts mainly because, it uses the language of causality specific to Econometrics, the language that is most familiar to me from my PhD training in Political Economy. However, if you tend to learn better by example, it also does a good job of foregrounding specific examples (like evaluating charter schools and community policing policies), so that the methods emerging naturally from attempts to solve these puzzles when association methods like linear regression fail to capture their causal linkages.</li>
 </ul></li>
-<li><span class="citation" data-cites="roemer_theories_1996">(<a href="#ref-roemer_theories_1996" role="doc-biblioref"><strong>roemer_theories_1996?</strong></a>)</span>, <em>Theories of Distributive Justice</em> [<a href="https://www.dropbox.com/scl/fi/9ihy7f04qvg1o684uxecx/John_E._Roemer-_Theories_of_Distributive_Justice-BookFi.org.pdf?rlkey=c7g0jictkvmoktokp3p4jhvcr&amp;dl=1">PDF</a>]
+<li>Pearl and Mackenzie, <em>The Book of Why: The New Science of Cause and Effect</em> <span class="citation" data-cites="pearl_book_2018">(<a href="#ref-pearl_book_2018" role="doc-biblioref">Pearl and Mackenzie 2018</a>)</span> [<a href="https://www.dropbox.com/scl/fi/0r7kg7hwibztvfnby8vdg/The-Book-of-Why.epub?rlkey=czdiw5mku5uamjdiwyyzlpmdr&amp;dl=1">EPUB</a>]
 <ul>
-<li>I won’t lie to you, this book is pretty brutal in terms of being a mathematical “deep dive” into how the ethical frameworks we discuss in this class can be built up from a set of axioms. So, I don’t recommend the whole thing (that’s why there are two more Roemer books in this section, which are more applied looks at particular ethical frameworks!)</li>
-<li>The two parts we will draw on, which I <em>do</em> therefore recommend, are the explanations of <strong>utility functions</strong> in Chapter 1 and of <strong>Social Welfare Functionals</strong> in Chapter 4</li>
+<li>This book contrasts with the Angrist and Pischke book in using the language of causality formed within <em>Computer Science</em> rather than Economics. It can be a good starting point especially if you’re unfamiliar with the heavy use of <em>diagrams</em> for scientific modeling—basically, whereas Angrist and Pischke’s first instinct is to use (sometimes informal) <em>equations</em> like <span class="math inline">\(y = mx + b\)</span> to explain steps in the procedures, Pearl and Mackenzie’s instinct would be to instead use something like <span class="math inline">\(\require{enclose}\enclose{circle}{\kern .01em ~x~\kern .01em} \overset{\small m, b}{\longrightarrow} \enclose{circle}{\kern.01em y~\kern .01em}\)</span> to represent the same concept (in this case, a line with slope <span class="math inline">\(m\)</span> and intercept <span class="math inline">\(b\)</span>!).</li>
 </ul></li>
-</ul>
-</section>
-<section id="particular-examples-frameworks" class="level3">
-<h3 class="anchored" data-anchor-id="particular-examples-frameworks">Particular Examples / Frameworks</h3>
-<ul>
-<li><span class="citation" data-cites="roemer_free_1988">(<a href="#ref-roemer_free_1988" role="doc-biblioref"><strong>roemer_free_1988?</strong></a>)</span>, <em>Free to Lose: An Introduction to Marxist Economic Philosophy</em> [<a href="https://www.dropbox.com/scl/fi/2bh9ydhvpjvk7369qrf6y/John_E._Roemer-_Free_to_Lose.pdf?rlkey=drao1xt5sse02hrm6ld3ypidn&amp;dl=1">PDF</a>]</li>
-<li><span class="citation" data-cites="anderson_private_2017">(<a href="#ref-anderson_private_2017" role="doc-biblioref"><strong>anderson_private_2017?</strong></a>)</span>, <em>Private Government: How Employers Rule Our Lives (And Why We Don’t Talk About It)</em> [<a href="https://www.dropbox.com/scl/fi/a7y3unk7aumb71mor4xo6/Anderson-Elizabeth-Private-Government.pdf?rlkey=w57vr6kv5rjo9mfb8j1kpdzd4&amp;dl=1">PDF</a>] [<a href="https://www.dropbox.com/scl/fi/hxo3r8acdjusf69k0sxg6/Private-Government_-How-Employe-Elizabeth-Anderson.epub?rlkey=5yhut4etml2ysivfc1tte774u&amp;dl=1">EPUB</a>] [<a href="https://www.dropbox.com/scl/fi/p6sjlo7j1i17ml1s64rp4/Private-Government_-How-Employe-Elizabeth-Anderson.mobi?rlkey=hbnvgi2c0a5ko8i3egt924sb3&amp;dl=1">MOBI</a>]</li>
-<li><span class="citation" data-cites="rawls_theory_1971">(<a href="#ref-rawls_theory_1971" role="doc-biblioref"><strong>rawls_theory_1971?</strong></a>)</span>, <em>A Theory of Justice</em> [<a href="https://www.dropbox.com/scl/fi/6gfh08zzyhiyki1tyt9fa/John_Rawls-_A_Theory_of_Justice-Revised.pdf?rlkey=3lwpncxz1f8hxzhrdvr9wwn6m&amp;dl=1">PDF</a>]</li>
-<li><span class="citation" data-cites="roemer_equality_1998">(<a href="#ref-roemer_equality_1998" role="doc-biblioref"><strong>roemer_equality_1998?</strong></a>)</span>, <em>Equality of Opportunity</em> [<a href="https://www.dropbox.com/scl/fi/dnomgm32s9c4o5kxv9eoz/John-E.-Roemer-Equality-of-Opportunity.pdf?rlkey=hifos73t2ryt9wlsit83wlp4f&amp;dl=1">PDF</a>]</li>
-</ul>
-</section>
-</section>
-<section id="fairness-in-ai-context-sensitive-fairness" class="level2">
-<h2 class="anchored" data-anchor-id="fairness-in-ai-context-sensitive-fairness">Fairness in AI / Context-Sensitive Fairness</h2>
-<ul>
-<li><span class="citation" data-cites="barocas_fairness_2023">(<a href="#ref-barocas_fairness_2023" role="doc-biblioref"><strong>barocas_fairness_2023?</strong></a>)</span>, <em>Fairness and Machine Learning: Limitations and Opportunities</em> [<a href="https://fairmlbook.org/pdf/fairmlbook.pdf">PDF</a>]
-<ul>
-<li>This will be our main reference during this portion of the course, and is <a href="https://fairmlbook.org/">available for free</a> (legally!) online!</li>
-</ul></li>
-<li><span class="citation" data-cites="kasy_fairness_2021">(<a href="#ref-kasy_fairness_2021" role="doc-biblioref"><strong>kasy_fairness_2021?</strong></a>)</span>, “Fairness, Equality, and Power in Algorithmic Decision-Making”, <em>FAccT ’21: Proceedings of the 2021 ACM Conference on Fairness, Accountability, and Transparency</em> [<a href="https://maxkasy.github.io/home/files/papers/fairness_equality_power.pdf">PDF</a>]</li>
 </ul>
 </section>
 <section id="econometric-policy-evaluation" class="level2">
@@ -283,9 +280,20 @@ ul.task-list li input[type="checkbox"] {
 </ul>
 
 
+
 </section>
 
-</main> <!-- /main -->
+<div id="quarto-appendix" class="default"><section class="quarto-appendix-contents" role="doc-bibliography" id="quarto-bibliography"><h2 class="anchored quarto-appendix-heading">References</h2><div id="refs" class="references csl-bib-body hanging-indent" data-entry-spacing="0" role="list">
+<div id="ref-angrist_mastering_2014" class="csl-entry" role="listitem">
+Angrist, Joshua D., and Jörn-Steffen Pischke. 2014. <em>Mastering ’<span>Metrics</span>: <span>The Path</span> from <span>Cause</span> to <span>Effect</span></em>. Princeton University Press.
+</div>
+<div id="ref-morgan_counterfactuals_2015" class="csl-entry" role="listitem">
+Morgan, Stephen L., and Christopher Winship. 2015. <em>Counterfactuals and <span>Causal Inference</span>: <span>Methods</span> and <span>Principles</span> for <span>Social Research</span></em>. Cambridge University Press.
+</div>
+<div id="ref-pearl_book_2018" class="csl-entry" role="listitem">
+Pearl, Judea, and Dana Mackenzie. 2018. <em>The <span>Book</span> of <span>Why</span>: <span>The New Science</span> of <span>Cause</span> and <span>Effect</span></em>. Basic Books.
+</div>
+</div></section></div></main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
 window.document.addEventListener("DOMContentLoaded", function (event) {
   const toggleBodyColorMode = (bsSheetEl) => {

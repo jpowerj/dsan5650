@@ -20,14 +20,14 @@ website:
         href: syllabus.qmd
       - text: "Resources"
         href: resources.qmd
-      - text: "Writeups"
-        href: writeups/index.qmd
-      - text: "Assignments"
-        href: assignments.qmd
-      - text: "Midterm"
-        href: midterm.qmd
-      - text: "Final Project"
-        href: final.qmd
+      # - text: "Writeups"
+      #   href: writeups/index.qmd
+      # - text: "Assignments"
+      #   href: assignments.qmd
+      # - text: "Midterm"
+      #   href: midterm.qmd
+      # - text: "Final Project"
+      #   href: final.qmd
       - text: "Zoom Link <i class='bi bi-box-arrow-up-right ps-1'></i>"
         href: "https://georgetown.zoom.us/j/94931835080?pwd=f9xg1L66RDOXjoySuPCSCLK1adbJwM.1"
         target: "_blank"
