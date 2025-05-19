@@ -220,7 +220,7 @@ window.Quarto = {
     </ul>
     </div>
 <div class="quarto-sidebar-footer"><div class="sidebar-footer-item">
-<p><em>Updated 2025-05-14, 11:12:52 PM</em></p>
+<p><em>Updated 2025-05-18, 08:54:20 PM</em></p>
 </div></div></nav>
 <div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
@@ -230,7 +230,9 @@ window.Quarto = {
    
   <ul>
   <li><a href="#core-textbooks" id="toc-core-textbooks" class="nav-link active" data-scroll-target="#core-textbooks">Core Textbooks</a></li>
+  <li><a href="#core-reference-texts" id="toc-core-reference-texts" class="nav-link" data-scroll-target="#core-reference-texts">Core Reference Texts</a></li>
   <li><a href="#econometric-policy-evaluation" id="toc-econometric-policy-evaluation" class="nav-link" data-scroll-target="#econometric-policy-evaluation">Econometric Policy Evaluation</a></li>
+  <li><a href="#video-resources" id="toc-video-resources" class="nav-link" data-scroll-target="#video-resources">Video Resources</a></li>
   </ul>
 <div class="toc-actions"><ul><li><a href="https://github.com/jpowerj/dsan5650/blob/main/resources.qmd" target="_blank" class="toc-action"><i class="bi bi-github"></i>View source</a></li></ul></div></nav>
     </div>
@@ -258,30 +260,79 @@ window.Quarto = {
 
 <section id="core-textbooks" class="level2">
 <h2 class="anchored" data-anchor-id="core-textbooks">Core Textbooks</h2>
-<ul>
-<li>Morgan and Winship, <em>Counterfactuals and Causal Inference: Methods and Principles for Social Research</em> <span class="citation" data-cites="morgan_counterfactuals_2015">(<a href="#ref-morgan_counterfactuals_2015" role="doc-biblioref">Morgan and Winship 2015</a>)</span> [<a href="https://www.dropbox.com/scl/fi/rmuw9yw0gflg9wprufzu4/Counterfactuals-and-Causal-Inference.pdf?rlkey=gpzpuqgmzgsdwo18j22pl6yiw&amp;dl=1">PDF</a>]
-<ul>
-<li>The book which comes closest to being an all-encompassing, single textbook for the class. It brings together different “strands” of causal modeling research (since each field—economics, bioinformatics, sociology, etc.—tends to use its own notation and vocabulary), unifying them into a single approach. The only reason we can’t use it as <em>the</em> main textbook is because it hasn’t been updated since 2015, and most of the assignments in this class use computational tools from 2018 onwards!</li>
-</ul></li>
-<li>Angrist and Pischke, <em>Mastering ’Metrics: The Path from Cause to Effect</em> <span class="citation" data-cites="angrist_mastering_2014">(<a href="#ref-angrist_mastering_2014" role="doc-biblioref">Angrist and Pischke 2014</a>)</span> [<a href="https://www.dropbox.com/scl/fi/3xa9tfswmv1w8ez54prtk/Joshua-D.-Angrist-J-rn-Steffen-Pischke-Mastering-Metrics.pdf?rlkey=2w0ipphrgxrejd7ddkv1wd635&amp;dl=1">PDF</a>]
-<ul>
-<li>This book is included as the second of the three “core” texts mainly because, it uses the language of causality specific to Econometrics, the language that is most familiar to me from my PhD training in Political Economy. However, if you tend to learn better by example, it also does a good job of foregrounding specific examples (like evaluating charter schools and community policing policies), so that the methods emerging naturally from attempts to solve these puzzles when association methods like linear regression fail to capture their causal linkages.</li>
-</ul></li>
-<li>Pearl and Mackenzie, <em>The Book of Why: The New Science of Cause and Effect</em> <span class="citation" data-cites="pearl_book_2018">(<a href="#ref-pearl_book_2018" role="doc-biblioref">Pearl and Mackenzie 2018</a>)</span> [<a href="https://www.dropbox.com/scl/fi/0r7kg7hwibztvfnby8vdg/The-Book-of-Why.epub?rlkey=czdiw5mku5uamjdiwyyzlpmdr&amp;dl=1">EPUB</a>]
-<ul>
-<li>This book contrasts with the Angrist and Pischke book in using the language of causality formed within <em>Computer Science</em> rather than Economics. It can be a good starting point especially if you’re unfamiliar with the heavy use of <em>diagrams</em> for scientific modeling—basically, whereas Angrist and Pischke’s first instinct is to use (sometimes informal) <em>equations</em> like <span class="math inline">\(y = mx + b\)</span> to explain steps in the procedures, Pearl and Mackenzie’s instinct would be to instead use something like <span class="math inline">\(\require{enclose}\enclose{circle}{\kern .01em ~x~\kern .01em} \overset{\small m, b}{\longrightarrow} \enclose{circle}{\kern.01em y~\kern .01em}\)</span> to represent the same concept (in this case, a line with slope <span class="math inline">\(m\)</span> and intercept <span class="math inline">\(b\)</span>!).</li>
-</ul></li>
-</ul>
+<p>As mentioned on the <a href="./syllabus.html">syllabus</a>, the field of causal inference in general (and causal inference for computational social science in particular) moves excitingly-fast, such that the material has yet to “congeal” into a single, all-encompassing textbook. Nonetheless, the following three books cover a substantial amount of ground (described in more detail below each citation), so that together they form a coherent “three-volume textbook” for this class! If you can only read three books this summer, read these :)</p>
+<div class="callout callout-style-default callout-tip no-icon callout-titled" title="<i class='bi bi-1-circle'></i> @morgan_counterfactuals_2015">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<i class="bi bi-1-circle"></i> <span class="citation" data-cites="morgan_counterfactuals_2015">Morgan and Winship (<a href="#ref-morgan_counterfactuals_2015" role="doc-biblioref">2015</a>)</span>
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p><strong>Morgan and Winship, <em>Counterfactuals and Causal Inference: Methods and Principles for Social Research</em></strong> [<a href="https://www.dropbox.com/scl/fi/rmuw9yw0gflg9wprufzu4/Counterfactuals-and-Causal-Inference.pdf?rlkey=gpzpuqgmzgsdwo18j22pl6yiw&amp;dl=1">PDF</a>]</p>
+<div style="float: left; margin: 8px;">
+<p><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAMgAAADICAYAAACtWK6eAAAHeklEQVR4nO3asZYMaRiH8XIBuAAyESIJIhJEJGQkLSMhIiIiIiIhMwkZCRESIiRERCJcAC7A1lO865tS/Z9Zh7PnTD2/ZLt7amq+6n2fquoZm96/f/+tkzTJQKTAQKTAQKTAQKTAQKTAQKTAQKTAQKTAQKTAQKTAQKTAQKTAQKTAQKTAQKTAQKTAQKTAQKTAQKTAQKTAQKTAQKTAQKTAQKTAQKTAQKTAQKTAQKTAQKTAQKTAQKTAQKTAQKTAQKTAQKTAQKTAQKTAQKTAQKTAQKTAQKTAQKTAQKTAQKTAQKTAQKTAQKTAQKTAQKTAQKTAQKTAQKTAQKTAQKTAQKTAQKTAQKTAQKTAQKTAQKTAQKTAQKTAQKTAQKTAQKTAQKTAQKTAQKTAQKTAQKTAQKTAQKTAQKTAQKTAQKTAQKTAQKTAQKTAQKTAQKTAQKTAQKTAQKTAQKRgdoF8/Pixe/DgQf+o63bu3Nnt27ev27JlS/9s2osXL7pXr171j7ru+PHj3fbt2/tH096+fds9ffq0f9R1hw4d6nbt2tU/+ru+fPkyHA//ZW179+4d/rtMe/xsu3///v7RtHZb3qvDhw/3j+ZlNoEwQFevXu3u37/fP/uJOK5duzb5P//ixYu/bH/p0qXu9OnT/aPVprY9ceLEsO+/5ebNm92NGzf6R6stW+OdO3eG96C1bI0cC8fUIqZbt24N79lczCaQkydPdi9fvuzOnTs3DA//k588edJduHCh27RpU/fs2bPhtcLgMYCLxaK7fPnyqsDu3r07DEupwWPYGE7wnG0ZPl7/09r1cTxcNbja8XPfvXv3yxo51jNnzgxrYY0c65UrV7qVlZXhPTl//ny/1Xfs59SpU8NV4/bt28O+6xgX/c/j/ZiL2QTC7Q9D3g4NGGLOlAwNgwa2O3jwYLdt27bu0aNH/Svf8fqBAwe63bt3DwNY9uzZ023evLl7/vx5/+wntq34/jTWQvDjKx/HeezYsSEE4iy89uHDh2GNxFGOHj3affr0aVhjvU5IBMVrxFHqJDN+fSObTSDL1NmyPYsyHAxJG03hdb5eQ1IDuZg4s9YZ+uHDh5OfRxjys2fPDiG2wwyiZXB/55Zmx44dw2ere/fu9c++f5YgeGLiitCqKwOv83WMv7/UyYS1EuAcGMiPQNoY6vaFq8T4ijP+2tSAlfUMVO2v3abWtJiIbi1ExxWNtbAm1P7ak0AZf238vJVOBhvV7ANhgBnk9ixfr1UELa4eXEUqqBrwqW3TsBUGmtucr1+/DlclrhYM4efPn4fbO57/F6yb9df6UGskGMJp1RoXP4a+ni9b87Kry0Y160DqjDj+H1732v170z9bbTxANXy/Gwhqu0U/pETKgE8N81qIjeP59u3bqrjSGvkerjj1HtRalq3ZQGaCwWAQiIQzN58nSgXy+vXrf4esjAcoDd9424QoOPvz8/jt0e8MYO1jHFdaY30+qaFfa80GMhM1TO29f6kP11MDVZ856vvS8K01bK3aFlP7WkutizWxthbHyfG2t12lfm6tcfy8xUmlvdrMwSwDYVgYmqlhQg39+EyM+loN8fgzSau2ndrPWN0acUYf/xp5LRwLx8SVh1ursTT0tf76Gj+fK8rUe5P2s1HNLpC6OkwNQOG2i4Fd9J8J+ODa4nW+3r9v/bOftyhT+2PwGMDxLdxYhUQU3NrxeCq4KW0cnNW5RZvCrRGfb/hlRKveD17n61j295u6Sq0n+I1iVoGsd5hQQ8Lg1HaEQSDjGPjMwl+v2bZCqHDWuh1hO/bJdgwe+Nntb7WWqeOpP1KmbdmO7VljhcAtEz+bKxffX9pguUoWjoffrr1586Z/Ng+zCYThYEjAmXlqmNp/jMiZnysAw8TZnGHi7MmAcBtT26FuPdiW2w8wYATVDuQUvo/vJ4baJ895/ciRI8MfCqewb4YbbEf0Y+0/RiREfp28devW4Xg4fo6H/RBme0XgWImUEwRXUP6QubKy0j1+/Hj4Xt6/uZhNINxirGV8xiQqbkE4m4NBYZimBp6g+HddtS1n9evXr68avDH2T7RENb6n53W+zs+b2gdXLW7HkvF+iYHo+Qs9WCMBcEUcm9qWMNr9zcFsAvldnE0ZFrTxLMPZH+vZ9v9SayR0riQJx857sJ5tNyIDkQIDkQIDkQIDkQIDkQIDkQIDkQIDkQIDkQIDkQIDkQIDkQIDkQIDkQIDkQIDkQIDkQIDkQIDkQIDkQIDkQIDkQIDkQIDkQIDkQIDkQIDkQIDkQIDkQIDkQIDkQIDkQIDkQIDkQIDkQIDkQIDkQIDkQIDkQIDkQIDkQIDkQIDkQIDkQIDkQIDkQIDkQIDkQIDkQIDkQIDkQIDkQIDkQIDkQIDkQIDkQIDkQIDkQIDkQIDkQIDkQIDkQIDkQIDkQIDkQIDkQIDkQIDkQIDkQIDkQIDkQIDkQIDkQIDkQIDkQIDkQIDkQIDkQIDkQIDkQIDkQIDkQIDkQIDkQIDkQIDkQIDkQIDkQIDkQIDkQIDkQIDkQIDkQIDkQIDkQIDkQIDkQIDkQIDkYJ/APt/rFNHL0ltAAAAAElFTkSuQmCC" id="placeholder" class="img-fluid"></p>
+</div>
+<p>This is the book which comes closest to being an all-encompassing, single textbook for the class! It brings together different “strands” of causal modeling research (since each field—economics, bioinformatics, sociology, etc.—tends to use its own notation and vocabulary), unifying them into a single approach. The only reason we can’t use it as <em>the</em> main textbook is because it hasn’t been updated since 2015, and most of the assignments in this class use computational tools from 2018 onwards!</p>
+</div>
+</div>
+<div class="callout callout-style-default callout-tip no-icon callout-titled" title="<i class='bi bi-2-circle'></i> @angrist_mastering_2014">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<i class="bi bi-2-circle"></i> <span class="citation" data-cites="angrist_mastering_2014">Angrist and Pischke (<a href="#ref-angrist_mastering_2014" role="doc-biblioref">2014</a>)</span>
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p><strong>Angrist and Pischke, <em>Mastering ’Metrics: The Path from Cause to Effect</em></strong> <span class="citation" data-cites="angrist_mastering_2014">(<a href="#ref-angrist_mastering_2014" role="doc-biblioref">Angrist and Pischke 2014</a>)</span> [<a href="https://www.dropbox.com/scl/fi/3xa9tfswmv1w8ez54prtk/Joshua-D.-Angrist-J-rn-Steffen-Pischke-Mastering-Metrics.pdf?rlkey=2w0ipphrgxrejd7ddkv1wd635&amp;dl=1">PDF</a>]</p>
+<div style="float: left; margin-right: 8px;">
+<p><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAMgAAADICAYAAACtWK6eAAAHeklEQVR4nO3asZYMaRiH8XIBuAAyESIJIhJEJGQkLSMhIiIiIiIhMwkZCRESIiRERCJcAC7A1lO865tS/Z9Zh7PnTD2/ZLt7amq+6n2fquoZm96/f/+tkzTJQKTAQKTAQKTAQKTAQKTAQKTAQKTAQKTAQKTAQKTAQKTAQKTAQKTAQKTAQKTAQKTAQKTAQKTAQKTAQKTAQKTAQKTAQKTAQKTAQKTAQKTAQKTAQKTAQKTAQKTAQKTAQKTAQKTAQKTAQKTAQKTAQKTAQKTAQKTAQKTAQKTAQKTAQKTAQKTAQKTAQKTAQKTAQKTAQKTAQKTAQKTAQKTAQKTAQKTAQKTAQKTAQKTAQKTAQKTAQKTAQKTAQKTAQKTAQKTAQKTAQKTAQKTAQKTAQKTAQKTAQKTAQKTAQKTAQKTAQKTAQKTAQKTAQKTAQKTAQKTAQKTAQKTAQKTAQKRgdoF8/Pixe/DgQf+o63bu3Nnt27ev27JlS/9s2osXL7pXr171j7ru+PHj3fbt2/tH096+fds9ffq0f9R1hw4d6nbt2tU/+ru+fPkyHA//ZW179+4d/rtMe/xsu3///v7RtHZb3qvDhw/3j+ZlNoEwQFevXu3u37/fP/uJOK5duzb5P//ixYu/bH/p0qXu9OnT/aPVprY9ceLEsO+/5ebNm92NGzf6R6stW+OdO3eG96C1bI0cC8fUIqZbt24N79lczCaQkydPdi9fvuzOnTs3DA//k588edJduHCh27RpU/fs2bPhtcLgMYCLxaK7fPnyqsDu3r07DEupwWPYGE7wnG0ZPl7/09r1cTxcNbja8XPfvXv3yxo51jNnzgxrYY0c65UrV7qVlZXhPTl//ny/1Xfs59SpU8NV4/bt28O+6xgX/c/j/ZiL2QTC7Q9D3g4NGGLOlAwNgwa2O3jwYLdt27bu0aNH/Svf8fqBAwe63bt3DwNY9uzZ023evLl7/vx5/+wntq34/jTWQvDjKx/HeezYsSEE4iy89uHDh2GNxFGOHj3affr0aVhjvU5IBMVrxFHqJDN+fSObTSDL1NmyPYsyHAxJG03hdb5eQ1IDuZg4s9YZ+uHDh5OfRxjys2fPDiG2wwyiZXB/55Zmx44dw2ere/fu9c++f5YgeGLiitCqKwOv83WMv7/UyYS1EuAcGMiPQNoY6vaFq8T4ijP+2tSAlfUMVO2v3abWtJiIbi1ExxWNtbAm1P7ak0AZf238vJVOBhvV7ANhgBnk9ixfr1UELa4eXEUqqBrwqW3TsBUGmtucr1+/DlclrhYM4efPn4fbO57/F6yb9df6UGskGMJp1RoXP4a+ni9b87Kry0Y160DqjDj+H1732v170z9bbTxANXy/Gwhqu0U/pETKgE8N81qIjeP59u3bqrjSGvkerjj1HtRalq3ZQGaCwWAQiIQzN58nSgXy+vXrf4esjAcoDd9424QoOPvz8/jt0e8MYO1jHFdaY30+qaFfa80GMhM1TO29f6kP11MDVZ856vvS8K01bK3aFlP7WkutizWxthbHyfG2t12lfm6tcfy8xUmlvdrMwSwDYVgYmqlhQg39+EyM+loN8fgzSau2ndrPWN0acUYf/xp5LRwLx8SVh1ursTT0tf76Gj+fK8rUe5P2s1HNLpC6OkwNQOG2i4Fd9J8J+ODa4nW+3r9v/bOftyhT+2PwGMDxLdxYhUQU3NrxeCq4KW0cnNW5RZvCrRGfb/hlRKveD17n61j295u6Sq0n+I1iVoGsd5hQQ8Lg1HaEQSDjGPjMwl+v2bZCqHDWuh1hO/bJdgwe+Nntb7WWqeOpP1KmbdmO7VljhcAtEz+bKxffX9pguUoWjoffrr1586Z/Ng+zCYThYEjAmXlqmNp/jMiZnysAw8TZnGHi7MmAcBtT26FuPdiW2w8wYATVDuQUvo/vJ4baJ895/ciRI8MfCqewb4YbbEf0Y+0/RiREfp28devW4Xg4fo6H/RBme0XgWImUEwRXUP6QubKy0j1+/Hj4Xt6/uZhNINxirGV8xiQqbkE4m4NBYZimBp6g+HddtS1n9evXr68avDH2T7RENb6n53W+zs+b2gdXLW7HkvF+iYHo+Qs9WCMBcEUcm9qWMNr9zcFsAvldnE0ZFrTxLMPZH+vZ9v9SayR0riQJx857sJ5tNyIDkQIDkQIDkQIDkQIDkQIDkQIDkQIDkQIDkQIDkQIDkQIDkQIDkQIDkQIDkQIDkQIDkQIDkQIDkQIDkQIDkQIDkQIDkQIDkQIDkQIDkQIDkQIDkQIDkQIDkQIDkQIDkQIDkQIDkQIDkQIDkQIDkQIDkQIDkQIDkQIDkQIDkQIDkQIDkQIDkQIDkQIDkQIDkQIDkQIDkQIDkQIDkQIDkQIDkQIDkQIDkQIDkQIDkQIDkQIDkQIDkQIDkQIDkQIDkQIDkQIDkQIDkQIDkQIDkQIDkQIDkQIDkQIDkQIDkQIDkQIDkQIDkQIDkQIDkQIDkQIDkQIDkQIDkQIDkQIDkQIDkQIDkQIDkQIDkQIDkQIDkQIDkQIDkQIDkQIDkQIDkQIDkQIDkQIDkYJ/APt/rFNHL0ltAAAAAElFTkSuQmCC" id="placeholder" class="img-fluid"></p>
+</div>
+<p>This book is included as the second of the three “core” texts mainly because, it uses the language of causality specific to Econometrics, the language that is most familiar to me from my PhD training in Political Economy. However, if you tend to learn better by example, it also does a good job of foregrounding specific examples (like evaluating charter schools and community policing policies), so that the methods emerging naturally from attempts to solve these puzzles when association methods like linear regression fail to capture their causal linkages.</p>
+</div>
+</div>
+<div class="callout callout-style-default callout-tip no-icon callout-titled" title="<i class='bi bi-3-circle'></i> @pearl_book_2018">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<i class="bi bi-3-circle"></i> <span class="citation" data-cites="pearl_book_2018">Pearl and Mackenzie (<a href="#ref-pearl_book_2018" role="doc-biblioref">2018</a>)</span>
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p><strong>Pearl and Mackenzie, <em>The Book of Why: The New Science of Cause and Effect</em></strong> [<a href="https://www.dropbox.com/scl/fi/0r7kg7hwibztvfnby8vdg/The-Book-of-Why.epub?rlkey=czdiw5mku5uamjdiwyyzlpmdr&amp;dl=1">EPUB</a>]</p>
+<div style="float: left; margin-right: 8px;">
+<p><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAMgAAADICAYAAACtWK6eAAAHeklEQVR4nO3asZYMaRiH8XIBuAAyESIJIhJEJGQkLSMhIiIiIiIhMwkZCRESIiRERCJcAC7A1lO865tS/Z9Zh7PnTD2/ZLt7amq+6n2fquoZm96/f/+tkzTJQKTAQKTAQKTAQKTAQKTAQKTAQKTAQKTAQKTAQKTAQKTAQKTAQKTAQKTAQKTAQKTAQKTAQKTAQKTAQKTAQKTAQKTAQKTAQKTAQKTAQKTAQKTAQKTAQKTAQKTAQKTAQKTAQKTAQKTAQKTAQKTAQKTAQKTAQKTAQKTAQKTAQKTAQKTAQKTAQKTAQKTAQKTAQKTAQKTAQKTAQKTAQKTAQKTAQKTAQKTAQKTAQKTAQKTAQKTAQKTAQKTAQKTAQKTAQKTAQKTAQKTAQKTAQKTAQKTAQKTAQKTAQKTAQKTAQKTAQKTAQKTAQKTAQKTAQKTAQKTAQKTAQKTAQKTAQKRgdoF8/Pixe/DgQf+o63bu3Nnt27ev27JlS/9s2osXL7pXr171j7ru+PHj3fbt2/tH096+fds9ffq0f9R1hw4d6nbt2tU/+ru+fPkyHA//ZW179+4d/rtMe/xsu3///v7RtHZb3qvDhw/3j+ZlNoEwQFevXu3u37/fP/uJOK5duzb5P//ixYu/bH/p0qXu9OnT/aPVprY9ceLEsO+/5ebNm92NGzf6R6stW+OdO3eG96C1bI0cC8fUIqZbt24N79lczCaQkydPdi9fvuzOnTs3DA//k588edJduHCh27RpU/fs2bPhtcLgMYCLxaK7fPnyqsDu3r07DEupwWPYGE7wnG0ZPl7/09r1cTxcNbja8XPfvXv3yxo51jNnzgxrYY0c65UrV7qVlZXhPTl//ny/1Xfs59SpU8NV4/bt28O+6xgX/c/j/ZiL2QTC7Q9D3g4NGGLOlAwNgwa2O3jwYLdt27bu0aNH/Svf8fqBAwe63bt3DwNY9uzZ023evLl7/vx5/+wntq34/jTWQvDjKx/HeezYsSEE4iy89uHDh2GNxFGOHj3affr0aVhjvU5IBMVrxFHqJDN+fSObTSDL1NmyPYsyHAxJG03hdb5eQ1IDuZg4s9YZ+uHDh5OfRxjys2fPDiG2wwyiZXB/55Zmx44dw2ere/fu9c++f5YgeGLiitCqKwOv83WMv7/UyYS1EuAcGMiPQNoY6vaFq8T4ijP+2tSAlfUMVO2v3abWtJiIbi1ExxWNtbAm1P7ak0AZf238vJVOBhvV7ANhgBnk9ixfr1UELa4eXEUqqBrwqW3TsBUGmtucr1+/DlclrhYM4efPn4fbO57/F6yb9df6UGskGMJp1RoXP4a+ni9b87Kry0Y160DqjDj+H1732v170z9bbTxANXy/Gwhqu0U/pETKgE8N81qIjeP59u3bqrjSGvkerjj1HtRalq3ZQGaCwWAQiIQzN58nSgXy+vXrf4esjAcoDd9424QoOPvz8/jt0e8MYO1jHFdaY30+qaFfa80GMhM1TO29f6kP11MDVZ856vvS8K01bK3aFlP7WkutizWxthbHyfG2t12lfm6tcfy8xUmlvdrMwSwDYVgYmqlhQg39+EyM+loN8fgzSau2ndrPWN0acUYf/xp5LRwLx8SVh1ursTT0tf76Gj+fK8rUe5P2s1HNLpC6OkwNQOG2i4Fd9J8J+ODa4nW+3r9v/bOftyhT+2PwGMDxLdxYhUQU3NrxeCq4KW0cnNW5RZvCrRGfb/hlRKveD17n61j295u6Sq0n+I1iVoGsd5hQQ8Lg1HaEQSDjGPjMwl+v2bZCqHDWuh1hO/bJdgwe+Nntb7WWqeOpP1KmbdmO7VljhcAtEz+bKxffX9pguUoWjoffrr1586Z/Ng+zCYThYEjAmXlqmNp/jMiZnysAw8TZnGHi7MmAcBtT26FuPdiW2w8wYATVDuQUvo/vJ4baJ895/ciRI8MfCqewb4YbbEf0Y+0/RiREfp28devW4Xg4fo6H/RBme0XgWImUEwRXUP6QubKy0j1+/Hj4Xt6/uZhNINxirGV8xiQqbkE4m4NBYZimBp6g+HddtS1n9evXr68avDH2T7RENb6n53W+zs+b2gdXLW7HkvF+iYHo+Qs9WCMBcEUcm9qWMNr9zcFsAvldnE0ZFrTxLMPZH+vZ9v9SayR0riQJx857sJ5tNyIDkQIDkQIDkQIDkQIDkQIDkQIDkQIDkQIDkQIDkQIDkQIDkQIDkQIDkQIDkQIDkQIDkQIDkQIDkQIDkQIDkQIDkQIDkQIDkQIDkQIDkQIDkQIDkQIDkQIDkQIDkQIDkQIDkQIDkQIDkQIDkQIDkQIDkQIDkQIDkQIDkQIDkQIDkQIDkQIDkQIDkQIDkQIDkQIDkQIDkQIDkQIDkQIDkQIDkQIDkQIDkQIDkQIDkQIDkQIDkQIDkQIDkQIDkQIDkQIDkQIDkQIDkQIDkQIDkQIDkQIDkQIDkQIDkQIDkQIDkQIDkQIDkQIDkQIDkQIDkQIDkQIDkQIDkQIDkQIDkQIDkQIDkQIDkQIDkQIDkQIDkQIDkQIDkQIDkQIDkQIDkQIDkQIDkQIDkYJ/APt/rFNHL0ltAAAAAElFTkSuQmCC" id="placeholder" class="img-fluid"></p>
+</div>
+<p>This book contrasts with the Angrist and Pischke book in using the language of causality formed within <em>Computer Science</em> rather than Economics. It can be a good starting point especially if you’re unfamiliar with the heavy use of <em>diagrams</em> for scientific modeling—basically, whereas Angrist and Pischke’s first instinct is to use (sometimes informal) <em>equations</em> like <span class="math inline">\(y = mx + b\)</span> to explain steps in the procedures, Pearl and Mackenzie’s instinct would be to instead use something like <span class="math inline">\(\require{enclose}\enclose{circle}{\kern .01em ~x~\kern .01em} \overset{\small m, b}{\longrightarrow} \enclose{circle}{\kern.01em y~\kern .01em}\)</span> to represent the same concept (in this case, a line with slope <span class="math inline">\(m\)</span> and intercept <span class="math inline">\(b\)</span>!).</p>
+</div>
+</div>
+</section>
+<section id="core-reference-texts" class="level2">
+<h2 class="anchored" data-anchor-id="core-reference-texts">Core Reference Texts</h2>
+<p>In contrast to the books in the previous section, these books are <em>not</em> “the” textbooks for the class! These are here instead as reference books, to keep on hand (a) for when the lectures or the above books are unclear on some topic, and/or (b) for deeper dives into certain topics (where the latter may become a more relevant mission for you as we move towards the final project 😉)</p>
+<p><strong>Judea Pearl (2002). <em>Causality</em></strong></p>
 </section>
 <section id="econometric-policy-evaluation" class="level2">
 <h2 class="anchored" data-anchor-id="econometric-policy-evaluation">Econometric Policy Evaluation</h2>
 <ul>
 <li><span class="citation" data-cites="bjorkegren_machine_2022">(<a href="#ref-bjorkegren_machine_2022" role="doc-biblioref"><strong>bjorkegren_machine_2022?</strong></a>)</span>, “(Machine) Learning what Policymakers Value”, <em>EAAMO (Equity and Access in Algorithms, Mechanisms, and Optimization)</em> [<a href="https://www.jblumenstock.com/files/papers/bbk_2021_eaamo.pdf">PDF</a>]</li>
 </ul>
+</section>
+<section id="video-resources" class="level2">
+<h2 class="anchored" data-anchor-id="video-resources">Video Resources</h2>
+<p>To me (as in, given how my brain works), there are certain topics which I’ve spent hours trying to understand via reading, only to realize that there’s some simple diagram or animation out there which “clicks” it in my mind 10000 times more effectively than the reading ever would.</p>
+<p>So, to that end, these video resources are just as important as (for some topics far <em>more</em> important than) the resources above!<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a></p>
 
 
 
 </section>
+
 
 <div id="quarto-appendix" class="default"><section class="quarto-appendix-contents" role="doc-bibliography" id="quarto-bibliography"><h2 class="anchored quarto-appendix-heading">References</h2><div id="refs" class="references csl-bib-body hanging-indent" data-entry-spacing="0" role="list">
 <div id="ref-angrist_mastering_2014" class="csl-entry" role="listitem">
@@ -293,7 +344,12 @@ Morgan, Stephen L., and Christopher Winship. 2015. <em>Counterfactuals and <span
 <div id="ref-pearl_book_2018" class="csl-entry" role="listitem">
 Pearl, Judea, and Dana Mackenzie. 2018. <em>The <span>Book</span> of <span>Why</span>: <span>The New Science</span> of <span>Cause</span> and <span>Effect</span></em>. Basic Books.
 </div>
-</div></section></div></main> <!-- /main -->
+</div></section><section id="footnotes" class="footnotes footnotes-end-of-document" role="doc-endnotes"><h2 class="anchored quarto-appendix-heading">Footnotes</h2>
+
+<ol>
+<li id="fn1"><p>For similar reasons, audiobooks may provide more effective ways to digest some topics in the course!<a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+</ol>
+</section></div></main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
 window.document.addEventListener("DOMContentLoaded", function (event) {
   const toggleBodyColorMode = (bsSheetEl) => {

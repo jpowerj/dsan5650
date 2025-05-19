@@ -1,6 +1,7 @@
 ---
-title: "DSAN 5650"
-subtitle: "Causal Inference for Computational Social Science"
+# title: "DSAN 5650"
+title: "Syllabus"
+subtitle: "*DSAN 5650: Causal Inference for Computational Social Science*"
 times: "Wednesdays 6:30-9pm, Online"
 author: "Prof. Jeff Jacobs"
 email: "jj1088@georgetown.edu"
@@ -19,7 +20,7 @@ format:
 #     documentclass: "scrartcl"
 ---
 
-**Welcome to DSAN 5650: Causal Inference for Computational Social Science at Georgetown University!**
+**Welcome to *DSAN 5650: Causal Inference for Computational Social Science* at Georgetown University!**
 
 The course meets on **Wednesdays from 6:30-9pm online via [Zoom](https://maps.app.goo.gl/fVVfDFpp4MEuukXa9)**
 
@@ -34,7 +35,7 @@ The course meets on **Wednesdays from 6:30-9pm online via [Zoom](https://maps.ap
 
 ## Course Description
 
-This course provides students with the opportunity to take the analytical skills, machine learning algorithms, and statistical methods learned throughout their first year in the program and explore how they can be employed towards carrying out rigorous, original research in the behavioral and social sciences. With a particular emphasis on tackling the additional challenges which arise when moving from associational to causal inference, particularly when only observational (as opposed to experimental) data is available, students will become proficient in cutting-edge causal Machine Learning techniques such as propensity score matching, synthetic controls, causal program evaluation, inverse social welfare function estimation from panel data, and Double-Debiased Machine Learning.
+This course provides students with the opportunity to take the analytical skills, machine learning algorithms, and statistical methods learned throughout their first year in the program and explore how they can be employed to carry out rigorous, original research in the behavioral and social sciences. With a particular emphasis on tackling the additional challenges which arise when moving from associational to causal inference, particularly when only observational (as opposed to experimental) data is available, students will become proficient in cutting-edge causal Machine Learning techniques such as propensity score matching, synthetic controls, causal program evaluation, inverse social welfare function estimation from panel data, and Double-Debiased Machine Learning.
 
 In-class examples will cover continuous, discrete-choice, and textual data from a wide swath of social and behavioral sciences: economics, political science, sociology, anthropology, quantitative history, and digital humanities. After gaining experience through in-class labs and homework assignments focused on reproducing key findings from recent journal articles in each of these disciplines, students will spend the final weeks of the course on a final project demonstrating their ability to develop, evaluate, and test the robustness of a causal hypothesis.
 
@@ -104,26 +105,26 @@ The following is a rough map of what we will work through together throughout th
     <td><span data-qmd="{{< var w02.date-md >}}"></span></td>
     <td><span data-qmd="[{{< var w02.title >}}](./w02/)"></span></td>
 </tr>
+<tr>
+    <td></td>
+    <td></td>
+    <td><span data-qmd="*{{< var hw1.date-md >}}*"></span></td>
+    <td><span data-qmd="*[Deliverable] [HW1: {{< var hw1.title >}}]({{< var hw1.url >}})*"></span></td>
+</tr>
 <tr class='new-unit'>
-    <td><span data-qmd="**Unit 2**: Matching Apples to Apples"></span></td>
+    <td><span data-qmd="**Unit 2**: Doin Thangs"></span></td>
     <td>3</td>
     <td><span data-qmd="{{< var w03.date-md >}}"></span></td>
     <td><span data-qmd="[{{< var w03.title >}}](./w03/)"></span></td>
 </tr>
-<!-- <tr>
-    <td></td>
-    <td></td>
-    <td><span data-qmd="*Jan 31 (Friday), 5:59pm EST*"></span></td>
-    <td><span data-qmd="*[Deliverable] <a href='{{< var hw1.url >}}' target='_blank'>HW1: {{< var hw1.title >}}</a>*"></span></td>
-</tr> -->
 <tr>
     <td></td>
     <td>4</td>
     <td><span data-qmd="{{< var w04.date-md >}}"></span></td>
     <td><span data-qmd="[{{< var w04.title >}}](./w04/)"></span></td>
 </tr>
-<tr>
-    <td></td>
+<tr class='new-unit'>
+    <td><span data-qmd="**Unit 3**: Matching Apples to Apples"></span></td>
     <td>5</td>
     <td><span data-qmd="{{< var w05.date-md >}}"></span></td>
     <td><span data-qmd="[{{< var w05.title >}}](./w05/)"></span></td>
@@ -147,7 +148,7 @@ The following is a rough map of what we will work through together throughout th
     <td><span data-qmd="[{{< var w07.title >}}](./w07/)"></span></td>
 </tr>
 <tr class='new-unit'>
-    <td><span data-qmd="**Unit 3:** Double-Debiased Machine Learning"></span></td>
+    <td><span data-qmd="**Unit 4:** Machine Learning for Causal Inference"></span></td>
     <td>8</td>
     <td><span data-qmd="{{< var w08.date-md >}}"></span></td>
     <td><span data-qmd="[{{< var w08.title >}}](./w08/)"></span></td>
@@ -171,7 +172,7 @@ The following is a rough map of what we will work through together throughout th
     <td><span data-qmd="[{{< var w11.title >}}](./w11/)"></span></td>
 </tr>
 <tr class='new-unit'>
-    <td><span data-qmd="**Unit 4**: Applications"></span></td>
+    <td><span data-qmd="**Final Project Zone**"></span></td>
     <td>12</td>
     <td><span data-qmd="{{< var w12.date-md >}}"></span></td>
     <td><span data-qmd="{{< var w12.title >}}"></span></td>
@@ -185,7 +186,7 @@ The following is a rough map of what we will work through together throughout th
 <tr>
     <td></td>
     <td></td>
-    <td><span data-qmd="*May 10 (Friday)*"></span></td>
+    <td><span data-qmd="{{< var final.date-md >}}"></span></td>
     <td><span data-qmd="*[Deliverable] [Final Project](./final.qmd)*"></span></td>
 </tr>
 </tbody>
@@ -200,10 +201,10 @@ The main assignment in the course will be your **policy whitepaper**, submitted 
 | - | - | - |
 | [HW1: {{< var hw1.title >}}]({{< var hw1.url >}}) | {{< var hw1.date-full >}} | 10% |
 | [HW2: {{< var hw2.title >}}]({{< var hw2.url >}}) | {{< var hw2.date-full >}} | 10% |
-| Midterm | Wednesday, **February 28** | 30% |
 | [HW3: {{< var hw3.title >}}]({{< var hw3.url >}}) | {{< var hw3.date-full >}} | 10% |
-| [HW4: {{< var hw4.title >}}]({{ var hw4.url }}) | {{< var hw4.date-full >}} | 10% |
-| [Final Project](./final.qmd) | Friday, **May 10** | 30% |
+| {{< var midterm.title >}} | {{< var midterm.date-full >}} | 30% |
+| [HW4: {{< var hw4.title >}}]({{< var hw4.url >}}) | {{< var hw4.date-full >}} | 10% |
+| [Final Project](./final.qmd) | {{< var final.date-full >}} | 30% |
 
 : {tbl-colwidths="[55,25,20]"}
 

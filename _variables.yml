@@ -1,6 +1,6 @@
-zoom_url: "https://georgetown.zoom.us/j/94931835080?pwd=f9xg1L66RDOXjoySuPCSCLK1adbJwM.1"
-feedback_url: "https://forms.gle/s35xJBf8Dj6XR5pr8"
-recording_url: https://georgetown.hosted.panopto.com/Panopto/Pages/Sessions/List.aspx?folderID=d240de45-5abb-4eea-8b13-b2590063001d
+zoom_url: "https://georgetown.zoom.us/j/94493188667?pwd=s4Q8TbTwZTNyK0G0VJsVe1Lefrd3AY.1"
+feedback_url: "https://forms.gle/PoyySPdVeBN37oBb8"
+recording_url: "https://georgetown.hosted.panopto.com/Panopto/Pages/Sessions/List.aspx?folderID=413d999a-16d1-4b36-93b6-b2de013af117"
 w01:
   weeknum: 1
   title: "The Language of Causal Modeling"
@@ -8,28 +8,28 @@ w01:
   date-md: "May 21"
 w02:
   weeknum: 2
-  title: "Probabilistic Graphical Models (PGMs)"
+  title: "Probabilistic Graphical Models (PGMs) as Data-Generating Processes (DGPs)"
   footer: "Probabilistic Graphical Models (PGMs)"
   date-md: "May 28"
 w03:
   weeknum: 3
-  title: ""
-  footer: ""
+  title: "PGMs as Causal Graphs via do-Calculus: Chains, Forks, and Colliders"
+  footer: "PGMs as Causal Graphs"
   date-md: "Jun 4"
 w04:
   weeknum: 4
-  title: ""
-  footer: ""
+  title: "Some Humility via Theory: Have We Closed All Backdoor Paths?"
+  footer: "The do-Operator"
   date-md: "Jun 11"
 w05:
   weeknum: 5
-  title: ""
-  footer: ""
+  title: "Statistical Matching (A Cautious First Dip into Computational Methods)"
+  footer: "Statistical Matching"
   date-md: "Jun 18"
 w06:
   weeknum: 6
-  title: ""
-  footer: ""
+  title: "Midterm Review (feat. Example Problems)"
+  footer: "Midterm Review"
   date-md: "Jun 25"
 w07:
   weeknum: 7
@@ -38,56 +38,65 @@ w07:
   date-md: "Jul 2"
 w08:
   weeknum: 8
-  title: ""
-  footer: ""
+  title: "Propensity Score Matching"
+  footer: "Propensity Score Matching"
   date-md: "Jul 9"
 w09:
   weeknum: 9
-  title: ""
-  footer: ""
+  title: "Double-Debiased Machine Learning"
+  footer: "DoubleML"
   date-md: "Jul 16"
 w10:
   weeknum: 10
-  title: ""
-  footer: ""
+  title: "Causal Forests for Heterogeneous Treatment Effects"
+  footer: "Causal Forests"
   date-md: "Jul 23"
 w11:
   weeknum: 11
-  title: ""
-  footer: ""
+  title: "Fancier Causal Inference at the Fancy Computational Methods Frontier"
+  footer: "Fancier Causal Inference"
   date-md: "Jul 30"
 w12:
   weeknum: 12
-  title: "Final Project Details"
-  footer: "Final Project Details"
+  title: "Final Project Huddle"
+  footer: "Final Project Huddle"
   date-md: "Aug 6"
 w13:
   weeknum: 13
-  title: ""
-  footer: ""
+  title: "Final Project Presentations"
+  footer: "Final Project Presentations"
   date-md: "Aug 13"
 hw1:
-  title: "Causal Modeling via DAGs and PGMs"
+  title: "Causal Modeling with DAGs and PGMs: Direct and Indirect Effects"
   date-md: "May 30 (Friday), 5:59pm EST"
   date-full: "Friday, **May 30**"
-  url: "https://classroom.google.com/c/NzQzMjkyMzg4NjIw/a/NzQ3NDA0MDQ5MjU3/details"
+  url: "#"
 hw2:
-  title: "TBD"
-  date-md: "Feb 21 (Friday), 5:59pm EST"
+  title: "Traversing the Sea of Causality with the do-Harpoon in Hand: Chains, Forks, and Colliders"
+  date-md: "Jun 13 (Friday), 5:59pm EST"
   date-full: "Friday, **February 21**"
   url: "#"
 hw3:
-  title: "TBD"
-  date-md: "Apr 12 (Friday), 5:59pm EDT"
-  date-full: "TBD"
+  title: "Statistical Matching: Apples to Apples and Oranges to Oranges"
+  date-md: "Jun 27 (Friday), 5:59pm EDT"
+  date-full: "Friday, **June 27**"
   url: "#"
+midterm:
+  title: "In-Class Midterm"
+  date-md: "Jul 2"
+  date-full: "Wednesday, **July 2**"
 hw4:
-  title: "TBD"
-  date-md: "Apr 26 (Friday), 5:59pm EDT"
-  date-full: "TBD"
+  title: "Basic Computational Causal Methods"
+  date-md: "Jul 11 (Friday), 5:59pm EDT"
+  date-full: "Friday, **July 11**"
+  url: "#"
+hw5:
+  title: "Fancy Computational Causal Methods"
+  date-md: "Jul 25 (Friday), 5:59pm EDT"
+  date-full: "Friday, **July 25**"
   url: "#"
 final:
   title: "Final Project"
-  date-md: "May 10 (Friday), 5:59pm EDT"
-  date-full: "TBD"
+  date-md: "Aug 15 (Friday), 5:59pm EDT"
+  date-full: "Friday, **August 15**"
   url: "#"

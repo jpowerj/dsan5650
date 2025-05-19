@@ -2,7 +2,7 @@
 title: "DSAN 5650: Causal Inference for Computational Social Science"
 subtitle: "Wednesdays 6:30-9pm, Online (Zoom) Sessions"
 author: "Jeff Jacobs ([`jj1088@georgetown.edu`](mailto:jj1088@georgetown.edu))"
-institute: "Georgetown University, Spring 2025"
+institute: "Georgetown University, Summer 2025"
 listing:
   sort-ui: false
   filter-ui: false

@@ -5,14 +5,56 @@ bibliography: "_DSAN5650.bib"
 
 ## Core Textbooks
 
-* Morgan and Winship, *Counterfactuals and Causal Inference: Methods and Principles for Social Research* [@morgan_counterfactuals_2015] \[[PDF](https://www.dropbox.com/scl/fi/rmuw9yw0gflg9wprufzu4/Counterfactuals-and-Causal-Inference.pdf?rlkey=gpzpuqgmzgsdwo18j22pl6yiw&dl=1)\]
-    * The book which comes closest to being an all-encompassing, single textbook for the class. It brings together different "strands" of causal modeling research (since each field---economics, bioinformatics, sociology, etc.---tends to use its own notation and vocabulary), unifying them into a single approach. The only reason we can't use it as *the* main textbook is because it hasn't been updated since 2015, and most of the assignments in this class use computational tools from 2018 onwards!
-* Angrist and Pischke, *Mastering 'Metrics: The Path from Cause to Effect* [@angrist_mastering_2014] \[[PDF](https://www.dropbox.com/scl/fi/3xa9tfswmv1w8ez54prtk/Joshua-D.-Angrist-J-rn-Steffen-Pischke-Mastering-Metrics.pdf?rlkey=2w0ipphrgxrejd7ddkv1wd635&dl=1)\]
-    * This book is included as the second of the three "core" texts mainly because, it uses the language of causality specific to Econometrics, the language that is most familiar to me from my PhD training in Political Economy. However, if you tend to learn better by example, it also does a good job of foregrounding specific examples (like evaluating charter schools and community policing policies), so that the methods emerging naturally from attempts to solve these puzzles when association methods like linear regression fail to capture their causal linkages.
-* Pearl and Mackenzie, *The Book of Why: The New Science of Cause and Effect* [@pearl_book_2018] \[[EPUB](https://www.dropbox.com/scl/fi/0r7kg7hwibztvfnby8vdg/The-Book-of-Why.epub?rlkey=czdiw5mku5uamjdiwyyzlpmdr&dl=1)\]
-    * This book contrasts with the Angrist and Pischke book in using the language of causality formed within *Computer Science* rather than Economics. It can be a good starting point especially if you're unfamiliar with the heavy use of *diagrams* for scientific modeling---basically, whereas Angrist and Pischke's first instinct is to use (sometimes informal) *equations* like $y = mx + b$ to explain steps in the procedures, Pearl and Mackenzie's instinct would be to instead use something like $\require{enclose}\enclose{circle}{\kern .01em ~x~\kern .01em} \overset{\small m, b}{\longrightarrow} \enclose{circle}{\kern.01em y~\kern .01em}$ to represent the same concept (in this case, a line with slope $m$ and intercept $b$!).
+As mentioned on the [syllabus](./syllabus.qmd), the field of causal inference in general (and causal inference for computational social science in particular) moves excitingly-fast, such that the material has yet to "congeal" into a single, all-encompassing textbook. Nonetheless, the following three books cover a substantial amount of ground (described in more detail below each citation), so that together they form a coherent "three-volume textbook" for this class! If you can only read three books this summer, read these :)
+
+::: {.callout-tip title="<i class='bi bi-1-circle'></i> @morgan_counterfactuals_2015" icon="false" appearance="default"}
+
+**Morgan and Winship, *Counterfactuals and Causal Inference: Methods and Principles for Social Research*** \[[PDF](https://www.dropbox.com/scl/fi/rmuw9yw0gflg9wprufzu4/Counterfactuals-and-Causal-Inference.pdf?rlkey=gpzpuqgmzgsdwo18j22pl6yiw&dl=1)\]
+    
+::: {style="float: left; margin: 8px;"}
+![]({{< placeholder 200 >}}){#placeholder}
+:::
+
+This is the book which comes closest to being an all-encompassing, single textbook for the class! It brings together different "strands" of causal modeling research (since each field---economics, bioinformatics, sociology, etc.---tends to use its own notation and vocabulary), unifying them into a single approach. The only reason we can't use it as *the* main textbook is because it hasn't been updated since 2015, and most of the assignments in this class use computational tools from 2018 onwards!
+
+:::
+
+:::: {.callout-tip title="<i class='bi bi-2-circle'></i> @angrist_mastering_2014" icon="false" appearance="default"}
+
+**Angrist and Pischke, *Mastering 'Metrics: The Path from Cause to Effect*** [@angrist_mastering_2014] \[[PDF](https://www.dropbox.com/scl/fi/3xa9tfswmv1w8ez54prtk/Joshua-D.-Angrist-J-rn-Steffen-Pischke-Mastering-Metrics.pdf?rlkey=2w0ipphrgxrejd7ddkv1wd635&dl=1)\]
+
+::: {style="float: left; margin-right: 8px;"}
+![]({{< placeholder 200 >}}){#placeholder}
+:::
+
+This book is included as the second of the three "core" texts mainly because, it uses the language of causality specific to Econometrics, the language that is most familiar to me from my PhD training in Political Economy. However, if you tend to learn better by example, it also does a good job of foregrounding specific examples (like evaluating charter schools and community policing policies), so that the methods emerging naturally from attempts to solve these puzzles when association methods like linear regression fail to capture their causal linkages.
+
+::::
+
+::: {.callout-tip title="<i class='bi bi-3-circle'></i> @pearl_book_2018" icon="false" appearance="default"}
+
+**Pearl and Mackenzie, *The Book of Why: The New Science of Cause and Effect*** \[[EPUB](https://www.dropbox.com/scl/fi/0r7kg7hwibztvfnby8vdg/The-Book-of-Why.epub?rlkey=czdiw5mku5uamjdiwyyzlpmdr&dl=1)\]
+
+::: {style="float: left; margin-right: 8px;"}
+![]({{< placeholder 200 >}}){#placeholder}
+:::
+    
+This book contrasts with the Angrist and Pischke book in using the language of causality formed within *Computer Science* rather than Economics. It can be a good starting point especially if you're unfamiliar with the heavy use of *diagrams* for scientific modeling---basically, whereas Angrist and Pischke's first instinct is to use (sometimes informal) *equations* like $y = mx + b$ to explain steps in the procedures, Pearl and Mackenzie's instinct would be to instead use something like $\require{enclose}\enclose{circle}{\kern .01em ~x~\kern .01em} \overset{\small m, b}{\longrightarrow} \enclose{circle}{\kern.01em y~\kern .01em}$ to represent the same concept (in this case, a line with slope $m$ and intercept $b$!).
+
+:::
+
+## Core Reference Texts
+
+In contrast to the books in the previous section, these books are *not* "the" textbooks for the class! These are here instead as reference books, to keep on hand (a) for when the lectures or the above books are unclear on some topic, and/or (b) for deeper dives into certain topics (where the latter may become a more relevant mission for you as we move towards the final project 😉)
+
+**Judea Pearl (2002). *Causality***
 
 ## Econometric Policy Evaluation
 
 * @bjorkegren_machine_2022, "(Machine) Learning what Policymakers Value", *EAAMO (Equity and Access in Algorithms, Mechanisms, and Optimization)* \[[PDF](https://www.jblumenstock.com/files/papers/bbk_2021_eaamo.pdf)\]
 
+## Video Resources
+
+To me (as in, given how my brain works), there are certain topics which I've spent hours trying to understand via reading, only to realize that there's some simple diagram or animation out there which "clicks" it in my mind 10000 times more effectively than the reading ever would.
+
+So, to that end, these video resources are just as important as (for some topics far *more* important than) the resources above!^[For similar reasons, audiobooks may provide more effective ways to digest some topics in the course!]
