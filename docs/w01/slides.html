@@ -13,7 +13,7 @@
   <meta name="generator" content="quarto-1.6.40">
 
   <meta name="author" content="Jeff Jacobs">
-  <title>DSAN 5650 – Week 1: From a Science of Particles to a Science of People</title>
+  <title>DSAN 5650 – Week 1: Science from Particles to People</title>
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
@@ -31,6 +31,71 @@
       margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
       vertical-align: middle;
     }
+    /* CSS for syntax highlighting */
+    pre > code.sourceCode { white-space: pre; position: relative; }
+    pre > code.sourceCode > span { line-height: 1.25; }
+    pre > code.sourceCode > span:empty { height: 1.2em; }
+    .sourceCode { overflow: visible; }
+    code.sourceCode > span { color: inherit; text-decoration: inherit; }
+    div.sourceCode { margin: 1em 0; }
+    pre.sourceCode { margin: 0; }
+    @media screen {
+    div.sourceCode { overflow: auto; }
+    }
+    @media print {
+    pre > code.sourceCode { white-space: pre-wrap; }
+    pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
+    }
+    pre.numberSource code
+      { counter-reset: source-line 0; }
+    pre.numberSource code > span
+      { position: relative; left: -4em; counter-increment: source-line; }
+    pre.numberSource code > span > a:first-child::before
+      { content: counter(source-line);
+        position: relative; left: -1em; text-align: right; vertical-align: baseline;
+        border: none; display: inline-block;
+        -webkit-touch-callout: none; -webkit-user-select: none;
+        -khtml-user-select: none; -moz-user-select: none;
+        -ms-user-select: none; user-select: none;
+        padding: 0 4px; width: 4em;
+        color: #aaaaaa;
+      }
+    pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+    div.sourceCode
+      { color: #003b4f; background-color: #f1f3f5; }
+    @media screen {
+    pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+    }
+    code span { color: #003b4f; } /* Normal */
+    code span.al { color: #ad0000; } /* Alert */
+    code span.an { color: #5e5e5e; } /* Annotation */
+    code span.at { color: #657422; } /* Attribute */
+    code span.bn { color: #ad0000; } /* BaseN */
+    code span.bu { } /* BuiltIn */
+    code span.cf { color: #003b4f; font-weight: bold; } /* ControlFlow */
+    code span.ch { color: #20794d; } /* Char */
+    code span.cn { color: #8f5902; } /* Constant */
+    code span.co { color: #5e5e5e; } /* Comment */
+    code span.cv { color: #5e5e5e; font-style: italic; } /* CommentVar */
+    code span.do { color: #5e5e5e; font-style: italic; } /* Documentation */
+    code span.dt { color: #ad0000; } /* DataType */
+    code span.dv { color: #ad0000; } /* DecVal */
+    code span.er { color: #ad0000; } /* Error */
+    code span.ex { } /* Extension */
+    code span.fl { color: #ad0000; } /* Float */
+    code span.fu { color: #4758ab; } /* Function */
+    code span.im { color: #00769e; } /* Import */
+    code span.in { color: #5e5e5e; } /* Information */
+    code span.kw { color: #003b4f; font-weight: bold; } /* Keyword */
+    code span.op { color: #5e5e5e; } /* Operator */
+    code span.ot { color: #003b4f; } /* Other */
+    code span.pp { color: #ad0000; } /* Preprocessor */
+    code span.sc { color: #5e5e5e; } /* SpecialChar */
+    code span.ss { color: #20794d; } /* SpecialString */
+    code span.st { color: #20794d; } /* String */
+    code span.va { color: #111111; } /* Variable */
+    code span.vs { color: #20794d; } /* VerbatimString */
+    code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
     /* CSS for citations */
     div.csl-bib-body { }
     div.csl-entry {
@@ -52,7 +117,7 @@
     div.csl-indent {
       margin-left: 2em;
     }  </style>
-  <link rel="stylesheet" href="../site_libs/revealjs/dist/theme/quarto-633e001073058eb340aaff6ab2cc50b4.css">
+  <link rel="stylesheet" href="../site_libs/revealjs/dist/theme/quarto-e673a71d8928557b94dbdd46f924faca.css">
   <link rel="stylesheet" href="../dsan-globals/jjstyles.css">
   <link href="../site_libs/revealjs/plugin/quarto-line-highlight/line-highlight.css" rel="stylesheet">
   <link href="../site_libs/revealjs/plugin/reveal-menu/menu.css" rel="stylesheet">
@@ -178,7 +243,7 @@
     <div class="slides">
 
 <section id="title-slide" class="quarto-title-block center">
-  <h1 class="title">Week 1: From a Science of Particles to a Science of People</h1>
+  <h1 class="title">Week 1: Science from Particles to People</h1>
   <p class="subtitle"><em>DSAN 5650: Causal Inference for Computational Social Science</em><br><span class="subsubtitle">Summer 2025, Georgetown University</span></p>
 
 <div class="quarto-title-authors">
@@ -194,7 +259,7 @@ Jeff Jacobs
 
   <p class="date">Wednesday, May 21, 2025</p>
 </section>
-<section id="schedule" class="title-slide slide level1 smaller small-title crunch-title crunch-callout code-90 center" data-name="Schedule">
+<section id="schedule" class="title-slide slide level1 smaller crunch-title crunch-callout code-90 center" data-name="Schedule">
 <h1>Schedule</h1>
 <p>Today’s Planned Schedule:</p>
 <table class="caption-top">
@@ -217,13 +282,13 @@ Jeff Jacobs
 <td style="text-align: left;"><strong>Lecture</strong></td>
 <td style="text-align: left;">6:30pm</td>
 <td style="text-align: left;">6:45pm</td>
-<td style="text-align: left;"><a href="">Quick Hello Hi Everyone Style Intro →</a></td>
+<td style="text-align: left;"><a href="#/who-am-i-why-is-georgetown-having-me-teach-this">Quick Hello Hi Everyone Style Intro →</a></td>
 </tr>
 <tr class="even">
 <td style="text-align: left;"></td>
 <td style="text-align: left;">6:45pm</td>
 <td style="text-align: left;">7:00pm</td>
-<td style="text-align: left;"><a href="">The Science <span class="math inline">\(\rightarrow\)</span> Social Science “Phase Transition” →</a></td>
+<td style="text-align: left;"><a href="">The Science <span class="math inline">\(\leadsto\)</span> Social Science “Phase Transition” →</a></td>
 </tr>
 <tr class="odd">
 <td style="text-align: left;"></td>
@@ -257,11 +322,6 @@ Jeff Jacobs
 </tr>
 </tbody>
 </table>
-</section>
-
-<section>
-<section id="who-am-i-why-is-georgetown-having-me-teach-this" class="title-slide slide level1 center" data-stack-name="Intro">
-<h1>Who Am I? Why Is Georgetown Having Me Teach This?</h1>
 <div class="hidden">
 
 </div>
@@ -303,6 +363,12 @@ Jeff Jacobs
 \]</span></p>
 </div>
 </section>
+
+<section>
+<section id="who-am-i-why-is-georgetown-having-me-teach-this" class="title-slide slide level1 center" data-stack-name="Intro">
+<h1>Who Am I? Why Is Georgetown Having Me Teach This?</h1>
+
+</section>
 <section id="prof.-jeff-introduction" class="slide level2 crunch-title">
 <h2>Prof.&nbsp;Jeff Introduction!</h2>
 <ul>
@@ -321,7 +387,7 @@ Jeff Jacobs
 <p><i class="bi bi-3-circle"></i> Research Economist, <strong>UC Berkeley</strong></p>
 <p><i class="bi bi-4-circle"></i> <strong>Columbia</strong>, PhD in Political Economy</p>
 </section>
-<section id="why-is-georgetown-having-me-teach-this" class="slide level2 smaller title-09 crunch-title crunch-ul crunch-li-8 crunch-quarto-layout-panel">
+<section id="why-is-georgetown-having-me-teach-this" class="slide level2 smaller crunch-title crunch-ul crunch-li-8 crunch-quarto-layout-panel">
 <h2>Why Is Georgetown Having Me Teach This?</h2>
 <div>
 
@@ -334,7 +400,7 @@ Jeff Jacobs
 <li>PhD exam major: <strong>Political Philosophy</strong></li>
 <li>PhD exam minor: <strong>International Relations</strong></li>
 <li>PhD exam paper: “How to Do Things with Translations”</li>
-<li>Game-changing Research Fellowships at… (Nothing was the same -drake a. graham):</li>
+<li>Game-changing Research Fellowships at… (Nothing was the same -drake):</li>
 <li><a href="https://en.wikipedia.org/wiki/Santa_Fe_Institute">Santa Fe Institute</a>: <em>dedicated to the multidisciplinary study of complex adaptive systems: physical, computational, biological, and social systems</em></li>
 </ul>
 </div>
@@ -345,9 +411,9 @@ Jeff Jacobs
 <center>
 <div id="cell-bg-sunburst" class="cell" data-align="center" data-execution_count="2">
 <div id="bg-sunburst" class="cell-output cell-output-display">
-<div>                            <div id="81578783-6ba9-483c-8451-646b58cf2085" class="plotly-graph-div" style="height:400px; width:450px;"></div>            <script type="text/javascript">                require(["plotly"], function(Plotly) {                    window.PLOTLYENV=window.PLOTLYENV || {};                                    if (document.getElementById("81578783-6ba9-483c-8451-646b58cf2085")) {                    Plotly.newPlot(                        "81578783-6ba9-483c-8451-646b58cf2085",                        [{"branchvalues":"total","customdata":[["Quant"],["Quant"],["Social Sci"],["Social Sci"],["Humanities"],["Humanities"],["Quant"],["Social Sci"]],"domain":{"x":[0.0,1.0],"y":[0.0,1.0]},"ids":["Quant\u002fMath\u003cbr\u003e(BS)","Quant\u002fCS\u003cbr\u003e(BS,MS)","Social Sci\u002fEcon\u003cbr\u003e(BS+Job)","Social Sci\u002fPol Econ\u003cbr\u003e(PhD Pt 2)","Humanities\u002fPol Phil\u003cbr\u003e(PhD Pt 1)","Humanities","Quant","Social Sci"],"labels":["Math\u003cbr\u003e(BS)","CS\u003cbr\u003e(BS,MS)","Econ\u003cbr\u003e(BS+Job)","Pol Econ\u003cbr\u003e(PhD Pt 2)","Pol Phil\u003cbr\u003e(PhD Pt 1)","Humanities","Quant","Social Sci"],"marker":{"colors":["#E69F00","#E69F00","#009E73","#009E73","#56B4E9","#56B4E9","#E69F00","#009E73"]},"name":"","parents":["Quant","Quant","Social Sci","Social Sci","Humanities","","",""],"values":[4,6,6,5,3,3,10,11],"type":"sunburst","hoverinfo":"skip"}],                        {"template":{"data":{"histogram2dcontour":[{"type":"histogram2dcontour","colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]]}],"choropleth":[{"type":"choropleth","colorbar":{"outlinewidth":0,"ticks":""}}],"histogram2d":[{"type":"histogram2d","colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]]}],"heatmap":[{"type":"heatmap","colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]]}],"heatmapgl":[{"type":"heatmapgl","colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]]}],"contourcarpet":[{"type":"contourcarpet","colorbar":{"outlinewidth":0,"ticks":""}}],"contour":[{"type":"contour","colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]]}],"surface":[{"type":"surface","colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]]}],"mesh3d":[{"type":"mesh3d","colorbar":{"outlinewidth":0,"ticks":""}}],"scatter":[{"fillpattern":{"fillmode":"overlay","size":10,"solidity":0.2},"type":"scatter"}],"parcoords":[{"type":"parcoords","line":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"scatterpolargl":[{"type":"scatterpolargl","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"bar":[{"error_x":{"color":"#2a3f5f"},"error_y":{"color":"#2a3f5f"},"marker":{"line":{"color":"#E5ECF6","width":0.5},"pattern":{"fillmode":"overlay","size":10,"solidity":0.2}},"type":"bar"}],"scattergeo":[{"type":"scattergeo","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"scatterpolar":[{"type":"scatterpolar","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"histogram":[{"marker":{"pattern":{"fillmode":"overlay","size":10,"solidity":0.2}},"type":"histogram"}],"scattergl":[{"type":"scattergl","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"scatter3d":[{"type":"scatter3d","line":{"colorbar":{"outlinewidth":0,"ticks":""}},"marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"scattermapbox":[{"type":"scattermapbox","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"scatterternary":[{"type":"scatterternary","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"scattercarpet":[{"type":"scattercarpet","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"carpet":[{"aaxis":{"endlinecolor":"#2a3f5f","gridcolor":"white","linecolor":"white","minorgridcolor":"white","startlinecolor":"#2a3f5f"},"baxis":{"endlinecolor":"#2a3f5f","gridcolor":"white","linecolor":"white","minorgridcolor":"white","startlinecolor":"#2a3f5f"},"type":"carpet"}],"table":[{"cells":{"fill":{"color":"#EBF0F8"},"line":{"color":"white"}},"header":{"fill":{"color":"#C8D4E3"},"line":{"color":"white"}},"type":"table"}],"barpolar":[{"marker":{"line":{"color":"#E5ECF6","width":0.5},"pattern":{"fillmode":"overlay","size":10,"solidity":0.2}},"type":"barpolar"}],"pie":[{"automargin":true,"type":"pie"}]},"layout":{"autotypenumbers":"strict","colorway":["#636efa","#EF553B","#00cc96","#ab63fa","#FFA15A","#19d3f3","#FF6692","#B6E880","#FF97FF","#FECB52"],"font":{"color":"#2a3f5f"},"hovermode":"closest","hoverlabel":{"align":"left"},"paper_bgcolor":"white","plot_bgcolor":"#E5ECF6","polar":{"bgcolor":"#E5ECF6","angularaxis":{"gridcolor":"white","linecolor":"white","ticks":""},"radialaxis":{"gridcolor":"white","linecolor":"white","ticks":""}},"ternary":{"bgcolor":"#E5ECF6","aaxis":{"gridcolor":"white","linecolor":"white","ticks":""},"baxis":{"gridcolor":"white","linecolor":"white","ticks":""},"caxis":{"gridcolor":"white","linecolor":"white","ticks":""}},"coloraxis":{"colorbar":{"outlinewidth":0,"ticks":""}},"colorscale":{"sequential":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]],"sequentialminus":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]],"diverging":[[0,"#8e0152"],[0.1,"#c51b7d"],[0.2,"#de77ae"],[0.3,"#f1b6da"],[0.4,"#fde0ef"],[0.5,"#f7f7f7"],[0.6,"#e6f5d0"],[0.7,"#b8e186"],[0.8,"#7fbc41"],[0.9,"#4d9221"],[1,"#276419"]]},"xaxis":{"gridcolor":"white","linecolor":"white","ticks":"","title":{"standoff":15},"zerolinecolor":"white","automargin":true,"zerolinewidth":2},"yaxis":{"gridcolor":"white","linecolor":"white","ticks":"","title":{"standoff":15},"zerolinecolor":"white","automargin":true,"zerolinewidth":2},"scene":{"xaxis":{"backgroundcolor":"#E5ECF6","gridcolor":"white","linecolor":"white","showbackground":true,"ticks":"","zerolinecolor":"white","gridwidth":2},"yaxis":{"backgroundcolor":"#E5ECF6","gridcolor":"white","linecolor":"white","showbackground":true,"ticks":"","zerolinecolor":"white","gridwidth":2},"zaxis":{"backgroundcolor":"#E5ECF6","gridcolor":"white","linecolor":"white","showbackground":true,"ticks":"","zerolinecolor":"white","gridwidth":2}},"shapedefaults":{"line":{"color":"#2a3f5f"}},"annotationdefaults":{"arrowcolor":"#2a3f5f","arrowhead":0,"arrowwidth":1},"geo":{"bgcolor":"white","landcolor":"#E5ECF6","subunitcolor":"white","showland":true,"showlakes":true,"lakecolor":"white"},"title":{"x":0.05},"mapbox":{"style":"light"},"margin":{"b":0,"l":0,"r":0,"t":30}}},"legend":{"tracegroupgap":0},"height":400,"width":450,"margin":{"t":0,"l":0,"r":0,"b":0}},                        {"responsive": true}                    ).then(function(){
+<div>                            <div id="b616db5b-be38-4ab1-8741-dbfc9d7ed116" class="plotly-graph-div" style="height:400px; width:450px;"></div>            <script type="text/javascript">                require(["plotly"], function(Plotly) {                    window.PLOTLYENV=window.PLOTLYENV || {};                                    if (document.getElementById("b616db5b-be38-4ab1-8741-dbfc9d7ed116")) {                    Plotly.newPlot(                        "b616db5b-be38-4ab1-8741-dbfc9d7ed116",                        [{"branchvalues":"total","customdata":[["Quant"],["Quant"],["Social Sci"],["Social Sci"],["Humanities"],["Humanities"],["Quant"],["Social Sci"]],"domain":{"x":[0.0,1.0],"y":[0.0,1.0]},"ids":["Quant\u002fMath\u003cbr\u003e(BS)","Quant\u002fCS\u003cbr\u003e(BS,MS)","Social Sci\u002fEcon\u003cbr\u003e(BS+Job)","Social Sci\u002fPol Econ\u003cbr\u003e(PhD Pt 2)","Humanities\u002fPol Phil\u003cbr\u003e(PhD Pt 1)","Humanities","Quant","Social Sci"],"labels":["Math\u003cbr\u003e(BS)","CS\u003cbr\u003e(BS,MS)","Econ\u003cbr\u003e(BS+Job)","Pol Econ\u003cbr\u003e(PhD Pt 2)","Pol Phil\u003cbr\u003e(PhD Pt 1)","Humanities","Quant","Social Sci"],"marker":{"colors":["#E69F00","#E69F00","#009E73","#009E73","#56B4E9","#56B4E9","#E69F00","#009E73"]},"name":"","parents":["Quant","Quant","Social Sci","Social Sci","Humanities","","",""],"values":[4,6,6,5,3,3,10,11],"type":"sunburst","hoverinfo":"skip"}],                        {"template":{"data":{"histogram2dcontour":[{"type":"histogram2dcontour","colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]]}],"choropleth":[{"type":"choropleth","colorbar":{"outlinewidth":0,"ticks":""}}],"histogram2d":[{"type":"histogram2d","colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]]}],"heatmap":[{"type":"heatmap","colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]]}],"heatmapgl":[{"type":"heatmapgl","colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]]}],"contourcarpet":[{"type":"contourcarpet","colorbar":{"outlinewidth":0,"ticks":""}}],"contour":[{"type":"contour","colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]]}],"surface":[{"type":"surface","colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]]}],"mesh3d":[{"type":"mesh3d","colorbar":{"outlinewidth":0,"ticks":""}}],"scatter":[{"fillpattern":{"fillmode":"overlay","size":10,"solidity":0.2},"type":"scatter"}],"parcoords":[{"type":"parcoords","line":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"scatterpolargl":[{"type":"scatterpolargl","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"bar":[{"error_x":{"color":"#2a3f5f"},"error_y":{"color":"#2a3f5f"},"marker":{"line":{"color":"#E5ECF6","width":0.5},"pattern":{"fillmode":"overlay","size":10,"solidity":0.2}},"type":"bar"}],"scattergeo":[{"type":"scattergeo","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"scatterpolar":[{"type":"scatterpolar","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"histogram":[{"marker":{"pattern":{"fillmode":"overlay","size":10,"solidity":0.2}},"type":"histogram"}],"scattergl":[{"type":"scattergl","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"scatter3d":[{"type":"scatter3d","line":{"colorbar":{"outlinewidth":0,"ticks":""}},"marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"scattermapbox":[{"type":"scattermapbox","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"scatterternary":[{"type":"scatterternary","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"scattercarpet":[{"type":"scattercarpet","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"carpet":[{"aaxis":{"endlinecolor":"#2a3f5f","gridcolor":"white","linecolor":"white","minorgridcolor":"white","startlinecolor":"#2a3f5f"},"baxis":{"endlinecolor":"#2a3f5f","gridcolor":"white","linecolor":"white","minorgridcolor":"white","startlinecolor":"#2a3f5f"},"type":"carpet"}],"table":[{"cells":{"fill":{"color":"#EBF0F8"},"line":{"color":"white"}},"header":{"fill":{"color":"#C8D4E3"},"line":{"color":"white"}},"type":"table"}],"barpolar":[{"marker":{"line":{"color":"#E5ECF6","width":0.5},"pattern":{"fillmode":"overlay","size":10,"solidity":0.2}},"type":"barpolar"}],"pie":[{"automargin":true,"type":"pie"}]},"layout":{"autotypenumbers":"strict","colorway":["#636efa","#EF553B","#00cc96","#ab63fa","#FFA15A","#19d3f3","#FF6692","#B6E880","#FF97FF","#FECB52"],"font":{"color":"#2a3f5f"},"hovermode":"closest","hoverlabel":{"align":"left"},"paper_bgcolor":"white","plot_bgcolor":"#E5ECF6","polar":{"bgcolor":"#E5ECF6","angularaxis":{"gridcolor":"white","linecolor":"white","ticks":""},"radialaxis":{"gridcolor":"white","linecolor":"white","ticks":""}},"ternary":{"bgcolor":"#E5ECF6","aaxis":{"gridcolor":"white","linecolor":"white","ticks":""},"baxis":{"gridcolor":"white","linecolor":"white","ticks":""},"caxis":{"gridcolor":"white","linecolor":"white","ticks":""}},"coloraxis":{"colorbar":{"outlinewidth":0,"ticks":""}},"colorscale":{"sequential":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]],"sequentialminus":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]],"diverging":[[0,"#8e0152"],[0.1,"#c51b7d"],[0.2,"#de77ae"],[0.3,"#f1b6da"],[0.4,"#fde0ef"],[0.5,"#f7f7f7"],[0.6,"#e6f5d0"],[0.7,"#b8e186"],[0.8,"#7fbc41"],[0.9,"#4d9221"],[1,"#276419"]]},"xaxis":{"gridcolor":"white","linecolor":"white","ticks":"","title":{"standoff":15},"zerolinecolor":"white","automargin":true,"zerolinewidth":2},"yaxis":{"gridcolor":"white","linecolor":"white","ticks":"","title":{"standoff":15},"zerolinecolor":"white","automargin":true,"zerolinewidth":2},"scene":{"xaxis":{"backgroundcolor":"#E5ECF6","gridcolor":"white","linecolor":"white","showbackground":true,"ticks":"","zerolinecolor":"white","gridwidth":2},"yaxis":{"backgroundcolor":"#E5ECF6","gridcolor":"white","linecolor":"white","showbackground":true,"ticks":"","zerolinecolor":"white","gridwidth":2},"zaxis":{"backgroundcolor":"#E5ECF6","gridcolor":"white","linecolor":"white","showbackground":true,"ticks":"","zerolinecolor":"white","gridwidth":2}},"shapedefaults":{"line":{"color":"#2a3f5f"}},"annotationdefaults":{"arrowcolor":"#2a3f5f","arrowhead":0,"arrowwidth":1},"geo":{"bgcolor":"white","landcolor":"#E5ECF6","subunitcolor":"white","showland":true,"showlakes":true,"lakecolor":"white"},"title":{"x":0.05},"mapbox":{"style":"light"},"margin":{"b":0,"l":0,"r":0,"t":30}}},"legend":{"tracegroupgap":0},"height":400,"width":450,"margin":{"t":0,"l":0,"r":0,"b":0}},                        {"responsive": true}                    ).then(function(){
                             
-var gd = document.getElementById('81578783-6ba9-483c-8451-646b58cf2085');
+var gd = document.getElementById('b616db5b-be38-4ab1-8741-dbfc9d7ed116');
 var x = new MutationObserver(function (mutations, observer) {{
         var display = window.getComputedStyle(gd).display;
         if (!display || display === 'none') {{
@@ -386,12 +452,12 @@ Figure&nbsp;1: Years spent questing in dungeons of academia
 <li><a href="https://projects.history.qmul.ac.uk/hpt/">Centre for the Study of the History of Political Thought</a>, Queen Mary University of London (QMUL): <em>New approaches to the history of political thought [Quentin Skinner, “Cambridge School”] have changed how we study ideas from the past and their relevance to contemporary politics. The focus of the Centre is to explore [ts].</em></li>
 </ul>
 </section>
-<section id="dissertation-nlp-x-history" class="slide level2 title-08">
+<section id="dissertation-nlp-x-history" class="slide level2 crunch-title">
 <h2>Dissertation (NLP x History)</h2>
 <p><em>“Our Word is Our Weapon”: Text-Analyzing Wars of Ideas from the French Revolution to the First Intifada</em></p>
 
 <img data-src="images/diss.png" class="quarto-figure quarto-figure-center r-stretch"></section>
-<section id="the-ir-part-wars-of-ideas-i-cold-war" class="slide level2 smaller crunch-img title-12">
+<section id="the-ir-part-wars-of-ideas-i-cold-war" class="slide level2 smaller crunch-img">
 <h2>(The IR Part) Wars of Ideas I: Cold War</h2>
 <ul>
 <li>Cold War arms shipments (SIPRI) vs.&nbsp;propaganda (<em>Печать СССР</em>): here, to 🇪🇹</li>
@@ -401,8 +467,8 @@ Figure&nbsp;1: Years spent questing in dungeons of academia
 <section id="the-middle-east-part-wars-of-ideas-ii-first-intifada" class="slide level2">
 <h2>(The Middle East Part) Wars of Ideas II: First Intifada</h2>
 </section>
-<section id="researching-things" class="slide level2">
-<h2>Researching Things</h2>
+<section id="research-nowadays" class="slide level2">
+<h2>Research Nowadays</h2>
 <ul>
 <li>Most cited paper: “Monopsony in Online Labor Markets” (Uses Double-Debiased ML for Causal Inference!)</li>
 <li>Most recent paper: “Operationalizing Freedom as Non-Domination in the Labor Market” (Cambridge U Press)</li>
@@ -411,11 +477,11 @@ Figure&nbsp;1: Years spent questing in dungeons of academia
 </ul>
 </section></section>
 <section>
-<section id="the-science-rightarrow-social-science-phase-transition" class="title-slide slide level1 center" data-stack-name="Science">
-<h1>The Science <span class="math inline">\(\rightarrow\)</span> Social Science “Phase Transition”</h1>
+<section id="the-science-leadsto-social-science-phase-transition" class="title-slide slide level1 center" data-stack-name="Science → Social Science">
+<h1>The Science <span class="math inline">\(\leadsto\)</span> Social Science “Phase Transition”</h1>
 
 </section>
-<section id="coarse-graining-units-of-observation" class="slide level2 smaller title-09 table-85">
+<section id="coarse-graining-units-of-observation" class="slide level2 smaller table-85">
 <h2>Coarse-Graining Units of Observation</h2>
 <table class="caption-top" data-quarto-postprocess="true">
 <thead>
@@ -440,15 +506,15 @@ Figure&nbsp;1: Years spent questing in dungeons of academia
 <td colspan="2">Cell = <span class="math inline">\(\cup\)</span>(Molecules)</td>
 </tr>
 <tr class="even">
-<td>Neuro/Cognitive Science</td>
+<td>Neuro/Cog Sci</td>
 <td colspan="2">Brain = <span class="math inline">\(\cup\)</span>(Cells)</td>
 </tr>
 <tr class="odd">
 <td>Human Physiology</td>
 <td colspan="2">Body = Brain <span class="math inline">\(\cup\)</span> Other Organs</td>
 </tr>
-<tr class="even" style="border-top: 5px solid orange; border-bottom: 5px solid orange;">
-<td colspan="3" style="text-align: center;">🧐 something happens here… 🤔</td>
+<tr class="even" style="border-top: 5px solid #e69f00; border-bottom: 5px solid #e69f00;">
+<td colspan="3" class="cb1a-bg" style="text-align: center;">🧐 <strong>something happens here…</strong> 🤔</td>
 </tr>
 <tr class="odd">
 <td>Anthropology</td>
@@ -456,7 +522,7 @@ Figure&nbsp;1: Years spent questing in dungeons of academia
 </tr>
 <tr class="even">
 <td>Economics</td>
-<td colspan="2">Economy = Specific relational system of <strong>exchange w.r.t. scarce resources</strong></td>
+<td colspan="2">Economy = Specific relational system of <em>exchange</em> w.r.t. scarce resources</td>
 </tr>
 <tr class="odd">
 <td>Political Economy</td>
@@ -472,11 +538,128 @@ Figure&nbsp;1: Years spent questing in dungeons of academia
 </tr>
 </tbody>
 </table>
-</section></section>
-<section>
-<section id="motivation-i-social-science" class="title-slide slide level1 center" data-stack-name="Social Science">
-<h1>Motivation I: Social Science</h1>
+</section>
+<section id="homo-sapienshomo-arbitratushomo-mischievous" class="slide level2">
+<h2><em>Homo sapiens</em>/<em>Homo arbitratus</em>/<em>Homo mischievous</em></h2>
+<ul>
+<li>Latin <a href="https://en.wiktionary.org/wiki/sapiens#Latin"><em>sapiens</em></a> has to do with being “discerning” or “wise”</li>
+</ul>
+<div>
 
+</div>
+<div class="quarto-layout-panel" data-layout="[3,1]">
+<div class="quarto-layout-row quarto-layout-valign-center">
+<div id="homo-mischief" class="quarto-layout-cell" style="flex-basis: 75.0%;justify-content: flex-start;">
+<ul>
+<li>But… technically nothing stops us from <strong>choosing</strong> to be “unwise” whenever we’d like… bc <strong>free will</strong></li>
+<li><span class="math inline">\(\Rightarrow\)</span> For this class, think of humans as <em>Homo arbitratus</em>: Latin <a href="https://en.wiktionary.org/wiki/arbitratus#Latin"><em>arbitratus</em></a> has to do with <strong>choosing</strong> what to do, after we’ve sapiently “discerned”/thought about it</li>
+</ul>
+</div>
+<div id="mischievous" class="quarto-layout-cell" style="flex-basis: 25.0%;justify-content: center;">
+<p><img data-src="images/mood_crop.jpg" width="200"></p>
+</div>
+</div>
+</div>
+</section>
+<section id="laws-of-physics-vs.-laws-of-social-science" class="slide level2">
+<h2>Laws of Physics vs.&nbsp;“Laws” of Social Science</h2>
+<ul>
+<li>If we tell an inanimate object that we’ve discovered a <strong>law</strong> saying that it will accelerate towards the Earth at <span class="math inline">\(9.8~\textrm{m}/\textrm{s}^2\)</span>
+<ul>
+<li>…It will likely still accelerate towards the Earth at <span class="math inline">\(9.8~\textrm{m}/\textrm{s}^2\)</span></li>
+</ul></li>
+<li>If we tell a <strong>human</strong> that we’ve discovered a <strong>law</strong> saying that they will quack like a duck at 7:30pm every Wednesday
+<ul>
+<li>…They can utilize their <strong>free will</strong> to violate this “law”</li>
+</ul></li>
+</ul>
+</section>
+<section id="strangely-relevant-corollary-from-computer-science-the-halting-problem" class="slide level2 smaller smaller-table">
+<h2>Strangely-Relevant Corollary from Computer Science: The Halting Problem</h2>
+<ul>
+<li>Kurt Gödel <span class="math inline">\(\leftrightarrow\)</span> Alan Turing: <em>Entscheidungsproblem</em></li>
+<li><strong>Theorem</strong>: It is not possible to write a computer program <span class="math inline">\(P(x)\)</span> that detects whether or not a computer program <span class="math inline">\(x\)</span> will eventually halt (as opposed to, e.g., looping forever)</li>
+<li><strong>Proof by Contradiction</strong>: Assume <span class="math inline">\(P(x)\)</span> <em>is</em> possible to write. Run it on <code>mischevious_program.py</code>. Infinite contradiction loop.</li>
+</ul>
+<div class="columns">
+<div class="column" style="width:55%;">
+<div class="code-with-filename">
+<div class="code-with-filename-file">
+<pre><strong>halting_problem_solver.py</strong></pre>
+</div>
+<div class="sourceCode" id="cb1" data-filename="halting_problem_solver.py" style="margin-bottom: 25px;"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a></a><span class="kw">def</span> will_it_halt(program, <span class="bu">input</span>):</span>
+<span id="cb1-2"><a></a>  <span class="co"># Put code you think will work here</span></span>
+<span id="cb1-3"><a></a>  <span class="co"># Return True if program will halt, False otherwise</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="code-with-filename">
+<div class="code-with-filename-file">
+<pre><strong>mischievous_program.py</strong></pre>
+</div>
+<div class="sourceCode" id="cb2" data-filename="mischievous_program.py"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a></a><span class="kw">def</span> my_mischievous_function(<span class="bu">input</span>):</span>
+<span id="cb2-2"><a></a>  <span class="cf">if</span> will_it_halt(my_mischevious_function, <span class="bu">input</span>):</span>
+<span id="cb2-3"><a></a>    <span class="cf">while</span> <span class="va">True</span>: <span class="cf">pass</span> <span class="co"># Infinite loop</span></span>
+<span id="cb2-4"><a></a>  <span class="cf">else</span>:</span>
+<span id="cb2-5"><a></a>    <span class="cf">return</span> <span class="co"># Halt</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</div><div class="column" style="width:45%;">
+<table class="caption-top" data-quarto-postprocess="true">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th">Input→<br>↓Program</th>
+<th style="text-align: center;" data-quarto-table-cell-role="th">0</th>
+<th style="text-align: center;" data-quarto-table-cell-role="th">1</th>
+<th style="text-align: center;" data-quarto-table-cell-role="th">2</th>
+<th style="text-align: center;" data-quarto-table-cell-role="th"><span class="math inline">\(\cdots\)</span></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>0</td>
+<td class="cb1a-bg" style="text-align: center;"><strong>Halt</strong></td>
+<td style="text-align: center;">Loop</td>
+<td style="text-align: center;">Loop</td>
+<td style="text-align: center;"><span class="math inline">\(\cdots\)</span></td>
+</tr>
+<tr class="even">
+<td>1</td>
+<td style="text-align: center;">Loop</td>
+<td class="cb1a-bg" style="text-align: center;"><strong>Loop</strong></td>
+<td style="text-align: center;">Halt</td>
+<td style="text-align: center;"><span class="math inline">\(\cdots\)</span></td>
+</tr>
+<tr class="odd">
+<td>2</td>
+<td style="text-align: center;">Loop</td>
+<td style="text-align: center;">Loop</td>
+<td class="cb1a-bg" style="text-align: center;"><strong>Loop</strong></td>
+<td style="text-align: center;"><span class="math inline">\(\cdots\)</span></td>
+</tr>
+<tr class="even">
+<td><span class="math inline">\(\vdots\)</span></td>
+<td style="text-align: center;"><span class="math inline">\(\vdots\)</span></td>
+<td style="text-align: center;"><span class="math inline">\(\vdots\)</span></td>
+<td style="text-align: center;"><span class="math inline">\(\vdots\)</span></td>
+<td class="cb1a-bg" style="text-align: center;"><span class="math inline">\(\mathbf{\ddots}\)</span></td>
+</tr>
+<tr class="odd" style="border-top: 3px solid black;">
+<td style="text-align: center;"><img data-src="images/mood_face.jpg" width="50"></td>
+<td class="cb1a-bg" style="text-align: center; vertical-align: middle;"><strong>Loop</strong></td>
+<td class="cb1a-bg" style="text-align: center; vertical-align: middle;"><strong>Halt</strong></td>
+<td class="cb1a-bg" style="text-align: center; vertical-align: middle;"><strong>Halt</strong></td>
+<td class="cb1a-bg" style="text-align: center; vertical-align: middle;"><span class="math inline">\(\mathbf{\cdots}\)</span></td>
+</tr>
+</tbody>
+</table>
+</div></div>
+</section>
+<section id="the-takeaway-humility-and-bayesian-probability" class="slide level2">
+<h2>The Takeaway: Humility and (Bayesian) Probability!</h2>
+<ul>
+<li>Social <strong>science</strong>, with science used in the same sense as in physics, may be a quixotic endeavor</li>
+<li>Instead, we’ll do <strong>social-science</strong>, where we use data to…</li>
+<li><i class="bi bi-1-circle"></i> Infer <strong>tendencies</strong>: <span class="math inline">\(X\)</span> tends to cause <span class="math inline">\(Y\)</span></li>
+<li><i class="bi bi-2-circle"></i> Construct models that we can <strong>update</strong> with <strong>new evidence</strong>: Bayes’ rule!</li>
+</ul>
 </section>
 <section id="particularly-fun-non-standard-examples" class="slide level2">
 <h2>Particularly Fun Non-“Standard” Examples</h2>
@@ -496,9 +679,9 @@ Figure&nbsp;1: Years spent questing in dungeons of academia
 <h2>Disclaimer: Unfortunate Side Effects of Engaging Seriously with Causality</h2>
 <div class="columns">
 <div class="column" style="width:50%;">
-<p><i class="bi bi-1-circle"></i> You’ll no longer be able to read scientific writing without striking this expression (involuntarily):</p>
+<p><i class="bi bi-1-circle"></i> You’ll no longer be able to read “scientific” writing without striking this expression (involuntarily):</p>
 </div><div class="column" style="width:50%;">
-<p><i class="bi bi-2-circle"></i> Scientific talks will begin to sound like the following:</p>
+<p><i class="bi bi-2-circle"></i> “Scientific” talks will begin to sound like the following:</p>
 </div></div>
 <div>
 

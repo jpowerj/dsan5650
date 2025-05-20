@@ -1,5 +1,5 @@
 ---
-title: "Week 1: From a Science of Particles to a Science of People"
+title: "Week 1: Science from Particles to People"
 subtitle: "*DSAN 5650: Causal Inference for Computational Social Science*<br><span class='subsubtitle'>Summer 2025, Georgetown University</span>"
 author: "Jeff Jacobs"
 institute: "[`jj1088@georgetown.edu`](mailto:jj1088@georgetown.edu)"
@@ -46,14 +46,14 @@ format:
 
 :::
 
-# Schedule {.smaller .small-title .crunch-title .crunch-callout .code-90 data-name="Schedule"}
+# Schedule {.smaller .crunch-title .crunch-callout .code-90 data-name="Schedule"}
 
 Today's Planned Schedule:
 
 | | Start | End | Topic |
 |:- |:- |:- |:- |
-| **Lecture** | 6:30pm | 6:45pm | [Quick Hello Hi Everyone Style Intro &rarr;]() |
-| | 6:45pm | 7:00pm | [The Science $\rightarrow$ Social Science "Phase Transition" &rarr;]() |
+| **Lecture** | 6:30pm | 6:45pm | [Quick Hello Hi Everyone Style Intro &rarr;](#who-am-i-why-is-georgetown-having-me-teach-this) |
+| | 6:45pm | 7:00pm | [The Science $\leadsto$ Social Science "Phase Transition" &rarr;]() |
 | | 7:00pm | 7:25pm | [Motivating Examples I: Social Science &rarr;]() |(#onwards-and-upwards-fancier-algorithms) |
 | | 7:25pm | 7:50pm | [Motivating Examples II: Causal Inference &rarr;]() |
 | **Break!** | 7:50pm | 8:00pm | |
@@ -62,11 +62,11 @@ Today's Planned Schedule:
 
 : {tbl-colwidths="[12,12,12,64]"}
 
-# Who Am I? Why Is Georgetown Having Me Teach This? {data-stack-name="Intro"}
-
 {{< include ../dsan-globals/_globals-py.qmd >}}
 
 {{< include ../dsan-globals/_globals-tex.qmd >}}
+
+# Who Am I? Why Is Georgetown Having Me Teach This? {data-stack-name="Intro"}
 
 ## Prof. Jeff Introduction! {.crunch-title}
 
@@ -92,7 +92,7 @@ Today's Planned Schedule:
 <i class='bi bi-4-circle'></i> **Columbia**, PhD in Political Economy
 
 
-## Why Is Georgetown Having Me Teach This? {.smaller .title-09 .crunch-title .crunch-ul .crunch-li-8 .crunch-quarto-layout-panel}
+## Why Is Georgetown Having Me Teach This? {.smaller .crunch-title .crunch-ul .crunch-li-8 .crunch-quarto-layout-panel}
 
 ::: {layout="[55,45]" layout-align="center" layout-valign="top"}
 ::: {#why-background-left}
@@ -101,7 +101,7 @@ Today's Planned Schedule:
 * PhD exam major: **Political Philosophy**
 * PhD exam minor: **International Relations**
 * PhD exam paper: "How to Do Things with Translations"
-* Game-changing Research Fellowships at... (Nothing was the same -drake a. graham):
+* Game-changing Research Fellowships at... (Nothing was the same -drake):
 * [Santa Fe Institute](https://en.wikipedia.org/wiki/Santa_Fe_Institute): *dedicated to the multidisciplinary study of complex adaptive systems: physical, computational, biological, and social systems*
 
 :::
@@ -145,13 +145,13 @@ Years spent questing in dungeons of academia
 
 * [Centre for the Study of the History of Political Thought](https://projects.history.qmul.ac.uk/hpt/), Queen Mary University of London (QMUL): *New approaches to the history of political thought [Quentin Skinner, "Cambridge School"] have changed how we study ideas from the past and their relevance to contemporary politics. The focus of the Centre is to explore [ts].*
 
-## Dissertation (NLP x History) {.title-08}
+## Dissertation (NLP x History) {.crunch-title}
 
 *"Our Word is Our Weapon": Text-Analyzing Wars of Ideas from the French Revolution to the First Intifada*
 
 ![](images/diss.png){fig-align="center"}
 
-## (The IR Part) Wars of Ideas I: Cold War {.smaller .crunch-img .title-12}
+## (The IR Part) Wars of Ideas I: Cold War {.smaller .crunch-img}
 
 * Cold War arms shipments (SIPRI) vs. propaganda (*Печать СССР*): here, to 🇪🇹
 
@@ -159,16 +159,16 @@ Years spent questing in dungeons of academia
 
 ## (The Middle East Part) Wars of Ideas II: First Intifada
 
-## Researching Things
+## Research Nowadays
 
 * Most cited paper: "Monopsony in Online Labor Markets" (Uses Double-Debiased ML for Causal Inference!)
 * Most recent paper: "Operationalizing Freedom as Non-Domination in the Labor Market" (Cambridge U Press)
 * Rarely cited paper but often-thought-about obsession: "How To Do Things With Translations"
 * Related thing you can buy in a bookstore: [Editorial board for new translation of] *Capital, Vol. 1* by Karl Marx (Princeton U Press)
 
-# The Science $\rightarrow$ Social Science "Phase Transition" {data-stack-name="Science"}
+# The Science $\leadsto$ Social Science "Phase Transition" {data-stack-name="Science &rarr; Social Science"}
 
-## Coarse-Graining Units of Observation {.smaller .title-09 .table-85}
+## Coarse-Graining Units of Observation {.smaller .table-85}
 
 ```{=html}
 <table>
@@ -194,15 +194,15 @@ Years spent questing in dungeons of academia
   <td colspan="2"><span data-qmd="Cell = $\cup$(Molecules)"></span></td>
 </tr>
 <tr>
-  <td>Neuro/Cognitive Science</td>
+  <td>Neuro/Cog Sci</td>
   <td colspan="2"><span data-qmd="Brain = $\cup$(Cells)"></span></td>
 </tr>
 <tr>
   <td>Human Physiology</td>
   <td colspan="2"><span data-qmd="Body = Brain $\cup$ Other Organs"></span></td>
 </tr>
-<tr style="border-top: 5px solid orange; border-bottom: 5px solid orange;">
-  <td colspan="3" align="center"><span data-qmd="🧐 something happens here... 🤔"></span></td>
+<tr style="border-top: 5px solid #e69f00; border-bottom: 5px solid #e69f00;">
+  <td colspan="3" align="center" class='cb1a-bg'><span data-qmd="🧐 **something happens here...** 🤔"></span></td>
 </tr>
 <tr>
   <td>Anthropology</td>
@@ -210,7 +210,7 @@ Years spent questing in dungeons of academia
 </tr>
 <tr>
   <td>Economics</td>
-  <td colspan="2"><span data-qmd="Economy = Specific relational system of **exchange w.r.t. scarce resources**"></span></td>
+  <td colspan="2"><span data-qmd="Economy = Specific relational system of *exchange* w.r.t. scarce resources"></span></td>
 </tr>
 <tr>
   <td>Political Economy</td>
@@ -228,7 +228,117 @@ Years spent questing in dungeons of academia
 </table>
 ```
 
-# Motivation I: Social Science {data-stack-name="Social Science"}
+## *Homo sapiens*/*Homo arbitratus*/*Homo mischievous*
+
+* Latin [*sapiens*](https://en.wiktionary.org/wiki/sapiens#Latin) has to do with being "discerning" or "wise"
+
+:::: {layout="[3,1]" layout-valign="center"}
+::: {#homo-mischief}
+
+* But... technically nothing stops us from **choosing** to be "unwise" whenever we'd like... bc **free will**
+* $\Rightarrow$ For this class, think of humans as *Homo arbitratus*: Latin [*arbitratus*](https://en.wiktionary.org/wiki/arbitratus#Latin) has to do with **choosing** what to do, after we've sapiently "discerned"/thought about it
+
+:::
+::: {#mischievous}
+
+![](images/mood_crop.jpg){width="200"}
+
+:::
+::::
+
+## Laws of Physics vs. "Laws" of Social Science
+
+* If we tell an inanimate object that we've discovered a **law** saying that it will accelerate towards the Earth at $9.8~\textrm{m}/\textrm{s}^2$
+  * ...It will likely still accelerate towards the Earth at $9.8~\textrm{m}/\textrm{s}^2$
+* If we tell a **human** that we've discovered a **law** saying that they will quack like a duck at 7:30pm every Wednesday
+  * ...They can utilize their **free will** to violate this "law"
+
+## Strangely-Relevant Corollary from Computer Science: The Halting Problem {.smaller .smaller-table}
+
+* Kurt Gödel $\leftrightarrow$ Alan Turing: *Entscheidungsproblem*
+* **Theorem**: It is not possible to write a computer program $P(x)$ that detects whether or not a computer program $x$ will eventually halt (as opposed to, e.g., looping forever)
+* **Proof by Contradiction**: Assume $P(x)$ *is* possible to write. Run it on `mischevious_program.py`. Infinite contradiction loop.
+
+:::: {.columns}
+::: {.column width="55%"}
+
+``` {.python filename="halting_problem_solver.py" style="margin-bottom: 25px;"}
+def will_it_halt(program, input):
+  # Put code you think will work here
+  # Return True if program will halt, False otherwise
+```
+
+``` {.python filename="mischievous_program.py"}
+def my_mischievous_function(input):
+  if will_it_halt(my_mischevious_function, input):
+    while True: pass # Infinite loop
+  else:
+    return # Halt
+```
+
+:::
+::: {.column width="45%"}
+
+```{=html}
+<table>
+<thead>
+<tr>
+  <th><span data-qmd="Input&rarr;<br>&darr;Program"></span></th>
+  <th align="center">0</th>
+  <th align="center">1</th>
+  <th align="center">2</th>
+  <th align="center"><span data-qmd="$\cdots$"></span></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+  <td>0</td>
+  <td class='cb1a-bg' align="center"><span data-qmd="**Halt**"></span></td>
+  <td align="center">Loop</td>
+  <td align="center">Loop</td>
+  <td align="center"><span data-qmd="$\cdots$"></span></td>
+</tr>
+<tr>
+  <td>1</td>
+  <td>Loop</td>
+  <td class='cb1a-bg'><span data-qmd="**Loop**"></span></td>
+  <td>Halt</td>
+  <td><span data-qmd="$\cdots$"></span></td>
+</tr>
+<tr>
+  <td>2</td>
+  <td>Loop</td>
+  <td>Loop</td>
+  <td class='cb1a-bg'><span data-qmd="**Loop**"></span></td>
+  <td><span data-qmd="$\cdots$"></span></td>
+</tr>
+<tr>
+  <td><span data-qmd="$\vdots$"></span></td>
+  <td><span data-qmd="$\vdots$"></span></td>
+  <td><span data-qmd="$\vdots$"></span></td>
+  <td><span data-qmd="$\vdots$"></span></td>
+  <td class='cb1a-bg'><span data-qmd="$\mathbf{\ddots}$"></span></td>
+</tr>
+<tr style="border-top: 3px solid black;">
+  <td align="center"><span data-qmd="![](images/mood_face.jpg){width='50'}"></span></td>
+  <td class='cb1a-bg' style="vertical-align: middle;"><span data-qmd="**Loop**"></span></td>
+  <td class='cb1a-bg' style="vertical-align: middle;"><span data-qmd="**Halt**"></span></td>
+  <td class='cb1a-bg' style="vertical-align: middle;"><span data-qmd="**Halt**"></span></td>
+  <td class='cb1a-bg' style="vertical-align: middle;"><span data-qmd="$\mathbf{\cdots}$"></span></td>
+</tr>
+</tbody>
+</table>
+```
+
+:::
+::::
+
+## The Takeaway: Humility and (Bayesian) Probability!
+
+* Social **science**, with science used in the same sense as in physics, may be a quixotic endeavor
+* Instead, we'll do **social-science**, where we use data to...
+* <i class='bi bi-1-circle'></i> Infer **tendencies**: $X$ tends to cause $Y$
+* <i class='bi bi-2-circle'></i> Construct models that we can **update** with **new evidence**: Bayes' rule!
 
 ## Particularly Fun Non-"Standard" Examples
 
@@ -244,12 +354,12 @@ Years spent questing in dungeons of academia
 :::: {.columns}
 ::: {.column width="50%"}
 
-<i class='bi bi-1-circle'></i> You'll no longer be able to read scientific writing without striking this expression (involuntarily):
+<i class='bi bi-1-circle'></i> You'll no longer be able to read "scientific" writing without striking this expression (involuntarily):
 
 :::
 ::: {.column width="50%"}
 
-<i class='bi bi-2-circle'></i> Scientific talks will begin to sound like the following:
+<i class='bi bi-2-circle'></i> "Scientific" talks will begin to sound like the following:
 
 :::
 ::::

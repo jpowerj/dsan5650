@@ -127,7 +127,7 @@
     "href": "index.html",
     "title": "DSAN 5650: Causal Inference for Computational Social Science",
     "section": "",
-    "text": "Welcome to the homepage for DSAN 5650: Causal Inference for Computational Social Science at Georgetown University, for the Summer 2025 session!\nThe course meets on Wednesdays from 6:30pm to 9:00pm online, via the Zoom Link provided in the sidebar.\nCheck out the syllabus (or any other link in the sidebar) for more info! Or, use the following links to view notes for individual weeks:\n\n\n\n\n\nTitle\n\n\nDate\n\n\n\n\n\n\nWeek 1: From a Science of Particles to a Science of People\n\n\nMay 21\n\n\n\n\n\nNo matching items\n\n\nCourse Description:\nThis course provides students with the opportunity to take the analytical skills, machine learning algorithms, and statistical methods learned throughout their first year in the program and explore how they can be employed towards carrying out rigorous, original research in the behavioral and social sciences. With a particular emphasis on tackling the additional challenges which arise when moving from associational to causal inference, particularly when only observational (as opposed to experimental) data is available, students will become proficient in cutting-edge causal Machine Learning techniques such as propensity score matching, synthetic controls, causal program evaluation, inverse social welfare function estimation from panel data, and Double-Debiased Machine Learning.\nIn-class examples will cover continuous, discrete-choice, and textual data from a wide swath of social and behavioral sciences: economics, political science, sociology, anthropology, quantitative history, and digital humanities. After gaining experience through in-class labs and homework assignments focused on reproducing key findings from recent journal articles in each of these disciplines, students will spend the final weeks of the course on a final project demonstrating their ability to develop, evaluate, and test the robustness of a causal hypothesis.\nPrerequisites: DSAN 5000, DSAN 5100 (DSAN 5300 recommended but not required)",
+    "text": "Welcome to the homepage for DSAN 5650: Causal Inference for Computational Social Science at Georgetown University, for the Summer 2025 session!\nThe course meets on Wednesdays from 6:30pm to 9:00pm online, via the Zoom Link provided in the sidebar.\nCheck out the syllabus (or any other link in the sidebar) for more info! Or, use the following links to view notes for individual weeks:\n\n\n\n\n\nTitle\n\n\nDate\n\n\n\n\n\n\nWeek 1: Science from Particles to People\n\n\nMay 21\n\n\n\n\n\nNo matching items\n\n\nCourse Description:\nThis course provides students with the opportunity to take the analytical skills, machine learning algorithms, and statistical methods learned throughout their first year in the program and explore how they can be employed towards carrying out rigorous, original research in the behavioral and social sciences. With a particular emphasis on tackling the additional challenges which arise when moving from associational to causal inference, particularly when only observational (as opposed to experimental) data is available, students will become proficient in cutting-edge causal Machine Learning techniques such as propensity score matching, synthetic controls, causal program evaluation, inverse social welfare function estimation from panel data, and Double-Debiased Machine Learning.\nIn-class examples will cover continuous, discrete-choice, and textual data from a wide swath of social and behavioral sciences: economics, political science, sociology, anthropology, quantitative history, and digital humanities. After gaining experience through in-class labs and homework assignments focused on reproducing key findings from recent journal articles in each of these disciplines, students will spend the final weeks of the course on a final project demonstrating their ability to develop, evaluate, and test the robustness of a causal hypothesis.\nPrerequisites: DSAN 5000, DSAN 5100 (DSAN 5300 recommended but not required)",
     "crumbs": [
       "<i class='bi bi-house pe-1'></i> Home"
     ]
@@ -191,7 +191,7 @@
   {
     "objectID": "w01/index.html",
     "href": "w01/index.html",
-    "title": "Week 1: From a Science of Particles to a Science of People",
+    "title": "Week 1: Science from Particles to People",
     "section": "",
     "text": "Open slides in new window →",
     "crumbs": [
@@ -201,7 +201,7 @@
   {
     "objectID": "w01/index.html#prof.-jeff-introduction",
     "href": "w01/index.html#prof.-jeff-introduction",
-    "title": "Week 1: From a Science of Particles to a Science of People",
+    "title": "Week 1: Science from Particles to People",
     "section": "Prof. Jeff Introduction!",
     "text": "Prof. Jeff Introduction!\n\nBorn in NW DC → high school in Rockville, MD\nUniversity of Maryland: Computer Science, Math, Econ",
     "crumbs": [
@@ -211,7 +211,7 @@
   {
     "objectID": "w01/index.html#the-world-outside-of-dc",
     "href": "w01/index.html#the-world-outside-of-dc",
-    "title": "Week 1: From a Science of Particles to a Science of People",
+    "title": "Week 1: Science from Particles to People",
     "section": "The World Outside of DC",
     "text": "The World Outside of DC\n Studied abroad in Beijing (Peking University/北大) → internship with Huawei in Hong Kong (HKUST)\n\n\n\n Stanford, MS in Computer Science\n Research Economist, UC Berkeley\n Columbia, PhD in Political Economy",
     "crumbs": [
@@ -221,9 +221,9 @@
   {
     "objectID": "w01/index.html#why-is-georgetown-having-me-teach-this",
     "href": "w01/index.html#why-is-georgetown-having-me-teach-this",
-    "title": "Week 1: From a Science of Particles to a Science of People",
+    "title": "Week 1: Science from Particles to People",
     "section": "Why Is Georgetown Having Me Teach This?",
-    "text": "Why Is Georgetown Having Me Teach This?\n\n\n\n\n\n\n\nQuanty things \\(\\leadsto\\) PhD in Political Economy\nPhD exam major: Political Philosophy\nPhD exam minor: International Relations\nPhD exam paper: “How to Do Things with Translations”\nGame-changing Research Fellowships at… (Nothing was the same -drake a. graham):\nSanta Fe Institute: dedicated to the multidisciplinary study of complex adaptive systems: physical, computational, biological, and social systems\n\n\n\n\n\n\n\n\n\n                                                \n\n\n\n\n\nFigure 1: Years spent questing in dungeons of academia\n\n\n\n\n\n\n\nCentre for the Study of the History of Political Thought, Queen Mary University of London (QMUL): New approaches to the history of political thought [Quentin Skinner, “Cambridge School”] have changed how we study ideas from the past and their relevance to contemporary politics. The focus of the Centre is to explore [ts].",
+    "text": "Why Is Georgetown Having Me Teach This?\n\n\n\n\n\n\n\nQuanty things \\(\\leadsto\\) PhD in Political Economy\nPhD exam major: Political Philosophy\nPhD exam minor: International Relations\nPhD exam paper: “How to Do Things with Translations”\nGame-changing Research Fellowships at… (Nothing was the same -drake):\nSanta Fe Institute: dedicated to the multidisciplinary study of complex adaptive systems: physical, computational, biological, and social systems\n\n\n\n\n\n\n\n\n\n                                                \n\n\n\n\n\nFigure 1: Years spent questing in dungeons of academia\n\n\n\n\n\n\n\nCentre for the Study of the History of Political Thought, Queen Mary University of London (QMUL): New approaches to the history of political thought [Quentin Skinner, “Cambridge School”] have changed how we study ideas from the past and their relevance to contemporary politics. The focus of the Centre is to explore [ts].",
     "crumbs": [
       "Week 1: {{< var w01.date-md >}}"
     ]
@@ -231,7 +231,7 @@
   {
     "objectID": "w01/index.html#dissertation-nlp-x-history",
     "href": "w01/index.html#dissertation-nlp-x-history",
-    "title": "Week 1: From a Science of Particles to a Science of People",
+    "title": "Week 1: Science from Particles to People",
     "section": "Dissertation (NLP x History)",
     "text": "Dissertation (NLP x History)\n“Our Word is Our Weapon”: Text-Analyzing Wars of Ideas from the French Revolution to the First Intifada",
     "crumbs": [
@@ -241,7 +241,7 @@
   {
     "objectID": "w01/index.html#the-ir-part-wars-of-ideas-i-cold-war",
     "href": "w01/index.html#the-ir-part-wars-of-ideas-i-cold-war",
-    "title": "Week 1: From a Science of Particles to a Science of People",
+    "title": "Week 1: Science from Particles to People",
     "section": "(The IR Part) Wars of Ideas I: Cold War",
     "text": "(The IR Part) Wars of Ideas I: Cold War\n\nCold War arms shipments (SIPRI) vs. propaganda (Печать СССР): here, to 🇪🇹",
     "crumbs": [
@@ -251,7 +251,7 @@
   {
     "objectID": "w01/index.html#the-middle-east-part-wars-of-ideas-ii-first-intifada",
     "href": "w01/index.html#the-middle-east-part-wars-of-ideas-ii-first-intifada",
-    "title": "Week 1: From a Science of Particles to a Science of People",
+    "title": "Week 1: Science from Particles to People",
     "section": "(The Middle East Part) Wars of Ideas II: First Intifada",
     "text": "(The Middle East Part) Wars of Ideas II: First Intifada",
     "crumbs": [
@@ -259,11 +259,11 @@
     ]
   },
   {
-    "objectID": "w01/index.html#researching-things",
-    "href": "w01/index.html#researching-things",
-    "title": "Week 1: From a Science of Particles to a Science of People",
-    "section": "Researching Things",
-    "text": "Researching Things\n\nMost cited paper: “Monopsony in Online Labor Markets” (Uses Double-Debiased ML for Causal Inference!)\nMost recent paper: “Operationalizing Freedom as Non-Domination in the Labor Market” (Cambridge U Press)\nRarely cited paper but often-thought-about obsession: “How To Do Things With Translations”\nRelated thing you can buy in a bookstore: [Editorial board for new translation of] Capital, Vol. 1 by Karl Marx (Princeton U Press)",
+    "objectID": "w01/index.html#research-nowadays",
+    "href": "w01/index.html#research-nowadays",
+    "title": "Week 1: Science from Particles to People",
+    "section": "Research Nowadays",
+    "text": "Research Nowadays\n\nMost cited paper: “Monopsony in Online Labor Markets” (Uses Double-Debiased ML for Causal Inference!)\nMost recent paper: “Operationalizing Freedom as Non-Domination in the Labor Market” (Cambridge U Press)\nRarely cited paper but often-thought-about obsession: “How To Do Things With Translations”\nRelated thing you can buy in a bookstore: [Editorial board for new translation of] Capital, Vol. 1 by Karl Marx (Princeton U Press)",
     "crumbs": [
       "Week 1: {{< var w01.date-md >}}"
     ]
@@ -271,9 +271,49 @@
   {
     "objectID": "w01/index.html#coarse-graining-units-of-observation",
     "href": "w01/index.html#coarse-graining-units-of-observation",
-    "title": "Week 1: From a Science of Particles to a Science of People",
+    "title": "Week 1: Science from Particles to People",
     "section": "Coarse-Graining Units of Observation",
-    "text": "Coarse-Graining Units of Observation\n\n\n\nField\nExample Unit of Observation\n\n\n\n\nPhysics\nParticle\n[Particle = Fine-Graining of Molecules]\n\n\nChemistry\nMolecule = \\(\\cup\\)(Particles)\n[Molecule = Coarse-Graining of Particles]\n\n\nBiology\nCell = \\(\\cup\\)(Molecules)\n\n\nNeuro/Cognitive Science\nBrain = \\(\\cup\\)(Cells)\n\n\nHuman Physiology\nBody = Brain \\(\\cup\\) Other Organs\n\n\n🧐 something happens here… 🤔\n\n\nAnthropology\nHuman-Relational System (e.g., Kinship) = \\(\\cup\\)(Brains) \\(\\times\\) Natural Environment\n\n\nEconomics\nEconomy = Specific relational system of exchange w.r.t. scarce resources\n\n\nPolitical Economy\nEconomy-Context = Economic Exchange \\(\\cap\\) Relational Power\n\n\nSociology\nSociety = \\(\\cup\\)(Relational Systems: Kinship, Friendship, Authority, Power, Violence)\n\n\nHistory\nLongue-Durée = Evolution of Societies over Time and Space",
+    "text": "Coarse-Graining Units of Observation\n\n\n\nField\nExample Unit of Observation\n\n\n\n\nPhysics\nParticle\n[Particle = Fine-Graining of Molecules]\n\n\nChemistry\nMolecule = \\(\\cup\\)(Particles)\n[Molecule = Coarse-Graining of Particles]\n\n\nBiology\nCell = \\(\\cup\\)(Molecules)\n\n\nNeuro/Cog Sci\nBrain = \\(\\cup\\)(Cells)\n\n\nHuman Physiology\nBody = Brain \\(\\cup\\) Other Organs\n\n\n🧐 something happens here… 🤔\n\n\nAnthropology\nHuman-Relational System (e.g., Kinship) = \\(\\cup\\)(Brains) \\(\\times\\) Natural Environment\n\n\nEconomics\nEconomy = Specific relational system of exchange w.r.t. scarce resources\n\n\nPolitical Economy\nEconomy-Context = Economic Exchange \\(\\cap\\) Relational Power\n\n\nSociology\nSociety = \\(\\cup\\)(Relational Systems: Kinship, Friendship, Authority, Power, Violence)\n\n\nHistory\nLongue-Durée = Evolution of Societies over Time and Space",
+    "crumbs": [
+      "Week 1: {{< var w01.date-md >}}"
+    ]
+  },
+  {
+    "objectID": "w01/index.html#homo-sapienshomo-arbitratushomo-mischievous",
+    "href": "w01/index.html#homo-sapienshomo-arbitratushomo-mischievous",
+    "title": "Week 1: Science from Particles to People",
+    "section": "Homo sapiens/Homo arbitratus/Homo mischievous",
+    "text": "Homo sapiens/Homo arbitratus/Homo mischievous\n\nLatin sapiens has to do with being “discerning” or “wise”\n\n\n\n\n\n\n\n\nBut… technically nothing stops us from choosing to be “unwise” whenever we’d like… bc free will\n\\(\\Rightarrow\\) For this class, think of humans as Homo arbitratus: Latin arbitratus has to do with choosing what to do, after we’ve sapiently “discerned”/thought about it",
+    "crumbs": [
+      "Week 1: {{< var w01.date-md >}}"
+    ]
+  },
+  {
+    "objectID": "w01/index.html#laws-of-physics-vs.-laws-of-social-science",
+    "href": "w01/index.html#laws-of-physics-vs.-laws-of-social-science",
+    "title": "Week 1: Science from Particles to People",
+    "section": "Laws of Physics vs. “Laws” of Social Science",
+    "text": "Laws of Physics vs. “Laws” of Social Science\n\nIf we tell an inanimate object that we’ve discovered a law saying that it will accelerate towards the Earth at \\(9.8~\\textrm{m}/\\textrm{s}^2\\)\n\n…It will likely still accelerate towards the Earth at \\(9.8~\\textrm{m}/\\textrm{s}^2\\)\n\nIf we tell a human that we’ve discovered a law saying that they will quack like a duck at 7:30pm every Wednesday\n\n…They can utilize their free will to violate this “law”",
+    "crumbs": [
+      "Week 1: {{< var w01.date-md >}}"
+    ]
+  },
+  {
+    "objectID": "w01/index.html#strangely-relevant-corollary-from-computer-science-the-halting-problem",
+    "href": "w01/index.html#strangely-relevant-corollary-from-computer-science-the-halting-problem",
+    "title": "Week 1: Science from Particles to People",
+    "section": "Strangely-Relevant Corollary from Computer Science: The Halting Problem",
+    "text": "Strangely-Relevant Corollary from Computer Science: The Halting Problem\n\nKurt Gödel \\(\\leftrightarrow\\) Alan Turing: Entscheidungsproblem\nTheorem: It is not possible to write a computer program \\(P(x)\\) that detects whether or not a computer program \\(x\\) will eventually halt (as opposed to, e.g., looping forever)\nProof by Contradiction: Assume \\(P(x)\\) is possible to write. Run it on mischevious_program.py. Infinite contradiction loop.\n\n\n\n\n\nhalting_problem_solver.py\n\ndef will_it_halt(program, input):\n  # Put code you think will work here\n  # Return True if program will halt, False otherwise\n\n\n\nmischievous_program.py\n\ndef my_mischievous_function(input):\n  if will_it_halt(my_mischevious_function, input):\n    while True: pass # Infinite loop\n  else:\n    return # Halt\n\n\n\n\n\nInput→↓Program\n0\n1\n2\n\\(\\cdots\\)\n\n\n\n\n0\nHalt\nLoop\nLoop\n\\(\\cdots\\)\n\n\n1\nLoop\nLoop\nHalt\n\\(\\cdots\\)\n\n\n2\nLoop\nLoop\nLoop\n\\(\\cdots\\)\n\n\n\\(\\vdots\\)\n\\(\\vdots\\)\n\\(\\vdots\\)\n\\(\\vdots\\)\n\\(\\mathbf{\\ddots}\\)\n\n\n\nLoop\nHalt\nHalt\n\\(\\mathbf{\\cdots}\\)",
+    "crumbs": [
+      "Week 1: {{< var w01.date-md >}}"
+    ]
+  },
+  {
+    "objectID": "w01/index.html#the-takeaway-humility-and-bayesian-probability",
+    "href": "w01/index.html#the-takeaway-humility-and-bayesian-probability",
+    "title": "Week 1: Science from Particles to People",
+    "section": "The Takeaway: Humility and (Bayesian) Probability!",
+    "text": "The Takeaway: Humility and (Bayesian) Probability!\n\nSocial science, with science used in the same sense as in physics, may be a quixotic endeavor\nInstead, we’ll do social-science, where we use data to…\n Infer tendencies: \\(X\\) tends to cause \\(Y\\)\n Construct models that we can update with new evidence: Bayes’ rule!",
     "crumbs": [
       "Week 1: {{< var w01.date-md >}}"
     ]
@@ -281,7 +321,7 @@
   {
     "objectID": "w01/index.html#particularly-fun-non-standard-examples",
     "href": "w01/index.html#particularly-fun-non-standard-examples",
-    "title": "Week 1: From a Science of Particles to a Science of People",
+    "title": "Week 1: Science from Particles to People",
     "section": "Particularly Fun Non-“Standard” Examples",
     "text": "Particularly Fun Non-“Standard” Examples\n\nDeDeo, French Revolution\nGrimmer, Mirrors for Sultans and Princes",
     "crumbs": [
@@ -291,9 +331,9 @@
   {
     "objectID": "w01/index.html#disclaimer-unfortunate-side-effects-of-engaging-seriously-with-causality",
     "href": "w01/index.html#disclaimer-unfortunate-side-effects-of-engaging-seriously-with-causality",
-    "title": "Week 1: From a Science of Particles to a Science of People",
+    "title": "Week 1: Science from Particles to People",
     "section": "Disclaimer: Unfortunate Side Effects of Engaging Seriously with Causality",
-    "text": "Disclaimer: Unfortunate Side Effects of Engaging Seriously with Causality\n\n\n You’ll no longer be able to read scientific writing without striking this expression (involuntarily):\n\n Scientific talks will begin to sound like the following:",
+    "text": "Disclaimer: Unfortunate Side Effects of Engaging Seriously with Causality\n\n\n You’ll no longer be able to read “scientific” writing without striking this expression (involuntarily):\n\n “Scientific” talks will begin to sound like the following:",
     "crumbs": [
       "Week 1: {{< var w01.date-md >}}"
     ]
@@ -301,7 +341,7 @@
   {
     "objectID": "w01/index.html#data-generating-processes-dgps",
     "href": "w01/index.html#data-generating-processes-dgps",
-    "title": "Week 1: From a Science of Particles to a Science of People",
+    "title": "Week 1: Science from Particles to People",
     "section": "Data-Generating Processes (DGPs)",
     "text": "Data-Generating Processes (DGPs)\n\nYou’ve already seen this in DSAN 5100!\n«Assume \\(X\\) is drawn i.i.d. from a Normal distribution with mean \\(\\mu\\) and variance \\(\\sigma^2\\)» characterizes the DGP of \\(X\\)\nIn 5650 we zoom in on DGPs, rather than treating as black box or footnote to e.g. Law of Large Numbers.\nDeep dive into DGPs necessary for our goal of moving…\n\nFrom associational statements: “an increase of \\(X\\) by one unit is associated with an increase of \\(Y\\) by \\(\\beta\\) units”\nTo causal statements: “increasing \\(X\\) by one unit causes \\(Y\\) to increase by \\(\\beta\\) units”.",
     "crumbs": [
@@ -311,7 +351,7 @@
   {
     "objectID": "w01/index.html#probability",
     "href": "w01/index.html#probability",
-    "title": "Week 1: From a Science of Particles to a Science of People",
+    "title": "Week 1: Science from Particles to People",
     "section": "Probability++",
     "text": "Probability++\n\nTools from probability and statistics (RVs, CDFs, Conditional Probability) necessary but not sufficient for causal inference\nExample: Say we use DSAN 5100 tools to discover:\n\nProbability that event \\(E_1\\) occurs is \\(\\Pr(E_1) = 0.5\\)\nProbability that \\(E_1\\) occurs conditional on another event \\(E_0\\) occurring is \\(\\Pr(E_1 \\mid E_0) = 0.75\\)\n\nUnfortunately, we still cannot infer that the occurrence of \\(E_0\\) causes an increase in the likelihood of \\(E_1\\) occurring.",
     "crumbs": [
@@ -321,7 +361,7 @@
   {
     "objectID": "w01/index.html#beyond-conditional-probability",
     "href": "w01/index.html#beyond-conditional-probability",
-    "title": "Week 1: From a Science of Particles to a Science of People",
+    "title": "Week 1: Science from Particles to People",
     "section": "Beyond Conditional Probability",
     "text": "Beyond Conditional Probability\n\nThis issue (that conditional probabilities could not be interpreted causally) at first represented a kind of dead end for scientists interested in employing probability theory to study causal relationships…\nIn recent decades, researchers have built up what amounts to an additional “layer” of modeling tools which augment the existing machinery of probability theory to address causality head-on! (Pearl 2000)",
     "crumbs": [
@@ -331,7 +371,7 @@
   {
     "objectID": "w01/index.html#preview-do-calculus",
     "href": "w01/index.html#preview-do-calculus",
-    "title": "Week 1: From a Science of Particles to a Science of People",
+    "title": "Week 1: Science from Particles to People",
     "section": "Preview: do-Calculus",
     "text": "Preview: do-Calculus\n\nExtends core operations/definitions of probability to incorporate causality, via a \\(\\textsf{do}(\\cdot)\\) operator for RVs\n\\(\\textsf{do}(X = 5)\\) is a “special” event, representing intervention in DGP to force \\(X \\leftarrow 5\\)\n“Special” in the sense that \\(\\Pr(\\textsf{do}(X = 5))\\) not well-defined, only \\(\\Pr(Y = 6 \\mid \\textsf{do}(X = 5))\\)\nTo emphasize special-ness, we may use notation like:\n\\[\n\\Pr(Y = 6 \\mid \\textsf{do}(X = 5)) \\equiv \\textstyle \\Pr_{\\textsf{do}(X = 5)}(Y = 6)\n\\]\nto avoid confusion with “normal” events",
     "crumbs": [
@@ -341,7 +381,7 @@
   {
     "objectID": "w01/index.html#causal-world-unlocked-with-great-power-comes-great-responsibility",
     "href": "w01/index.html#causal-world-unlocked-with-great-power-comes-great-responsibility",
-    "title": "Week 1: From a Science of Particles to a Science of People",
+    "title": "Week 1: Science from Particles to People",
     "section": "Causal World Unlocked 😎 (With Great Power Comes Great Responsibility…)",
     "text": "Causal World Unlocked 😎 (With Great Power Comes Great Responsibility…)\n\nWith \\(\\textsf{do}(\\cdot)\\) in hand… (Alongside DGP satisfying a set of underlying axioms, slightly more strict than axioms of probability theory)\nWe can make causal inferences from similar pair of facts! If:\n\nProbability that event \\(E_1\\) occurs is \\(\\Pr(E_1) = 0.5\\),\nThe probability that \\(E_1\\) occurs conditional on the event \\(\\textsf{do}(E_0)\\) occurring is \\(\\Pr(E_1 \\mid \\textsf{do}(E_0)) = 0.75\\),\n\nNow we can actually infer that the occurrence of \\(E_0\\) caused an increase in the likelihood of \\(E_1\\) occurring!",
     "crumbs": [
@@ -351,7 +391,7 @@
   {
     "objectID": "w01/index.html#meta-logistics-spaced-repetition",
     "href": "w01/index.html#meta-logistics-spaced-repetition",
-    "title": "Week 1: From a Science of Particles to a Science of People",
+    "title": "Week 1: Science from Particles to People",
     "section": "Meta-Logistics: Spaced Repetition",
     "text": "Meta-Logistics: Spaced Repetition",
     "crumbs": [
@@ -361,7 +401,7 @@
   {
     "objectID": "w01/index.html#meta-logistics-maria-montessori-and-your-final-projects",
     "href": "w01/index.html#meta-logistics-maria-montessori-and-your-final-projects",
-    "title": "Week 1: From a Science of Particles to a Science of People",
+    "title": "Week 1: Science from Particles to People",
     "section": "Meta-Logistics: Maria Montessori and Your Final Projects",
     "text": "Meta-Logistics: Maria Montessori and Your Final Projects",
     "crumbs": [
@@ -371,7 +411,7 @@
   {
     "objectID": "w01/index.html#your-final-projects",
     "href": "w01/index.html#your-final-projects",
-    "title": "Week 1: From a Science of Particles to a Science of People",
+    "title": "Week 1: Science from Particles to People",
     "section": "Your Final Projects",
     "text": "Your Final Projects",
     "crumbs": [
@@ -381,7 +421,7 @@
   {
     "objectID": "w01/index.html#jupyterhub",
     "href": "w01/index.html#jupyterhub",
-    "title": "Week 1: From a Science of Particles to a Science of People",
+    "title": "Week 1: Science from Particles to People",
     "section": "JupyterHub",
     "text": "JupyterHub\nhttps://guhub.io",
     "crumbs": [
@@ -391,7 +431,7 @@
   {
     "objectID": "w01/index.html#assignments-midterm",
     "href": "w01/index.html#assignments-midterm",
-    "title": "Week 1: From a Science of Particles to a Science of People",
+    "title": "Week 1: Science from Particles to People",
     "section": "Assignments / Midterm",
     "text": "Assignments / Midterm",
     "crumbs": [
@@ -401,7 +441,7 @@
   {
     "objectID": "w01/index.html#references",
     "href": "w01/index.html#references",
-    "title": "Week 1: From a Science of Particles to a Science of People",
+    "title": "Week 1: Science from Particles to People",
     "section": "References",
     "text": "References\n\n\nPearl, Judea. 2000. Causality: Models, Reasoning, and Inference. Cambridge University Press.",
     "crumbs": [
@@ -411,147 +451,175 @@
   {
     "objectID": "w01/slides.html#prof.-jeff-introduction",
     "href": "w01/slides.html#prof.-jeff-introduction",
-    "title": "Week 1: From a Science of Particles to a Science of People",
+    "title": "Week 1: Science from Particles to People",
     "section": "Prof. Jeff Introduction!",
     "text": "Prof. Jeff Introduction!\n\nBorn in NW DC → high school in Rockville, MD\nUniversity of Maryland: Computer Science, Math, Econ"
   },
   {
     "objectID": "w01/slides.html#the-world-outside-of-dc",
     "href": "w01/slides.html#the-world-outside-of-dc",
-    "title": "Week 1: From a Science of Particles to a Science of People",
+    "title": "Week 1: Science from Particles to People",
     "section": "The World Outside of DC",
     "text": "The World Outside of DC\n Studied abroad in Beijing (Peking University/北大) → internship with Huawei in Hong Kong (HKUST)\n\n\n\n Stanford, MS in Computer Science\n Research Economist, UC Berkeley\n Columbia, PhD in Political Economy"
   },
   {
     "objectID": "w01/slides.html#why-is-georgetown-having-me-teach-this",
     "href": "w01/slides.html#why-is-georgetown-having-me-teach-this",
-    "title": "Week 1: From a Science of Particles to a Science of People",
+    "title": "Week 1: Science from Particles to People",
     "section": "Why Is Georgetown Having Me Teach This?",
-    "text": "Why Is Georgetown Having Me Teach This?\n\n\n\n\n\n\n\nQuanty things \\(\\leadsto\\) PhD in Political Economy\nPhD exam major: Political Philosophy\nPhD exam minor: International Relations\nPhD exam paper: “How to Do Things with Translations”\nGame-changing Research Fellowships at… (Nothing was the same -drake a. graham):\nSanta Fe Institute: dedicated to the multidisciplinary study of complex adaptive systems: physical, computational, biological, and social systems\n\n\n\n\n\n\n\n\n\n                                                \n\n\n\n\n\nFigure 1: Years spent questing in dungeons of academia\n\n\n\n\n\n\n\nCentre for the Study of the History of Political Thought, Queen Mary University of London (QMUL): New approaches to the history of political thought [Quentin Skinner, “Cambridge School”] have changed how we study ideas from the past and their relevance to contemporary politics. The focus of the Centre is to explore [ts]."
+    "text": "Why Is Georgetown Having Me Teach This?\n\n\n\n\n\n\n\nQuanty things \\(\\leadsto\\) PhD in Political Economy\nPhD exam major: Political Philosophy\nPhD exam minor: International Relations\nPhD exam paper: “How to Do Things with Translations”\nGame-changing Research Fellowships at… (Nothing was the same -drake):\nSanta Fe Institute: dedicated to the multidisciplinary study of complex adaptive systems: physical, computational, biological, and social systems\n\n\n\n\n\n\n\n\n\n                                                \n\n\n\n\n\nFigure 1: Years spent questing in dungeons of academia\n\n\n\n\n\n\n\nCentre for the Study of the History of Political Thought, Queen Mary University of London (QMUL): New approaches to the history of political thought [Quentin Skinner, “Cambridge School”] have changed how we study ideas from the past and their relevance to contemporary politics. The focus of the Centre is to explore [ts]."
   },
   {
     "objectID": "w01/slides.html#dissertation-nlp-x-history",
     "href": "w01/slides.html#dissertation-nlp-x-history",
-    "title": "Week 1: From a Science of Particles to a Science of People",
+    "title": "Week 1: Science from Particles to People",
     "section": "Dissertation (NLP x History)",
     "text": "Dissertation (NLP x History)\n“Our Word is Our Weapon”: Text-Analyzing Wars of Ideas from the French Revolution to the First Intifada"
   },
   {
     "objectID": "w01/slides.html#the-ir-part-wars-of-ideas-i-cold-war",
     "href": "w01/slides.html#the-ir-part-wars-of-ideas-i-cold-war",
-    "title": "Week 1: From a Science of Particles to a Science of People",
+    "title": "Week 1: Science from Particles to People",
     "section": "(The IR Part) Wars of Ideas I: Cold War",
     "text": "(The IR Part) Wars of Ideas I: Cold War\n\nCold War arms shipments (SIPRI) vs. propaganda (Печать СССР): here, to 🇪🇹"
   },
   {
     "objectID": "w01/slides.html#the-middle-east-part-wars-of-ideas-ii-first-intifada",
     "href": "w01/slides.html#the-middle-east-part-wars-of-ideas-ii-first-intifada",
-    "title": "Week 1: From a Science of Particles to a Science of People",
+    "title": "Week 1: Science from Particles to People",
     "section": "(The Middle East Part) Wars of Ideas II: First Intifada",
     "text": "(The Middle East Part) Wars of Ideas II: First Intifada"
   },
   {
-    "objectID": "w01/slides.html#researching-things",
-    "href": "w01/slides.html#researching-things",
-    "title": "Week 1: From a Science of Particles to a Science of People",
-    "section": "Researching Things",
-    "text": "Researching Things\n\nMost cited paper: “Monopsony in Online Labor Markets” (Uses Double-Debiased ML for Causal Inference!)\nMost recent paper: “Operationalizing Freedom as Non-Domination in the Labor Market” (Cambridge U Press)\nRarely cited paper but often-thought-about obsession: “How To Do Things With Translations”\nRelated thing you can buy in a bookstore: [Editorial board for new translation of] Capital, Vol. 1 by Karl Marx (Princeton U Press)"
+    "objectID": "w01/slides.html#research-nowadays",
+    "href": "w01/slides.html#research-nowadays",
+    "title": "Week 1: Science from Particles to People",
+    "section": "Research Nowadays",
+    "text": "Research Nowadays\n\nMost cited paper: “Monopsony in Online Labor Markets” (Uses Double-Debiased ML for Causal Inference!)\nMost recent paper: “Operationalizing Freedom as Non-Domination in the Labor Market” (Cambridge U Press)\nRarely cited paper but often-thought-about obsession: “How To Do Things With Translations”\nRelated thing you can buy in a bookstore: [Editorial board for new translation of] Capital, Vol. 1 by Karl Marx (Princeton U Press)"
   },
   {
     "objectID": "w01/slides.html#coarse-graining-units-of-observation",
     "href": "w01/slides.html#coarse-graining-units-of-observation",
-    "title": "Week 1: From a Science of Particles to a Science of People",
+    "title": "Week 1: Science from Particles to People",
     "section": "Coarse-Graining Units of Observation",
-    "text": "Coarse-Graining Units of Observation\n\n\n\nField\nExample Unit of Observation\n\n\n\n\nPhysics\nParticle\n[Particle = Fine-Graining of Molecules]\n\n\nChemistry\nMolecule = \\(\\cup\\)(Particles)\n[Molecule = Coarse-Graining of Particles]\n\n\nBiology\nCell = \\(\\cup\\)(Molecules)\n\n\nNeuro/Cognitive Science\nBrain = \\(\\cup\\)(Cells)\n\n\nHuman Physiology\nBody = Brain \\(\\cup\\) Other Organs\n\n\n🧐 something happens here… 🤔\n\n\nAnthropology\nHuman-Relational System (e.g., Kinship) = \\(\\cup\\)(Brains) \\(\\times\\) Natural Environment\n\n\nEconomics\nEconomy = Specific relational system of exchange w.r.t. scarce resources\n\n\nPolitical Economy\nEconomy-Context = Economic Exchange \\(\\cap\\) Relational Power\n\n\nSociology\nSociety = \\(\\cup\\)(Relational Systems: Kinship, Friendship, Authority, Power, Violence)\n\n\nHistory\nLongue-Durée = Evolution of Societies over Time and Space"
+    "text": "Coarse-Graining Units of Observation\n\n\n\nField\nExample Unit of Observation\n\n\n\n\nPhysics\nParticle\n[Particle = Fine-Graining of Molecules]\n\n\nChemistry\nMolecule = \\(\\cup\\)(Particles)\n[Molecule = Coarse-Graining of Particles]\n\n\nBiology\nCell = \\(\\cup\\)(Molecules)\n\n\nNeuro/Cog Sci\nBrain = \\(\\cup\\)(Cells)\n\n\nHuman Physiology\nBody = Brain \\(\\cup\\) Other Organs\n\n\n🧐 something happens here… 🤔\n\n\nAnthropology\nHuman-Relational System (e.g., Kinship) = \\(\\cup\\)(Brains) \\(\\times\\) Natural Environment\n\n\nEconomics\nEconomy = Specific relational system of exchange w.r.t. scarce resources\n\n\nPolitical Economy\nEconomy-Context = Economic Exchange \\(\\cap\\) Relational Power\n\n\nSociology\nSociety = \\(\\cup\\)(Relational Systems: Kinship, Friendship, Authority, Power, Violence)\n\n\nHistory\nLongue-Durée = Evolution of Societies over Time and Space"
+  },
+  {
+    "objectID": "w01/slides.html#homo-sapienshomo-arbitratushomo-mischievous",
+    "href": "w01/slides.html#homo-sapienshomo-arbitratushomo-mischievous",
+    "title": "Week 1: Science from Particles to People",
+    "section": "Homo sapiens/Homo arbitratus/Homo mischievous",
+    "text": "Homo sapiens/Homo arbitratus/Homo mischievous\n\nLatin sapiens has to do with being “discerning” or “wise”\n\n\n\n\n\n\n\n\nBut… technically nothing stops us from choosing to be “unwise” whenever we’d like… bc free will\n\\(\\Rightarrow\\) For this class, think of humans as Homo arbitratus: Latin arbitratus has to do with choosing what to do, after we’ve sapiently “discerned”/thought about it"
+  },
+  {
+    "objectID": "w01/slides.html#laws-of-physics-vs.-laws-of-social-science",
+    "href": "w01/slides.html#laws-of-physics-vs.-laws-of-social-science",
+    "title": "Week 1: Science from Particles to People",
+    "section": "Laws of Physics vs. “Laws” of Social Science",
+    "text": "Laws of Physics vs. “Laws” of Social Science\n\nIf we tell an inanimate object that we’ve discovered a law saying that it will accelerate towards the Earth at \\(9.8~\\textrm{m}/\\textrm{s}^2\\)\n\n…It will likely still accelerate towards the Earth at \\(9.8~\\textrm{m}/\\textrm{s}^2\\)\n\nIf we tell a human that we’ve discovered a law saying that they will quack like a duck at 7:30pm every Wednesday\n\n…They can utilize their free will to violate this “law”"
+  },
+  {
+    "objectID": "w01/slides.html#strangely-relevant-corollary-from-computer-science-the-halting-problem",
+    "href": "w01/slides.html#strangely-relevant-corollary-from-computer-science-the-halting-problem",
+    "title": "Week 1: Science from Particles to People",
+    "section": "Strangely-Relevant Corollary from Computer Science: The Halting Problem",
+    "text": "Strangely-Relevant Corollary from Computer Science: The Halting Problem\n\nKurt Gödel \\(\\leftrightarrow\\) Alan Turing: Entscheidungsproblem\nTheorem: It is not possible to write a computer program \\(P(x)\\) that detects whether or not a computer program \\(x\\) will eventually halt (as opposed to, e.g., looping forever)\nProof by Contradiction: Assume \\(P(x)\\) is possible to write. Run it on mischevious_program.py. Infinite contradiction loop.\n\n\n\n\n\nhalting_problem_solver.py\n\ndef will_it_halt(program, input):\n  # Put code you think will work here\n  # Return True if program will halt, False otherwise\n\n\n\nmischievous_program.py\n\ndef my_mischievous_function(input):\n  if will_it_halt(my_mischevious_function, input):\n    while True: pass # Infinite loop\n  else:\n    return # Halt\n\n\n\n\n\nInput→↓Program\n0\n1\n2\n\\(\\cdots\\)\n\n\n\n\n0\nHalt\nLoop\nLoop\n\\(\\cdots\\)\n\n\n1\nLoop\nLoop\nHalt\n\\(\\cdots\\)\n\n\n2\nLoop\nLoop\nLoop\n\\(\\cdots\\)\n\n\n\\(\\vdots\\)\n\\(\\vdots\\)\n\\(\\vdots\\)\n\\(\\vdots\\)\n\\(\\mathbf{\\ddots}\\)\n\n\n\nLoop\nHalt\nHalt\n\\(\\mathbf{\\cdots}\\)"
+  },
+  {
+    "objectID": "w01/slides.html#the-takeaway-humility-and-bayesian-probability",
+    "href": "w01/slides.html#the-takeaway-humility-and-bayesian-probability",
+    "title": "Week 1: Science from Particles to People",
+    "section": "The Takeaway: Humility and (Bayesian) Probability!",
+    "text": "The Takeaway: Humility and (Bayesian) Probability!\n\nSocial science, with science used in the same sense as in physics, may be a quixotic endeavor\nInstead, we’ll do social-science, where we use data to…\n Infer tendencies: \\(X\\) tends to cause \\(Y\\)\n Construct models that we can update with new evidence: Bayes’ rule!"
   },
   {
     "objectID": "w01/slides.html#particularly-fun-non-standard-examples",
     "href": "w01/slides.html#particularly-fun-non-standard-examples",
-    "title": "Week 1: From a Science of Particles to a Science of People",
+    "title": "Week 1: Science from Particles to People",
     "section": "Particularly Fun Non-“Standard” Examples",
     "text": "Particularly Fun Non-“Standard” Examples\n\nDeDeo, French Revolution\nGrimmer, Mirrors for Sultans and Princes"
   },
   {
     "objectID": "w01/slides.html#disclaimer-unfortunate-side-effects-of-engaging-seriously-with-causality",
     "href": "w01/slides.html#disclaimer-unfortunate-side-effects-of-engaging-seriously-with-causality",
-    "title": "Week 1: From a Science of Particles to a Science of People",
+    "title": "Week 1: Science from Particles to People",
     "section": "Disclaimer: Unfortunate Side Effects of Engaging Seriously with Causality",
-    "text": "Disclaimer: Unfortunate Side Effects of Engaging Seriously with Causality\n\n\n You’ll no longer be able to read scientific writing without striking this expression (involuntarily):\n\n Scientific talks will begin to sound like the following:"
+    "text": "Disclaimer: Unfortunate Side Effects of Engaging Seriously with Causality\n\n\n You’ll no longer be able to read “scientific” writing without striking this expression (involuntarily):\n\n “Scientific” talks will begin to sound like the following:"
   },
   {
     "objectID": "w01/slides.html#data-generating-processes-dgps",
     "href": "w01/slides.html#data-generating-processes-dgps",
-    "title": "Week 1: From a Science of Particles to a Science of People",
+    "title": "Week 1: Science from Particles to People",
     "section": "Data-Generating Processes (DGPs)",
     "text": "Data-Generating Processes (DGPs)\n\nYou’ve already seen this in DSAN 5100!\n«Assume \\(X\\) is drawn i.i.d. from a Normal distribution with mean \\(\\mu\\) and variance \\(\\sigma^2\\)» characterizes the DGP of \\(X\\)\nIn 5650 we zoom in on DGPs, rather than treating as black box or footnote to e.g. Law of Large Numbers.\nDeep dive into DGPs necessary for our goal of moving…\n\nFrom associational statements: “an increase of \\(X\\) by one unit is associated with an increase of \\(Y\\) by \\(\\beta\\) units”\nTo causal statements: “increasing \\(X\\) by one unit causes \\(Y\\) to increase by \\(\\beta\\) units”."
   },
   {
     "objectID": "w01/slides.html#probability",
     "href": "w01/slides.html#probability",
-    "title": "Week 1: From a Science of Particles to a Science of People",
+    "title": "Week 1: Science from Particles to People",
     "section": "Probability++",
     "text": "Probability++\n\nTools from probability and statistics (RVs, CDFs, Conditional Probability) necessary but not sufficient for causal inference\nExample: Say we use DSAN 5100 tools to discover:\n\nProbability that event \\(E_1\\) occurs is \\(\\Pr(E_1) = 0.5\\)\nProbability that \\(E_1\\) occurs conditional on another event \\(E_0\\) occurring is \\(\\Pr(E_1 \\mid E_0) = 0.75\\)\n\nUnfortunately, we still cannot infer that the occurrence of \\(E_0\\) causes an increase in the likelihood of \\(E_1\\) occurring."
   },
   {
     "objectID": "w01/slides.html#beyond-conditional-probability",
     "href": "w01/slides.html#beyond-conditional-probability",
-    "title": "Week 1: From a Science of Particles to a Science of People",
+    "title": "Week 1: Science from Particles to People",
     "section": "Beyond Conditional Probability",
     "text": "Beyond Conditional Probability\n\nThis issue (that conditional probabilities could not be interpreted causally) at first represented a kind of dead end for scientists interested in employing probability theory to study causal relationships…\nIn recent decades, researchers have built up what amounts to an additional “layer” of modeling tools which augment the existing machinery of probability theory to address causality head-on! (Pearl 2000)"
   },
   {
     "objectID": "w01/slides.html#preview-do-calculus",
     "href": "w01/slides.html#preview-do-calculus",
-    "title": "Week 1: From a Science of Particles to a Science of People",
+    "title": "Week 1: Science from Particles to People",
     "section": "Preview: do-Calculus",
     "text": "Preview: do-Calculus\n\nExtends core operations/definitions of probability to incorporate causality, via a \\(\\textsf{do}(\\cdot)\\) operator for RVs\n\\(\\textsf{do}(X = 5)\\) is a “special” event, representing intervention in DGP to force \\(X \\leftarrow 5\\)\n“Special” in the sense that \\(\\Pr(\\textsf{do}(X = 5))\\) not well-defined, only \\(\\Pr(Y = 6 \\mid \\textsf{do}(X = 5))\\)\nTo emphasize special-ness, we may use notation like:\n\\[\n\\Pr(Y = 6 \\mid \\textsf{do}(X = 5)) \\equiv \\textstyle \\Pr_{\\textsf{do}(X = 5)}(Y = 6)\n\\]\nto avoid confusion with “normal” events"
   },
   {
     "objectID": "w01/slides.html#causal-world-unlocked-with-great-power-comes-great-responsibility",
     "href": "w01/slides.html#causal-world-unlocked-with-great-power-comes-great-responsibility",
-    "title": "Week 1: From a Science of Particles to a Science of People",
+    "title": "Week 1: Science from Particles to People",
     "section": "Causal World Unlocked 😎 (With Great Power Comes Great Responsibility…)",
     "text": "Causal World Unlocked 😎 (With Great Power Comes Great Responsibility…)\n\nWith \\(\\textsf{do}(\\cdot)\\) in hand… (Alongside DGP satisfying a set of underlying axioms, slightly more strict than axioms of probability theory)\nWe can make causal inferences from similar pair of facts! If:\n\nProbability that event \\(E_1\\) occurs is \\(\\Pr(E_1) = 0.5\\),\nThe probability that \\(E_1\\) occurs conditional on the event \\(\\textsf{do}(E_0)\\) occurring is \\(\\Pr(E_1 \\mid \\textsf{do}(E_0)) = 0.75\\),\n\nNow we can actually infer that the occurrence of \\(E_0\\) caused an increase in the likelihood of \\(E_1\\) occurring!"
   },
   {
     "objectID": "w01/slides.html#meta-logistics-spaced-repetition",
     "href": "w01/slides.html#meta-logistics-spaced-repetition",
-    "title": "Week 1: From a Science of Particles to a Science of People",
+    "title": "Week 1: Science from Particles to People",
     "section": "Meta-Logistics: Spaced Repetition",
     "text": "Meta-Logistics: Spaced Repetition"
   },
   {
     "objectID": "w01/slides.html#meta-logistics-maria-montessori-and-your-final-projects",
     "href": "w01/slides.html#meta-logistics-maria-montessori-and-your-final-projects",
-    "title": "Week 1: From a Science of Particles to a Science of People",
+    "title": "Week 1: Science from Particles to People",
     "section": "Meta-Logistics: Maria Montessori and Your Final Projects",
     "text": "Meta-Logistics: Maria Montessori and Your Final Projects"
   },
   {
     "objectID": "w01/slides.html#your-final-projects",
     "href": "w01/slides.html#your-final-projects",
-    "title": "Week 1: From a Science of Particles to a Science of People",
+    "title": "Week 1: Science from Particles to People",
     "section": "Your Final Projects",
     "text": "Your Final Projects"
   },
   {
     "objectID": "w01/slides.html#jupyterhub",
     "href": "w01/slides.html#jupyterhub",
-    "title": "Week 1: From a Science of Particles to a Science of People",
+    "title": "Week 1: Science from Particles to People",
     "section": "JupyterHub",
     "text": "JupyterHub\nhttps://guhub.io"
   },
   {
     "objectID": "w01/slides.html#assignments-midterm",
     "href": "w01/slides.html#assignments-midterm",
-    "title": "Week 1: From a Science of Particles to a Science of People",
+    "title": "Week 1: Science from Particles to People",
     "section": "Assignments / Midterm",
     "text": "Assignments / Midterm"
   },
   {
     "objectID": "w01/slides.html#references",
     "href": "w01/slides.html#references",
-    "title": "Week 1: From a Science of Particles to a Science of People",
+    "title": "Week 1: Science from Particles to People",
     "section": "References",
     "text": "References\n\n\nPearl, Judea. 2000. Causality: Models, Reasoning, and Inference. Cambridge University Press."
   },

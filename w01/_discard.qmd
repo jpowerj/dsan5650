@@ -1,0 +1,25 @@
+
+Halting problem diagonalization:
+
+$$ 
+  \begin{array}{|c|c|c|c|c|c|c|}\hline
+  \mathbb{R} & & & & & & \Leftrightarrow \mathbb{N} \\ \hline
+  \color{orange}{3} & . & 1 & 4 & 1 & \cdots & \Leftrightarrow 1 \\\hline
+  4 & . & \color{orange}{9} & 9 & 9 & \cdots & \Leftrightarrow 2 \\\hline
+  0 & . & 1 & \color{orange}{2} & 3 & \cdots &\Leftrightarrow 3 \\\hline
+  1 & . & 2 & 3 & \color{orange}{4} & \cdots & \Leftrightarrow 4 \\\hline
+ \vdots & \vdots & \vdots & \vdots & \vdots & \ddots & \vdots \\\hline
+  \end{array}
+$$
+
+---
+
+
+| Input&rarr;<br>&darr;Program | 0 | 1 | 2 | $\cdots$ |
+| - | - | - | - | - |
+| **0** | Halt | Loop | Loop | $\cdots$ |
+| **1** |
+| **2** |
+| $\vdots$ | 
+
+---
