@@ -27,7 +27,7 @@ The course meets on **Wednesdays from 6:30-9pm online via [Zoom](https://maps.ap
 ## Course Staff
 
 * Prof. Jeff Jacobs, [`jj1088@georgetown.edu`](mailto:jj1088@georgetown.edu)
-  * Office hours (Click to schedule): [Tuesdays, 3:30-6:30pm](https://jjacobs.me/meet)
+  * Office hours (Click to schedule): [Tuesdays, 3:30-6pm](https://jjacobs.me/meet)
 * TA Courtney Green, [`crg123@georgetown.edu`](mailto:crg123@georgetown.edu)
   * Office hours by appointment
 * TA Wendy Hu, [`lh1078@georgetown.edu`](mailto:lh1078@georgetown.edu)
@@ -195,22 +195,23 @@ The following is a rough map of what we will work through together throughout th
 
 ## Assignments and Grading
 
-The main assignment in the course will be your **policy whitepaper**, submitted at the end of the semester. However, there will also be a midterm exam and a series of assignments which exist to let you explore each of the modules of the course, in turn.
+The main assignment in the course will be your **final project**, submitted at the end of the semester. However, there will also be a (virtual) in-class midterm exam and a series of assignments which exist to let you explore each of the modules of the course, in turn.
 
 | Assignment | Due Date | % of Grade |
 | - | - | - |
-| [HW1: {{< var hw1.title >}}]({{< var hw1.url >}}) | {{< var hw1.date-full >}} | 10% |
-| [HW2: {{< var hw2.title >}}]({{< var hw2.url >}}) | {{< var hw2.date-full >}} | 10% |
-| [HW3: {{< var hw3.title >}}]({{< var hw3.url >}}) | {{< var hw3.date-full >}} | 10% |
-| {{< var midterm.title >}} | {{< var midterm.date-full >}} | 30% |
-| [HW4: {{< var hw4.title >}}]({{< var hw4.url >}}) | {{< var hw4.date-full >}} | 10% |
+| [HW1: {{< var hw1.title >}}]({{< var hw1.url >}}) | {{< var hw1.date-full >}} | 9% |
+| [HW2: {{< var hw2.title >}}]({{< var hw2.url >}}) | {{< var hw2.date-full >}} | 9% |
+| [HW3: {{< var hw3.title >}}]({{< var hw3.url >}}) | {{< var hw3.date-full >}} | 9% |
+| {{< var midterm.title >}} | {{< var midterm.date-full >}} | 25% |
+| [HW4: {{< var hw4.title >}}]({{< var hw4.url >}}) | {{< var hw4.date-full >}} | 9% |
+| [HW5: {{< var hw5.title >}}]({{< var hw5.url >}}) | {{< var hw5.date-full >}} | 9% |
 | [Final Project](./final.qmd) | {{< var final.date-full >}} | 30% |
 
 : {tbl-colwidths="[55,25,20]"}
 
 ### Homework Lateness Policy
 
-After the due date, for each **homework** assignment, you will have a grace period of 24 hours to submit the assignment without a lateness penalty. After this 24-hour grace period, late penalties will be applied based on the following scale (unless you obtain an excused lateness from one of the instructional staff!):
+After the due date, for each assignment besides the midterm, you will have a grace period of 24 hours to submit the assignment without a lateness penalty. After this 24-hour grace period, late penalties will be applied based on the following scale (unless you obtain an excused lateness from one of the instructional staff!):
 
 * 0 to 24 hours late: no penalty
 * 24 to 30 hours late: 2.5% penalty

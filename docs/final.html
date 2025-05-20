@@ -6,8 +6,8 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
-<meta name="author" content="DSAN 5450 Course Staff">
-<meta name="dcterms.date" content="2024-03-24">
+<meta name="author" content="DSAN 5650 Course Staff">
+<meta name="dcterms.date" content="2025-05-20">
 
 <title>Final Project Specifications – DSAN 5650</title>
 <style>
@@ -92,35 +92,6 @@ div.csl-indent {
 }</script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js" integrity="sha512-v2CJ7UaYy4JwqLDIrZUI/4hqeoQieOmAZNXBeQyjo21dadnwR+8ZaIJVT8EE2iyI61OV8e6M8PP2/4hpQINQ/g==" crossorigin="anonymous" referrerpolicy="no-referrer"></script><link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/gh/dreampulse/computer-modern-web-font@master/fonts.css"><script src="./sidebar.js"></script>
 
-  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
-  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
-
-<script type="text/javascript">
-const typesetMath = (el) => {
-  if (window.MathJax) {
-    // MathJax Typeset
-    window.MathJax.typeset([el]);
-  } else if (window.katex) {
-    // KaTeX Render
-    var mathElements = el.getElementsByClassName("math");
-    var macros = [];
-    for (var i = 0; i < mathElements.length; i++) {
-      var texText = mathElements[i].firstChild;
-      if (mathElements[i].tagName == "SPAN") {
-        window.katex.render(texText.data, mathElements[i], {
-          displayMode: mathElements[i].classList.contains('display'),
-          throwOnError: false,
-          macros: macros,
-          fleqn: false
-        });
-      }
-    }
-  }
-}
-window.Quarto = {
-  typesetMath
-};
-</script>
 
 <link rel="stylesheet" href="./dsan-globals/jjstyles.css">
 </head>
@@ -138,18 +109,6 @@ window.Quarto = {
    
   <ul>
   <li><a href="#overview" id="toc-overview" class="nav-link active" data-scroll-target="#overview">Overview</a></li>
-  <li><a href="#timeline" id="toc-timeline" class="nav-link" data-scroll-target="#timeline">Timeline</a></li>
-  <li><a href="#submission-format" id="toc-submission-format" class="nav-link" data-scroll-target="#submission-format">Submission Format</a></li>
-  <li><a href="#the-proposal-stage" id="toc-the-proposal-stage" class="nav-link" data-scroll-target="#the-proposal-stage">The Proposal Stage</a></li>
-  <li><a href="#the-implementation-stage" id="toc-the-implementation-stage" class="nav-link" data-scroll-target="#the-implementation-stage">The Implementation Stage</a></li>
-  <li><a href="#example-project-ideas" id="toc-example-project-ideas" class="nav-link" data-scroll-target="#example-project-ideas">Example Project Ideas</a>
-  <ul class="collapse">
-  <li><a href="#high-level-data-science-questions" id="toc-high-level-data-science-questions" class="nav-link" data-scroll-target="#high-level-data-science-questions">High-Level Data Science Questions</a></li>
-  <li><a href="#fairness" id="toc-fairness" class="nav-link" data-scroll-target="#fairness">Fairness</a></li>
-  <li><a href="#causality" id="toc-causality" class="nav-link" data-scroll-target="#causality">Causality</a></li>
-  <li><a href="#privacy-and-data-protection-policies" id="toc-privacy-and-data-protection-policies" class="nav-link" data-scroll-target="#privacy-and-data-protection-policies">Privacy and Data Protection Policies</a></li>
-  <li><a href="#policy-evaluation-recommendation" id="toc-policy-evaluation-recommendation" class="nav-link" data-scroll-target="#policy-evaluation-recommendation">Policy Evaluation / Recommendation</a></li>
-  </ul></li>
   <li><a href="#references" id="toc-references" class="nav-link" data-scroll-target="#references">References</a></li>
   </ul>
 <div class="toc-actions"><ul><li><a href="https://github.com/jpowerj/dsan5650/blob/main/final.qmd" target="_blank" class="toc-action"><i class="bi bi-github"></i>View source</a></li></ul></div></nav>
@@ -160,7 +119,7 @@ window.Quarto = {
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
 <h1 class="title">Final Project Specifications</h1>
-<p class="subtitle lead"><em>DSAN 5450: Data Ethics and Policy</em></p>
+<p class="subtitle lead"><em>DSAN 5650: Causal Inference for Computational Social Science</em></p>
 </div>
 
 
@@ -170,14 +129,14 @@ window.Quarto = {
     <div>
     <div class="quarto-title-meta-heading">Author</div>
     <div class="quarto-title-meta-contents">
-             <p>DSAN 5450 Course Staff </p>
+             <p>DSAN 5650 Course Staff </p>
           </div>
   </div>
     
     <div>
     <div class="quarto-title-meta-heading">Published</div>
     <div class="quarto-title-meta-contents">
-      <p class="date">March 24, 2024</p>
+      <p class="date">May 20, 2025</p>
     </div>
   </div>
   
@@ -192,196 +151,6 @@ window.Quarto = {
 <section id="overview" class="level2">
 <h2 class="anchored" data-anchor-id="overview">Overview</h2>
 <p>Our goal is to make the final project as open-ended as possible, to give you the space to explore any particular topic that may have piqued your interest throughout the semester! At the same time, we hope to provide you with guidance and mentorship so that you don’t feel lost as to how to start, how to proceed, and/or what to submit for the final deliverable!<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a></p>
-<p>So, given this, we have randomly assigned each of you to a <strong>mentor</strong>, who will help you select a topic and pursue it in such a way that it fits within the scope of the remaining weeks in the semester. You will receive an email letting you know who your mentor is, by the end of the weekend (Sunday, March 24th). The mentor assignments can always be re-arranged, however! For example, if you decide to pursue a project that another mentor has particular experience with, we can re-assign you to that mentor!</p>
-<div class="callout callout-style-default callout-note callout-titled" title="The Goal: Research $\rightarrow$ Policy Recommendation">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-The Goal: Research <span class="math inline">\(\rightarrow\)</span> Policy Recommendation
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p>Although the structure can be mostly similar to projects you’ve done for e.g.&nbsp;DSAN 5000 and 5100, the new element for the DSAN 5450 project is that we want you to develop and argue for a particular <strong>policy recommendation</strong> that you’d make, for example if you were asked to speak in Congress as a data science expert!</p>
-<p>This means, for example, that your deliverable can have the following structure in terms of section headings, which should be familiar from DSAN 5000 and 5100 except for the final section:</p>
-<ul>
-<li>Introduction</li>
-<li>Literature Review</li>
-<li>Data and Methods</li>
-<li>Results</li>
-<li><strong>Policy Recommendation</strong></li>
-</ul>
-<p>The policy recommendation portion will look different depending on the particular topic you decide to explore, but the idea is that it should be somewhat like a <a href="https://writingcenter.gmu.edu/writing-resources/different-genres/white-papers" target="_blank"><strong>policy whitepaper</strong></a>, where you would move away from the details of your study and towards its <strong>implications</strong> for a (real or imagined) policymaker who is hoping for information about a given topic.</p>
-<p>One recent example that you can look at as a rough template would be Chris Callison-Burch’s <a href="https://docs.house.gov/meetings/JU/JU03/20230517/115951/HHRG-118-JU03-Wstate-Callison-BurchC-20230517.pdf" target="_blank">Congressional testimony</a>, given last year as part of a Congressional hearing around issues that LLMs might present for intellectual property and copyright law. Prof.&nbsp;Callison-Burch discusses the process in this <a href="https://on.soundcloud.com/w2yVgLM1ooieUs1w8" target="_blank">podcast episode</a>, so you can listen to that for details about the approach he took towards the invitation from Congress, but the tldr is: he needed to communicate <strong>just enough detail</strong> to allow the policymakers to understand what he was talking about, but not <strong>so much detail</strong> that they would need to have a PhD in Computer Science to understand his recommendations.</p>
-</div>
-</div>
-</section>
-<section id="timeline" class="level2">
-<h2 class="anchored" data-anchor-id="timeline">Timeline</h2>
-<p>These are rough estimates, but the project will go most smoothly if you are able to hold yourself to the following schedule:</p>
-<ul>
-<li><strong>Proposal</strong>: Approved by mentor by <strong>Wednesday, April 3rd</strong></li>
-<li><strong>Final Draft</strong>: Sent to mentor for review by <strong>Wednesday, April 24th</strong></li>
-<li><strong>Submission</strong>: Completed project submitted to course staff by <strong>Friday, May 10th, 5:59pm EDT</strong></li>
-</ul>
-</section>
-<section id="submission-format" class="level2">
-<h2 class="anchored" data-anchor-id="submission-format">Submission Format</h2>
-<p>There is now an <a href="https://classroom.google.com/c/NjU0OTA4OTk2MTQ3/a/NjcyMDcxNjYxODIz/details" target="_blank">assignment page</a> for the final project (within the Google Classroom site for the course), where you will upload your final submission for grading. The following is a rough sketch of what we’re looking for in terms of the structure of your submission:</p>
-<ul>
-<li>HTML format, as a rendered <a href="https://quarto.org/docs/manuscripts/" target="_blank">Quarto manuscript</a>, would be optimal, but can be PDF if there are issues with Quarto. If PDF, LaTeX would be preferred, but also can be a Word doc or Google doc</li>
-<li>If PDF format, 8-20 pages double-spaced, and then the Quarto HTML length can be the equivalent of this (for example, you can print-preview the Quarto doc to see how many pages it would print as)</li>
-<li>It should have an abstract, a 250-500 word summary at the top, of (a) what you did and (b) the policy recommendation you’re making</li>
-<li>Citations should be set up so that they’re handled automatically, by <a href="https://quarto.org/docs/authoring/footnotes-and-citations.html" target="_blank">Quarto’s citation manager</a> for example, or by <a href="https://www.overleaf.com/learn/latex/Bibliography_management_with_bibtex" target="_blank">Bibtex</a> if you use LaTeX to generate a PDF, or by Word/GDocs otherwise.</li>
-</ul>
-</section>
-<section id="the-proposal-stage" class="level2">
-<h2 class="anchored" data-anchor-id="the-proposal-stage">The Proposal Stage</h2>
-<p>Our goal here is for you to have enough time to <strong>think through the details in advance</strong>, to determine the <strong>scope</strong>, of the project, before you actually start working on it. This is often (like, almost always) the most difficult part of any project: it’s not a matter of whether you’re <strong>capable</strong> of doing the project at all—you’re all capable of doing it!—but how <strong>feasible</strong> it is to do it within the given timeframe.</p>
-<p>So, this is exactly why there’s a course staff here to help you! We’ve all wrestled with this issue of “scope creep” throughout our own previous projects, which means that our goal in providing feedback on your proposals will be solely to help you <strong>brainstorm</strong> and then <strong>focus in</strong> on what you can accomplish by the beginning of May. Thus, to reiterate, you should <strong>not</strong> view the proposal feedback as some sort of judgement of your innate ability or anything like that! And, to this end, it will <strong>not be graded</strong>, which we hope will further cement the idea that it is not a judgement process, but a working-together process to arrive at a <strong>plan</strong> for getting the project done.</p>
-<p>To conclude, concretely: you’ll be “done” with the proposal stage once you and your mentor are on the same page in terms of</p>
-<ol type="a">
-<li>What topic you’re going to pursue,</li>
-<li>What your final deliverable will look like, and</li>
-<li>A set of <strong>milestones</strong> you will use from now until the beginning of May to track your progress.</li>
-</ol>
-<p>At that point, you’ll be ready for the <strong>implementation stage</strong>, described in the next section.</p>
-</section>
-<section id="the-implementation-stage" class="level2">
-<h2 class="anchored" data-anchor-id="the-implementation-stage">The Implementation Stage</h2>
-<p>This stage is more difficult to describe in advance, since it depends on the specific topic you’ll pursue. But, the main goal is for you to have a <strong>draft version</strong> of the project ready by <strong>Wednesday, April 24th</strong>. We choose this date specifically because it corresponds to the final lecture in the course, so that as part of that lecture Jeff can make sure to touch on any remaining issues that might still need to be tackled in order to move from the <strong>draft</strong> to the <strong>submission</strong> on the last day of the semester.</p>
-<p>However, given this explanation, hopefully it makes sense that <strong>the earlier you have a draft, the better</strong>, since an earlier draft means that Jeff can also use the lectures <strong>before</strong> the final lecture to cover any topics which might be relevant to your projects! In other words: the whole reason why the last few lectures of the course are set aside as “Selected Topics” is so that these lectures can adapt to cover whatever might be relevant and important for the range of topics yall choose for your final projects! So, please take advantage of this aspect of the class if you can.</p>
-</section>
-<section id="example-project-ideas" class="level2">
-<h2 class="anchored" data-anchor-id="example-project-ideas">Example Project Ideas</h2>
-<p>Now that you have all of the above info, we wanted to make it clear that <strong>it’s okay if you don’t have any idea of what topic you’d like to pursue</strong> for the project! Some people come into the course with a very particular interest, whereas others come in for the sake of learning a broad overview of a bunch of topics, and we’re here to accommodate both cases 😁 So, if you don’t have a preexisting idea of what you’d like to pursue, in this section we provide you with a few examples—one example per course topic—that you can choose as-is or modify to suit your interests.</p>
-<p>As you’ll quickly see if you start reading through the examples, there are tons and tons of details and tons and tons of variations/modifications that could be made, that I’m unable to state in detail without making this a 1000-page document 😜 so, just keep in mind that if anything at all pops into your head while reading through them, even if the thing that pops into your head doesn’t “match” the specific details of one of the projects here, that’s a good thing! You can take that and run with it, turning it from an idea into a full-blown project by talking through it with your mentor.</p>
-<section id="high-level-data-science-questions" class="level3">
-<h3 class="anchored" data-anchor-id="high-level-data-science-questions">High-Level Data Science Questions</h3>
-<section id="example-1-archive-of-missing-datasets" class="level4">
-<h4 class="anchored" data-anchor-id="example-1-archive-of-missing-datasets">Example 1: Archive of Missing Datasets</h4>
-<p>Here there are tons of possibilities for each “sub-topic” that we covered during the broad overview of data science issues given in Week 1 and Week 2. But, one that I think could be interesting and relevant to the policy-focused goal of the final project would be to pursue the idea of the <strong>Archive of Missing Datasets</strong>:</p>
-<p>You may have found, when working on your own projects or the DSAN 5000/5100 projects, that there are lots of datasets that you <em>assume</em> must exist somewhere, but you then find to your horror that they actually <strong>don’t exist</strong>, at least not in a form that would allow for a useful/informative data analysis.</p>
-<p>So, if you have experienced this, or if you haven’t but you’re interested in discovering what might be egregious/socially-important cases of missing datasets, your final project could revolve around <strong>recommending</strong> to policymakers that they <strong>invest in</strong> (as in, allocate resources towards in general, not just money!) the creation of a currently non-existent dataset.</p>
-<p>This is precisely what has motivated one of the biggest society-wide DSAN 5450-related developments in the US of recent years: in the aftermath of the sudden publicity that rampant police murder of black people across the country received because of cases like the murders of</p>
-<ul>
-<li><a href="https://blacklivesmatter.com/wp-content/uploads/2017/10/BLM_Trayvon_toolkit_english.pdf" target="_blank">Trayvon Martin</a> in Florida,</li>
-<li><a href="https://en.wikipedia.org/wiki/Killing_of_Freddie_Gray" target="_blank">Freddie Gray</a> in Baltimore, Maryland,</li>
-<li><a href="https://en.wikipedia.org/wiki/Killing_of_Michael_Brown" target="_blank">Michael Brown</a> in Ferguson, Missouri,</li>
-<li><a href="https://en.wikipedia.org/wiki/Killing_of_Eric_Garner" target="_blank">Eric Garner</a> in Staten Island, New York,</li>
-<li><a href="https://en.wikipedia.org/wiki/George_Floyd" target="_blank">George Floyd</a> in Minneapolis, Minnesota, and</li>
-<li><a href="https://en.wikipedia.org/wiki/Killing_of_Philando_Castile" target="_blank">Philando Castile</a> in St.&nbsp;Paul, Minnesota,</li>
-</ul>
-<p>many people were shocked to learn that the US government doesn’t care enough to keep track of these killings in any systematic way, which led to data-journalistic endeavors like the Washington Post’s <a href="https://www.washingtonpost.com/graphics/investigations/police-shootings-database/" target="_blank">“Fatal Force”</a> police killings database.</p>
-<p>Once these endeavors were established, however, the next “phase” of policy debates on this issue have revolved around <strong>whether</strong> and/or <strong>how</strong> <strong>data</strong> on these types of <strong>socially-important</strong> phenomena should in fact be collected by publicly-funded government institutions, given that (in this case) the police officers doing the killings are themselves publicly-funded government employees.</p>
-<p>So, as an example final project on this issue of <strong>missing datasets</strong>, you could:</p>
-<ol type="1">
-<li>Identify another such <strong>socially-important</strong> phenomenon for which there is a dearth of available data that would be helpful for some social goal,</li>
-<li>Document the details around what data <strong>already exists</strong> regarding this phenomenon (descriptively), and why it is <strong>insufficient</strong> from a social perspective (normatively), and then</li>
-<li>Argue that the policymaking audience of your project <strong>should</strong> in fact allocate resources towards the collection of this data (note the shift from descriptive to normative here!): for example, you would need to argue for the <strong>feasibility</strong> of this collection—providing concrete details about precisely how it could be implemented, in a cost-effective manner, given some budget—as well as its <strong>effectiveness</strong> with respect to some explicitly-stated social goal (like, in the above example, the goal could simply be to reduce the frequency of police killings).</li>
-</ol>
-</section>
-<section id="example-2-operationalization" class="level4">
-<h4 class="anchored" data-anchor-id="example-2-operationalization">Example 2: Operationalization</h4>
-<p>In the Week 1 slides I included a brief discussion of <strong>operationalization</strong> in terms of a book by """Nobel Prize"""-winning economists<a href="#fn2" class="footnote-ref" id="fnref2" role="doc-noteref"><sup>2</sup></a> Joseph Stiglitz and Amartya Sen called <em>Mismeasuring our Lives: Why GDP Doesn’t Add Up</em> <span class="citation" data-cites="stiglitz_mismeasuring_2010">(<a href="#ref-stiglitz_mismeasuring_2010" role="doc-biblioref"><strong>stiglitz_mismeasuring_2010?</strong></a>)</span>. This example project outline is sort of a “variation” of Example 1, since basically what I would recommend if you’re interested in this topic would be very similar:</p>
-<p>Whereas the goal of the <strong>Archive of Missing Datasets</strong> is to point out how there is lots of socially-important information that is <strong>not measured at all</strong>, Stiglitz and Sen are pointing to equally-urgent and equally-deleterious (often way more urgent/deleterious!) cases where the information <strong>is</strong> measured, but where the <strong>way</strong> that it is measured is harmful with respect to the social goal which motivated the measurement in the first place.</p>
-<p>So, we can take the description of Example 1 above, and basically just replace “missing” with “badly measured”, to see how a project studying <strong>operationalization</strong> could work:</p>
-<ol type="1">
-<li>Identify a <strong>socially-important</strong> phenomenon for data does exist but is measured in a way that is relatively <strong>unhelpful/non-useful</strong> with respect to some social goal (that is, relative to another way of measuring it which could be mroe helpful/useful),</li>
-<li>Document the details around what data <strong>already exists</strong> regarding this phenomenon (descriptively), and <strong>why</strong> it is unhelpful for <strong>measuring</strong> the social phenomena of interest (normatively), and then</li>
-<li>Argue that the policymaking audience of your project <strong>should</strong> in fact allocate resources towards the <strong>better</strong> operationalization that you are proposing (note the shift from descriptive to normative here!): for example, you would need to argue for the <strong>feasibility</strong> of this new measure—providing concrete details about precisely how it could be implemented, in a cost-effective manner, given some budget—as well as its <strong>greater effectiveness</strong> than previous ways of measuring, with respect to some explicitly-stated social goal (like, in the earlier example, reducing the frequency of police killings).</li>
-</ol>
-<p>As you can maybe tell by now, the “boundary” between <strong>missing</strong> data and <strong>badly-measured</strong> data is sometimes fuzzy: for example, often data-policy debates will say that a certain dataset is <strong>missing</strong> as shorthand for something more like “it’s measured so badly that, for all intents and purposes it may as well be missing”.</p>
-<p>For example, technically (until 2019) the FBI used to issue what were called <a href="https://ucr.fbi.gov/crime-in-the-u.s" target="_blank">Uniform Crime Reports</a>, but these were based on a “voluntary-reporting” model, meaning that individual police departments could submit whatever data they wanted, and withhold whatever data they wanted, without explanation or documentation, so… from what I can tell, after 2019 they just gave up, since a voluntary-reporting dataset of crime certainly falls under the rubric of may-as-well-be-missing. But, alas, these reports are still used widely in various academic studies of crime, books, journalistic investigations, etc., so if that’s at all interesting to you, it could be studied for a final project that would treat it as a <strong>mixture</strong> of the <strong>missing data</strong> and <strong>badly-operationalized data</strong> issues.</p>
-</section>
-</section>
-<section id="fairness" class="level3">
-<h3 class="anchored" data-anchor-id="fairness">Fairness</h3>
-<p>As we discussed in <a href="https://jjacobs.me/dsan5450/w04/" target="_blank">Week 4</a> (specifically, I wrote it on the chalkboard and talked through it as an example, on the basis of stuff in those W04 slides), one of the most high-profile cases of algorithmic discrimination in the 21st century emerged out of the <a href="https://www.marcellodibello.com/algorithmicfairness/handout/ProPublica-Northpointe.html" target="_blank"><strong>ProPublica vs.&nbsp;Northpointe Scandal</strong></a>.</p>
-<p>The rough summary is that:</p>
-<ul>
-<li>Although ProPublica meticulously documented anti-black racial discrimination in Northpointe’s COMPAS algorithm in terms of the <strong>classification parity</strong> fairness measure,</li>
-<li>Northepointe then responded by meticulously documenting the <strong>absence</strong> of anti-black racial discrimination in COMPAS in terms of the <strong>predictive parity</strong> fairness measure</li>
-</ul>
-<p>So, since this is one of the most-often-analyzed datasets in the Fairness in AI literature, your final project could be to pursue this case in a more in-depth way than we were able to cover it in class. This would involve writing a policy paper with two main parts:</p>
-<ol type="1">
-<li><strong>Explaining</strong> the ProPublica-Northpointe controversy <strong>descriptively</strong>, by <strong>demonstrating</strong> how the data simultaneously violates classification parity fairness while satisfying predictive parity fairness. Specifically, this would mean:
-<ol type="1">
-<li>Explaining the two fairness definitions to an audience of policymakers and then</li>
-<li>Writing Python or R code which downloads the data and evluates it programmatically on these two different fairness criteria</li>
-</ol></li>
-<li><strong>Evaluating</strong> the ProPublic-Northpointe controversy <strong>normatively</strong>, by providing <strong>recommendations</strong> for policymakers in terms of how they <strong>ought to</strong> adjudicate this case. There are several ways you could approach this, but the first two example approaches that come to mind are:
-<ol type="1">
-<li>Arguing that one of these two fairness criteria better “aligns” with an <strong>ethical framework</strong> that you think the policymakers should adopt—for example, you could adopt utilitarianism as your ethical “axiom”, and then argue that one of these criteria is more appropriate for evaluating <strong>outcomes</strong> than the other, and therefore better suited to resolving the dispute in a utilitarian manner</li>
-<li>Arguing that <strong>neither</strong> of the two fairness criteria are sufficient for policymaking, and arguing that policymakers should instead use a framework like <strong><span class="math inline">\(\varepsilon\)</span>-based fairness</strong> or <strong>causal fairness</strong> to resolve the dispute.</li>
-</ol></li>
-</ol>
-</section>
-<section id="causality" class="level3">
-<h3 class="anchored" data-anchor-id="causality">Causality</h3>
-<p>An example project on this topic could pursue the type of approach that appeared on your Homework 2, in Part 3.3, which presented two different <strong>hypotheses</strong> regarding the causal mechanism by which women experience worse mental health outcomes. <strong>You don’t need to pursue this particular question, or use these particular variables in your causal model!</strong> But, I am copying some of the key parts of that problem here, along with explanations of how you could pursue this type of analysis in a more in-depth way for a final project.</p>
-<p>The homework problem presented a simplified version of a causal system studied using causal diagrams in Chapter 16 of <a href="https://www.google.com/books/edition/Methods_in_Social_Epidemiology/gdVsEMGVWdwC?hl=en&amp;gbpv=0" target="_blank">Kaufman and Oakes (2006)</a>: <a href="http://publicifsv.sund.ku.dk/~nk/epiF14/Glymour_DAGs.pdf" target="_blank">Glymour (2006)</a>, “Using Causal Diagrams to Understand Common Problems in Social Epidemiology”. The idea was to consider an imaginary debate (though one that happens between real people all the time, when taking about this issue!) between:</p>
-<ul>
-<li>Person <span class="math inline">\(i\)</span>, who hypothesizes that women have greater rates of depression because <strong>they are “‘biologically programmed’ to be depressed”</strong> (ibid., pg. 408), and</li>
-<li>Person <span class="math inline">\(j\)</span>, who hypothesizes that women have greater rates of depression because
-<ul>
-<li><ol type="a">
-<li>“People get depressed whenever they are sexually harassed” (ibid.), and</li>
-</ol></li>
-<li><ol start="2" type="a">
-<li>“Women are <strong>more frequently sexually harassed</strong> than men” (ibid.)</li>
-</ol></li>
-</ul></li>
-</ul>
-<p>It then took this debate and tried to “zero in” on the particular variables that came into play in the respective arguments:</p>
-<ul>
-<li><span class="math inline">\(A\)</span>: The <strong>gender</strong> of an individual (as before, conceptualized as their <strong>self-reported</strong> and/or socially-expressed gender), where <span class="math inline">\(A = 1\)</span> for self-reported females and <span class="math inline">\(A = 0\)</span> for those who do not self-report as female</li>
-<li><span class="math inline">\(B\)</span>: An indicator variable representing some <strong>biological</strong> property of the individual (in these debates, this would most commonly be e.g.&nbsp;<span class="math inline">\(B = 1\)</span> for the presence of at least one Y-chromosome and <span class="math inline">\(B = 0\)</span> otherwise)</li>
-<li><span class="math inline">\(H\)</span>: Whether or not someone experiences sexual harassment, where <span class="math inline">\(H = 1\)</span> represents that the individual has experienced such harassment and <span class="math inline">\(H = 0\)</span> represents that they have not experienced it</li>
-<li><span class="math inline">\(Y\)</span>: The “outcome” of whether or not someone has developed depression, where <span class="math inline">\(Y = 1\)</span> represents an individual with depression and <span class="math inline">\(Y = 0\)</span> represents an individual without depression</li>
-</ul>
-<p>And, once these variables were established, we were able to “encode” the two hypothesized causal pathways within the <strong>same</strong> causal diagram:</p>
-<center>
-<img width="400" src="https://jpj.georgetown.domains/dsan5450-scratch/hw2/pgm_depression_base.svg">
-</center>
-<p>We then looked at two <strong>subgraphs</strong> of the full causal diagram, with the following subgraph representing person <span class="math inline">\(i\)</span>’s hypothesis:</p>
-<center>
-<img width="500" src="https://jpj.georgetown.domains/dsan5450-scratch/hw2/pgm_depression_convex1.svg">
-</center>
-<p>And this alternative subgraph representing person <span class="math inline">\(j\)</span>’s hypothesis:</p>
-<center>
-<img width="500" src="https://jpj.georgetown.domains/dsan5450-scratch/hw2/pgm_depression_convex2.svg">
-</center>
-<p>So, for your final project, you could take <strong>a debate around a social issue that is particularly important or particularly interesting to you</strong> and perform a causal analysis of it using this general framework.</p>
-<p>The idea would be to choose a topic where you think that detailing the <strong>causal connections</strong> between variables in this manner could aid policymakers in addressing the underlying problem.</p>
-<p>Lots of examples immediately come to mind (though they are Jeff-style examples so you don’t need to choose any of them, I promise! 😜), but throughout the semester many of the examples in class revolved around the causal pathways linking <strong>race</strong> with <strong>policing</strong>, <strong>incarceration</strong>, and the <strong>criminal justice system</strong>. From the perspective of a policymaker—the perspective you should have in mind for the final project!—some of the key issues that could be analyzed using frameworks from DSAN 5450 would be:</p>
-<ul>
-<li>How do variables related to <strong>social conditions</strong> (e.g., poverty, quality of schools) causally interact with variables related to <strong>individual choices</strong> (e.g., searching for a job, pursuing additional years of school, allocating income between saving and spending) to produce outcomes like <strong>career “success”</strong> (say, moving into a higher or lower income bracket relative to the bracket one is born into), <strong>crime</strong>, and/or <strong>trust in government</strong>?</li>
-<li>How might it help policymakers to think causally, in terms of how different <strong>interventions</strong> might <strong>counterfactually</strong> help or harm some goal that they have?
-<ul>
-<li>Here you could choose an existing but vague policy debate like “do police and metal detectors in school help or harm students’ educations?”, and make it more concrete by describing a causally-robust study that could be performed to slightly move this debate away from people-yelling-opinions-at-each-other and towards people-studying-the-causal-impacts-of-interventions… If you were actually able to go out and <strong>collect data</strong> relevant to these debates, and perform a <strong>causal analysis</strong> using this data, that would be the holy grail! But, I promise, given the timespan you have, a careful and well-thought-out description of what this type of study would look like and how it <em>could</em> be carried out would be sufficient for the project.</li>
-</ul></li>
-</ul>
-</section>
-<section id="privacy-and-data-protection-policies" class="level3">
-<h3 class="anchored" data-anchor-id="privacy-and-data-protection-policies">Privacy and Data Protection Policies</h3>
-<p>Here there were a couple of points during Week 8 and Week 9 where I mentioned possible final project ideas, but the first two that come to mind are:</p>
-<ol type="1">
-<li><p>In <a href="https://jjacobs.me/dsan5450/w08/slides.html#/why-we-have-to-stop-the-individual-policy-level-descriptive-part-here" target="_blank">this slide</a> during Week 8, I pointed out how there are far too many different data-protection policy frameworks, spanning across too many different countries and states, for me to be able to cover them all. So, your project could be to pursue this further than we were able to in class! But, that’s a bit general, so to make it more specific, the types of projects I briefly outlined in Week 8 were along the lines of:</p>
-<ol type="1">
-<li>Choose a country/state that you think is a “policy innovator”, and then see how the data-protection policies from this country/state “diffuse outwards” and get adopted over time by other countries/states. Although <em>one</em> way to do this would be to find a manually-curated dataset which contains (e.g.) 0/1 variables representing whether a given state has adopted a given data-protection policy at a given time (and these datasets definitely exist, and we can help you find them!), to me another cool way to study this would be to use <a href="https://programminghistorian.org/en/lessons/detecting-text-reuse-with-passim" target="_blank">NLP text-reuse detection algorithms like Passim</a>, to “automatically” detect policy adoption by just seeing when text from country <span class="math inline">\(A\)</span>’s data-protection laws appears in another country <span class="math inline">\(B\)</span>’s data-protection laws.</li>
-<li>Rather than a diffusion study like this, you could instead carry out what’s called a <strong>cross-sectional</strong> analysis of countries/states and their data-protection policies: to me, one interesting cross-sectional study could be to see how a country’s form of government relates to the data-protection laws it adopts: are there systematic differences between the data-protection policies adopted by hereditary monarchies in the Middle East like Saudi Arabia or Bahrain and those adopted by comparable (as in, in this case, historically-culturally similar—remember our idea of <strong>fair comparison</strong>!) Middle Eastern countries with democratic institutions like Yemen or Lebanon?<a href="#fn3" class="footnote-ref" id="fnref3" role="doc-noteref"><sup>3</sup></a></li>
-</ol></li>
-<li><p>One other potential project I mentioned in both Week 8 and Week 9 would be a project studying how <strong>ambiguity</strong> is used instrumentally in privacy policies to shift power from users to companies, since these companies possess greater <strong>residual rights of control</strong>—the right to determine “what happens” when there is ambiguity in a contract—relative to users. The slides for both weeks contained the plot from <span class="citation" data-cites="wagner_privacy_2023">(<a href="#ref-wagner_privacy_2023" role="doc-biblioref"><strong>wagner_privacy_2023?</strong></a>)</span> showing the growth in “obfuscatory words” in privacy policies over time, but I also mentioned how the <strong>goal</strong> of <span class="citation" data-cites="wagner_privacy_2023">(<a href="#ref-wagner_privacy_2023" role="doc-biblioref"><strong>wagner_privacy_2023?</strong></a>)</span> was to point out how NLP could be used to try and “combat” the power imbalances induced by this ambiguity.</p>
-<p>So, one example of a final project pursuing this thread could be a policy paper wherein you code and demonstrate a <strong>proof of concept</strong> of how a “privacy policy badness detector” could work: it’s the thing I talked about near the beginning of Week 9, where, you could have a user specify their <strong>privacy “boundaries”</strong>, and then you could have code that uses NLP tools to parse privacy policies to identify statements which might enable the company to violate these boundaries, highlighting them for the user so that they don’t have to read the entire thing manually!</p>
-<p>Scope-wise, that would be pretty ambitious, so to me a very reasonable final project could just be a more “naïve” version of this, where users could just specify key terms of interest to them (say, “medical data”), and then maybe the app could be a browser extension which <strong>removes</strong> all of the parts of the privacy policy besides the parts which may be relevant to the user’s key terms. Then, in your paper, you would want to make an argument to policymakers on the basis of what you “found” in making the app—for example, if you found that there were clauses that were relevant to medical data but where this relevance was “hidden” because of the ambiguity of the language used, then perhaps you could recommend that they pass a law requiring companies to <strong>tag</strong> each paragraph of their privacy policies with what aspects of privacy they relate to, as a concrete way to ameliorate the “ambiguity problem”!</p></li>
-</ol>
-</section>
-<section id="policy-evaluation-recommendation" class="level3">
-<h3 class="anchored" data-anchor-id="policy-evaluation-recommendation">Policy Evaluation / Recommendation</h3>
-<p>Since we haven’t covered this yet, I will just provide an example of a policy-evaluation final project in class this week (Week 10), and then I will copy it into this section.</p>
-</section>
 </section>
 <section id="references" class="level2">
 <h2 class="anchored" data-anchor-id="references">References</h2>
@@ -397,8 +166,6 @@ The Goal: Research <span class="math inline">\(\rightarrow\)</span> Policy Recom
 
 <ol>
 <li id="fn1"><p>If you can’t tell, my whole educational philosophy here is just the <a href="https://en.wikipedia.org/wiki/Montessori_education" target="_blank">Montessori system</a>—this approach was originally developed for younger (primary school) children, but lots and lots of <a href="https://www.penguinrandomhouse.com/books/579922/how-we-learn-by-stanislas-dehaene/" target="_blank">recent educational research</a> indicates that it’s an actually an extremely effective way to learn, and to motivate self-learning, for people of any age 😎<a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
-<li id="fn2"><p>Even though I’m biased in the <em>opposite</em> direction of belittling them—since Joseph Stiglitz and Amartya Sen are two of my heroes, and Stiglitz even gave me nice comments on my dissertation and stuff since I was at Columbia with him—it’s honestly important to put """Nobel Prize in Economics""" in triple-quotes, since unlike the “real” (non-triple-quoted) Nobel Prizes, the """Nobel Prize""" in economics was actually created about 80 years after the real ones established by Alfred Nobel, and were explicitly part of the movement by the so-called “Chicago School” of economics to legitimize their particular brand of economics as a “““science”““, and thus delegitimze any other approach to economics as”non-scientific”… For a quick overview with a link to a great interview with Philip Mirowski, here’s a FiveThirtyEight article: <a href="https://fivethirtyeight.com/features/the-economics-nobel-isnt-really-a-nobel/" target="_blank">“The Economics Nobel Isn’t Really A Nobel”</a>. But the full-on, in-depth essay I’d truly recommend is Yasha Levine’s <a href="https://yasha.substack.com/p/its-all-a-big-lie-there-is-no-nobel-d55" target="_blank">“It’s all a big lie. There is no ‘Nobel Prize’ in Economics.”</a> &lt;/rant&gt;<a href="#fnref2" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
-<li id="fn3"><p>Obviously there are tons of details and particular considerations that you might have to take into account for these types of studies, but that’s exactly the type of thing that the TAs and I can help you with! If you go with this particular choice, for example, you’d have to make sure to control for considerations like the fact that these countries vary in terms of ethnic and/or religious “homogeneity”: About 85% of Saudi Arabian citizens are Sunni Muslim Arabs, for example, whereas Lebanon is basically a patchwork of dozens of different salient religious/cultural/ethnic identities, which would be relevant in the sense that different identity groups within a country might have vastly different dispositions towards how their data should be collected and used!<a href="#fnref3" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
 </ol>
 </section></div></main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">

@@ -127,7 +127,7 @@
     "href": "index.html",
     "title": "DSAN 5650: Causal Inference for Computational Social Science",
     "section": "",
-    "text": "Welcome to the homepage for DSAN 5650: Causal Inference for Computational Social Science at Georgetown University, for the Summer 2025 session!\nThe course meets on Wednesdays from 6:30pm to 9:00pm online, via the Zoom Link provided in the sidebar.\nCheck out the syllabus (or any other link in the sidebar) for more info! Or, use the following links to view notes for individual weeks:\n\n\n\n\n\nTitle\n\n\nDate\n\n\n\n\n\n\nWeek 1: Introduction to the Course\n\n\nMay 21\n\n\n\n\n\nNo matching items\n\n\nCourse Description:\nThis course provides students with the opportunity to take the analytical skills, machine learning algorithms, and statistical methods learned throughout their first year in the program and explore how they can be employed towards carrying out rigorous, original research in the behavioral and social sciences. With a particular emphasis on tackling the additional challenges which arise when moving from associational to causal inference, particularly when only observational (as opposed to experimental) data is available, students will become proficient in cutting-edge causal Machine Learning techniques such as propensity score matching, synthetic controls, causal program evaluation, inverse social welfare function estimation from panel data, and Double-Debiased Machine Learning.\nIn-class examples will cover continuous, discrete-choice, and textual data from a wide swath of social and behavioral sciences: economics, political science, sociology, anthropology, quantitative history, and digital humanities. After gaining experience through in-class labs and homework assignments focused on reproducing key findings from recent journal articles in each of these disciplines, students will spend the final weeks of the course on a final project demonstrating their ability to develop, evaluate, and test the robustness of a causal hypothesis.\nPrerequisites: DSAN 5000, DSAN 5100 (DSAN 5300 recommended but not required)",
+    "text": "Welcome to the homepage for DSAN 5650: Causal Inference for Computational Social Science at Georgetown University, for the Summer 2025 session!\nThe course meets on Wednesdays from 6:30pm to 9:00pm online, via the Zoom Link provided in the sidebar.\nCheck out the syllabus (or any other link in the sidebar) for more info! Or, use the following links to view notes for individual weeks:\n\n\n\n\n\nTitle\n\n\nDate\n\n\n\n\n\n\nWeek 1: From a Science of Particles to a Science of People\n\n\nMay 21\n\n\n\n\n\nNo matching items\n\n\nCourse Description:\nThis course provides students with the opportunity to take the analytical skills, machine learning algorithms, and statistical methods learned throughout their first year in the program and explore how they can be employed towards carrying out rigorous, original research in the behavioral and social sciences. With a particular emphasis on tackling the additional challenges which arise when moving from associational to causal inference, particularly when only observational (as opposed to experimental) data is available, students will become proficient in cutting-edge causal Machine Learning techniques such as propensity score matching, synthetic controls, causal program evaluation, inverse social welfare function estimation from panel data, and Double-Debiased Machine Learning.\nIn-class examples will cover continuous, discrete-choice, and textual data from a wide swath of social and behavioral sciences: economics, political science, sociology, anthropology, quantitative history, and digital humanities. After gaining experience through in-class labs and homework assignments focused on reproducing key findings from recent journal articles in each of these disciplines, students will spend the final weeks of the course on a final project demonstrating their ability to develop, evaluate, and test the robustness of a causal hypothesis.\nPrerequisites: DSAN 5000, DSAN 5100 (DSAN 5300 recommended but not required)",
     "crumbs": [
       "<i class='bi bi-house pe-1'></i> Home"
     ]
@@ -165,49 +165,14 @@
     "href": "final.html",
     "title": "Final Project Specifications",
     "section": "",
-    "text": "Our goal is to make the final project as open-ended as possible, to give you the space to explore any particular topic that may have piqued your interest throughout the semester! At the same time, we hope to provide you with guidance and mentorship so that you don’t feel lost as to how to start, how to proceed, and/or what to submit for the final deliverable!1\nSo, given this, we have randomly assigned each of you to a mentor, who will help you select a topic and pursue it in such a way that it fits within the scope of the remaining weeks in the semester. You will receive an email letting you know who your mentor is, by the end of the weekend (Sunday, March 24th). The mentor assignments can always be re-arranged, however! For example, if you decide to pursue a project that another mentor has particular experience with, we can re-assign you to that mentor!\n\n\n\n\n\n\nThe Goal: Research \\(\\rightarrow\\) Policy Recommendation\n\n\n\nAlthough the structure can be mostly similar to projects you’ve done for e.g. DSAN 5000 and 5100, the new element for the DSAN 5450 project is that we want you to develop and argue for a particular policy recommendation that you’d make, for example if you were asked to speak in Congress as a data science expert!\nThis means, for example, that your deliverable can have the following structure in terms of section headings, which should be familiar from DSAN 5000 and 5100 except for the final section:\n\nIntroduction\nLiterature Review\nData and Methods\nResults\nPolicy Recommendation\n\nThe policy recommendation portion will look different depending on the particular topic you decide to explore, but the idea is that it should be somewhat like a policy whitepaper, where you would move away from the details of your study and towards its implications for a (real or imagined) policymaker who is hoping for information about a given topic.\nOne recent example that you can look at as a rough template would be Chris Callison-Burch’s Congressional testimony, given last year as part of a Congressional hearing around issues that LLMs might present for intellectual property and copyright law. Prof. Callison-Burch discusses the process in this podcast episode, so you can listen to that for details about the approach he took towards the invitation from Congress, but the tldr is: he needed to communicate just enough detail to allow the policymakers to understand what he was talking about, but not so much detail that they would need to have a PhD in Computer Science to understand his recommendations."
+    "text": "Our goal is to make the final project as open-ended as possible, to give you the space to explore any particular topic that may have piqued your interest throughout the semester! At the same time, we hope to provide you with guidance and mentorship so that you don’t feel lost as to how to start, how to proceed, and/or what to submit for the final deliverable!1"
   },
   {
     "objectID": "final.html#overview",
     "href": "final.html#overview",
     "title": "Final Project Specifications",
     "section": "",
-    "text": "Our goal is to make the final project as open-ended as possible, to give you the space to explore any particular topic that may have piqued your interest throughout the semester! At the same time, we hope to provide you with guidance and mentorship so that you don’t feel lost as to how to start, how to proceed, and/or what to submit for the final deliverable!1\nSo, given this, we have randomly assigned each of you to a mentor, who will help you select a topic and pursue it in such a way that it fits within the scope of the remaining weeks in the semester. You will receive an email letting you know who your mentor is, by the end of the weekend (Sunday, March 24th). The mentor assignments can always be re-arranged, however! For example, if you decide to pursue a project that another mentor has particular experience with, we can re-assign you to that mentor!\n\n\n\n\n\n\nThe Goal: Research \\(\\rightarrow\\) Policy Recommendation\n\n\n\nAlthough the structure can be mostly similar to projects you’ve done for e.g. DSAN 5000 and 5100, the new element for the DSAN 5450 project is that we want you to develop and argue for a particular policy recommendation that you’d make, for example if you were asked to speak in Congress as a data science expert!\nThis means, for example, that your deliverable can have the following structure in terms of section headings, which should be familiar from DSAN 5000 and 5100 except for the final section:\n\nIntroduction\nLiterature Review\nData and Methods\nResults\nPolicy Recommendation\n\nThe policy recommendation portion will look different depending on the particular topic you decide to explore, but the idea is that it should be somewhat like a policy whitepaper, where you would move away from the details of your study and towards its implications for a (real or imagined) policymaker who is hoping for information about a given topic.\nOne recent example that you can look at as a rough template would be Chris Callison-Burch’s Congressional testimony, given last year as part of a Congressional hearing around issues that LLMs might present for intellectual property and copyright law. Prof. Callison-Burch discusses the process in this podcast episode, so you can listen to that for details about the approach he took towards the invitation from Congress, but the tldr is: he needed to communicate just enough detail to allow the policymakers to understand what he was talking about, but not so much detail that they would need to have a PhD in Computer Science to understand his recommendations."
-  },
-  {
-    "objectID": "final.html#timeline",
-    "href": "final.html#timeline",
-    "title": "Final Project Specifications",
-    "section": "Timeline",
-    "text": "Timeline\nThese are rough estimates, but the project will go most smoothly if you are able to hold yourself to the following schedule:\n\nProposal: Approved by mentor by Wednesday, April 3rd\nFinal Draft: Sent to mentor for review by Wednesday, April 24th\nSubmission: Completed project submitted to course staff by Friday, May 10th, 5:59pm EDT"
-  },
-  {
-    "objectID": "final.html#submission-format",
-    "href": "final.html#submission-format",
-    "title": "Final Project Specifications",
-    "section": "Submission Format",
-    "text": "Submission Format\nThere is now an assignment page for the final project (within the Google Classroom site for the course), where you will upload your final submission for grading. The following is a rough sketch of what we’re looking for in terms of the structure of your submission:\n\nHTML format, as a rendered Quarto manuscript, would be optimal, but can be PDF if there are issues with Quarto. If PDF, LaTeX would be preferred, but also can be a Word doc or Google doc\nIf PDF format, 8-20 pages double-spaced, and then the Quarto HTML length can be the equivalent of this (for example, you can print-preview the Quarto doc to see how many pages it would print as)\nIt should have an abstract, a 250-500 word summary at the top, of (a) what you did and (b) the policy recommendation you’re making\nCitations should be set up so that they’re handled automatically, by Quarto’s citation manager for example, or by Bibtex if you use LaTeX to generate a PDF, or by Word/GDocs otherwise."
-  },
-  {
-    "objectID": "final.html#the-proposal-stage",
-    "href": "final.html#the-proposal-stage",
-    "title": "Final Project Specifications",
-    "section": "The Proposal Stage",
-    "text": "The Proposal Stage\nOur goal here is for you to have enough time to think through the details in advance, to determine the scope, of the project, before you actually start working on it. This is often (like, almost always) the most difficult part of any project: it’s not a matter of whether you’re capable of doing the project at all—you’re all capable of doing it!—but how feasible it is to do it within the given timeframe.\nSo, this is exactly why there’s a course staff here to help you! We’ve all wrestled with this issue of “scope creep” throughout our own previous projects, which means that our goal in providing feedback on your proposals will be solely to help you brainstorm and then focus in on what you can accomplish by the beginning of May. Thus, to reiterate, you should not view the proposal feedback as some sort of judgement of your innate ability or anything like that! And, to this end, it will not be graded, which we hope will further cement the idea that it is not a judgement process, but a working-together process to arrive at a plan for getting the project done.\nTo conclude, concretely: you’ll be “done” with the proposal stage once you and your mentor are on the same page in terms of\n\nWhat topic you’re going to pursue,\nWhat your final deliverable will look like, and\nA set of milestones you will use from now until the beginning of May to track your progress.\n\nAt that point, you’ll be ready for the implementation stage, described in the next section."
-  },
-  {
-    "objectID": "final.html#the-implementation-stage",
-    "href": "final.html#the-implementation-stage",
-    "title": "Final Project Specifications",
-    "section": "The Implementation Stage",
-    "text": "The Implementation Stage\nThis stage is more difficult to describe in advance, since it depends on the specific topic you’ll pursue. But, the main goal is for you to have a draft version of the project ready by Wednesday, April 24th. We choose this date specifically because it corresponds to the final lecture in the course, so that as part of that lecture Jeff can make sure to touch on any remaining issues that might still need to be tackled in order to move from the draft to the submission on the last day of the semester.\nHowever, given this explanation, hopefully it makes sense that the earlier you have a draft, the better, since an earlier draft means that Jeff can also use the lectures before the final lecture to cover any topics which might be relevant to your projects! In other words: the whole reason why the last few lectures of the course are set aside as “Selected Topics” is so that these lectures can adapt to cover whatever might be relevant and important for the range of topics yall choose for your final projects! So, please take advantage of this aspect of the class if you can."
-  },
-  {
-    "objectID": "final.html#example-project-ideas",
-    "href": "final.html#example-project-ideas",
-    "title": "Final Project Specifications",
-    "section": "Example Project Ideas",
-    "text": "Example Project Ideas\nNow that you have all of the above info, we wanted to make it clear that it’s okay if you don’t have any idea of what topic you’d like to pursue for the project! Some people come into the course with a very particular interest, whereas others come in for the sake of learning a broad overview of a bunch of topics, and we’re here to accommodate both cases 😁 So, if you don’t have a preexisting idea of what you’d like to pursue, in this section we provide you with a few examples—one example per course topic—that you can choose as-is or modify to suit your interests.\nAs you’ll quickly see if you start reading through the examples, there are tons and tons of details and tons and tons of variations/modifications that could be made, that I’m unable to state in detail without making this a 1000-page document 😜 so, just keep in mind that if anything at all pops into your head while reading through them, even if the thing that pops into your head doesn’t “match” the specific details of one of the projects here, that’s a good thing! You can take that and run with it, turning it from an idea into a full-blown project by talking through it with your mentor.\n\nHigh-Level Data Science Questions\n\nExample 1: Archive of Missing Datasets\nHere there are tons of possibilities for each “sub-topic” that we covered during the broad overview of data science issues given in Week 1 and Week 2. But, one that I think could be interesting and relevant to the policy-focused goal of the final project would be to pursue the idea of the Archive of Missing Datasets:\nYou may have found, when working on your own projects or the DSAN 5000/5100 projects, that there are lots of datasets that you assume must exist somewhere, but you then find to your horror that they actually don’t exist, at least not in a form that would allow for a useful/informative data analysis.\nSo, if you have experienced this, or if you haven’t but you’re interested in discovering what might be egregious/socially-important cases of missing datasets, your final project could revolve around recommending to policymakers that they invest in (as in, allocate resources towards in general, not just money!) the creation of a currently non-existent dataset.\nThis is precisely what has motivated one of the biggest society-wide DSAN 5450-related developments in the US of recent years: in the aftermath of the sudden publicity that rampant police murder of black people across the country received because of cases like the murders of\n\nTrayvon Martin in Florida,\nFreddie Gray in Baltimore, Maryland,\nMichael Brown in Ferguson, Missouri,\nEric Garner in Staten Island, New York,\nGeorge Floyd in Minneapolis, Minnesota, and\nPhilando Castile in St. Paul, Minnesota,\n\nmany people were shocked to learn that the US government doesn’t care enough to keep track of these killings in any systematic way, which led to data-journalistic endeavors like the Washington Post’s “Fatal Force” police killings database.\nOnce these endeavors were established, however, the next “phase” of policy debates on this issue have revolved around whether and/or how data on these types of socially-important phenomena should in fact be collected by publicly-funded government institutions, given that (in this case) the police officers doing the killings are themselves publicly-funded government employees.\nSo, as an example final project on this issue of missing datasets, you could:\n\nIdentify another such socially-important phenomenon for which there is a dearth of available data that would be helpful for some social goal,\nDocument the details around what data already exists regarding this phenomenon (descriptively), and why it is insufficient from a social perspective (normatively), and then\nArgue that the policymaking audience of your project should in fact allocate resources towards the collection of this data (note the shift from descriptive to normative here!): for example, you would need to argue for the feasibility of this collection—providing concrete details about precisely how it could be implemented, in a cost-effective manner, given some budget—as well as its effectiveness with respect to some explicitly-stated social goal (like, in the above example, the goal could simply be to reduce the frequency of police killings).\n\n\n\nExample 2: Operationalization\nIn the Week 1 slides I included a brief discussion of operationalization in terms of a book by \"\"\"Nobel Prize\"\"\"-winning economists2 Joseph Stiglitz and Amartya Sen called Mismeasuring our Lives: Why GDP Doesn’t Add Up (stiglitz_mismeasuring_2010?). This example project outline is sort of a “variation” of Example 1, since basically what I would recommend if you’re interested in this topic would be very similar:\nWhereas the goal of the Archive of Missing Datasets is to point out how there is lots of socially-important information that is not measured at all, Stiglitz and Sen are pointing to equally-urgent and equally-deleterious (often way more urgent/deleterious!) cases where the information is measured, but where the way that it is measured is harmful with respect to the social goal which motivated the measurement in the first place.\nSo, we can take the description of Example 1 above, and basically just replace “missing” with “badly measured”, to see how a project studying operationalization could work:\n\nIdentify a socially-important phenomenon for data does exist but is measured in a way that is relatively unhelpful/non-useful with respect to some social goal (that is, relative to another way of measuring it which could be mroe helpful/useful),\nDocument the details around what data already exists regarding this phenomenon (descriptively), and why it is unhelpful for measuring the social phenomena of interest (normatively), and then\nArgue that the policymaking audience of your project should in fact allocate resources towards the better operationalization that you are proposing (note the shift from descriptive to normative here!): for example, you would need to argue for the feasibility of this new measure—providing concrete details about precisely how it could be implemented, in a cost-effective manner, given some budget—as well as its greater effectiveness than previous ways of measuring, with respect to some explicitly-stated social goal (like, in the earlier example, reducing the frequency of police killings).\n\nAs you can maybe tell by now, the “boundary” between missing data and badly-measured data is sometimes fuzzy: for example, often data-policy debates will say that a certain dataset is missing as shorthand for something more like “it’s measured so badly that, for all intents and purposes it may as well be missing”.\nFor example, technically (until 2019) the FBI used to issue what were called Uniform Crime Reports, but these were based on a “voluntary-reporting” model, meaning that individual police departments could submit whatever data they wanted, and withhold whatever data they wanted, without explanation or documentation, so… from what I can tell, after 2019 they just gave up, since a voluntary-reporting dataset of crime certainly falls under the rubric of may-as-well-be-missing. But, alas, these reports are still used widely in various academic studies of crime, books, journalistic investigations, etc., so if that’s at all interesting to you, it could be studied for a final project that would treat it as a mixture of the missing data and badly-operationalized data issues.\n\n\n\nFairness\nAs we discussed in Week 4 (specifically, I wrote it on the chalkboard and talked through it as an example, on the basis of stuff in those W04 slides), one of the most high-profile cases of algorithmic discrimination in the 21st century emerged out of the ProPublica vs. Northpointe Scandal.\nThe rough summary is that:\n\nAlthough ProPublica meticulously documented anti-black racial discrimination in Northpointe’s COMPAS algorithm in terms of the classification parity fairness measure,\nNorthepointe then responded by meticulously documenting the absence of anti-black racial discrimination in COMPAS in terms of the predictive parity fairness measure\n\nSo, since this is one of the most-often-analyzed datasets in the Fairness in AI literature, your final project could be to pursue this case in a more in-depth way than we were able to cover it in class. This would involve writing a policy paper with two main parts:\n\nExplaining the ProPublica-Northpointe controversy descriptively, by demonstrating how the data simultaneously violates classification parity fairness while satisfying predictive parity fairness. Specifically, this would mean:\n\nExplaining the two fairness definitions to an audience of policymakers and then\nWriting Python or R code which downloads the data and evluates it programmatically on these two different fairness criteria\n\nEvaluating the ProPublic-Northpointe controversy normatively, by providing recommendations for policymakers in terms of how they ought to adjudicate this case. There are several ways you could approach this, but the first two example approaches that come to mind are:\n\nArguing that one of these two fairness criteria better “aligns” with an ethical framework that you think the policymakers should adopt—for example, you could adopt utilitarianism as your ethical “axiom”, and then argue that one of these criteria is more appropriate for evaluating outcomes than the other, and therefore better suited to resolving the dispute in a utilitarian manner\nArguing that neither of the two fairness criteria are sufficient for policymaking, and arguing that policymakers should instead use a framework like \\(\\varepsilon\\)-based fairness or causal fairness to resolve the dispute.\n\n\n\n\nCausality\nAn example project on this topic could pursue the type of approach that appeared on your Homework 2, in Part 3.3, which presented two different hypotheses regarding the causal mechanism by which women experience worse mental health outcomes. You don’t need to pursue this particular question, or use these particular variables in your causal model! But, I am copying some of the key parts of that problem here, along with explanations of how you could pursue this type of analysis in a more in-depth way for a final project.\nThe homework problem presented a simplified version of a causal system studied using causal diagrams in Chapter 16 of Kaufman and Oakes (2006): Glymour (2006), “Using Causal Diagrams to Understand Common Problems in Social Epidemiology”. The idea was to consider an imaginary debate (though one that happens between real people all the time, when taking about this issue!) between:\n\nPerson \\(i\\), who hypothesizes that women have greater rates of depression because they are “‘biologically programmed’ to be depressed” (ibid., pg. 408), and\nPerson \\(j\\), who hypothesizes that women have greater rates of depression because\n\n\n“People get depressed whenever they are sexually harassed” (ibid.), and\n\n\n“Women are more frequently sexually harassed than men” (ibid.)\n\n\n\nIt then took this debate and tried to “zero in” on the particular variables that came into play in the respective arguments:\n\n\\(A\\): The gender of an individual (as before, conceptualized as their self-reported and/or socially-expressed gender), where \\(A = 1\\) for self-reported females and \\(A = 0\\) for those who do not self-report as female\n\\(B\\): An indicator variable representing some biological property of the individual (in these debates, this would most commonly be e.g. \\(B = 1\\) for the presence of at least one Y-chromosome and \\(B = 0\\) otherwise)\n\\(H\\): Whether or not someone experiences sexual harassment, where \\(H = 1\\) represents that the individual has experienced such harassment and \\(H = 0\\) represents that they have not experienced it\n\\(Y\\): The “outcome” of whether or not someone has developed depression, where \\(Y = 1\\) represents an individual with depression and \\(Y = 0\\) represents an individual without depression\n\nAnd, once these variables were established, we were able to “encode” the two hypothesized causal pathways within the same causal diagram:\n\n\n\nWe then looked at two subgraphs of the full causal diagram, with the following subgraph representing person \\(i\\)’s hypothesis:\n\n\n\nAnd this alternative subgraph representing person \\(j\\)’s hypothesis:\n\n\n\nSo, for your final project, you could take a debate around a social issue that is particularly important or particularly interesting to you and perform a causal analysis of it using this general framework.\nThe idea would be to choose a topic where you think that detailing the causal connections between variables in this manner could aid policymakers in addressing the underlying problem.\nLots of examples immediately come to mind (though they are Jeff-style examples so you don’t need to choose any of them, I promise! 😜), but throughout the semester many of the examples in class revolved around the causal pathways linking race with policing, incarceration, and the criminal justice system. From the perspective of a policymaker—the perspective you should have in mind for the final project!—some of the key issues that could be analyzed using frameworks from DSAN 5450 would be:\n\nHow do variables related to social conditions (e.g., poverty, quality of schools) causally interact with variables related to individual choices (e.g., searching for a job, pursuing additional years of school, allocating income between saving and spending) to produce outcomes like career “success” (say, moving into a higher or lower income bracket relative to the bracket one is born into), crime, and/or trust in government?\nHow might it help policymakers to think causally, in terms of how different interventions might counterfactually help or harm some goal that they have?\n\nHere you could choose an existing but vague policy debate like “do police and metal detectors in school help or harm students’ educations?”, and make it more concrete by describing a causally-robust study that could be performed to slightly move this debate away from people-yelling-opinions-at-each-other and towards people-studying-the-causal-impacts-of-interventions… If you were actually able to go out and collect data relevant to these debates, and perform a causal analysis using this data, that would be the holy grail! But, I promise, given the timespan you have, a careful and well-thought-out description of what this type of study would look like and how it could be carried out would be sufficient for the project.\n\n\n\n\nPrivacy and Data Protection Policies\nHere there were a couple of points during Week 8 and Week 9 where I mentioned possible final project ideas, but the first two that come to mind are:\n\nIn this slide during Week 8, I pointed out how there are far too many different data-protection policy frameworks, spanning across too many different countries and states, for me to be able to cover them all. So, your project could be to pursue this further than we were able to in class! But, that’s a bit general, so to make it more specific, the types of projects I briefly outlined in Week 8 were along the lines of:\n\nChoose a country/state that you think is a “policy innovator”, and then see how the data-protection policies from this country/state “diffuse outwards” and get adopted over time by other countries/states. Although one way to do this would be to find a manually-curated dataset which contains (e.g.) 0/1 variables representing whether a given state has adopted a given data-protection policy at a given time (and these datasets definitely exist, and we can help you find them!), to me another cool way to study this would be to use NLP text-reuse detection algorithms like Passim, to “automatically” detect policy adoption by just seeing when text from country \\(A\\)’s data-protection laws appears in another country \\(B\\)’s data-protection laws.\nRather than a diffusion study like this, you could instead carry out what’s called a cross-sectional analysis of countries/states and their data-protection policies: to me, one interesting cross-sectional study could be to see how a country’s form of government relates to the data-protection laws it adopts: are there systematic differences between the data-protection policies adopted by hereditary monarchies in the Middle East like Saudi Arabia or Bahrain and those adopted by comparable (as in, in this case, historically-culturally similar—remember our idea of fair comparison!) Middle Eastern countries with democratic institutions like Yemen or Lebanon?3\n\nOne other potential project I mentioned in both Week 8 and Week 9 would be a project studying how ambiguity is used instrumentally in privacy policies to shift power from users to companies, since these companies possess greater residual rights of control—the right to determine “what happens” when there is ambiguity in a contract—relative to users. The slides for both weeks contained the plot from (wagner_privacy_2023?) showing the growth in “obfuscatory words” in privacy policies over time, but I also mentioned how the goal of (wagner_privacy_2023?) was to point out how NLP could be used to try and “combat” the power imbalances induced by this ambiguity.\nSo, one example of a final project pursuing this thread could be a policy paper wherein you code and demonstrate a proof of concept of how a “privacy policy badness detector” could work: it’s the thing I talked about near the beginning of Week 9, where, you could have a user specify their privacy “boundaries”, and then you could have code that uses NLP tools to parse privacy policies to identify statements which might enable the company to violate these boundaries, highlighting them for the user so that they don’t have to read the entire thing manually!\nScope-wise, that would be pretty ambitious, so to me a very reasonable final project could just be a more “naïve” version of this, where users could just specify key terms of interest to them (say, “medical data”), and then maybe the app could be a browser extension which removes all of the parts of the privacy policy besides the parts which may be relevant to the user’s key terms. Then, in your paper, you would want to make an argument to policymakers on the basis of what you “found” in making the app—for example, if you found that there were clauses that were relevant to medical data but where this relevance was “hidden” because of the ambiguity of the language used, then perhaps you could recommend that they pass a law requiring companies to tag each paragraph of their privacy policies with what aspects of privacy they relate to, as a concrete way to ameliorate the “ambiguity problem”!\n\n\n\nPolicy Evaluation / Recommendation\nSince we haven’t covered this yet, I will just provide an example of a policy-evaluation final project in class this week (Week 10), and then I will copy it into this section."
+    "text": "Our goal is to make the final project as open-ended as possible, to give you the space to explore any particular topic that may have piqued your interest throughout the semester! At the same time, we hope to provide you with guidance and mentorship so that you don’t feel lost as to how to start, how to proceed, and/or what to submit for the final deliverable!1"
   },
   {
     "objectID": "final.html#references",
@@ -221,12 +186,12 @@
     "href": "final.html#footnotes",
     "title": "Final Project Specifications",
     "section": "Footnotes",
-    "text": "Footnotes\n\n\nIf you can’t tell, my whole educational philosophy here is just the Montessori system—this approach was originally developed for younger (primary school) children, but lots and lots of recent educational research indicates that it’s an actually an extremely effective way to learn, and to motivate self-learning, for people of any age 😎↩︎\nEven though I’m biased in the opposite direction of belittling them—since Joseph Stiglitz and Amartya Sen are two of my heroes, and Stiglitz even gave me nice comments on my dissertation and stuff since I was at Columbia with him—it’s honestly important to put \"\"\"Nobel Prize in Economics\"\"\" in triple-quotes, since unlike the “real” (non-triple-quoted) Nobel Prizes, the \"\"\"Nobel Prize\"\"\" in economics was actually created about 80 years after the real ones established by Alfred Nobel, and were explicitly part of the movement by the so-called “Chicago School” of economics to legitimize their particular brand of economics as a “““science”““, and thus delegitimze any other approach to economics as”non-scientific”… For a quick overview with a link to a great interview with Philip Mirowski, here’s a FiveThirtyEight article: “The Economics Nobel Isn’t Really A Nobel”. But the full-on, in-depth essay I’d truly recommend is Yasha Levine’s “It’s all a big lie. There is no ‘Nobel Prize’ in Economics.” &lt;/rant&gt;↩︎\nObviously there are tons of details and particular considerations that you might have to take into account for these types of studies, but that’s exactly the type of thing that the TAs and I can help you with! If you go with this particular choice, for example, you’d have to make sure to control for considerations like the fact that these countries vary in terms of ethnic and/or religious “homogeneity”: About 85% of Saudi Arabian citizens are Sunni Muslim Arabs, for example, whereas Lebanon is basically a patchwork of dozens of different salient religious/cultural/ethnic identities, which would be relevant in the sense that different identity groups within a country might have vastly different dispositions towards how their data should be collected and used!↩︎"
+    "text": "Footnotes\n\n\nIf you can’t tell, my whole educational philosophy here is just the Montessori system—this approach was originally developed for younger (primary school) children, but lots and lots of recent educational research indicates that it’s an actually an extremely effective way to learn, and to motivate self-learning, for people of any age 😎↩︎"
   },
   {
     "objectID": "w01/index.html",
     "href": "w01/index.html",
-    "title": "Week 1: Introduction to the Course",
+    "title": "Week 1: From a Science of Particles to a Science of People",
     "section": "",
     "text": "Open slides in new window →",
     "crumbs": [
@@ -236,29 +201,139 @@
   {
     "objectID": "w01/index.html#prof.-jeff-introduction",
     "href": "w01/index.html#prof.-jeff-introduction",
-    "title": "Week 1: Introduction to the Course",
+    "title": "Week 1: From a Science of Particles to a Science of People",
     "section": "Prof. Jeff Introduction!",
-    "text": "Prof. Jeff Introduction!\n\nBorn and raised in NW DC → high school in Rockville, MD\nUniversity of Maryland: Computer Science, Math, Economics (2008-2012)",
+    "text": "Prof. Jeff Introduction!\n\nBorn in NW DC → high school in Rockville, MD\nUniversity of Maryland: Computer Science, Math, Econ",
     "crumbs": [
       "Week 1: {{< var w01.date-md >}}"
     ]
   },
   {
-    "objectID": "w01/index.html#grad-school",
-    "href": "w01/index.html#grad-school",
-    "title": "Week 1: Introduction to the Course",
-    "section": "Grad School",
-    "text": "Grad School\n\nStudied abroad in Beijing (Peking University/北大) → internship with Huawei in Hong Kong (HKUST)\n\n\n\n\nStanford for MS in Computer Science (2012-2014)\nResearch Economist at UC Berkeley (2014-2015)\n\n\n\n\n\n\nColumbia for PhD[+Postdoc] in Political Science (2015-2023)",
+    "objectID": "w01/index.html#the-world-outside-of-dc",
+    "href": "w01/index.html#the-world-outside-of-dc",
+    "title": "Week 1: From a Science of Particles to a Science of People",
+    "section": "The World Outside of DC",
+    "text": "The World Outside of DC\n Studied abroad in Beijing (Peking University/北大) → internship with Huawei in Hong Kong (HKUST)\n\n\n\n Stanford, MS in Computer Science\n Research Economist, UC Berkeley\n Columbia, PhD in Political Economy",
     "crumbs": [
       "Week 1: {{< var w01.date-md >}}"
     ]
   },
   {
-    "objectID": "w01/index.html#dissertation-political-science-history",
-    "href": "w01/index.html#dissertation-political-science-history",
-    "title": "Week 1: Introduction to the Course",
-    "section": "Dissertation (Political Science + History)",
-    "text": "Dissertation (Political Science + History)\n“Our Word is Our Weapon”: Text-Analyzing Wars of Ideas from the French Revolution to the First Intifada",
+    "objectID": "w01/index.html#dissertation-nlp-x-history",
+    "href": "w01/index.html#dissertation-nlp-x-history",
+    "title": "Week 1: From a Science of Particles to a Science of People",
+    "section": "Dissertation (NLP x History)",
+    "text": "Dissertation (NLP x History)\n“Our Word is Our Weapon”: Text-Analyzing Wars of Ideas from the French Revolution to the First Intifada",
+    "crumbs": [
+      "Week 1: {{< var w01.date-md >}}"
+    ]
+  },
+  {
+    "objectID": "w01/index.html#wars-of-ideas-cold-war",
+    "href": "w01/index.html#wars-of-ideas-cold-war",
+    "title": "Week 1: From a Science of Particles to a Science of People",
+    "section": "Wars of Ideas: Cold War",
+    "text": "Wars of Ideas: Cold War\n\nCold War arms shipments (SIPRI) vs. propaganda (Печать СССР): here, to 🇪🇹",
+    "crumbs": [
+      "Week 1: {{< var w01.date-md >}}"
+    ]
+  },
+  {
+    "objectID": "w01/index.html#wars-of-ideas-first-intifada",
+    "href": "w01/index.html#wars-of-ideas-first-intifada",
+    "title": "Week 1: From a Science of Particles to a Science of People",
+    "section": "Wars of Ideas: First Intifada",
+    "text": "Wars of Ideas: First Intifada",
+    "crumbs": [
+      "Week 1: {{< var w01.date-md >}}"
+    ]
+  },
+  {
+    "objectID": "w01/index.html#researching-things",
+    "href": "w01/index.html#researching-things",
+    "title": "Week 1: From a Science of Particles to a Science of People",
+    "section": "Researching Things",
+    "text": "Researching Things\n\nMost cited paper: “Monopsony in Online Labor Markets” (Uses Double-Debiased ML for Causal Inference!)\nMost recent paper: “Operationalizing Freedom as Non-Domination in the Labor Market” (Cambridge U Press)\nRarely cited paper but often-thought-about obsession: “How To Do Things With Translations”\nRelated thing you can buy in a bookstore: [Editorial board for new translation of] Capital, Vol. 1 by Karl Marx (Princeton U Press)",
+    "crumbs": [
+      "Week 1: {{< var w01.date-md >}}"
+    ]
+  },
+  {
+    "objectID": "w01/index.html#coarse-graining-units-of-observation",
+    "href": "w01/index.html#coarse-graining-units-of-observation",
+    "title": "Week 1: From a Science of Particles to a Science of People",
+    "section": "Coarse-Graining Units of Observation",
+    "text": "Coarse-Graining Units of Observation\n\n\n\nField\nExample Unit of Observation\n\n\n\n\nPhysics\nParticle\n[Particle = Fine-Graining of Molecules]\n\n\nChemistry\nMolecule = \\(\\cup\\)(Particles)\n[Molecule = Coarse-Graining of Particles]\n\n\nBiology\nCell = \\(\\cup\\)(Molecules)\n\n\nNeuro/Cognitive Science\nBrain = \\(\\cup\\)(Cells)\n\n\nHuman Physiology\nBody = Brain \\(\\cup\\) Other Organs\n\n\n🧐 something happens here… 🤔\n\n\nAnthropology\nHuman-Relational System (e.g., Kinship) = \\(\\cup\\)(Brains) \\(\\times\\) Natural Environment\n\n\nEconomics\nEconomy = Specific relational system of exchange w.r.t. scarce resources\n\n\nPolitical Economy\nEconomy-Context = Economic Exchange \\(\\cap\\) Relational Power\n\n\nSociology\nSociety = \\(\\cup\\)(Relational Systems: Kinship, Friendship, Authority, Power, Violence)\n\n\nHistory\nLongue-Durée = Evolution of Societies over Time and Space",
+    "crumbs": [
+      "Week 1: {{< var w01.date-md >}}"
+    ]
+  },
+  {
+    "objectID": "w01/index.html#particularly-fun-non-standard-examples",
+    "href": "w01/index.html#particularly-fun-non-standard-examples",
+    "title": "Week 1: From a Science of Particles to a Science of People",
+    "section": "Particularly Fun Non-“Standard” Examples",
+    "text": "Particularly Fun Non-“Standard” Examples\n\nDeDeo, French Revolution\nGrimmer, Mirrors for Sultans and Princes",
+    "crumbs": [
+      "Week 1: {{< var w01.date-md >}}"
+    ]
+  },
+  {
+    "objectID": "w01/index.html#data-generating-processes-dgps",
+    "href": "w01/index.html#data-generating-processes-dgps",
+    "title": "Week 1: From a Science of Particles to a Science of People",
+    "section": "Data-Generating Processes (DGPs)",
+    "text": "Data-Generating Processes (DGPs)\nThe fundamental building block for the course is the idea of a Data-Generating Process (DGP). You may have encountered this concept in passing during other DSAN courses (for example, in DSAN 5100, a phrase like “Assume \\(X\\) is drawn i.i.d. from a Normal distribution with mean \\(\\mu\\) and variance \\(\\sigma^2\\)” is a statement characterizing the DGP of a Random Variable \\(X\\)), but in this course we will “zoom in” on this concept rather than treating it like a black box or a footnote to e.g. a theorem like the Law of Large Numbers.\nThis deep dive into DGPs is necessary for us here, since our goal in the course is to move from associational statements like “an increase of \\(X\\) by one unit is associated with an increase of \\(Y\\) by \\(\\beta\\) units” to causal statements like “increasing \\(X\\) by one unit causes \\(Y\\) to increase by \\(\\beta\\) units”. As you’ll see in Week 1, the tools from probability theory and statistics that you learned in DSAN 5100—Random Variables, Cumulative Distribution Functions, Conditional Probability, and so on—are necessary but not sufficient to analyze data from a causal perspective.\nFor example, if we use our tools from DSAN 5000 and DSAN 5100 on some dataset to discover that:\n\nThe probability that some event \\(E_1\\) occurs is \\(\\Pr(E_1) = 0.5\\), and\nThe probability that \\(E_1\\) occurs conditional on another event \\(E_0\\) occurring is \\(\\Pr(E_1 \\mid E_0) = 0.75\\),\n\nwe unfortunately cannot infer from these two pieces of information that the occurrence of \\(E_0\\) causes an increase in the likelihood of \\(E_1\\) occurring.\nThis issue (that conditional probabilities could not be interpreted causally) at first represented a kind of dead end for scientists interested in employing probability theory to study causal relationships… In recent decades, however, researchers have built up what amounts to an additional “layer” of modeling tools which augment the existing machinery of probability theory to address causality head-on!1\nFor instance, a modeling approach called “\\(\\textsf{do}\\)-Calculus”, that we will learn in this class, extends the core operations and definitions of probability theory to allow such an move to deriving causality! It does this by introducing a \\(\\textsf{do}(\\cdot)\\) operator that can be applied to Random Variables like \\(X\\), with e.g. \\(\\textsf{do}(X = 5)\\) representing the event wherein someone has intervened in a Data-Generating Process to force the value of \\(X\\) to be 5.\nWith this operator in hand (that is, used alongside an explicit model of a DGP satisfying a set of underlying axioms which are slightly more strict than the axioms of probability theory), it turns out that we can make causal inferences using a very similar pair of facts! If we know that:\n\nThe probability that some event \\(E_1\\) occurs is \\(\\Pr(E_1) = 0.5\\), and\nThe probability that \\(E_1\\) occurs conditional on the event \\(\\textsf{do}(E_0)\\) occurring is \\(\\Pr(E_1 \\mid \\textsf{do}(E_0)) = 0.75\\),\n\nnow we can actually draw the inference that the occurrence of \\(E_0\\) caused an increase in the likelihood of \\(E_1\\) occurring!\nThis stylized comparison (between what’s possible using “core” probability theory and what’s possible when we augment it with additional causal modeling tools) serves as our basic motivation for the course, so that from Week 2 onwards we build upon this foundation to reach the three learning goals described in the next section!",
+    "crumbs": [
+      "Week 1: {{< var w01.date-md >}}"
+    ]
+  },
+  {
+    "objectID": "w01/index.html#meta-logistics-spaced-repetition",
+    "href": "w01/index.html#meta-logistics-spaced-repetition",
+    "title": "Week 1: From a Science of Particles to a Science of People",
+    "section": "Meta-Logistics: Spaced Repetition",
+    "text": "Meta-Logistics: Spaced Repetition",
+    "crumbs": [
+      "Week 1: {{< var w01.date-md >}}"
+    ]
+  },
+  {
+    "objectID": "w01/index.html#meta-logistics-maria-montessori-and-your-final-projects",
+    "href": "w01/index.html#meta-logistics-maria-montessori-and-your-final-projects",
+    "title": "Week 1: From a Science of Particles to a Science of People",
+    "section": "Meta-Logistics: Maria Montessori and Your Final Projects",
+    "text": "Meta-Logistics: Maria Montessori and Your Final Projects",
+    "crumbs": [
+      "Week 1: {{< var w01.date-md >}}"
+    ]
+  },
+  {
+    "objectID": "w01/index.html#your-final-projects",
+    "href": "w01/index.html#your-final-projects",
+    "title": "Week 1: From a Science of Particles to a Science of People",
+    "section": "Your Final Projects",
+    "text": "Your Final Projects",
+    "crumbs": [
+      "Week 1: {{< var w01.date-md >}}"
+    ]
+  },
+  {
+    "objectID": "w01/index.html#jupyterhub",
+    "href": "w01/index.html#jupyterhub",
+    "title": "Week 1: From a Science of Particles to a Science of People",
+    "section": "JupyterHub",
+    "text": "JupyterHub\nhttps://guhub.io",
+    "crumbs": [
+      "Week 1: {{< var w01.date-md >}}"
+    ]
+  },
+  {
+    "objectID": "w01/index.html#assignments-midterm",
+    "href": "w01/index.html#assignments-midterm",
+    "title": "Week 1: From a Science of Particles to a Science of People",
+    "section": "Assignments / Midterm",
+    "text": "Assignments / Midterm",
     "crumbs": [
       "Week 1: {{< var w01.date-md >}}"
     ]
@@ -266,9 +341,19 @@
   {
     "objectID": "w01/index.html#references",
     "href": "w01/index.html#references",
-    "title": "Week 1: Introduction to the Course",
+    "title": "Week 1: From a Science of Particles to a Science of People",
     "section": "References",
-    "text": "References",
+    "text": "References\n\n\nPearl, Judea. 2000. Causality: Models, Reasoning, and Inference. Cambridge University Press.",
+    "crumbs": [
+      "Week 1: {{< var w01.date-md >}}"
+    ]
+  },
+  {
+    "objectID": "w01/index.html#footnotes",
+    "href": "w01/index.html#footnotes",
+    "title": "Week 1: From a Science of Particles to a Science of People",
+    "section": "Footnotes",
+    "text": "Footnotes\n\n\nPearl (2000) represents a key work in this field of research, as it essentially brought together different pieces of causal models into one unified, rigorous framework.↩︎",
     "crumbs": [
       "Week 1: {{< var w01.date-md >}}"
     ]
@@ -276,30 +361,107 @@
   {
     "objectID": "w01/slides.html#prof.-jeff-introduction",
     "href": "w01/slides.html#prof.-jeff-introduction",
-    "title": "Week 1: Introduction to the Course",
+    "title": "Week 1: From a Science of Particles to a Science of People",
     "section": "Prof. Jeff Introduction!",
-    "text": "Prof. Jeff Introduction!\n\nBorn and raised in NW DC → high school in Rockville, MD\nUniversity of Maryland: Computer Science, Math, Economics (2008-2012)"
+    "text": "Prof. Jeff Introduction!\n\nBorn in NW DC → high school in Rockville, MD\nUniversity of Maryland: Computer Science, Math, Econ"
   },
   {
-    "objectID": "w01/slides.html#grad-school",
-    "href": "w01/slides.html#grad-school",
-    "title": "Week 1: Introduction to the Course",
-    "section": "Grad School",
-    "text": "Grad School\n\nStudied abroad in Beijing (Peking University/北大) → internship with Huawei in Hong Kong (HKUST)\n\n\n\n\nStanford for MS in Computer Science (2012-2014)\nResearch Economist at UC Berkeley (2014-2015)\n\n\n\n\n\nColumbia for PhD[+Postdoc] in Political Science (2015-2023)"
+    "objectID": "w01/slides.html#the-world-outside-of-dc",
+    "href": "w01/slides.html#the-world-outside-of-dc",
+    "title": "Week 1: From a Science of Particles to a Science of People",
+    "section": "The World Outside of DC",
+    "text": "The World Outside of DC\n Studied abroad in Beijing (Peking University/北大) → internship with Huawei in Hong Kong (HKUST)\n\n\n\n Stanford, MS in Computer Science\n Research Economist, UC Berkeley\n Columbia, PhD in Political Economy"
   },
   {
-    "objectID": "w01/slides.html#dissertation-political-science-history",
-    "href": "w01/slides.html#dissertation-political-science-history",
-    "title": "Week 1: Introduction to the Course",
-    "section": "Dissertation (Political Science + History)",
-    "text": "Dissertation (Political Science + History)\n“Our Word is Our Weapon”: Text-Analyzing Wars of Ideas from the French Revolution to the First Intifada"
+    "objectID": "w01/slides.html#dissertation-nlp-x-history",
+    "href": "w01/slides.html#dissertation-nlp-x-history",
+    "title": "Week 1: From a Science of Particles to a Science of People",
+    "section": "Dissertation (NLP x History)",
+    "text": "Dissertation (NLP x History)\n“Our Word is Our Weapon”: Text-Analyzing Wars of Ideas from the French Revolution to the First Intifada"
+  },
+  {
+    "objectID": "w01/slides.html#wars-of-ideas-cold-war",
+    "href": "w01/slides.html#wars-of-ideas-cold-war",
+    "title": "Week 1: From a Science of Particles to a Science of People",
+    "section": "Wars of Ideas: Cold War",
+    "text": "Wars of Ideas: Cold War\n\nCold War arms shipments (SIPRI) vs. propaganda (Печать СССР): here, to 🇪🇹"
+  },
+  {
+    "objectID": "w01/slides.html#wars-of-ideas-first-intifada",
+    "href": "w01/slides.html#wars-of-ideas-first-intifada",
+    "title": "Week 1: From a Science of Particles to a Science of People",
+    "section": "Wars of Ideas: First Intifada",
+    "text": "Wars of Ideas: First Intifada"
+  },
+  {
+    "objectID": "w01/slides.html#researching-things",
+    "href": "w01/slides.html#researching-things",
+    "title": "Week 1: From a Science of Particles to a Science of People",
+    "section": "Researching Things",
+    "text": "Researching Things\n\nMost cited paper: “Monopsony in Online Labor Markets” (Uses Double-Debiased ML for Causal Inference!)\nMost recent paper: “Operationalizing Freedom as Non-Domination in the Labor Market” (Cambridge U Press)\nRarely cited paper but often-thought-about obsession: “How To Do Things With Translations”\nRelated thing you can buy in a bookstore: [Editorial board for new translation of] Capital, Vol. 1 by Karl Marx (Princeton U Press)"
+  },
+  {
+    "objectID": "w01/slides.html#coarse-graining-units-of-observation",
+    "href": "w01/slides.html#coarse-graining-units-of-observation",
+    "title": "Week 1: From a Science of Particles to a Science of People",
+    "section": "Coarse-Graining Units of Observation",
+    "text": "Coarse-Graining Units of Observation\n\n\n\nField\nExample Unit of Observation\n\n\n\n\nPhysics\nParticle\n[Particle = Fine-Graining of Molecules]\n\n\nChemistry\nMolecule = \\(\\cup\\)(Particles)\n[Molecule = Coarse-Graining of Particles]\n\n\nBiology\nCell = \\(\\cup\\)(Molecules)\n\n\nNeuro/Cognitive Science\nBrain = \\(\\cup\\)(Cells)\n\n\nHuman Physiology\nBody = Brain \\(\\cup\\) Other Organs\n\n\n🧐 something happens here… 🤔\n\n\nAnthropology\nHuman-Relational System (e.g., Kinship) = \\(\\cup\\)(Brains) \\(\\times\\) Natural Environment\n\n\nEconomics\nEconomy = Specific relational system of exchange w.r.t. scarce resources\n\n\nPolitical Economy\nEconomy-Context = Economic Exchange \\(\\cap\\) Relational Power\n\n\nSociology\nSociety = \\(\\cup\\)(Relational Systems: Kinship, Friendship, Authority, Power, Violence)\n\n\nHistory\nLongue-Durée = Evolution of Societies over Time and Space"
+  },
+  {
+    "objectID": "w01/slides.html#particularly-fun-non-standard-examples",
+    "href": "w01/slides.html#particularly-fun-non-standard-examples",
+    "title": "Week 1: From a Science of Particles to a Science of People",
+    "section": "Particularly Fun Non-“Standard” Examples",
+    "text": "Particularly Fun Non-“Standard” Examples\n\nDeDeo, French Revolution\nGrimmer, Mirrors for Sultans and Princes"
+  },
+  {
+    "objectID": "w01/slides.html#data-generating-processes-dgps",
+    "href": "w01/slides.html#data-generating-processes-dgps",
+    "title": "Week 1: From a Science of Particles to a Science of People",
+    "section": "Data-Generating Processes (DGPs)",
+    "text": "Data-Generating Processes (DGPs)\nThe fundamental building block for the course is the idea of a Data-Generating Process (DGP). You may have encountered this concept in passing during other DSAN courses (for example, in DSAN 5100, a phrase like “Assume \\(X\\) is drawn i.i.d. from a Normal distribution with mean \\(\\mu\\) and variance \\(\\sigma^2\\)” is a statement characterizing the DGP of a Random Variable \\(X\\)), but in this course we will “zoom in” on this concept rather than treating it like a black box or a footnote to e.g. a theorem like the Law of Large Numbers.\nThis deep dive into DGPs is necessary for us here, since our goal in the course is to move from associational statements like “an increase of \\(X\\) by one unit is associated with an increase of \\(Y\\) by \\(\\beta\\) units” to causal statements like “increasing \\(X\\) by one unit causes \\(Y\\) to increase by \\(\\beta\\) units”. As you’ll see in Week 1, the tools from probability theory and statistics that you learned in DSAN 5100—Random Variables, Cumulative Distribution Functions, Conditional Probability, and so on—are necessary but not sufficient to analyze data from a causal perspective.\nFor example, if we use our tools from DSAN 5000 and DSAN 5100 on some dataset to discover that:\n\nThe probability that some event \\(E_1\\) occurs is \\(\\Pr(E_1) = 0.5\\), and\nThe probability that \\(E_1\\) occurs conditional on another event \\(E_0\\) occurring is \\(\\Pr(E_1 \\mid E_0) = 0.75\\),\n\nwe unfortunately cannot infer from these two pieces of information that the occurrence of \\(E_0\\) causes an increase in the likelihood of \\(E_1\\) occurring.\nThis issue (that conditional probabilities could not be interpreted causally) at first represented a kind of dead end for scientists interested in employing probability theory to study causal relationships… In recent decades, however, researchers have built up what amounts to an additional “layer” of modeling tools which augment the existing machinery of probability theory to address causality head-on!1\nFor instance, a modeling approach called “\\(\\textsf{do}\\)-Calculus”, that we will learn in this class, extends the core operations and definitions of probability theory to allow such an move to deriving causality! It does this by introducing a \\(\\textsf{do}(\\cdot)\\) operator that can be applied to Random Variables like \\(X\\), with e.g. \\(\\textsf{do}(X = 5)\\) representing the event wherein someone has intervened in a Data-Generating Process to force the value of \\(X\\) to be 5.\nWith this operator in hand (that is, used alongside an explicit model of a DGP satisfying a set of underlying axioms which are slightly more strict than the axioms of probability theory), it turns out that we can make causal inferences using a very similar pair of facts! If we know that:\n\nThe probability that some event \\(E_1\\) occurs is \\(\\Pr(E_1) = 0.5\\), and\nThe probability that \\(E_1\\) occurs conditional on the event \\(\\textsf{do}(E_0)\\) occurring is \\(\\Pr(E_1 \\mid \\textsf{do}(E_0)) = 0.75\\),\n\nnow we can actually draw the inference that the occurrence of \\(E_0\\) caused an increase in the likelihood of \\(E_1\\) occurring!\nThis stylized comparison (between what’s possible using “core” probability theory and what’s possible when we augment it with additional causal modeling tools) serves as our basic motivation for the course, so that from Week 2 onwards we build upon this foundation to reach the three learning goals described in the next section!\nPearl (2000) represents a key work in this field of research, as it essentially brought together different pieces of causal models into one unified, rigorous framework."
+  },
+  {
+    "objectID": "w01/slides.html#meta-logistics-spaced-repetition",
+    "href": "w01/slides.html#meta-logistics-spaced-repetition",
+    "title": "Week 1: From a Science of Particles to a Science of People",
+    "section": "Meta-Logistics: Spaced Repetition",
+    "text": "Meta-Logistics: Spaced Repetition"
+  },
+  {
+    "objectID": "w01/slides.html#meta-logistics-maria-montessori-and-your-final-projects",
+    "href": "w01/slides.html#meta-logistics-maria-montessori-and-your-final-projects",
+    "title": "Week 1: From a Science of Particles to a Science of People",
+    "section": "Meta-Logistics: Maria Montessori and Your Final Projects",
+    "text": "Meta-Logistics: Maria Montessori and Your Final Projects"
+  },
+  {
+    "objectID": "w01/slides.html#your-final-projects",
+    "href": "w01/slides.html#your-final-projects",
+    "title": "Week 1: From a Science of Particles to a Science of People",
+    "section": "Your Final Projects",
+    "text": "Your Final Projects"
+  },
+  {
+    "objectID": "w01/slides.html#jupyterhub",
+    "href": "w01/slides.html#jupyterhub",
+    "title": "Week 1: From a Science of Particles to a Science of People",
+    "section": "JupyterHub",
+    "text": "JupyterHub\nhttps://guhub.io"
+  },
+  {
+    "objectID": "w01/slides.html#assignments-midterm",
+    "href": "w01/slides.html#assignments-midterm",
+    "title": "Week 1: From a Science of Particles to a Science of People",
+    "section": "Assignments / Midterm",
+    "text": "Assignments / Midterm"
   },
   {
     "objectID": "w01/slides.html#references",
     "href": "w01/slides.html#references",
-    "title": "Week 1: Introduction to the Course",
+    "title": "Week 1: From a Science of Particles to a Science of People",
     "section": "References",
-    "text": "References"
+    "text": "References\n\n\nPearl, Judea. 2000. Causality: Models, Reasoning, and Inference. Cambridge University Press."
   },
   {
     "objectID": "syllabus.html",
@@ -316,7 +478,7 @@
     "href": "syllabus.html#course-staff",
     "title": "Syllabus",
     "section": "Course Staff",
-    "text": "Course Staff\n\nProf. Jeff Jacobs, jj1088@georgetown.edu\n\nOffice hours (Click to schedule): Tuesdays, 3:30-6:30pm\n\nTA Courtney Green, crg123@georgetown.edu\n\nOffice hours by appointment\n\nTA Wendy Hu, lh1078@georgetown.edu\n\nOffice hours by appointment",
+    "text": "Course Staff\n\nProf. Jeff Jacobs, jj1088@georgetown.edu\n\nOffice hours (Click to schedule): Tuesdays, 3:30-6pm\n\nTA Courtney Green, crg123@georgetown.edu\n\nOffice hours by appointment\n\nTA Wendy Hu, lh1078@georgetown.edu\n\nOffice hours by appointment",
     "crumbs": [
       "Syllabus"
     ]
@@ -356,7 +518,7 @@
     "href": "syllabus.html#schedule",
     "title": "Syllabus",
     "section": "Schedule",
-    "text": "Schedule\nThe following is a rough map of what we will work through together throughout the semester; given that everyone learns at a different pace, my aim is to leave us with a good amount of flexibility in terms of how much time we spend on each topic: if I find that it takes me longer than a week to convey a certain topic in sufficient depth, for example, then I view it as a strength rather than a weakness of the course that we can then rearrange the calendar below by adding an extra week on that particular topic! Similarly, if it seems like I am spending too much time on a topic, to the point that students seem bored or impatient to move onto the next topic, we can move a topic intended for the next week to the current week!\n\n\n\nUnit\nWeek\nDate\nTopic\n\n\n\n\nUnit 1: The Language of Causal Modeling\n1\nMay 21\nThe Language of Causal Modeling\n\n\n\n2\nMay 28\nProbabilistic Graphical Models (PGMs) as Data-Generating Processes (DGPs)\n\n\n\n\nMay 30 (Friday), 5:59pm EST\n[Deliverable] HW1: Causal Modeling with DAGs and PGMs: Direct and Indirect Effects\n\n\nUnit 2: Doin Thangs\n3\nJun 4\nPGMs as Causal Graphs via do-Calculus: Chains, Forks, and Colliders\n\n\n\n4\nJun 11\nSome Humility via Theory: Have We Closed All Backdoor Paths?\n\n\nUnit 3: Matching Apples to Apples\n5\nJun 18\nStatistical Matching (A Cautious First Dip into Computational Methods)\n\n\n\n6\nJun 25\nMidterm Review (feat. Example Problems)\n\n\nMidterm\n7\nJul 2\nIn-Class Midterm: Causal Models and Statistical Matching\n\n\nUnit 4: Machine Learning for Causal Inference\n8\nJul 9\nPropensity Score Matching\n\n\n\n9\nJul 16\nDouble-Debiased Machine Learning\n\n\n\n10\nJul 23\nCausal Forests for Heterogeneous Treatment Effects\n\n\n\n11\nJul 30\nFancier Causal Inference at the Fancy Computational Methods Frontier\n\n\nFinal Project Zone\n12\nAug 6\nFinal Project Huddle\n\n\n\n13\nAug 13\nFinal Project Presentations\n\n\n\n\nAug 15 (Friday), 5:59pm EDT\n[Deliverable] Final Project",
+    "text": "Schedule\nThe following is a rough map of what we will work through together throughout the semester; given that everyone learns at a different pace, my aim is to leave us with a good amount of flexibility in terms of how much time we spend on each topic: if I find that it takes me longer than a week to convey a certain topic in sufficient depth, for example, then I view it as a strength rather than a weakness of the course that we can then rearrange the calendar below by adding an extra week on that particular topic! Similarly, if it seems like I am spending too much time on a topic, to the point that students seem bored or impatient to move onto the next topic, we can move a topic intended for the next week to the current week!\n\n\n\nUnit\nWeek\nDate\nTopic\n\n\n\n\nUnit 1: The Language of Causal Modeling\n1\nMay 21\nFrom a Science of Particles to a Science of People\n\n\n\n2\nMay 28\nProbabilistic Graphical Models (PGMs) as Data-Generating Processes (DGPs)\n\n\n\n\nMay 30 (Friday), 5:59pm EST\n[Deliverable] HW1: Causal Modeling with DAGs and PGMs: Direct and Indirect Effects\n\n\nUnit 2: Doin Thangs\n3\nJun 4\nPGMs as Causal Graphs via do-Calculus: Chains, Forks, and Colliders\n\n\n\n4\nJun 11\nSome Humility via Theory: Have We Closed All Backdoor Paths?\n\n\nUnit 3: Matching Apples to Apples\n5\nJun 18\nStatistical Matching (A Cautious First Dip into Computational Methods)\n\n\n\n6\nJun 25\nMidterm Review (feat. Example Problems)\n\n\nMidterm\n7\nJul 2\nIn-Class Midterm: Causal Models and Statistical Matching\n\n\nUnit 4: Machine Learning for Causal Inference\n8\nJul 9\nPropensity Score Matching\n\n\n\n9\nJul 16\nDouble-Debiased Machine Learning\n\n\n\n10\nJul 23\nCausal Forests for Heterogeneous Treatment Effects\n\n\n\n11\nJul 30\nFancier Causal Inference at the Fancy Computational Methods Frontier\n\n\nFinal Project Zone\n12\nAug 6\nFinal Project Huddle\n\n\n\n13\nAug 13\nFinal Project Presentations\n\n\n\n\nAug 15 (Friday), 5:59pm EDT\n[Deliverable] Final Project",
     "crumbs": [
       "Syllabus"
     ]
@@ -366,7 +528,7 @@
     "href": "syllabus.html#assignments-and-grading",
     "title": "Syllabus",
     "section": "Assignments and Grading",
-    "text": "Assignments and Grading\nThe main assignment in the course will be your policy whitepaper, submitted at the end of the semester. However, there will also be a midterm exam and a series of assignments which exist to let you explore each of the modules of the course, in turn.\n\n\n\n\n\n\n\n\nAssignment\nDue Date\n% of Grade\n\n\n\n\nHW1: Causal Modeling with DAGs and PGMs: Direct and Indirect Effects\nFriday, May 30\n10%\n\n\nHW2: Traversing the Sea of Causality with the do-Harpoon in Hand: Chains, Forks, and Colliders\nFriday, February 21\n10%\n\n\nHW3: Statistical Matching: Apples to Apples and Oranges to Oranges\nFriday, June 27\n10%\n\n\nIn-Class Midterm\nWednesday, July 2\n30%\n\n\nHW4: Basic Computational Causal Methods\nFriday, July 11\n10%\n\n\nFinal Project\nFriday, August 15\n30%\n\n\n\n\nHomework Lateness Policy\nAfter the due date, for each homework assignment, you will have a grace period of 24 hours to submit the assignment without a lateness penalty. After this 24-hour grace period, late penalties will be applied based on the following scale (unless you obtain an excused lateness from one of the instructional staff!):\n\n0 to 24 hours late: no penalty\n24 to 30 hours late: 2.5% penalty\n30 to 42 hours late: 5% penalty\n42 to 54 hours late: 10% penalty\n54 to 66 hours late: 20% penalty\nMore than 66 hours late: Assignment submissions no longer accepted (without instructor approval)",
+    "text": "Assignments and Grading\nThe main assignment in the course will be your final project, submitted at the end of the semester. However, there will also be a (virtual) in-class midterm exam and a series of assignments which exist to let you explore each of the modules of the course, in turn.\n\n\n\n\n\n\n\n\nAssignment\nDue Date\n% of Grade\n\n\n\n\nHW1: Causal Modeling with DAGs and PGMs: Direct and Indirect Effects\nFriday, May 30\n9%\n\n\nHW2: Traversing the Sea of Causality with the do-Harpoon in Hand: Chains, Forks, and Colliders\nFriday, February 21\n9%\n\n\nHW3: Statistical Matching: Apples to Apples and Oranges to Oranges\nFriday, June 27\n9%\n\n\nIn-Class Midterm\nWednesday, July 2\n25%\n\n\nHW4: Basic Computational Causal Methods\nFriday, July 11\n9%\n\n\nHW5: Fancy Computational Causal Methods\nFriday, July 25\n9%\n\n\nFinal Project\nFriday, August 15\n30%\n\n\n\n\nHomework Lateness Policy\nAfter the due date, for each assignment besides the midterm, you will have a grace period of 24 hours to submit the assignment without a lateness penalty. After this 24-hour grace period, late penalties will be applied based on the following scale (unless you obtain an excused lateness from one of the instructional staff!):\n\n0 to 24 hours late: no penalty\n24 to 30 hours late: 2.5% penalty\n30 to 42 hours late: 5% penalty\n42 to 54 hours late: 10% penalty\n54 to 66 hours late: 20% penalty\nMore than 66 hours late: Assignment submissions no longer accepted (without instructor approval)",
     "crumbs": [
       "Syllabus"
     ]
