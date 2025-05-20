@@ -92,14 +92,17 @@ Today's Planned Schedule:
 <i class='bi bi-4-circle'></i> **Columbia**, PhD in Political Economy
 
 
-## Why Is Georgetown Having Me Teach This? {.smaller .title-09 .crunch-title .crunch-ul .crunch-quarto-layout-panel}
+## Why Is Georgetown Having Me Teach This? {.smaller .title-09 .crunch-title .crunch-ul .crunch-li-8 .crunch-quarto-layout-panel}
 
-::: {layout="[1,1]" layout-align="center" layout-valign="center"}
+::: {layout="[55,45]" layout-align="center" layout-valign="top"}
 ::: {#why-background-left}
 
-* Quanty things, but then PhD major was **Political Philosophy** (concentration in **International Relations**)
-* What most interested me: <a href='https://unravelhistory.com/' target='_blank'>**unraveling history**</a>; Easy to get lost in "present-day" details of e.g. **debiasing** algorithms and **fairness in AI**, but these questions go back literally thousands of years!
-* Pol philosophers distinguish "ancients" and "moderns" based on a crucial **shift in perspective**: ancients sought perfection, while @rousseau_social_1762 "took men [sic] as they are, and laws as they could be".
+* Quanty things $\leadsto$ PhD in **Political Economy**
+* PhD exam major: **Political Philosophy**
+* PhD exam minor: **International Relations**
+* PhD exam paper: "How to Do Things with Translations"
+* Game-changing Research Fellowships at... (Nothing was the same -drake a. graham):
+* [Santa Fe Institute](https://en.wikipedia.org/wiki/Santa_Fe_Institute): *dedicated to the multidisciplinary study of complex adaptive systems: physical, computational, biological, and social systems*
 
 :::
 ::: {#fig-background-right}
@@ -135,9 +138,11 @@ fig.show()
 ```
 </center>
 
-Years spent questing in various dungeons of academia
+Years spent questing in dungeons of academia
 :::
 :::
+
+* [Centre for the Study of the History of Political Thought](https://projects.history.qmul.ac.uk/hpt/), Queen Mary University of London (QMUL): *New approaches to the history of political thought [Quentin Skinner, "Cambridge School"] have changed how we study ideas from the past and their relevance to contemporary politics. The focus of the Centre is to explore [ts].*
 
 ## Dissertation (NLP x History) {.title-08}
 
@@ -145,13 +150,13 @@ Years spent questing in various dungeons of academia
 
 ![](images/diss.png){fig-align="center"}
 
-## Wars of Ideas: Cold War {.smaller .crunch-img .title-12}
+## (The IR Part) Wars of Ideas I: Cold War {.smaller .crunch-img .title-12}
 
 * Cold War arms shipments (SIPRI) vs. propaganda (*Печать СССР*): here, to 🇪🇹
 
 ![](images/eth_arms.svg){fig-align="center"}
 
-## Wars of Ideas: First Intifada
+## (The Middle East Part) Wars of Ideas II: First Intifada
 
 ## Researching Things
 
