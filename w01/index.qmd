@@ -112,6 +112,7 @@ Today's Planned Schedule:
 #| label: bg-sunburst
 #| fig-align: center
 #| align: center
+#| echo: false
 import plotly.express as px
 import plotly.io as pio
 pio.renderers.default = "notebook"
