@@ -97,6 +97,8 @@ div.csl-indent {
 <link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
 <link href="../site_libs/bootstrap/bootstrap-79108a0fc1995748cbd19a5b0e3e3e7c.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
 <link href="../site_libs/bootstrap/bootstrap-dark-b2511bcbb01c2159fd96a78deb42ffd9.min.css" rel="prefetch" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<script src="../site_libs/quarto-contrib/videojs/video.min.js"></script>
+<link href="../site_libs/quarto-contrib/videojs/video-js.css" rel="stylesheet">
 <script id="quarto-search-options" type="application/json">{
   "location": "sidebar",
   "copy-button": false,
@@ -273,7 +275,7 @@ window.Quarto = {
     </ul>
     </div>
 <div class="quarto-sidebar-footer"><div class="sidebar-footer-item">
-<p><em>Updated 2025-05-20, 04:43:01 AM</em></p>
+<p><em>Updated 2025-05-20, 05:45:55 AM</em></p>
 </div></div></nav>
 <div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
@@ -303,7 +305,12 @@ window.Quarto = {
   </ul></li>
   <li><a href="#motivation-ii-causal-inference" id="toc-motivation-ii-causal-inference" class="nav-link" data-scroll-target="#motivation-ii-causal-inference">Motivation II: Causal Inference</a>
   <ul class="collapse">
+  <li><a href="#disclaimer-unfortunate-side-effects-of-engaging-seriously-with-causality" id="toc-disclaimer-unfortunate-side-effects-of-engaging-seriously-with-causality" class="nav-link" data-scroll-target="#disclaimer-unfortunate-side-effects-of-engaging-seriously-with-causality">Disclaimer: Unfortunate Side Effects of Engaging Seriously with Causality</a></li>
   <li><a href="#data-generating-processes-dgps" id="toc-data-generating-processes-dgps" class="nav-link" data-scroll-target="#data-generating-processes-dgps">Data-Generating Processes (DGPs)</a></li>
+  <li><a href="#probability" id="toc-probability" class="nav-link" data-scroll-target="#probability">Probability++</a></li>
+  <li><a href="#beyond-conditional-probability" id="toc-beyond-conditional-probability" class="nav-link" data-scroll-target="#beyond-conditional-probability">Beyond Conditional Probability</a></li>
+  <li><a href="#preview-do-calculus" id="toc-preview-do-calculus" class="nav-link" data-scroll-target="#preview-do-calculus">Preview: do-Calculus</a></li>
+  <li><a href="#causal-world-unlocked-with-great-power-comes-great-responsibility" id="toc-causal-world-unlocked-with-great-power-comes-great-responsibility" class="nav-link" data-scroll-target="#causal-world-unlocked-with-great-power-comes-great-responsibility">Causal World Unlocked 😎 (With Great Power Comes Great Responsibility…)</a></li>
   </ul></li>
   <li><a href="#course-logistics" id="toc-course-logistics" class="nav-link" data-scroll-target="#course-logistics">Course Logistics</a>
   <ul class="collapse">
@@ -432,7 +439,7 @@ window.Quarto = {
 <section id="who-am-i-why-is-georgetown-having-me-teach-this" class="level1" data-stack-name="Intro">
 <h1 data-stack-name="Intro">Who Am I? Why Is Georgetown Having Me Teach This?</h1>
 <div class="hidden">
-<div id="68f94313" class="cell" data-execution_count="1">
+<div id="96f2b1e2" class="cell" data-execution_count="1">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>cb_palette <span class="op">=</span> [</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>    <span class="st">"#E69F00"</span>, <span class="st">"#56B4E9"</span>, <span class="st">"#009E73"</span>,</span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>    <span class="st">"#F0E442"</span>, <span class="st">"#0072B2"</span>, <span class="st">"#D55E00"</span>,</span>
@@ -546,9 +553,9 @@ window.Quarto = {
 <span id="cb2-22"><a href="#cb2-22" aria-hidden="true" tabindex="-1"></a>fig.update_layout(margin <span class="op">=</span> <span class="bu">dict</span>(t<span class="op">=</span><span class="dv">0</span>, l<span class="op">=</span><span class="dv">0</span>, r<span class="op">=</span><span class="dv">0</span>, b<span class="op">=</span><span class="dv">0</span>))</span>
 <span id="cb2-23"><a href="#cb2-23" aria-hidden="true" tabindex="-1"></a>fig.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div id="bg-sunburst" class="cell-output cell-output-display">
-<div>                            <div id="1ceb7f4c-873a-4dab-b523-51928aebc1c4" class="plotly-graph-div" style="height:400px; width:450px;"></div>            <script type="text/javascript">                require(["plotly"], function(Plotly) {                    window.PLOTLYENV=window.PLOTLYENV || {};                                    if (document.getElementById("1ceb7f4c-873a-4dab-b523-51928aebc1c4")) {                    Plotly.newPlot(                        "1ceb7f4c-873a-4dab-b523-51928aebc1c4",                        [{"branchvalues":"total","customdata":[["Quant"],["Quant"],["Social Sci"],["Social Sci"],["Humanities"],["Humanities"],["Quant"],["Social Sci"]],"domain":{"x":[0.0,1.0],"y":[0.0,1.0]},"ids":["Quant\u002fMath\u003cbr\u003e(BS)","Quant\u002fCS\u003cbr\u003e(BS,MS)","Social Sci\u002fEcon\u003cbr\u003e(BS+Job)","Social Sci\u002fPol Econ\u003cbr\u003e(PhD Pt 2)","Humanities\u002fPol Phil\u003cbr\u003e(PhD Pt 1)","Humanities","Quant","Social Sci"],"labels":["Math\u003cbr\u003e(BS)","CS\u003cbr\u003e(BS,MS)","Econ\u003cbr\u003e(BS+Job)","Pol Econ\u003cbr\u003e(PhD Pt 2)","Pol Phil\u003cbr\u003e(PhD Pt 1)","Humanities","Quant","Social Sci"],"marker":{"colors":["#E69F00","#E69F00","#009E73","#009E73","#56B4E9","#56B4E9","#E69F00","#009E73"]},"name":"","parents":["Quant","Quant","Social Sci","Social Sci","Humanities","","",""],"values":[4,6,6,5,3,3,10,11],"type":"sunburst","hoverinfo":"skip"}],                        {"template":{"data":{"histogram2dcontour":[{"type":"histogram2dcontour","colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]]}],"choropleth":[{"type":"choropleth","colorbar":{"outlinewidth":0,"ticks":""}}],"histogram2d":[{"type":"histogram2d","colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]]}],"heatmap":[{"type":"heatmap","colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]]}],"heatmapgl":[{"type":"heatmapgl","colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]]}],"contourcarpet":[{"type":"contourcarpet","colorbar":{"outlinewidth":0,"ticks":""}}],"contour":[{"type":"contour","colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]]}],"surface":[{"type":"surface","colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]]}],"mesh3d":[{"type":"mesh3d","colorbar":{"outlinewidth":0,"ticks":""}}],"scatter":[{"fillpattern":{"fillmode":"overlay","size":10,"solidity":0.2},"type":"scatter"}],"parcoords":[{"type":"parcoords","line":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"scatterpolargl":[{"type":"scatterpolargl","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"bar":[{"error_x":{"color":"#2a3f5f"},"error_y":{"color":"#2a3f5f"},"marker":{"line":{"color":"#E5ECF6","width":0.5},"pattern":{"fillmode":"overlay","size":10,"solidity":0.2}},"type":"bar"}],"scattergeo":[{"type":"scattergeo","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"scatterpolar":[{"type":"scatterpolar","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"histogram":[{"marker":{"pattern":{"fillmode":"overlay","size":10,"solidity":0.2}},"type":"histogram"}],"scattergl":[{"type":"scattergl","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"scatter3d":[{"type":"scatter3d","line":{"colorbar":{"outlinewidth":0,"ticks":""}},"marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"scattermapbox":[{"type":"scattermapbox","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"scatterternary":[{"type":"scatterternary","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"scattercarpet":[{"type":"scattercarpet","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"carpet":[{"aaxis":{"endlinecolor":"#2a3f5f","gridcolor":"white","linecolor":"white","minorgridcolor":"white","startlinecolor":"#2a3f5f"},"baxis":{"endlinecolor":"#2a3f5f","gridcolor":"white","linecolor":"white","minorgridcolor":"white","startlinecolor":"#2a3f5f"},"type":"carpet"}],"table":[{"cells":{"fill":{"color":"#EBF0F8"},"line":{"color":"white"}},"header":{"fill":{"color":"#C8D4E3"},"line":{"color":"white"}},"type":"table"}],"barpolar":[{"marker":{"line":{"color":"#E5ECF6","width":0.5},"pattern":{"fillmode":"overlay","size":10,"solidity":0.2}},"type":"barpolar"}],"pie":[{"automargin":true,"type":"pie"}]},"layout":{"autotypenumbers":"strict","colorway":["#636efa","#EF553B","#00cc96","#ab63fa","#FFA15A","#19d3f3","#FF6692","#B6E880","#FF97FF","#FECB52"],"font":{"color":"#2a3f5f"},"hovermode":"closest","hoverlabel":{"align":"left"},"paper_bgcolor":"white","plot_bgcolor":"#E5ECF6","polar":{"bgcolor":"#E5ECF6","angularaxis":{"gridcolor":"white","linecolor":"white","ticks":""},"radialaxis":{"gridcolor":"white","linecolor":"white","ticks":""}},"ternary":{"bgcolor":"#E5ECF6","aaxis":{"gridcolor":"white","linecolor":"white","ticks":""},"baxis":{"gridcolor":"white","linecolor":"white","ticks":""},"caxis":{"gridcolor":"white","linecolor":"white","ticks":""}},"coloraxis":{"colorbar":{"outlinewidth":0,"ticks":""}},"colorscale":{"sequential":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]],"sequentialminus":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]],"diverging":[[0,"#8e0152"],[0.1,"#c51b7d"],[0.2,"#de77ae"],[0.3,"#f1b6da"],[0.4,"#fde0ef"],[0.5,"#f7f7f7"],[0.6,"#e6f5d0"],[0.7,"#b8e186"],[0.8,"#7fbc41"],[0.9,"#4d9221"],[1,"#276419"]]},"xaxis":{"gridcolor":"white","linecolor":"white","ticks":"","title":{"standoff":15},"zerolinecolor":"white","automargin":true,"zerolinewidth":2},"yaxis":{"gridcolor":"white","linecolor":"white","ticks":"","title":{"standoff":15},"zerolinecolor":"white","automargin":true,"zerolinewidth":2},"scene":{"xaxis":{"backgroundcolor":"#E5ECF6","gridcolor":"white","linecolor":"white","showbackground":true,"ticks":"","zerolinecolor":"white","gridwidth":2},"yaxis":{"backgroundcolor":"#E5ECF6","gridcolor":"white","linecolor":"white","showbackground":true,"ticks":"","zerolinecolor":"white","gridwidth":2},"zaxis":{"backgroundcolor":"#E5ECF6","gridcolor":"white","linecolor":"white","showbackground":true,"ticks":"","zerolinecolor":"white","gridwidth":2}},"shapedefaults":{"line":{"color":"#2a3f5f"}},"annotationdefaults":{"arrowcolor":"#2a3f5f","arrowhead":0,"arrowwidth":1},"geo":{"bgcolor":"white","landcolor":"#E5ECF6","subunitcolor":"white","showland":true,"showlakes":true,"lakecolor":"white"},"title":{"x":0.05},"mapbox":{"style":"light"},"margin":{"b":0,"l":0,"r":0,"t":30}}},"legend":{"tracegroupgap":0},"height":400,"width":450,"margin":{"t":0,"l":0,"r":0,"b":0}},                        {"responsive": true}                    ).then(function(){
+<div>                            <div id="4fa2e3b6-1a81-4083-8596-0bfbc4057ae1" class="plotly-graph-div" style="height:400px; width:450px;"></div>            <script type="text/javascript">                require(["plotly"], function(Plotly) {                    window.PLOTLYENV=window.PLOTLYENV || {};                                    if (document.getElementById("4fa2e3b6-1a81-4083-8596-0bfbc4057ae1")) {                    Plotly.newPlot(                        "4fa2e3b6-1a81-4083-8596-0bfbc4057ae1",                        [{"branchvalues":"total","customdata":[["Quant"],["Quant"],["Social Sci"],["Social Sci"],["Humanities"],["Humanities"],["Quant"],["Social Sci"]],"domain":{"x":[0.0,1.0],"y":[0.0,1.0]},"ids":["Quant\u002fMath\u003cbr\u003e(BS)","Quant\u002fCS\u003cbr\u003e(BS,MS)","Social Sci\u002fEcon\u003cbr\u003e(BS+Job)","Social Sci\u002fPol Econ\u003cbr\u003e(PhD Pt 2)","Humanities\u002fPol Phil\u003cbr\u003e(PhD Pt 1)","Humanities","Quant","Social Sci"],"labels":["Math\u003cbr\u003e(BS)","CS\u003cbr\u003e(BS,MS)","Econ\u003cbr\u003e(BS+Job)","Pol Econ\u003cbr\u003e(PhD Pt 2)","Pol Phil\u003cbr\u003e(PhD Pt 1)","Humanities","Quant","Social Sci"],"marker":{"colors":["#E69F00","#E69F00","#009E73","#009E73","#56B4E9","#56B4E9","#E69F00","#009E73"]},"name":"","parents":["Quant","Quant","Social Sci","Social Sci","Humanities","","",""],"values":[4,6,6,5,3,3,10,11],"type":"sunburst","hoverinfo":"skip"}],                        {"template":{"data":{"histogram2dcontour":[{"type":"histogram2dcontour","colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]]}],"choropleth":[{"type":"choropleth","colorbar":{"outlinewidth":0,"ticks":""}}],"histogram2d":[{"type":"histogram2d","colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]]}],"heatmap":[{"type":"heatmap","colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]]}],"heatmapgl":[{"type":"heatmapgl","colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]]}],"contourcarpet":[{"type":"contourcarpet","colorbar":{"outlinewidth":0,"ticks":""}}],"contour":[{"type":"contour","colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]]}],"surface":[{"type":"surface","colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]]}],"mesh3d":[{"type":"mesh3d","colorbar":{"outlinewidth":0,"ticks":""}}],"scatter":[{"fillpattern":{"fillmode":"overlay","size":10,"solidity":0.2},"type":"scatter"}],"parcoords":[{"type":"parcoords","line":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"scatterpolargl":[{"type":"scatterpolargl","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"bar":[{"error_x":{"color":"#2a3f5f"},"error_y":{"color":"#2a3f5f"},"marker":{"line":{"color":"#E5ECF6","width":0.5},"pattern":{"fillmode":"overlay","size":10,"solidity":0.2}},"type":"bar"}],"scattergeo":[{"type":"scattergeo","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"scatterpolar":[{"type":"scatterpolar","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"histogram":[{"marker":{"pattern":{"fillmode":"overlay","size":10,"solidity":0.2}},"type":"histogram"}],"scattergl":[{"type":"scattergl","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"scatter3d":[{"type":"scatter3d","line":{"colorbar":{"outlinewidth":0,"ticks":""}},"marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"scattermapbox":[{"type":"scattermapbox","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"scatterternary":[{"type":"scatterternary","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"scattercarpet":[{"type":"scattercarpet","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"carpet":[{"aaxis":{"endlinecolor":"#2a3f5f","gridcolor":"white","linecolor":"white","minorgridcolor":"white","startlinecolor":"#2a3f5f"},"baxis":{"endlinecolor":"#2a3f5f","gridcolor":"white","linecolor":"white","minorgridcolor":"white","startlinecolor":"#2a3f5f"},"type":"carpet"}],"table":[{"cells":{"fill":{"color":"#EBF0F8"},"line":{"color":"white"}},"header":{"fill":{"color":"#C8D4E3"},"line":{"color":"white"}},"type":"table"}],"barpolar":[{"marker":{"line":{"color":"#E5ECF6","width":0.5},"pattern":{"fillmode":"overlay","size":10,"solidity":0.2}},"type":"barpolar"}],"pie":[{"automargin":true,"type":"pie"}]},"layout":{"autotypenumbers":"strict","colorway":["#636efa","#EF553B","#00cc96","#ab63fa","#FFA15A","#19d3f3","#FF6692","#B6E880","#FF97FF","#FECB52"],"font":{"color":"#2a3f5f"},"hovermode":"closest","hoverlabel":{"align":"left"},"paper_bgcolor":"white","plot_bgcolor":"#E5ECF6","polar":{"bgcolor":"#E5ECF6","angularaxis":{"gridcolor":"white","linecolor":"white","ticks":""},"radialaxis":{"gridcolor":"white","linecolor":"white","ticks":""}},"ternary":{"bgcolor":"#E5ECF6","aaxis":{"gridcolor":"white","linecolor":"white","ticks":""},"baxis":{"gridcolor":"white","linecolor":"white","ticks":""},"caxis":{"gridcolor":"white","linecolor":"white","ticks":""}},"coloraxis":{"colorbar":{"outlinewidth":0,"ticks":""}},"colorscale":{"sequential":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]],"sequentialminus":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]],"diverging":[[0,"#8e0152"],[0.1,"#c51b7d"],[0.2,"#de77ae"],[0.3,"#f1b6da"],[0.4,"#fde0ef"],[0.5,"#f7f7f7"],[0.6,"#e6f5d0"],[0.7,"#b8e186"],[0.8,"#7fbc41"],[0.9,"#4d9221"],[1,"#276419"]]},"xaxis":{"gridcolor":"white","linecolor":"white","ticks":"","title":{"standoff":15},"zerolinecolor":"white","automargin":true,"zerolinewidth":2},"yaxis":{"gridcolor":"white","linecolor":"white","ticks":"","title":{"standoff":15},"zerolinecolor":"white","automargin":true,"zerolinewidth":2},"scene":{"xaxis":{"backgroundcolor":"#E5ECF6","gridcolor":"white","linecolor":"white","showbackground":true,"ticks":"","zerolinecolor":"white","gridwidth":2},"yaxis":{"backgroundcolor":"#E5ECF6","gridcolor":"white","linecolor":"white","showbackground":true,"ticks":"","zerolinecolor":"white","gridwidth":2},"zaxis":{"backgroundcolor":"#E5ECF6","gridcolor":"white","linecolor":"white","showbackground":true,"ticks":"","zerolinecolor":"white","gridwidth":2}},"shapedefaults":{"line":{"color":"#2a3f5f"}},"annotationdefaults":{"arrowcolor":"#2a3f5f","arrowhead":0,"arrowwidth":1},"geo":{"bgcolor":"white","landcolor":"#E5ECF6","subunitcolor":"white","showland":true,"showlakes":true,"lakecolor":"white"},"title":{"x":0.05},"mapbox":{"style":"light"},"margin":{"b":0,"l":0,"r":0,"t":30}}},"legend":{"tracegroupgap":0},"height":400,"width":450,"margin":{"t":0,"l":0,"r":0,"b":0}},                        {"responsive": true}                    ).then(function(){
                             
-var gd = document.getElementById('1ceb7f4c-873a-4dab-b523-51928aebc1c4');
+var gd = document.getElementById('4fa2e3b6-1a81-4083-8596-0bfbc4057ae1');
 var x = new MutationObserver(function (mutations, observer) {{
         var display = window.getComputedStyle(gd).display;
         if (!display || display === 'none') {{
@@ -693,25 +700,92 @@ Figure&nbsp;1: Years spent questing in dungeons of academia
 </section>
 <section id="motivation-ii-causal-inference" class="level1" data-stack-name="Causal Inference">
 <h1 data-stack-name="Causal Inference">Motivation II: Causal Inference</h1>
+<ul>
+<li>The <em>methodology</em> we’ll use to <em>draw inferences</em> about social phenomena from data</li>
+</ul>
+<section id="disclaimer-unfortunate-side-effects-of-engaging-seriously-with-causality" class="level2 smaller crunch-title title-10 crunch-p crunch-img">
+<h2 class="smaller crunch-title title-10 crunch-p crunch-img anchored" data-anchor-id="disclaimer-unfortunate-side-effects-of-engaging-seriously-with-causality">Disclaimer: Unfortunate Side Effects of Engaging Seriously with Causality</h2>
+<div class="columns">
+<div class="column" style="width:50%;">
+<p><i class="bi bi-1-circle"></i> You’ll no longer be able to read scientific writing without striking this expression (involuntarily):</p>
+</div><div class="column" style="width:50%;">
+<p><i class="bi bi-2-circle"></i> Scientific talks will begin to sound like the following:</p>
+</div>
+</div>
+<div>
+
+</div>
+<div class="quarto-layout-panel" data-layout="[5,5]">
+<div class="quarto-layout-row quarto-layout-valign-top">
+<div id="expression" class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/hrngg.png" class="img-fluid quarto-figure quarto-figure-center figure-img" width="300"></p>
+</figure>
+</div>
+</div>
+<div id="looked-at-the-data" class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: flex-start;">
+<div class="quarto-video"><video id="video_shortcode_videojs_video1" class="video-js vjs-default-skin vjs-fluid" controls="" preload="auto" data-setup="{}" title=""><source src="https://jpj.georgetown.domains/dsan5650-scratch/looked_at_the_data.mp4"></video></div>
+</div>
+</div>
+</div>
+</section>
 <section id="data-generating-processes-dgps" class="level2">
 <h2 class="anchored" data-anchor-id="data-generating-processes-dgps">Data-Generating Processes (DGPs)</h2>
-<p>The fundamental building block for the course is the idea of a <strong>Data-Generating Process (DGP)</strong>. You may have encountered this concept in passing during other DSAN courses (for example, in DSAN 5100, a phrase like “Assume <span class="math inline">\(X\)</span> is drawn i.i.d. from a Normal distribution with mean <span class="math inline">\(\mu\)</span> and variance <span class="math inline">\(\sigma^2\)</span>” is a statement characterizing the DGP of a Random Variable <span class="math inline">\(X\)</span>), but in this course we will “zoom in” on this concept rather than treating it like a black box or a footnote to e.g.&nbsp;a theorem like the Law of Large Numbers.</p>
-<p>This deep dive into DGPs is necessary for us here, since our goal in the course is <strong>to move from <em>associational</em> statements</strong> like “an increase of <span class="math inline">\(X\)</span> by one unit is associated with an increase of <span class="math inline">\(Y\)</span> by <span class="math inline">\(\beta\)</span> units” to <strong><em>causal</em> statements</strong> like “increasing <span class="math inline">\(X\)</span> by one unit <em>causes</em> <span class="math inline">\(Y\)</span> to increase by <span class="math inline">\(\beta\)</span> units”. As you’ll see in Week 1, the tools from probability theory and statistics that you learned in DSAN 5100—Random Variables, Cumulative Distribution Functions, Conditional Probability, and so on—are necessary but <strong>not <em>sufficient</em></strong> to analyze data from a causal perspective.</p>
-<p>For example, if we use our tools from DSAN 5000 and DSAN 5100 on some dataset to discover that:</p>
 <ul>
-<li>The probability that some event <span class="math inline">\(E_1\)</span> occurs is <span class="math inline">\(\Pr(E_1) = 0.5\)</span>, and</li>
-<li>The probability that <span class="math inline">\(E_1\)</span> occurs <strong>conditional on</strong> another event <span class="math inline">\(E_0\)</span> occurring is <span class="math inline">\(\Pr(E_1 \mid E_0) = 0.75\)</span>,</li>
+<li>You’ve already seen this in DSAN 5100!</li>
+<li>«Assume <span class="math inline">\(X\)</span> is drawn i.i.d. from a Normal distribution with mean <span class="math inline">\(\mu\)</span> and variance <span class="math inline">\(\sigma^2\)</span>» characterizes the <strong>DGP of <span class="math inline">\(X\)</span></strong></li>
+<li>In 5650 we <strong>zoom in on</strong> DGPs, rather than treating as black box or footnote to e.g.&nbsp;Law of Large Numbers.</li>
+<li>Deep dive into DGPs necessary for our goal of moving…
+<ul>
+<li><strong>From <em>associational</em> statements</strong>: “an increase of <span class="math inline">\(X\)</span> by one unit is associated with an increase of <span class="math inline">\(Y\)</span> by <span class="math inline">\(\beta\)</span> units”</li>
+<li><strong>To <em>causal</em> statements</strong>: “increasing <span class="math inline">\(X\)</span> by one unit <em>causes</em> <span class="math inline">\(Y\)</span> to increase by <span class="math inline">\(\beta\)</span> units”.</li>
+</ul></li>
 </ul>
-<p>we unfortunately cannot infer from these two pieces of information that the occurrence of <span class="math inline">\(E_0\)</span> <strong>causes</strong> an increase in the likelihood of <span class="math inline">\(E_1\)</span> occurring.</p>
-<p>This issue (that <strong>conditional probabilities</strong> could not be interpreted causally) at first represented a kind of dead end for scientists interested in employing probability theory to study causal relationships… In recent decades, however, researchers have built up what amounts to an additional “layer” of modeling tools which augment the existing machinery of probability theory to address causality head-on!<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a></p>
-<p>For instance, a modeling approach called <strong>“<span class="math inline">\(\textsf{do}\)</span>-Calculus”</strong>, that we will learn in this class, <em>extends</em> the core operations and definitions of probability theory to allow such an move to deriving causality! It does this by introducing a <span class="math inline">\(\textsf{do}(\cdot)\)</span> operator that can be applied to Random Variables like <span class="math inline">\(X\)</span>, with e.g.&nbsp;<span class="math inline">\(\textsf{do}(X = 5)\)</span> representing the event wherein someone has <strong>intervened</strong> in a <strong>Data-Generating Process</strong> to <strong>force</strong> the value of <span class="math inline">\(X\)</span> to be 5.</p>
-<p>With this operator in hand (that is, used alongside an explicit model of a DGP satisfying a set of underlying axioms which are slightly more strict than the axioms of probability theory), it turns out that we <em>can</em> make causal inferences using a very similar pair of facts! If we know that:</p>
+</section>
+<section id="probability" class="level2">
+<h2 class="anchored" data-anchor-id="probability">Probability++</h2>
 <ul>
-<li>The probability that some event <span class="math inline">\(E_1\)</span> occurs is <span class="math inline">\(\Pr(E_1) = 0.5\)</span>, and</li>
+<li>Tools from probability and statistics (RVs, CDFs, Conditional Probability) <strong>necessary but not sufficient</strong> for causal inference</li>
+<li>Example: Say we use DSAN 5100 tools to discover:
+<ul>
+<li>Probability that event <span class="math inline">\(E_1\)</span> occurs is <span class="math inline">\(\Pr(E_1) = 0.5\)</span></li>
+<li>Probability that <span class="math inline">\(E_1\)</span> occurs <strong>conditional on</strong> another event <span class="math inline">\(E_0\)</span> occurring is <span class="math inline">\(\Pr(E_1 \mid E_0) = 0.75\)</span></li>
+</ul></li>
+<li>Unfortunately, we still <strong>cannot</strong> infer that the occurrence of <span class="math inline">\(E_0\)</span> <strong>causes</strong> an increase in the likelihood of <span class="math inline">\(E_1\)</span> occurring.</li>
+</ul>
+</section>
+<section id="beyond-conditional-probability" class="level2">
+<h2 class="anchored" data-anchor-id="beyond-conditional-probability">Beyond Conditional Probability</h2>
+<ul>
+<li>This issue (that <strong>conditional probabilities</strong> could not be interpreted causally) at first represented a kind of dead end for scientists interested in employing probability theory to study causal relationships…</li>
+<li>In recent decades, researchers have built up what amounts to an additional “layer” of modeling tools which augment the existing machinery of probability theory to address causality head-on! <span class="citation" data-cites="pearl_causality_2000">(<a href="#ref-pearl_causality_2000" role="doc-biblioref">Pearl 2000</a>)</span></li>
+</ul>
+</section>
+<section id="preview-do-calculus" class="level2">
+<h2 class="anchored" data-anchor-id="preview-do-calculus">Preview: do-Calculus</h2>
+<ul>
+<li><p><em>Extends</em> core operations/definitions of probability to incorporate causality, via a <span class="math inline">\(\textsf{do}(\cdot)\)</span> operator for RVs</p></li>
+<li><p><span class="math inline">\(\textsf{do}(X = 5)\)</span> is a “special” <strong>event</strong>, representing <strong>intervention in DGP</strong> to <strong>force</strong> <span class="math inline">\(X \leftarrow 5\)</span></p></li>
+<li><p>“Special” in the sense that <span class="math inline">\(\Pr(\textsf{do}(X = 5))\)</span> not well-defined, only <span class="math inline">\(\Pr(Y = 6 \mid \textsf{do}(X = 5))\)</span></p></li>
+<li><p>To emphasize special-ness, we may use notation like:</p>
+<p><span class="math display">\[
+\Pr(Y = 6 \mid \textsf{do}(X = 5)) \equiv \textstyle \Pr_{\textsf{do}(X = 5)}(Y = 6)
+\]</span></p>
+<p>to avoid confusion with “normal” events</p></li>
+</ul>
+</section>
+<section id="causal-world-unlocked-with-great-power-comes-great-responsibility" class="level2 title-08">
+<h2 class="title-08 anchored" data-anchor-id="causal-world-unlocked-with-great-power-comes-great-responsibility">Causal World Unlocked 😎 (With Great Power Comes Great Responsibility…)</h2>
+<ul>
+<li>With <span class="math inline">\(\textsf{do}(\cdot)\)</span> in hand… (Alongside DGP satisfying a set of underlying axioms, slightly more strict than axioms of probability theory)</li>
+<li>We <em>can</em> make causal inferences from similar pair of facts! If:
+<ul>
+<li>Probability that event <span class="math inline">\(E_1\)</span> occurs is <span class="math inline">\(\Pr(E_1) = 0.5\)</span>,</li>
 <li>The probability that <span class="math inline">\(E_1\)</span> occurs <strong>conditional on</strong> the event <span class="math inline">\(\textsf{do}(E_0)\)</span> occurring is <span class="math inline">\(\Pr(E_1 \mid \textsf{do}(E_0)) = 0.75\)</span>,</li>
+</ul></li>
+<li><strong>Now</strong> we can actually infer that the occurrence of <span class="math inline">\(E_0\)</span> <strong>caused</strong> an increase in the likelihood of <span class="math inline">\(E_1\)</span> occurring!</li>
 </ul>
-<p><strong>now</strong> we can actually draw the inference that the occurrence of <span class="math inline">\(E_0\)</span> <strong>caused</strong> an increase in the likelihood of <span class="math inline">\(E_1\)</span> occurring!</p>
-<p>This stylized comparison (between what’s possible using “core” probability theory and what’s possible when we augment it with additional causal modeling tools) serves as our basic motivation for the course, so that from Week 2 onwards we build upon this foundation to reach the three learning goals described in the next section!</p>
 </section>
 </section>
 <section id="course-logistics" class="level1" data-stack-name="Logistics">
@@ -744,13 +818,7 @@ Pearl, Judea. 2000. <em>Causality: <span>Models</span>, <span>Reasoning</span>, 
 </section>
 </section>
 
-
-<div id="quarto-appendix" class="default"><section id="footnotes" class="footnotes footnotes-end-of-document" role="doc-endnotes"><h2 class="anchored quarto-appendix-heading">Footnotes</h2>
-
-<ol>
-<li id="fn1"><p><span class="citation" data-cites="pearl_causality_2000">Pearl (<a href="#ref-pearl_causality_2000" role="doc-biblioref">2000</a>)</span> represents a key work in this field of research, as it essentially brought together different pieces of causal models into one unified, rigorous framework.<a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
-</ol>
-</section></div></main> <!-- /main -->
+</main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
 window.document.addEventListener("DOMContentLoaded", function (event) {
   const toggleBodyColorMode = (bsSheetEl) => {
@@ -1320,8 +1388,9 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 });
 </script>
 </div> <!-- /content -->
+<footer class="footer"><div class="nav-footer"><div class="nav-footer-center"><div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/jpowerj/dsan5650/blob/main/w01/index.qmd" target="_blank" class="toc-action"><i class="bi bi-github"></i>View source</a></li></ul></div></div></div></footer><script>videojs(video_shortcode_videojs_video1);</script>
 
 
 
 
-<footer class="footer"><div class="nav-footer"><div class="nav-footer-center"><div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/jpowerj/dsan5650/blob/main/w01/index.qmd" target="_blank" class="toc-action"><i class="bi bi-github"></i>View source</a></li></ul></div></div></div></footer></body></html>
+</body></html>

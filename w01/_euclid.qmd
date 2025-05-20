@@ -1,8 +1,0 @@
-
-| Αἰτήματα | Postulates |
-| - | - |
-| α΄. Ἠιτήσθω ἀπὸ παντὸς σημείου ἐπὶ πᾶν σημεῖον εὐθεῖαν γραμμὴν ἀγαγεῖν. | 1. Let the following be postulated: to draw a straight line from any point to any point. |
-| β΄. Καὶ πεπερασμένην εὐθεῖαν κατὰ τὸ συνεχὲς ἐπ᾿ εὐθείας ἐκβαλεῖν. | 2. To produce a finite straight line continuously in a straight line. |
-| γ΄. Καὶ παντὶ κέντρῳ καὶ διαστήματι κύκλον γράφεσθαι. | 3. To describe a circle with any centre and diameter. |
-| δ΄. Καὶ πάσας τὰς ὀρθὰς γωνίας ἴσας ἀλλήλαις εἴναι. | 4. All right angles are equal one to another. |
-| ε΄. Καὶ ἐὰν εἰς δύο εὐθείας εὐθεῖα ἐμπίπτουσα τὰς ἐντὸς καὶ ἐπὶ τὰ αὐτὰ μέρη γωνίας δύο ὀρθῶν ἐλάσσονας ποιῇ, ἐκβαλλομένας τὰς δύο εὐθείας ἐπ᾿ ἄπειρον συμπίπτειν, ἐφ᾿ ἃ μέρη εἰσὶν αἱ τῶν δύο ὀρθῶν ἐλάσσονες. | **5. If a straight line falling on two straight lines make the interior angles on the same side less than two right angles, the two straight lines, if produced indefinitely, meet on that side on which are the angles less than two right angles.** |

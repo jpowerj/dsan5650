@@ -289,11 +289,61 @@
     ]
   },
   {
+    "objectID": "w01/index.html#disclaimer-unfortunate-side-effects-of-engaging-seriously-with-causality",
+    "href": "w01/index.html#disclaimer-unfortunate-side-effects-of-engaging-seriously-with-causality",
+    "title": "Week 1: From a Science of Particles to a Science of People",
+    "section": "Disclaimer: Unfortunate Side Effects of Engaging Seriously with Causality",
+    "text": "Disclaimer: Unfortunate Side Effects of Engaging Seriously with Causality\n\n\n You’ll no longer be able to read scientific writing without striking this expression (involuntarily):\n\n Scientific talks will begin to sound like the following:",
+    "crumbs": [
+      "Week 1: {{< var w01.date-md >}}"
+    ]
+  },
+  {
     "objectID": "w01/index.html#data-generating-processes-dgps",
     "href": "w01/index.html#data-generating-processes-dgps",
     "title": "Week 1: From a Science of Particles to a Science of People",
     "section": "Data-Generating Processes (DGPs)",
-    "text": "Data-Generating Processes (DGPs)\nThe fundamental building block for the course is the idea of a Data-Generating Process (DGP). You may have encountered this concept in passing during other DSAN courses (for example, in DSAN 5100, a phrase like “Assume \\(X\\) is drawn i.i.d. from a Normal distribution with mean \\(\\mu\\) and variance \\(\\sigma^2\\)” is a statement characterizing the DGP of a Random Variable \\(X\\)), but in this course we will “zoom in” on this concept rather than treating it like a black box or a footnote to e.g. a theorem like the Law of Large Numbers.\nThis deep dive into DGPs is necessary for us here, since our goal in the course is to move from associational statements like “an increase of \\(X\\) by one unit is associated with an increase of \\(Y\\) by \\(\\beta\\) units” to causal statements like “increasing \\(X\\) by one unit causes \\(Y\\) to increase by \\(\\beta\\) units”. As you’ll see in Week 1, the tools from probability theory and statistics that you learned in DSAN 5100—Random Variables, Cumulative Distribution Functions, Conditional Probability, and so on—are necessary but not sufficient to analyze data from a causal perspective.\nFor example, if we use our tools from DSAN 5000 and DSAN 5100 on some dataset to discover that:\n\nThe probability that some event \\(E_1\\) occurs is \\(\\Pr(E_1) = 0.5\\), and\nThe probability that \\(E_1\\) occurs conditional on another event \\(E_0\\) occurring is \\(\\Pr(E_1 \\mid E_0) = 0.75\\),\n\nwe unfortunately cannot infer from these two pieces of information that the occurrence of \\(E_0\\) causes an increase in the likelihood of \\(E_1\\) occurring.\nThis issue (that conditional probabilities could not be interpreted causally) at first represented a kind of dead end for scientists interested in employing probability theory to study causal relationships… In recent decades, however, researchers have built up what amounts to an additional “layer” of modeling tools which augment the existing machinery of probability theory to address causality head-on!1\nFor instance, a modeling approach called “\\(\\textsf{do}\\)-Calculus”, that we will learn in this class, extends the core operations and definitions of probability theory to allow such an move to deriving causality! It does this by introducing a \\(\\textsf{do}(\\cdot)\\) operator that can be applied to Random Variables like \\(X\\), with e.g. \\(\\textsf{do}(X = 5)\\) representing the event wherein someone has intervened in a Data-Generating Process to force the value of \\(X\\) to be 5.\nWith this operator in hand (that is, used alongside an explicit model of a DGP satisfying a set of underlying axioms which are slightly more strict than the axioms of probability theory), it turns out that we can make causal inferences using a very similar pair of facts! If we know that:\n\nThe probability that some event \\(E_1\\) occurs is \\(\\Pr(E_1) = 0.5\\), and\nThe probability that \\(E_1\\) occurs conditional on the event \\(\\textsf{do}(E_0)\\) occurring is \\(\\Pr(E_1 \\mid \\textsf{do}(E_0)) = 0.75\\),\n\nnow we can actually draw the inference that the occurrence of \\(E_0\\) caused an increase in the likelihood of \\(E_1\\) occurring!\nThis stylized comparison (between what’s possible using “core” probability theory and what’s possible when we augment it with additional causal modeling tools) serves as our basic motivation for the course, so that from Week 2 onwards we build upon this foundation to reach the three learning goals described in the next section!",
+    "text": "Data-Generating Processes (DGPs)\n\nYou’ve already seen this in DSAN 5100!\n«Assume \\(X\\) is drawn i.i.d. from a Normal distribution with mean \\(\\mu\\) and variance \\(\\sigma^2\\)» characterizes the DGP of \\(X\\)\nIn 5650 we zoom in on DGPs, rather than treating as black box or footnote to e.g. Law of Large Numbers.\nDeep dive into DGPs necessary for our goal of moving…\n\nFrom associational statements: “an increase of \\(X\\) by one unit is associated with an increase of \\(Y\\) by \\(\\beta\\) units”\nTo causal statements: “increasing \\(X\\) by one unit causes \\(Y\\) to increase by \\(\\beta\\) units”.",
+    "crumbs": [
+      "Week 1: {{< var w01.date-md >}}"
+    ]
+  },
+  {
+    "objectID": "w01/index.html#probability",
+    "href": "w01/index.html#probability",
+    "title": "Week 1: From a Science of Particles to a Science of People",
+    "section": "Probability++",
+    "text": "Probability++\n\nTools from probability and statistics (RVs, CDFs, Conditional Probability) necessary but not sufficient for causal inference\nExample: Say we use DSAN 5100 tools to discover:\n\nProbability that event \\(E_1\\) occurs is \\(\\Pr(E_1) = 0.5\\)\nProbability that \\(E_1\\) occurs conditional on another event \\(E_0\\) occurring is \\(\\Pr(E_1 \\mid E_0) = 0.75\\)\n\nUnfortunately, we still cannot infer that the occurrence of \\(E_0\\) causes an increase in the likelihood of \\(E_1\\) occurring.",
+    "crumbs": [
+      "Week 1: {{< var w01.date-md >}}"
+    ]
+  },
+  {
+    "objectID": "w01/index.html#beyond-conditional-probability",
+    "href": "w01/index.html#beyond-conditional-probability",
+    "title": "Week 1: From a Science of Particles to a Science of People",
+    "section": "Beyond Conditional Probability",
+    "text": "Beyond Conditional Probability\n\nThis issue (that conditional probabilities could not be interpreted causally) at first represented a kind of dead end for scientists interested in employing probability theory to study causal relationships…\nIn recent decades, researchers have built up what amounts to an additional “layer” of modeling tools which augment the existing machinery of probability theory to address causality head-on! (Pearl 2000)",
+    "crumbs": [
+      "Week 1: {{< var w01.date-md >}}"
+    ]
+  },
+  {
+    "objectID": "w01/index.html#preview-do-calculus",
+    "href": "w01/index.html#preview-do-calculus",
+    "title": "Week 1: From a Science of Particles to a Science of People",
+    "section": "Preview: do-Calculus",
+    "text": "Preview: do-Calculus\n\nExtends core operations/definitions of probability to incorporate causality, via a \\(\\textsf{do}(\\cdot)\\) operator for RVs\n\\(\\textsf{do}(X = 5)\\) is a “special” event, representing intervention in DGP to force \\(X \\leftarrow 5\\)\n“Special” in the sense that \\(\\Pr(\\textsf{do}(X = 5))\\) not well-defined, only \\(\\Pr(Y = 6 \\mid \\textsf{do}(X = 5))\\)\nTo emphasize special-ness, we may use notation like:\n\\[\n\\Pr(Y = 6 \\mid \\textsf{do}(X = 5)) \\equiv \\textstyle \\Pr_{\\textsf{do}(X = 5)}(Y = 6)\n\\]\nto avoid confusion with “normal” events",
+    "crumbs": [
+      "Week 1: {{< var w01.date-md >}}"
+    ]
+  },
+  {
+    "objectID": "w01/index.html#causal-world-unlocked-with-great-power-comes-great-responsibility",
+    "href": "w01/index.html#causal-world-unlocked-with-great-power-comes-great-responsibility",
+    "title": "Week 1: From a Science of Particles to a Science of People",
+    "section": "Causal World Unlocked 😎 (With Great Power Comes Great Responsibility…)",
+    "text": "Causal World Unlocked 😎 (With Great Power Comes Great Responsibility…)\n\nWith \\(\\textsf{do}(\\cdot)\\) in hand… (Alongside DGP satisfying a set of underlying axioms, slightly more strict than axioms of probability theory)\nWe can make causal inferences from similar pair of facts! If:\n\nProbability that event \\(E_1\\) occurs is \\(\\Pr(E_1) = 0.5\\),\nThe probability that \\(E_1\\) occurs conditional on the event \\(\\textsf{do}(E_0)\\) occurring is \\(\\Pr(E_1 \\mid \\textsf{do}(E_0)) = 0.75\\),\n\nNow we can actually infer that the occurrence of \\(E_0\\) caused an increase in the likelihood of \\(E_1\\) occurring!",
     "crumbs": [
       "Week 1: {{< var w01.date-md >}}"
     ]
@@ -354,16 +404,6 @@
     "title": "Week 1: From a Science of Particles to a Science of People",
     "section": "References",
     "text": "References\n\n\nPearl, Judea. 2000. Causality: Models, Reasoning, and Inference. Cambridge University Press.",
-    "crumbs": [
-      "Week 1: {{< var w01.date-md >}}"
-    ]
-  },
-  {
-    "objectID": "w01/index.html#footnotes",
-    "href": "w01/index.html#footnotes",
-    "title": "Week 1: From a Science of Particles to a Science of People",
-    "section": "Footnotes",
-    "text": "Footnotes\n\n\nPearl (2000) represents a key work in this field of research, as it essentially brought together different pieces of causal models into one unified, rigorous framework.↩︎",
     "crumbs": [
       "Week 1: {{< var w01.date-md >}}"
     ]
@@ -432,11 +472,46 @@
     "text": "Particularly Fun Non-“Standard” Examples\n\nDeDeo, French Revolution\nGrimmer, Mirrors for Sultans and Princes"
   },
   {
+    "objectID": "w01/slides.html#disclaimer-unfortunate-side-effects-of-engaging-seriously-with-causality",
+    "href": "w01/slides.html#disclaimer-unfortunate-side-effects-of-engaging-seriously-with-causality",
+    "title": "Week 1: From a Science of Particles to a Science of People",
+    "section": "Disclaimer: Unfortunate Side Effects of Engaging Seriously with Causality",
+    "text": "Disclaimer: Unfortunate Side Effects of Engaging Seriously with Causality\n\n\n You’ll no longer be able to read scientific writing without striking this expression (involuntarily):\n\n Scientific talks will begin to sound like the following:"
+  },
+  {
     "objectID": "w01/slides.html#data-generating-processes-dgps",
     "href": "w01/slides.html#data-generating-processes-dgps",
     "title": "Week 1: From a Science of Particles to a Science of People",
     "section": "Data-Generating Processes (DGPs)",
-    "text": "Data-Generating Processes (DGPs)\nThe fundamental building block for the course is the idea of a Data-Generating Process (DGP). You may have encountered this concept in passing during other DSAN courses (for example, in DSAN 5100, a phrase like “Assume \\(X\\) is drawn i.i.d. from a Normal distribution with mean \\(\\mu\\) and variance \\(\\sigma^2\\)” is a statement characterizing the DGP of a Random Variable \\(X\\)), but in this course we will “zoom in” on this concept rather than treating it like a black box or a footnote to e.g. a theorem like the Law of Large Numbers.\nThis deep dive into DGPs is necessary for us here, since our goal in the course is to move from associational statements like “an increase of \\(X\\) by one unit is associated with an increase of \\(Y\\) by \\(\\beta\\) units” to causal statements like “increasing \\(X\\) by one unit causes \\(Y\\) to increase by \\(\\beta\\) units”. As you’ll see in Week 1, the tools from probability theory and statistics that you learned in DSAN 5100—Random Variables, Cumulative Distribution Functions, Conditional Probability, and so on—are necessary but not sufficient to analyze data from a causal perspective.\nFor example, if we use our tools from DSAN 5000 and DSAN 5100 on some dataset to discover that:\n\nThe probability that some event \\(E_1\\) occurs is \\(\\Pr(E_1) = 0.5\\), and\nThe probability that \\(E_1\\) occurs conditional on another event \\(E_0\\) occurring is \\(\\Pr(E_1 \\mid E_0) = 0.75\\),\n\nwe unfortunately cannot infer from these two pieces of information that the occurrence of \\(E_0\\) causes an increase in the likelihood of \\(E_1\\) occurring.\nThis issue (that conditional probabilities could not be interpreted causally) at first represented a kind of dead end for scientists interested in employing probability theory to study causal relationships… In recent decades, however, researchers have built up what amounts to an additional “layer” of modeling tools which augment the existing machinery of probability theory to address causality head-on!1\nFor instance, a modeling approach called “\\(\\textsf{do}\\)-Calculus”, that we will learn in this class, extends the core operations and definitions of probability theory to allow such an move to deriving causality! It does this by introducing a \\(\\textsf{do}(\\cdot)\\) operator that can be applied to Random Variables like \\(X\\), with e.g. \\(\\textsf{do}(X = 5)\\) representing the event wherein someone has intervened in a Data-Generating Process to force the value of \\(X\\) to be 5.\nWith this operator in hand (that is, used alongside an explicit model of a DGP satisfying a set of underlying axioms which are slightly more strict than the axioms of probability theory), it turns out that we can make causal inferences using a very similar pair of facts! If we know that:\n\nThe probability that some event \\(E_1\\) occurs is \\(\\Pr(E_1) = 0.5\\), and\nThe probability that \\(E_1\\) occurs conditional on the event \\(\\textsf{do}(E_0)\\) occurring is \\(\\Pr(E_1 \\mid \\textsf{do}(E_0)) = 0.75\\),\n\nnow we can actually draw the inference that the occurrence of \\(E_0\\) caused an increase in the likelihood of \\(E_1\\) occurring!\nThis stylized comparison (between what’s possible using “core” probability theory and what’s possible when we augment it with additional causal modeling tools) serves as our basic motivation for the course, so that from Week 2 onwards we build upon this foundation to reach the three learning goals described in the next section!\nPearl (2000) represents a key work in this field of research, as it essentially brought together different pieces of causal models into one unified, rigorous framework."
+    "text": "Data-Generating Processes (DGPs)\n\nYou’ve already seen this in DSAN 5100!\n«Assume \\(X\\) is drawn i.i.d. from a Normal distribution with mean \\(\\mu\\) and variance \\(\\sigma^2\\)» characterizes the DGP of \\(X\\)\nIn 5650 we zoom in on DGPs, rather than treating as black box or footnote to e.g. Law of Large Numbers.\nDeep dive into DGPs necessary for our goal of moving…\n\nFrom associational statements: “an increase of \\(X\\) by one unit is associated with an increase of \\(Y\\) by \\(\\beta\\) units”\nTo causal statements: “increasing \\(X\\) by one unit causes \\(Y\\) to increase by \\(\\beta\\) units”."
+  },
+  {
+    "objectID": "w01/slides.html#probability",
+    "href": "w01/slides.html#probability",
+    "title": "Week 1: From a Science of Particles to a Science of People",
+    "section": "Probability++",
+    "text": "Probability++\n\nTools from probability and statistics (RVs, CDFs, Conditional Probability) necessary but not sufficient for causal inference\nExample: Say we use DSAN 5100 tools to discover:\n\nProbability that event \\(E_1\\) occurs is \\(\\Pr(E_1) = 0.5\\)\nProbability that \\(E_1\\) occurs conditional on another event \\(E_0\\) occurring is \\(\\Pr(E_1 \\mid E_0) = 0.75\\)\n\nUnfortunately, we still cannot infer that the occurrence of \\(E_0\\) causes an increase in the likelihood of \\(E_1\\) occurring."
+  },
+  {
+    "objectID": "w01/slides.html#beyond-conditional-probability",
+    "href": "w01/slides.html#beyond-conditional-probability",
+    "title": "Week 1: From a Science of Particles to a Science of People",
+    "section": "Beyond Conditional Probability",
+    "text": "Beyond Conditional Probability\n\nThis issue (that conditional probabilities could not be interpreted causally) at first represented a kind of dead end for scientists interested in employing probability theory to study causal relationships…\nIn recent decades, researchers have built up what amounts to an additional “layer” of modeling tools which augment the existing machinery of probability theory to address causality head-on! (Pearl 2000)"
+  },
+  {
+    "objectID": "w01/slides.html#preview-do-calculus",
+    "href": "w01/slides.html#preview-do-calculus",
+    "title": "Week 1: From a Science of Particles to a Science of People",
+    "section": "Preview: do-Calculus",
+    "text": "Preview: do-Calculus\n\nExtends core operations/definitions of probability to incorporate causality, via a \\(\\textsf{do}(\\cdot)\\) operator for RVs\n\\(\\textsf{do}(X = 5)\\) is a “special” event, representing intervention in DGP to force \\(X \\leftarrow 5\\)\n“Special” in the sense that \\(\\Pr(\\textsf{do}(X = 5))\\) not well-defined, only \\(\\Pr(Y = 6 \\mid \\textsf{do}(X = 5))\\)\nTo emphasize special-ness, we may use notation like:\n\\[\n\\Pr(Y = 6 \\mid \\textsf{do}(X = 5)) \\equiv \\textstyle \\Pr_{\\textsf{do}(X = 5)}(Y = 6)\n\\]\nto avoid confusion with “normal” events"
+  },
+  {
+    "objectID": "w01/slides.html#causal-world-unlocked-with-great-power-comes-great-responsibility",
+    "href": "w01/slides.html#causal-world-unlocked-with-great-power-comes-great-responsibility",
+    "title": "Week 1: From a Science of Particles to a Science of People",
+    "section": "Causal World Unlocked 😎 (With Great Power Comes Great Responsibility…)",
+    "text": "Causal World Unlocked 😎 (With Great Power Comes Great Responsibility…)\n\nWith \\(\\textsf{do}(\\cdot)\\) in hand… (Alongside DGP satisfying a set of underlying axioms, slightly more strict than axioms of probability theory)\nWe can make causal inferences from similar pair of facts! If:\n\nProbability that event \\(E_1\\) occurs is \\(\\Pr(E_1) = 0.5\\),\nThe probability that \\(E_1\\) occurs conditional on the event \\(\\textsf{do}(E_0)\\) occurring is \\(\\Pr(E_1 \\mid \\textsf{do}(E_0)) = 0.75\\),\n\nNow we can actually infer that the occurrence of \\(E_0\\) caused an increase in the likelihood of \\(E_1\\) occurring!"
   },
   {
     "objectID": "w01/slides.html#meta-logistics-spaced-repetition",
@@ -515,7 +590,7 @@
     "href": "syllabus.html#course-overview",
     "title": "Syllabus",
     "section": "Course Overview",
-    "text": "Course Overview\nThe fundamental building block for the course is the idea of a Data-Generating Process (DGP). You may have encountered this concept in passing during other DSAN courses (for example, in DSAN 5100, a phrase like “Assume \\(X\\) is drawn i.i.d. from a Normal distribution with mean \\(\\mu\\) and variance \\(\\sigma^2\\)” is a statement characterizing the DGP of a Random Variable \\(X\\)), but in this course we will “zoom in” on this concept rather than treating it like a black box or a footnote to e.g. a theorem like the Law of Large Numbers.\nThis deep dive into DGPs is necessary for us here, since our goal in the course is to move from associational statements like “an increase of \\(X\\) by one unit is associated with an increase of \\(Y\\) by \\(\\beta\\) units” to causal statements like “increasing \\(X\\) by one unit causes \\(Y\\) to increase by \\(\\beta\\) units”. As you’ll see in Week 1, the tools from probability theory and statistics that you learned in DSAN 5100—Random Variables, Cumulative Distribution Functions, Conditional Probability, and so on—are necessary but not sufficient to analyze data from a causal perspective.\nFor example, if we use our tools from DSAN 5000 and DSAN 5100 on some dataset to discover that:\n\nThe probability that some event \\(E_1\\) occurs is \\(\\Pr(E_1) = 0.5\\), and\nThe probability that \\(E_1\\) occurs conditional on another event \\(E_0\\) occurring is \\(\\Pr(E_1 \\mid E_0) = 0.75\\),\n\nwe unfortunately cannot infer from these two pieces of information that the occurrence of \\(E_0\\) causes an increase in the likelihood of \\(E_1\\) occurring.\nThis issue (that conditional probabilities could not be interpreted causally) at first represented a kind of dead end for scientists interested in employing probability theory to study causal relationships… In recent decades, however, researchers have built up what amounts to an additional “layer” of modeling tools which augment the existing machinery of probability theory to address causality head-on!1\nFor instance, a modeling approach called “\\(\\textsf{do}\\)-Calculus”, that we will learn in this class, extends the core operations and definitions of probability theory to allow such an move to deriving causality! It does this by introducing a \\(\\textsf{do}(\\cdot)\\) operator that can be applied to Random Variables like \\(X\\), with e.g. \\(\\textsf{do}(X = 5)\\) representing the event wherein someone has intervened in a Data-Generating Process to force the value of \\(X\\) to be 5.\nWith this operator in hand (that is, used alongside an explicit model of a DGP satisfying a set of underlying axioms which are slightly more strict than the axioms of probability theory), it turns out that we can make causal inferences using a very similar pair of facts! If we know that:\n\nThe probability that some event \\(E_1\\) occurs is \\(\\Pr(E_1) = 0.5\\), and\nThe probability that \\(E_1\\) occurs conditional on the event \\(\\textsf{do}(E_0)\\) occurring is \\(\\Pr(E_1 \\mid \\textsf{do}(E_0)) = 0.75\\),\n\nnow we can actually draw the inference that the occurrence of \\(E_0\\) caused an increase in the likelihood of \\(E_1\\) occurring!\nThis stylized comparison (between what’s possible using “core” probability theory and what’s possible when we augment it with additional causal modeling tools) serves as our basic motivation for the course, so that from Week 2 onwards we build upon this foundation to reach the three learning goals described in the next section!",
+    "text": "Course Overview\nThe fundamental building block for the course is the idea of a Data-Generating Process (DGP). You may have encountered this concept in passing during other DSAN courses (for example, in DSAN 5100, a phrase like “Assume \\(X\\) is drawn i.i.d. from a Normal distribution with mean \\(\\mu\\) and variance \\(\\sigma^2\\)” is a statement characterizing the DGP of a Random Variable \\(X\\)), but in this course we will “zoom in” on this concept rather than treating it like a black box or a footnote to e.g. a theorem like the Law of Large Numbers.\nThis deep dive into DGPs is necessary for us here, since our goal in the course is to move from associational statements like “an increase of \\(X\\) by one unit is associated with an increase of \\(Y\\) by \\(\\beta\\) units” to causal statements like “increasing \\(X\\) by one unit causes \\(Y\\) to increase by \\(\\beta\\) units”. As you’ll see in Week 1, the tools from probability theory and statistics that you learned in DSAN 5100—Random Variables, Cumulative Distribution Functions, Conditional Probability, and so on—are necessary but not sufficient to analyze data from a causal perspective.\nFor example, if we use our tools from DSAN 5000 and DSAN 5100 on some dataset to discover that:\n\nThe probability that some event \\(E_1\\) occurs is \\(\\Pr(E_1) = 0.5\\), and\nThe probability that \\(E_1\\) occurs conditional on another event \\(E_0\\) occurring is \\(\\Pr(E_1 \\mid E_0) = 0.75\\),\n\nwe unfortunately cannot infer from these two pieces of information that the occurrence of \\(E_0\\) causes an increase in the likelihood of \\(E_1\\) occurring.\nThis issue (that conditional probabilities could not be interpreted causally) at first represented a kind of dead end for scientists interested in employing probability theory to study causal relationships… In recent decades, however, researchers have built up what amounts to an additional “layer” of modeling tools which augment the existing machinery of probability theory to address causality head-on!1\nFor instance, a modeling approach called “\\(\\textsf{do}\\)-Calculus”, that we will learn in this class, extends the core operations and definitions of probability theory to allow such a move towards inferring causality! It does this by introducing a \\(\\textsf{do}(\\cdot)\\) operator that can be applied to Random Variables like \\(X\\), with e.g. \\(\\textsf{do}(X = 5)\\) representing the event wherein someone has intervened in a Data-Generating Process to force the value of \\(X\\) to be 5.\nWith this operator in hand (that is, used alongside an explicit model of a DGP satisfying a set of underlying axioms which are slightly more strict than the axioms of probability theory), it turns out that we can make causal inferences using a very similar pair of facts! If we know that:\n\nThe probability that some event \\(E_1\\) occurs is \\(\\Pr(E_1) = 0.5\\), and\nThe probability that \\(E_1\\) occurs conditional on the event \\(\\textsf{do}(E_0)\\) occurring is \\(\\Pr(E_1 \\mid \\textsf{do}(E_0)) = 0.75\\),\n\nnow we can actually draw the inference that the occurrence of \\(E_0\\) caused an increase in the likelihood of \\(E_1\\) occurring!\nThis stylized comparison (between what’s possible using “core” probability theory and what’s possible when we augment it with additional causal modeling tools) serves as our basic motivation for the course, so that from Week 2 onwards we build upon this foundation to reach the three learning goals described in the next section!",
     "crumbs": [
       "Syllabus"
     ]
