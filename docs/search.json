@@ -363,7 +363,37 @@
     "href": "w01/index.html#the-logic-of-violence-in-civil-war",
     "title": "Week 1: Science from Particles to People",
     "section": "The Logic of Violence in Civil War",
-    "text": "The Logic of Violence in Civil War",
+    "text": "The Logic of Violence in Civil War\n\n\n\nKalyvas (2006)",
+    "crumbs": [
+      "Week 1: {{< var w01.date-md >}}"
+    ]
+  },
+  {
+    "objectID": "w01/index.html#matching-estimators",
+    "href": "w01/index.html#matching-estimators",
+    "title": "Week 1: Science from Particles to People",
+    "section": "Matching Estimators",
+    "text": "Matching Estimators\n\n\n\nImage Source",
+    "crumbs": [
+      "Week 1: {{< var w01.date-md >}}"
+    ]
+  },
+  {
+    "objectID": "w01/index.html#case-study-military-inequality-leadsto-military-success",
+    "href": "w01/index.html#case-study-military-inequality-leadsto-military-success",
+    "title": "Week 1: Science from Particles to People",
+    "section": "Case Study: Military Inequality \\(\\leadsto\\) Military Success",
+    "text": "Case Study: Military Inequality \\(\\leadsto\\) Military Success\n\nLyall (2020): “Treating certain ethnic groups as second-class citizens […] leads victimized soldiers to subvert military authorities once war begins. The higher an army’s inequality, the greater its rates of desertion, side-switching, and casualties”\n\n\nMatching constructs pairs of belligerents that are similar across a wide range of traits thought to dictate battlefield performance but that vary in levels of prewar inequality. The more similar the belligerents, the better our estimate of inequality’s effects, as all other traits are shared and thus cannot explain observed differences in performance, helping assess how battlefield performance would have improved (declined) if the belligerent had a lower (higher) level of prewar inequality.\nSince [non-matched] cases are dropped […] selected cases are more representative of average belligerents/wars than outliers with few or no matches, [providing] surer ground for testing generalizability of the book’s claims than focusing solely on canonical but unrepresentative usual suspects (Germany, the United States, Israel)",
+    "crumbs": [
+      "Week 1: {{< var w01.date-md >}}"
+    ]
+  },
+  {
+    "objectID": "w01/index.html#does-inequality-cause-poor-military-performance",
+    "href": "w01/index.html#does-inequality-cause-poor-military-performance",
+    "title": "Week 1: Science from Particles to People",
+    "section": "Does Inequality Cause Poor Military Performance?",
+    "text": "Does Inequality Cause Poor Military Performance?\n\n\n\n\n\n\n\n\nCovariates\nSultanate of Morocco Spanish-Moroccan War, 1859-60\nKhanate of Kokand War with Russia, 1864-65\n\n\n\n\n\\(X\\): Military Inequality\nLow (0.01)\nExtreme (0.70)\n\n\n\\(\\mathbf{Z}\\): Matched Covariates:\n\n\n\n\nInitial relative power\n66%\n66%\n\n\nTotal fielded force\n55,000\n50,000\n\n\nRegime type\nAbsolutist Monarchy (−6)\nAbsolute Monarchy (−7)\n\n\nDistance from capital\n208km\n265km\n\n\nStanding army\nYes\nYes\n\n\nComposite military\nYes\nYes\n\n\nInitiator\nNo\nNo\n\n\nJoiner\nNo\nNo\n\n\nDemocratic opponent\nNo\nNo\n\n\nGreat Power\nNo\nNo\n\n\nCivil war\nNo\nNo\n\n\nCombined arms\nYes\nYes\n\n\nDoctrine\nOffensive\nOffensive\n\n\nSuperior weapons\nNo\nNo\n\n\nFortifications\nYes\nYes\n\n\nForeign advisors\nYes\nYes\n\n\nTerrain\nSemiarid coastal plain\nSemiarid grassland plain\n\n\nTopography\nRugged\nRugged\n\n\nWar duration\n126 days\n378 days\n\n\nRecent war history w/opp\nYes\nYes\n\n\nFacing colonizer\nYes\nYes\n\n\nIdentity dimension\nSunni Islam/Christian\nSunni Islam/Christian\n\n\nNew leader\nYes\nYes\n\n\nPopulation\n8–8.5 million\n5–6 million\n\n\nEthnoling fractionalization (ELF)\nHigh\nHigh\n\n\nCiv-mil relations\nRuler as commander\nRuler as commander\n\n\n\\(Y\\): Battlefield Performance:\n\n\n\n\nLoss-exchange ratio\n0.43\n0.02\n\n\nMass desertion\nNo\nYes\n\n\nMass defection\nNo\nNo\n\n\nFratricidal violence\nNo\nYes",
     "crumbs": [
       "Week 1: {{< var w01.date-md >}}"
     ]
@@ -529,31 +559,11 @@
     ]
   },
   {
-    "objectID": "w01/index.html#meta-logistics-spaced-repetition",
-    "href": "w01/index.html#meta-logistics-spaced-repetition",
+    "objectID": "w01/index.html#ulysses-and-the-computational-sirens",
+    "href": "w01/index.html#ulysses-and-the-computational-sirens",
     "title": "Week 1: Science from Particles to People",
-    "section": "Meta-Logistics: Spaced Repetition",
-    "text": "Meta-Logistics: Spaced Repetition",
-    "crumbs": [
-      "Week 1: {{< var w01.date-md >}}"
-    ]
-  },
-  {
-    "objectID": "w01/index.html#meta-logistics-maria-montessori-and-your-final-projects",
-    "href": "w01/index.html#meta-logistics-maria-montessori-and-your-final-projects",
-    "title": "Week 1: Science from Particles to People",
-    "section": "Meta-Logistics: Maria Montessori and Your Final Projects",
-    "text": "Meta-Logistics: Maria Montessori and Your Final Projects",
-    "crumbs": [
-      "Week 1: {{< var w01.date-md >}}"
-    ]
-  },
-  {
-    "objectID": "w01/index.html#your-final-projects",
-    "href": "w01/index.html#your-final-projects",
-    "title": "Week 1: Science from Particles to People",
-    "section": "Your Final Projects",
-    "text": "Your Final Projects",
+    "section": "Ulysses and the [Computational] Sirens",
+    "text": "Ulysses and the [Computational] Sirens",
     "crumbs": [
       "Week 1: {{< var w01.date-md >}}"
     ]
@@ -563,7 +573,7 @@
     "href": "w01/index.html#jupyterhub",
     "title": "Week 1: Science from Particles to People",
     "section": "JupyterHub",
-    "text": "JupyterHub\nhttps://guhub.io",
+    "text": "JupyterHub\n\nhttps://guhub.io\n\n\n\n\nImage source",
     "crumbs": [
       "Week 1: {{< var w01.date-md >}}"
     ]
@@ -573,7 +583,7 @@
     "href": "w01/index.html#assignments-midterm",
     "title": "Week 1: Science from Particles to People",
     "section": "Assignments / Midterm",
-    "text": "Assignments / Midterm",
+    "text": "Assignments / Midterm\n\n\n\n\n\n\n\n\nAssignment\nDue Date\n% of Grade\n\n\n\n\nHW1: Causal Modeling with DAGs and PGMs: Direct and Indirect Effects\nFriday, May 30\n9%\n\n\nHW2: Traversing the Sea of Causality with the do-Harpoon in Hand: Chains, Forks, and Colliders\nFriday, February 21\n9%\n\n\nHW3: Statistical Matching: Apples to Apples and Oranges to Oranges\nFriday, June 27\n9%\n\n\nIn-Class Midterm\nWednesday, July 2\n25%\n\n\nHW4: Basic Computational Causal Methods\nFriday, July 11\n9%\n\n\nHW5: Fancy Computational Causal Methods\nFriday, July 25\n9%\n\n\nFinal Project\nFriday, August 15\n30%",
     "crumbs": [
       "Week 1: {{< var w01.date-md >}}"
     ]
@@ -583,7 +593,7 @@
     "href": "w01/index.html#references",
     "title": "Week 1: Science from Particles to People",
     "section": "References",
-    "text": "References\n\n\nFinetti, Bruno de. 1972. Probability, Induction and Statistics: The Art of Guessing. J. Wiley.\n\n\nHume, David. 1739. A Treatise of Human Nature: Being an Attempt to Introduce the Experimental Method of Reasoning Into Moral Subjects; and Dialogues Concerning Natural Religion. Longmans, Green.\n\n\nMontessori, Maria. 1916. Spontaneous Activity in Education: A Basic Guide to the Montessori Methods of Learning in the Classroom. Lulu Press.\n\n\nPearl, Judea. 2000. Causality: Models, Reasoning, and Inference. Cambridge University Press.\n\n\nSperber, Dan. 1996. Explaining Culture: A Naturalistic Approach. Cambridge: Blackwell.",
+    "text": "References\n\n\nFinetti, Bruno de. 1972. Probability, Induction and Statistics: The Art of Guessing. J. Wiley.\n\n\nHume, David. 1739. A Treatise of Human Nature: Being an Attempt to Introduce the Experimental Method of Reasoning Into Moral Subjects; and Dialogues Concerning Natural Religion. Longmans, Green.\n\n\nKalyvas, Stathis N. 2006. The Logic of Violence in Civil War. Cambridge University Press.\n\n\nLyall, Jason. 2020. Divided Armies: Inequality and Battlefield Performance in Modern War. Princeton University Press.\n\n\nMontessori, Maria. 1916. Spontaneous Activity in Education: A Basic Guide to the Montessori Methods of Learning in the Classroom. Lulu Press.\n\n\nPearl, Judea. 2000. Causality: Models, Reasoning, and Inference. Cambridge University Press.\n\n\nSperber, Dan. 1996. Explaining Culture: A Naturalistic Approach. Cambridge: Blackwell.",
     "crumbs": [
       "Week 1: {{< var w01.date-md >}}"
     ]
@@ -708,7 +718,28 @@
     "href": "w01/slides.html#the-logic-of-violence-in-civil-war",
     "title": "Week 1: Science from Particles to People",
     "section": "The Logic of Violence in Civil War",
-    "text": "The Logic of Violence in Civil War"
+    "text": "The Logic of Violence in Civil War\n\nKalyvas (2006)"
+  },
+  {
+    "objectID": "w01/slides.html#matching-estimators",
+    "href": "w01/slides.html#matching-estimators",
+    "title": "Week 1: Science from Particles to People",
+    "section": "Matching Estimators",
+    "text": "Matching Estimators\n\nImage Source"
+  },
+  {
+    "objectID": "w01/slides.html#case-study-military-inequality-leadsto-military-success",
+    "href": "w01/slides.html#case-study-military-inequality-leadsto-military-success",
+    "title": "Week 1: Science from Particles to People",
+    "section": "Case Study: Military Inequality \\(\\leadsto\\) Military Success",
+    "text": "Case Study: Military Inequality \\(\\leadsto\\) Military Success\n\nLyall (2020): “Treating certain ethnic groups as second-class citizens […] leads victimized soldiers to subvert military authorities once war begins. The higher an army’s inequality, the greater its rates of desertion, side-switching, and casualties”\n\n\nMatching constructs pairs of belligerents that are similar across a wide range of traits thought to dictate battlefield performance but that vary in levels of prewar inequality. The more similar the belligerents, the better our estimate of inequality’s effects, as all other traits are shared and thus cannot explain observed differences in performance, helping assess how battlefield performance would have improved (declined) if the belligerent had a lower (higher) level of prewar inequality.\nSince [non-matched] cases are dropped […] selected cases are more representative of average belligerents/wars than outliers with few or no matches, [providing] surer ground for testing generalizability of the book’s claims than focusing solely on canonical but unrepresentative usual suspects (Germany, the United States, Israel)"
+  },
+  {
+    "objectID": "w01/slides.html#does-inequality-cause-poor-military-performance",
+    "href": "w01/slides.html#does-inequality-cause-poor-military-performance",
+    "title": "Week 1: Science from Particles to People",
+    "section": "Does Inequality Cause Poor Military Performance?",
+    "text": "Does Inequality Cause Poor Military Performance?\n\n\n\n\n\n\n\n\nCovariates\nSultanate of Morocco Spanish-Moroccan War, 1859-60\nKhanate of Kokand War with Russia, 1864-65\n\n\n\n\n\\(X\\): Military Inequality\nLow (0.01)\nExtreme (0.70)\n\n\n\\(\\mathbf{Z}\\): Matched Covariates:\n\n\n\n\nInitial relative power\n66%\n66%\n\n\nTotal fielded force\n55,000\n50,000\n\n\nRegime type\nAbsolutist Monarchy (−6)\nAbsolute Monarchy (−7)\n\n\nDistance from capital\n208km\n265km\n\n\nStanding army\nYes\nYes\n\n\nComposite military\nYes\nYes\n\n\nInitiator\nNo\nNo\n\n\nJoiner\nNo\nNo\n\n\nDemocratic opponent\nNo\nNo\n\n\nGreat Power\nNo\nNo\n\n\nCivil war\nNo\nNo\n\n\nCombined arms\nYes\nYes\n\n\nDoctrine\nOffensive\nOffensive\n\n\nSuperior weapons\nNo\nNo\n\n\nFortifications\nYes\nYes\n\n\nForeign advisors\nYes\nYes\n\n\nTerrain\nSemiarid coastal plain\nSemiarid grassland plain\n\n\nTopography\nRugged\nRugged\n\n\nWar duration\n126 days\n378 days\n\n\nRecent war history w/opp\nYes\nYes\n\n\nFacing colonizer\nYes\nYes\n\n\nIdentity dimension\nSunni Islam/Christian\nSunni Islam/Christian\n\n\nNew leader\nYes\nYes\n\n\nPopulation\n8–8.5 million\n5–6 million\n\n\nEthnoling fractionalization (ELF)\nHigh\nHigh\n\n\nCiv-mil relations\nRuler as commander\nRuler as commander\n\n\n\\(Y\\): Battlefield Performance:\n\n\n\n\nLoss-exchange ratio\n0.43\n0.02\n\n\nMass desertion\nNo\nYes\n\n\nMass defection\nNo\nNo\n\n\nFratricidal violence\nNo\nYes"
   },
   {
     "objectID": "w01/slides.html#particularly-fun-non-standard-examples",
@@ -823,46 +854,32 @@
     "text": "Causal World Unlocked 😎 (With Great Power Comes Great Responsibility…)\n\nWith \\(\\textsf{do}(\\cdot)\\) in hand… (Alongside DGP satisfying axioms slightly more strict than core probability axioms)\nWe can make causal inferences from similar pair of facts! If:\n\nProbability that event \\(E_1\\) occurs is \\(\\Pr(E_1) = 0.5\\),\nThe probability that \\(E_1\\) occurs conditional on the event \\(\\textsf{do}(E_0)\\) occurring is \\(\\Pr(E_1 \\mid \\textsf{do}(E_0)) = 0.75\\),\n\nNow we can actually infer that the occurrence of \\(E_0\\) caused an increase in the likelihood of \\(E_1\\) occurring!"
   },
   {
-    "objectID": "w01/slides.html#meta-logistics-spaced-repetition",
-    "href": "w01/slides.html#meta-logistics-spaced-repetition",
+    "objectID": "w01/slides.html#ulysses-and-the-computational-sirens",
+    "href": "w01/slides.html#ulysses-and-the-computational-sirens",
     "title": "Week 1: Science from Particles to People",
-    "section": "Meta-Logistics: Spaced Repetition",
-    "text": "Meta-Logistics: Spaced Repetition"
-  },
-  {
-    "objectID": "w01/slides.html#meta-logistics-maria-montessori-and-your-final-projects",
-    "href": "w01/slides.html#meta-logistics-maria-montessori-and-your-final-projects",
-    "title": "Week 1: Science from Particles to People",
-    "section": "Meta-Logistics: Maria Montessori and Your Final Projects",
-    "text": "Meta-Logistics: Maria Montessori and Your Final Projects"
-  },
-  {
-    "objectID": "w01/slides.html#your-final-projects",
-    "href": "w01/slides.html#your-final-projects",
-    "title": "Week 1: Science from Particles to People",
-    "section": "Your Final Projects",
-    "text": "Your Final Projects"
+    "section": "Ulysses and the [Computational] Sirens",
+    "text": "Ulysses and the [Computational] Sirens"
   },
   {
     "objectID": "w01/slides.html#jupyterhub",
     "href": "w01/slides.html#jupyterhub",
     "title": "Week 1: Science from Particles to People",
     "section": "JupyterHub",
-    "text": "JupyterHub\nhttps://guhub.io"
+    "text": "JupyterHub\n\nhttps://guhub.io\n\n\nImage source"
   },
   {
     "objectID": "w01/slides.html#assignments-midterm",
     "href": "w01/slides.html#assignments-midterm",
     "title": "Week 1: Science from Particles to People",
     "section": "Assignments / Midterm",
-    "text": "Assignments / Midterm"
+    "text": "Assignments / Midterm\n\n\n\n\n\n\n\n\nAssignment\nDue Date\n% of Grade\n\n\n\n\nHW1: Causal Modeling with DAGs and PGMs: Direct and Indirect Effects\nFriday, May 30\n9%\n\n\nHW2: Traversing the Sea of Causality with the do-Harpoon in Hand: Chains, Forks, and Colliders\nFriday, February 21\n9%\n\n\nHW3: Statistical Matching: Apples to Apples and Oranges to Oranges\nFriday, June 27\n9%\n\n\nIn-Class Midterm\nWednesday, July 2\n25%\n\n\nHW4: Basic Computational Causal Methods\nFriday, July 11\n9%\n\n\nHW5: Fancy Computational Causal Methods\nFriday, July 25\n9%\n\n\nFinal Project\nFriday, August 15\n30%"
   },
   {
     "objectID": "w01/slides.html#references",
     "href": "w01/slides.html#references",
     "title": "Week 1: Science from Particles to People",
     "section": "References",
-    "text": "References\n\n\nFinetti, Bruno de. 1972. Probability, Induction and Statistics: The Art of Guessing. J. Wiley.\n\n\nHume, David. 1739. A Treatise of Human Nature: Being an Attempt to Introduce the Experimental Method of Reasoning Into Moral Subjects; and Dialogues Concerning Natural Religion. Longmans, Green.\n\n\nMontessori, Maria. 1916. Spontaneous Activity in Education: A Basic Guide to the Montessori Methods of Learning in the Classroom. Lulu Press.\n\n\nPearl, Judea. 2000. Causality: Models, Reasoning, and Inference. Cambridge University Press.\n\n\nSperber, Dan. 1996. Explaining Culture: A Naturalistic Approach. Cambridge: Blackwell."
+    "text": "References\n\n\nFinetti, Bruno de. 1972. Probability, Induction and Statistics: The Art of Guessing. J. Wiley.\n\n\nHume, David. 1739. A Treatise of Human Nature: Being an Attempt to Introduce the Experimental Method of Reasoning Into Moral Subjects; and Dialogues Concerning Natural Religion. Longmans, Green.\n\n\nKalyvas, Stathis N. 2006. The Logic of Violence in Civil War. Cambridge University Press.\n\n\nLyall, Jason. 2020. Divided Armies: Inequality and Battlefield Performance in Modern War. Princeton University Press.\n\n\nMontessori, Maria. 1916. Spontaneous Activity in Education: A Basic Guide to the Montessori Methods of Learning in the Classroom. Lulu Press.\n\n\nPearl, Judea. 2000. Causality: Models, Reasoning, and Inference. Cambridge University Press.\n\n\nSperber, Dan. 1996. Explaining Culture: A Naturalistic Approach. Cambridge: Blackwell."
   },
   {
     "objectID": "syllabus.html",
@@ -919,7 +936,7 @@
     "href": "syllabus.html#schedule",
     "title": "Syllabus",
     "section": "Schedule",
-    "text": "Schedule\nThe following is a rough map of what we will work through together throughout the semester; given that everyone learns at a different pace, my aim is to leave us with a good amount of flexibility in terms of how much time we spend on each topic: if I find that it takes me longer than a week to convey a certain topic in sufficient depth, for example, then I view it as a strength rather than a weakness of the course that we can then rearrange the calendar below by adding an extra week on that particular topic! Similarly, if it seems like I am spending too much time on a topic, to the point that students seem bored or impatient to move onto the next topic, we can move a topic intended for the next week to the current week!\n\n\n\nUnit\nWeek\nDate\nTopic\n\n\n\n\nUnit 1: The Language of Causal Modeling\n1\nMay 21\nFrom a Science of Particles to a Science of People\n\n\n\n2\nMay 28\nProbabilistic Graphical Models (PGMs) as Data-Generating Processes (DGPs)\n\n\n\n\nMay 30 (Friday), 5:59pm EST\n[Deliverable] HW1: Causal Modeling with DAGs and PGMs: Direct and Indirect Effects\n\n\nUnit 2: Doin Thangs\n3\nJun 4\nPGMs as Causal Graphs via do-Calculus: Chains, Forks, and Colliders\n\n\n\n4\nJun 11\nSome Humility via Theory: Have We Closed All Backdoor Paths?\n\n\nUnit 3: Matching Apples to Apples\n5\nJun 18\nStatistical Matching (A Cautious First Dip into Computational Methods)\n\n\n\n6\nJun 25\nMidterm Review (feat. Example Problems)\n\n\nMidterm\n7\nJul 2\nIn-Class Midterm: Causal Models and Statistical Matching\n\n\nUnit 4: Machine Learning for Causal Inference\n8\nJul 9\nPropensity Score Matching\n\n\n\n9\nJul 16\nDouble-Debiased Machine Learning\n\n\n\n10\nJul 23\nCausal Forests for Heterogeneous Treatment Effects\n\n\n\n11\nJul 30\nFancier Causal Inference at the Fancy Computational Methods Frontier\n\n\nFinal Project Zone\n12\nAug 6\nFinal Project Huddle\n\n\n\n13\nAug 13\nFinal Project Presentations\n\n\n\n\nAug 15 (Friday), 5:59pm EDT\n[Deliverable] Final Project",
+    "text": "Schedule\nThe following is a rough map of what we will work through together throughout the semester; given that everyone learns at a different pace, my aim is to leave us with a good amount of flexibility in terms of how much time we spend on each topic: if I find that it takes me longer than a week to convey a certain topic in sufficient depth, for example, then I view it as a strength rather than a weakness of the course that we can then rearrange the calendar below by adding an extra week on that particular topic! Similarly, if it seems like I am spending too much time on a topic, to the point that students seem bored or impatient to move onto the next topic, we can move a topic intended for the next week to the current week!\n\n\n\nUnit\nWeek\nDate\nTopic\n\n\n\n\nUnit 1: The Language of Causal Modeling\n1\nMay 21\nFrom a Science of Particles to a Science of People\n\n\n\n2\nMay 28\nProbabilistic Graphical Models (PGMs) as Data-Generating Processes (DGPs)\n\n\n\n\nMay 30 (Friday), 5:59pm EST\n[Deliverable] HW1: Causal Modeling with DAGs and PGMs: Direct and Indirect Effects\n\n\nUnit 2: Doin Thangs\n3\nJun 4\nPGMs as Causal Graphs via do-Calculus: Chains, Forks, and Colliders\n\n\n\n4\nJun 11\nSome Humility via Theory: Have We Closed All Backdoor Paths?\n\n\nUnit 3: Matching Apples to Apples\n5\nJun 18\nStatistical Matching (A Cautious First Dip into Computational Methods)\n\n\n\n6\nJun 25\nMidterm Review (feat. Example Problems)\n\n\nMidterm\n7\nJul 2\nIn-Class Midterm: Causal Models and Statistical Matching\n\n\nUnit 4: Machine Learning for Causal Inference\n8\nJul 9\nPropensity Score Matching\n\n\n\n9\nJul 16\nDouble-Debiased Machine Learning\n\n\n\n10\nJul 23\nCausal Forests for Heterogeneous Treatment Effects\n\n\n\n11\nJul 30\nFancier Causal Inference at the Fancy Computational Methods Frontier\n\n\nFinal Project Zone\n12\nAug 6\nFinal Project Presentations\n\n\n\n13\n?var:w13.date-md\n?var:w13.title\n\n\n\n\nAug 8 (Friday), 5:59pm EDT\n[Deliverable] Final Project",
     "crumbs": [
       "Syllabus"
     ]

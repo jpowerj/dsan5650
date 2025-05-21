@@ -58,14 +58,9 @@ w11:
   date-md: "Jul 30"
 w12:
   weeknum: 12
-  title: "Final Project Huddle"
-  footer: "Final Project Huddle"
-  date-md: "Aug 6"
-w13:
-  weeknum: 13
   title: "Final Project Presentations"
   footer: "Final Project Presentations"
-  date-md: "Aug 13"
+  date-md: "Aug 6"
 hw1:
   title: "Causal Modeling with DAGs and PGMs: Direct and Indirect Effects"
   date-md: "May 30 (Friday), 5:59pm EST"
@@ -97,6 +92,6 @@ hw5:
   url: "#"
 final:
   title: "Final Project"
-  date-md: "Aug 15 (Friday), 5:59pm EDT"
+  date-md: "Aug 8 (Friday), 5:59pm EDT"
   date-full: "Friday, **August 15**"
   url: "#"

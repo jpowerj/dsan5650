@@ -52,12 +52,11 @@ Today's Planned Schedule:
 
 | | Start | End | Topic |
 |:- |:- |:- |:- |
-| **Lecture** | 6:30pm | 6:45pm | [Quick Hello Hi Everyone Style Intro &rarr;](#who-am-i-why-is-georgetown-having-me-teach-this) |
-| | 6:45pm | 7:00pm | [[science]{.orbitron-jj} $\leadsto$ [Social Science]{.barrio-jj} "Phase Transition" &rarr;](#the-science.orbitron-jj-leadsto-social-science.barrio-jj-phase-transition) |
-| | 7:00pm | 7:25pm | [Motivating Examples I: Social Science &rarr;](#motivation-i-humble-bayesian-social-science) |(#soci) |
-| | 7:25pm | 7:50pm | [Motivating Examples II: Causal Inference &rarr;](#motivation-ii-causal-inference) |
+| **Lecture** | 6:30pm | 7:00pm | [Quick Hello Hi Everyone Style Intro &rarr;](#who-am-i-why-is-georgetown-having-me-teach-this) |
+| | 7:00pm | 7:25pm | [[science]{.orbitron-jj} $\leadsto$ [Social Science]{.barrio-jj} "Phase Transition" &rarr;](#the-science.orbitron-jj-leadsto-social-science.barrio-jj-phase-transition) |
+| | 7:25pm | 7:50pm | [Motivating Examples I: Social Science &rarr;](#motivation-i-humble-bayesian-social-science) |(#soci) |
 | **Break!** | 7:50pm | 8:00pm | |
-| | 8:00pm | 8:30pm | [Ulysses and the \[Computational\] Sirens &rarr;]() |
+| | 8:00pm | 8:30pm | [Motivating Examples II: Causal Inference &rarr;](#motivation-ii-causal-inference) |
 | | 8:30pm | 9:00pm | [Course Logistics &rarr;](#course-logistics) |
 
 : {tbl-colwidths="[12,12,12,64]"}
@@ -410,7 +409,59 @@ def my_mischievous_function(input):
 
 # Motivation I: Humble-Bayesian Social Science
 
-## The Logic of Violence in Civil War
+## The Logic of Violence in Civil War {.smaller .crunch-title}
+
+![@kalyvas_logic_2006](images/kalyvas.jpg){fig-align="center"}
+
+## Matching Estimators {.crunch-title}
+
+![[Image Source](https://shirt.woot.com/offers/comparing-apples-to-oranges)](images/fruit.png){fig-align="center"}
+
+## Case Study: Military Inequality $\leadsto$ Military Success {.smaller .crunch-title .title-09 .crunch-ul .crunch-blockquote .crunch-li-8}
+
+* @lyall_divided_2020: "Treating certain ethnic groups as second-class citizens [...] leads victimized soldiers to subvert military authorities once war begins. The higher an army's inequality, the greater its rates of desertion, side-switching, and casualties"
+
+> Matching constructs **pairs of belligerents** that are **similar** across a wide range of traits thought to dictate battlefield performance but that **vary** in levels of prewar inequality. The more similar the belligerents, the better our estimate of inequality's effects, as all other traits are shared and thus cannot explain observed differences in performance, helping assess how battlefield performance **would have** improved (declined) if the belligerent had a lower (higher) level of prewar inequality.
+> 
+> Since [non-matched] cases are **dropped** [...] selected cases are more representative of average belligerents/wars than outliers with few or no matches, [providing] surer ground for testing generalizability of the book's claims than focusing solely on canonical but unrepresentative usual suspects (Germany, the United States, Israel)
+
+## Does Inequality Cause Poor Military Performance? {.smaller .crunch-title .title-10 .table-80 .text-60}
+
+| <br>Covariates | Sultanate of Morocco<br> *Spanish-Moroccan War, 1859-60* | Khanate of Kokand<br> *War with Russia, 1864-65* |
+| - | - | - |
+| **$X$: Military Inequality** | Low (0.01) | Extreme (0.70) |
+| **$\mathbf{Z}$: Matched Covariates:** | | |
+| Initial relative power | 66% | 66% |
+| Total fielded force | 55,000 | 50,000 |
+| Regime type | Absolutist Monarchy (−6) | Absolute Monarchy (−7) |
+| Distance from capital | 208km | 265km |
+| Standing army | Yes | Yes |
+| Composite military | Yes | Yes |
+| Initiator | No | No |
+| Joiner | No | No |
+| Democratic opponent | No | No |
+| Great Power | No | No |
+| Civil war | No | No |
+| Combined arms | Yes | Yes |
+| Doctrine | Offensive | Offensive |
+| Superior weapons | No | No |
+| Fortifications | Yes | Yes |
+| Foreign advisors | Yes | Yes |
+| Terrain | Semiarid coastal plain | Semiarid grassland plain |
+| Topography | Rugged | Rugged |
+| War duration | 126 days | 378 days |
+| Recent war history w/opp | Yes | Yes |
+| Facing colonizer | Yes | Yes |
+| Identity dimension | Sunni Islam/Christian | Sunni Islam/Christian |
+| New leader | Yes | Yes |
+| Population | 8–8.5 million | 5–6 million |
+| Ethnoling fractionalization (ELF) | High | High |
+| Civ-mil relations | Ruler as commander | Ruler as commander |
+| **$Y$: Battlefield Performance:** | | |
+| Loss-exchange ratio | 0.43 | 0.02 |
+| Mass desertion | No | Yes |
+| Mass defection | No | No |
+| Fratricidal violence | No | Yes |
 
 ## Particularly Fun Non-"Standard" Examples
 
@@ -602,23 +653,35 @@ $X$ causes $Y$ if and only if:
   * The probability that $E_1$ occurs **conditional on** the event $\textsf{do}(E_0)$ occurring is $\Pr(E_1 \mid \textsf{do}(E_0)) = 0.75$,
 * **Now** we can actually infer that the occurrence of $E_0$ **caused** an increase in the likelihood of $E_1$ occurring!
 
-# Ulysses and the [Computational] Sirens
+## Ulysses and the [Computational] Sirens {.smaller .crunch-title}
 
-## 
+![](images/sirens.jpg){fig-align="center"}
 
 # Course Logistics {data-stack-name="Logistics"}
 
-## Meta-Logistics: Spaced Repetition
-
-## Meta-Logistics: Maria Montessori and Your Final Projects
-
-## Your Final Projects
-
 ## JupyterHub
 
-[https://guhub.io](https://guhub.io)
+<center>
 
-## Assignments / Midterm
+[**https://guhub.io**](https://guhub.io){style="border: 5px solid #e69f00; padding: 5px"}
+
+</center>
+
+![[Image source](https://www.opencredo.com/blogs/writing-a-custom-jupyterhub-spawner)](images/jhub.png){fig-align="center"}
+
+## Assignments / Midterm {.smaller .crunch-title .table-90}
+
+| Assignment | Due Date | % of Grade |
+| - | - | - |
+| [HW1: {{< var hw1.title >}}]({{< var hw1.url >}}) | {{< var hw1.date-full >}} | 9% |
+| [HW2: {{< var hw2.title >}}]({{< var hw2.url >}}) | {{< var hw2.date-full >}} | 9% |
+| [HW3: {{< var hw3.title >}}]({{< var hw3.url >}}) | {{< var hw3.date-full >}} | 9% |
+| {{< var midterm.title >}} | {{< var midterm.date-full >}} | 25% |
+| [HW4: {{< var hw4.title >}}]({{< var hw4.url >}}) | {{< var hw4.date-full >}} | 9% |
+| [HW5: {{< var hw5.title >}}]({{< var hw5.url >}}) | {{< var hw5.date-full >}} | 9% |
+| [Final Project](./final.qmd) | {{< var final.date-full >}} | 30% |
+
+: {tbl-colwidths="[55,25,20]"}
 
 ## References
 
