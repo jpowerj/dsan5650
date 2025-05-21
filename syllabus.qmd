@@ -179,12 +179,6 @@ The following is a rough map of what we will work through together throughout th
 </tr>
 <tr>
     <td></td>
-    <td>13</td>
-    <td><span data-qmd="{{< var w13.date-md >}}"></span></td>
-    <td><span data-qmd="{{< var w13.title >}}"></span></td>
-</tr>
-<tr>
-    <td></td>
     <td></td>
     <td><span data-qmd="{{< var final.date-md >}}"></span></td>
     <td><span data-qmd="*[Deliverable] [Final Project](./final.qmd)*"></span></td>
