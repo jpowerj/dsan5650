@@ -23,3 +23,148 @@ $$
 | $\vdots$ | 
 
 ---
+
+16 steps result:
+
+```{r}
+#| label: random-walk-16
+#| code-fold: true
+library(tibble)
+library(ggplot2)
+library(ggExtra)
+library(dplyr)
+library(tidyr)
+# From McElreath!
+gen_histo <- function(reps, num_steps) {
+  support <- c(-1,1)
+  pos <-replicate(reps, sum(sample(support,num_steps,replace=TRUE,prob=c(0.5,0.5))))
+  #print(mean(pos))
+  #print(var(pos))
+  pos_df <- tibble(x=pos)
+  clt_distr <- function(x) dnorm(x, 0, sqrt(num_steps))
+  plot <- ggplot(pos_df, aes(x=x)) +
+    geom_histogram(aes(y = after_stat(density)), fill=cbPalette[1], binwidth = 2) +
+    stat_function(fun = clt_distr) +
+    theme_dsan("quarter") +
+    theme(title=element_text(size=16)) +
+    labs(
+      title=paste0(reps," Random Walks, ",num_steps," Steps")
+    )
+  return(plot)
+}
+gen_walkplot <- function(num_people, num_steps, opacity=0.15) {
+  support <- c(-1, 1)
+  # Unique id for each person
+  pid <- seq(1, num_people)
+  pid_tib <- tibble(pid)
+  pos_df <- tibble()
+  end_df <- tibble()
+  all_steps <- t(replicate(num_people, sample(support, num_steps, replace = TRUE, prob = c(0.5, 0.5))))
+  csums <- t(apply(all_steps, 1, cumsum))
+  csums <- cbind(0, csums)
+  # Last col is the ending positions
+  ending_pos <- csums[, dim(csums)[2]]
+  end_tib <- tibble(pid = seq(1, num_people), endpos = ending_pos, x = num_steps)
+  # Now convert to tibble
+  ctib <- as_tibble(csums, name_repair = "none")
+  merged_tib <- bind_cols(pid_tib, ctib)
+  long_tib <- merged_tib %>% pivot_longer(!pid)
+  # Convert name -> step_num
+  long_tib <- long_tib %>% mutate(step_num = strtoi(gsub("V", "", name)) - 1)
+  # print(end_df)
+  grid_color <- rgb(0, 0, 0, 0.1)
+
+  # And plot!
+  walkplot <- ggplot(
+      long_tib,
+      aes(
+          x = step_num,
+          y = value,
+          group = pid,
+          # color=factor(label)
+      )
+  ) +
+      geom_line(linewidth = g_linesize, alpha = opacity, color = cbPalette[1]) +
+      geom_point(data = end_tib, aes(x = x, y = endpos), alpha = 0) +
+      scale_x_continuous(breaks = seq(0, num_steps, num_steps / 4)) +
+      scale_y_continuous(breaks = seq(-20, 20, 10)) +
+      theme_dsan("quarter") +
+      theme(
+          legend.position = "none",
+          title = element_text(size = 16)
+      ) +
+      theme(
+          panel.grid.major.y = element_line(color = grid_color, linewidth = 1, linetype = 1)
+      ) +
+      labs(
+          title = paste0(num_people, " Random Walks, ", num_steps, " Steps"),
+          x = "Number of Steps",
+          y = "Position"
+      )
+}
+wp1 <- gen_walkplot(500, 16, 0.05)
+ggMarginal(wp1, margins = "y", type = "histogram", yparams = list(binwidth = 1))
+```
+
+----
+
+ski revenue:
+
+
+```{r}
+#| label: ski-revenue-lawyers
+#| fig-align: center
+#| fig-height: 8
+library(dplyr)
+library(ggplot2)
+ga_lawyers <- c(21362, 22254, 23134, 23698, 24367, 24930, 25632, 26459, 27227, 27457)
+ski_df <- tibble::tribble(
+  ~year, ~varname, ~value,
+  2000, "ski_revenue", 1551,
+  2001, "ski_revenue", 1635,
+  2002, "ski_revenue", 1801,
+  2003, "ski_revenue", 1827,
+  2004, "ski_revenue", 1956,
+  2005, "ski_revenue", 1989,
+  2006, "ski_revenue", 2178,
+  2007, "ski_revenue", 2257,
+  2008, "ski_revenue", 2476,
+  2009, "ski_revenue", 2438,
+)
+ski_mean <- mean(ski_df$value)
+ski_sd <- sd(ski_df$value)
+ski_df <- ski_df %>% mutate(val_scaled = 12*value, val_norm = (value - ski_mean)/ski_sd)
+law_df <- tibble::tibble(year=2000:2009, varname="ga_lawyers", value=ga_lawyers)
+law_mean <- mean(law_df$value)
+law_sd <- sd(law_df$value)
+law_df <- law_df %>% mutate(val_norm = (value - law_mean)/law_sd)
+spur_df <- dplyr::bind_rows(ski_df, law_df)
+ggplot(spur_df, aes(x=year, y=val_norm, color=factor(varname, labels = c("Ski Revenue","Lawyers in Georgia")))) +
+  stat_smooth(method="loess", se=FALSE) +
+  geom_point(size=g_pointsize/1.5) +
+  labs(
+    fill="",
+    title="Ski Revenue vs. Georgia Lawyers",
+    x="Year",
+    color="Correlation: 99.2%",
+    linetype=NULL
+  ) +
+  theme_dsan() +
+  scale_x_continuous(
+    breaks=seq(from=2000, to=2014, by=2)
+  ) +
+  #scale_y_continuous(
+  #  name="Total Revenue, Ski Facilities (Million USD)",
+  #  sec.axis = sec_axis(~ . * law_sd + law_mean, name = "Number of Lawyers in Georgia")
+  #) +
+  scale_y_continuous(breaks = -1:1,
+    labels = ~ . * round(ski_sd,1) + round(ski_mean,1),
+    name="Total Revenue, Ski Facilities (Million USD)",
+    sec.axis = sec_axis(~ . * law_sd + law_mean, name = "Number of Lawyers in Georgia")) +
+  expand_limits(x=2010) +
+  #geom_hline(aes(yintercept=x, color="Mean Values"), as.data.frame(list(x=0)), linewidth=0.75, alpha=1.0, show.legend = TRUE) +
+  scale_color_manual(
+    breaks=c('Ski Revenue', 'Lawyers in Georgia'),
+    values=c('Ski Revenue'=cbPalette[1], 'Lawyers in Georgia'=cbPalette[2])
+  )
+```

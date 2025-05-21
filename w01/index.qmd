@@ -20,7 +20,7 @@ format:
     link-external-newwindow: true
     theme: [default, "../dsan-globals/jjquarto.scss"]
     include-in-header:
-      text: "<link rel='stylesheet' href='https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css'><link rel='stylesheet' type='text/css' href='https://cdn.jsdelivr.net/gh/dreampulse/computer-modern-web-font@master/fonts.css'>"
+      text: "<link rel='stylesheet' href='https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css'><link rel='stylesheet' type='text/css' href='https://cdn.jsdelivr.net/gh/dreampulse/computer-modern-web-font@master/fonts.css'><link rel='preconnect' href='https://fonts.googleapis.com'><link rel='preconnect' href='https://fonts.gstatic.com' crossorigin><link href='https://fonts.googleapis.com/css2?family=Barrio&family=Yuji+Boku&family=Orbitron:wght@400..900&display=swap' rel='stylesheet'>"
     css: "../dsan-globals/jjstyles.css"
     slide-number: true
     simplemenu:
@@ -53,7 +53,7 @@ Today's Planned Schedule:
 | | Start | End | Topic |
 |:- |:- |:- |:- |
 | **Lecture** | 6:30pm | 6:45pm | [Quick Hello Hi Everyone Style Intro &rarr;](#who-am-i-why-is-georgetown-having-me-teach-this) |
-| | 6:45pm | 7:00pm | [The Science $\leadsto$ Social Science "Phase Transition" &rarr;]() |
+| | 6:45pm | 7:00pm | [[science]{.orbitron-jj} $\leadsto$ [Social Science]{.barrio-jj} "Phase Transition" &rarr;]() |
 | | 7:00pm | 7:25pm | [Motivating Examples I: Social Science &rarr;]() |(#onwards-and-upwards-fancier-algorithms) |
 | | 7:25pm | 7:50pm | [Motivating Examples II: Causal Inference &rarr;]() |
 | **Break!** | 7:50pm | 8:00pm | |
@@ -65,6 +65,30 @@ Today's Planned Schedule:
 {{< include ../dsan-globals/_globals-py.qmd >}}
 
 {{< include ../dsan-globals/_globals-tex.qmd >}}
+
+::: {.hidden}
+
+```{=html}
+<style>
+.orbitron-jj {
+  font-family: "Orbitron", sans-serif;
+  font-optical-sizing: auto;
+  font-style: normal;
+}
+.barrio-jj {
+  font-family: "Barrio", system-ui;
+  /* font-weight: 400; */
+  font-style: normal;
+}
+.yuji-boku-jj {
+  font-family: "Yuji Boku", serif;
+  /* font-weight: 400; */
+  font-style: normal;
+}
+</style>
+```
+
+:::
 
 # Who Am I? Why Is Georgetown Having Me Teach This? {data-stack-name="Intro"}
 
@@ -92,7 +116,7 @@ Today's Planned Schedule:
 <i class='bi bi-4-circle'></i> **Columbia**, PhD in Political Economy
 
 
-## Why Is Georgetown Having Me Teach This? {.smaller .crunch-title .crunch-ul .crunch-li-8 .crunch-quarto-layout-panel}
+## Why Is Georgetown Having Me Teach This? {.smaller .crunch-title .crunch-ul .crunch-li-8 .crunch-quarto-layout-panel .crunch-quarto-figure}
 
 ::: {layout="[55,45]" layout-align="center" layout-valign="top"}
 ::: {#why-background-left}
@@ -102,7 +126,7 @@ Today's Planned Schedule:
 * PhD exam minor: **International Relations**
 * PhD exam paper: "How to Do Things with Translations"
 * Game-changing Research Fellowships at... (Nothing was the same -drake):
-* [Santa Fe Institute](https://en.wikipedia.org/wiki/Santa_Fe_Institute): *dedicated to the multidisciplinary study of complex adaptive systems: physical, computational, biological, and social systems*
+* [Santa Fe Institute](https://en.wikipedia.org/wiki/Santa_Fe_Institute): *dedicated to the multidisciplinary study of complex systems: physical, computational, biological, social*
 
 :::
 ::: {#fig-background-right}
@@ -166,7 +190,7 @@ Years spent questing in dungeons of academia
 * Rarely cited paper but often-thought-about obsession: "How To Do Things With Translations"
 * Related thing you can buy in a bookstore: [Editorial board for new translation of] *Capital, Vol. 1* by Karl Marx (Princeton U Press)
 
-# The Science $\leadsto$ Social Science "Phase Transition" {data-stack-name="Science &rarr; Social Science"}
+# The [Science]{.orbitron-jj} $\leadsto$ [Social Science]{.barrio-jj} "Phase Transition" {data-stack-name="Science &rarr; Social Science"}
 
 ## Coarse-Graining Units of Observation {.smaller .table-85}
 
@@ -202,7 +226,7 @@ Years spent questing in dungeons of academia
   <td colspan="2"><span data-qmd="Body = Brain $\cup$ Other Organs"></span></td>
 </tr>
 <tr style="border-top: 5px solid #e69f00; border-bottom: 5px solid #e69f00;">
-  <td colspan="3" align="center" class='cb1a-bg'><span data-qmd="🧐 **something happens here...** 🤔"></span></td>
+  <td colspan="3" align="center" class='cb1a-bg'><span data-qmd="&uarr; [Science]{.orbitron-jj} &nbsp;&nbsp; 🧐 **something happens here...** 🤔 &nbsp;&nbsp; &darr; [Social Science]{.barrio-jj}"></span></td>
 </tr>
 <tr>
   <td>Anthropology</td>
@@ -228,39 +252,51 @@ Years spent questing in dungeons of academia
 </table>
 ```
 
-## *Homo sapiens*/*Homo arbitratus*/*Homo mischievous*
+## *Homo sapiens*/*Homo arbitratus*/*Homo mischievous* {.title-08 .crunch-title .crunch-ul}
 
-* Latin [*sapiens*](https://en.wiktionary.org/wiki/sapiens#Latin) has to do with being "discerning" or "wise"
+* Latin [*sapiens*](https://en.wiktionary.org/wiki/sapiens#Latin) denotes being "discerning" or "wise"
 
-:::: {layout="[3,1]" layout-valign="center"}
+:::: {layout="[66,34]" layout-valign="center"}
 ::: {#homo-mischief}
 
 * But... technically nothing stops us from **choosing** to be "unwise" whenever we'd like... bc **free will**
-* $\Rightarrow$ For this class, think of humans as *Homo arbitratus*: Latin [*arbitratus*](https://en.wiktionary.org/wiki/arbitratus#Latin) has to do with **choosing** what to do, after we've sapiently "discerned"/thought about it
+* $\Rightarrow$ For this class, humans are *Homo arbitratus*: [*arbitratus*](https://en.wiktionary.org/wiki/arbitratus#Latin) denotes **choosing** what to do, after we've sapiently "discerned"/thought about it
 
 :::
 ::: {#mischievous}
 
-![](images/mood_crop.jpg){width="200"}
+![](images/mood_crop.jpg){fig-align="center" width="300"}
 
 :::
 ::::
 
-## Laws of Physics vs. "Laws" of Social Science
+## Laws of Physics vs. "Laws" of Social Science {.title-08 .crunch-title .crunch-ul .crunch-quarto-figure .aside-05 .crunch-li-8}
 
-* If we tell an inanimate object that we've discovered a **law** saying that it will accelerate towards the Earth at $9.8~\textrm{m}/\textrm{s}^2$
-  * ...It will likely still accelerate towards the Earth at $9.8~\textrm{m}/\textrm{s}^2$
-* If we tell a **human** that we've discovered a **law** saying that they will quack like a duck at 7:30pm every Wednesday
+* If we tell an inanimate object that we've discovered a **law** saying that it will accelerate towards Earth at $9.8~\textrm{m}/\textrm{s}^2$
+  * ...It will likely^[Obligatory quantum mechanics footnote: human agency [maybe] plays a role, in a quirky way, in physics at tiny subatomic scales... but once we **coarse grain** to atoms (and avoid speed of light), Newton's Laws accurate to many decimals 🤯] still accelerate towards Earth at $9.8~\textrm{m}/\textrm{s}^2$
+
+:::: {layout="[70,30]"}
+::: {#human-law}
+
+* If we tell a **human** we've discovered a **law** saying they will quack like a duck at 7:30pm EDT every Wednesday
   * ...They can utilize their **free will** to violate this "law"
 
-## Strangely-Relevant Corollary from Computer Science: The Halting Problem {.smaller .smaller-table}
+:::
+::: {#cause-problems}
 
-* Kurt Gödel $\leftrightarrow$ Alan Turing: *Entscheidungsproblem*
+![](images/cause_problems.jpg){fig-align="center"}
+
+:::
+::::
+
+## Strangely-Relevant CS Topic: The Halting Problem {.smaller .title-09 .table-75 .crunch-title .crunch-ul .crunch-li-8}
+
+* Kurt Gödel $\leftrightarrow$ Alan Turing: [*Entscheidungsproblem*](https://www.cs.virginia.edu/~robins/Turing_Paper_1936.pdf)
 * **Theorem**: It is not possible to write a computer program $P(x)$ that detects whether or not a computer program $x$ will eventually halt (as opposed to, e.g., looping forever)
-* **Proof by Contradiction**: Assume $P(x)$ *is* possible to write. Run it on `mischevious_program.py`. Infinite contradiction loop.
+* **Proof**: Assume $P(x)$ *is* possible to write. Run it on `mischievous_program.py`. Infinite contradiction loop.
 
 :::: {.columns}
-::: {.column width="55%"}
+::: {.column width="60%"}
 
 ``` {.python filename="halting_problem_solver.py" style="margin-bottom: 25px;"}
 def will_it_halt(program, input):
@@ -277,9 +313,11 @@ def my_mischievous_function(input):
 ```
 
 :::
-::: {.column width="45%"}
+::: {.column width="40%"}
 
 ```{=html}
+<center>
+
 <table>
 <thead>
 <tr>
@@ -328,17 +366,21 @@ def my_mischievous_function(input):
 </tr>
 </tbody>
 </table>
+
+</center>
 ```
 
 :::
 ::::
 
-## The Takeaway: Humility and (Bayesian) Probability!
+## The Takeaway: [Bayesian] Humility! {.crunch-title .title-09 .crunch-ul .crunch-li-8 .aside-05 .text-90}
 
-* Social **science**, with science used in the same sense as in physics, may be a quixotic endeavor
-* Instead, we'll do **social-science**, where we use data to...
-* <i class='bi bi-1-circle'></i> Infer **tendencies**: $X$ tends to cause $Y$
-* <i class='bi bi-2-circle'></i> Construct models that we can **update** with **new evidence**: Bayes' rule!
+* Social [science]{.orbitron-jj}, with ["science"]{.orbitron-jj} used in the same sense as for physics, may be a quixotic endeavor^[At least, for the time being... BUT see @sperber_explaining_1996, which will come up later]
+* Instead, we'll do [**social science**]{.barrio-jj}, where we use data to...
+* <i class='bi bi-1-circle'></i> Infer **tendencies**: $\mathcal{H}$ = «$X$ tends to cause $Y$»
+* <i class='bi bi-2-circle'></i> With some degree of **veracity**: $\Pr(\mathcal{H}) \approx 0.7$
+* <i class='bi bi-3-circle'></i> Construct models that we can **update** with **new evidence**: Bayes' rule! $\Pr(\mathcal{H} \mid E) = \frac{\Pr(E \mid \mathcal{H} ) \Pr(\mathcal{H})}{\Pr(E)} \approx 0.8$
+* Pls notice "slippage" between **aleatory probability** *within* $\mathcal{H}$ ("tends to") vs. **epistemic probability** "outside of", talking *about* $\mathcal{H}$ ("I'm 70\% confident about $\mathcal{H}$")
 
 ## Particularly Fun Non-"Standard" Examples
 
@@ -367,47 +409,153 @@ def my_mischievous_function(input):
 :::: {layout="[5,5]" layout-valign="default"}
 ::: {#expression}
 
-
-
 ![](images/hrngg.png){fig-align="center" width="300"}
 
 :::
 ::: {#looked-at-the-data}
-
-
 
 {{< video https://jpj.georgetown.domains/dsan5650-scratch/looked_at_the_data.mp4 >}}
 
 :::
 ::::
 
-## Data-Generating Processes (DGPs)
+## Blasting Off Into Causality! {.title-10 .crunch-title .not-title-slide}
 
-* You've already seen this in DSAN 5100!
-* «Assume $X$ is drawn i.i.d. from a Normal distribution with mean $\mu$ and variance $\sigma^2$» characterizes the **DGP of $X$**
-* In 5650 we **zoom in on** DGPs, rather than treating as black box or footnote to e.g. Law of Large Numbers.
-* Deep dive into DGPs necessary for our goal of moving...
-  * **From *associational* statements**: "an increase of $X$ by one unit is associated with an increase of $Y$ by $\beta$ units"
-  * **To *causal* statements**: "increasing $X$ by one unit *causes* $Y$ to increase by $\beta$ units".
+![](images/posadism_causal.jpg){fig-align="center"}
 
-## Probability++
+## Data-Generating Processes (DGPs) {.title-09 .text-85 .crunch-title .crunch-ul .crunch-quarto-figure .crunch-quarto-layout-panel .crunch-li-5}
+
+:::: {layout="[55,45]" layout-align="center" layout-valign="center"}
+::: {#dgps-5100}
+
+* You saw this in DSAN 5100!
+* «$X_1, \ldots, X_n$ drawn i.i.d. Normal, mean $\mu$ variance $\sigma^2$» characterizes **DGP of $(X_1, \ldots, X_n)$**
+
+:::
+
+![](images/hmm_clusters_single_dist.svg){fig-align="center" width="280"}
+
+::::
+
+* 5650: **Dive into DGPs**, rather than treating as black box/footnote to Law of Large Numbers, so we can move [*asymptotically!*]...
+* **From *associational* statements**:
+  * «$\underbrace{\text{An increase}}_{\small\text{noun}}$ in $X$ by 1 is associated with increase in $Y$ by $\beta$»
+* **To *causal* ones**: «$\underbrace{\text{Increasing}}_{\small\text{verb}}$ $X$ by 1 *causes* $Y$ to increase by $\beta$»
+
+## DGPs and the Emergence of Order {.crunch-title .crunch-quarto-layout-panel .title-09 .crunch-quarto-figure}
+
+::: {layout="[1,1]"}
+
+* Who can guess the state of this process after 10 steps, with 1 person?
+* 10 people? 50? 100? (If they find themselves on the same spot, they stand on each other's heads)
+* 100 steps? 1000?
+
+![](images/random_walk.svg){fig-align="center" width="430"}
+
+:::
+
+## The Result: 16 Steps
+
+![](images/random-walk-16-1.png){fig-align="center"}
+
+## The Result: 64 Steps
+
+![](images/random-walk-64-1.png){fig-align="center"}
+
+## "Mathematical/Scientific Modeling" {.smaller .crunch-title .crunch-ul}
+
+* Thing we observe (poking out of water): **data**
+* Hidden but possibly discoverable via deeper dive (ecosystem under surface): **DGP**
+
+<!-- My sincere belief and definitely not an image forwarded to me unironically by a family member when I was a tween -->
+
+![](images/fwds_from_grandma.jpg){fig-align="center"}
+
+## So What's the Problem? {.crunch-title .crunch-ul .crunch-li-8 .inline-90}
+
+* Non-probabilistic models: High potential for being garbage
+  * *tldr: even if SUPER certain, using $\Pr(\mathcal{H}) = 1-\varepsilon$ with tiny $\varepsilon$ has literal life-saving advantages* [@finetti_probability_1972]
+* Probabilistic models: Getting there, still looking at "surface"
+  * Of the $N = 100$ times we observed event $X$ occurring, event $Y$ also occurred $90$ of those times
+  * $\implies \Pr(Y \mid X) = \frac{\#[X, Y]}{\#[X]} = \frac{90}{100} = 0.9$
+* Causal models: Does $Y$ happen **because of** $X$ happening? For that, need to start modeling **what's happening under the surface** making $X$ and $Y$ **"pop up" together** so often
+
+## The *Shallow* Problem of Causal Inference {.title-08}
+
+:::: {.columns}
+::: {.column width="65%"}
+
+![](images/ski-revenue-lawyers-1.png){fig-align="center"}
+
+:::
+::: {.column width="35%"}
+
+``` {.r style="font-size: 72%;"}
+cor(ski_df$value, law_df$value)
+```
+
+```
+[1] 0.9921178
+```
+
+::: {style="font-size: 50% !important;"}
+(Data from Vigen, <a href='http://web.archive.org/web/20191006000802/http://tylervigen.com/view_correlation?id=29272' target='_blank'>Spurious Correlations</a>)
+:::
+
+This, however, is only a *mini-boss*. Beyond it lies the truly invincible **FINAL BOSS**... 🙀
+
+:::
+::::
+
+## The *Fundamental* Problem of Causal Inference {.crunch-title .crunch-ul .crunch-callout .title-07}
+
+The only workable definition of «$X$ causes $Y$»:
+
+::: {.callout-note icon="false" title="<i class='bi bi-info-circle pe-1'></i> Defining Causality [@hume_treatise_1739, ruining everything as usual 😤]"}
+
+$X$ causes $Y$ if and only if:
+
+1. $X$ *temporally precedes* $Y$ and
+2. 
+    * In **two worlds** $W_0$ and $W_1$ where
+    * everything is exactly the same **except that** $X = 0$ in $W_0$ and $X = 1$ in $W_1$,
+    * $Y = 0$ in $W_0$ and $Y = 1$ in $W_1$
+
+:::
+
+* The problem? We live in **one** world, not two identical worlds simultaneously 😭
+
+## What Is To Be Done?
+
+![](images/face_everything_and_rise.jpg){fig-align="center"}
+
+## Probability++ {.crunch-title}
   
-* Tools from probability and statistics (RVs, CDFs, Conditional Probability) **necessary but not sufficient** for causal inference
+* Tools from prob/stats (RVs, CDFs, Conditional Probability) **necessary but not sufficient** for causal inference!
 * Example: Say we use DSAN 5100 tools to discover:
   * Probability that event $E_1$ occurs is $\Pr(E_1) = 0.5$
   * Probability that $E_1$ occurs **conditional on** another event $E_0$ occurring is $\Pr(E_1 \mid E_0) = 0.75$
 * Unfortunately, we still **cannot** infer that the occurrence of $E_0$ **causes** an increase in the likelihood of $E_1$ occurring.
 
-## Beyond Conditional Probability
+## Beyond Conditional Probability {.crunch-title .text-90}
 
 * This issue (that **conditional probabilities** could not be interpreted causally) at first represented a kind of dead end for scientists interested in employing probability theory to study causal relationships...
-* In recent decades, researchers have built up what amounts to an additional "layer" of modeling tools which augment the existing machinery of probability theory to address causality head-on! [@pearl_causality_2000]
+* Recent decades: researchers have built up an additional "layer" of modeling tools, augmenting existing machinery of probability to address causality head-on!
+* @pearl_causality_2000: Formal proofs that ($\Pr$ axioms) $\cup$ ($\textsf{do}$ axioms) $\Rightarrow$ causal inference procedures successfully recover causal effects
 
-## Preview: do-Calculus
+## Preview: do-Calculus {.crunch-title .crunch-math .text-85 .table-85 .crunch-ul .inline-90 .math-90 .crunch-li-6}
 
-* *Extends* core operations/definitions of probability to incorporate causality, via a $\textsf{do}(\cdot)$ operator for RVs
-* $\textsf{do}(X = 5)$ is a "special" **event**, representing **intervention in DGP** to **force** $X \leftarrow 5$
-* "Special" in the sense that $\Pr(\textsf{do}(X = 5))$ not well-defined, only $\Pr(Y = 6 \mid \textsf{do}(X = 5))$
+* *Extends* core of probability to incorporate causality, via $\textsf{do}$ operator
+* $\textsf{do}(X = 5)$ is a "special" **event**, representing **intervention in DGP** to **force** $X \leftarrow 5$... $\textsf{do}(X = 5)$ **not the same event** as $X = 5$!
+
+| $X = 5$ | $\neq$ | $\textsf{do}(X = 5)$ |
+|:-:|:-:|:-:|
+| *Observing* that $X$ took on value 5 (for some possibly-unknown reason) | $\neq$ | *Intervening* to force $X \leftarrow 5$, all else in DGP remaining the same (intervention then "flows" through rest of DGP) |
+
+: {tbl-colwidths="[46,2,52]"}
+
+* Probably the most difficult thing in 5650 to wrap head around
+* "Special": $\Pr(\textsf{do}(X = 5))$ *not* well-defined, only $\Pr(Y = 6 \mid \textsf{do}(X = 5))$
 * To emphasize special-ness, we may use notation like:
 
   $$
@@ -416,9 +564,9 @@ def my_mischievous_function(input):
 
   to avoid confusion with "normal" events
 
-## Causal World Unlocked 😎 (With Great Power Comes Great Responsibility...) {.title-08}
+## Causal World Unlocked 😎 (With Great Power Comes Great Responsibility...) {.title-08 .crunch-title .crunch-ul}
 
-* With $\textsf{do}(\cdot)$ in hand... (Alongside DGP satisfying a set of underlying axioms, slightly more strict than axioms of probability theory)
+* With $\textsf{do}(\cdot)$ in hand... (Alongside DGP satisfying axioms slightly more strict than core probability axioms)
 * We *can* make causal inferences from similar pair of facts! If:
   * Probability that event $E_1$ occurs is $\Pr(E_1) = 0.5$,
   * The probability that $E_1$ occurs **conditional on** the event $\textsf{do}(E_0)$ occurring is $\Pr(E_1 \mid \textsf{do}(E_0)) = 0.75$,

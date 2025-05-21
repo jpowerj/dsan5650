@@ -99,7 +99,7 @@
     "href": "midterm.html#part-4-context-sensitive-fairness",
     "title": "DSAN 5450 Midterm Study Guide",
     "section": "Part 4: Context-Sensitive Fairness",
-    "text": "Part 4: Context-Sensitive Fairness\nWe spent some amount of time critiquing the fairness definitions mentioned in the previous section. This was not for the sake of judging whether they’re “good” or “bad” as such, but rather, for the sake of understanding specifically what they’re missing. Two different characterizations of what they’re missing give us our two key context-sensitive approaches to fairness, discussed in the next two sections:\n\n(4.1) Individual-Similarity-Based Fairness\n\nThe Context-Free measures fail to consider how satisfying a criterion (e.g., Equalized False Positive Rate) at a group level could trample over the rights of individuals.\n\nThe illustration of this failure that I mentioned in class boiled down to:\n\nLet \\(A_i\\) represent a sensitive attribute of individuals, such that \\(A_i = 0\\) if person \\(i\\) is white, and \\(A_i = 1\\) if person \\(i\\) is black.\nIf a police department finds itself failing to satisfy a fairness criterion like Equality of Positive Rates, in the sense that their arrest rate \\(r_1\\) for individuals with \\(A_i = 1\\) is higher than their arrest rate \\(r_0\\) for individuals with \\(A_i = 0\\), then…\nThey can quickly “resolve” this failure and satisfy the criterion by running outside and arresting the first \\(N\\) white people they see, where \\(N\\) is the number of additional white arrestees that would be necessary to make \\(r_0 = r_1\\).\n\nHowever, as this illustration hopefully makes clear, this procedure would allow satisfaction of the group-level fairness criterion, but only at the expense of violating our intuitive notions of fairness towards individuals.\nAlthough there are lots and lots of ways that this notion of individual-level fairness could be incorporated into the Context-Free fairness measures to make them Context-Sensitive, one of the most popular and straightforward ways is by constructing an indiviudal-similarity-based fairness measure, and then using it to constrain the space of possible decisions by enforcing the rule that:\n\n\n\n\n\n\nFairness Through Awareness (dwork_fairness_2011?)\n\n\n\nIndividuals who are similar with respect to a task should be classified similarly.\n\n\nThe first thing I want you to note about this approach is that it specifically aims to resolve the issue we’ve already seen with utilitarianism, namely, that * Optimizing society-level desiderata (like “overall happiness”) may lead to * individuals being brutally mistreated (e.g., having their rights violated)\nYou can also hopefully see how this notion (Fairness Through Awarness) could provide a Rawls-style ordering: individual fairness lexically prior to group-level fairness (optimize group-level fairness once individual-level is satisfied).\nThen lastly, as you saw on HW2, this general notion of Fairness Through Awareness can be operationalized as a measurable quantity by, for example, implementing what is generally called metric fairness: Given a similarity metric \\(m: \\mathcal{I} \\times \\mathcal{I} \\rightarrow \\mathbb{R}\\), where \\(\\mathcal{I}\\) is the set of all individuals,\n\\[\n|D_i - D_j| \\leq m(i, j)\n\\]\nfor all pairs of individuals \\((i, j)\\). Or in other words, that the difference between the decisions \\(D_i\\) and \\(D_j\\) should be bounded above by the similarity \\(m(i,j)\\) between \\(i\\) and \\(j\\).\nThis, to me, is already slightly more than you need to know for the midterm, but if you want to dive into this Context-Sensitive approach specifically, Section 5.1 of (mitchell_algorithmic_2021?) has a really great discussion of Metric Fairness specifically.\n\n\n(4.2) Causal Fairness\nThis is the capital-B capital-D Big Deal approach to fairness, in my view, but you’ve already heard enough about that in class and on HW2!\nSo, for the midterm, instead I will just say that the key thing I want you to be comfortable with for now is drawing and interpreting Causal Diagrams like the ones I’ve shown in the slides and drawn on the board in class.\nFirst and foremost, if you absorb the Quick Intro to Probabilistic Graphical Models writeup, you are most of the way there to understanding Causal Diagrams in general, since (sweeping some details under the rug) these Causal Diagrams are primarily just PGMs where we interpret the edges (the arrows in the PGMs) as hypothesized causal effects.\nThus, for the midterm, my first goal is to test your ability to read these PGMs and understand what they’re positing (“saying”) about the world. For example, if I give you a hypothesis like\n\n\\(H_1\\): Individual \\(i\\) was arrested because they are black\n\nYou should be able to “translate” this into a causal diagram based on:\n\nA random variable \\(Y_i\\) representing whether or not an individual \\(i\\) was arrested (where we use the letter \\(Y\\) here speicifcally because we’re representing an outcome that we’re hoping to explain)\nA random variable \\(A_i\\) representing the race of individual \\(i\\), and\nAn edge \\(A_i \\rightarrow Y_i\\), representing the hypothesis that individual \\(i\\)’s specific \\(A_i\\) value (\\(A_i = a_i\\)) is what caused \\(Y_i\\) to take on individual \\(i\\)’s specific \\(Y_i\\) value (\\(Y_i = y_i = 1\\), in this case).\n\nThen, once you’re comfortable with this process of “implementing” hypotheses by constructing causal diagrams, the only other thing I think will be important for the midterm is your ability to adjudicate between two or more such diagrams on the basis of their plausibility.\nWhat I mean by that is… keep in mind the definition of causality that was given in a slide in class:\n\n\n\n\n\n\nDefining Causality (hume_treatise_1739?)\n\n\n\n\\(X\\) causes \\(Y\\) if and only if:\n\n\\(X\\) temporally precedes \\(Y\\) and\n\nIn two worlds \\(W_0\\) and \\(W_1\\) where\neverything is exactly the same except that \\(X = 0\\) in \\(W_0\\) and \\(X = 1\\) in \\(W_1\\),\n\\(Y = 0\\) in \\(W_0\\) and \\(Y = 1\\) in \\(W_1\\).\n\n\n\n\nYou should be able to use this definition to (for example) eliminate implausible causal diagrams, namely, causal diagrams which violate the basic predicates within this definition. So, for example, say I gave you the following causal diagram as a causal hypothesis regarding how toasters toast a piece of bread \\(i\\):\n\n\\(T_i\\) is a Random Variable which is \\(0\\) if the bread has not yet been placed in the toaster and \\(1\\) if has been placed in the toaster,\n\\(C_i\\) is a Random Variable which is \\(0\\) if the bread is not cooked, and \\(1\\) if the bread is cooked, and\nThere is an arrow \\(C_i \\rightarrow T_i\\)\n\nYou should be able to identify this as an implausible causal diagram—meaning, a causal diagram representing an implausible hypothesis about how toasters work, relative to the Humean notion of causality—since in our observations of how toasters work, the bread being placed in the toaster (\\(\\text{do}(T_i = 1)\\)) occurs before the bread being cooked \\(C_i = 1\\), temporally."
+    "text": "Part 4: Context-Sensitive Fairness\nWe spent some amount of time critiquing the fairness definitions mentioned in the previous section. This was not for the sake of judging whether they’re “good” or “bad” as such, but rather, for the sake of understanding specifically what they’re missing. Two different characterizations of what they’re missing give us our two key context-sensitive approaches to fairness, discussed in the next two sections:\n\n(4.1) Individual-Similarity-Based Fairness\n\nThe Context-Free measures fail to consider how satisfying a criterion (e.g., Equalized False Positive Rate) at a group level could trample over the rights of individuals.\n\nThe illustration of this failure that I mentioned in class boiled down to:\n\nLet \\(A_i\\) represent a sensitive attribute of individuals, such that \\(A_i = 0\\) if person \\(i\\) is white, and \\(A_i = 1\\) if person \\(i\\) is black.\nIf a police department finds itself failing to satisfy a fairness criterion like Equality of Positive Rates, in the sense that their arrest rate \\(r_1\\) for individuals with \\(A_i = 1\\) is higher than their arrest rate \\(r_0\\) for individuals with \\(A_i = 0\\), then…\nThey can quickly “resolve” this failure and satisfy the criterion by running outside and arresting the first \\(N\\) white people they see, where \\(N\\) is the number of additional white arrestees that would be necessary to make \\(r_0 = r_1\\).\n\nHowever, as this illustration hopefully makes clear, this procedure would allow satisfaction of the group-level fairness criterion, but only at the expense of violating our intuitive notions of fairness towards individuals.\nAlthough there are lots and lots of ways that this notion of individual-level fairness could be incorporated into the Context-Free fairness measures to make them Context-Sensitive, one of the most popular and straightforward ways is by constructing an indiviudal-similarity-based fairness measure, and then using it to constrain the space of possible decisions by enforcing the rule that:\n\n\n\n\n\n\nFairness Through Awareness (dwork_fairness_2011?)\n\n\n\nIndividuals who are similar with respect to a task should be classified similarly.\n\n\nThe first thing I want you to note about this approach is that it specifically aims to resolve the issue we’ve already seen with utilitarianism, namely, that * Optimizing society-level desiderata (like “overall happiness”) may lead to * individuals being brutally mistreated (e.g., having their rights violated)\nYou can also hopefully see how this notion (Fairness Through Awarness) could provide a Rawls-style ordering: individual fairness lexically prior to group-level fairness (optimize group-level fairness once individual-level is satisfied).\nThen lastly, as you saw on HW2, this general notion of Fairness Through Awareness can be operationalized as a measurable quantity by, for example, implementing what is generally called metric fairness: Given a similarity metric \\(m: \\mathcal{I} \\times \\mathcal{I} \\rightarrow \\mathbb{R}\\), where \\(\\mathcal{I}\\) is the set of all individuals,\n\\[\n|D_i - D_j| \\leq m(i, j)\n\\]\nfor all pairs of individuals \\((i, j)\\). Or in other words, that the difference between the decisions \\(D_i\\) and \\(D_j\\) should be bounded above by the similarity \\(m(i,j)\\) between \\(i\\) and \\(j\\).\nThis, to me, is already slightly more than you need to know for the midterm, but if you want to dive into this Context-Sensitive approach specifically, Section 5.1 of (mitchell_algorithmic_2021?) has a really great discussion of Metric Fairness specifically.\n\n\n(4.2) Causal Fairness\nThis is the capital-B capital-D Big Deal approach to fairness, in my view, but you’ve already heard enough about that in class and on HW2!\nSo, for the midterm, instead I will just say that the key thing I want you to be comfortable with for now is drawing and interpreting Causal Diagrams like the ones I’ve shown in the slides and drawn on the board in class.\nFirst and foremost, if you absorb the Quick Intro to Probabilistic Graphical Models writeup, you are most of the way there to understanding Causal Diagrams in general, since (sweeping some details under the rug) these Causal Diagrams are primarily just PGMs where we interpret the edges (the arrows in the PGMs) as hypothesized causal effects.\nThus, for the midterm, my first goal is to test your ability to read these PGMs and understand what they’re positing (“saying”) about the world. For example, if I give you a hypothesis like\n\n\\(H_1\\): Individual \\(i\\) was arrested because they are black\n\nYou should be able to “translate” this into a causal diagram based on:\n\nA random variable \\(Y_i\\) representing whether or not an individual \\(i\\) was arrested (where we use the letter \\(Y\\) here speicifcally because we’re representing an outcome that we’re hoping to explain)\nA random variable \\(A_i\\) representing the race of individual \\(i\\), and\nAn edge \\(A_i \\rightarrow Y_i\\), representing the hypothesis that individual \\(i\\)’s specific \\(A_i\\) value (\\(A_i = a_i\\)) is what caused \\(Y_i\\) to take on individual \\(i\\)’s specific \\(Y_i\\) value (\\(Y_i = y_i = 1\\), in this case).\n\nThen, once you’re comfortable with this process of “implementing” hypotheses by constructing causal diagrams, the only other thing I think will be important for the midterm is your ability to adjudicate between two or more such diagrams on the basis of their plausibility.\nWhat I mean by that is… keep in mind the definition of causality that was given in a slide in class:\n\n\n\n\n\n\nDefining Causality (Hume 1739)\n\n\n\n\\(X\\) causes \\(Y\\) if and only if:\n\n\\(X\\) temporally precedes \\(Y\\) and\n\nIn two worlds \\(W_0\\) and \\(W_1\\) where\neverything is exactly the same except that \\(X = 0\\) in \\(W_0\\) and \\(X = 1\\) in \\(W_1\\),\n\\(Y = 0\\) in \\(W_0\\) and \\(Y = 1\\) in \\(W_1\\).\n\n\n\n\nYou should be able to use this definition to (for example) eliminate implausible causal diagrams, namely, causal diagrams which violate the basic predicates within this definition. So, for example, say I gave you the following causal diagram as a causal hypothesis regarding how toasters toast a piece of bread \\(i\\):\n\n\\(T_i\\) is a Random Variable which is \\(0\\) if the bread has not yet been placed in the toaster and \\(1\\) if has been placed in the toaster,\n\\(C_i\\) is a Random Variable which is \\(0\\) if the bread is not cooked, and \\(1\\) if the bread is cooked, and\nThere is an arrow \\(C_i \\rightarrow T_i\\)\n\nYou should be able to identify this as an implausible causal diagram—meaning, a causal diagram representing an implausible hypothesis about how toasters work, relative to the Humean notion of causality—since in our observations of how toasters work, the bread being placed in the toaster (\\(\\text{do}(T_i = 1)\\)) occurs before the bread being cooked \\(C_i = 1\\), temporally."
   },
   {
     "objectID": "midterm.html#part-5-doin-thangs-causality-continued",
@@ -113,7 +113,7 @@
     "href": "midterm.html#references",
     "title": "DSAN 5450 Midterm Study Guide",
     "section": "References",
-    "text": "References\n\n\nPearl, Judea. 2000. Causality: Models, Reasoning, and Inference. Cambridge University Press."
+    "text": "References\n\n\nHume, David. 1739. A Treatise of Human Nature: Being an Attempt to Introduce the Experimental Method of Reasoning Into Moral Subjects; and Dialogues Concerning Natural Religion. Longmans, Green.\n\n\nPearl, Judea. 2000. Causality: Models, Reasoning, and Inference. Cambridge University Press."
   },
   {
     "objectID": "midterm.html#footnotes",
@@ -223,7 +223,7 @@
     "href": "w01/index.html#why-is-georgetown-having-me-teach-this",
     "title": "Week 1: Science from Particles to People",
     "section": "Why Is Georgetown Having Me Teach This?",
-    "text": "Why Is Georgetown Having Me Teach This?\n\n\n\n\n\n\n\nQuanty things \\(\\leadsto\\) PhD in Political Economy\nPhD exam major: Political Philosophy\nPhD exam minor: International Relations\nPhD exam paper: “How to Do Things with Translations”\nGame-changing Research Fellowships at… (Nothing was the same -drake):\nSanta Fe Institute: dedicated to the multidisciplinary study of complex adaptive systems: physical, computational, biological, and social systems\n\n\n\n\n\n\n\n\n\n                                                \n\n\n\n\n\nFigure 1: Years spent questing in dungeons of academia\n\n\n\n\n\n\n\nCentre for the Study of the History of Political Thought, Queen Mary University of London (QMUL): New approaches to the history of political thought [Quentin Skinner, “Cambridge School”] have changed how we study ideas from the past and their relevance to contemporary politics. The focus of the Centre is to explore [ts].",
+    "text": "Why Is Georgetown Having Me Teach This?\n\n\n\n\n\n\n\nQuanty things \\(\\leadsto\\) PhD in Political Economy\nPhD exam major: Political Philosophy\nPhD exam minor: International Relations\nPhD exam paper: “How to Do Things with Translations”\nGame-changing Research Fellowships at… (Nothing was the same -drake):\nSanta Fe Institute: dedicated to the multidisciplinary study of complex systems: physical, computational, biological, social\n\n\n\n\n\n\n\n\n\n                                                \n\n\n\n\n\nFigure 1: Years spent questing in dungeons of academia\n\n\n\n\n\n\n\nCentre for the Study of the History of Political Thought, Queen Mary University of London (QMUL): New approaches to the history of political thought [Quentin Skinner, “Cambridge School”] have changed how we study ideas from the past and their relevance to contemporary politics. The focus of the Centre is to explore [ts].",
     "crumbs": [
       "Week 1: {{< var w01.date-md >}}"
     ]
@@ -273,7 +273,7 @@
     "href": "w01/index.html#coarse-graining-units-of-observation",
     "title": "Week 1: Science from Particles to People",
     "section": "Coarse-Graining Units of Observation",
-    "text": "Coarse-Graining Units of Observation\n\n\n\nField\nExample Unit of Observation\n\n\n\n\nPhysics\nParticle\n[Particle = Fine-Graining of Molecules]\n\n\nChemistry\nMolecule = \\(\\cup\\)(Particles)\n[Molecule = Coarse-Graining of Particles]\n\n\nBiology\nCell = \\(\\cup\\)(Molecules)\n\n\nNeuro/Cog Sci\nBrain = \\(\\cup\\)(Cells)\n\n\nHuman Physiology\nBody = Brain \\(\\cup\\) Other Organs\n\n\n🧐 something happens here… 🤔\n\n\nAnthropology\nHuman-Relational System (e.g., Kinship) = \\(\\cup\\)(Brains) \\(\\times\\) Natural Environment\n\n\nEconomics\nEconomy = Specific relational system of exchange w.r.t. scarce resources\n\n\nPolitical Economy\nEconomy-Context = Economic Exchange \\(\\cap\\) Relational Power\n\n\nSociology\nSociety = \\(\\cup\\)(Relational Systems: Kinship, Friendship, Authority, Power, Violence)\n\n\nHistory\nLongue-Durée = Evolution of Societies over Time and Space",
+    "text": "Coarse-Graining Units of Observation\n\n\n\nField\nExample Unit of Observation\n\n\n\n\nPhysics\nParticle\n[Particle = Fine-Graining of Molecules]\n\n\nChemistry\nMolecule = \\(\\cup\\)(Particles)\n[Molecule = Coarse-Graining of Particles]\n\n\nBiology\nCell = \\(\\cup\\)(Molecules)\n\n\nNeuro/Cog Sci\nBrain = \\(\\cup\\)(Cells)\n\n\nHuman Physiology\nBody = Brain \\(\\cup\\) Other Organs\n\n\n↑ Science    🧐 something happens here… 🤔    ↓ Social Science\n\n\nAnthropology\nHuman-Relational System (e.g., Kinship) = \\(\\cup\\)(Brains) \\(\\times\\) Natural Environment\n\n\nEconomics\nEconomy = Specific relational system of exchange w.r.t. scarce resources\n\n\nPolitical Economy\nEconomy-Context = Economic Exchange \\(\\cap\\) Relational Power\n\n\nSociology\nSociety = \\(\\cup\\)(Relational Systems: Kinship, Friendship, Authority, Power, Violence)\n\n\nHistory\nLongue-Durée = Evolution of Societies over Time and Space",
     "crumbs": [
       "Week 1: {{< var w01.date-md >}}"
     ]
@@ -283,7 +283,7 @@
     "href": "w01/index.html#homo-sapienshomo-arbitratushomo-mischievous",
     "title": "Week 1: Science from Particles to People",
     "section": "Homo sapiens/Homo arbitratus/Homo mischievous",
-    "text": "Homo sapiens/Homo arbitratus/Homo mischievous\n\nLatin sapiens has to do with being “discerning” or “wise”\n\n\n\n\n\n\n\n\nBut… technically nothing stops us from choosing to be “unwise” whenever we’d like… bc free will\n\\(\\Rightarrow\\) For this class, think of humans as Homo arbitratus: Latin arbitratus has to do with choosing what to do, after we’ve sapiently “discerned”/thought about it",
+    "text": "Homo sapiens/Homo arbitratus/Homo mischievous\n\nLatin sapiens denotes being “discerning” or “wise”\n\n\n\n\n\n\n\n\nBut… technically nothing stops us from choosing to be “unwise” whenever we’d like… bc free will\n\\(\\Rightarrow\\) For this class, humans are Homo arbitratus: arbitratus denotes choosing what to do, after we’ve sapiently “discerned”/thought about it",
     "crumbs": [
       "Week 1: {{< var w01.date-md >}}"
     ]
@@ -293,27 +293,27 @@
     "href": "w01/index.html#laws-of-physics-vs.-laws-of-social-science",
     "title": "Week 1: Science from Particles to People",
     "section": "Laws of Physics vs. “Laws” of Social Science",
-    "text": "Laws of Physics vs. “Laws” of Social Science\n\nIf we tell an inanimate object that we’ve discovered a law saying that it will accelerate towards the Earth at \\(9.8~\\textrm{m}/\\textrm{s}^2\\)\n\n…It will likely still accelerate towards the Earth at \\(9.8~\\textrm{m}/\\textrm{s}^2\\)\n\nIf we tell a human that we’ve discovered a law saying that they will quack like a duck at 7:30pm every Wednesday\n\n…They can utilize their free will to violate this “law”",
+    "text": "Laws of Physics vs. “Laws” of Social Science\n\nIf we tell an inanimate object that we’ve discovered a law saying that it will accelerate towards Earth at \\(9.8~\\textrm{m}/\\textrm{s}^2\\)\n\n…It will likely1 still accelerate towards Earth at \\(9.8~\\textrm{m}/\\textrm{s}^2\\)\n\n\n\n\n\n\n\n\n\nIf we tell a human we’ve discovered a law saying they will quack like a duck at 7:30pm EDT every Wednesday\n\n…They can utilize their free will to violate this “law”",
     "crumbs": [
       "Week 1: {{< var w01.date-md >}}"
     ]
   },
   {
-    "objectID": "w01/index.html#strangely-relevant-corollary-from-computer-science-the-halting-problem",
-    "href": "w01/index.html#strangely-relevant-corollary-from-computer-science-the-halting-problem",
+    "objectID": "w01/index.html#strangely-relevant-cs-topic-the-halting-problem",
+    "href": "w01/index.html#strangely-relevant-cs-topic-the-halting-problem",
     "title": "Week 1: Science from Particles to People",
-    "section": "Strangely-Relevant Corollary from Computer Science: The Halting Problem",
-    "text": "Strangely-Relevant Corollary from Computer Science: The Halting Problem\n\nKurt Gödel \\(\\leftrightarrow\\) Alan Turing: Entscheidungsproblem\nTheorem: It is not possible to write a computer program \\(P(x)\\) that detects whether or not a computer program \\(x\\) will eventually halt (as opposed to, e.g., looping forever)\nProof by Contradiction: Assume \\(P(x)\\) is possible to write. Run it on mischevious_program.py. Infinite contradiction loop.\n\n\n\n\n\nhalting_problem_solver.py\n\ndef will_it_halt(program, input):\n  # Put code you think will work here\n  # Return True if program will halt, False otherwise\n\n\n\nmischievous_program.py\n\ndef my_mischievous_function(input):\n  if will_it_halt(my_mischevious_function, input):\n    while True: pass # Infinite loop\n  else:\n    return # Halt\n\n\n\n\n\nInput→↓Program\n0\n1\n2\n\\(\\cdots\\)\n\n\n\n\n0\nHalt\nLoop\nLoop\n\\(\\cdots\\)\n\n\n1\nLoop\nLoop\nHalt\n\\(\\cdots\\)\n\n\n2\nLoop\nLoop\nLoop\n\\(\\cdots\\)\n\n\n\\(\\vdots\\)\n\\(\\vdots\\)\n\\(\\vdots\\)\n\\(\\vdots\\)\n\\(\\mathbf{\\ddots}\\)\n\n\n\nLoop\nHalt\nHalt\n\\(\\mathbf{\\cdots}\\)",
+    "section": "Strangely-Relevant CS Topic: The Halting Problem",
+    "text": "Strangely-Relevant CS Topic: The Halting Problem\n\nKurt Gödel \\(\\leftrightarrow\\) Alan Turing: Entscheidungsproblem\nTheorem: It is not possible to write a computer program \\(P(x)\\) that detects whether or not a computer program \\(x\\) will eventually halt (as opposed to, e.g., looping forever)\nProof: Assume \\(P(x)\\) is possible to write. Run it on mischievous_program.py. Infinite contradiction loop.\n\n\n\n\n\nhalting_problem_solver.py\n\ndef will_it_halt(program, input):\n  # Put code you think will work here\n  # Return True if program will halt, False otherwise\n\n\n\nmischievous_program.py\n\ndef my_mischievous_function(input):\n  if will_it_halt(my_mischevious_function, input):\n    while True: pass # Infinite loop\n  else:\n    return # Halt\n\n\n\n\n\n\n\n\nInput→↓Program\n0\n1\n2\n\\(\\cdots\\)\n\n\n\n\n0\nHalt\nLoop\nLoop\n\\(\\cdots\\)\n\n\n1\nLoop\nLoop\nHalt\n\\(\\cdots\\)\n\n\n2\nLoop\nLoop\nLoop\n\\(\\cdots\\)\n\n\n\\(\\vdots\\)\n\\(\\vdots\\)\n\\(\\vdots\\)\n\\(\\vdots\\)\n\\(\\mathbf{\\ddots}\\)\n\n\n\nLoop\nHalt\nHalt\n\\(\\mathbf{\\cdots}\\)",
     "crumbs": [
       "Week 1: {{< var w01.date-md >}}"
     ]
   },
   {
-    "objectID": "w01/index.html#the-takeaway-humility-and-bayesian-probability",
-    "href": "w01/index.html#the-takeaway-humility-and-bayesian-probability",
+    "objectID": "w01/index.html#the-takeaway-bayesian-humility",
+    "href": "w01/index.html#the-takeaway-bayesian-humility",
     "title": "Week 1: Science from Particles to People",
-    "section": "The Takeaway: Humility and (Bayesian) Probability!",
-    "text": "The Takeaway: Humility and (Bayesian) Probability!\n\nSocial science, with science used in the same sense as in physics, may be a quixotic endeavor\nInstead, we’ll do social-science, where we use data to…\n Infer tendencies: \\(X\\) tends to cause \\(Y\\)\n Construct models that we can update with new evidence: Bayes’ rule!",
+    "section": "The Takeaway: [Bayesian] Humility!",
+    "text": "The Takeaway: [Bayesian] Humility!\n\nSocial science, with “science” used in the same sense as for physics, may be a quixotic endeavor2\nInstead, we’ll do social science, where we use data to…\n Infer tendencies: \\(\\mathcal{H}\\) = «\\(X\\) tends to cause \\(Y\\)»\n With some degree of veracity: \\(\\Pr(\\mathcal{H}) \\approx 0.7\\)\n Construct models that we can update with new evidence: Bayes’ rule! \\(\\Pr(\\mathcal{H} \\mid E) = \\frac{\\Pr(E \\mid \\mathcal{H} ) \\Pr(\\mathcal{H})}{\\Pr(E)} \\approx 0.8\\)\nPls notice “slippage” between aleatory probability within \\(\\mathcal{H}\\) (“tends to”) vs. epistemic probability “outside of”, talking about \\(\\mathcal{H}\\) (“I’m 70% confident about \\(\\mathcal{H}\\)”)",
     "crumbs": [
       "Week 1: {{< var w01.date-md >}}"
     ]
@@ -339,11 +339,101 @@
     ]
   },
   {
+    "objectID": "w01/index.html#blasting-off-into-causality",
+    "href": "w01/index.html#blasting-off-into-causality",
+    "title": "Week 1: Science from Particles to People",
+    "section": "Blasting Off Into Causality!",
+    "text": "Blasting Off Into Causality!",
+    "crumbs": [
+      "Week 1: {{< var w01.date-md >}}"
+    ]
+  },
+  {
     "objectID": "w01/index.html#data-generating-processes-dgps",
     "href": "w01/index.html#data-generating-processes-dgps",
     "title": "Week 1: Science from Particles to People",
     "section": "Data-Generating Processes (DGPs)",
-    "text": "Data-Generating Processes (DGPs)\n\nYou’ve already seen this in DSAN 5100!\n«Assume \\(X\\) is drawn i.i.d. from a Normal distribution with mean \\(\\mu\\) and variance \\(\\sigma^2\\)» characterizes the DGP of \\(X\\)\nIn 5650 we zoom in on DGPs, rather than treating as black box or footnote to e.g. Law of Large Numbers.\nDeep dive into DGPs necessary for our goal of moving…\n\nFrom associational statements: “an increase of \\(X\\) by one unit is associated with an increase of \\(Y\\) by \\(\\beta\\) units”\nTo causal statements: “increasing \\(X\\) by one unit causes \\(Y\\) to increase by \\(\\beta\\) units”.",
+    "text": "Data-Generating Processes (DGPs)\n\n\n\n\n\n\n\nYou saw this in DSAN 5100!\n«\\(X_1, \\ldots, X_n\\) drawn i.i.d. Normal, mean \\(\\mu\\) variance \\(\\sigma^2\\)» characterizes DGP of \\((X_1, \\ldots, X_n)\\)\n\n\n\n\n\n\n\n\n\n\n\n\n5650: Dive into DGPs, rather than treating as black box/footnote to Law of Large Numbers, so we can move [asymptotically!]…\nFrom associational statements:\n\n«\\(\\underbrace{\\text{An increase}}_{\\small\\text{noun}}\\) in \\(X\\) by 1 is associated with increase in \\(Y\\) by \\(\\beta\\)»\n\nTo causal ones: «\\(\\underbrace{\\text{Increasing}}_{\\small\\text{verb}}\\) \\(X\\) by 1 causes \\(Y\\) to increase by \\(\\beta\\)»",
+    "crumbs": [
+      "Week 1: {{< var w01.date-md >}}"
+    ]
+  },
+  {
+    "objectID": "w01/index.html#dgps-and-the-emergence-of-order",
+    "href": "w01/index.html#dgps-and-the-emergence-of-order",
+    "title": "Week 1: Science from Particles to People",
+    "section": "DGPs and the Emergence of Order",
+    "text": "DGPs and the Emergence of Order\n\n\n\n\n\n\n\nWho can guess the state of this process after 10 steps, with 1 person?\n10 people? 50? 100? (If they find themselves on the same spot, they stand on each other’s heads)\n100 steps? 1000?",
+    "crumbs": [
+      "Week 1: {{< var w01.date-md >}}"
+    ]
+  },
+  {
+    "objectID": "w01/index.html#the-result-16-steps",
+    "href": "w01/index.html#the-result-16-steps",
+    "title": "Week 1: Science from Particles to People",
+    "section": "The Result: 16 Steps",
+    "text": "The Result: 16 Steps",
+    "crumbs": [
+      "Week 1: {{< var w01.date-md >}}"
+    ]
+  },
+  {
+    "objectID": "w01/index.html#the-result-64-steps",
+    "href": "w01/index.html#the-result-64-steps",
+    "title": "Week 1: Science from Particles to People",
+    "section": "The Result: 64 Steps",
+    "text": "The Result: 64 Steps",
+    "crumbs": [
+      "Week 1: {{< var w01.date-md >}}"
+    ]
+  },
+  {
+    "objectID": "w01/index.html#mathematicalscientific-modeling",
+    "href": "w01/index.html#mathematicalscientific-modeling",
+    "title": "Week 1: Science from Particles to People",
+    "section": "“Mathematical/Scientific Modeling”",
+    "text": "“Mathematical/Scientific Modeling”\n\nThing we observe (poking out of water): data\nHidden but possibly discoverable via deeper dive (ecosystem under surface): DGP",
+    "crumbs": [
+      "Week 1: {{< var w01.date-md >}}"
+    ]
+  },
+  {
+    "objectID": "w01/index.html#so-whats-the-problem",
+    "href": "w01/index.html#so-whats-the-problem",
+    "title": "Week 1: Science from Particles to People",
+    "section": "So What’s the Problem?",
+    "text": "So What’s the Problem?\n\nNon-probabilistic models: High potential for being garbage\n\ntldr: even if SUPER certain, using \\(\\Pr(\\mathcal{H}) = 1-\\varepsilon\\) with tiny \\(\\varepsilon\\) has literal life-saving advantages (Finetti 1972)\n\nProbabilistic models: Getting there, still looking at “surface”\n\nOf the \\(N = 100\\) times we observed event \\(X\\) occurring, event \\(Y\\) also occurred \\(90\\) of those times\n\\(\\implies \\Pr(Y \\mid X) = \\frac{\\#[X, Y]}{\\#[X]} = \\frac{90}{100} = 0.9\\)\n\nCausal models: Does \\(Y\\) happen because of \\(X\\) happening? For that, need to start modeling what’s happening under the surface making \\(X\\) and \\(Y\\) “pop up” together so often",
+    "crumbs": [
+      "Week 1: {{< var w01.date-md >}}"
+    ]
+  },
+  {
+    "objectID": "w01/index.html#the-shallow-problem-of-causal-inference",
+    "href": "w01/index.html#the-shallow-problem-of-causal-inference",
+    "title": "Week 1: Science from Particles to People",
+    "section": "The Shallow Problem of Causal Inference",
+    "text": "The Shallow Problem of Causal Inference\n\n\n\n\n\n\n\n\ncor(ski_df$value, law_df$value)\n[1] 0.9921178\n\n(Data from Vigen, Spurious Correlations)\n\nThis, however, is only a mini-boss. Beyond it lies the truly invincible FINAL BOSS… 🙀",
+    "crumbs": [
+      "Week 1: {{< var w01.date-md >}}"
+    ]
+  },
+  {
+    "objectID": "w01/index.html#the-fundamental-problem-of-causal-inference",
+    "href": "w01/index.html#the-fundamental-problem-of-causal-inference",
+    "title": "Week 1: Science from Particles to People",
+    "section": "The Fundamental Problem of Causal Inference",
+    "text": "The Fundamental Problem of Causal Inference\nThe only workable definition of «\\(X\\) causes \\(Y\\)»:\n\n\n\n\n\n\n Defining Causality (Hume 1739, ruining everything as usual 😤)\n\n\n\n\\(X\\) causes \\(Y\\) if and only if:\n\n\\(X\\) temporally precedes \\(Y\\) and\n\nIn two worlds \\(W_0\\) and \\(W_1\\) where\neverything is exactly the same except that \\(X = 0\\) in \\(W_0\\) and \\(X = 1\\) in \\(W_1\\),\n\\(Y = 0\\) in \\(W_0\\) and \\(Y = 1\\) in \\(W_1\\)\n\n\n\n\n\nThe problem? We live in one world, not two identical worlds simultaneously 😭",
+    "crumbs": [
+      "Week 1: {{< var w01.date-md >}}"
+    ]
+  },
+  {
+    "objectID": "w01/index.html#what-is-to-be-done",
+    "href": "w01/index.html#what-is-to-be-done",
+    "title": "Week 1: Science from Particles to People",
+    "section": "What Is To Be Done?",
+    "text": "What Is To Be Done?",
     "crumbs": [
       "Week 1: {{< var w01.date-md >}}"
     ]
@@ -353,7 +443,7 @@
     "href": "w01/index.html#probability",
     "title": "Week 1: Science from Particles to People",
     "section": "Probability++",
-    "text": "Probability++\n\nTools from probability and statistics (RVs, CDFs, Conditional Probability) necessary but not sufficient for causal inference\nExample: Say we use DSAN 5100 tools to discover:\n\nProbability that event \\(E_1\\) occurs is \\(\\Pr(E_1) = 0.5\\)\nProbability that \\(E_1\\) occurs conditional on another event \\(E_0\\) occurring is \\(\\Pr(E_1 \\mid E_0) = 0.75\\)\n\nUnfortunately, we still cannot infer that the occurrence of \\(E_0\\) causes an increase in the likelihood of \\(E_1\\) occurring.",
+    "text": "Probability++\n\nTools from prob/stats (RVs, CDFs, Conditional Probability) necessary but not sufficient for causal inference!\nExample: Say we use DSAN 5100 tools to discover:\n\nProbability that event \\(E_1\\) occurs is \\(\\Pr(E_1) = 0.5\\)\nProbability that \\(E_1\\) occurs conditional on another event \\(E_0\\) occurring is \\(\\Pr(E_1 \\mid E_0) = 0.75\\)\n\nUnfortunately, we still cannot infer that the occurrence of \\(E_0\\) causes an increase in the likelihood of \\(E_1\\) occurring.",
     "crumbs": [
       "Week 1: {{< var w01.date-md >}}"
     ]
@@ -363,7 +453,7 @@
     "href": "w01/index.html#beyond-conditional-probability",
     "title": "Week 1: Science from Particles to People",
     "section": "Beyond Conditional Probability",
-    "text": "Beyond Conditional Probability\n\nThis issue (that conditional probabilities could not be interpreted causally) at first represented a kind of dead end for scientists interested in employing probability theory to study causal relationships…\nIn recent decades, researchers have built up what amounts to an additional “layer” of modeling tools which augment the existing machinery of probability theory to address causality head-on! (Pearl 2000)",
+    "text": "Beyond Conditional Probability\n\nThis issue (that conditional probabilities could not be interpreted causally) at first represented a kind of dead end for scientists interested in employing probability theory to study causal relationships…\nRecent decades: researchers have built up an additional “layer” of modeling tools, augmenting existing machinery of probability to address causality head-on!\nPearl (2000): Formal proofs that (\\(\\Pr\\) axioms) \\(\\cup\\) (\\(\\textsf{do}\\) axioms) \\(\\Rightarrow\\) causal inference procedures successfully recover causal effects",
     "crumbs": [
       "Week 1: {{< var w01.date-md >}}"
     ]
@@ -373,7 +463,7 @@
     "href": "w01/index.html#preview-do-calculus",
     "title": "Week 1: Science from Particles to People",
     "section": "Preview: do-Calculus",
-    "text": "Preview: do-Calculus\n\nExtends core operations/definitions of probability to incorporate causality, via a \\(\\textsf{do}(\\cdot)\\) operator for RVs\n\\(\\textsf{do}(X = 5)\\) is a “special” event, representing intervention in DGP to force \\(X \\leftarrow 5\\)\n“Special” in the sense that \\(\\Pr(\\textsf{do}(X = 5))\\) not well-defined, only \\(\\Pr(Y = 6 \\mid \\textsf{do}(X = 5))\\)\nTo emphasize special-ness, we may use notation like:\n\\[\n\\Pr(Y = 6 \\mid \\textsf{do}(X = 5)) \\equiv \\textstyle \\Pr_{\\textsf{do}(X = 5)}(Y = 6)\n\\]\nto avoid confusion with “normal” events",
+    "text": "Preview: do-Calculus\n\nExtends core of probability to incorporate causality, via \\(\\textsf{do}\\) operator\n\\(\\textsf{do}(X = 5)\\) is a “special” event, representing intervention in DGP to force \\(X \\leftarrow 5\\)… \\(\\textsf{do}(X = 5)\\) not the same event as \\(X = 5\\)!\n\n\n\n\n\n\n\n\n\n\\(X = 5\\)\n\\(\\neq\\)\n\\(\\textsf{do}(X = 5)\\)\n\n\n\n\nObserving that \\(X\\) took on value 5 (for some possibly-unknown reason)\n\\(\\neq\\)\nIntervening to force \\(X \\leftarrow 5\\), all else in DGP remaining the same (intervention then “flows” through rest of DGP)\n\n\n\n\nProbably the most difficult thing in 5650 to wrap head around\n“Special”: \\(\\Pr(\\textsf{do}(X = 5))\\) not well-defined, only \\(\\Pr(Y = 6 \\mid \\textsf{do}(X = 5))\\)\nTo emphasize special-ness, we may use notation like:\n\\[\n\\Pr(Y = 6 \\mid \\textsf{do}(X = 5)) \\equiv \\textstyle \\Pr_{\\textsf{do}(X = 5)}(Y = 6)\n\\]\nto avoid confusion with “normal” events",
     "crumbs": [
       "Week 1: {{< var w01.date-md >}}"
     ]
@@ -383,7 +473,7 @@
     "href": "w01/index.html#causal-world-unlocked-with-great-power-comes-great-responsibility",
     "title": "Week 1: Science from Particles to People",
     "section": "Causal World Unlocked 😎 (With Great Power Comes Great Responsibility…)",
-    "text": "Causal World Unlocked 😎 (With Great Power Comes Great Responsibility…)\n\nWith \\(\\textsf{do}(\\cdot)\\) in hand… (Alongside DGP satisfying a set of underlying axioms, slightly more strict than axioms of probability theory)\nWe can make causal inferences from similar pair of facts! If:\n\nProbability that event \\(E_1\\) occurs is \\(\\Pr(E_1) = 0.5\\),\nThe probability that \\(E_1\\) occurs conditional on the event \\(\\textsf{do}(E_0)\\) occurring is \\(\\Pr(E_1 \\mid \\textsf{do}(E_0)) = 0.75\\),\n\nNow we can actually infer that the occurrence of \\(E_0\\) caused an increase in the likelihood of \\(E_1\\) occurring!",
+    "text": "Causal World Unlocked 😎 (With Great Power Comes Great Responsibility…)\n\nWith \\(\\textsf{do}(\\cdot)\\) in hand… (Alongside DGP satisfying axioms slightly more strict than core probability axioms)\nWe can make causal inferences from similar pair of facts! If:\n\nProbability that event \\(E_1\\) occurs is \\(\\Pr(E_1) = 0.5\\),\nThe probability that \\(E_1\\) occurs conditional on the event \\(\\textsf{do}(E_0)\\) occurring is \\(\\Pr(E_1 \\mid \\textsf{do}(E_0)) = 0.75\\),\n\nNow we can actually infer that the occurrence of \\(E_0\\) caused an increase in the likelihood of \\(E_1\\) occurring!",
     "crumbs": [
       "Week 1: {{< var w01.date-md >}}"
     ]
@@ -443,7 +533,17 @@
     "href": "w01/index.html#references",
     "title": "Week 1: Science from Particles to People",
     "section": "References",
-    "text": "References\n\n\nPearl, Judea. 2000. Causality: Models, Reasoning, and Inference. Cambridge University Press.",
+    "text": "References\n\n\nFinetti, Bruno de. 1972. Probability, Induction and Statistics: The Art of Guessing. J. Wiley.\n\n\nHume, David. 1739. A Treatise of Human Nature: Being an Attempt to Introduce the Experimental Method of Reasoning Into Moral Subjects; and Dialogues Concerning Natural Religion. Longmans, Green.\n\n\nPearl, Judea. 2000. Causality: Models, Reasoning, and Inference. Cambridge University Press.\n\n\nSperber, Dan. 1996. Explaining Culture: A Naturalistic Approach. Cambridge: Blackwell.",
+    "crumbs": [
+      "Week 1: {{< var w01.date-md >}}"
+    ]
+  },
+  {
+    "objectID": "w01/index.html#footnotes",
+    "href": "w01/index.html#footnotes",
+    "title": "Week 1: Science from Particles to People",
+    "section": "Footnotes",
+    "text": "Footnotes\n\n\nObligatory quantum mechanics footnote: human agency [maybe] plays a role, in a quirky way, in physics at tiny subatomic scales… but once we coarse grain to atoms (and avoid speed of light), Newton’s Laws accurate to many decimals 🤯↩︎\nAt least, for the time being… BUT see Sperber (1996), which will come up later↩︎",
     "crumbs": [
       "Week 1: {{< var w01.date-md >}}"
     ]
@@ -467,7 +567,7 @@
     "href": "w01/slides.html#why-is-georgetown-having-me-teach-this",
     "title": "Week 1: Science from Particles to People",
     "section": "Why Is Georgetown Having Me Teach This?",
-    "text": "Why Is Georgetown Having Me Teach This?\n\n\n\n\n\n\n\nQuanty things \\(\\leadsto\\) PhD in Political Economy\nPhD exam major: Political Philosophy\nPhD exam minor: International Relations\nPhD exam paper: “How to Do Things with Translations”\nGame-changing Research Fellowships at… (Nothing was the same -drake):\nSanta Fe Institute: dedicated to the multidisciplinary study of complex adaptive systems: physical, computational, biological, and social systems\n\n\n\n\n\n\n\n\n\n                                                \n\n\n\n\n\nFigure 1: Years spent questing in dungeons of academia\n\n\n\n\n\n\n\nCentre for the Study of the History of Political Thought, Queen Mary University of London (QMUL): New approaches to the history of political thought [Quentin Skinner, “Cambridge School”] have changed how we study ideas from the past and their relevance to contemporary politics. The focus of the Centre is to explore [ts]."
+    "text": "Why Is Georgetown Having Me Teach This?\n\n\n\n\n\n\n\nQuanty things \\(\\leadsto\\) PhD in Political Economy\nPhD exam major: Political Philosophy\nPhD exam minor: International Relations\nPhD exam paper: “How to Do Things with Translations”\nGame-changing Research Fellowships at… (Nothing was the same -drake):\nSanta Fe Institute: dedicated to the multidisciplinary study of complex systems: physical, computational, biological, social\n\n\n\n\n\n\n\n\n\n                                                \n\n\n\n\n\nFigure 1: Years spent questing in dungeons of academia\n\n\n\n\n\n\n\nCentre for the Study of the History of Political Thought, Queen Mary University of London (QMUL): New approaches to the history of political thought [Quentin Skinner, “Cambridge School”] have changed how we study ideas from the past and their relevance to contemporary politics. The focus of the Centre is to explore [ts]."
   },
   {
     "objectID": "w01/slides.html#dissertation-nlp-x-history",
@@ -502,35 +602,35 @@
     "href": "w01/slides.html#coarse-graining-units-of-observation",
     "title": "Week 1: Science from Particles to People",
     "section": "Coarse-Graining Units of Observation",
-    "text": "Coarse-Graining Units of Observation\n\n\n\nField\nExample Unit of Observation\n\n\n\n\nPhysics\nParticle\n[Particle = Fine-Graining of Molecules]\n\n\nChemistry\nMolecule = \\(\\cup\\)(Particles)\n[Molecule = Coarse-Graining of Particles]\n\n\nBiology\nCell = \\(\\cup\\)(Molecules)\n\n\nNeuro/Cog Sci\nBrain = \\(\\cup\\)(Cells)\n\n\nHuman Physiology\nBody = Brain \\(\\cup\\) Other Organs\n\n\n🧐 something happens here… 🤔\n\n\nAnthropology\nHuman-Relational System (e.g., Kinship) = \\(\\cup\\)(Brains) \\(\\times\\) Natural Environment\n\n\nEconomics\nEconomy = Specific relational system of exchange w.r.t. scarce resources\n\n\nPolitical Economy\nEconomy-Context = Economic Exchange \\(\\cap\\) Relational Power\n\n\nSociology\nSociety = \\(\\cup\\)(Relational Systems: Kinship, Friendship, Authority, Power, Violence)\n\n\nHistory\nLongue-Durée = Evolution of Societies over Time and Space"
+    "text": "Coarse-Graining Units of Observation\n\n\n\nField\nExample Unit of Observation\n\n\n\n\nPhysics\nParticle\n[Particle = Fine-Graining of Molecules]\n\n\nChemistry\nMolecule = \\(\\cup\\)(Particles)\n[Molecule = Coarse-Graining of Particles]\n\n\nBiology\nCell = \\(\\cup\\)(Molecules)\n\n\nNeuro/Cog Sci\nBrain = \\(\\cup\\)(Cells)\n\n\nHuman Physiology\nBody = Brain \\(\\cup\\) Other Organs\n\n\n↑ Science    🧐 something happens here… 🤔    ↓ Social Science\n\n\nAnthropology\nHuman-Relational System (e.g., Kinship) = \\(\\cup\\)(Brains) \\(\\times\\) Natural Environment\n\n\nEconomics\nEconomy = Specific relational system of exchange w.r.t. scarce resources\n\n\nPolitical Economy\nEconomy-Context = Economic Exchange \\(\\cap\\) Relational Power\n\n\nSociology\nSociety = \\(\\cup\\)(Relational Systems: Kinship, Friendship, Authority, Power, Violence)\n\n\nHistory\nLongue-Durée = Evolution of Societies over Time and Space"
   },
   {
     "objectID": "w01/slides.html#homo-sapienshomo-arbitratushomo-mischievous",
     "href": "w01/slides.html#homo-sapienshomo-arbitratushomo-mischievous",
     "title": "Week 1: Science from Particles to People",
     "section": "Homo sapiens/Homo arbitratus/Homo mischievous",
-    "text": "Homo sapiens/Homo arbitratus/Homo mischievous\n\nLatin sapiens has to do with being “discerning” or “wise”\n\n\n\n\n\n\n\n\nBut… technically nothing stops us from choosing to be “unwise” whenever we’d like… bc free will\n\\(\\Rightarrow\\) For this class, think of humans as Homo arbitratus: Latin arbitratus has to do with choosing what to do, after we’ve sapiently “discerned”/thought about it"
+    "text": "Homo sapiens/Homo arbitratus/Homo mischievous\n\nLatin sapiens denotes being “discerning” or “wise”\n\n\n\n\n\n\n\n\nBut… technically nothing stops us from choosing to be “unwise” whenever we’d like… bc free will\n\\(\\Rightarrow\\) For this class, humans are Homo arbitratus: arbitratus denotes choosing what to do, after we’ve sapiently “discerned”/thought about it"
   },
   {
     "objectID": "w01/slides.html#laws-of-physics-vs.-laws-of-social-science",
     "href": "w01/slides.html#laws-of-physics-vs.-laws-of-social-science",
     "title": "Week 1: Science from Particles to People",
     "section": "Laws of Physics vs. “Laws” of Social Science",
-    "text": "Laws of Physics vs. “Laws” of Social Science\n\nIf we tell an inanimate object that we’ve discovered a law saying that it will accelerate towards the Earth at \\(9.8~\\textrm{m}/\\textrm{s}^2\\)\n\n…It will likely still accelerate towards the Earth at \\(9.8~\\textrm{m}/\\textrm{s}^2\\)\n\nIf we tell a human that we’ve discovered a law saying that they will quack like a duck at 7:30pm every Wednesday\n\n…They can utilize their free will to violate this “law”"
+    "text": "Laws of Physics vs. “Laws” of Social Science\n\nIf we tell an inanimate object that we’ve discovered a law saying that it will accelerate towards Earth at \\(9.8~\\textrm{m}/\\textrm{s}^2\\)\n\n…It will likely1 still accelerate towards Earth at \\(9.8~\\textrm{m}/\\textrm{s}^2\\)\n\n\n\n\n\n\n\n\n\nIf we tell a human we’ve discovered a law saying they will quack like a duck at 7:30pm EDT every Wednesday\n\n…They can utilize their free will to violate this “law”\n\n\n\n\n\n\n\n\n\n\n\n\nObligatory quantum mechanics footnote: human agency [maybe] plays a role, in a quirky way, in physics at tiny subatomic scales… but once we coarse grain to atoms (and avoid speed of light), Newton’s Laws accurate to many decimals 🤯"
   },
   {
-    "objectID": "w01/slides.html#strangely-relevant-corollary-from-computer-science-the-halting-problem",
-    "href": "w01/slides.html#strangely-relevant-corollary-from-computer-science-the-halting-problem",
+    "objectID": "w01/slides.html#strangely-relevant-cs-topic-the-halting-problem",
+    "href": "w01/slides.html#strangely-relevant-cs-topic-the-halting-problem",
     "title": "Week 1: Science from Particles to People",
-    "section": "Strangely-Relevant Corollary from Computer Science: The Halting Problem",
-    "text": "Strangely-Relevant Corollary from Computer Science: The Halting Problem\n\nKurt Gödel \\(\\leftrightarrow\\) Alan Turing: Entscheidungsproblem\nTheorem: It is not possible to write a computer program \\(P(x)\\) that detects whether or not a computer program \\(x\\) will eventually halt (as opposed to, e.g., looping forever)\nProof by Contradiction: Assume \\(P(x)\\) is possible to write. Run it on mischevious_program.py. Infinite contradiction loop.\n\n\n\n\n\nhalting_problem_solver.py\n\ndef will_it_halt(program, input):\n  # Put code you think will work here\n  # Return True if program will halt, False otherwise\n\n\n\nmischievous_program.py\n\ndef my_mischievous_function(input):\n  if will_it_halt(my_mischevious_function, input):\n    while True: pass # Infinite loop\n  else:\n    return # Halt\n\n\n\n\n\nInput→↓Program\n0\n1\n2\n\\(\\cdots\\)\n\n\n\n\n0\nHalt\nLoop\nLoop\n\\(\\cdots\\)\n\n\n1\nLoop\nLoop\nHalt\n\\(\\cdots\\)\n\n\n2\nLoop\nLoop\nLoop\n\\(\\cdots\\)\n\n\n\\(\\vdots\\)\n\\(\\vdots\\)\n\\(\\vdots\\)\n\\(\\vdots\\)\n\\(\\mathbf{\\ddots}\\)\n\n\n\nLoop\nHalt\nHalt\n\\(\\mathbf{\\cdots}\\)"
+    "section": "Strangely-Relevant CS Topic: The Halting Problem",
+    "text": "Strangely-Relevant CS Topic: The Halting Problem\n\nKurt Gödel \\(\\leftrightarrow\\) Alan Turing: Entscheidungsproblem\nTheorem: It is not possible to write a computer program \\(P(x)\\) that detects whether or not a computer program \\(x\\) will eventually halt (as opposed to, e.g., looping forever)\nProof: Assume \\(P(x)\\) is possible to write. Run it on mischievous_program.py. Infinite contradiction loop.\n\n\n\n\n\nhalting_problem_solver.py\n\ndef will_it_halt(program, input):\n  # Put code you think will work here\n  # Return True if program will halt, False otherwise\n\n\n\nmischievous_program.py\n\ndef my_mischievous_function(input):\n  if will_it_halt(my_mischevious_function, input):\n    while True: pass # Infinite loop\n  else:\n    return # Halt\n\n\n\n\n\n\n\n\nInput→↓Program\n0\n1\n2\n\\(\\cdots\\)\n\n\n\n\n0\nHalt\nLoop\nLoop\n\\(\\cdots\\)\n\n\n1\nLoop\nLoop\nHalt\n\\(\\cdots\\)\n\n\n2\nLoop\nLoop\nLoop\n\\(\\cdots\\)\n\n\n\\(\\vdots\\)\n\\(\\vdots\\)\n\\(\\vdots\\)\n\\(\\vdots\\)\n\\(\\mathbf{\\ddots}\\)\n\n\n\nLoop\nHalt\nHalt\n\\(\\mathbf{\\cdots}\\)"
   },
   {
-    "objectID": "w01/slides.html#the-takeaway-humility-and-bayesian-probability",
-    "href": "w01/slides.html#the-takeaway-humility-and-bayesian-probability",
+    "objectID": "w01/slides.html#the-takeaway-bayesian-humility",
+    "href": "w01/slides.html#the-takeaway-bayesian-humility",
     "title": "Week 1: Science from Particles to People",
-    "section": "The Takeaway: Humility and (Bayesian) Probability!",
-    "text": "The Takeaway: Humility and (Bayesian) Probability!\n\nSocial science, with science used in the same sense as in physics, may be a quixotic endeavor\nInstead, we’ll do social-science, where we use data to…\n Infer tendencies: \\(X\\) tends to cause \\(Y\\)\n Construct models that we can update with new evidence: Bayes’ rule!"
+    "section": "The Takeaway: [Bayesian] Humility!",
+    "text": "The Takeaway: [Bayesian] Humility!\n\nSocial science, with “science” used in the same sense as for physics, may be a quixotic endeavor1\nInstead, we’ll do social science, where we use data to…\n Infer tendencies: \\(\\mathcal{H}\\) = «\\(X\\) tends to cause \\(Y\\)»\n With some degree of veracity: \\(\\Pr(\\mathcal{H}) \\approx 0.7\\)\n Construct models that we can update with new evidence: Bayes’ rule! \\(\\Pr(\\mathcal{H} \\mid E) = \\frac{\\Pr(E \\mid \\mathcal{H} ) \\Pr(\\mathcal{H})}{\\Pr(E)} \\approx 0.8\\)\nPls notice “slippage” between aleatory probability within \\(\\mathcal{H}\\) (“tends to”) vs. epistemic probability “outside of”, talking about \\(\\mathcal{H}\\) (“I’m 70% confident about \\(\\mathcal{H}\\)”)\n\nAt least, for the time being… BUT see Sperber (1996), which will come up later"
   },
   {
     "objectID": "w01/slides.html#particularly-fun-non-standard-examples",
@@ -547,39 +647,102 @@
     "text": "Disclaimer: Unfortunate Side Effects of Engaging Seriously with Causality\n\n\n You’ll no longer be able to read “scientific” writing without striking this expression (involuntarily):\n\n “Scientific” talks will begin to sound like the following:"
   },
   {
+    "objectID": "w01/slides.html#blasting-off-into-causality",
+    "href": "w01/slides.html#blasting-off-into-causality",
+    "title": "Week 1: Science from Particles to People",
+    "section": "Blasting Off Into Causality!",
+    "text": "Blasting Off Into Causality!"
+  },
+  {
     "objectID": "w01/slides.html#data-generating-processes-dgps",
     "href": "w01/slides.html#data-generating-processes-dgps",
     "title": "Week 1: Science from Particles to People",
     "section": "Data-Generating Processes (DGPs)",
-    "text": "Data-Generating Processes (DGPs)\n\nYou’ve already seen this in DSAN 5100!\n«Assume \\(X\\) is drawn i.i.d. from a Normal distribution with mean \\(\\mu\\) and variance \\(\\sigma^2\\)» characterizes the DGP of \\(X\\)\nIn 5650 we zoom in on DGPs, rather than treating as black box or footnote to e.g. Law of Large Numbers.\nDeep dive into DGPs necessary for our goal of moving…\n\nFrom associational statements: “an increase of \\(X\\) by one unit is associated with an increase of \\(Y\\) by \\(\\beta\\) units”\nTo causal statements: “increasing \\(X\\) by one unit causes \\(Y\\) to increase by \\(\\beta\\) units”."
+    "text": "Data-Generating Processes (DGPs)\n\n\n\n\n\n\n\nYou saw this in DSAN 5100!\n«\\(X_1, \\ldots, X_n\\) drawn i.i.d. Normal, mean \\(\\mu\\) variance \\(\\sigma^2\\)» characterizes DGP of \\((X_1, \\ldots, X_n)\\)\n\n\n\n\n\n\n\n\n\n\n\n\n5650: Dive into DGPs, rather than treating as black box/footnote to Law of Large Numbers, so we can move [asymptotically!]…\nFrom associational statements:\n\n«\\(\\underbrace{\\text{An increase}}_{\\small\\text{noun}}\\) in \\(X\\) by 1 is associated with increase in \\(Y\\) by \\(\\beta\\)»\n\nTo causal ones: «\\(\\underbrace{\\text{Increasing}}_{\\small\\text{verb}}\\) \\(X\\) by 1 causes \\(Y\\) to increase by \\(\\beta\\)»"
+  },
+  {
+    "objectID": "w01/slides.html#dgps-and-the-emergence-of-order",
+    "href": "w01/slides.html#dgps-and-the-emergence-of-order",
+    "title": "Week 1: Science from Particles to People",
+    "section": "DGPs and the Emergence of Order",
+    "text": "DGPs and the Emergence of Order\n\n\n\n\n\n\n\nWho can guess the state of this process after 10 steps, with 1 person?\n10 people? 50? 100? (If they find themselves on the same spot, they stand on each other’s heads)\n100 steps? 1000?"
+  },
+  {
+    "objectID": "w01/slides.html#the-result-16-steps",
+    "href": "w01/slides.html#the-result-16-steps",
+    "title": "Week 1: Science from Particles to People",
+    "section": "The Result: 16 Steps",
+    "text": "The Result: 16 Steps"
+  },
+  {
+    "objectID": "w01/slides.html#the-result-64-steps",
+    "href": "w01/slides.html#the-result-64-steps",
+    "title": "Week 1: Science from Particles to People",
+    "section": "The Result: 64 Steps",
+    "text": "The Result: 64 Steps"
+  },
+  {
+    "objectID": "w01/slides.html#mathematicalscientific-modeling",
+    "href": "w01/slides.html#mathematicalscientific-modeling",
+    "title": "Week 1: Science from Particles to People",
+    "section": "“Mathematical/Scientific Modeling”",
+    "text": "“Mathematical/Scientific Modeling”\n\nThing we observe (poking out of water): data\nHidden but possibly discoverable via deeper dive (ecosystem under surface): DGP"
+  },
+  {
+    "objectID": "w01/slides.html#so-whats-the-problem",
+    "href": "w01/slides.html#so-whats-the-problem",
+    "title": "Week 1: Science from Particles to People",
+    "section": "So What’s the Problem?",
+    "text": "So What’s the Problem?\n\nNon-probabilistic models: High potential for being garbage\n\ntldr: even if SUPER certain, using \\(\\Pr(\\mathcal{H}) = 1-\\varepsilon\\) with tiny \\(\\varepsilon\\) has literal life-saving advantages (Finetti 1972)\n\nProbabilistic models: Getting there, still looking at “surface”\n\nOf the \\(N = 100\\) times we observed event \\(X\\) occurring, event \\(Y\\) also occurred \\(90\\) of those times\n\\(\\implies \\Pr(Y \\mid X) = \\frac{\\#[X, Y]}{\\#[X]} = \\frac{90}{100} = 0.9\\)\n\nCausal models: Does \\(Y\\) happen because of \\(X\\) happening? For that, need to start modeling what’s happening under the surface making \\(X\\) and \\(Y\\) “pop up” together so often"
+  },
+  {
+    "objectID": "w01/slides.html#the-shallow-problem-of-causal-inference",
+    "href": "w01/slides.html#the-shallow-problem-of-causal-inference",
+    "title": "Week 1: Science from Particles to People",
+    "section": "The Shallow Problem of Causal Inference",
+    "text": "The Shallow Problem of Causal Inference\n\n\n\n\n\n\n\n\ncor(ski_df$value, law_df$value)\n[1] 0.9921178\n\n(Data from Vigen, Spurious Correlations)\n\nThis, however, is only a mini-boss. Beyond it lies the truly invincible FINAL BOSS… 🙀"
+  },
+  {
+    "objectID": "w01/slides.html#the-fundamental-problem-of-causal-inference",
+    "href": "w01/slides.html#the-fundamental-problem-of-causal-inference",
+    "title": "Week 1: Science from Particles to People",
+    "section": "The Fundamental Problem of Causal Inference",
+    "text": "The Fundamental Problem of Causal Inference\nThe only workable definition of «\\(X\\) causes \\(Y\\)»:\n\n\n\n\n Defining Causality (Hume 1739, ruining everything as usual 😤)\n\n\n\\(X\\) causes \\(Y\\) if and only if:\n\n\\(X\\) temporally precedes \\(Y\\) and\n\nIn two worlds \\(W_0\\) and \\(W_1\\) where\neverything is exactly the same except that \\(X = 0\\) in \\(W_0\\) and \\(X = 1\\) in \\(W_1\\),\n\\(Y = 0\\) in \\(W_0\\) and \\(Y = 1\\) in \\(W_1\\)\n\n\n\n\n\n\n\nThe problem? We live in one world, not two identical worlds simultaneously 😭"
+  },
+  {
+    "objectID": "w01/slides.html#what-is-to-be-done",
+    "href": "w01/slides.html#what-is-to-be-done",
+    "title": "Week 1: Science from Particles to People",
+    "section": "What Is To Be Done?",
+    "text": "What Is To Be Done?"
   },
   {
     "objectID": "w01/slides.html#probability",
     "href": "w01/slides.html#probability",
     "title": "Week 1: Science from Particles to People",
     "section": "Probability++",
-    "text": "Probability++\n\nTools from probability and statistics (RVs, CDFs, Conditional Probability) necessary but not sufficient for causal inference\nExample: Say we use DSAN 5100 tools to discover:\n\nProbability that event \\(E_1\\) occurs is \\(\\Pr(E_1) = 0.5\\)\nProbability that \\(E_1\\) occurs conditional on another event \\(E_0\\) occurring is \\(\\Pr(E_1 \\mid E_0) = 0.75\\)\n\nUnfortunately, we still cannot infer that the occurrence of \\(E_0\\) causes an increase in the likelihood of \\(E_1\\) occurring."
+    "text": "Probability++\n\nTools from prob/stats (RVs, CDFs, Conditional Probability) necessary but not sufficient for causal inference!\nExample: Say we use DSAN 5100 tools to discover:\n\nProbability that event \\(E_1\\) occurs is \\(\\Pr(E_1) = 0.5\\)\nProbability that \\(E_1\\) occurs conditional on another event \\(E_0\\) occurring is \\(\\Pr(E_1 \\mid E_0) = 0.75\\)\n\nUnfortunately, we still cannot infer that the occurrence of \\(E_0\\) causes an increase in the likelihood of \\(E_1\\) occurring."
   },
   {
     "objectID": "w01/slides.html#beyond-conditional-probability",
     "href": "w01/slides.html#beyond-conditional-probability",
     "title": "Week 1: Science from Particles to People",
     "section": "Beyond Conditional Probability",
-    "text": "Beyond Conditional Probability\n\nThis issue (that conditional probabilities could not be interpreted causally) at first represented a kind of dead end for scientists interested in employing probability theory to study causal relationships…\nIn recent decades, researchers have built up what amounts to an additional “layer” of modeling tools which augment the existing machinery of probability theory to address causality head-on! (Pearl 2000)"
+    "text": "Beyond Conditional Probability\n\nThis issue (that conditional probabilities could not be interpreted causally) at first represented a kind of dead end for scientists interested in employing probability theory to study causal relationships…\nRecent decades: researchers have built up an additional “layer” of modeling tools, augmenting existing machinery of probability to address causality head-on!\nPearl (2000): Formal proofs that (\\(\\Pr\\) axioms) \\(\\cup\\) (\\(\\textsf{do}\\) axioms) \\(\\Rightarrow\\) causal inference procedures successfully recover causal effects"
   },
   {
     "objectID": "w01/slides.html#preview-do-calculus",
     "href": "w01/slides.html#preview-do-calculus",
     "title": "Week 1: Science from Particles to People",
     "section": "Preview: do-Calculus",
-    "text": "Preview: do-Calculus\n\nExtends core operations/definitions of probability to incorporate causality, via a \\(\\textsf{do}(\\cdot)\\) operator for RVs\n\\(\\textsf{do}(X = 5)\\) is a “special” event, representing intervention in DGP to force \\(X \\leftarrow 5\\)\n“Special” in the sense that \\(\\Pr(\\textsf{do}(X = 5))\\) not well-defined, only \\(\\Pr(Y = 6 \\mid \\textsf{do}(X = 5))\\)\nTo emphasize special-ness, we may use notation like:\n\\[\n\\Pr(Y = 6 \\mid \\textsf{do}(X = 5)) \\equiv \\textstyle \\Pr_{\\textsf{do}(X = 5)}(Y = 6)\n\\]\nto avoid confusion with “normal” events"
+    "text": "Preview: do-Calculus\n\nExtends core of probability to incorporate causality, via \\(\\textsf{do}\\) operator\n\\(\\textsf{do}(X = 5)\\) is a “special” event, representing intervention in DGP to force \\(X \\leftarrow 5\\)… \\(\\textsf{do}(X = 5)\\) not the same event as \\(X = 5\\)!\n\n\n\n\n\n\n\n\n\n\\(X = 5\\)\n\\(\\neq\\)\n\\(\\textsf{do}(X = 5)\\)\n\n\n\n\nObserving that \\(X\\) took on value 5 (for some possibly-unknown reason)\n\\(\\neq\\)\nIntervening to force \\(X \\leftarrow 5\\), all else in DGP remaining the same (intervention then “flows” through rest of DGP)\n\n\n\n\nProbably the most difficult thing in 5650 to wrap head around\n“Special”: \\(\\Pr(\\textsf{do}(X = 5))\\) not well-defined, only \\(\\Pr(Y = 6 \\mid \\textsf{do}(X = 5))\\)\nTo emphasize special-ness, we may use notation like:\n\\[\n\\Pr(Y = 6 \\mid \\textsf{do}(X = 5)) \\equiv \\textstyle \\Pr_{\\textsf{do}(X = 5)}(Y = 6)\n\\]\nto avoid confusion with “normal” events"
   },
   {
     "objectID": "w01/slides.html#causal-world-unlocked-with-great-power-comes-great-responsibility",
     "href": "w01/slides.html#causal-world-unlocked-with-great-power-comes-great-responsibility",
     "title": "Week 1: Science from Particles to People",
     "section": "Causal World Unlocked 😎 (With Great Power Comes Great Responsibility…)",
-    "text": "Causal World Unlocked 😎 (With Great Power Comes Great Responsibility…)\n\nWith \\(\\textsf{do}(\\cdot)\\) in hand… (Alongside DGP satisfying a set of underlying axioms, slightly more strict than axioms of probability theory)\nWe can make causal inferences from similar pair of facts! If:\n\nProbability that event \\(E_1\\) occurs is \\(\\Pr(E_1) = 0.5\\),\nThe probability that \\(E_1\\) occurs conditional on the event \\(\\textsf{do}(E_0)\\) occurring is \\(\\Pr(E_1 \\mid \\textsf{do}(E_0)) = 0.75\\),\n\nNow we can actually infer that the occurrence of \\(E_0\\) caused an increase in the likelihood of \\(E_1\\) occurring!"
+    "text": "Causal World Unlocked 😎 (With Great Power Comes Great Responsibility…)\n\nWith \\(\\textsf{do}(\\cdot)\\) in hand… (Alongside DGP satisfying axioms slightly more strict than core probability axioms)\nWe can make causal inferences from similar pair of facts! If:\n\nProbability that event \\(E_1\\) occurs is \\(\\Pr(E_1) = 0.5\\),\nThe probability that \\(E_1\\) occurs conditional on the event \\(\\textsf{do}(E_0)\\) occurring is \\(\\Pr(E_1 \\mid \\textsf{do}(E_0)) = 0.75\\),\n\nNow we can actually infer that the occurrence of \\(E_0\\) caused an increase in the likelihood of \\(E_1\\) occurring!"
   },
   {
     "objectID": "w01/slides.html#meta-logistics-spaced-repetition",
@@ -621,7 +784,7 @@
     "href": "w01/slides.html#references",
     "title": "Week 1: Science from Particles to People",
     "section": "References",
-    "text": "References\n\n\nPearl, Judea. 2000. Causality: Models, Reasoning, and Inference. Cambridge University Press."
+    "text": "References\n\n\nFinetti, Bruno de. 1972. Probability, Induction and Statistics: The Art of Guessing. J. Wiley.\n\n\nHume, David. 1739. A Treatise of Human Nature: Being an Attempt to Introduce the Experimental Method of Reasoning Into Moral Subjects; and Dialogues Concerning Natural Religion. Longmans, Green.\n\n\nPearl, Judea. 2000. Causality: Models, Reasoning, and Inference. Cambridge University Press.\n\n\nSperber, Dan. 1996. Explaining Culture: A Naturalistic Approach. Cambridge: Blackwell."
   },
   {
     "objectID": "syllabus.html",
