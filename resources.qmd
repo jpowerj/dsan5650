@@ -49,7 +49,19 @@ In contrast to the books in the previous section, these books are *not* "the" te
 
 **Judea Pearl (2002). *Causality***
 
-## Econometric Policy Evaluation
+**David Hume (1748), *Enquiry Concerning Human Understanding***
+
+**Dan Sperber (1996), *Explaining Culture: A Naturalistic Approach***
+
+## Applied Examples
+
+### The Holy Grail
+
+Stathis Kalyvas, *The Logic of Violence in Civil War*.
+
+This book is essentially... like, when you read stories about people spending decades hand-carving pathways through a mountain using only a hammer and chisel, this is the social science equivalent of that. A painstaking labor-of-love book that checks every single box I can think of in terms of causally-focused computational social science. It's my model for any research I try to carry out.
+
+### Econometric Policy Evaluation
 
 * @bjorkegren_machine_2022, "(Machine) Learning what Policymakers Value", *EAAMO (Equity and Access in Algorithms, Mechanisms, and Optimization)* \[[PDF](https://www.jblumenstock.com/files/papers/bbk_2021_eaamo.pdf)\]
 
@@ -58,3 +70,9 @@ In contrast to the books in the previous section, these books are *not* "the" te
 To me (as in, given how my brain works), there are certain topics which I've spent hours trying to understand via reading, only to realize that there's some simple diagram or animation out there which "clicks" it in my mind 10000 times more effectively than the reading ever would.
 
 So, to that end, these video resources are just as important as (for some topics far *more* important than) the resources above!^[For similar reasons, audiobooks may provide more effective ways to digest some topics in the course!]
+
+## Miscellaneous / Commonly-Used Books That We're Not Really Using
+
+King, Keohane, and Verba. *Designing Social Inquiry*
+
+I don't really have a substantive critique of this book, or a deep reason for not using it, other than that I find myself getting really bored whenever I try to read it 🙈

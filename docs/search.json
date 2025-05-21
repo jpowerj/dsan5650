@@ -24,17 +24,17 @@
     "href": "resources.html#core-reference-texts",
     "title": "Resources",
     "section": "Core Reference Texts",
-    "text": "Core Reference Texts\nIn contrast to the books in the previous section, these books are not “the” textbooks for the class! These are here instead as reference books, to keep on hand (a) for when the lectures or the above books are unclear on some topic, and/or (b) for deeper dives into certain topics (where the latter may become a more relevant mission for you as we move towards the final project 😉)\nJudea Pearl (2002). Causality",
+    "text": "Core Reference Texts\nIn contrast to the books in the previous section, these books are not “the” textbooks for the class! These are here instead as reference books, to keep on hand (a) for when the lectures or the above books are unclear on some topic, and/or (b) for deeper dives into certain topics (where the latter may become a more relevant mission for you as we move towards the final project 😉)\nJudea Pearl (2002). Causality\nDavid Hume (1748), Enquiry Concerning Human Understanding\nDan Sperber (1996), Explaining Culture: A Naturalistic Approach",
     "crumbs": [
       "Resources"
     ]
   },
   {
-    "objectID": "resources.html#econometric-policy-evaluation",
-    "href": "resources.html#econometric-policy-evaluation",
+    "objectID": "resources.html#applied-examples",
+    "href": "resources.html#applied-examples",
     "title": "Resources",
-    "section": "Econometric Policy Evaluation",
-    "text": "Econometric Policy Evaluation\n\n(bjorkegren_machine_2022?), “(Machine) Learning what Policymakers Value”, EAAMO (Equity and Access in Algorithms, Mechanisms, and Optimization) [PDF]",
+    "section": "Applied Examples",
+    "text": "Applied Examples\n\nThe Holy Grail\nStathis Kalyvas, The Logic of Violence in Civil War.\nThis book is essentially… like, when you read stories about people spending decades hand-carving pathways through a mountain using only a hammer and chisel, this is the social science equivalent of that. A painstaking labor-of-love book that checks every single box I can think of in terms of causally-focused computational social science. It’s my model for any research I try to carry out.\n\n\nEconometric Policy Evaluation\n\n(bjorkegren_machine_2022?), “(Machine) Learning what Policymakers Value”, EAAMO (Equity and Access in Algorithms, Mechanisms, and Optimization) [PDF]",
     "crumbs": [
       "Resources"
     ]
@@ -45,6 +45,16 @@
     "title": "Resources",
     "section": "Video Resources",
     "text": "Video Resources\nTo me (as in, given how my brain works), there are certain topics which I’ve spent hours trying to understand via reading, only to realize that there’s some simple diagram or animation out there which “clicks” it in my mind 10000 times more effectively than the reading ever would.\nSo, to that end, these video resources are just as important as (for some topics far more important than) the resources above!1",
+    "crumbs": [
+      "Resources"
+    ]
+  },
+  {
+    "objectID": "resources.html#miscellaneous-commonly-used-books-that-were-not-really-using",
+    "href": "resources.html#miscellaneous-commonly-used-books-that-were-not-really-using",
+    "title": "Resources",
+    "section": "Miscellaneous / Commonly-Used Books That We’re Not Really Using",
+    "text": "Miscellaneous / Commonly-Used Books That We’re Not Really Using\nKing, Keohane, and Verba. Designing Social Inquiry\nI don’t really have a substantive critique of this book, or a deep reason for not using it, other than that I find myself getting really bored whenever I try to read it 🙈",
     "crumbs": [
       "Resources"
     ]
@@ -239,21 +249,21 @@
     ]
   },
   {
-    "objectID": "w01/index.html#the-ir-part-wars-of-ideas-i-cold-war",
-    "href": "w01/index.html#the-ir-part-wars-of-ideas-i-cold-war",
+    "objectID": "w01/index.html#ir-part-wars-of-ideas-i-cold-war",
+    "href": "w01/index.html#ir-part-wars-of-ideas-i-cold-war",
     "title": "Week 1: Science from Particles to People",
-    "section": "(The IR Part) Wars of Ideas I: Cold War",
-    "text": "(The IR Part) Wars of Ideas I: Cold War\n\nCold War arms shipments (SIPRI) vs. propaganda (Печать СССР): here, to 🇪🇹",
+    "section": "(IR Part) Wars of Ideas I: Cold War",
+    "text": "(IR Part) Wars of Ideas I: Cold War\n\nCold War arms shipments (SIPRI) vs. propaganda (Печать СССР): here, to 🇪🇹",
     "crumbs": [
       "Week 1: {{< var w01.date-md >}}"
     ]
   },
   {
-    "objectID": "w01/index.html#the-middle-east-part-wars-of-ideas-ii-first-intifada",
-    "href": "w01/index.html#the-middle-east-part-wars-of-ideas-ii-first-intifada",
+    "objectID": "w01/index.html#middle-east-part-wars-of-ideas-ii-first-intifada-1987-1993",
+    "href": "w01/index.html#middle-east-part-wars-of-ideas-ii-first-intifada-1987-1993",
     "title": "Week 1: Science from Particles to People",
-    "section": "(The Middle East Part) Wars of Ideas II: First Intifada",
-    "text": "(The Middle East Part) Wars of Ideas II: First Intifada",
+    "section": "(Middle East Part) Wars of Ideas II: First Intifada, 1987-1993",
+    "text": "(Middle East Part) Wars of Ideas II: First Intifada, 1987-1993",
     "crumbs": [
       "Week 1: {{< var w01.date-md >}}"
     ]
@@ -264,6 +274,36 @@
     "title": "Week 1: Science from Particles to People",
     "section": "Research Nowadays",
     "text": "Research Nowadays\n\nMost cited paper: “Monopsony in Online Labor Markets” (Uses Double-Debiased ML for Causal Inference!)\nMost recent paper: “Operationalizing Freedom as Non-Domination in the Labor Market” (Cambridge U Press)\nRarely cited paper but often-thought-about obsession: “How To Do Things With Translations”\nRelated thing you can buy in a bookstore: [Editorial board for new translation of] Capital, Vol. 1 by Karl Marx (Princeton U Press)",
+    "crumbs": [
+      "Week 1: {{< var w01.date-md >}}"
+    ]
+  },
+  {
+    "objectID": "w01/index.html#but-now-teaching",
+    "href": "w01/index.html#but-now-teaching",
+    "title": "Week 1: Science from Particles to People",
+    "section": "But Now… Teaching!",
+    "text": "But Now… Teaching!\n\nGrowth mindset: “I can’t do this” \\(\\leadsto\\) “I can’t do this yet!”\nThink of anything you’re able to do… There was a point in life when you didn’t know how to do it! What happened? Your brain established and/or rearranged neural pathways as you struggled with it!\nHow does this neural re-arrangement work? One “cheatcode” is spaced repetition:\n\n\n\n\nImage source",
+    "crumbs": [
+      "Week 1: {{< var w01.date-md >}}"
+    ]
+  },
+  {
+    "objectID": "w01/index.html#lil-wayne-on-spaced-repetition",
+    "href": "w01/index.html#lil-wayne-on-spaced-repetition",
+    "title": "Week 1: Science from Particles to People",
+    "section": "Lil Wayne on Spaced Repetition",
+    "text": "Lil Wayne on Spaced Repetition\n\n\n\n\n\n\nFigure 2: From The Carter (Documentary)",
+    "crumbs": [
+      "Week 1: {{< var w01.date-md >}}"
+    ]
+  },
+  {
+    "objectID": "w01/index.html#maria-montessori-on-your-final-project",
+    "href": "w01/index.html#maria-montessori-on-your-final-project",
+    "title": "Week 1: Science from Particles to People",
+    "section": "Maria Montessori on Your Final Project",
+    "text": "Maria Montessori on Your Final Project\n\nOur teaching should be governed, not by a desire to make students learn things, but by the endeavor to keep burning within them that light which is called curiosity. (Montessori 1916)1\n\n\nTo this end: your final project is to explore some potential causal linkage from \\(X\\) to \\(Y\\) (more later!)\nThe sole requirement is: sufficient curiosity to serve as fuel for your journey from associational world to causal world",
     "crumbs": [
       "Week 1: {{< var w01.date-md >}}"
     ]
@@ -293,7 +333,7 @@
     "href": "w01/index.html#laws-of-physics-vs.-laws-of-social-science",
     "title": "Week 1: Science from Particles to People",
     "section": "Laws of Physics vs. “Laws” of Social Science",
-    "text": "Laws of Physics vs. “Laws” of Social Science\n\nIf we tell an inanimate object that we’ve discovered a law saying that it will accelerate towards Earth at \\(9.8~\\textrm{m}/\\textrm{s}^2\\)\n\n…It will likely1 still accelerate towards Earth at \\(9.8~\\textrm{m}/\\textrm{s}^2\\)\n\n\n\n\n\n\n\n\n\nIf we tell a human we’ve discovered a law saying they will quack like a duck at 7:30pm EDT every Wednesday\n\n…They can utilize their free will to violate this “law”",
+    "text": "Laws of Physics vs. “Laws” of Social Science\n\nIf we tell an inanimate object that we’ve discovered a law saying that it will accelerate towards Earth at \\(9.8~\\textrm{m}/\\textrm{s}^2\\)\n\n…It will likely2 still accelerate towards Earth at \\(9.8~\\textrm{m}/\\textrm{s}^2\\)\n\n\n\n\n\n\n\n\n\nIf we tell a human we’ve discovered a law saying they will quack like a duck at 7:30pm EDT every Wednesday\n\n…They can utilize their free will to violate this “law”",
     "crumbs": [
       "Week 1: {{< var w01.date-md >}}"
     ]
@@ -313,7 +353,17 @@
     "href": "w01/index.html#the-takeaway-bayesian-humility",
     "title": "Week 1: Science from Particles to People",
     "section": "The Takeaway: [Bayesian] Humility!",
-    "text": "The Takeaway: [Bayesian] Humility!\n\nSocial science, with “science” used in the same sense as for physics, may be a quixotic endeavor2\nInstead, we’ll do social science, where we use data to…\n Infer tendencies: \\(\\mathcal{H}\\) = «\\(X\\) tends to cause \\(Y\\)»\n With some degree of veracity: \\(\\Pr(\\mathcal{H}) \\approx 0.7\\)\n Construct models that we can update with new evidence: Bayes’ rule! \\(\\Pr(\\mathcal{H} \\mid E) = \\frac{\\Pr(E \\mid \\mathcal{H} ) \\Pr(\\mathcal{H})}{\\Pr(E)} \\approx 0.8\\)\nPls notice “slippage” between aleatory probability within \\(\\mathcal{H}\\) (“tends to”) vs. epistemic probability “outside of”, talking about \\(\\mathcal{H}\\) (“I’m 70% confident about \\(\\mathcal{H}\\)”)",
+    "text": "The Takeaway: [Bayesian] Humility!\n\nSocial science, with “science” used in the same sense as for physics, may be a quixotic endeavor3\nInstead, we’ll do social science, where we use data to…\n Infer tendencies: \\(\\mathcal{H}\\) = «\\(X\\) tends to cause \\(Y\\)»\n With some degree of veracity: \\(\\Pr(\\mathcal{H}) \\approx 0.7\\)\n Construct models that we can update with new evidence: Bayes’ rule! \\(\\Pr(\\mathcal{H} \\mid E) = \\frac{\\Pr(E \\mid \\mathcal{H} ) \\Pr(\\mathcal{H})}{\\Pr(E)} \\approx 0.8\\)\nPls notice “slippage” between aleatory probability within \\(\\mathcal{H}\\) (“tends to”) vs. epistemic probability “outside of”, talking about \\(\\mathcal{H}\\) (“I’m 70% confident about \\(\\mathcal{H}\\)”)",
+    "crumbs": [
+      "Week 1: {{< var w01.date-md >}}"
+    ]
+  },
+  {
+    "objectID": "w01/index.html#the-logic-of-violence-in-civil-war",
+    "href": "w01/index.html#the-logic-of-violence-in-civil-war",
+    "title": "Week 1: Science from Particles to People",
+    "section": "The Logic of Violence in Civil War",
+    "text": "The Logic of Violence in Civil War",
     "crumbs": [
       "Week 1: {{< var w01.date-md >}}"
     ]
@@ -533,7 +583,7 @@
     "href": "w01/index.html#references",
     "title": "Week 1: Science from Particles to People",
     "section": "References",
-    "text": "References\n\n\nFinetti, Bruno de. 1972. Probability, Induction and Statistics: The Art of Guessing. J. Wiley.\n\n\nHume, David. 1739. A Treatise of Human Nature: Being an Attempt to Introduce the Experimental Method of Reasoning Into Moral Subjects; and Dialogues Concerning Natural Religion. Longmans, Green.\n\n\nPearl, Judea. 2000. Causality: Models, Reasoning, and Inference. Cambridge University Press.\n\n\nSperber, Dan. 1996. Explaining Culture: A Naturalistic Approach. Cambridge: Blackwell.",
+    "text": "References\n\n\nFinetti, Bruno de. 1972. Probability, Induction and Statistics: The Art of Guessing. J. Wiley.\n\n\nHume, David. 1739. A Treatise of Human Nature: Being an Attempt to Introduce the Experimental Method of Reasoning Into Moral Subjects; and Dialogues Concerning Natural Religion. Longmans, Green.\n\n\nMontessori, Maria. 1916. Spontaneous Activity in Education: A Basic Guide to the Montessori Methods of Learning in the Classroom. Lulu Press.\n\n\nPearl, Judea. 2000. Causality: Models, Reasoning, and Inference. Cambridge University Press.\n\n\nSperber, Dan. 1996. Explaining Culture: A Naturalistic Approach. Cambridge: Blackwell.",
     "crumbs": [
       "Week 1: {{< var w01.date-md >}}"
     ]
@@ -543,7 +593,7 @@
     "href": "w01/index.html#footnotes",
     "title": "Week 1: Science from Particles to People",
     "section": "Footnotes",
-    "text": "Footnotes\n\n\nObligatory quantum mechanics footnote: human agency [maybe] plays a role, in a quirky way, in physics at tiny subatomic scales… but once we coarse grain to atoms (and avoid speed of light), Newton’s Laws accurate to many decimals 🤯↩︎\nAt least, for the time being… BUT see Sperber (1996), which will come up later↩︎",
+    "text": "Footnotes\n\n\n“Couldn’t do classes, them lessons used to bore me, I was tryna school heads like Waldorf and Montessori” -Bar dropped by local rapper one day in freestyle that I never forgot↩︎\nObligatory quantum mechanics footnote: human agency [maybe] plays a role, in a quirky way, in physics at tiny subatomic scales… but once we coarse grain to atoms (and avoid speed of light), Newton’s Laws accurate to many decimals 🤯↩︎\nAt least, for the time being… BUT see Sperber (1996), which will come up later↩︎",
     "crumbs": [
       "Week 1: {{< var w01.date-md >}}"
     ]
@@ -577,18 +627,18 @@
     "text": "Dissertation (NLP x History)\n“Our Word is Our Weapon”: Text-Analyzing Wars of Ideas from the French Revolution to the First Intifada"
   },
   {
-    "objectID": "w01/slides.html#the-ir-part-wars-of-ideas-i-cold-war",
-    "href": "w01/slides.html#the-ir-part-wars-of-ideas-i-cold-war",
+    "objectID": "w01/slides.html#ir-part-wars-of-ideas-i-cold-war",
+    "href": "w01/slides.html#ir-part-wars-of-ideas-i-cold-war",
     "title": "Week 1: Science from Particles to People",
-    "section": "(The IR Part) Wars of Ideas I: Cold War",
-    "text": "(The IR Part) Wars of Ideas I: Cold War\n\nCold War arms shipments (SIPRI) vs. propaganda (Печать СССР): here, to 🇪🇹"
+    "section": "(IR Part) Wars of Ideas I: Cold War",
+    "text": "(IR Part) Wars of Ideas I: Cold War\n\nCold War arms shipments (SIPRI) vs. propaganda (Печать СССР): here, to 🇪🇹"
   },
   {
-    "objectID": "w01/slides.html#the-middle-east-part-wars-of-ideas-ii-first-intifada",
-    "href": "w01/slides.html#the-middle-east-part-wars-of-ideas-ii-first-intifada",
+    "objectID": "w01/slides.html#middle-east-part-wars-of-ideas-ii-first-intifada-1987-1993",
+    "href": "w01/slides.html#middle-east-part-wars-of-ideas-ii-first-intifada-1987-1993",
     "title": "Week 1: Science from Particles to People",
-    "section": "(The Middle East Part) Wars of Ideas II: First Intifada",
-    "text": "(The Middle East Part) Wars of Ideas II: First Intifada"
+    "section": "(Middle East Part) Wars of Ideas II: First Intifada, 1987-1993",
+    "text": "(Middle East Part) Wars of Ideas II: First Intifada, 1987-1993"
   },
   {
     "objectID": "w01/slides.html#research-nowadays",
@@ -596,6 +646,27 @@
     "title": "Week 1: Science from Particles to People",
     "section": "Research Nowadays",
     "text": "Research Nowadays\n\nMost cited paper: “Monopsony in Online Labor Markets” (Uses Double-Debiased ML for Causal Inference!)\nMost recent paper: “Operationalizing Freedom as Non-Domination in the Labor Market” (Cambridge U Press)\nRarely cited paper but often-thought-about obsession: “How To Do Things With Translations”\nRelated thing you can buy in a bookstore: [Editorial board for new translation of] Capital, Vol. 1 by Karl Marx (Princeton U Press)"
+  },
+  {
+    "objectID": "w01/slides.html#but-now-teaching",
+    "href": "w01/slides.html#but-now-teaching",
+    "title": "Week 1: Science from Particles to People",
+    "section": "But Now… Teaching!",
+    "text": "But Now… Teaching!\n\nGrowth mindset: “I can’t do this” \\(\\leadsto\\) “I can’t do this yet!”\nThink of anything you’re able to do… There was a point in life when you didn’t know how to do it! What happened? Your brain established and/or rearranged neural pathways as you struggled with it!\nHow does this neural re-arrangement work? One “cheatcode” is spaced repetition:\n\n\nImage source"
+  },
+  {
+    "objectID": "w01/slides.html#lil-wayne-on-spaced-repetition",
+    "href": "w01/slides.html#lil-wayne-on-spaced-repetition",
+    "title": "Week 1: Science from Particles to People",
+    "section": "Lil Wayne on Spaced Repetition",
+    "text": "Lil Wayne on Spaced Repetition\n\n\n\n\n\n\nFigure 2: From The Carter (Documentary)"
+  },
+  {
+    "objectID": "w01/slides.html#maria-montessori-on-your-final-project",
+    "href": "w01/slides.html#maria-montessori-on-your-final-project",
+    "title": "Week 1: Science from Particles to People",
+    "section": "Maria Montessori on Your Final Project",
+    "text": "Maria Montessori on Your Final Project\n\nOur teaching should be governed, not by a desire to make students learn things, but by the endeavor to keep burning within them that light which is called curiosity. (Montessori 1916)1\n\n\nTo this end: your final project is to explore some potential causal linkage from \\(X\\) to \\(Y\\) (more later!)\nThe sole requirement is: sufficient curiosity to serve as fuel for your journey from associational world to causal world\n\n“Couldn’t do classes, them lessons used to bore me, I was tryna school heads like Waldorf and Montessori” -Bar dropped by local rapper one day in freestyle that I never forgot"
   },
   {
     "objectID": "w01/slides.html#coarse-graining-units-of-observation",
@@ -631,6 +702,13 @@
     "title": "Week 1: Science from Particles to People",
     "section": "The Takeaway: [Bayesian] Humility!",
     "text": "The Takeaway: [Bayesian] Humility!\n\nSocial science, with “science” used in the same sense as for physics, may be a quixotic endeavor1\nInstead, we’ll do social science, where we use data to…\n Infer tendencies: \\(\\mathcal{H}\\) = «\\(X\\) tends to cause \\(Y\\)»\n With some degree of veracity: \\(\\Pr(\\mathcal{H}) \\approx 0.7\\)\n Construct models that we can update with new evidence: Bayes’ rule! \\(\\Pr(\\mathcal{H} \\mid E) = \\frac{\\Pr(E \\mid \\mathcal{H} ) \\Pr(\\mathcal{H})}{\\Pr(E)} \\approx 0.8\\)\nPls notice “slippage” between aleatory probability within \\(\\mathcal{H}\\) (“tends to”) vs. epistemic probability “outside of”, talking about \\(\\mathcal{H}\\) (“I’m 70% confident about \\(\\mathcal{H}\\)”)\n\nAt least, for the time being… BUT see Sperber (1996), which will come up later"
+  },
+  {
+    "objectID": "w01/slides.html#the-logic-of-violence-in-civil-war",
+    "href": "w01/slides.html#the-logic-of-violence-in-civil-war",
+    "title": "Week 1: Science from Particles to People",
+    "section": "The Logic of Violence in Civil War",
+    "text": "The Logic of Violence in Civil War"
   },
   {
     "objectID": "w01/slides.html#particularly-fun-non-standard-examples",
@@ -784,7 +862,7 @@
     "href": "w01/slides.html#references",
     "title": "Week 1: Science from Particles to People",
     "section": "References",
-    "text": "References\n\n\nFinetti, Bruno de. 1972. Probability, Induction and Statistics: The Art of Guessing. J. Wiley.\n\n\nHume, David. 1739. A Treatise of Human Nature: Being an Attempt to Introduce the Experimental Method of Reasoning Into Moral Subjects; and Dialogues Concerning Natural Religion. Longmans, Green.\n\n\nPearl, Judea. 2000. Causality: Models, Reasoning, and Inference. Cambridge University Press.\n\n\nSperber, Dan. 1996. Explaining Culture: A Naturalistic Approach. Cambridge: Blackwell."
+    "text": "References\n\n\nFinetti, Bruno de. 1972. Probability, Induction and Statistics: The Art of Guessing. J. Wiley.\n\n\nHume, David. 1739. A Treatise of Human Nature: Being an Attempt to Introduce the Experimental Method of Reasoning Into Moral Subjects; and Dialogues Concerning Natural Religion. Longmans, Green.\n\n\nMontessori, Maria. 1916. Spontaneous Activity in Education: A Basic Guide to the Montessori Methods of Learning in the Classroom. Lulu Press.\n\n\nPearl, Judea. 2000. Causality: Models, Reasoning, and Inference. Cambridge University Press.\n\n\nSperber, Dan. 1996. Explaining Culture: A Naturalistic Approach. Cambridge: Blackwell."
   },
   {
     "objectID": "syllabus.html",

@@ -53,12 +53,12 @@ Today's Planned Schedule:
 | | Start | End | Topic |
 |:- |:- |:- |:- |
 | **Lecture** | 6:30pm | 6:45pm | [Quick Hello Hi Everyone Style Intro &rarr;](#who-am-i-why-is-georgetown-having-me-teach-this) |
-| | 6:45pm | 7:00pm | [[science]{.orbitron-jj} $\leadsto$ [Social Science]{.barrio-jj} "Phase Transition" &rarr;]() |
-| | 7:00pm | 7:25pm | [Motivating Examples I: Social Science &rarr;]() |(#onwards-and-upwards-fancier-algorithms) |
-| | 7:25pm | 7:50pm | [Motivating Examples II: Causal Inference &rarr;]() |
+| | 6:45pm | 7:00pm | [[science]{.orbitron-jj} $\leadsto$ [Social Science]{.barrio-jj} "Phase Transition" &rarr;](#the-science.orbitron-jj-leadsto-social-science.barrio-jj-phase-transition) |
+| | 7:00pm | 7:25pm | [Motivating Examples I: Social Science &rarr;](#motivation-i-humble-bayesian-social-science) |(#soci) |
+| | 7:25pm | 7:50pm | [Motivating Examples II: Causal Inference &rarr;](#motivation-ii-causal-inference) |
 | **Break!** | 7:50pm | 8:00pm | |
-| | 8:00pm | 8:30pm | [Ulysses and the \[Computational\] Sirens &rarr;](#onwards-and-upwards-fancier-algorithms) |
-| | 8:30pm | 9:00pm | [Course Logistics &rarr;](#onwards-and-upwards-fancier-algorithms) |
+| | 8:00pm | 8:30pm | [Ulysses and the \[Computational\] Sirens &rarr;]() |
+| | 8:30pm | 9:00pm | [Course Logistics &rarr;](#course-logistics) |
 
 : {tbl-colwidths="[12,12,12,64]"}
 
@@ -175,13 +175,15 @@ Years spent questing in dungeons of academia
 
 ![](images/diss.png){fig-align="center"}
 
-## (The IR Part) Wars of Ideas I: Cold War {.smaller .crunch-img}
+## (IR Part) Wars of Ideas I: Cold War {.smaller .crunch-img}
 
 * Cold War arms shipments (SIPRI) vs. propaganda (*Печать СССР*): here, to 🇪🇹
 
 ![](images/eth_arms.svg){fig-align="center"}
 
-## (The Middle East Part) Wars of Ideas II: First Intifada
+## (Middle East Part) Wars of Ideas II: First Intifada, 1987-1993 {.smaller .crunch-title .title-08}
+
+![](images/hamas-unc.jpg){fig-align="center"}
 
 ## Research Nowadays
 
@@ -189,6 +191,30 @@ Years spent questing in dungeons of academia
 * Most recent paper: "Operationalizing Freedom as Non-Domination in the Labor Market" (Cambridge U Press)
 * Rarely cited paper but often-thought-about obsession: "How To Do Things With Translations"
 * Related thing you can buy in a bookstore: [Editorial board for new translation of] *Capital, Vol. 1* by Karl Marx (Princeton U Press)
+
+## But Now... Teaching! {.smaller}
+
+* Growth mindset: "I can't do this" $\leadsto$ "I can't do this *yet*!"
+* Think of anything you're able to do... There was a point in life when you didn't know how to do it! What happened? Your brain **established** and/or **rearranged** neural pathways as you **struggled** with it!
+* How does this neural re-arrangement work? One "cheatcode" is **spaced repetition**:
+
+![[Image source](https://www.osmosis.org/learn/Spaced_repetition)](images/forgetting-curve.webp){fig-align="center"}
+
+## Lil Wayne on Spaced Repetition {.smaller .crunch-title .crunch-quarto-figure}
+
+::: {#fig-lilwayne}
+
+{{< video https://jpj.georgetown.domains/ppol6805-scratch/repetition.mp4 >}}
+
+From [The Carter (Documentary)](https://en.wikipedia.org/wiki/The_Carter){target='_blank'}
+:::
+
+## Maria Montessori on Your Final Project {.title-09 .aside-05}
+
+> Our teaching should be governed, not by a desire to **make** students learn things, but by the endeavor to **keep burning within them** that light which is called **curiosity**. [@montessori_spontaneous_1916]^[*"Couldn't do classes, them lessons used to bore me, I was tryna school heads like Waldorf and Montessori"* -Bar dropped by local rapper one day in freestyle that I never forgot]
+
+* To this end: your final project is to explore some potential **causal linkage** from $X$ to $Y$ (more later!)
+* The sole requirement is: sufficient **curiosity** to serve as **fuel** for your journey from **associational** world to **causal** world
 
 # The [Science]{.orbitron-jj} $\leadsto$ [Social Science]{.barrio-jj} "Phase Transition" {data-stack-name="Science &rarr; Social Science"}
 
@@ -382,6 +408,10 @@ def my_mischievous_function(input):
 * <i class='bi bi-3-circle'></i> Construct models that we can **update** with **new evidence**: Bayes' rule! $\Pr(\mathcal{H} \mid E) = \frac{\Pr(E \mid \mathcal{H} ) \Pr(\mathcal{H})}{\Pr(E)} \approx 0.8$
 * Pls notice "slippage" between **aleatory probability** *within* $\mathcal{H}$ ("tends to") vs. **epistemic probability** "outside of", talking *about* $\mathcal{H}$ ("I'm 70\% confident about $\mathcal{H}$")
 
+# Motivation I: Humble-Bayesian Social Science
+
+## The Logic of Violence in Civil War
+
 ## Particularly Fun Non-"Standard" Examples
 
 * DeDeo, French Revolution
@@ -571,6 +601,10 @@ $X$ causes $Y$ if and only if:
   * Probability that event $E_1$ occurs is $\Pr(E_1) = 0.5$,
   * The probability that $E_1$ occurs **conditional on** the event $\textsf{do}(E_0)$ occurring is $\Pr(E_1 \mid \textsf{do}(E_0)) = 0.75$,
 * **Now** we can actually infer that the occurrence of $E_0$ **caused** an increase in the likelihood of $E_1$ occurring!
+
+# Ulysses and the [Computational] Sirens
+
+## 
 
 # Course Logistics {data-stack-name="Logistics"}
 
