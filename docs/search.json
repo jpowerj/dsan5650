@@ -137,7 +137,7 @@
     "href": "index.html",
     "title": "DSAN 5650: Causal Inference for Computational Social Science",
     "section": "",
-    "text": "Welcome to the homepage for DSAN 5650: Causal Inference for Computational Social Science at Georgetown University, for the Summer 2025 session!\nThe course meets on Wednesdays from 6:30pm to 9:00pm online, via the Zoom Link provided in the sidebar.\nCheck out the syllabus (or any other link in the sidebar) for more info! Or, use the following links to view notes for individual weeks:\n\n\n\n\n\nTitle\n\n\nDate\n\n\n\n\n\n\nWeek 1: Science from Particles to People\n\n\nMay 21\n\n\n\n\n\nNo matching items\n\n\nCourse Description:\nThis course provides students with the opportunity to take the analytical skills, machine learning algorithms, and statistical methods learned throughout their first year in the program and explore how they can be employed towards carrying out rigorous, original research in the behavioral and social sciences. With a particular emphasis on tackling the additional challenges which arise when moving from associational to causal inference, particularly when only observational (as opposed to experimental) data is available, students will become proficient in cutting-edge causal Machine Learning techniques such as propensity score matching, synthetic controls, causal program evaluation, inverse social welfare function estimation from panel data, and Double-Debiased Machine Learning.\nIn-class examples will cover continuous, discrete-choice, and textual data from a wide swath of social and behavioral sciences: economics, political science, sociology, anthropology, quantitative history, and digital humanities. After gaining experience through in-class labs and homework assignments focused on reproducing key findings from recent journal articles in each of these disciplines, students will spend the final weeks of the course on a final project demonstrating their ability to develop, evaluate, and test the robustness of a causal hypothesis.\nPrerequisites: DSAN 5000, DSAN 5100 (DSAN 5300 recommended but not required)",
+    "text": "Welcome to the homepage for DSAN 5650: Causal Inference for Computational Social Science at Georgetown University, for the Summer 2025 session!\nThe course meets on Wednesdays from 6:30pm to 9:00pm online, via the Zoom Link provided in the sidebar.\nCheck out the syllabus (or any other link in the sidebar) for more info! Or, use the following links to view notes for individual weeks:\n\n\n\n\n\nTitle\n\n\nDate\n\n\n\n\n\n\nWeek 1: Science from Particles to People\n\n\nMay 21\n\n\n\n\nWeek 2: Probabilistic Graphical Models (PGMs), the Language of DGPs\n\n\nMay 28\n\n\n\n\n\nNo matching items\n\n\nCourse Description:\nThis course provides students with the opportunity to take the analytical skills, machine learning algorithms, and statistical methods learned throughout their first year in the program and explore how they can be employed towards carrying out rigorous, original research in the behavioral and social sciences. With a particular emphasis on tackling the additional challenges which arise when moving from associational to causal inference, particularly when only observational (as opposed to experimental) data is available, students will become proficient in cutting-edge causal Machine Learning techniques such as propensity score matching, synthetic controls, causal program evaluation, inverse social welfare function estimation from panel data, and Double-Debiased Machine Learning.\nIn-class examples will cover continuous, discrete-choice, and textual data from a wide swath of social and behavioral sciences: economics, political science, sociology, anthropology, quantitative history, and digital humanities. After gaining experience through in-class labs and homework assignments focused on reproducing key findings from recent journal articles in each of these disciplines, students will spend the final weeks of the course on a final project demonstrating their ability to develop, evaluate, and test the robustness of a causal hypothesis.\nPrerequisites: DSAN 5000, DSAN 5100 (DSAN 5300 recommended but not required)",
     "crumbs": [
       "<i class='bi bi-house pe-1'></i> Home"
     ]
@@ -162,6 +162,349 @@
     "title": "Assignment Point Distributions",
     "section": "",
     "text": "Use the tabs below to view the point distributions for different assignments.\nThe distributions are imported from Google Sheets mainly for transparency: so that you can see exactly how totals are computed as a sum of the individual points allocated for each test!\n\nHW1HW2\n\n\n\n\n\n\n\n\n\npart\nqid\ntest_type\npoints\npart_total\n\n\n\n\n1\nQ1.1\npublic\n0\n12\n\n\n\nQ1.1\nhidden\n1\n\n\n\n\nQ1.2\npublic\n0\n\n\n\n\nQ1.2\nhidden\n1\n\n\n\n\nQ1.3\npublic\n0\n\n\n\n\nQ1.3\nhidden\n1\n\n\n\n\nQ1.4\npublic\n0\n\n\n\n\nQ1.4\nhidden\n1\n\n\n\n\nQ1.5\npublic\n0\n\n\n\n\nQ1.5\nhidden\n1\n\n\n\n\nQ1.6\npublic\n0\n\n\n\n\nQ1.6\nhidden\n1\n\n\n\n\nQ1.7\npublic\n0\n\n\n\n\nQ1.7\nhidden\n1\n\n\n\n\nQ1.8\npublic\n0\n\n\n\n\nQ1.8\nhidden\n1\n\n\n\n\nQ1.9\npublic\n0\n\n\n\n\nQ1.9\nhidden\n1\n\n\n\n\nQ1.10\npublic\n0\n\n\n\n\nQ1.10\nhidden\n1\n\n\n\n\nQ1.11\npublic\n0\n\n\n\n\nQ1.11\nhidden\n1\n\n\n\n\nQ1.12\npublic\n0\n\n\n\n\nQ1.12\nhidden\n1\n\n\n\n2\nQ2.1\npublic\n0\n7\n\n\n\nQ2.1\nhidden\n1\n\n\n\n\nQ2.2\npublic\n0\n\n\n\n\nQ2.2\nhidden\n1\n\n\n\n\nQ2.3\npublic\n0\n\n\n\n\nQ2.3\nhidden\n1\n\n\n\n\nQ2.4\npublic\n0\n\n\n\n\nQ2.4\nhidden\n1\n\n\n\n\nQ2.5\npublic\n0\n\n\n\n\nQ2.5\nhidden\n1\n\n\n\n\nQ2.6\npublic\n0\n\n\n\n\nQ2.6\nhidden\n2\n\n\n\n3\nQ3.1\npublic\n0\n5\n\n\n\nQ3.1\nhidden\n1\n\n\n\n\nQ3.2\npublic\n0\n\n\n\n\nQ3.2\nhidden\n1\n\n\n\n\nQ3.3a\npublic\n0\n\n\n\n\nQ3.3a\nhidden\n1\n\n\n\n\nQ3.3b\npublic\n0\n\n\n\n\nQ3.3b\nhidden\n1\n\n\n\n\nQ3.3c\npublic\n0\n\n\n\n\nQ3.3c\nhidden\n1\n\n\n\n4.1\nQ4.1.1\npublic\n1\n13\n\n\n\nQ4.1.1\nhidden\n2\n\n\n\n\nQ4.1.2\npublic\n1\n\n\n\n\nQ4.1.2\nhidden\n2\n\n\n\n\nQ4.1.3\npublic\n1\n\n\n\n\nQ4.1.3\nhidden\n1\n\n\n\n\nQ4.1.4\npublic\n1\n\n\n\n\nQ4.1.4\nhidden\n2\n\n\n\n\nQ4.1.5\npublic\n1\n\n\n\n\nQ4.1.5\nhidden\n1\n\n\n\n4.2\nQ4.2.1\npublic\n1\n4\n\n\n\nQ4.2.1\nhidden\n1\n\n\n\n\nQ4.2.2\npublic\n1\n\n\n\n\nQ4.2.2\nhidden\n1\n\n\n\n4.3\nQ4.3.1\npublic\n1\n4\n\n\n\nQ4.3.1\nhidden\n1\n\n\n\n\nQ4.3.2\npublic\n1\n\n\n\n\nQ4.3.2\nhidden\n1\n\n\n\n4.4\nQ4.4.1\npublic\n1\n3\n\n\n\nQ4.4.1\nhidden\n2\n\n\n\n4.5\nQ4.5.1\npublic\n1\n4\n\n\n\nQ4.5.1\nhidden\n2\n\n\n\n\nQ4.5.2\npublic\n0\n\n\n\n\nQ4.5.2\nhidden\n1\n\n\n\n4.6\nQ4.6.1\npublic\n1\n3\n\n\n\nQ4.6.1\nhidden\n2\n\n\n\n4.7\nQ4.7.1\npublic\n1\n5\n\n\n\nQ4.7.1\nhidden\n2\n\n\n\n\nQ4.7.2\npublic\n1\n\n\n\n\nQ4.7.2\nhidden\n1\n\n\n\n4.8\nQ4.8.1\npublic\n1\n11\n\n\n\nQ4.8.1\nhidden\n2\n\n\n\n\nQ4.8.2\npublic\n0\n\n\n\n\nQ4.8.2\nhidden\n1\n\n\n\n\nQ4.8.3\npublic\n0\n\n\n\n\nQ4.8.3\nhidden\n1\n\n\n\n\nQ4.8.4\npublic\n1\n\n\n\n\nQ4.8.4\nhidden\n2\n\n\n\n\nQ4.8.5\npublic\n1\n\n\n\n\nQ4.8.5\nhidden\n2\n\n\n\n4.9\nQ4.9.1\npublic\n0\n2\n\n\n\nQ4.9.1\nhidden\n1\n\n\n\n\nQ4.9.2\npublic\n0\n\n\n\n\nQ4.9.2\nhidden\n1\n\n\n\n4.10\nQ4.10.1\npublic\n0\n8\n\n\n\nQ4.10.1\nhidden\n1\n\n\n\n\nQ4.10.2\npublic\n0\n\n\n\n\nQ4.10.2\nhidden\n1\n\n\n\n\nQ4.10.3\npublic\n1\n\n\n\n\nQ4.10.3\nhidden\n2\n\n\n\n\nQ4.10.4\npublic\n1\n\n\n\n\nQ4.10.4\nhidden\n2\n\n\n\n4.11\nQ4.11.1\npublic\n1\n6\n\n\n\nQ4.11.1\nhidden\n2\n\n\n\n\nQ4.11.2\npublic\n1\n\n\n\n\nQ4.11.2\nhidden\n2\n\n\n\n4.12\nQ4.12\npublic\n1\n5\n\n\n\nQ4.12\nhidden\n4\n\n\n\n5\nQ5.1\npublic\n0\n8\n\n\n\nQ5.1\nhidden\n2\n\n\n\n\nQ5.2\npublic\n0\n\n\n\n\nQ5.2\nhidden\n2\n\n\n\n\nQ5.3\npublic\n0\n\n\n\n\nQ5.3\nhidden\n2\n\n\n\n\nQ5.4\npublic\n0\n\n\n\n\nQ5.4\nhidden\n2\n\n\n\nTotal\n\n\n100\n100\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\npart\nqid\ntest_type\npoints\npart_total\n\n\n\n\n1\nQ1.1\npublic\n0\n\n\n\n\nQ1.1\nhidden\n2\n\n\n\n\nQ1.2\npublic\n0\n\n\n\n\nQ1.2\nhidden\n2\n\n\n\n\nQ1.3a\npublic\n0\n\n\n\n\nQ1.3a\nhidden\n2\n\n\n\n\nQ1.3b\npublic\n0\n\n\n\n\nQ1.3b\nhidden\n2\n\n\n\n\nQ1.4a\npublic\n0\n\n\n\n\nQ1.4a\nhidden\n2\n\n\n\n\nQ1.4b\npublic\n0\n\n\n\n\nQ1.4b\nhidden\n2\n\n\n\n\nQ1.5\npublic\n0\n\n\n\n\nQ1.5\nhidden\n2\n\n\n\n\nQ1.6\npublic\n0\n\n\n\n\nQ1.6\nhidden\n2\n\n\n\n\nQ1.7\npublic\n0\n\n\n\n\nQ1.7\nhidden\n2\n\n\n\n\nQ1.8\npublic\n0\n\n\n\n\nQ1.8\nhidden\n2\n20\n\n\n2\nQ2.1\npublic\n0\n\n\n\n\nQ2.1\nhidden\n5\n\n\n\n\nQ2.2\npublic\n0\n\n\n\n\nQ2.2\nhidden\n5\n10\n\n\n3\nQ3.1a\npublic\n0\n\n\n\n\nQ3.1a\nhidden\n2\n\n\n\n\nQ3.1b\npublic\n0\n\n\n\n\nQ3.1b\nhidden\n2\n\n\n\n\nQ3.2a\npublic\n0\n\n\n\n\nQ3.2a\nhidden\n2\n\n\n\n\nQ3.2b\npublic\n0\n\n\n\n\nQ3.2b\nhidden\n2\n\n\n\n\nQ3.3a\npublic\n0\n\n\n\n\nQ3.3a\nhidden\n2\n\n\n\n\nQ3.3b\npublic\n0\n\n\n\n\nQ3.3b\nhidden\n2\n12\n\n\n4\nQ4.1a\npublic\n0\n\n\n\n\nQ4.1a\nhidden\n2\n\n\n\n\nQ4.1b\npublic\n0\n\n\n\n\nQ4.1b\nhidden\n2\n\n\n\n\nQ4.2a\npublic\n0\n\n\n\n\nQ4.2a\nhidden\n2\n\n\n\n\nQ4.2b\npublic\n0\n\n\n\n\nQ4.2b\nhidden\n2\n\n\n\n\nQ4.3a\npublic\n0\n\n\n\n\nQ4.3a\nhidden\n2\n\n\n\n\nQ4.3b\npublic\n0\n\n\n\n\nQ4.3b\nhidden\n2\n12\n\n\n5\nQ5.1\npublic\n0\n\n\n\n\nQ5.1\nhidden\n4\n\n\n\n\nQ5.2\npublic\n0\n\n\n\n\nQ5.2\nhidden\n4\n\n\n\n\nQ5.3\npublic\n0\n\n\n\n\nQ5.3\nhidden\n4\n12\n\n\n6\nQ6.1\npublic\n0\n\n\n\n\nQ6.1\nhidden\n7\n\n\n\n\nQ6.2\npublic\n0\n\n\n\n\nQ6.2\nhidden\n7\n14\n\n\n7\nQ7.1\npublic\n0\n\n\n\n\nQ7.1\nhidden\n5\n\n\n\n\nQ7.2\npublic\n0\n\n\n\n\nQ7.2\nhidden\n5\n\n\n\n\nQ7.3\npublic\n0\n\n\n\n\nQ7.3\nhidden\n5\n\n\n\n\nQ7.4\npublic\n0\n\n\n\n\nQ7.4\nhidden\n5\n20\n\n\nTotal\n\n\n100\n100"
+  },
+  {
+    "objectID": "w02/index.html",
+    "href": "w02/index.html",
+    "title": "Week 2: Probabilistic Graphical Models (PGMs), the Language of DGPs",
+    "section": "",
+    "text": "Open slides in new window →"
+  },
+  {
+    "objectID": "w02/index.html#courtney-green",
+    "href": "w02/index.html#courtney-green",
+    "title": "Week 2: Probabilistic Graphical Models (PGMs), the Language of DGPs",
+    "section": "Courtney Green",
+    "text": "Courtney Green"
+  },
+  {
+    "objectID": "w02/index.html#wendy-hu",
+    "href": "w02/index.html#wendy-hu",
+    "title": "Week 2: Probabilistic Graphical Models (PGMs), the Language of DGPs",
+    "section": "Wendy Hu",
+    "text": "Wendy Hu"
+  },
+  {
+    "objectID": "w02/index.html#technical-issues-jupyterhub",
+    "href": "w02/index.html#technical-issues-jupyterhub",
+    "title": "Week 2: Probabilistic Graphical Models (PGMs), the Language of DGPs",
+    "section": "Technical Issues (JupyterHub)",
+    "text": "Technical Issues (JupyterHub)"
+  },
+  {
+    "objectID": "w02/index.html#content-issues",
+    "href": "w02/index.html#content-issues",
+    "title": "Week 2: Probabilistic Graphical Models (PGMs), the Language of DGPs",
+    "section": "Content Issues",
+    "text": "Content Issues"
+  },
+  {
+    "objectID": "w02/index.html#disclaimer-unfortunate-side-effects-of-engaging-seriously-with-causality",
+    "href": "w02/index.html#disclaimer-unfortunate-side-effects-of-engaging-seriously-with-causality",
+    "title": "Week 2: Probabilistic Graphical Models (PGMs), the Language of DGPs",
+    "section": "Disclaimer: Unfortunate Side Effects of Engaging Seriously with Causality",
+    "text": "Disclaimer: Unfortunate Side Effects of Engaging Seriously with Causality\n\n\n You’ll no longer be able to read “scientific” writing without striking this expression (involuntarily):\n\n “Scientific” talks will begin to sound like the following:"
+  },
+  {
+    "objectID": "w02/index.html#blasting-off-into-causality",
+    "href": "w02/index.html#blasting-off-into-causality",
+    "title": "Week 2: Probabilistic Graphical Models (PGMs), the Language of DGPs",
+    "section": "Blasting Off Into Causality!",
+    "text": "Blasting Off Into Causality!"
+  },
+  {
+    "objectID": "w02/index.html#data-generating-processes-dgps",
+    "href": "w02/index.html#data-generating-processes-dgps",
+    "title": "Week 2: Probabilistic Graphical Models (PGMs), the Language of DGPs",
+    "section": "Data-Generating Processes (DGPs)",
+    "text": "Data-Generating Processes (DGPs)\n\n\n\n\n\n\n\nYou saw this in DSAN 5100!\n«\\(X_1, \\ldots, X_n\\) drawn i.i.d. Normal, mean \\(\\mu\\) variance \\(\\sigma^2\\)» characterizes DGP of \\((X_1, \\ldots, X_n)\\)\n\n\n\n\n\n\n\n\n\n\n\n\n5650: Dive into DGPs, rather than treating as black box/footnote to Law of Large Numbers, so we can move [asymptotically!]…\nFrom associational statements:\n\n«\\(\\underbrace{\\text{An increase}}_{\\small\\text{noun}}\\) in \\(X\\) by 1 is associated with increase in \\(Y\\) by \\(\\beta\\)»\n\nTo causal ones: «\\(\\underbrace{\\text{Increasing}}_{\\small\\text{verb}}\\) \\(X\\) by 1 causes \\(Y\\) to increase by \\(\\beta\\)»"
+  },
+  {
+    "objectID": "w02/index.html#dgps-and-the-emergence-of-order",
+    "href": "w02/index.html#dgps-and-the-emergence-of-order",
+    "title": "Week 2: Probabilistic Graphical Models (PGMs), the Language of DGPs",
+    "section": "DGPs and the Emergence of Order",
+    "text": "DGPs and the Emergence of Order\n\n\n\n\n\n\n\nWho can guess the state of this process after 10 steps, with 1 person?\n10 people? 50? 100? (If they find themselves on the same spot, they stand on each other’s heads)\n100 steps? 1000?"
+  },
+  {
+    "objectID": "w02/index.html#the-result-16-steps",
+    "href": "w02/index.html#the-result-16-steps",
+    "title": "Week 2: Probabilistic Graphical Models (PGMs), the Language of DGPs",
+    "section": "The Result: 16 Steps",
+    "text": "The Result: 16 Steps"
+  },
+  {
+    "objectID": "w02/index.html#the-result-64-steps",
+    "href": "w02/index.html#the-result-64-steps",
+    "title": "Week 2: Probabilistic Graphical Models (PGMs), the Language of DGPs",
+    "section": "The Result: 64 Steps",
+    "text": "The Result: 64 Steps"
+  },
+  {
+    "objectID": "w02/index.html#mathematicalscientific-modeling",
+    "href": "w02/index.html#mathematicalscientific-modeling",
+    "title": "Week 2: Probabilistic Graphical Models (PGMs), the Language of DGPs",
+    "section": "“Mathematical/Scientific Modeling”",
+    "text": "“Mathematical/Scientific Modeling”\n\nThing we observe (poking out of water): data\nHidden but possibly discoverable via deeper dive (ecosystem under surface): DGP"
+  },
+  {
+    "objectID": "w02/index.html#so-whats-the-problem",
+    "href": "w02/index.html#so-whats-the-problem",
+    "title": "Week 2: Probabilistic Graphical Models (PGMs), the Language of DGPs",
+    "section": "So What’s the Problem?",
+    "text": "So What’s the Problem?\n\nNon-probabilistic models: High potential for being garbage\n\ntldr: even if SUPER certain, using \\(\\Pr(\\mathcal{H}) = 1-\\varepsilon\\) with tiny \\(\\varepsilon\\) has literal life-saving advantages (Finetti 1972)\n\nProbabilistic models: Getting there, still looking at “surface”\n\nOf the \\(N = 100\\) times we observed event \\(X\\) occurring, event \\(Y\\) also occurred \\(90\\) of those times\n\\(\\implies \\Pr(Y \\mid X) = \\frac{\\#[X, Y]}{\\#[X]} = \\frac{90}{100} = 0.9\\)\n\nCausal models: Does \\(Y\\) happen because of \\(X\\) happening? For that, need to start modeling what’s happening under the surface making \\(X\\) and \\(Y\\) “pop up” together so often"
+  },
+  {
+    "objectID": "w02/index.html#the-shallow-problem-of-causal-inference",
+    "href": "w02/index.html#the-shallow-problem-of-causal-inference",
+    "title": "Week 2: Probabilistic Graphical Models (PGMs), the Language of DGPs",
+    "section": "The Shallow Problem of Causal Inference",
+    "text": "The Shallow Problem of Causal Inference\n\n\n\n\n\n\n\n\ncor(ski_df$value, law_df$value)\n[1] 0.9921178\n\n(Data from Vigen, Spurious Correlations)\n\nThis, however, is only a mini-boss. Beyond it lies the truly invincible FINAL BOSS… 🙀"
+  },
+  {
+    "objectID": "w02/index.html#the-fundamental-problem-of-causal-inference",
+    "href": "w02/index.html#the-fundamental-problem-of-causal-inference",
+    "title": "Week 2: Probabilistic Graphical Models (PGMs), the Language of DGPs",
+    "section": "The Fundamental Problem of Causal Inference",
+    "text": "The Fundamental Problem of Causal Inference\nThe only workable definition of «\\(X\\) causes \\(Y\\)»:\n\n\n\n\n\n\n Defining Causality (Hume 1739, ruining everything as usual 😤)\n\n\n\n\\(X\\) causes \\(Y\\) if and only if:\n\n\\(X\\) temporally precedes \\(Y\\) and\n\nIn two worlds \\(W_0\\) and \\(W_1\\) where\neverything is exactly the same except that \\(X = 0\\) in \\(W_0\\) and \\(X = 1\\) in \\(W_1\\),\n\\(Y = 0\\) in \\(W_0\\) and \\(Y = 1\\) in \\(W_1\\)\n\n\n\n\n\nThe problem? We live in one world, not two identical worlds simultaneously 😭"
+  },
+  {
+    "objectID": "w02/index.html#what-is-to-be-done",
+    "href": "w02/index.html#what-is-to-be-done",
+    "title": "Week 2: Probabilistic Graphical Models (PGMs), the Language of DGPs",
+    "section": "What Is To Be Done?",
+    "text": "What Is To Be Done?"
+  },
+  {
+    "objectID": "w02/index.html#probability",
+    "href": "w02/index.html#probability",
+    "title": "Week 2: Probabilistic Graphical Models (PGMs), the Language of DGPs",
+    "section": "Probability++",
+    "text": "Probability++\n\nTools from prob/stats (RVs, CDFs, Conditional Probability) necessary but not sufficient for causal inference!\nExample: Say we use DSAN 5100 tools to discover:\n\nProbability that event \\(E_1\\) occurs is \\(\\Pr(E_1) = 0.5\\)\nProbability that \\(E_1\\) occurs conditional on another event \\(E_0\\) occurring is \\(\\Pr(E_1 \\mid E_0) = 0.75\\)\n\nUnfortunately, we still cannot infer that the occurrence of \\(E_0\\) causes an increase in the likelihood of \\(E_1\\) occurring."
+  },
+  {
+    "objectID": "w02/index.html#beyond-conditional-probability",
+    "href": "w02/index.html#beyond-conditional-probability",
+    "title": "Week 2: Probabilistic Graphical Models (PGMs), the Language of DGPs",
+    "section": "Beyond Conditional Probability",
+    "text": "Beyond Conditional Probability\n\nThis issue (that conditional probabilities could not be interpreted causally) at first represented a kind of dead end for scientists interested in employing probability theory to study causal relationships…\nRecent decades: researchers have built up an additional “layer” of modeling tools, augmenting existing machinery of probability to address causality head-on!\nPearl (2000): Formal proofs that (\\(\\Pr\\) axioms) \\(\\cup\\) (\\(\\textsf{do}\\) axioms) \\(\\Rightarrow\\) causal inference procedures successfully recover causal effects"
+  },
+  {
+    "objectID": "w02/index.html#preview-do-calculus",
+    "href": "w02/index.html#preview-do-calculus",
+    "title": "Week 2: Probabilistic Graphical Models (PGMs), the Language of DGPs",
+    "section": "Preview: do-Calculus",
+    "text": "Preview: do-Calculus\n\nExtends core of probability to incorporate causality, via \\(\\textsf{do}\\) operator\n\\(\\textsf{do}(X = 5)\\) is a “special” event, representing intervention in DGP to force \\(X \\leftarrow 5\\)… \\(\\textsf{do}(X = 5)\\) not the same event as \\(X = 5\\)!\n\n\n\n\n\n\n\n\n\n\\(X = 5\\)\n\\(\\neq\\)\n\\(\\textsf{do}(X = 5)\\)\n\n\n\n\nObserving that \\(X\\) took on value 5 (for some possibly-unknown reason)\n\\(\\neq\\)\nIntervening to force \\(X \\leftarrow 5\\), all else in DGP remaining the same (intervention then “flows” through rest of DGP)\n\n\n\n\nProbably the most difficult thing in 5650 to wrap head around\n“Special”: \\(\\Pr(\\textsf{do}(X = 5))\\) not well-defined, only \\(\\Pr(Y = 6 \\mid \\textsf{do}(X = 5))\\)\nTo emphasize special-ness, we may use notation like:\n\\[\n\\Pr(Y = 6 \\mid \\textsf{do}(X = 5)) \\equiv \\textstyle \\Pr_{\\textsf{do}(X = 5)}(Y = 6)\n\\]\nto avoid confusion with “normal” events"
+  },
+  {
+    "objectID": "w02/index.html#causal-world-unlocked-with-great-power-comes-great-responsibility",
+    "href": "w02/index.html#causal-world-unlocked-with-great-power-comes-great-responsibility",
+    "title": "Week 2: Probabilistic Graphical Models (PGMs), the Language of DGPs",
+    "section": "Causal World Unlocked 😎 (With Great Power Comes Great Responsibility…)",
+    "text": "Causal World Unlocked 😎 (With Great Power Comes Great Responsibility…)\n\nWith \\(\\textsf{do}(\\cdot)\\) in hand… (Alongside DGP satisfying axioms slightly more strict than core probability axioms)\nWe can make causal inferences from similar pair of facts! If:\n\nProbability that event \\(E_1\\) occurs is \\(\\Pr(E_1) = 0.5\\),\nThe probability that \\(E_1\\) occurs conditional on the event \\(\\textsf{do}(E_0)\\) occurring is \\(\\Pr(E_1 \\mid \\textsf{do}(E_0)) = 0.75\\),\n\nNow we can actually infer that the occurrence of \\(E_0\\) caused an increase in the likelihood of \\(E_1\\) occurring!"
+  },
+  {
+    "objectID": "w02/index.html#ulysses-and-the-computational-sirens",
+    "href": "w02/index.html#ulysses-and-the-computational-sirens",
+    "title": "Week 2: Probabilistic Graphical Models (PGMs), the Language of DGPs",
+    "section": "Ulysses and the [Computational] Sirens",
+    "text": "Ulysses and the [Computational] Sirens"
+  },
+  {
+    "objectID": "w02/index.html#bayesian-inference-but-with-pictures",
+    "href": "w02/index.html#bayesian-inference-but-with-pictures",
+    "title": "Week 2: Probabilistic Graphical Models (PGMs), the Language of DGPs",
+    "section": "Bayesian Inference but with Pictures",
+    "text": "Bayesian Inference but with Pictures"
+  },
+  {
+    "objectID": "w02/index.html#nodes-are-random-variables",
+    "href": "w02/index.html#nodes-are-random-variables",
+    "title": "Week 2: Probabilistic Graphical Models (PGMs), the Language of DGPs",
+    "section": "Nodes are Random Variables",
+    "text": "Nodes are Random Variables"
+  },
+  {
+    "objectID": "w02/index.html#edges-indicate-conditional-probability-tables-cpts",
+    "href": "w02/index.html#edges-indicate-conditional-probability-tables-cpts",
+    "title": "Week 2: Probabilistic Graphical Models (PGMs), the Language of DGPs",
+    "section": "Edges Indicate Conditional Probability Tables (CPTs)",
+    "text": "Edges Indicate Conditional Probability Tables (CPTs)"
+  },
+  {
+    "objectID": "w02/index.html#references",
+    "href": "w02/index.html#references",
+    "title": "Week 2: Probabilistic Graphical Models (PGMs), the Language of DGPs",
+    "section": "References",
+    "text": "References\n\n\nFinetti, Bruno de. 1972. Probability, Induction and Statistics: The Art of Guessing. J. Wiley.\n\n\nHume, David. 1739. A Treatise of Human Nature: Being an Attempt to Introduce the Experimental Method of Reasoning Into Moral Subjects; and Dialogues Concerning Natural Religion. Longmans, Green.\n\n\nPearl, Judea. 2000. Causality: Models, Reasoning, and Inference. Cambridge University Press."
+  },
+  {
+    "objectID": "w02/slides.html#courtney-green",
+    "href": "w02/slides.html#courtney-green",
+    "title": "Week 2: Probabilistic Graphical Models (PGMs), the Language of DGPs",
+    "section": "Courtney Green",
+    "text": "Courtney Green"
+  },
+  {
+    "objectID": "w02/slides.html#wendy-hu",
+    "href": "w02/slides.html#wendy-hu",
+    "title": "Week 2: Probabilistic Graphical Models (PGMs), the Language of DGPs",
+    "section": "Wendy Hu",
+    "text": "Wendy Hu"
+  },
+  {
+    "objectID": "w02/slides.html#technical-issues-jupyterhub",
+    "href": "w02/slides.html#technical-issues-jupyterhub",
+    "title": "Week 2: Probabilistic Graphical Models (PGMs), the Language of DGPs",
+    "section": "Technical Issues (JupyterHub)",
+    "text": "Technical Issues (JupyterHub)"
+  },
+  {
+    "objectID": "w02/slides.html#content-issues",
+    "href": "w02/slides.html#content-issues",
+    "title": "Week 2: Probabilistic Graphical Models (PGMs), the Language of DGPs",
+    "section": "Content Issues",
+    "text": "Content Issues"
+  },
+  {
+    "objectID": "w02/slides.html#disclaimer-unfortunate-side-effects-of-engaging-seriously-with-causality",
+    "href": "w02/slides.html#disclaimer-unfortunate-side-effects-of-engaging-seriously-with-causality",
+    "title": "Week 2: Probabilistic Graphical Models (PGMs), the Language of DGPs",
+    "section": "Disclaimer: Unfortunate Side Effects of Engaging Seriously with Causality",
+    "text": "Disclaimer: Unfortunate Side Effects of Engaging Seriously with Causality\n\n\n You’ll no longer be able to read “scientific” writing without striking this expression (involuntarily):\n\n “Scientific” talks will begin to sound like the following:"
+  },
+  {
+    "objectID": "w02/slides.html#blasting-off-into-causality",
+    "href": "w02/slides.html#blasting-off-into-causality",
+    "title": "Week 2: Probabilistic Graphical Models (PGMs), the Language of DGPs",
+    "section": "Blasting Off Into Causality!",
+    "text": "Blasting Off Into Causality!"
+  },
+  {
+    "objectID": "w02/slides.html#data-generating-processes-dgps",
+    "href": "w02/slides.html#data-generating-processes-dgps",
+    "title": "Week 2: Probabilistic Graphical Models (PGMs), the Language of DGPs",
+    "section": "Data-Generating Processes (DGPs)",
+    "text": "Data-Generating Processes (DGPs)\n\n\n\n\n\n\n\nYou saw this in DSAN 5100!\n«\\(X_1, \\ldots, X_n\\) drawn i.i.d. Normal, mean \\(\\mu\\) variance \\(\\sigma^2\\)» characterizes DGP of \\((X_1, \\ldots, X_n)\\)\n\n\n\n\n\n\n\n\n\n\n\n\n5650: Dive into DGPs, rather than treating as black box/footnote to Law of Large Numbers, so we can move [asymptotically!]…\nFrom associational statements:\n\n«\\(\\underbrace{\\text{An increase}}_{\\small\\text{noun}}\\) in \\(X\\) by 1 is associated with increase in \\(Y\\) by \\(\\beta\\)»\n\nTo causal ones: «\\(\\underbrace{\\text{Increasing}}_{\\small\\text{verb}}\\) \\(X\\) by 1 causes \\(Y\\) to increase by \\(\\beta\\)»"
+  },
+  {
+    "objectID": "w02/slides.html#dgps-and-the-emergence-of-order",
+    "href": "w02/slides.html#dgps-and-the-emergence-of-order",
+    "title": "Week 2: Probabilistic Graphical Models (PGMs), the Language of DGPs",
+    "section": "DGPs and the Emergence of Order",
+    "text": "DGPs and the Emergence of Order\n\n\n\n\n\n\n\nWho can guess the state of this process after 10 steps, with 1 person?\n10 people? 50? 100? (If they find themselves on the same spot, they stand on each other’s heads)\n100 steps? 1000?"
+  },
+  {
+    "objectID": "w02/slides.html#the-result-16-steps",
+    "href": "w02/slides.html#the-result-16-steps",
+    "title": "Week 2: Probabilistic Graphical Models (PGMs), the Language of DGPs",
+    "section": "The Result: 16 Steps",
+    "text": "The Result: 16 Steps"
+  },
+  {
+    "objectID": "w02/slides.html#the-result-64-steps",
+    "href": "w02/slides.html#the-result-64-steps",
+    "title": "Week 2: Probabilistic Graphical Models (PGMs), the Language of DGPs",
+    "section": "The Result: 64 Steps",
+    "text": "The Result: 64 Steps"
+  },
+  {
+    "objectID": "w02/slides.html#mathematicalscientific-modeling",
+    "href": "w02/slides.html#mathematicalscientific-modeling",
+    "title": "Week 2: Probabilistic Graphical Models (PGMs), the Language of DGPs",
+    "section": "“Mathematical/Scientific Modeling”",
+    "text": "“Mathematical/Scientific Modeling”\n\nThing we observe (poking out of water): data\nHidden but possibly discoverable via deeper dive (ecosystem under surface): DGP"
+  },
+  {
+    "objectID": "w02/slides.html#so-whats-the-problem",
+    "href": "w02/slides.html#so-whats-the-problem",
+    "title": "Week 2: Probabilistic Graphical Models (PGMs), the Language of DGPs",
+    "section": "So What’s the Problem?",
+    "text": "So What’s the Problem?\n\nNon-probabilistic models: High potential for being garbage\n\ntldr: even if SUPER certain, using \\(\\Pr(\\mathcal{H}) = 1-\\varepsilon\\) with tiny \\(\\varepsilon\\) has literal life-saving advantages (Finetti 1972)\n\nProbabilistic models: Getting there, still looking at “surface”\n\nOf the \\(N = 100\\) times we observed event \\(X\\) occurring, event \\(Y\\) also occurred \\(90\\) of those times\n\\(\\implies \\Pr(Y \\mid X) = \\frac{\\#[X, Y]}{\\#[X]} = \\frac{90}{100} = 0.9\\)\n\nCausal models: Does \\(Y\\) happen because of \\(X\\) happening? For that, need to start modeling what’s happening under the surface making \\(X\\) and \\(Y\\) “pop up” together so often"
+  },
+  {
+    "objectID": "w02/slides.html#the-shallow-problem-of-causal-inference",
+    "href": "w02/slides.html#the-shallow-problem-of-causal-inference",
+    "title": "Week 2: Probabilistic Graphical Models (PGMs), the Language of DGPs",
+    "section": "The Shallow Problem of Causal Inference",
+    "text": "The Shallow Problem of Causal Inference\n\n\n\n\n\n\n\n\ncor(ski_df$value, law_df$value)\n[1] 0.9921178\n\n(Data from Vigen, Spurious Correlations)\n\nThis, however, is only a mini-boss. Beyond it lies the truly invincible FINAL BOSS… 🙀"
+  },
+  {
+    "objectID": "w02/slides.html#the-fundamental-problem-of-causal-inference",
+    "href": "w02/slides.html#the-fundamental-problem-of-causal-inference",
+    "title": "Week 2: Probabilistic Graphical Models (PGMs), the Language of DGPs",
+    "section": "The Fundamental Problem of Causal Inference",
+    "text": "The Fundamental Problem of Causal Inference\nThe only workable definition of «\\(X\\) causes \\(Y\\)»:\n\n\n\n\n Defining Causality (Hume 1739, ruining everything as usual 😤)\n\n\n\\(X\\) causes \\(Y\\) if and only if:\n\n\\(X\\) temporally precedes \\(Y\\) and\n\nIn two worlds \\(W_0\\) and \\(W_1\\) where\neverything is exactly the same except that \\(X = 0\\) in \\(W_0\\) and \\(X = 1\\) in \\(W_1\\),\n\\(Y = 0\\) in \\(W_0\\) and \\(Y = 1\\) in \\(W_1\\)\n\n\n\n\n\n\n\nThe problem? We live in one world, not two identical worlds simultaneously 😭"
+  },
+  {
+    "objectID": "w02/slides.html#what-is-to-be-done",
+    "href": "w02/slides.html#what-is-to-be-done",
+    "title": "Week 2: Probabilistic Graphical Models (PGMs), the Language of DGPs",
+    "section": "What Is To Be Done?",
+    "text": "What Is To Be Done?"
+  },
+  {
+    "objectID": "w02/slides.html#probability",
+    "href": "w02/slides.html#probability",
+    "title": "Week 2: Probabilistic Graphical Models (PGMs), the Language of DGPs",
+    "section": "Probability++",
+    "text": "Probability++\n\nTools from prob/stats (RVs, CDFs, Conditional Probability) necessary but not sufficient for causal inference!\nExample: Say we use DSAN 5100 tools to discover:\n\nProbability that event \\(E_1\\) occurs is \\(\\Pr(E_1) = 0.5\\)\nProbability that \\(E_1\\) occurs conditional on another event \\(E_0\\) occurring is \\(\\Pr(E_1 \\mid E_0) = 0.75\\)\n\nUnfortunately, we still cannot infer that the occurrence of \\(E_0\\) causes an increase in the likelihood of \\(E_1\\) occurring."
+  },
+  {
+    "objectID": "w02/slides.html#beyond-conditional-probability",
+    "href": "w02/slides.html#beyond-conditional-probability",
+    "title": "Week 2: Probabilistic Graphical Models (PGMs), the Language of DGPs",
+    "section": "Beyond Conditional Probability",
+    "text": "Beyond Conditional Probability\n\nThis issue (that conditional probabilities could not be interpreted causally) at first represented a kind of dead end for scientists interested in employing probability theory to study causal relationships…\nRecent decades: researchers have built up an additional “layer” of modeling tools, augmenting existing machinery of probability to address causality head-on!\nPearl (2000): Formal proofs that (\\(\\Pr\\) axioms) \\(\\cup\\) (\\(\\textsf{do}\\) axioms) \\(\\Rightarrow\\) causal inference procedures successfully recover causal effects"
+  },
+  {
+    "objectID": "w02/slides.html#preview-do-calculus",
+    "href": "w02/slides.html#preview-do-calculus",
+    "title": "Week 2: Probabilistic Graphical Models (PGMs), the Language of DGPs",
+    "section": "Preview: do-Calculus",
+    "text": "Preview: do-Calculus\n\nExtends core of probability to incorporate causality, via \\(\\textsf{do}\\) operator\n\\(\\textsf{do}(X = 5)\\) is a “special” event, representing intervention in DGP to force \\(X \\leftarrow 5\\)… \\(\\textsf{do}(X = 5)\\) not the same event as \\(X = 5\\)!\n\n\n\n\n\n\n\n\n\n\\(X = 5\\)\n\\(\\neq\\)\n\\(\\textsf{do}(X = 5)\\)\n\n\n\n\nObserving that \\(X\\) took on value 5 (for some possibly-unknown reason)\n\\(\\neq\\)\nIntervening to force \\(X \\leftarrow 5\\), all else in DGP remaining the same (intervention then “flows” through rest of DGP)\n\n\n\n\nProbably the most difficult thing in 5650 to wrap head around\n“Special”: \\(\\Pr(\\textsf{do}(X = 5))\\) not well-defined, only \\(\\Pr(Y = 6 \\mid \\textsf{do}(X = 5))\\)\nTo emphasize special-ness, we may use notation like:\n\\[\n\\Pr(Y = 6 \\mid \\textsf{do}(X = 5)) \\equiv \\textstyle \\Pr_{\\textsf{do}(X = 5)}(Y = 6)\n\\]\nto avoid confusion with “normal” events"
+  },
+  {
+    "objectID": "w02/slides.html#causal-world-unlocked-with-great-power-comes-great-responsibility",
+    "href": "w02/slides.html#causal-world-unlocked-with-great-power-comes-great-responsibility",
+    "title": "Week 2: Probabilistic Graphical Models (PGMs), the Language of DGPs",
+    "section": "Causal World Unlocked 😎 (With Great Power Comes Great Responsibility…)",
+    "text": "Causal World Unlocked 😎 (With Great Power Comes Great Responsibility…)\n\nWith \\(\\textsf{do}(\\cdot)\\) in hand… (Alongside DGP satisfying axioms slightly more strict than core probability axioms)\nWe can make causal inferences from similar pair of facts! If:\n\nProbability that event \\(E_1\\) occurs is \\(\\Pr(E_1) = 0.5\\),\nThe probability that \\(E_1\\) occurs conditional on the event \\(\\textsf{do}(E_0)\\) occurring is \\(\\Pr(E_1 \\mid \\textsf{do}(E_0)) = 0.75\\),\n\nNow we can actually infer that the occurrence of \\(E_0\\) caused an increase in the likelihood of \\(E_1\\) occurring!"
+  },
+  {
+    "objectID": "w02/slides.html#ulysses-and-the-computational-sirens",
+    "href": "w02/slides.html#ulysses-and-the-computational-sirens",
+    "title": "Week 2: Probabilistic Graphical Models (PGMs), the Language of DGPs",
+    "section": "Ulysses and the [Computational] Sirens",
+    "text": "Ulysses and the [Computational] Sirens"
+  },
+  {
+    "objectID": "w02/slides.html#bayesian-inference-but-with-pictures",
+    "href": "w02/slides.html#bayesian-inference-but-with-pictures",
+    "title": "Week 2: Probabilistic Graphical Models (PGMs), the Language of DGPs",
+    "section": "Bayesian Inference but with Pictures",
+    "text": "Bayesian Inference but with Pictures"
+  },
+  {
+    "objectID": "w02/slides.html#nodes-are-random-variables",
+    "href": "w02/slides.html#nodes-are-random-variables",
+    "title": "Week 2: Probabilistic Graphical Models (PGMs), the Language of DGPs",
+    "section": "Nodes are Random Variables",
+    "text": "Nodes are Random Variables"
+  },
+  {
+    "objectID": "w02/slides.html#edges-indicate-conditional-probability-tables-cpts",
+    "href": "w02/slides.html#edges-indicate-conditional-probability-tables-cpts",
+    "title": "Week 2: Probabilistic Graphical Models (PGMs), the Language of DGPs",
+    "section": "Edges Indicate Conditional Probability Tables (CPTs)",
+    "text": "Edges Indicate Conditional Probability Tables (CPTs)"
+  },
+  {
+    "objectID": "w02/slides.html#references",
+    "href": "w02/slides.html#references",
+    "title": "Week 2: Probabilistic Graphical Models (PGMs), the Language of DGPs",
+    "section": "References",
+    "text": "References\n\n\nFinetti, Bruno de. 1972. Probability, Induction and Statistics: The Art of Guessing. J. Wiley.\n\n\nHume, David. 1739. A Treatise of Human Nature: Being an Attempt to Introduce the Experimental Method of Reasoning Into Moral Subjects; and Dialogues Concerning Natural Religion. Longmans, Green.\n\n\nPearl, Judea. 2000. Causality: Models, Reasoning, and Inference. Cambridge University Press."
   },
   {
     "objectID": "writeups/index.html",
@@ -409,166 +752,6 @@
     ]
   },
   {
-    "objectID": "w01/index.html#disclaimer-unfortunate-side-effects-of-engaging-seriously-with-causality",
-    "href": "w01/index.html#disclaimer-unfortunate-side-effects-of-engaging-seriously-with-causality",
-    "title": "Week 1: Science from Particles to People",
-    "section": "Disclaimer: Unfortunate Side Effects of Engaging Seriously with Causality",
-    "text": "Disclaimer: Unfortunate Side Effects of Engaging Seriously with Causality\n\n\n You’ll no longer be able to read “scientific” writing without striking this expression (involuntarily):\n\n “Scientific” talks will begin to sound like the following:",
-    "crumbs": [
-      "Week 1: {{< var w01.date-md >}}"
-    ]
-  },
-  {
-    "objectID": "w01/index.html#blasting-off-into-causality",
-    "href": "w01/index.html#blasting-off-into-causality",
-    "title": "Week 1: Science from Particles to People",
-    "section": "Blasting Off Into Causality!",
-    "text": "Blasting Off Into Causality!",
-    "crumbs": [
-      "Week 1: {{< var w01.date-md >}}"
-    ]
-  },
-  {
-    "objectID": "w01/index.html#data-generating-processes-dgps",
-    "href": "w01/index.html#data-generating-processes-dgps",
-    "title": "Week 1: Science from Particles to People",
-    "section": "Data-Generating Processes (DGPs)",
-    "text": "Data-Generating Processes (DGPs)\n\n\n\n\n\n\n\nYou saw this in DSAN 5100!\n«\\(X_1, \\ldots, X_n\\) drawn i.i.d. Normal, mean \\(\\mu\\) variance \\(\\sigma^2\\)» characterizes DGP of \\((X_1, \\ldots, X_n)\\)\n\n\n\n\n\n\n\n\n\n\n\n\n5650: Dive into DGPs, rather than treating as black box/footnote to Law of Large Numbers, so we can move [asymptotically!]…\nFrom associational statements:\n\n«\\(\\underbrace{\\text{An increase}}_{\\small\\text{noun}}\\) in \\(X\\) by 1 is associated with increase in \\(Y\\) by \\(\\beta\\)»\n\nTo causal ones: «\\(\\underbrace{\\text{Increasing}}_{\\small\\text{verb}}\\) \\(X\\) by 1 causes \\(Y\\) to increase by \\(\\beta\\)»",
-    "crumbs": [
-      "Week 1: {{< var w01.date-md >}}"
-    ]
-  },
-  {
-    "objectID": "w01/index.html#dgps-and-the-emergence-of-order",
-    "href": "w01/index.html#dgps-and-the-emergence-of-order",
-    "title": "Week 1: Science from Particles to People",
-    "section": "DGPs and the Emergence of Order",
-    "text": "DGPs and the Emergence of Order\n\n\n\n\n\n\n\nWho can guess the state of this process after 10 steps, with 1 person?\n10 people? 50? 100? (If they find themselves on the same spot, they stand on each other’s heads)\n100 steps? 1000?",
-    "crumbs": [
-      "Week 1: {{< var w01.date-md >}}"
-    ]
-  },
-  {
-    "objectID": "w01/index.html#the-result-16-steps",
-    "href": "w01/index.html#the-result-16-steps",
-    "title": "Week 1: Science from Particles to People",
-    "section": "The Result: 16 Steps",
-    "text": "The Result: 16 Steps",
-    "crumbs": [
-      "Week 1: {{< var w01.date-md >}}"
-    ]
-  },
-  {
-    "objectID": "w01/index.html#the-result-64-steps",
-    "href": "w01/index.html#the-result-64-steps",
-    "title": "Week 1: Science from Particles to People",
-    "section": "The Result: 64 Steps",
-    "text": "The Result: 64 Steps",
-    "crumbs": [
-      "Week 1: {{< var w01.date-md >}}"
-    ]
-  },
-  {
-    "objectID": "w01/index.html#mathematicalscientific-modeling",
-    "href": "w01/index.html#mathematicalscientific-modeling",
-    "title": "Week 1: Science from Particles to People",
-    "section": "“Mathematical/Scientific Modeling”",
-    "text": "“Mathematical/Scientific Modeling”\n\nThing we observe (poking out of water): data\nHidden but possibly discoverable via deeper dive (ecosystem under surface): DGP",
-    "crumbs": [
-      "Week 1: {{< var w01.date-md >}}"
-    ]
-  },
-  {
-    "objectID": "w01/index.html#so-whats-the-problem",
-    "href": "w01/index.html#so-whats-the-problem",
-    "title": "Week 1: Science from Particles to People",
-    "section": "So What’s the Problem?",
-    "text": "So What’s the Problem?\n\nNon-probabilistic models: High potential for being garbage\n\ntldr: even if SUPER certain, using \\(\\Pr(\\mathcal{H}) = 1-\\varepsilon\\) with tiny \\(\\varepsilon\\) has literal life-saving advantages (Finetti 1972)\n\nProbabilistic models: Getting there, still looking at “surface”\n\nOf the \\(N = 100\\) times we observed event \\(X\\) occurring, event \\(Y\\) also occurred \\(90\\) of those times\n\\(\\implies \\Pr(Y \\mid X) = \\frac{\\#[X, Y]}{\\#[X]} = \\frac{90}{100} = 0.9\\)\n\nCausal models: Does \\(Y\\) happen because of \\(X\\) happening? For that, need to start modeling what’s happening under the surface making \\(X\\) and \\(Y\\) “pop up” together so often",
-    "crumbs": [
-      "Week 1: {{< var w01.date-md >}}"
-    ]
-  },
-  {
-    "objectID": "w01/index.html#the-shallow-problem-of-causal-inference",
-    "href": "w01/index.html#the-shallow-problem-of-causal-inference",
-    "title": "Week 1: Science from Particles to People",
-    "section": "The Shallow Problem of Causal Inference",
-    "text": "The Shallow Problem of Causal Inference\n\n\n\n\n\n\n\n\ncor(ski_df$value, law_df$value)\n[1] 0.9921178\n\n(Data from Vigen, Spurious Correlations)\n\nThis, however, is only a mini-boss. Beyond it lies the truly invincible FINAL BOSS… 🙀",
-    "crumbs": [
-      "Week 1: {{< var w01.date-md >}}"
-    ]
-  },
-  {
-    "objectID": "w01/index.html#the-fundamental-problem-of-causal-inference",
-    "href": "w01/index.html#the-fundamental-problem-of-causal-inference",
-    "title": "Week 1: Science from Particles to People",
-    "section": "The Fundamental Problem of Causal Inference",
-    "text": "The Fundamental Problem of Causal Inference\nThe only workable definition of «\\(X\\) causes \\(Y\\)»:\n\n\n\n\n\n\n Defining Causality (Hume 1739, ruining everything as usual 😤)\n\n\n\n\\(X\\) causes \\(Y\\) if and only if:\n\n\\(X\\) temporally precedes \\(Y\\) and\n\nIn two worlds \\(W_0\\) and \\(W_1\\) where\neverything is exactly the same except that \\(X = 0\\) in \\(W_0\\) and \\(X = 1\\) in \\(W_1\\),\n\\(Y = 0\\) in \\(W_0\\) and \\(Y = 1\\) in \\(W_1\\)\n\n\n\n\n\nThe problem? We live in one world, not two identical worlds simultaneously 😭",
-    "crumbs": [
-      "Week 1: {{< var w01.date-md >}}"
-    ]
-  },
-  {
-    "objectID": "w01/index.html#what-is-to-be-done",
-    "href": "w01/index.html#what-is-to-be-done",
-    "title": "Week 1: Science from Particles to People",
-    "section": "What Is To Be Done?",
-    "text": "What Is To Be Done?",
-    "crumbs": [
-      "Week 1: {{< var w01.date-md >}}"
-    ]
-  },
-  {
-    "objectID": "w01/index.html#probability",
-    "href": "w01/index.html#probability",
-    "title": "Week 1: Science from Particles to People",
-    "section": "Probability++",
-    "text": "Probability++\n\nTools from prob/stats (RVs, CDFs, Conditional Probability) necessary but not sufficient for causal inference!\nExample: Say we use DSAN 5100 tools to discover:\n\nProbability that event \\(E_1\\) occurs is \\(\\Pr(E_1) = 0.5\\)\nProbability that \\(E_1\\) occurs conditional on another event \\(E_0\\) occurring is \\(\\Pr(E_1 \\mid E_0) = 0.75\\)\n\nUnfortunately, we still cannot infer that the occurrence of \\(E_0\\) causes an increase in the likelihood of \\(E_1\\) occurring.",
-    "crumbs": [
-      "Week 1: {{< var w01.date-md >}}"
-    ]
-  },
-  {
-    "objectID": "w01/index.html#beyond-conditional-probability",
-    "href": "w01/index.html#beyond-conditional-probability",
-    "title": "Week 1: Science from Particles to People",
-    "section": "Beyond Conditional Probability",
-    "text": "Beyond Conditional Probability\n\nThis issue (that conditional probabilities could not be interpreted causally) at first represented a kind of dead end for scientists interested in employing probability theory to study causal relationships…\nRecent decades: researchers have built up an additional “layer” of modeling tools, augmenting existing machinery of probability to address causality head-on!\nPearl (2000): Formal proofs that (\\(\\Pr\\) axioms) \\(\\cup\\) (\\(\\textsf{do}\\) axioms) \\(\\Rightarrow\\) causal inference procedures successfully recover causal effects",
-    "crumbs": [
-      "Week 1: {{< var w01.date-md >}}"
-    ]
-  },
-  {
-    "objectID": "w01/index.html#preview-do-calculus",
-    "href": "w01/index.html#preview-do-calculus",
-    "title": "Week 1: Science from Particles to People",
-    "section": "Preview: do-Calculus",
-    "text": "Preview: do-Calculus\n\nExtends core of probability to incorporate causality, via \\(\\textsf{do}\\) operator\n\\(\\textsf{do}(X = 5)\\) is a “special” event, representing intervention in DGP to force \\(X \\leftarrow 5\\)… \\(\\textsf{do}(X = 5)\\) not the same event as \\(X = 5\\)!\n\n\n\n\n\n\n\n\n\n\\(X = 5\\)\n\\(\\neq\\)\n\\(\\textsf{do}(X = 5)\\)\n\n\n\n\nObserving that \\(X\\) took on value 5 (for some possibly-unknown reason)\n\\(\\neq\\)\nIntervening to force \\(X \\leftarrow 5\\), all else in DGP remaining the same (intervention then “flows” through rest of DGP)\n\n\n\n\nProbably the most difficult thing in 5650 to wrap head around\n“Special”: \\(\\Pr(\\textsf{do}(X = 5))\\) not well-defined, only \\(\\Pr(Y = 6 \\mid \\textsf{do}(X = 5))\\)\nTo emphasize special-ness, we may use notation like:\n\\[\n\\Pr(Y = 6 \\mid \\textsf{do}(X = 5)) \\equiv \\textstyle \\Pr_{\\textsf{do}(X = 5)}(Y = 6)\n\\]\nto avoid confusion with “normal” events",
-    "crumbs": [
-      "Week 1: {{< var w01.date-md >}}"
-    ]
-  },
-  {
-    "objectID": "w01/index.html#causal-world-unlocked-with-great-power-comes-great-responsibility",
-    "href": "w01/index.html#causal-world-unlocked-with-great-power-comes-great-responsibility",
-    "title": "Week 1: Science from Particles to People",
-    "section": "Causal World Unlocked 😎 (With Great Power Comes Great Responsibility…)",
-    "text": "Causal World Unlocked 😎 (With Great Power Comes Great Responsibility…)\n\nWith \\(\\textsf{do}(\\cdot)\\) in hand… (Alongside DGP satisfying axioms slightly more strict than core probability axioms)\nWe can make causal inferences from similar pair of facts! If:\n\nProbability that event \\(E_1\\) occurs is \\(\\Pr(E_1) = 0.5\\),\nThe probability that \\(E_1\\) occurs conditional on the event \\(\\textsf{do}(E_0)\\) occurring is \\(\\Pr(E_1 \\mid \\textsf{do}(E_0)) = 0.75\\),\n\nNow we can actually infer that the occurrence of \\(E_0\\) caused an increase in the likelihood of \\(E_1\\) occurring!",
-    "crumbs": [
-      "Week 1: {{< var w01.date-md >}}"
-    ]
-  },
-  {
-    "objectID": "w01/index.html#ulysses-and-the-computational-sirens",
-    "href": "w01/index.html#ulysses-and-the-computational-sirens",
-    "title": "Week 1: Science from Particles to People",
-    "section": "Ulysses and the [Computational] Sirens",
-    "text": "Ulysses and the [Computational] Sirens",
-    "crumbs": [
-      "Week 1: {{< var w01.date-md >}}"
-    ]
-  },
-  {
     "objectID": "w01/index.html#jupyterhub",
     "href": "w01/index.html#jupyterhub",
     "title": "Week 1: Science from Particles to People",
@@ -583,7 +766,7 @@
     "href": "w01/index.html#assignments-midterm",
     "title": "Week 1: Science from Particles to People",
     "section": "Assignments / Midterm",
-    "text": "Assignments / Midterm\n\n\n\n\n\n\n\n\nAssignment\nDue Date\n% of Grade\n\n\n\n\nHW1: Causal Modeling with DAGs and PGMs: Direct and Indirect Effects\nFriday, May 30\n9%\n\n\nHW2: Traversing the Sea of Causality with the do-Harpoon in Hand: Chains, Forks, and Colliders\nFriday, February 21\n9%\n\n\nHW3: Statistical Matching: Apples to Apples and Oranges to Oranges\nFriday, June 27\n9%\n\n\nIn-Class Midterm\nWednesday, July 2\n25%\n\n\nHW4: Basic Computational Causal Methods\nFriday, July 11\n9%\n\n\nHW5: Fancy Computational Causal Methods\nFriday, July 25\n9%\n\n\nFinal Project\nFriday, August 15\n30%",
+    "text": "Assignments / Midterm\n\n\n\n\n\n\n\n\nAssignment\nDue Date\n% of Grade\n\n\n\n\nHW1: Causal Modeling with DAGs and PGMs: Direct and Indirect Effects\nFriday, May 30\n9%\n\n\nHW2: Traversing the Sea of Causality with the do-Harpoon in Hand: Chains, Forks, and Colliders\nFriday, June 13\n9%\n\n\nHW3: Statistical Matching: Apples to Apples and Oranges to Oranges\nFriday, June 27\n9%\n\n\nIn-Class Midterm\nWednesday, July 2\n25%\n\n\nHW4: Basic Computational Causal Methods\nFriday, July 11\n9%\n\n\nHW5: Fancy Computational Causal Methods\nFriday, July 25\n9%\n\n\nFinal Project\nFriday, August 15\n30%",
     "crumbs": [
       "Week 1: {{< var w01.date-md >}}"
     ]
@@ -593,7 +776,7 @@
     "href": "w01/index.html#references",
     "title": "Week 1: Science from Particles to People",
     "section": "References",
-    "text": "References\n\n\nFinetti, Bruno de. 1972. Probability, Induction and Statistics: The Art of Guessing. J. Wiley.\n\n\nHume, David. 1739. A Treatise of Human Nature: Being an Attempt to Introduce the Experimental Method of Reasoning Into Moral Subjects; and Dialogues Concerning Natural Religion. Longmans, Green.\n\n\nKalyvas, Stathis N. 2006. The Logic of Violence in Civil War. Cambridge University Press.\n\n\nLyall, Jason. 2020. Divided Armies: Inequality and Battlefield Performance in Modern War. Princeton University Press.\n\n\nMontessori, Maria. 1916. Spontaneous Activity in Education: A Basic Guide to the Montessori Methods of Learning in the Classroom. Lulu Press.\n\n\nPearl, Judea. 2000. Causality: Models, Reasoning, and Inference. Cambridge University Press.\n\n\nSperber, Dan. 1996. Explaining Culture: A Naturalistic Approach. Cambridge: Blackwell.",
+    "text": "References\n\n\nKalyvas, Stathis N. 2006. The Logic of Violence in Civil War. Cambridge University Press.\n\n\nLyall, Jason. 2020. Divided Armies: Inequality and Battlefield Performance in Modern War. Princeton University Press.\n\n\nMontessori, Maria. 1916. Spontaneous Activity in Education: A Basic Guide to the Montessori Methods of Learning in the Classroom. Lulu Press.\n\n\nSperber, Dan. 1996. Explaining Culture: A Naturalistic Approach. Cambridge: Blackwell.",
     "crumbs": [
       "Week 1: {{< var w01.date-md >}}"
     ]
@@ -749,118 +932,6 @@
     "text": "Particularly Fun Non-“Standard” Examples\n\nDeDeo, French Revolution\nGrimmer, Mirrors for Sultans and Princes"
   },
   {
-    "objectID": "w01/slides.html#disclaimer-unfortunate-side-effects-of-engaging-seriously-with-causality",
-    "href": "w01/slides.html#disclaimer-unfortunate-side-effects-of-engaging-seriously-with-causality",
-    "title": "Week 1: Science from Particles to People",
-    "section": "Disclaimer: Unfortunate Side Effects of Engaging Seriously with Causality",
-    "text": "Disclaimer: Unfortunate Side Effects of Engaging Seriously with Causality\n\n\n You’ll no longer be able to read “scientific” writing without striking this expression (involuntarily):\n\n “Scientific” talks will begin to sound like the following:"
-  },
-  {
-    "objectID": "w01/slides.html#blasting-off-into-causality",
-    "href": "w01/slides.html#blasting-off-into-causality",
-    "title": "Week 1: Science from Particles to People",
-    "section": "Blasting Off Into Causality!",
-    "text": "Blasting Off Into Causality!"
-  },
-  {
-    "objectID": "w01/slides.html#data-generating-processes-dgps",
-    "href": "w01/slides.html#data-generating-processes-dgps",
-    "title": "Week 1: Science from Particles to People",
-    "section": "Data-Generating Processes (DGPs)",
-    "text": "Data-Generating Processes (DGPs)\n\n\n\n\n\n\n\nYou saw this in DSAN 5100!\n«\\(X_1, \\ldots, X_n\\) drawn i.i.d. Normal, mean \\(\\mu\\) variance \\(\\sigma^2\\)» characterizes DGP of \\((X_1, \\ldots, X_n)\\)\n\n\n\n\n\n\n\n\n\n\n\n\n5650: Dive into DGPs, rather than treating as black box/footnote to Law of Large Numbers, so we can move [asymptotically!]…\nFrom associational statements:\n\n«\\(\\underbrace{\\text{An increase}}_{\\small\\text{noun}}\\) in \\(X\\) by 1 is associated with increase in \\(Y\\) by \\(\\beta\\)»\n\nTo causal ones: «\\(\\underbrace{\\text{Increasing}}_{\\small\\text{verb}}\\) \\(X\\) by 1 causes \\(Y\\) to increase by \\(\\beta\\)»"
-  },
-  {
-    "objectID": "w01/slides.html#dgps-and-the-emergence-of-order",
-    "href": "w01/slides.html#dgps-and-the-emergence-of-order",
-    "title": "Week 1: Science from Particles to People",
-    "section": "DGPs and the Emergence of Order",
-    "text": "DGPs and the Emergence of Order\n\n\n\n\n\n\n\nWho can guess the state of this process after 10 steps, with 1 person?\n10 people? 50? 100? (If they find themselves on the same spot, they stand on each other’s heads)\n100 steps? 1000?"
-  },
-  {
-    "objectID": "w01/slides.html#the-result-16-steps",
-    "href": "w01/slides.html#the-result-16-steps",
-    "title": "Week 1: Science from Particles to People",
-    "section": "The Result: 16 Steps",
-    "text": "The Result: 16 Steps"
-  },
-  {
-    "objectID": "w01/slides.html#the-result-64-steps",
-    "href": "w01/slides.html#the-result-64-steps",
-    "title": "Week 1: Science from Particles to People",
-    "section": "The Result: 64 Steps",
-    "text": "The Result: 64 Steps"
-  },
-  {
-    "objectID": "w01/slides.html#mathematicalscientific-modeling",
-    "href": "w01/slides.html#mathematicalscientific-modeling",
-    "title": "Week 1: Science from Particles to People",
-    "section": "“Mathematical/Scientific Modeling”",
-    "text": "“Mathematical/Scientific Modeling”\n\nThing we observe (poking out of water): data\nHidden but possibly discoverable via deeper dive (ecosystem under surface): DGP"
-  },
-  {
-    "objectID": "w01/slides.html#so-whats-the-problem",
-    "href": "w01/slides.html#so-whats-the-problem",
-    "title": "Week 1: Science from Particles to People",
-    "section": "So What’s the Problem?",
-    "text": "So What’s the Problem?\n\nNon-probabilistic models: High potential for being garbage\n\ntldr: even if SUPER certain, using \\(\\Pr(\\mathcal{H}) = 1-\\varepsilon\\) with tiny \\(\\varepsilon\\) has literal life-saving advantages (Finetti 1972)\n\nProbabilistic models: Getting there, still looking at “surface”\n\nOf the \\(N = 100\\) times we observed event \\(X\\) occurring, event \\(Y\\) also occurred \\(90\\) of those times\n\\(\\implies \\Pr(Y \\mid X) = \\frac{\\#[X, Y]}{\\#[X]} = \\frac{90}{100} = 0.9\\)\n\nCausal models: Does \\(Y\\) happen because of \\(X\\) happening? For that, need to start modeling what’s happening under the surface making \\(X\\) and \\(Y\\) “pop up” together so often"
-  },
-  {
-    "objectID": "w01/slides.html#the-shallow-problem-of-causal-inference",
-    "href": "w01/slides.html#the-shallow-problem-of-causal-inference",
-    "title": "Week 1: Science from Particles to People",
-    "section": "The Shallow Problem of Causal Inference",
-    "text": "The Shallow Problem of Causal Inference\n\n\n\n\n\n\n\n\ncor(ski_df$value, law_df$value)\n[1] 0.9921178\n\n(Data from Vigen, Spurious Correlations)\n\nThis, however, is only a mini-boss. Beyond it lies the truly invincible FINAL BOSS… 🙀"
-  },
-  {
-    "objectID": "w01/slides.html#the-fundamental-problem-of-causal-inference",
-    "href": "w01/slides.html#the-fundamental-problem-of-causal-inference",
-    "title": "Week 1: Science from Particles to People",
-    "section": "The Fundamental Problem of Causal Inference",
-    "text": "The Fundamental Problem of Causal Inference\nThe only workable definition of «\\(X\\) causes \\(Y\\)»:\n\n\n\n\n Defining Causality (Hume 1739, ruining everything as usual 😤)\n\n\n\\(X\\) causes \\(Y\\) if and only if:\n\n\\(X\\) temporally precedes \\(Y\\) and\n\nIn two worlds \\(W_0\\) and \\(W_1\\) where\neverything is exactly the same except that \\(X = 0\\) in \\(W_0\\) and \\(X = 1\\) in \\(W_1\\),\n\\(Y = 0\\) in \\(W_0\\) and \\(Y = 1\\) in \\(W_1\\)\n\n\n\n\n\n\n\nThe problem? We live in one world, not two identical worlds simultaneously 😭"
-  },
-  {
-    "objectID": "w01/slides.html#what-is-to-be-done",
-    "href": "w01/slides.html#what-is-to-be-done",
-    "title": "Week 1: Science from Particles to People",
-    "section": "What Is To Be Done?",
-    "text": "What Is To Be Done?"
-  },
-  {
-    "objectID": "w01/slides.html#probability",
-    "href": "w01/slides.html#probability",
-    "title": "Week 1: Science from Particles to People",
-    "section": "Probability++",
-    "text": "Probability++\n\nTools from prob/stats (RVs, CDFs, Conditional Probability) necessary but not sufficient for causal inference!\nExample: Say we use DSAN 5100 tools to discover:\n\nProbability that event \\(E_1\\) occurs is \\(\\Pr(E_1) = 0.5\\)\nProbability that \\(E_1\\) occurs conditional on another event \\(E_0\\) occurring is \\(\\Pr(E_1 \\mid E_0) = 0.75\\)\n\nUnfortunately, we still cannot infer that the occurrence of \\(E_0\\) causes an increase in the likelihood of \\(E_1\\) occurring."
-  },
-  {
-    "objectID": "w01/slides.html#beyond-conditional-probability",
-    "href": "w01/slides.html#beyond-conditional-probability",
-    "title": "Week 1: Science from Particles to People",
-    "section": "Beyond Conditional Probability",
-    "text": "Beyond Conditional Probability\n\nThis issue (that conditional probabilities could not be interpreted causally) at first represented a kind of dead end for scientists interested in employing probability theory to study causal relationships…\nRecent decades: researchers have built up an additional “layer” of modeling tools, augmenting existing machinery of probability to address causality head-on!\nPearl (2000): Formal proofs that (\\(\\Pr\\) axioms) \\(\\cup\\) (\\(\\textsf{do}\\) axioms) \\(\\Rightarrow\\) causal inference procedures successfully recover causal effects"
-  },
-  {
-    "objectID": "w01/slides.html#preview-do-calculus",
-    "href": "w01/slides.html#preview-do-calculus",
-    "title": "Week 1: Science from Particles to People",
-    "section": "Preview: do-Calculus",
-    "text": "Preview: do-Calculus\n\nExtends core of probability to incorporate causality, via \\(\\textsf{do}\\) operator\n\\(\\textsf{do}(X = 5)\\) is a “special” event, representing intervention in DGP to force \\(X \\leftarrow 5\\)… \\(\\textsf{do}(X = 5)\\) not the same event as \\(X = 5\\)!\n\n\n\n\n\n\n\n\n\n\\(X = 5\\)\n\\(\\neq\\)\n\\(\\textsf{do}(X = 5)\\)\n\n\n\n\nObserving that \\(X\\) took on value 5 (for some possibly-unknown reason)\n\\(\\neq\\)\nIntervening to force \\(X \\leftarrow 5\\), all else in DGP remaining the same (intervention then “flows” through rest of DGP)\n\n\n\n\nProbably the most difficult thing in 5650 to wrap head around\n“Special”: \\(\\Pr(\\textsf{do}(X = 5))\\) not well-defined, only \\(\\Pr(Y = 6 \\mid \\textsf{do}(X = 5))\\)\nTo emphasize special-ness, we may use notation like:\n\\[\n\\Pr(Y = 6 \\mid \\textsf{do}(X = 5)) \\equiv \\textstyle \\Pr_{\\textsf{do}(X = 5)}(Y = 6)\n\\]\nto avoid confusion with “normal” events"
-  },
-  {
-    "objectID": "w01/slides.html#causal-world-unlocked-with-great-power-comes-great-responsibility",
-    "href": "w01/slides.html#causal-world-unlocked-with-great-power-comes-great-responsibility",
-    "title": "Week 1: Science from Particles to People",
-    "section": "Causal World Unlocked 😎 (With Great Power Comes Great Responsibility…)",
-    "text": "Causal World Unlocked 😎 (With Great Power Comes Great Responsibility…)\n\nWith \\(\\textsf{do}(\\cdot)\\) in hand… (Alongside DGP satisfying axioms slightly more strict than core probability axioms)\nWe can make causal inferences from similar pair of facts! If:\n\nProbability that event \\(E_1\\) occurs is \\(\\Pr(E_1) = 0.5\\),\nThe probability that \\(E_1\\) occurs conditional on the event \\(\\textsf{do}(E_0)\\) occurring is \\(\\Pr(E_1 \\mid \\textsf{do}(E_0)) = 0.75\\),\n\nNow we can actually infer that the occurrence of \\(E_0\\) caused an increase in the likelihood of \\(E_1\\) occurring!"
-  },
-  {
-    "objectID": "w01/slides.html#ulysses-and-the-computational-sirens",
-    "href": "w01/slides.html#ulysses-and-the-computational-sirens",
-    "title": "Week 1: Science from Particles to People",
-    "section": "Ulysses and the [Computational] Sirens",
-    "text": "Ulysses and the [Computational] Sirens"
-  },
-  {
     "objectID": "w01/slides.html#jupyterhub",
     "href": "w01/slides.html#jupyterhub",
     "title": "Week 1: Science from Particles to People",
@@ -872,14 +943,14 @@
     "href": "w01/slides.html#assignments-midterm",
     "title": "Week 1: Science from Particles to People",
     "section": "Assignments / Midterm",
-    "text": "Assignments / Midterm\n\n\n\n\n\n\n\n\nAssignment\nDue Date\n% of Grade\n\n\n\n\nHW1: Causal Modeling with DAGs and PGMs: Direct and Indirect Effects\nFriday, May 30\n9%\n\n\nHW2: Traversing the Sea of Causality with the do-Harpoon in Hand: Chains, Forks, and Colliders\nFriday, February 21\n9%\n\n\nHW3: Statistical Matching: Apples to Apples and Oranges to Oranges\nFriday, June 27\n9%\n\n\nIn-Class Midterm\nWednesday, July 2\n25%\n\n\nHW4: Basic Computational Causal Methods\nFriday, July 11\n9%\n\n\nHW5: Fancy Computational Causal Methods\nFriday, July 25\n9%\n\n\nFinal Project\nFriday, August 15\n30%"
+    "text": "Assignments / Midterm\n\n\n\n\n\n\n\n\nAssignment\nDue Date\n% of Grade\n\n\n\n\nHW1: Causal Modeling with DAGs and PGMs: Direct and Indirect Effects\nFriday, May 30\n9%\n\n\nHW2: Traversing the Sea of Causality with the do-Harpoon in Hand: Chains, Forks, and Colliders\nFriday, June 13\n9%\n\n\nHW3: Statistical Matching: Apples to Apples and Oranges to Oranges\nFriday, June 27\n9%\n\n\nIn-Class Midterm\nWednesday, July 2\n25%\n\n\nHW4: Basic Computational Causal Methods\nFriday, July 11\n9%\n\n\nHW5: Fancy Computational Causal Methods\nFriday, July 25\n9%\n\n\nFinal Project\nFriday, August 15\n30%"
   },
   {
     "objectID": "w01/slides.html#references",
     "href": "w01/slides.html#references",
     "title": "Week 1: Science from Particles to People",
     "section": "References",
-    "text": "References\n\n\nFinetti, Bruno de. 1972. Probability, Induction and Statistics: The Art of Guessing. J. Wiley.\n\n\nHume, David. 1739. A Treatise of Human Nature: Being an Attempt to Introduce the Experimental Method of Reasoning Into Moral Subjects; and Dialogues Concerning Natural Religion. Longmans, Green.\n\n\nKalyvas, Stathis N. 2006. The Logic of Violence in Civil War. Cambridge University Press.\n\n\nLyall, Jason. 2020. Divided Armies: Inequality and Battlefield Performance in Modern War. Princeton University Press.\n\n\nMontessori, Maria. 1916. Spontaneous Activity in Education: A Basic Guide to the Montessori Methods of Learning in the Classroom. Lulu Press.\n\n\nPearl, Judea. 2000. Causality: Models, Reasoning, and Inference. Cambridge University Press.\n\n\nSperber, Dan. 1996. Explaining Culture: A Naturalistic Approach. Cambridge: Blackwell."
+    "text": "References\n\n\nKalyvas, Stathis N. 2006. The Logic of Violence in Civil War. Cambridge University Press.\n\n\nLyall, Jason. 2020. Divided Armies: Inequality and Battlefield Performance in Modern War. Princeton University Press.\n\n\nMontessori, Maria. 1916. Spontaneous Activity in Education: A Basic Guide to the Montessori Methods of Learning in the Classroom. Lulu Press.\n\n\nSperber, Dan. 1996. Explaining Culture: A Naturalistic Approach. Cambridge: Blackwell."
   },
   {
     "objectID": "syllabus.html",
@@ -946,7 +1017,7 @@
     "href": "syllabus.html#assignments-and-grading",
     "title": "Syllabus",
     "section": "Assignments and Grading",
-    "text": "Assignments and Grading\nThe main assignment in the course will be your final project, submitted at the end of the semester. However, there will also be a (virtual) in-class midterm exam and a series of assignments which exist to let you explore each of the modules of the course, in turn.\n\n\n\n\n\n\n\n\nAssignment\nDue Date\n% of Grade\n\n\n\n\nHW1: Causal Modeling with DAGs and PGMs: Direct and Indirect Effects\nFriday, May 30\n9%\n\n\nHW2: Traversing the Sea of Causality with the do-Harpoon in Hand: Chains, Forks, and Colliders\nFriday, February 21\n9%\n\n\nHW3: Statistical Matching: Apples to Apples and Oranges to Oranges\nFriday, June 27\n9%\n\n\nIn-Class Midterm\nWednesday, July 2\n25%\n\n\nHW4: Basic Computational Causal Methods\nFriday, July 11\n9%\n\n\nHW5: Fancy Computational Causal Methods\nFriday, July 25\n9%\n\n\nFinal Project\nFriday, August 15\n30%\n\n\n\n\nHomework Lateness Policy\nAfter the due date, for each assignment besides the midterm, you will have a grace period of 24 hours to submit the assignment without a lateness penalty. After this 24-hour grace period, late penalties will be applied based on the following scale (unless you obtain an excused lateness from one of the instructional staff!):\n\n0 to 24 hours late: no penalty\n24 to 30 hours late: 2.5% penalty\n30 to 42 hours late: 5% penalty\n42 to 54 hours late: 10% penalty\n54 to 66 hours late: 20% penalty\nMore than 66 hours late: Assignment submissions no longer accepted (without instructor approval)",
+    "text": "Assignments and Grading\nThe main assignment in the course will be your final project, submitted at the end of the semester. However, there will also be a (virtual) in-class midterm exam and a series of assignments which exist to let you explore each of the modules of the course, in turn.\n\n\n\n\n\n\n\n\nAssignment\nDue Date\n% of Grade\n\n\n\n\nHW1: Causal Modeling with DAGs and PGMs: Direct and Indirect Effects\nFriday, May 30\n9%\n\n\nHW2: Traversing the Sea of Causality with the do-Harpoon in Hand: Chains, Forks, and Colliders\nFriday, June 13\n9%\n\n\nHW3: Statistical Matching: Apples to Apples and Oranges to Oranges\nFriday, June 27\n9%\n\n\nIn-Class Midterm\nWednesday, July 2\n25%\n\n\nHW4: Basic Computational Causal Methods\nFriday, July 11\n9%\n\n\nHW5: Fancy Computational Causal Methods\nFriday, July 25\n9%\n\n\nFinal Project\nFriday, August 15\n30%\n\n\n\n\nHomework Lateness Policy\nAfter the due date, for each assignment besides the midterm, you will have a grace period of 24 hours to submit the assignment without a lateness penalty. After this 24-hour grace period, late penalties will be applied based on the following scale (unless you obtain an excused lateness from one of the instructional staff!):\n\n0 to 24 hours late: no penalty\n24 to 30 hours late: 2.5% penalty\n30 to 42 hours late: 5% penalty\n42 to 54 hours late: 10% penalty\n54 to 66 hours late: 20% penalty\nMore than 66 hours late: Assignment submissions no longer accepted (without instructor approval)",
     "crumbs": [
       "Syllabus"
     ]
