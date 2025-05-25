@@ -481,20 +481,6 @@ def my_mischievous_function(input):
 
 ![[Image source](https://www.opencredo.com/blogs/writing-a-custom-jupyterhub-spawner)](images/jhub.png){fig-align="center"}
 
-## Assignments / Midterm {.smaller .crunch-title .table-90}
-
-| Assignment | Due Date | % of Grade |
-| - | - | - |
-| [HW1: {{< var hw1.title >}}]({{< var hw1.url >}}) | {{< var hw1.date-full >}} | 9% |
-| [HW2: {{< var hw2.title >}}]({{< var hw2.url >}}) | {{< var hw2.date-full >}} | 9% |
-| [HW3: {{< var hw3.title >}}]({{< var hw3.url >}}) | {{< var hw3.date-full >}} | 9% |
-| {{< var midterm.title >}} | {{< var midterm.date-full >}} | 25% |
-| [HW4: {{< var hw4.title >}}]({{< var hw4.url >}}) | {{< var hw4.date-full >}} | 9% |
-| [HW5: {{< var hw5.title >}}]({{< var hw5.url >}}) | {{< var hw5.date-full >}} | 9% |
-| [Final Project](./final.qmd) | {{< var final.date-full >}} | 30% |
-
-: {tbl-colwidths="[55,25,20]"}
-
 ## References
 
 ::: {#refs}

@@ -262,6 +262,12 @@ window.Quarto = {
         <li class="px-0"><hr class="sidebar-divider hi "></li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
+  <a href="https://guhub.io" class="sidebar-item-text sidebar-link" target="_blank">
+ <span class="menu-text">JupyterHub <i class="bi bi-box-arrow-up-right ps-1"></i></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
   <a href="https://jjacobs.me/meet" class="sidebar-item-text sidebar-link" target="_blank">
  <span class="menu-text">Office Hours <i class="bi bi-box-arrow-up-right ps-1"></i></span></a>
   </div>
@@ -275,7 +281,7 @@ window.Quarto = {
     </ul>
     </div>
 <div class="quarto-sidebar-footer"><div class="sidebar-footer-item">
-<p><em>Updated 2025-05-21, 10:12:08 PM</em></p>
+<p><em>Updated 2025-05-25, 01:04:13 AM</em></p>
 </div></div></nav>
 <div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
@@ -317,7 +323,6 @@ window.Quarto = {
   <li><a href="#course-logistics" id="toc-course-logistics" class="nav-link" data-scroll-target="#course-logistics">Course Logistics</a>
   <ul class="collapse">
   <li><a href="#jupyterhub" id="toc-jupyterhub" class="nav-link" data-scroll-target="#jupyterhub">JupyterHub</a></li>
-  <li><a href="#assignments-midterm" id="toc-assignments-midterm" class="nav-link" data-scroll-target="#assignments-midterm">Assignments / Midterm</a></li>
   <li><a href="#references" id="toc-references" class="nav-link" data-scroll-target="#references">References</a></li>
   </ul></li>
   </ul>
@@ -460,6 +465,8 @@ window.Quarto = {
 \DeclareMathOperator*{\minimize}{minimize}
 \newcommand{\mle}{\textsf{ML}}
 \newcommand{\nimplies}{\;\not\!\!\!\!\implies}
+\newcommand{\pedge}[2]{\require{enclose}\enclose{circle}{~{#1}~} \rightarrow \; \enclose{circle}{\kern.01em {#2}~\kern.01em}}
+\newcommand{\pnode}[1]{\require{enclose}\enclose{circle}{~{#1}~}}
 \newcommand{\orange}[1]{\color{orange}{#1}}
 \newcommand{\outcome}[1]{\textsf{#1}}
 \newcommand{\param}[1]{{\color{purple} #1}}
@@ -523,7 +530,7 @@ window.Quarto = {
 <div>
 
 </div>
-<div class="quarto-layout-panel" data-layout-align="center" data-layout="[55,45]">
+<div class="quarto-layout-panel" data-layout="[55,45]" data-layout-align="center">
 <div class="quarto-layout-row quarto-layout-valign-top">
 <div id="why-background-left" class="quarto-layout-cell" style="flex-basis: 55.0%;justify-content: center;">
 <ul>
@@ -1107,60 +1114,6 @@ Figure&nbsp;2: From <a href="https://en.wikipedia.org/wiki/The_Carter" target="_
 <figcaption><a href="https://www.opencredo.com/blogs/writing-a-custom-jupyterhub-spawner">Image source</a></figcaption>
 </figure>
 </div>
-</section>
-<section id="assignments-midterm" class="level2 smaller crunch-title table-90">
-<h2 class="smaller crunch-title table-90 anchored" data-anchor-id="assignments-midterm">Assignments / Midterm</h2>
-<table class="caption-top table">
-<colgroup>
-<col style="width: 55%">
-<col style="width: 25%">
-<col style="width: 20%">
-</colgroup>
-<thead>
-<tr class="header">
-<th>Assignment</th>
-<th>Due Date</th>
-<th>% of Grade</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td><a href="#">HW1: Causal Modeling with DAGs and PGMs: Direct and Indirect Effects</a></td>
-<td><p>Friday, <strong>May 30</strong></p></td>
-<td>9%</td>
-</tr>
-<tr class="even">
-<td><a href="#">HW2: Traversing the Sea of Causality with the do-Harpoon in Hand: Chains, Forks, and Colliders</a></td>
-<td><p>Friday, <strong>June 13</strong></p></td>
-<td>9%</td>
-</tr>
-<tr class="odd">
-<td><a href="#">HW3: Statistical Matching: Apples to Apples and Oranges to Oranges</a></td>
-<td><p>Friday, <strong>June 27</strong></p></td>
-<td>9%</td>
-</tr>
-<tr class="even">
-<td><p>In-Class Midterm</p></td>
-<td><p>Wednesday, <strong>July 2</strong></p></td>
-<td>25%</td>
-</tr>
-<tr class="odd">
-<td><a href="#">HW4: Basic Computational Causal Methods</a></td>
-<td><p>Friday, <strong>July 11</strong></p></td>
-<td>9%</td>
-</tr>
-<tr class="even">
-<td><a href="#">HW5: Fancy Computational Causal Methods</a></td>
-<td><p>Friday, <strong>July 25</strong></p></td>
-<td>9%</td>
-</tr>
-<tr class="odd">
-<td><a href="./final.qmd">Final Project</a></td>
-<td><p>Friday, <strong>August 15</strong></p></td>
-<td>30%</td>
-</tr>
-</tbody>
-</table>
 </section>
 <section id="references" class="level2">
 <h2 class="anchored" data-anchor-id="references">References</h2>

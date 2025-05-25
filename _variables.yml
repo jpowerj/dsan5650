@@ -63,12 +63,12 @@ w12:
   date-md: "Aug 6"
 hw1:
   title: "Causal Modeling with DAGs and PGMs: Direct and Indirect Effects"
-  date-md: "May 30 (Friday), 5:59pm EST"
-  date-full: "Friday, **May 30**"
+  date-md: "Jun 4, 11:59pm EDT"
+  date-full: "Wednesday, **June 4**"
   url: "#"
 hw2:
   title: "Traversing the Sea of Causality with the do-Harpoon in Hand: Chains, Forks, and Colliders"
-  date-md: "Jun 13 (Friday), 5:59pm EST"
+  date-md: "Jun 13 (Friday), 5:59pm EDT"
   date-full: "Friday, **June 13**"
   url: "#"
 hw3:

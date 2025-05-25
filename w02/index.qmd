@@ -1,5 +1,5 @@
 ---
-title: "Week 2: Probabilistic Graphical Models (PGMs), the Language of DGPs"
+title: "Week 2: Probabilistic Graphical Models (PGMs)"
 subtitle: "*DSAN 5650: Causal Inference for Computational Social Science*<br><span class='subsubtitle'>Summer 2025, Georgetown University</span>"
 author: "Jeff Jacobs"
 institute: "[`jj1088@georgetown.edu`](mailto:jj1088@georgetown.edu)"
@@ -266,15 +266,128 @@ $X$ causes $Y$ if and only if:
 
 ![](images/sirens.jpg){fig-align="center"}
 
-# Your First Probabilistic Graphical Model! {data-stack-name="PGMs"}
+# Your First PGM! {.smaller .crunch-title .title-10 .crunch-ul .crunch-li-8 .crunch-quarto-figure .crunch-img .crunch-p data-stack-name="PGMs"}
 
-## Bayesian Inference but with Pictures
+![[Image source](http://probmods.org/chapters/dependence.html)](images/medical.jpg){fig-align="center"}
 
-# PGM Nuts and Bolts
+* <i class='bi bi-1-circle'></i> Which of the variables (ovals) are **observed**? Which are **latent**?
+* <i class='bi bi-2-circle'></i> What do you think the arrows represent?
+* <i class='bi bi-3-circle'></i> Can we use this to find the **"root cause"** of (e.g.) observed **chest pain**? Or conversely, to **predict** possible &uarr; in likelihood of chest pain if we start smoking?
 
-## Nodes are *Random Variables*
+## Bayesian Inference but with Pictures {.title-09 .crunch-title .crunch-ul .crunch-li-8 .crunch-callout .text-90}
 
-## Edges Indicate *Conditional Probability Tables* (CPTs)
+A **Probabilistic Graphical Model (PGM)** provides us with:
+
+* A **formal**-mathematical...
+* But also easily **visualizable** (by construction)...
+* Representation of a **data-generating process (DGP)!**
+
+Example: Let's model how **weather** $W$ affects **evening plans** $Y$: the choice between **going to a party** or **staying in to watch movies**
+
+::: {.callout-tip title="The Partier's Dilemma"}
+
+1.  A person $i$ wakes up with some initial affinity for partying: $\Pr(Y_i = \textsf{Go Out})$
+2.  $i$ then goes to their window and observes the weather $W_i$ outside:
+    i. If the weather is **sunny**, $i$'s affinity increases: $\Pr(Y_i = \textsf{Go} \mid W_i = \textsf{Sun}) > \Pr(Y = \textsf{Go})$
+    ii. Otherwise, if it is **rainy**, $i$'s affinity decreases: $\Pr(Y_i = \textsf{Go} \mid W_i = \textsf{Sun}) < \Pr(Y = \textsf{Go})$
+
+:::
+
+## Two Main "Building Blocks" {.crunch-title .title-09 .inline-95 .math-80 .crunch-ul .crunch-math .crunch-li-8 .text-90}
+
+* **Nodes** like $\require{enclose}\enclose{circle}{\kern .01em ~X~\kern .01em}$ denote **Random Variables**
+
+$$
+\boxed{\require{enclose}\enclose{circle}{\kern .01em ~X~\kern .01em}} \simeq \boxed{ \begin{array}{c|cc}x & \textsf{Tails} & \textsf{Heads} \\\hline \Pr(X = x) & 0.5 & 0.5\end{array}}
+$$
+
+* **Edges** like $\require{enclose}\enclose{circle}{\kern .01em ~X~\kern .01em} \rightarrow \; \enclose{circle}{\kern.01em Y~\kern .01em}$ denote **relationships** between RVs
+  * What an edge "means" can get [ontologically] tricky!
+  * Retain sanity by just remembering: an edge $\require{enclose}\enclose{circle}{\kern .01em ~X~\kern .01em} \rightarrow \; \enclose{circle}{\kern.01em Y~\kern .01em}$ is included in our PGM if we "care about" modeling the **conditional probability table (CPT)** of $Y$ w.r.t. $X$
+
+$$
+\require{enclose}\boxed{ \enclose{circle}{\kern .01em ~X~\kern .01em} \rightarrow \; \enclose{circle}{\kern.01em Y~\kern .01em} } \simeq \boxed{
+  \begin{array}{c|cc}
+  x & \Pr(Y = \textsf{Lose} \mid X = x) & \Pr(Y = \textsf{Win} \mid X = x) \\\hline
+  \textsf{Tails} & 0.8 & 0.2 \\
+  \textsf{Heads} & 0.5 & 0.5
+  \end{array}
+}
+$$
+
+## PGM for the Partier's Dilemma {.smaller .crunch-title .crunch-ul .table-90}
+
+* A node $\pnode{W}$ denoting RV $W$, which can take on values in $\mathcal{R}_W = \{\textsf{Sun}, \textsf{Rain}\}$,
+* A node $\pnode{Y}$ denoting RV $Y$, which can take on values in $\mathcal{R}_Y = \{\textsf{Go}, \textsf{Stay}\}$, and 
+* An edge $\pedge{W}{Y}$ representing the following relationship between $W$ and $Y$:
+  * $\Pr(Y = \textsf{Go} \mid W = \textsf{Sun}) = 0.8$
+  * $\Pr(Y = \textsf{Stay} \mid W = \textsf{Sun}) = 0.2$
+  * $\Pr(Y = \textsf{Go} \mid W = \textsf{Rain}) = 0.1$
+  * $\Pr(Y = \textsf{Stay} \mid W = \textsf{Rain}) = 0.9$
+
+:::: {layout="[1,1]"}
+::: {#fig-partier-dgp}
+
+![](images/pgm.svg){fig-align="center" width="400"}
+
+Our PGM of the Partier's Dilemma
+:::
+::: {#fig-partier-cpt}
+
+| | $\Pr(Y = \textsf{Stay} \mid W)$ | $\Pr(Y = \textsf{Go} \mid W)$ |
+|-:|:-:|:-:|
+| $W = \textsf{Sun}$ | 0.2 | 0.8 |
+| $W = \textsf{Rain}$ | 0.9 | 0.1 |
+
+The Conditional Probability Table (CPT) for the edge $\pedge{W}{Y}$ in @fig-partier-dgp
+:::
+::::
+
+## Observed vs. Latent Nodes
+
+* PGMs help us make **valid (Bayesian) inferences** about the world in the face of **incomplete information**!
+* Key remaining tool: separation of nodes into two categories:
+  * **Observed nodes** (shaded)
+  * **Latent nodes** (unshaded)
+* $\Rightarrow$ Can use our PGM as a **weather-inference machine!**
+* If we **observe** $i$ at a party, what can we infer about the **weather** outside?
+
+## Observed Partier, Latent Weather {.title-09}
+
+* We can draw this situation as a PGM with **shaded** and **unshaded nodes**, distinguishing what we **know** from what we'd like to **infer**:
+
+![](images/pgm_yobs.svg){fig-align="center" width="400"}
+
+| | | |
+|:-:|:-:|:-:|
+| ❓ | &nbsp; | ✅ |
+
+: {tbl-colwidths="[18,64,18]"}
+
+* And we can now use Bayes' Rule to compute how observed information ($i$ at party $\Rightarrow [Y = \textsf{Go}]$) "flows" back into $W$
+
+## Computation via Bayes' Rule {.smaller .crunch-title .crunch-ul .crunch-math .math-80}
+
+* Bayes' Rule, $\Pr(A \mid B) = \frac{\Pr(B \mid A)\Pr(A)}{\Pr(B)}$, tells us how to use info about $\Pr(B \mid A)$ to obtain info about $\Pr(A \mid B)$!
+* We use it to obtain a distribution for $W$ **updated to incorporate** new info $[Y = \textsf{Go}]$:
+
+$$
+\begin{align*}
+&\Pr(W = \textsf{Sun} \mid Y = \textsf{Go}) 
+= \frac{\Pr(Y = \textsf{Go} \mid W = \textsf{Sun}) \Pr(W = \textsf{Sun})}{\Pr(Y = \textsf{Go})} \\
+=\, &\frac{\Pr(Y = \textsf{Go} \mid W = \textsf{Sun}) \Pr(W = \textsf{Sun})}{\Pr(Y = \textsf{Go} \mid W = \textsf{Sun}) \Pr(W = \textsf{Sun}) + \Pr(Y = \textsf{Go} \mid W = \textsf{Rain}) \Pr(W = \textsf{Rain})}
+\end{align*}
+$$
+
+* Plug in info from CPT to obtain our new (conditional) probability of interest:
+
+$$
+\begin{align*}
+\Pr(W = \textsf{Sun} \mid Y = \textsf{Go}) &= \frac{(0.8)(0.5)}{(0.8)(0.5) + (0.1)(0.5)} = \frac{0.4}{0.4 + 0.05} \approx 0.89
+\end{align*}
+$$
+
+* We've learned something interesting! Observing $i$ at the party $\leadsto$ probability of sun jumps from $0.5$ (**"prior"** estimate of $W$, best guess without any other relevant info) to $0.89$ (**"posterior"** estimate of $W$, best guess after incorporating relevant info).
 
 ## References
 

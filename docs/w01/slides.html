@@ -117,7 +117,7 @@
     div.csl-indent {
       margin-left: 2em;
     }  </style>
-  <link rel="stylesheet" href="../site_libs/revealjs/dist/theme/quarto-477372f786e82a939cfd0514a0693deb.css">
+  <link rel="stylesheet" href="../site_libs/revealjs/dist/theme/quarto-776cfcce19bddc2dc85138ceedab3e18.css">
   <link rel="stylesheet" href="../dsan-globals/jjstyles.css">
   <link href="../site_libs/revealjs/plugin/quarto-line-highlight/line-highlight.css" rel="stylesheet">
   <link href="../site_libs/revealjs/plugin/reveal-menu/menu.css" rel="stylesheet">
@@ -342,6 +342,8 @@ Jeff Jacobs
 \DeclareMathOperator*{\minimize}{minimize}
 \newcommand{\mle}{\textsf{ML}}
 \newcommand{\nimplies}{\;\not\!\!\!\!\implies}
+\newcommand{\pedge}[2]{\require{enclose}\enclose{circle}{~{#1}~} \rightarrow \; \enclose{circle}{\kern.01em {#2}~\kern.01em}}
+\newcommand{\pnode}[1]{\require{enclose}\enclose{circle}{~{#1}~}}
 \newcommand{\orange}[1]{\color{orange}{#1}}
 \newcommand{\outcome}[1]{\textsf{#1}}
 \newcommand{\param}[1]{{\color{purple} #1}}
@@ -422,7 +424,7 @@ Jeff Jacobs
 <figure class="quarto-float quarto-float-fig">
 <div aria-describedby="fig-background-right-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <center>
-<div id="cell-bg-sunburst" class="cell" data-align="center" data-execution_count="2">
+<div id="cell-bg-sunburst" class="cell" data-align="center" data-execution_count="3">
 <div id="bg-sunburst" class="cell-output cell-output-display">
 <div>                            <div id="bdc6b680-6b8b-4ad6-b53f-78c78c8ff38a" class="plotly-graph-div" style="height:400px; width:450px;"></div>            <script type="text/javascript">                require(["plotly"], function(Plotly) {                    window.PLOTLYENV=window.PLOTLYENV || {};                                    if (document.getElementById("bdc6b680-6b8b-4ad6-b53f-78c78c8ff38a")) {                    Plotly.newPlot(                        "bdc6b680-6b8b-4ad6-b53f-78c78c8ff38a",                        [{"branchvalues":"total","customdata":[["Quant"],["Quant"],["Social Sci"],["Social Sci"],["Humanities"],["Humanities"],["Quant"],["Social Sci"]],"domain":{"x":[0.0,1.0],"y":[0.0,1.0]},"ids":["Quant\u002fMath\u003cbr\u003e(BS)","Quant\u002fCS\u003cbr\u003e(BS,MS)","Social Sci\u002fEcon\u003cbr\u003e(BS+Job)","Social Sci\u002fPol Econ\u003cbr\u003e(PhD Pt 2)","Humanities\u002fPol Phil\u003cbr\u003e(PhD Pt 1)","Humanities","Quant","Social Sci"],"labels":["Math\u003cbr\u003e(BS)","CS\u003cbr\u003e(BS,MS)","Econ\u003cbr\u003e(BS+Job)","Pol Econ\u003cbr\u003e(PhD Pt 2)","Pol Phil\u003cbr\u003e(PhD Pt 1)","Humanities","Quant","Social Sci"],"marker":{"colors":["#E69F00","#E69F00","#009E73","#009E73","#56B4E9","#56B4E9","#E69F00","#009E73"]},"name":"","parents":["Quant","Quant","Social Sci","Social Sci","Humanities","","",""],"values":[4,6,6,5,3,3,10,11],"type":"sunburst","hoverinfo":"skip"}],                        {"template":{"data":{"histogram2dcontour":[{"type":"histogram2dcontour","colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]]}],"choropleth":[{"type":"choropleth","colorbar":{"outlinewidth":0,"ticks":""}}],"histogram2d":[{"type":"histogram2d","colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]]}],"heatmap":[{"type":"heatmap","colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]]}],"heatmapgl":[{"type":"heatmapgl","colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]]}],"contourcarpet":[{"type":"contourcarpet","colorbar":{"outlinewidth":0,"ticks":""}}],"contour":[{"type":"contour","colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]]}],"surface":[{"type":"surface","colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]]}],"mesh3d":[{"type":"mesh3d","colorbar":{"outlinewidth":0,"ticks":""}}],"scatter":[{"fillpattern":{"fillmode":"overlay","size":10,"solidity":0.2},"type":"scatter"}],"parcoords":[{"type":"parcoords","line":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"scatterpolargl":[{"type":"scatterpolargl","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"bar":[{"error_x":{"color":"#2a3f5f"},"error_y":{"color":"#2a3f5f"},"marker":{"line":{"color":"#E5ECF6","width":0.5},"pattern":{"fillmode":"overlay","size":10,"solidity":0.2}},"type":"bar"}],"scattergeo":[{"type":"scattergeo","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"scatterpolar":[{"type":"scatterpolar","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"histogram":[{"marker":{"pattern":{"fillmode":"overlay","size":10,"solidity":0.2}},"type":"histogram"}],"scattergl":[{"type":"scattergl","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"scatter3d":[{"type":"scatter3d","line":{"colorbar":{"outlinewidth":0,"ticks":""}},"marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"scattermapbox":[{"type":"scattermapbox","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"scatterternary":[{"type":"scatterternary","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"scattercarpet":[{"type":"scattercarpet","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"carpet":[{"aaxis":{"endlinecolor":"#2a3f5f","gridcolor":"white","linecolor":"white","minorgridcolor":"white","startlinecolor":"#2a3f5f"},"baxis":{"endlinecolor":"#2a3f5f","gridcolor":"white","linecolor":"white","minorgridcolor":"white","startlinecolor":"#2a3f5f"},"type":"carpet"}],"table":[{"cells":{"fill":{"color":"#EBF0F8"},"line":{"color":"white"}},"header":{"fill":{"color":"#C8D4E3"},"line":{"color":"white"}},"type":"table"}],"barpolar":[{"marker":{"line":{"color":"#E5ECF6","width":0.5},"pattern":{"fillmode":"overlay","size":10,"solidity":0.2}},"type":"barpolar"}],"pie":[{"automargin":true,"type":"pie"}]},"layout":{"autotypenumbers":"strict","colorway":["#636efa","#EF553B","#00cc96","#ab63fa","#FFA15A","#19d3f3","#FF6692","#B6E880","#FF97FF","#FECB52"],"font":{"color":"#2a3f5f"},"hovermode":"closest","hoverlabel":{"align":"left"},"paper_bgcolor":"white","plot_bgcolor":"#E5ECF6","polar":{"bgcolor":"#E5ECF6","angularaxis":{"gridcolor":"white","linecolor":"white","ticks":""},"radialaxis":{"gridcolor":"white","linecolor":"white","ticks":""}},"ternary":{"bgcolor":"#E5ECF6","aaxis":{"gridcolor":"white","linecolor":"white","ticks":""},"baxis":{"gridcolor":"white","linecolor":"white","ticks":""},"caxis":{"gridcolor":"white","linecolor":"white","ticks":""}},"coloraxis":{"colorbar":{"outlinewidth":0,"ticks":""}},"colorscale":{"sequential":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]],"sequentialminus":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]],"diverging":[[0,"#8e0152"],[0.1,"#c51b7d"],[0.2,"#de77ae"],[0.3,"#f1b6da"],[0.4,"#fde0ef"],[0.5,"#f7f7f7"],[0.6,"#e6f5d0"],[0.7,"#b8e186"],[0.8,"#7fbc41"],[0.9,"#4d9221"],[1,"#276419"]]},"xaxis":{"gridcolor":"white","linecolor":"white","ticks":"","title":{"standoff":15},"zerolinecolor":"white","automargin":true,"zerolinewidth":2},"yaxis":{"gridcolor":"white","linecolor":"white","ticks":"","title":{"standoff":15},"zerolinecolor":"white","automargin":true,"zerolinewidth":2},"scene":{"xaxis":{"backgroundcolor":"#E5ECF6","gridcolor":"white","linecolor":"white","showbackground":true,"ticks":"","zerolinecolor":"white","gridwidth":2},"yaxis":{"backgroundcolor":"#E5ECF6","gridcolor":"white","linecolor":"white","showbackground":true,"ticks":"","zerolinecolor":"white","gridwidth":2},"zaxis":{"backgroundcolor":"#E5ECF6","gridcolor":"white","linecolor":"white","showbackground":true,"ticks":"","zerolinecolor":"white","gridwidth":2}},"shapedefaults":{"line":{"color":"#2a3f5f"}},"annotationdefaults":{"arrowcolor":"#2a3f5f","arrowhead":0,"arrowwidth":1},"geo":{"bgcolor":"white","landcolor":"#E5ECF6","subunitcolor":"white","showland":true,"showlakes":true,"lakecolor":"white"},"title":{"x":0.05},"mapbox":{"style":"light"},"margin":{"b":0,"l":0,"r":0,"t":30}}},"legend":{"tracegroupgap":0},"height":400,"width":450,"margin":{"t":0,"l":0,"r":0,"b":0}},                        {"responsive": true}                    ).then(function(){
                             
@@ -963,60 +965,6 @@ Figure&nbsp;2: From <a href="https://en.wikipedia.org/wiki/The_Carter" target="_
 </center>
 
 <img data-src="images/jhub.png" class="r-stretch quarto-figure-center"><p class="caption"><a href="https://www.opencredo.com/blogs/writing-a-custom-jupyterhub-spawner">Image source</a></p></section>
-<section id="assignments-midterm" class="slide level2 smaller crunch-title table-90">
-<h2>Assignments / Midterm</h2>
-<table class="caption-top">
-<colgroup>
-<col style="width: 55%">
-<col style="width: 25%">
-<col style="width: 20%">
-</colgroup>
-<thead>
-<tr class="header">
-<th>Assignment</th>
-<th>Due Date</th>
-<th>% of Grade</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td><a href="#/">HW1: Causal Modeling with DAGs and PGMs: Direct and Indirect Effects</a></td>
-<td><p>Friday, <strong>May 30</strong></p></td>
-<td>9%</td>
-</tr>
-<tr class="even">
-<td><a href="#/">HW2: Traversing the Sea of Causality with the do-Harpoon in Hand: Chains, Forks, and Colliders</a></td>
-<td><p>Friday, <strong>June 13</strong></p></td>
-<td>9%</td>
-</tr>
-<tr class="odd">
-<td><a href="#/">HW3: Statistical Matching: Apples to Apples and Oranges to Oranges</a></td>
-<td><p>Friday, <strong>June 27</strong></p></td>
-<td>9%</td>
-</tr>
-<tr class="even">
-<td><p>In-Class Midterm</p></td>
-<td><p>Wednesday, <strong>July 2</strong></p></td>
-<td>25%</td>
-</tr>
-<tr class="odd">
-<td><a href="#/">HW4: Basic Computational Causal Methods</a></td>
-<td><p>Friday, <strong>July 11</strong></p></td>
-<td>9%</td>
-</tr>
-<tr class="even">
-<td><a href="#/">HW5: Fancy Computational Causal Methods</a></td>
-<td><p>Friday, <strong>July 25</strong></p></td>
-<td>9%</td>
-</tr>
-<tr class="odd">
-<td><a href="./final.qmd">Final Project</a></td>
-<td><p>Friday, <strong>August 15</strong></p></td>
-<td>30%</td>
-</tr>
-</tbody>
-</table>
-</section>
 <section id="references" class="slide level2 smaller scrollable">
 <h2>References</h2>
 <div id="refs" class="references csl-bib-body hanging-indent" data-entry-spacing="0" role="list">

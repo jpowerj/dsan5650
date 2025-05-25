@@ -13,7 +13,7 @@
   <meta name="generator" content="quarto-1.6.40">
 
   <meta name="author" content="Jeff Jacobs">
-  <title>DSAN 5650 – Week 2: Probabilistic Graphical Models (PGMs), the Language of DGPs</title>
+  <title>DSAN 5650 – Week 2: Probabilistic Graphical Models (PGMs)</title>
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
@@ -117,7 +117,7 @@
     div.csl-indent {
       margin-left: 2em;
     }  </style>
-  <link rel="stylesheet" href="../site_libs/revealjs/dist/theme/quarto-477372f786e82a939cfd0514a0693deb.css">
+  <link rel="stylesheet" href="../site_libs/revealjs/dist/theme/quarto-776cfcce19bddc2dc85138ceedab3e18.css">
   <link href="../site_libs/revealjs/plugin/quarto-line-highlight/line-highlight.css" rel="stylesheet">
   <link href="../site_libs/revealjs/plugin/reveal-menu/menu.css" rel="stylesheet">
   <link href="../site_libs/revealjs/plugin/reveal-menu/quarto-menu.css" rel="stylesheet">
@@ -218,7 +218,7 @@
     <div class="slides">
 
 <section id="title-slide" class="quarto-title-block center">
-  <h1 class="title">Week 2: Probabilistic Graphical Models (PGMs), the Language of DGPs</h1>
+  <h1 class="title">Week 2: Probabilistic Graphical Models (PGMs)</h1>
   <p class="subtitle"><em>DSAN 5650: Causal Inference for Computational Social Science</em><br><span class="subsubtitle">Summer 2025, Georgetown University</span></p>
 
 <div class="quarto-title-authors">
@@ -323,6 +323,8 @@ Jeff Jacobs
 \DeclareMathOperator*{\minimize}{minimize}
 \newcommand{\mle}{\textsf{ML}}
 \newcommand{\nimplies}{\;\not\!\!\!\!\implies}
+\newcommand{\pedge}[2]{\require{enclose}\enclose{circle}{~{#1}~} \rightarrow \; \enclose{circle}{\kern.01em {#2}~\kern.01em}}
+\newcommand{\pnode}[1]{\require{enclose}\enclose{circle}{~{#1}~}}
 \newcommand{\orange}[1]{\color{orange}{#1}}
 \newcommand{\outcome}[1]{\textsf{#1}}
 \newcommand{\param}[1]{{\color{purple} #1}}
@@ -403,7 +405,7 @@ Jeff Jacobs
 <div>
 
 </div>
-<div class="quarto-layout-panel" data-layout-align="center" data-layout="[55,45]">
+<div class="quarto-layout-panel" data-layout="[55,45]" data-layout-align="center">
 <div class="quarto-layout-row quarto-layout-valign-center">
 <div id="dgps-5100" class="quarto-layout-cell" style="flex-basis: 55.0%;justify-content: center;">
 <ul>
@@ -608,23 +610,198 @@ Jeff Jacobs
 
 <img data-src="images/sirens.jpg" class="quarto-figure quarto-figure-center r-stretch"></section></section>
 <section>
-<section id="your-first-probabilistic-graphical-model" class="title-slide slide level1 center" data-stack-name="PGMs">
-<h1>Your First Probabilistic Graphical Model!</h1>
+<section id="your-first-pgm" class="title-slide slide level1 smaller crunch-title title-10 crunch-ul crunch-li-8 crunch-quarto-figure crunch-img crunch-p center" data-stack-name="PGMs">
+<h1>Your First PGM!</h1>
 
+<img data-src="images/medical.jpg" class="r-stretch quarto-figure-center"><p class="caption"><a href="http://probmods.org/chapters/dependence.html">Image source</a></p><ul>
+<li><i class="bi bi-1-circle"></i> Which of the variables (ovals) are <strong>observed</strong>? Which are <strong>latent</strong>?</li>
+<li><i class="bi bi-2-circle"></i> What do you think the arrows represent?</li>
+<li><i class="bi bi-3-circle"></i> Can we use this to find the <strong>“root cause”</strong> of (e.g.) observed <strong>chest pain</strong>? Or conversely, to <strong>predict</strong> possible ↑ in likelihood of chest pain if we start smoking?</li>
+</ul>
 </section>
-<section id="bayesian-inference-but-with-pictures" class="slide level2">
+<section id="bayesian-inference-but-with-pictures" class="slide level2 title-09 crunch-title crunch-ul crunch-li-8 crunch-callout text-90 scrollable">
 <h2>Bayesian Inference but with Pictures</h2>
-</section></section>
-<section>
-<section id="pgm-nuts-and-bolts" class="title-slide slide level1 center">
-<h1>PGM Nuts and Bolts</h1>
+<p>A <strong>Probabilistic Graphical Model (PGM)</strong> provides us with:</p>
+<ul>
+<li>A <strong>formal</strong>-mathematical…</li>
+<li>But also easily <strong>visualizable</strong> (by construction)…</li>
+<li>Representation of a <strong>data-generating process (DGP)!</strong></li>
+</ul>
+<p>Example: Let’s model how <strong>weather</strong> <span class="math inline">\(W\)</span> affects <strong>evening plans</strong> <span class="math inline">\(Y\)</span>: the choice between <strong>going to a party</strong> or <strong>staying in to watch movies</strong></p>
+<div title="The Partier's Dilemma">
+<div class="callout callout-tip callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong>The Partier’s Dilemma</strong></p>
+</div>
+<div class="callout-content">
+<ol type="1">
+<li>A person <span class="math inline">\(i\)</span> wakes up with some initial affinity for partying: <span class="math inline">\(\Pr(Y_i = \textsf{Go Out})\)</span></li>
+<li><span class="math inline">\(i\)</span> then goes to their window and observes the weather <span class="math inline">\(W_i\)</span> outside:
+<ol type="i">
+<li>If the weather is <strong>sunny</strong>, <span class="math inline">\(i\)</span>’s affinity increases: <span class="math inline">\(\Pr(Y_i = \textsf{Go} \mid W_i = \textsf{Sun}) &gt; \Pr(Y = \textsf{Go})\)</span></li>
+<li>Otherwise, if it is <strong>rainy</strong>, <span class="math inline">\(i\)</span>’s affinity decreases: <span class="math inline">\(\Pr(Y_i = \textsf{Go} \mid W_i = \textsf{Sun}) &lt; \Pr(Y = \textsf{Go})\)</span></li>
+</ol></li>
+</ol>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id="two-main-building-blocks" class="slide level2 crunch-title title-09 inline-95 math-80 crunch-ul crunch-math crunch-li-8 text-90">
+<h2>Two Main “Building Blocks”</h2>
+<ul>
+<li><strong>Nodes</strong> like <span class="math inline">\(\require{enclose}\enclose{circle}{\kern .01em ~X~\kern .01em}\)</span> denote <strong>Random Variables</strong></li>
+</ul>
+<p><span class="math display">\[
+\boxed{\require{enclose}\enclose{circle}{\kern .01em ~X~\kern .01em}} \simeq \boxed{ \begin{array}{c|cc}x &amp; \textsf{Tails} &amp; \textsf{Heads} \\\hline \Pr(X = x) &amp; 0.5 &amp; 0.5\end{array}}
+\]</span></p>
+<ul>
+<li><strong>Edges</strong> like <span class="math inline">\(\require{enclose}\enclose{circle}{\kern .01em ~X~\kern .01em} \rightarrow \; \enclose{circle}{\kern.01em Y~\kern .01em}\)</span> denote <strong>relationships</strong> between RVs
+<ul>
+<li>What an edge “means” can get [ontologically] tricky!</li>
+<li>Retain sanity by just remembering: an edge <span class="math inline">\(\require{enclose}\enclose{circle}{\kern .01em ~X~\kern .01em} \rightarrow \; \enclose{circle}{\kern.01em Y~\kern .01em}\)</span> is included in our PGM if we “care about” modeling the <strong>conditional probability table (CPT)</strong> of <span class="math inline">\(Y\)</span> w.r.t. <span class="math inline">\(X\)</span></li>
+</ul></li>
+</ul>
+<p><span class="math display">\[
+\require{enclose}\boxed{ \enclose{circle}{\kern .01em ~X~\kern .01em} \rightarrow \; \enclose{circle}{\kern.01em Y~\kern .01em} } \simeq \boxed{
+  \begin{array}{c|cc}
+  x &amp; \Pr(Y = \textsf{Lose} \mid X = x) &amp; \Pr(Y = \textsf{Win} \mid X = x) \\\hline
+  \textsf{Tails} &amp; 0.8 &amp; 0.2 \\
+  \textsf{Heads} &amp; 0.5 &amp; 0.5
+  \end{array}
+}
+\]</span></p>
+</section>
+<section id="pgm-for-the-partiers-dilemma" class="slide level2 smaller crunch-title crunch-ul table-90">
+<h2>PGM for the Partier’s Dilemma</h2>
+<ul>
+<li>A node <span class="math inline">\(\pnode{W}\)</span> denoting RV <span class="math inline">\(W\)</span>, which can take on values in <span class="math inline">\(\mathcal{R}_W = \{\textsf{Sun}, \textsf{Rain}\}\)</span>,</li>
+<li>A node <span class="math inline">\(\pnode{Y}\)</span> denoting RV <span class="math inline">\(Y\)</span>, which can take on values in <span class="math inline">\(\mathcal{R}_Y = \{\textsf{Go}, \textsf{Stay}\}\)</span>, and</li>
+<li>An edge <span class="math inline">\(\pedge{W}{Y}\)</span> representing the following relationship between <span class="math inline">\(W\)</span> and <span class="math inline">\(Y\)</span>:
+<ul>
+<li><span class="math inline">\(\Pr(Y = \textsf{Go} \mid W = \textsf{Sun}) = 0.8\)</span></li>
+<li><span class="math inline">\(\Pr(Y = \textsf{Stay} \mid W = \textsf{Sun}) = 0.2\)</span></li>
+<li><span class="math inline">\(\Pr(Y = \textsf{Go} \mid W = \textsf{Rain}) = 0.1\)</span></li>
+<li><span class="math inline">\(\Pr(Y = \textsf{Stay} \mid W = \textsf{Rain}) = 0.9\)</span></li>
+</ul></li>
+</ul>
+<div>
 
+</div>
+<div class="quarto-layout-panel" data-layout="[1,1]">
+<div class="quarto-layout-row">
+<div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: flex-start;">
+<div id="fig-partier-dgp" class="quarto-float quarto-figure quarto-figure-center" data-fig-align="center">
+<figure class="quarto-float quarto-float-fig">
+<div aria-describedby="fig-partier-dgp-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img data-src="images/pgm.svg" class="quarto-figure quarto-figure-center" width="400">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-partier-dgp-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;1: Our PGM of the Partier’s Dilemma
+</figcaption>
+</figure>
+</div>
+</div>
+<div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
+<div id="fig-partier-cpt" class="quarto-float quarto-figure quarto-figure-center">
+<figure class="quarto-float quarto-float-fig">
+<div aria-describedby="fig-partier-cpt-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<table class="caption-top">
+<thead>
+<tr class="header">
+<th style="text-align: right;"></th>
+<th style="text-align: center;"><span class="math inline">\(\Pr(Y = \textsf{Stay} \mid W)\)</span></th>
+<th style="text-align: center;"><span class="math inline">\(\Pr(Y = \textsf{Go} \mid W)\)</span></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: right;"><span class="math inline">\(W = \textsf{Sun}\)</span></td>
+<td style="text-align: center;">0.2</td>
+<td style="text-align: center;">0.8</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;"><span class="math inline">\(W = \textsf{Rain}\)</span></td>
+<td style="text-align: center;">0.9</td>
+<td style="text-align: center;">0.1</td>
+</tr>
+</tbody>
+</table>
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-partier-cpt-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;2: The Conditional Probability Table (CPT) for the edge <span class="math inline">\(\pedge{W}{Y}\)</span> in <a href="#/fig-partier-dgp" class="quarto-xref">Figure&nbsp;1</a>
+</figcaption>
+</figure>
+</div>
+</div>
+</div>
+</div>
 </section>
-<section id="nodes-are-random-variables" class="slide level2">
-<h2>Nodes are <em>Random Variables</em></h2>
+<section id="observed-vs.-latent-nodes" class="slide level2">
+<h2>Observed vs.&nbsp;Latent Nodes</h2>
+<ul>
+<li>PGMs help us make <strong>valid (Bayesian) inferences</strong> about the world in the face of <strong>incomplete information</strong>!</li>
+<li>Key remaining tool: separation of nodes into two categories:
+<ul>
+<li><strong>Observed nodes</strong> (shaded)</li>
+<li><strong>Latent nodes</strong> (unshaded)</li>
+</ul></li>
+<li><span class="math inline">\(\Rightarrow\)</span> Can use our PGM as a <strong>weather-inference machine!</strong></li>
+<li>If we <strong>observe</strong> <span class="math inline">\(i\)</span> at a party, what can we infer about the <strong>weather</strong> outside?</li>
+</ul>
 </section>
-<section id="edges-indicate-conditional-probability-tables-cpts" class="slide level2">
-<h2>Edges Indicate <em>Conditional Probability Tables</em> (CPTs)</h2>
+<section id="observed-partier-latent-weather" class="slide level2 title-09">
+<h2>Observed Partier, Latent Weather</h2>
+<ul>
+<li>We can draw this situation as a PGM with <strong>shaded</strong> and <strong>unshaded nodes</strong>, distinguishing what we <strong>know</strong> from what we’d like to <strong>infer</strong>:</li>
+</ul>
+
+<img data-src="images/pgm_yobs.svg" class="quarto-figure quarto-figure-center r-stretch" width="400"><table class="caption-top">
+<colgroup>
+<col style="width: 18%">
+<col style="width: 64%">
+<col style="width: 18%">
+</colgroup>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;">❓</td>
+<td style="text-align: center;">&nbsp;</td>
+<td style="text-align: center;">✅</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>And we can now use Bayes’ Rule to compute how observed information (<span class="math inline">\(i\)</span> at party <span class="math inline">\(\Rightarrow [Y = \textsf{Go}]\)</span>) “flows” back into <span class="math inline">\(W\)</span></li>
+</ul>
+</section>
+<section id="computation-via-bayes-rule" class="slide level2 smaller crunch-title crunch-ul crunch-math math-80">
+<h2>Computation via Bayes’ Rule</h2>
+<ul>
+<li>Bayes’ Rule, <span class="math inline">\(\Pr(A \mid B) = \frac{\Pr(B \mid A)\Pr(A)}{\Pr(B)}\)</span>, tells us how to use info about <span class="math inline">\(\Pr(B \mid A)\)</span> to obtain info about <span class="math inline">\(\Pr(A \mid B)\)</span>!</li>
+<li>We use it to obtain a distribution for <span class="math inline">\(W\)</span> <strong>updated to incorporate</strong> new info <span class="math inline">\([Y = \textsf{Go}]\)</span>:</li>
+</ul>
+<p><span class="math display">\[
+\begin{align*}
+&amp;\Pr(W = \textsf{Sun} \mid Y = \textsf{Go})
+= \frac{\Pr(Y = \textsf{Go} \mid W = \textsf{Sun}) \Pr(W = \textsf{Sun})}{\Pr(Y = \textsf{Go})} \\
+=\, &amp;\frac{\Pr(Y = \textsf{Go} \mid W = \textsf{Sun}) \Pr(W = \textsf{Sun})}{\Pr(Y = \textsf{Go} \mid W = \textsf{Sun}) \Pr(W = \textsf{Sun}) + \Pr(Y = \textsf{Go} \mid W = \textsf{Rain}) \Pr(W = \textsf{Rain})}
+\end{align*}
+\]</span></p>
+<ul>
+<li>Plug in info from CPT to obtain our new (conditional) probability of interest:</li>
+</ul>
+<p><span class="math display">\[
+\begin{align*}
+\Pr(W = \textsf{Sun} \mid Y = \textsf{Go}) &amp;= \frac{(0.8)(0.5)}{(0.8)(0.5) + (0.1)(0.5)} = \frac{0.4}{0.4 + 0.05} \approx 0.89
+\end{align*}
+\]</span></p>
+<ul>
+<li>We’ve learned something interesting! Observing <span class="math inline">\(i\)</span> at the party <span class="math inline">\(\leadsto\)</span> probability of sun jumps from <span class="math inline">\(0.5\)</span> (<strong>“prior”</strong> estimate of <span class="math inline">\(W\)</span>, best guess without any other relevant info) to <span class="math inline">\(0.89\)</span> (<strong>“posterior”</strong> estimate of <span class="math inline">\(W\)</span>, best guess after incorporating relevant info).</li>
+</ul>
 </section>
 <section id="references" class="slide level2 smaller scrollable">
 <h2>References</h2>
