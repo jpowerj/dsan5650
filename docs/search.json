@@ -140,196 +140,280 @@
     "href": "w02/index.html",
     "title": "Week 2: Probabilistic Graphical Models (PGMs)",
     "section": "",
-    "text": "Open slides in new window →"
+    "text": "Open slides in new window →",
+    "crumbs": [
+      "Week 2: {{< var w02.date-md >}}"
+    ]
   },
   {
     "objectID": "w02/index.html#courtney-green",
     "href": "w02/index.html#courtney-green",
     "title": "Week 2: Probabilistic Graphical Models (PGMs)",
     "section": "Courtney Green",
-    "text": "Courtney Green"
+    "text": "Courtney Green",
+    "crumbs": [
+      "Week 2: {{< var w02.date-md >}}"
+    ]
   },
   {
     "objectID": "w02/index.html#wendy-hu",
     "href": "w02/index.html#wendy-hu",
     "title": "Week 2: Probabilistic Graphical Models (PGMs)",
     "section": "Wendy Hu",
-    "text": "Wendy Hu"
+    "text": "Wendy Hu",
+    "crumbs": [
+      "Week 2: {{< var w02.date-md >}}"
+    ]
   },
   {
     "objectID": "w02/index.html#technical-issues-jupyterhub",
     "href": "w02/index.html#technical-issues-jupyterhub",
     "title": "Week 2: Probabilistic Graphical Models (PGMs)",
     "section": "Technical Issues (JupyterHub)",
-    "text": "Technical Issues (JupyterHub)"
+    "text": "Technical Issues (JupyterHub)",
+    "crumbs": [
+      "Week 2: {{< var w02.date-md >}}"
+    ]
   },
   {
     "objectID": "w02/index.html#content-issues",
     "href": "w02/index.html#content-issues",
     "title": "Week 2: Probabilistic Graphical Models (PGMs)",
     "section": "Content Issues",
-    "text": "Content Issues"
+    "text": "Content Issues",
+    "crumbs": [
+      "Week 2: {{< var w02.date-md >}}"
+    ]
   },
   {
     "objectID": "w02/index.html#disclaimer-unfortunate-side-effects-of-engaging-seriously-with-causality",
     "href": "w02/index.html#disclaimer-unfortunate-side-effects-of-engaging-seriously-with-causality",
     "title": "Week 2: Probabilistic Graphical Models (PGMs)",
     "section": "Disclaimer: Unfortunate Side Effects of Engaging Seriously with Causality",
-    "text": "Disclaimer: Unfortunate Side Effects of Engaging Seriously with Causality\n\n\n You’ll no longer be able to read “scientific” writing without striking this expression (involuntarily):\n\n “Scientific” talks will begin to sound like the following:"
+    "text": "Disclaimer: Unfortunate Side Effects of Engaging Seriously with Causality\n\n\n You’ll no longer be able to read “scientific” writing without striking this expression (involuntarily):\n\n “Scientific” talks will begin to sound like the following:",
+    "crumbs": [
+      "Week 2: {{< var w02.date-md >}}"
+    ]
   },
   {
     "objectID": "w02/index.html#blasting-off-into-causality",
     "href": "w02/index.html#blasting-off-into-causality",
     "title": "Week 2: Probabilistic Graphical Models (PGMs)",
     "section": "Blasting Off Into Causality!",
-    "text": "Blasting Off Into Causality!"
+    "text": "Blasting Off Into Causality!",
+    "crumbs": [
+      "Week 2: {{< var w02.date-md >}}"
+    ]
   },
   {
     "objectID": "w02/index.html#data-generating-processes-dgps",
     "href": "w02/index.html#data-generating-processes-dgps",
     "title": "Week 2: Probabilistic Graphical Models (PGMs)",
     "section": "Data-Generating Processes (DGPs)",
-    "text": "Data-Generating Processes (DGPs)\n\n\n\n\n\n\n\nYou saw this in DSAN 5100!\n«\\(X_1, \\ldots, X_n\\) drawn i.i.d. Normal, mean \\(\\mu\\) variance \\(\\sigma^2\\)» characterizes DGP of \\((X_1, \\ldots, X_n)\\)\n\n\n\n\n\n\n\n\n\n\n\n\n5650: Dive into DGPs, rather than treating as black box/footnote to Law of Large Numbers, so we can move [asymptotically!]…\nFrom associational statements:\n\n«\\(\\underbrace{\\text{An increase}}_{\\small\\text{noun}}\\) in \\(X\\) by 1 is associated with increase in \\(Y\\) by \\(\\beta\\)»\n\nTo causal ones: «\\(\\underbrace{\\text{Increasing}}_{\\small\\text{verb}}\\) \\(X\\) by 1 causes \\(Y\\) to increase by \\(\\beta\\)»"
+    "text": "Data-Generating Processes (DGPs)\n\n\n\n\n\n\n\nYou saw this in DSAN 5100!\n«\\(X_1, \\ldots, X_n\\) drawn i.i.d. Normal, mean \\(\\mu\\) variance \\(\\sigma^2\\)» characterizes DGP of \\((X_1, \\ldots, X_n)\\)\n\n\n\n\n\n\n\n\n\n\n\n\n5650: Dive into DGPs, rather than treating as black box/footnote to Law of Large Numbers, so we can move [asymptotically!]…\nFrom associational statements:\n\n«\\(\\underbrace{\\text{An increase}}_{\\small\\text{noun}}\\) in \\(X\\) by 1 is associated with increase in \\(Y\\) by \\(\\beta\\)»\n\nTo causal ones: «\\(\\underbrace{\\text{Increasing}}_{\\small\\text{verb}}\\) \\(X\\) by 1 causes \\(Y\\) to increase by \\(\\beta\\)»",
+    "crumbs": [
+      "Week 2: {{< var w02.date-md >}}"
+    ]
   },
   {
     "objectID": "w02/index.html#dgps-and-the-emergence-of-order",
     "href": "w02/index.html#dgps-and-the-emergence-of-order",
     "title": "Week 2: Probabilistic Graphical Models (PGMs)",
     "section": "DGPs and the Emergence of Order",
-    "text": "DGPs and the Emergence of Order\n\n\n\n\n\n\n\nWho can guess the state of this process after 10 steps, with 1 person?\n10 people? 50? 100? (If they find themselves on the same spot, they stand on each other’s heads)\n100 steps? 1000?"
+    "text": "DGPs and the Emergence of Order\n\n\n\n\n\n\n\nWho can guess the state of this process after 10 steps, with 1 person?\n10 people? 50? 100? (If they find themselves on the same spot, they stand on each other’s heads)\n100 steps? 1000?",
+    "crumbs": [
+      "Week 2: {{< var w02.date-md >}}"
+    ]
   },
   {
     "objectID": "w02/index.html#the-result-16-steps",
     "href": "w02/index.html#the-result-16-steps",
     "title": "Week 2: Probabilistic Graphical Models (PGMs)",
     "section": "The Result: 16 Steps",
-    "text": "The Result: 16 Steps"
+    "text": "The Result: 16 Steps",
+    "crumbs": [
+      "Week 2: {{< var w02.date-md >}}"
+    ]
   },
   {
     "objectID": "w02/index.html#the-result-64-steps",
     "href": "w02/index.html#the-result-64-steps",
     "title": "Week 2: Probabilistic Graphical Models (PGMs)",
     "section": "The Result: 64 Steps",
-    "text": "The Result: 64 Steps"
+    "text": "The Result: 64 Steps",
+    "crumbs": [
+      "Week 2: {{< var w02.date-md >}}"
+    ]
   },
   {
     "objectID": "w02/index.html#mathematicalscientific-modeling",
     "href": "w02/index.html#mathematicalscientific-modeling",
     "title": "Week 2: Probabilistic Graphical Models (PGMs)",
     "section": "“Mathematical/Scientific Modeling”",
-    "text": "“Mathematical/Scientific Modeling”\n\nThing we observe (poking out of water): data\nHidden but possibly discoverable via deeper dive (ecosystem under surface): DGP"
+    "text": "“Mathematical/Scientific Modeling”\n\nThing we observe (poking out of water): data\nHidden but possibly discoverable via deeper dive (ecosystem under surface): DGP",
+    "crumbs": [
+      "Week 2: {{< var w02.date-md >}}"
+    ]
   },
   {
     "objectID": "w02/index.html#so-whats-the-problem",
     "href": "w02/index.html#so-whats-the-problem",
     "title": "Week 2: Probabilistic Graphical Models (PGMs)",
     "section": "So What’s the Problem?",
-    "text": "So What’s the Problem?\n\nNon-probabilistic models: High potential for being garbage\n\ntldr: even if SUPER certain, using \\(\\Pr(\\mathcal{H}) = 1-\\varepsilon\\) with tiny \\(\\varepsilon\\) has literal life-saving advantages (Finetti 1972)\n\nProbabilistic models: Getting there, still looking at “surface”\n\nOf the \\(N = 100\\) times we observed event \\(X\\) occurring, event \\(Y\\) also occurred \\(90\\) of those times\n\\(\\implies \\Pr(Y \\mid X) = \\frac{\\#[X, Y]}{\\#[X]} = \\frac{90}{100} = 0.9\\)\n\nCausal models: Does \\(Y\\) happen because of \\(X\\) happening? For that, need to start modeling what’s happening under the surface making \\(X\\) and \\(Y\\) “pop up” together so often"
+    "text": "So What’s the Problem?\n\nNon-probabilistic models: High potential for being garbage\n\ntldr: even if SUPER certain, using \\(\\Pr(\\mathcal{H}) = 1-\\varepsilon\\) with tiny \\(\\varepsilon\\) has literal life-saving advantages (Finetti 1972)\n\nProbabilistic models: Getting there, still looking at “surface”\n\nOf the \\(N = 100\\) times we observed event \\(X\\) occurring, event \\(Y\\) also occurred \\(90\\) of those times\n\\(\\implies \\Pr(Y \\mid X) = \\frac{\\#[X, Y]}{\\#[X]} = \\frac{90}{100} = 0.9\\)\n\nCausal models: Does \\(Y\\) happen because of \\(X\\) happening? For that, need to start modeling what’s happening under the surface making \\(X\\) and \\(Y\\) “pop up” together so often",
+    "crumbs": [
+      "Week 2: {{< var w02.date-md >}}"
+    ]
   },
   {
     "objectID": "w02/index.html#the-shallow-problem-of-causal-inference",
     "href": "w02/index.html#the-shallow-problem-of-causal-inference",
     "title": "Week 2: Probabilistic Graphical Models (PGMs)",
     "section": "The Shallow Problem of Causal Inference",
-    "text": "The Shallow Problem of Causal Inference\n\n\n\n\n\n\n\n\ncor(ski_df$value, law_df$value)\n[1] 0.9921178\n\n(Data from Vigen, Spurious Correlations)\n\nThis, however, is only a mini-boss. Beyond it lies the truly invincible FINAL BOSS… 🙀"
+    "text": "The Shallow Problem of Causal Inference\n\n\n\n\n\n\n\n\ncor(ski_df$value, law_df$value)\n[1] 0.9921178\n\n(Data from Vigen, Spurious Correlations)\n\nThis, however, is only a mini-boss. Beyond it lies the truly invincible FINAL BOSS… 🙀",
+    "crumbs": [
+      "Week 2: {{< var w02.date-md >}}"
+    ]
   },
   {
     "objectID": "w02/index.html#the-fundamental-problem-of-causal-inference",
     "href": "w02/index.html#the-fundamental-problem-of-causal-inference",
     "title": "Week 2: Probabilistic Graphical Models (PGMs)",
     "section": "The Fundamental Problem of Causal Inference",
-    "text": "The Fundamental Problem of Causal Inference\nThe only workable definition of «\\(X\\) causes \\(Y\\)»:\n\n\n\n\n\n\n Defining Causality (Hume 1739, ruining everything as usual 😤)\n\n\n\n\\(X\\) causes \\(Y\\) if and only if:\n\n\\(X\\) temporally precedes \\(Y\\) and\n\nIn two worlds \\(W_0\\) and \\(W_1\\) where\neverything is exactly the same except that \\(X = 0\\) in \\(W_0\\) and \\(X = 1\\) in \\(W_1\\),\n\\(Y = 0\\) in \\(W_0\\) and \\(Y = 1\\) in \\(W_1\\)\n\n\n\n\n\nThe problem? We live in one world, not two identical worlds simultaneously 😭"
+    "text": "The Fundamental Problem of Causal Inference\nThe only workable definition of «\\(X\\) causes \\(Y\\)»:\n\n\n\n\n\n\n Defining Causality (Hume 1739, ruining everything as usual 😤)\n\n\n\n\\(X\\) causes \\(Y\\) if and only if:\n\n\\(X\\) temporally precedes \\(Y\\) and\n\nIn two worlds \\(W_0\\) and \\(W_1\\) where\neverything is exactly the same except that \\(X = 0\\) in \\(W_0\\) and \\(X = 1\\) in \\(W_1\\),\n\\(Y = 0\\) in \\(W_0\\) and \\(Y = 1\\) in \\(W_1\\)\n\n\n\n\n\nThe problem? We live in one world, not two identical worlds simultaneously 😭",
+    "crumbs": [
+      "Week 2: {{< var w02.date-md >}}"
+    ]
   },
   {
     "objectID": "w02/index.html#what-is-to-be-done",
     "href": "w02/index.html#what-is-to-be-done",
     "title": "Week 2: Probabilistic Graphical Models (PGMs)",
     "section": "What Is To Be Done?",
-    "text": "What Is To Be Done?"
+    "text": "What Is To Be Done?",
+    "crumbs": [
+      "Week 2: {{< var w02.date-md >}}"
+    ]
   },
   {
     "objectID": "w02/index.html#probability",
     "href": "w02/index.html#probability",
     "title": "Week 2: Probabilistic Graphical Models (PGMs)",
     "section": "Probability++",
-    "text": "Probability++\n\nTools from prob/stats (RVs, CDFs, Conditional Probability) necessary but not sufficient for causal inference!\nExample: Say we use DSAN 5100 tools to discover:\n\nProbability that event \\(E_1\\) occurs is \\(\\Pr(E_1) = 0.5\\)\nProbability that \\(E_1\\) occurs conditional on another event \\(E_0\\) occurring is \\(\\Pr(E_1 \\mid E_0) = 0.75\\)\n\nUnfortunately, we still cannot infer that the occurrence of \\(E_0\\) causes an increase in the likelihood of \\(E_1\\) occurring."
+    "text": "Probability++\n\nTools from prob/stats (RVs, CDFs, Conditional Probability) necessary but not sufficient for causal inference!\nExample: Say we use DSAN 5100 tools to discover:\n\nProbability that event \\(E_1\\) occurs is \\(\\Pr(E_1) = 0.5\\)\nProbability that \\(E_1\\) occurs conditional on another event \\(E_0\\) occurring is \\(\\Pr(E_1 \\mid E_0) = 0.75\\)\n\nUnfortunately, we still cannot infer that the occurrence of \\(E_0\\) causes an increase in the likelihood of \\(E_1\\) occurring.",
+    "crumbs": [
+      "Week 2: {{< var w02.date-md >}}"
+    ]
   },
   {
     "objectID": "w02/index.html#beyond-conditional-probability",
     "href": "w02/index.html#beyond-conditional-probability",
     "title": "Week 2: Probabilistic Graphical Models (PGMs)",
     "section": "Beyond Conditional Probability",
-    "text": "Beyond Conditional Probability\n\nThis issue (that conditional probabilities could not be interpreted causally) at first represented a kind of dead end for scientists interested in employing probability theory to study causal relationships…\nRecent decades: researchers have built up an additional “layer” of modeling tools, augmenting existing machinery of probability to address causality head-on!\nPearl (2000): Formal proofs that (\\(\\Pr\\) axioms) \\(\\cup\\) (\\(\\textsf{do}\\) axioms) \\(\\Rightarrow\\) causal inference procedures successfully recover causal effects"
+    "text": "Beyond Conditional Probability\n\nThis issue (that conditional probabilities could not be interpreted causally) at first represented a kind of dead end for scientists interested in employing probability theory to study causal relationships…\nRecent decades: researchers have built up an additional “layer” of modeling tools, augmenting existing machinery of probability to address causality head-on!\nPearl (2000): Formal proofs that (\\(\\Pr\\) axioms) \\(\\cup\\) (\\(\\textsf{do}\\) axioms) \\(\\Rightarrow\\) causal inference procedures successfully recover causal effects",
+    "crumbs": [
+      "Week 2: {{< var w02.date-md >}}"
+    ]
   },
   {
     "objectID": "w02/index.html#preview-do-calculus",
     "href": "w02/index.html#preview-do-calculus",
     "title": "Week 2: Probabilistic Graphical Models (PGMs)",
     "section": "Preview: do-Calculus",
-    "text": "Preview: do-Calculus\n\nExtends core of probability to incorporate causality, via \\(\\textsf{do}\\) operator\n\\(\\textsf{do}(X = 5)\\) is a “special” event, representing intervention in DGP to force \\(X \\leftarrow 5\\)… \\(\\textsf{do}(X = 5)\\) not the same event as \\(X = 5\\)!\n\n\n\n\n\n\n\n\n\n\\(X = 5\\)\n\\(\\neq\\)\n\\(\\textsf{do}(X = 5)\\)\n\n\n\n\nObserving that \\(X\\) took on value 5 (for some possibly-unknown reason)\n\\(\\neq\\)\nIntervening to force \\(X \\leftarrow 5\\), all else in DGP remaining the same (intervention then “flows” through rest of DGP)\n\n\n\n\nProbably the most difficult thing in 5650 to wrap head around\n“Special”: \\(\\Pr(\\textsf{do}(X = 5))\\) not well-defined, only \\(\\Pr(Y = 6 \\mid \\textsf{do}(X = 5))\\)\nTo emphasize special-ness, we may use notation like:\n\\[\n\\Pr(Y = 6 \\mid \\textsf{do}(X = 5)) \\equiv \\textstyle \\Pr_{\\textsf{do}(X = 5)}(Y = 6)\n\\]\nto avoid confusion with “normal” events"
+    "text": "Preview: do-Calculus\n\nExtends core of probability to incorporate causality, via \\(\\textsf{do}\\) operator\n\\(\\textsf{do}(X = 5)\\) is a “special” event, representing intervention in DGP to force \\(X \\leftarrow 5\\)… \\(\\textsf{do}(X = 5)\\) not the same event as \\(X = 5\\)!\n\n\n\n\n\n\n\n\n\n\\(X = 5\\)\n\\(\\neq\\)\n\\(\\textsf{do}(X = 5)\\)\n\n\n\n\nObserving that \\(X\\) took on value 5 (for some possibly-unknown reason)\n\\(\\neq\\)\nIntervening to force \\(X \\leftarrow 5\\), all else in DGP remaining the same (intervention then “flows” through rest of DGP)\n\n\n\n\nProbably the most difficult thing in 5650 to wrap head around\n“Special”: \\(\\Pr(\\textsf{do}(X = 5))\\) not well-defined, only \\(\\Pr(Y = 6 \\mid \\textsf{do}(X = 5))\\)\nTo emphasize special-ness, we may use notation like:\n\\[\n\\Pr(Y = 6 \\mid \\textsf{do}(X = 5)) \\equiv \\textstyle \\Pr_{\\textsf{do}(X = 5)}(Y = 6)\n\\]\nto avoid confusion with “normal” events",
+    "crumbs": [
+      "Week 2: {{< var w02.date-md >}}"
+    ]
   },
   {
     "objectID": "w02/index.html#causal-world-unlocked-with-great-power-comes-great-responsibility",
     "href": "w02/index.html#causal-world-unlocked-with-great-power-comes-great-responsibility",
     "title": "Week 2: Probabilistic Graphical Models (PGMs)",
     "section": "Causal World Unlocked 😎 (With Great Power Comes Great Responsibility…)",
-    "text": "Causal World Unlocked 😎 (With Great Power Comes Great Responsibility…)\n\nWith \\(\\textsf{do}(\\cdot)\\) in hand… (Alongside DGP satisfying axioms slightly more strict than core probability axioms)\nWe can make causal inferences from similar pair of facts! If:\n\nProbability that event \\(E_1\\) occurs is \\(\\Pr(E_1) = 0.5\\),\nThe probability that \\(E_1\\) occurs conditional on the event \\(\\textsf{do}(E_0)\\) occurring is \\(\\Pr(E_1 \\mid \\textsf{do}(E_0)) = 0.75\\),\n\nNow we can actually infer that the occurrence of \\(E_0\\) caused an increase in the likelihood of \\(E_1\\) occurring!"
+    "text": "Causal World Unlocked 😎 (With Great Power Comes Great Responsibility…)\n\nWith \\(\\textsf{do}(\\cdot)\\) in hand… (Alongside DGP satisfying axioms slightly more strict than core probability axioms)\nWe can make causal inferences from similar pair of facts! If:\n\nProbability that event \\(E_1\\) occurs is \\(\\Pr(E_1) = 0.5\\),\nThe probability that \\(E_1\\) occurs conditional on the event \\(\\textsf{do}(E_0)\\) occurring is \\(\\Pr(E_1 \\mid \\textsf{do}(E_0)) = 0.75\\),\n\nNow we can actually infer that the occurrence of \\(E_0\\) caused an increase in the likelihood of \\(E_1\\) occurring!",
+    "crumbs": [
+      "Week 2: {{< var w02.date-md >}}"
+    ]
   },
   {
     "objectID": "w02/index.html#ulysses-and-the-computational-sirens",
     "href": "w02/index.html#ulysses-and-the-computational-sirens",
     "title": "Week 2: Probabilistic Graphical Models (PGMs)",
     "section": "Ulysses and the [Computational] Sirens",
-    "text": "Ulysses and the [Computational] Sirens"
+    "text": "Ulysses and the [Computational] Sirens",
+    "crumbs": [
+      "Week 2: {{< var w02.date-md >}}"
+    ]
   },
   {
     "objectID": "w02/index.html#bayesian-inference-but-with-pictures",
     "href": "w02/index.html#bayesian-inference-but-with-pictures",
     "title": "Week 2: Probabilistic Graphical Models (PGMs)",
     "section": "Bayesian Inference but with Pictures",
-    "text": "Bayesian Inference but with Pictures\nA Probabilistic Graphical Model (PGM) provides us with:\n\nA formal-mathematical…\nBut also easily visualizable (by construction)…\nRepresentation of a data-generating process (DGP)!\n\nExample: Let’s model how weather \\(W\\) affects evening plans \\(Y\\): the choice between going to a party or staying in to watch movies\n\n\n\n\n\n\nThe Partier’s Dilemma\n\n\n\n\nA person \\(i\\) wakes up with some initial affinity for partying: \\(\\Pr(Y_i = \\textsf{Go Out})\\)\n\\(i\\) then goes to their window and observes the weather \\(W_i\\) outside:\n\nIf the weather is sunny, \\(i\\)’s affinity increases: \\(\\Pr(Y_i = \\textsf{Go} \\mid W_i = \\textsf{Sun}) &gt; \\Pr(Y = \\textsf{Go})\\)\nOtherwise, if it is rainy, \\(i\\)’s affinity decreases: \\(\\Pr(Y_i = \\textsf{Go} \\mid W_i = \\textsf{Sun}) &lt; \\Pr(Y = \\textsf{Go})\\)"
+    "text": "Bayesian Inference but with Pictures\nA Probabilistic Graphical Model (PGM) provides us with:\n\nA formal-mathematical…\nBut also easily visualizable (by construction)…\nRepresentation of a data-generating process (DGP)!\n\nExample: Let’s model how weather \\(W\\) affects evening plans \\(Y\\): the choice between going to a party or staying in to watch movies\n\n\n\n\n\n\nThe Partier’s Dilemma\n\n\n\n\nA person \\(i\\) wakes up with some initial affinity for partying: \\(\\Pr(Y_i = \\textsf{Go Out})\\)\n\\(i\\) then goes to their window and observes the weather \\(W_i\\) outside:\n\nIf the weather is sunny, \\(i\\)’s affinity increases: \\(\\Pr(Y_i = \\textsf{Go} \\mid W_i = \\textsf{Sun}) &gt; \\Pr(Y = \\textsf{Go})\\)\nOtherwise, if it is rainy, \\(i\\)’s affinity decreases: \\(\\Pr(Y_i = \\textsf{Go} \\mid W_i = \\textsf{Sun}) &lt; \\Pr(Y = \\textsf{Go})\\)",
+    "crumbs": [
+      "Week 2: {{< var w02.date-md >}}"
+    ]
   },
   {
     "objectID": "w02/index.html#two-main-building-blocks",
     "href": "w02/index.html#two-main-building-blocks",
     "title": "Week 2: Probabilistic Graphical Models (PGMs)",
     "section": "Two Main “Building Blocks”",
-    "text": "Two Main “Building Blocks”\n\nNodes like \\(\\require{enclose}\\enclose{circle}{\\kern .01em ~X~\\kern .01em}\\) denote Random Variables\n\n\\[\n\\boxed{\\require{enclose}\\enclose{circle}{\\kern .01em ~X~\\kern .01em}} \\simeq \\boxed{ \\begin{array}{c|cc}x & \\textsf{Tails} & \\textsf{Heads} \\\\\\hline \\Pr(X = x) & 0.5 & 0.5\\end{array}}\n\\]\n\nEdges like \\(\\require{enclose}\\enclose{circle}{\\kern .01em ~X~\\kern .01em} \\rightarrow \\; \\enclose{circle}{\\kern.01em Y~\\kern .01em}\\) denote relationships between RVs\n\nWhat an edge “means” can get [ontologically] tricky!\nRetain sanity by just remembering: an edge \\(\\require{enclose}\\enclose{circle}{\\kern .01em ~X~\\kern .01em} \\rightarrow \\; \\enclose{circle}{\\kern.01em Y~\\kern .01em}\\) is included in our PGM if we “care about” modeling the conditional probability table (CPT) of \\(Y\\) w.r.t. \\(X\\)\n\n\n\\[\n\\require{enclose}\\boxed{ \\enclose{circle}{\\kern .01em ~X~\\kern .01em} \\rightarrow \\; \\enclose{circle}{\\kern.01em Y~\\kern .01em} } \\simeq \\boxed{\n  \\begin{array}{c|cc}\n  x & \\Pr(Y = \\textsf{Lose} \\mid X = x) & \\Pr(Y = \\textsf{Win} \\mid X = x) \\\\\\hline\n  \\textsf{Tails} & 0.8 & 0.2 \\\\\n  \\textsf{Heads} & 0.5 & 0.5\n  \\end{array}\n}\n\\]"
+    "text": "Two Main “Building Blocks”\n\nNodes like \\(\\require{enclose}\\enclose{circle}{\\kern .01em ~X~\\kern .01em}\\) denote Random Variables\n\n\\[\n\\boxed{\\require{enclose}\\enclose{circle}{\\kern .01em ~X~\\kern .01em}} \\simeq \\boxed{ \\begin{array}{c|cc}x & \\textsf{Tails} & \\textsf{Heads} \\\\\\hline \\Pr(X = x) & 0.5 & 0.5\\end{array}}\n\\]\n\nEdges like \\(\\require{enclose}\\enclose{circle}{\\kern .01em ~X~\\kern .01em} \\rightarrow \\; \\enclose{circle}{\\kern.01em Y~\\kern .01em}\\) denote relationships between RVs\n\nWhat an edge “means” can get [ontologically] tricky!\nRetain sanity by just remembering: an edge \\(\\require{enclose}\\enclose{circle}{\\kern .01em ~X~\\kern .01em} \\rightarrow \\; \\enclose{circle}{\\kern.01em Y~\\kern .01em}\\) is included in our PGM if we “care about” modeling the conditional probability table (CPT) of \\(Y\\) w.r.t. \\(X\\)\n\n\n\\[\n\\require{enclose}\\boxed{ \\enclose{circle}{\\kern .01em ~X~\\kern .01em} \\rightarrow \\; \\enclose{circle}{\\kern.01em Y~\\kern .01em} } \\simeq \\boxed{\n  \\begin{array}{c|cc}\n  x & \\Pr(Y = \\textsf{Lose} \\mid X = x) & \\Pr(Y = \\textsf{Win} \\mid X = x) \\\\\\hline\n  \\textsf{Tails} & 0.8 & 0.2 \\\\\n  \\textsf{Heads} & 0.5 & 0.5\n  \\end{array}\n}\n\\]",
+    "crumbs": [
+      "Week 2: {{< var w02.date-md >}}"
+    ]
   },
   {
     "objectID": "w02/index.html#pgm-for-the-partiers-dilemma",
     "href": "w02/index.html#pgm-for-the-partiers-dilemma",
     "title": "Week 2: Probabilistic Graphical Models (PGMs)",
     "section": "PGM for the Partier’s Dilemma",
-    "text": "PGM for the Partier’s Dilemma\n\nA node \\(\\pnode{W}\\) denoting RV \\(W\\), which can take on values in \\(\\mathcal{R}_W = \\{\\textsf{Sun}, \\textsf{Rain}\\}\\),\nA node \\(\\pnode{Y}\\) denoting RV \\(Y\\), which can take on values in \\(\\mathcal{R}_Y = \\{\\textsf{Go}, \\textsf{Stay}\\}\\), and\nAn edge \\(\\pedge{W}{Y}\\) representing the following relationship between \\(W\\) and \\(Y\\):\n\n\\(\\Pr(Y = \\textsf{Go} \\mid W = \\textsf{Sun}) = 0.8\\)\n\\(\\Pr(Y = \\textsf{Stay} \\mid W = \\textsf{Sun}) = 0.2\\)\n\\(\\Pr(Y = \\textsf{Go} \\mid W = \\textsf{Rain}) = 0.1\\)\n\\(\\Pr(Y = \\textsf{Stay} \\mid W = \\textsf{Rain}) = 0.9\\)\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nFigure 1: Our PGM of the Partier’s Dilemma\n\n\n\n\n\n\n\n\n\n\n\n\n\\(\\Pr(Y = \\textsf{Stay} \\mid W)\\)\n\\(\\Pr(Y = \\textsf{Go} \\mid W)\\)\n\n\n\n\n\\(W = \\textsf{Sun}\\)\n0.2\n0.8\n\n\n\\(W = \\textsf{Rain}\\)\n0.9\n0.1\n\n\n\n\n\nFigure 2: The Conditional Probability Table (CPT) for the edge \\(\\pedge{W}{Y}\\) in Figure 1"
+    "text": "PGM for the Partier’s Dilemma\n\nA node \\(\\pnode{W}\\) denoting RV \\(W\\), which can take on values in \\(\\mathcal{R}_W = \\{\\textsf{Sun}, \\textsf{Rain}\\}\\),\nA node \\(\\pnode{Y}\\) denoting RV \\(Y\\), which can take on values in \\(\\mathcal{R}_Y = \\{\\textsf{Go}, \\textsf{Stay}\\}\\), and\nAn edge \\(\\pedge{W}{Y}\\) representing the following relationship between \\(W\\) and \\(Y\\):\n\n\\(\\Pr(Y = \\textsf{Go} \\mid W = \\textsf{Sun}) = 0.8\\)\n\\(\\Pr(Y = \\textsf{Stay} \\mid W = \\textsf{Sun}) = 0.2\\)\n\\(\\Pr(Y = \\textsf{Go} \\mid W = \\textsf{Rain}) = 0.1\\)\n\\(\\Pr(Y = \\textsf{Stay} \\mid W = \\textsf{Rain}) = 0.9\\)\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nFigure 1: Our PGM of the Partier’s Dilemma\n\n\n\n\n\n\n\n\n\n\n\n\n\\(\\Pr(Y = \\textsf{Stay} \\mid W)\\)\n\\(\\Pr(Y = \\textsf{Go} \\mid W)\\)\n\n\n\n\n\\(W = \\textsf{Sun}\\)\n0.2\n0.8\n\n\n\\(W = \\textsf{Rain}\\)\n0.9\n0.1\n\n\n\n\n\nFigure 2: The Conditional Probability Table (CPT) for the edge \\(\\pedge{W}{Y}\\) in Figure 1",
+    "crumbs": [
+      "Week 2: {{< var w02.date-md >}}"
+    ]
   },
   {
     "objectID": "w02/index.html#observed-vs.-latent-nodes",
     "href": "w02/index.html#observed-vs.-latent-nodes",
     "title": "Week 2: Probabilistic Graphical Models (PGMs)",
     "section": "Observed vs. Latent Nodes",
-    "text": "Observed vs. Latent Nodes\n\nPGMs help us make valid (Bayesian) inferences about the world in the face of incomplete information!\nKey remaining tool: separation of nodes into two categories:\n\nObserved nodes (shaded)\nLatent nodes (unshaded)\n\n\\(\\Rightarrow\\) Can use our PGM as a weather-inference machine!\nIf we observe \\(i\\) at a party, what can we infer about the weather outside?"
+    "text": "Observed vs. Latent Nodes\n\nPGMs help us make valid (Bayesian) inferences about the world in the face of incomplete information!\nKey remaining tool: separation of nodes into two categories:\n\nObserved nodes (shaded)\nLatent nodes (unshaded)\n\n\\(\\Rightarrow\\) Can use our PGM as a weather-inference machine!\nIf we observe \\(i\\) at a party, what can we infer about the weather outside?",
+    "crumbs": [
+      "Week 2: {{< var w02.date-md >}}"
+    ]
   },
   {
     "objectID": "w02/index.html#observed-partier-latent-weather",
     "href": "w02/index.html#observed-partier-latent-weather",
     "title": "Week 2: Probabilistic Graphical Models (PGMs)",
     "section": "Observed Partier, Latent Weather",
-    "text": "Observed Partier, Latent Weather\n\nWe can draw this situation as a PGM with shaded and unshaded nodes, distinguishing what we know from what we’d like to infer:\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n❓\n \n✅\n\n\n\n\nAnd we can now use Bayes’ Rule to compute how observed information (\\(i\\) at party \\(\\Rightarrow [Y = \\textsf{Go}]\\)) “flows” back into \\(W\\)"
+    "text": "Observed Partier, Latent Weather\n\nWe can draw this situation as a PGM with shaded and unshaded nodes, distinguishing what we know from what we’d like to infer:\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n❓\n \n✅\n\n\n\n\nAnd we can now use Bayes’ Rule to compute how observed information (\\(i\\) at party \\(\\Rightarrow [Y = \\textsf{Go}]\\)) “flows” back into \\(W\\)",
+    "crumbs": [
+      "Week 2: {{< var w02.date-md >}}"
+    ]
   },
   {
     "objectID": "w02/index.html#computation-via-bayes-rule",
     "href": "w02/index.html#computation-via-bayes-rule",
     "title": "Week 2: Probabilistic Graphical Models (PGMs)",
     "section": "Computation via Bayes’ Rule",
-    "text": "Computation via Bayes’ Rule\n\nBayes’ Rule, \\(\\Pr(A \\mid B) = \\frac{\\Pr(B \\mid A)\\Pr(A)}{\\Pr(B)}\\), tells us how to use info about \\(\\Pr(B \\mid A)\\) to obtain info about \\(\\Pr(A \\mid B)\\)!\nWe use it to obtain a distribution for \\(W\\) updated to incorporate new info \\([Y = \\textsf{Go}]\\):\n\n\\[\n\\begin{align*}\n&\\Pr(W = \\textsf{Sun} \\mid Y = \\textsf{Go})\n= \\frac{\\Pr(Y = \\textsf{Go} \\mid W = \\textsf{Sun}) \\Pr(W = \\textsf{Sun})}{\\Pr(Y = \\textsf{Go})} \\\\\n=\\, &\\frac{\\Pr(Y = \\textsf{Go} \\mid W = \\textsf{Sun}) \\Pr(W = \\textsf{Sun})}{\\Pr(Y = \\textsf{Go} \\mid W = \\textsf{Sun}) \\Pr(W = \\textsf{Sun}) + \\Pr(Y = \\textsf{Go} \\mid W = \\textsf{Rain}) \\Pr(W = \\textsf{Rain})}\n\\end{align*}\n\\]\n\nPlug in info from CPT to obtain our new (conditional) probability of interest:\n\n\\[\n\\begin{align*}\n\\Pr(W = \\textsf{Sun} \\mid Y = \\textsf{Go}) &= \\frac{(0.8)(0.5)}{(0.8)(0.5) + (0.1)(0.5)} = \\frac{0.4}{0.4 + 0.05} \\approx 0.89\n\\end{align*}\n\\]\n\nWe’ve learned something interesting! Observing \\(i\\) at the party \\(\\leadsto\\) probability of sun jumps from \\(0.5\\) (“prior” estimate of \\(W\\), best guess without any other relevant info) to \\(0.89\\) (“posterior” estimate of \\(W\\), best guess after incorporating relevant info)."
+    "text": "Computation via Bayes’ Rule\n\nBayes’ Rule, \\(\\Pr(A \\mid B) = \\frac{\\Pr(B \\mid A)\\Pr(A)}{\\Pr(B)}\\), tells us how to use info about \\(\\Pr(B \\mid A)\\) to obtain info about \\(\\Pr(A \\mid B)\\)!\nWe use it to obtain a distribution for \\(W\\) updated to incorporate new info \\([Y = \\textsf{Go}]\\):\n\n\\[\n\\begin{align*}\n&\\Pr(W = \\textsf{Sun} \\mid Y = \\textsf{Go})\n= \\frac{\\Pr(Y = \\textsf{Go} \\mid W = \\textsf{Sun}) \\Pr(W = \\textsf{Sun})}{\\Pr(Y = \\textsf{Go})} \\\\\n=\\, &\\frac{\\Pr(Y = \\textsf{Go} \\mid W = \\textsf{Sun}) \\Pr(W = \\textsf{Sun})}{\\Pr(Y = \\textsf{Go} \\mid W = \\textsf{Sun}) \\Pr(W = \\textsf{Sun}) + \\Pr(Y = \\textsf{Go} \\mid W = \\textsf{Rain}) \\Pr(W = \\textsf{Rain})}\n\\end{align*}\n\\]\n\nPlug in info from CPT to obtain our new (conditional) probability of interest:\n\n\\[\n\\begin{align*}\n\\Pr(W = \\textsf{Sun} \\mid Y = \\textsf{Go}) &= \\frac{(0.8)(0.5)}{(0.8)(0.5) + (0.1)(0.5)} = \\frac{0.4}{0.4 + 0.05} \\approx 0.89\n\\end{align*}\n\\]\n\nWe’ve learned something interesting! Observing \\(i\\) at the party \\(\\leadsto\\) probability of sun jumps from \\(0.5\\) (“prior” estimate of \\(W\\), best guess without any other relevant info) to \\(0.89\\) (“posterior” estimate of \\(W\\), best guess after incorporating relevant info).",
+    "crumbs": [
+      "Week 2: {{< var w02.date-md >}}"
+    ]
   },
   {
     "objectID": "w02/index.html#references",
     "href": "w02/index.html#references",
     "title": "Week 2: Probabilistic Graphical Models (PGMs)",
     "section": "References",
-    "text": "References\n\n\nFinetti, Bruno de. 1972. Probability, Induction and Statistics: The Art of Guessing. J. Wiley.\n\n\nHume, David. 1739. A Treatise of Human Nature: Being an Attempt to Introduce the Experimental Method of Reasoning Into Moral Subjects; and Dialogues Concerning Natural Religion. Longmans, Green.\n\n\nPearl, Judea. 2000. Causality: Models, Reasoning, and Inference. Cambridge University Press."
+    "text": "References\n\n\nFinetti, Bruno de. 1972. Probability, Induction and Statistics: The Art of Guessing. J. Wiley.\n\n\nHume, David. 1739. A Treatise of Human Nature: Being an Attempt to Introduce the Experimental Method of Reasoning Into Moral Subjects; and Dialogues Concerning Natural Religion. Longmans, Green.\n\n\nPearl, Judea. 2000. Causality: Models, Reasoning, and Inference. Cambridge University Press.",
+    "crumbs": [
+      "Week 2: {{< var w02.date-md >}}"
+    ]
   },
   {
     "objectID": "w02/slides.html#courtney-green",
