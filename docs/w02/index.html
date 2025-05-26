@@ -263,7 +263,7 @@ window.Quarto = {
     </ul>
     </div>
 <div class="quarto-sidebar-footer"><div class="sidebar-footer-item">
-<p><em>Updated 2025-05-26, 02:59:49 AM</em></p>
+<p><em>Updated 2025-05-26, 03:37:56 PM</em></p>
 </div></div></nav>
 <div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
@@ -314,7 +314,9 @@ window.Quarto = {
   <li><a href="#example-from-cognitive-neuroscience-visual-perception" id="toc-example-from-cognitive-neuroscience-visual-perception" class="nav-link" data-scroll-target="#example-from-cognitive-neuroscience-visual-perception">Example from Cognitive Neuroscience: Visual Perception</a></li>
   <li><a href="#hidden-markov-models-hmms-are-our-ur-pgms" id="toc-hidden-markov-models-hmms-are-our-ur-pgms" class="nav-link" data-scroll-target="#hidden-markov-models-hmms-are-our-ur-pgms">Hidden Markov Models (HMMs) Are Our Ur-PGMs!</a></li>
   <li><a href="#studying-fake-news" id="toc-studying-fake-news" class="nav-link" data-scroll-target="#studying-fake-news">Studying “Fake News”</a></li>
-  <li><a href="#diving-in" id="toc-diving-in" class="nav-link" data-scroll-target="#diving-in">Diving In…</a></li>
+  <li><a href="#the-devil-in-the-details-i" id="toc-the-devil-in-the-details-i" class="nav-link" data-scroll-target="#the-devil-in-the-details-i">The Devil in the Details I</a></li>
+  <li><a href="#the-devil-in-the-details-ii" id="toc-the-devil-in-the-details-ii" class="nav-link" data-scroll-target="#the-devil-in-the-details-ii">The Devil in the Details II</a></li>
+  <li><a href="#randomization-and-fine-tuned-treatment" id="toc-randomization-and-fine-tuned-treatment" class="nav-link" data-scroll-target="#randomization-and-fine-tuned-treatment">Randomization and Fine-Tuned Treatment</a></li>
   <li><a href="#references" id="toc-references" class="nav-link" data-scroll-target="#references">References</a></li>
   </ul></li>
   </ul>
@@ -432,7 +434,7 @@ window.Quarto = {
 </tbody>
 </table>
 <div class="hidden">
-<div id="93e3ab57" class="cell" data-execution_count="1">
+<div id="a0d75bf9" class="cell" data-execution_count="1">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>cb_palette <span class="op">=</span> [</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>    <span class="st">"#E69F00"</span>, <span class="st">"#56B4E9"</span>, <span class="st">"#009E73"</span>,</span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>    <span class="st">"#F0E442"</span>, <span class="st">"#0072B2"</span>, <span class="st">"#D55E00"</span>,</span>
@@ -1062,8 +1064,8 @@ Figure&nbsp;3: Your model failing to achieve its goal bc you haven’t yet disti
 <p>As in, how America’s Ur-Choropleths are two visualizations you can keep at hand before launching into a specific nation-wide choropleth about a specific issue!</p>
 </div>
 </section>
-<section id="studying-fake-news" class="level2 smaller callout-fw callout-valign crunch-img crunch-p crunch-quarto-figure crunch-title crunch-callout">
-<h2 class="smaller callout-fw callout-valign crunch-img crunch-p crunch-quarto-figure crunch-title crunch-callout anchored" data-anchor-id="studying-fake-news">Studying “Fake News”</h2>
+<section id="studying-fake-news" class="level2 smaller callout-fw callout-valign crunch-img crunch-p crunch-quarto-figure crunch-title crunch-callout text-70 crunch-ul crunch-li-5 crunch-quarto-layout-panel">
+<h2 class="smaller callout-fw callout-valign crunch-img crunch-p crunch-quarto-figure crunch-title crunch-callout text-70 crunch-ul crunch-li-5 crunch-quarto-layout-panel anchored" data-anchor-id="studying-fake-news">Studying “Fake News”</h2>
 <div class="callout callout-style-simple callout-none no-icon">
 <div class="callout-body d-flex">
 <div class="callout-icon-container">
@@ -1072,26 +1074,37 @@ Figure&nbsp;3: Your model failing to achieve its goal bc you haven’t yet disti
 <div class="callout-body-container">
 <div id="callout-container">
 <div style="float: left; margin-right: 12px; margin-bottom: -2px">
-<p><img src="images/real-tired.png" class="img-fluid" width="90"></p>
+<p><img src="images/real-tired.png" class="img-fluid" width="50"></p>
 </div>
-<p>Studying “fake news” with Machine Learning and/or Deep Learning and/or Big Data is a big fad at the moment in Computational Social Science: let’s use HMMs to see why it might be more… difficult/complicated than it seems at first 🙈</p>
-</div>
-</div>
+<p>Studying “fake news” with ML and/or Deep Learning and/or Big Data is very popular in Computational Social Science: let’s use HMMs to see why it might be more… difficult/complicated than it seems at first 🙈</p>
 </div>
 </div>
+</div>
+</div>
+<ul>
+<li>The (implicit) model in studies like <span class="citation" data-cites="iyengar_news_2010">Iyengar and Kinder (<a href="#ref-iyengar_news_2010" role="doc-biblioref">2010</a>)</span> is something like:</li>
+</ul>
 <div>
 
 </div>
-<div class="quarto-layout-panel" data-layout="[60,40]" data-layout-align="center">
+<div class="quarto-layout-panel" data-layout="[65,35]" data-layout-align="center">
 <div class="quarto-layout-row quarto-layout-valign-center">
-<div id="iyengar-text" class="quarto-layout-cell" style="flex-basis: 60.0%;justify-content: center;">
+<div id="iyengar-text" class="quarto-layout-cell" style="flex-basis: 65.0%;justify-content: center;">
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="images/hmm_media.svg" class="img-fluid quarto-figure quarto-figure-center figure-img"></p>
+<p><img src="images/hmm_media.svg" class="img-fluid quarto-figure quarto-figure-center figure-img" width="520"></p>
+</figure>
+</div>
+<ul>
+<li>Thus allowing results to be summarized in a table like:</li>
+</ul>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/iyengar_results.jpg" class="img-fluid quarto-figure quarto-figure-center figure-img" width="400"></p>
 </figure>
 </div>
 </div>
-<div id="iyengar-img" class="quarto-layout-cell" style="flex-basis: 40.0%;justify-content: center;">
+<div id="iyengar-img" class="quarto-layout-cell" style="flex-basis: 35.0%;justify-content: center;">
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><img src="images/iyengar_kinder.jpg" class="img-fluid figure-img" style="width:60.0%"></p>
@@ -1102,22 +1115,55 @@ Figure&nbsp;3: Your model failing to achieve its goal bc you haven’t yet disti
 </div>
 </div>
 </section>
-<section id="diving-in" class="level2">
-<h2 class="anchored" data-anchor-id="diving-in">Diving In…</h2>
+<section id="the-devil-in-the-details-i" class="level2 smaller crunch-title lh-adjust">
+<h2 class="smaller crunch-title lh-adjust anchored" data-anchor-id="the-devil-in-the-details-i">The Devil in the Details I</h2>
 <blockquote class="blockquote">
-<p>Residents of the New Haven, Connecticut area participated in one of two experiments, each of which spanned six consecutive days.</p>
+<p>Residents of the <span class="jjbox">New Haven, Connecticut area</span> participated in one of two experiments, each of which spanned <span class="jjbox">six consecutive days</span> […] took place in <span class="jjbox">November 1980</span>, shortly after the <span class="jjbox">presidential election</span></p>
 </blockquote>
 <blockquote class="blockquote">
-<p>We measured <strong>problem importance</strong> with four questions that appeared in both the pretreatment and posttreatment questionnaires.</p>
-</blockquote>
-<blockquote class="blockquote">
+<p>We measured <strong>problem importance</strong> with four questions that appeared in both the pretreatment and posttreatment questionnaires:</p>
 <ul>
-<li>Please indicate how important you consider these problems to be.</li>
-<li>Should the federal government do more to develop solutions to these problems, even if it means raising taxes?</li>
-<li>How much do you yourself care about these problems?</li>
-<li>These days how much do you talk about these problems?</li>
+<li>Please <span class="jjbox">indicate how important</span> you consider these problems to be.</li>
+<li>Should the federal government <span class="jjbox">do more</span> to develop solutions to these problems, even if it means <span class="jjbox">raising taxes</span>?</li>
+<li>How much do you yourself <span class="jjbox">care</span> about these problems?</li>
+<li><span class="jjbox">These days</span> how much do you <span class="jjbox">talk</span> about these problems?</li>
 </ul>
 </blockquote>
+</section>
+<section id="the-devil-in-the-details-ii" class="level2">
+<h2 class="anchored" data-anchor-id="the-devil-in-the-details-ii">The Devil in the Details II</h2>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/iyengar_experiment.jpg" class="img-fluid quarto-figure quarto-figure-center figure-img"></p>
+</figure>
+</div>
+</section>
+<section id="randomization-and-fine-tuned-treatment" class="level2 smaller crunch-quarto-figure crunch-quarto-layout-panel">
+<h2 class="smaller crunch-quarto-figure crunch-quarto-layout-panel anchored" data-anchor-id="randomization-and-fine-tuned-treatment">Randomization and Fine-Tuned Treatment</h2>
+<div>
+
+</div>
+<div class="quarto-layout-panel" data-layout="[50,50]">
+<div class="quarto-layout-row quarto-layout-valign-center">
+<div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/iyengar_treatment.jpg" class="img-fluid quarto-figure quarto-figure-center figure-img"></p>
+</figure>
+</div>
+</div>
+<div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/iyengar_control.jpg" class="img-fluid quarto-figure quarto-figure-center figure-img"></p>
+</figure>
+</div>
+</div>
+</div>
+</div>
+<ul>
+<li>…These are the types of things we usually <strong>don’t</strong> have control over as data scientists (we’re just handed a <code>.csv</code>!)</li>
+</ul>
 </section>
 <section id="references" class="level2">
 <h2 class="anchored" data-anchor-id="references">References</h2>

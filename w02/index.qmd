@@ -461,26 +461,32 @@ As in, how America's Ur-Choropleths are two visualizations you can keep at hand 
 
 :::
 
-## Studying "Fake News" {.smaller .callout-fw .callout-valign .crunch-img .crunch-p .crunch-quarto-figure .crunch-title .crunch-callout}
+## Studying "Fake News" {.smaller .callout-fw .callout-valign .crunch-img .crunch-p .crunch-quarto-figure .crunch-title .crunch-callout .text-70 .crunch-ul .crunch-li-5 .crunch-quarto-layout-panel}
 
 
 ::::: {.callout}
 :::: {#callout-container}
 ::: {style="float: left; margin-right: 12px; margin-bottom: -2px"}
 
-![](images/real-tired.png){width="90"}
+![](images/real-tired.png){width="50"}
 
 :::
 
-Studying "fake news" with Machine Learning and/or Deep Learning and/or Big Data is a big fad at the moment in Computational Social Science: let's use HMMs to see why it might be more... difficult/complicated than it seems at first 🙈
+Studying "fake news" with ML and/or Deep Learning and/or Big Data is very popular in Computational Social Science: let's use HMMs to see why it might be more... difficult/complicated than it seems at first 🙈
 
 ::::
 :::::
 
-:::: {layout="[60,40]" layout-valign="center" layout-align="center"}
+* The (implicit) model in studies like @iyengar_news_2010 is something like:
+
+:::: {layout="[65,35]" layout-valign="center" layout-align="center"}
 ::: {#iyengar-text}
 
-![](images/hmm_media.svg){fig-align="center"}
+![](images/hmm_media.svg){fig-align="center" width="520"}
+
+* Thus allowing results to be summarized in a table like:
+
+![](images/iyengar_results.jpg){fig-align="center" width="400"}
 
 :::
 ::: {#iyengar-img}
@@ -490,22 +496,34 @@ Studying "fake news" with Machine Learning and/or Deep Learning and/or Big Data 
 :::
 ::::
 
-## Diving In...
+## The Devil in the Details I {.smaller .crunch-title .lh-adjust}
 
-> Residents of the New Haven, Connecticut area
-participated in one of two experiments, each of
-which spanned six consecutive days.
+> Residents of the [New Haven, Connecticut area]{.jjbox} participated in one of two experiments, each of which spanned [six consecutive days]{.jjbox} [...] took place in [November 1980]{.jjbox}, shortly after the [presidential election]{.jjbox}
 
-> We measured **problem importance** with four questions that appeared in both the pretreatment and posttreatment questionnaires.
-
-> * Please indicate how important you consider these
+> We measured **problem importance** with four questions that appeared in both the pretreatment and posttreatment questionnaires:
+> 
+> * Please [indicate how important]{.jjbox} you consider these
 problems to be.
-> * Should the federal government do more to develop
-solutions to these problems, even if it means raising
-taxes?
-> * How much do you yourself care about these problems?
-> * These days how much do you talk about these
+> * Should the federal government [do more]{.jjbox} to develop solutions to these problems, even if it means [raising taxes]{.jjbox}?
+> * How much do you yourself [care]{.jjbox} about these problems?
+> * [These days]{.jjbox} how much do you [talk]{.jjbox} about these
 problems?
+
+## The Devil in the Details II
+
+![](images/iyengar_experiment.jpg){fig-align="center"}
+
+## Randomization and Fine-Tuned Treatment {.smaller .crunch-quarto-figure .crunch-quarto-layout-panel}
+
+:::: {layout="[50,50]" layout-valign="center"}
+
+![](images/iyengar_treatment.jpg){fig-align="center"}
+
+![](images/iyengar_control.jpg){fig-align="center"}
+
+::::
+
+* ...These are the types of things we usually **don't** have control over as data scientists (we're just handed a `.csv`!)
 
 ## References
 

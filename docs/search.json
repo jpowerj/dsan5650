@@ -440,17 +440,37 @@
     "href": "w02/index.html#studying-fake-news",
     "title": "Week 2: Probabilistic Graphical Models (PGMs)",
     "section": "Studying “Fake News”",
-    "text": "Studying “Fake News”\n\n\n\n\n\n\n\n\n\n\nStudying “fake news” with Machine Learning and/or Deep Learning and/or Big Data is a big fad at the moment in Computational Social Science: let’s use HMMs to see why it might be more… difficult/complicated than it seems at first 🙈\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nIyengar and Kinder (2010)",
+    "text": "Studying “Fake News”\n\n\n\n\n\n\n\n\n\n\nStudying “fake news” with ML and/or Deep Learning and/or Big Data is very popular in Computational Social Science: let’s use HMMs to see why it might be more… difficult/complicated than it seems at first 🙈\n\n\n\n\n\nThe (implicit) model in studies like Iyengar and Kinder (2010) is something like:\n\n\n\n\n\n\n\n\n\n\n\n\n\nThus allowing results to be summarized in a table like:\n\n\n\n\n\n\n\n\n\n\n\nIyengar and Kinder (2010)",
     "crumbs": [
       "Week 2: {{< var w02.date-md >}}"
     ]
   },
   {
-    "objectID": "w02/index.html#diving-in",
-    "href": "w02/index.html#diving-in",
+    "objectID": "w02/index.html#the-devil-in-the-details-i",
+    "href": "w02/index.html#the-devil-in-the-details-i",
     "title": "Week 2: Probabilistic Graphical Models (PGMs)",
-    "section": "Diving In…",
-    "text": "Diving In…\n\nResidents of the New Haven, Connecticut area participated in one of two experiments, each of which spanned six consecutive days.\n\n\nWe measured problem importance with four questions that appeared in both the pretreatment and posttreatment questionnaires.\n\n\n\nPlease indicate how important you consider these problems to be.\nShould the federal government do more to develop solutions to these problems, even if it means raising taxes?\nHow much do you yourself care about these problems?\nThese days how much do you talk about these problems?",
+    "section": "The Devil in the Details I",
+    "text": "The Devil in the Details I\n\nResidents of the New Haven, Connecticut area participated in one of two experiments, each of which spanned six consecutive days […] took place in November 1980, shortly after the presidential election\n\n\nWe measured problem importance with four questions that appeared in both the pretreatment and posttreatment questionnaires:\n\nPlease indicate how important you consider these problems to be.\nShould the federal government do more to develop solutions to these problems, even if it means raising taxes?\nHow much do you yourself care about these problems?\nThese days how much do you talk about these problems?",
+    "crumbs": [
+      "Week 2: {{< var w02.date-md >}}"
+    ]
+  },
+  {
+    "objectID": "w02/index.html#the-devil-in-the-details-ii",
+    "href": "w02/index.html#the-devil-in-the-details-ii",
+    "title": "Week 2: Probabilistic Graphical Models (PGMs)",
+    "section": "The Devil in the Details II",
+    "text": "The Devil in the Details II",
+    "crumbs": [
+      "Week 2: {{< var w02.date-md >}}"
+    ]
+  },
+  {
+    "objectID": "w02/index.html#randomization-and-fine-tuned-treatment",
+    "href": "w02/index.html#randomization-and-fine-tuned-treatment",
+    "title": "Week 2: Probabilistic Graphical Models (PGMs)",
+    "section": "Randomization and Fine-Tuned Treatment",
+    "text": "Randomization and Fine-Tuned Treatment\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n…These are the types of things we usually don’t have control over as data scientists (we’re just handed a .csv!)",
     "crumbs": [
       "Week 2: {{< var w02.date-md >}}"
     ]
@@ -673,14 +693,28 @@
     "href": "w02/slides.html#studying-fake-news",
     "title": "Week 2: Probabilistic Graphical Models (PGMs)",
     "section": "Studying “Fake News”",
-    "text": "Studying “Fake News”\n\n\n\n\n\n\n\nStudying “fake news” with Machine Learning and/or Deep Learning and/or Big Data is a big fad at the moment in Computational Social Science: let’s use HMMs to see why it might be more… difficult/complicated than it seems at first 🙈\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nIyengar and Kinder (2010)"
+    "text": "Studying “Fake News”\n\n\n\n\n\n\n\nStudying “fake news” with ML and/or Deep Learning and/or Big Data is very popular in Computational Social Science: let’s use HMMs to see why it might be more… difficult/complicated than it seems at first 🙈\n\n\n\n\n\nThe (implicit) model in studies like Iyengar and Kinder (2010) is something like:\n\n\n\n\n\n\n\n\n\n\n\n\n\nThus allowing results to be summarized in a table like:\n\n\n\n\n\n\n\n\n\n\n\nIyengar and Kinder (2010)"
   },
   {
-    "objectID": "w02/slides.html#diving-in",
-    "href": "w02/slides.html#diving-in",
+    "objectID": "w02/slides.html#the-devil-in-the-details-i",
+    "href": "w02/slides.html#the-devil-in-the-details-i",
     "title": "Week 2: Probabilistic Graphical Models (PGMs)",
-    "section": "Diving In…",
-    "text": "Diving In…\n\nResidents of the New Haven, Connecticut area participated in one of two experiments, each of which spanned six consecutive days.\n\n\nWe measured problem importance with four questions that appeared in both the pretreatment and posttreatment questionnaires.\n\n\n\n\nPlease indicate how important you consider these problems to be.\nShould the federal government do more to develop solutions to these problems, even if it means raising taxes?\nHow much do you yourself care about these problems?\nThese days how much do you talk about these problems?"
+    "section": "The Devil in the Details I",
+    "text": "The Devil in the Details I\n\nResidents of the New Haven, Connecticut area participated in one of two experiments, each of which spanned six consecutive days […] took place in November 1980, shortly after the presidential election\n\n\nWe measured problem importance with four questions that appeared in both the pretreatment and posttreatment questionnaires:\n\nPlease indicate how important you consider these problems to be.\nShould the federal government do more to develop solutions to these problems, even if it means raising taxes?\nHow much do you yourself care about these problems?\nThese days how much do you talk about these problems?"
+  },
+  {
+    "objectID": "w02/slides.html#the-devil-in-the-details-ii",
+    "href": "w02/slides.html#the-devil-in-the-details-ii",
+    "title": "Week 2: Probabilistic Graphical Models (PGMs)",
+    "section": "The Devil in the Details II",
+    "text": "The Devil in the Details II"
+  },
+  {
+    "objectID": "w02/slides.html#randomization-and-fine-tuned-treatment",
+    "href": "w02/slides.html#randomization-and-fine-tuned-treatment",
+    "title": "Week 2: Probabilistic Graphical Models (PGMs)",
+    "section": "Randomization and Fine-Tuned Treatment",
+    "text": "Randomization and Fine-Tuned Treatment\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n…These are the types of things we usually don’t have control over as data scientists (we’re just handed a .csv!)"
   },
   {
     "objectID": "w02/slides.html#references",

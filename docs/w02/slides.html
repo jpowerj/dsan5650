@@ -117,7 +117,7 @@
     div.csl-indent {
       margin-left: 2em;
     }  </style>
-  <link rel="stylesheet" href="../site_libs/revealjs/dist/theme/quarto-3b9f4269c1d98aabe7e5717dba275ee7.css">
+  <link rel="stylesheet" href="../site_libs/revealjs/dist/theme/quarto-2d6e2e207337a4d898fec0cbe5279526.css">
   <link href="../site_libs/revealjs/plugin/quarto-line-highlight/line-highlight.css" rel="stylesheet">
   <link href="../site_libs/revealjs/plugin/reveal-menu/menu.css" rel="stylesheet">
   <link href="../site_libs/revealjs/plugin/reveal-menu/quarto-menu.css" rel="stylesheet">
@@ -903,33 +903,44 @@ Figure&nbsp;3: Your model failing to achieve its goal bc you haven’t yet disti
           display:block!important;
       }</style></aside>
 </section>
-<section id="studying-fake-news" class="slide level2 smaller callout-fw callout-valign crunch-img crunch-p crunch-quarto-figure crunch-title crunch-callout">
+<section id="studying-fake-news" class="slide level2 smaller callout-fw callout-valign crunch-img crunch-p crunch-quarto-figure crunch-title crunch-callout text-70 crunch-ul crunch-li-5 crunch-quarto-layout-panel">
 <h2>Studying “Fake News”</h2>
 <div class="callout callout-none no-icon callout-style-simple">
 <div class="callout-body">
 <div class="callout-content">
 <div id="callout-container">
 <div style="float: left; margin-right: 12px; margin-bottom: -2px">
-<p><img data-src="images/real-tired.png" width="90"></p>
+<p><img data-src="images/real-tired.png" width="50"></p>
 </div>
-<p>Studying “fake news” with Machine Learning and/or Deep Learning and/or Big Data is a big fad at the moment in Computational Social Science: let’s use HMMs to see why it might be more… difficult/complicated than it seems at first 🙈</p>
-</div>
-</div>
+<p>Studying “fake news” with ML and/or Deep Learning and/or Big Data is very popular in Computational Social Science: let’s use HMMs to see why it might be more… difficult/complicated than it seems at first 🙈</p>
 </div>
 </div>
+</div>
+</div>
+<ul>
+<li>The (implicit) model in studies like <span class="citation" data-cites="iyengar_news_2010">Iyengar and Kinder (<a href="#/references" role="doc-biblioref" onclick="">2010</a>)</span> is something like:</li>
+</ul>
 <div>
 
 </div>
-<div class="quarto-layout-panel" data-layout-align="center" data-layout="[60,40]">
+<div class="quarto-layout-panel" data-layout-align="center" data-layout="[65,35]">
 <div class="quarto-layout-row quarto-layout-valign-center">
-<div id="iyengar-text" class="quarto-layout-cell" style="flex-basis: 60.0%;justify-content: center;">
+<div id="iyengar-text" class="quarto-layout-cell" style="flex-basis: 65.0%;justify-content: center;">
 <div class="quarto-figure quarto-figure-center">
 <figure>
-<p><img data-src="images/hmm_media.svg" class="quarto-figure quarto-figure-center"></p>
+<p><img data-src="images/hmm_media.svg" class="quarto-figure quarto-figure-center" width="520"></p>
+</figure>
+</div>
+<ul>
+<li>Thus allowing results to be summarized in a table like:</li>
+</ul>
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="images/iyengar_results.jpg" class="quarto-figure quarto-figure-center" width="400"></p>
 </figure>
 </div>
 </div>
-<div id="iyengar-img" class="quarto-layout-cell" style="flex-basis: 40.0%;justify-content: center;">
+<div id="iyengar-img" class="quarto-layout-cell" style="flex-basis: 35.0%;justify-content: center;">
 <div class="quarto-figure quarto-figure-center">
 <figure>
 <p><img data-src="images/iyengar_kinder.jpg" style="width:60.0%"></p>
@@ -940,24 +951,51 @@ Figure&nbsp;3: Your model failing to achieve its goal bc you haven’t yet disti
 </div>
 </div>
 </section>
-<section id="diving-in" class="slide level2">
-<h2>Diving In…</h2>
+<section id="the-devil-in-the-details-i" class="slide level2 smaller crunch-title lh-adjust">
+<h2>The Devil in the Details I</h2>
 <blockquote>
-<p>Residents of the New Haven, Connecticut area participated in one of two experiments, each of which spanned six consecutive days.</p>
+<p>Residents of the <span class="jjbox">New Haven, Connecticut area</span> participated in one of two experiments, each of which spanned <span class="jjbox">six consecutive days</span> […] took place in <span class="jjbox">November 1980</span>, shortly after the <span class="jjbox">presidential election</span></p>
 </blockquote>
 <blockquote>
-<p>We measured <strong>problem importance</strong> with four questions that appeared in both the pretreatment and posttreatment questionnaires.</p>
-</blockquote>
-<blockquote>
-
+<p>We measured <strong>problem importance</strong> with four questions that appeared in both the pretreatment and posttreatment questionnaires:</p>
 <ul>
-<li>Please indicate how important you consider these problems to be.</li>
-<li>Should the federal government do more to develop solutions to these problems, even if it means raising taxes?</li>
-<li>How much do you yourself care about these problems?</li>
-<li>These days how much do you talk about these problems?</li>
+<li>Please <span class="jjbox">indicate how important</span> you consider these problems to be.</li>
+<li>Should the federal government <span class="jjbox">do more</span> to develop solutions to these problems, even if it means <span class="jjbox">raising taxes</span>?</li>
+<li>How much do you yourself <span class="jjbox">care</span> about these problems?</li>
+<li><span class="jjbox">These days</span> how much do you <span class="jjbox">talk</span> about these problems?</li>
 </ul>
-
 </blockquote>
+</section>
+<section id="the-devil-in-the-details-ii" class="slide level2">
+<h2>The Devil in the Details II</h2>
+
+<img data-src="images/iyengar_experiment.jpg" class="quarto-figure quarto-figure-center r-stretch"></section>
+<section id="randomization-and-fine-tuned-treatment" class="slide level2 smaller crunch-quarto-figure crunch-quarto-layout-panel">
+<h2>Randomization and Fine-Tuned Treatment</h2>
+<div>
+
+</div>
+<div class="quarto-layout-panel" data-layout="[50,50]">
+<div class="quarto-layout-row quarto-layout-valign-center">
+<div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="images/iyengar_treatment.jpg" class="quarto-figure quarto-figure-center"></p>
+</figure>
+</div>
+</div>
+<div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="images/iyengar_control.jpg" class="quarto-figure quarto-figure-center"></p>
+</figure>
+</div>
+</div>
+</div>
+</div>
+<ul>
+<li>…These are the types of things we usually <strong>don’t</strong> have control over as data scientists (we’re just handed a <code>.csv</code>!)</li>
+</ul>
 </section>
 <section id="references" class="slide level2 smaller scrollable">
 <h2>References</h2>
