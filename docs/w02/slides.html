@@ -117,7 +117,7 @@
     div.csl-indent {
       margin-left: 2em;
     }  </style>
-  <link rel="stylesheet" href="../site_libs/revealjs/dist/theme/quarto-776cfcce19bddc2dc85138ceedab3e18.css">
+  <link rel="stylesheet" href="../site_libs/revealjs/dist/theme/quarto-3b9f4269c1d98aabe7e5717dba275ee7.css">
   <link href="../site_libs/revealjs/plugin/quarto-line-highlight/line-highlight.css" rel="stylesheet">
   <link href="../site_libs/revealjs/plugin/reveal-menu/menu.css" rel="stylesheet">
   <link href="../site_libs/revealjs/plugin/reveal-menu/quarto-menu.css" rel="stylesheet">
@@ -211,7 +211,7 @@
       margin-right: 0; 
     }
   </style>
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css"><link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/gh/dreampulse/computer-modern-web-font@master/fonts.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css"><link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/gh/dreampulse/computer-modern-web-font@master/fonts.css"><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin=""><link href="https://fonts.googleapis.com/css2?family=Barrio&amp;display=swap" rel="stylesheet">
 </head>
 <body class="quarto-light">
   <div class="reveal">
@@ -257,13 +257,13 @@ Jeff Jacobs
 <td style="text-align: left;"><strong>Lecture</strong></td>
 <td style="text-align: left;">6:30pm</td>
 <td style="text-align: left;">6:45pm</td>
-<td style="text-align: left;"><a href="#/motivation-ii-causal-inference">TA Intros →</a></td>
+<td style="text-align: left;"><a href="#/ta-intros">TA Intros →</a></td>
 </tr>
 <tr class="even">
 <td style="text-align: left;"></td>
 <td style="text-align: left;">6:45pm</td>
 <td style="text-align: left;">7:00pm</td>
-<td style="text-align: left;"><a href="">HW1 Questions and Concerns →</a></td>
+<td style="text-align: left;"><a href="#/hw1-questions-andor-concerns">HW1 Questions and Concerns →</a></td>
 </tr>
 <tr class="odd">
 <td style="text-align: left;"></td>
@@ -339,6 +339,15 @@ Jeff Jacobs
 \newcommand{\bigVar}[1]{\text{Var}\mkern-4mu \left[ #1 \right]}
 \]</span></p>
 </div>
+<div class="hidden">
+<style>
+.barrio-jj {
+  font-family: "Barrio", system-ui;
+  /* font-weight: 400; */
+  font-style: normal;
+}
+</style>
+</div>
 </section>
 
 <section>
@@ -405,7 +414,7 @@ Jeff Jacobs
 <div>
 
 </div>
-<div class="quarto-layout-panel" data-layout="[55,45]" data-layout-align="center">
+<div class="quarto-layout-panel" data-layout-align="center" data-layout="[55,45]">
 <div class="quarto-layout-row quarto-layout-valign-center">
 <div id="dgps-5100" class="quarto-layout-cell" style="flex-basis: 55.0%;justify-content: center;">
 <ul>
@@ -628,14 +637,11 @@ Jeff Jacobs
 <li>Representation of a <strong>data-generating process (DGP)!</strong></li>
 </ul>
 <p>Example: Let’s model how <strong>weather</strong> <span class="math inline">\(W\)</span> affects <strong>evening plans</strong> <span class="math inline">\(Y\)</span>: the choice between <strong>going to a party</strong> or <strong>staying in to watch movies</strong></p>
-<div title="The Partier's Dilemma">
-<div class="callout callout-tip callout-titled callout-style-default">
+<div title="<i class='bi bi-info-circle'></i> The Partier's Dilemma">
+<div class="callout callout-tip no-icon callout-titled callout-style-default">
 <div class="callout-body">
 <div class="callout-title">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<p><strong>The Partier’s Dilemma</strong></p>
+<p><strong><i class="bi bi-info-circle"></i> The Partier’s Dilemma</strong></p>
 </div>
 <div class="callout-content">
 <ol type="1">
@@ -803,6 +809,156 @@ Figure&nbsp;2: The Conditional Probability Table (CPT) for the edge <span class=
 <li>We’ve learned something interesting! Observing <span class="math inline">\(i\)</span> at the party <span class="math inline">\(\leadsto\)</span> probability of sun jumps from <span class="math inline">\(0.5\)</span> (<strong>“prior”</strong> estimate of <span class="math inline">\(W\)</span>, best guess without any other relevant info) to <span class="math inline">\(0.89\)</span> (<strong>“posterior”</strong> estimate of <span class="math inline">\(W\)</span>, best guess after incorporating relevant info).</li>
 </ul>
 </section>
+<section id="importance-of-observed-vs.-latent-distinction" class="slide level2 smaller crunch-title title-10">
+<h2>Importance of Observed vs.&nbsp;Latent Distinction!</h2>
+<ul>
+<li>Across many different fields, hidden stumbling-block in your project may be <strong>failure to model this distinction</strong> and pursue its implications!</li>
+</ul>
+<div id="fig-fence-dog" class="quarto-float quarto-figure quarto-figure-center">
+<figure class="quarto-float quarto-float-fig">
+<div aria-describedby="fig-fence-dog-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<center>
+<video id="video_shortcode_videojs_video2" height="400" class="video-js vjs-default-skin " controls="" preload="auto" data-setup="{}" title=""><source src="https://jpj.georgetown.domains/dsan5650-scratch/fence_dog.mp4"></video>
+</center>
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-fence-dog-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;3: Your model failing to achieve its goal bc you haven’t yet distinguished observed vs.&nbsp;latent variables
+</figcaption>
+</figure>
+</div>
+</section>
+<section id="example-from-cognitive-neuroscience-visual-perception" class="slide level2 smaller crunch-title title-08 crunch-ul crunch-quarto-figure crunch-quarto-layout-panel">
+<h2>Example from Cognitive Neuroscience: Visual Perception</h2>
+<div>
+
+</div>
+<div class="quarto-layout-panel" data-layout="[55,45]">
+<div class="quarto-layout-row quarto-layout-valign-center">
+<div id="cog-neuro-text" class="quarto-layout-cell" style="flex-basis: 55.0%;justify-content: flex-start;">
+<ul>
+<li>We “see” <strong>3D objects</strong> like a basketballs, but our eyes are (curved) <strong>2D surfaces!</strong></li>
+<li><span class="math inline">\(\Rightarrow\)</span> Our brains <strong>construct</strong> 3D environment by combining 2D info (<strong>observed</strong> photons-hitting-light-cones) with <strong>latent</strong> heuristic info:
+<ul>
+<li>Instantaneous <strong>Binocular Disparity</strong>, fusing info from <strong>two</strong> slightly-offset eyes,</li>
+<li>Short-term <strong>Motion</strong> <a href="https://en.wikipedia.org/wiki/Parallax"><strong>Parallax</strong></a>: How does object shift over short temporal “windows” of movement?</li>
+<li>Long-term mental models (orange-ish circle with this line pattern is usually a basketball, which is usually this big, etc.)</li>
+</ul></li>
+</ul>
+</div>
+<div id="cog-neuro-img" class="quarto-layout-cell" style="flex-basis: 45.0%;justify-content: flex-start;">
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="images/parallax.jpg"></p>
+<figcaption><a href="https://royalsocietypublishing.org/doi/10.1098/rstb.2015.0256">Image source</a> (a very cool article!)</figcaption>
+</figure>
+</div>
+</div>
+</div>
+</div>
+<ul>
+<li>Similar examples in many other fields <span class="math inline">\(\leadsto\)</span> science is a strange waltz of general models vs.&nbsp;field-specific details, but there’s one model that is <strong>infinitely helpful</strong> imo…</li>
+</ul>
+</section>
+<section id="hidden-markov-models-hmms-are-our-ur-pgms" class="slide level2 smaller crunch-title title-09 crunch-quarto-figure crunch-quarto-layout-cell callout-fw">
+<h2>Hidden Markov Models (HMMs) Are Our Ur-PGMs!</h2>
+<ul>
+<li>Using <a href="https://blogs.transparent.com/german/the-german-prefix-ur/">“Ur”</a> in the same sense as <a href="https://kieranhealy.org/blog/archives/2015/06/12/americas-ur-choropleths/">“America’s Ur-Choropleths”</a>…</li>
+<li>HMMs are our “Ur-Models” for Computational <span class="barrio-jj"><strong>Social</strong> Science</span> specifically</li>
+</ul>
+<div>
+
+</div>
+<div class="quarto-layout-panel" data-layout="[3,1]">
+<div class="quarto-layout-row quarto-layout-valign-center">
+<div class="quarto-layout-cell" style="flex-basis: 75.0%;justify-content: center;">
+<div class="quarto-figure quarto-figure-right">
+<figure>
+<p><img data-src="images/hmm.svg" class="quarto-figure quarto-figure-right" width="700"></p>
+</figure>
+</div>
+</div>
+<div class="quarto-layout-cell" style="flex-basis: 25.0%;justify-content: center;">
+<div class="quarto-figure quarto-figure-left">
+<figure>
+<p><img data-src="images/mood_crop.jpg" class="quarto-figure quarto-figure-left" width="100"></p>
+</figure>
+</div>
+</div>
+</div>
+</div>
+<ul>
+<li>Let’s consider an extremely currently-popular strand of CSS research, and step through why (a) it may be harder than it initially seems, but (b) we can use HMMs to “organize”/manage/visualize the complexity!</li>
+</ul>
+<aside class="notes">
+<p>As in, how America’s Ur-Choropleths are two visualizations you can keep at hand before launching into a specific nation-wide choropleth about a specific issue!</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="studying-fake-news" class="slide level2 smaller callout-fw callout-valign crunch-img crunch-p crunch-quarto-figure crunch-title crunch-callout">
+<h2>Studying “Fake News”</h2>
+<div class="callout callout-none no-icon callout-style-simple">
+<div class="callout-body">
+<div class="callout-content">
+<div id="callout-container">
+<div style="float: left; margin-right: 12px; margin-bottom: -2px">
+<p><img data-src="images/real-tired.png" width="90"></p>
+</div>
+<p>Studying “fake news” with Machine Learning and/or Deep Learning and/or Big Data is a big fad at the moment in Computational Social Science: let’s use HMMs to see why it might be more… difficult/complicated than it seems at first 🙈</p>
+</div>
+</div>
+</div>
+</div>
+<div>
+
+</div>
+<div class="quarto-layout-panel" data-layout-align="center" data-layout="[60,40]">
+<div class="quarto-layout-row quarto-layout-valign-center">
+<div id="iyengar-text" class="quarto-layout-cell" style="flex-basis: 60.0%;justify-content: center;">
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="images/hmm_media.svg" class="quarto-figure quarto-figure-center"></p>
+</figure>
+</div>
+</div>
+<div id="iyengar-img" class="quarto-layout-cell" style="flex-basis: 40.0%;justify-content: center;">
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="images/iyengar_kinder.jpg" style="width:60.0%"></p>
+<figcaption><span class="citation" data-cites="iyengar_news_2010">Iyengar and Kinder (<a href="#/references" role="doc-biblioref" onclick="">2010</a>)</span></figcaption>
+</figure>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id="diving-in" class="slide level2">
+<h2>Diving In…</h2>
+<blockquote>
+<p>Residents of the New Haven, Connecticut area participated in one of two experiments, each of which spanned six consecutive days.</p>
+</blockquote>
+<blockquote>
+<p>We measured <strong>problem importance</strong> with four questions that appeared in both the pretreatment and posttreatment questionnaires.</p>
+</blockquote>
+<blockquote>
+
+<ul>
+<li>Please indicate how important you consider these problems to be.</li>
+<li>Should the federal government do more to develop solutions to these problems, even if it means raising taxes?</li>
+<li>How much do you yourself care about these problems?</li>
+<li>These days how much do you talk about these problems?</li>
+</ul>
+
+</blockquote>
+</section>
 <section id="references" class="slide level2 smaller scrollable">
 <h2>References</h2>
 <div id="refs" class="references csl-bib-body hanging-indent" data-entry-spacing="0" role="list">
@@ -811,6 +967,9 @@ Finetti, Bruno de. 1972. <em>Probability, <span>Induction</span> and <span>Stati
 </div>
 <div id="ref-hume_treatise_1739" class="csl-entry" role="listitem">
 Hume, David. 1739. <em>A <span>Treatise</span> of <span>Human Nature</span>: <span>Being</span> an <span>Attempt</span> to <span>Introduce</span> the <span>Experimental Method</span> of <span>Reasoning Into Moral Subjects</span>; and <span>Dialogues Concerning Natural Religion</span></em>. Longmans, Green.
+</div>
+<div id="ref-iyengar_news_2010" class="csl-entry" role="listitem">
+Iyengar, Shanto, and Donald R. Kinder. 2010. <em>News <span>That Matters</span>: <span>Television</span> &amp; <span>American Opinion</span></em>. University of Chicago Press.
 </div>
 <div id="ref-pearl_causality_2000" class="csl-entry" role="listitem">
 Pearl, Judea. 2000. <em>Causality: <span>Models</span>, <span>Reasoning</span>, and <span>Inference</span></em>. Cambridge University Press.
@@ -1229,6 +1388,7 @@ Pearl, Judea. 2000. <em>Causality: <span>Models</span>, <span>Reasoning</span>, 
     });
     </script>
     <script>videojs(video_shortcode_videojs_video1);</script>
+    <script>videojs(video_shortcode_videojs_video2);</script>
     
 
 </body></html>

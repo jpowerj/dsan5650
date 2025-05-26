@@ -350,7 +350,7 @@
     "href": "w02/index.html#bayesian-inference-but-with-pictures",
     "title": "Week 2: Probabilistic Graphical Models (PGMs)",
     "section": "Bayesian Inference but with Pictures",
-    "text": "Bayesian Inference but with Pictures\nA Probabilistic Graphical Model (PGM) provides us with:\n\nA formal-mathematical…\nBut also easily visualizable (by construction)…\nRepresentation of a data-generating process (DGP)!\n\nExample: Let’s model how weather \\(W\\) affects evening plans \\(Y\\): the choice between going to a party or staying in to watch movies\n\n\n\n\n\n\nThe Partier’s Dilemma\n\n\n\n\nA person \\(i\\) wakes up with some initial affinity for partying: \\(\\Pr(Y_i = \\textsf{Go Out})\\)\n\\(i\\) then goes to their window and observes the weather \\(W_i\\) outside:\n\nIf the weather is sunny, \\(i\\)’s affinity increases: \\(\\Pr(Y_i = \\textsf{Go} \\mid W_i = \\textsf{Sun}) &gt; \\Pr(Y = \\textsf{Go})\\)\nOtherwise, if it is rainy, \\(i\\)’s affinity decreases: \\(\\Pr(Y_i = \\textsf{Go} \\mid W_i = \\textsf{Sun}) &lt; \\Pr(Y = \\textsf{Go})\\)",
+    "text": "Bayesian Inference but with Pictures\nA Probabilistic Graphical Model (PGM) provides us with:\n\nA formal-mathematical…\nBut also easily visualizable (by construction)…\nRepresentation of a data-generating process (DGP)!\n\nExample: Let’s model how weather \\(W\\) affects evening plans \\(Y\\): the choice between going to a party or staying in to watch movies\n\n\n\n\n\n\n The Partier’s Dilemma\n\n\n\n\nA person \\(i\\) wakes up with some initial affinity for partying: \\(\\Pr(Y_i = \\textsf{Go Out})\\)\n\\(i\\) then goes to their window and observes the weather \\(W_i\\) outside:\n\nIf the weather is sunny, \\(i\\)’s affinity increases: \\(\\Pr(Y_i = \\textsf{Go} \\mid W_i = \\textsf{Sun}) &gt; \\Pr(Y = \\textsf{Go})\\)\nOtherwise, if it is rainy, \\(i\\)’s affinity decreases: \\(\\Pr(Y_i = \\textsf{Go} \\mid W_i = \\textsf{Sun}) &lt; \\Pr(Y = \\textsf{Go})\\)",
     "crumbs": [
       "Week 2: {{< var w02.date-md >}}"
     ]
@@ -406,11 +406,61 @@
     ]
   },
   {
+    "objectID": "w02/index.html#importance-of-observed-vs.-latent-distinction",
+    "href": "w02/index.html#importance-of-observed-vs.-latent-distinction",
+    "title": "Week 2: Probabilistic Graphical Models (PGMs)",
+    "section": "Importance of Observed vs. Latent Distinction!",
+    "text": "Importance of Observed vs. Latent Distinction!\n\nAcross many different fields, hidden stumbling-block in your project may be failure to model this distinction and pursue its implications!\n\n\n\n\n\n\n\n\n\nFigure 3: Your model failing to achieve its goal bc you haven’t yet distinguished observed vs. latent variables",
+    "crumbs": [
+      "Week 2: {{< var w02.date-md >}}"
+    ]
+  },
+  {
+    "objectID": "w02/index.html#example-from-cognitive-neuroscience-visual-perception",
+    "href": "w02/index.html#example-from-cognitive-neuroscience-visual-perception",
+    "title": "Week 2: Probabilistic Graphical Models (PGMs)",
+    "section": "Example from Cognitive Neuroscience: Visual Perception",
+    "text": "Example from Cognitive Neuroscience: Visual Perception\n\n\n\n\n\n\n\nWe “see” 3D objects like a basketballs, but our eyes are (curved) 2D surfaces!\n\\(\\Rightarrow\\) Our brains construct 3D environment by combining 2D info (observed photons-hitting-light-cones) with latent heuristic info:\n\nInstantaneous Binocular Disparity, fusing info from two slightly-offset eyes,\nShort-term Motion Parallax: How does object shift over short temporal “windows” of movement?\nLong-term mental models (orange-ish circle with this line pattern is usually a basketball, which is usually this big, etc.)\n\n\n\n\n\n\n\nImage source (a very cool article!)\n\n\n\n\n\n\nSimilar examples in many other fields \\(\\leadsto\\) science is a strange waltz of general models vs. field-specific details, but there’s one model that is infinitely helpful imo…",
+    "crumbs": [
+      "Week 2: {{< var w02.date-md >}}"
+    ]
+  },
+  {
+    "objectID": "w02/index.html#hidden-markov-models-hmms-are-our-ur-pgms",
+    "href": "w02/index.html#hidden-markov-models-hmms-are-our-ur-pgms",
+    "title": "Week 2: Probabilistic Graphical Models (PGMs)",
+    "section": "Hidden Markov Models (HMMs) Are Our Ur-PGMs!",
+    "text": "Hidden Markov Models (HMMs) Are Our Ur-PGMs!\n\nUsing “Ur” in the same sense as “America’s Ur-Choropleths”…\nHMMs are our “Ur-Models” for Computational Social Science specifically\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nLet’s consider an extremely currently-popular strand of CSS research, and step through why (a) it may be harder than it initially seems, but (b) we can use HMMs to “organize”/manage/visualize the complexity!\n\n\nAs in, how America’s Ur-Choropleths are two visualizations you can keep at hand before launching into a specific nation-wide choropleth about a specific issue!",
+    "crumbs": [
+      "Week 2: {{< var w02.date-md >}}"
+    ]
+  },
+  {
+    "objectID": "w02/index.html#studying-fake-news",
+    "href": "w02/index.html#studying-fake-news",
+    "title": "Week 2: Probabilistic Graphical Models (PGMs)",
+    "section": "Studying “Fake News”",
+    "text": "Studying “Fake News”\n\n\n\n\n\n\n\n\n\n\nStudying “fake news” with Machine Learning and/or Deep Learning and/or Big Data is a big fad at the moment in Computational Social Science: let’s use HMMs to see why it might be more… difficult/complicated than it seems at first 🙈\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nIyengar and Kinder (2010)",
+    "crumbs": [
+      "Week 2: {{< var w02.date-md >}}"
+    ]
+  },
+  {
+    "objectID": "w02/index.html#diving-in",
+    "href": "w02/index.html#diving-in",
+    "title": "Week 2: Probabilistic Graphical Models (PGMs)",
+    "section": "Diving In…",
+    "text": "Diving In…\n\nResidents of the New Haven, Connecticut area participated in one of two experiments, each of which spanned six consecutive days.\n\n\nWe measured problem importance with four questions that appeared in both the pretreatment and posttreatment questionnaires.\n\n\n\nPlease indicate how important you consider these problems to be.\nShould the federal government do more to develop solutions to these problems, even if it means raising taxes?\nHow much do you yourself care about these problems?\nThese days how much do you talk about these problems?",
+    "crumbs": [
+      "Week 2: {{< var w02.date-md >}}"
+    ]
+  },
+  {
     "objectID": "w02/index.html#references",
     "href": "w02/index.html#references",
     "title": "Week 2: Probabilistic Graphical Models (PGMs)",
     "section": "References",
-    "text": "References\n\n\nFinetti, Bruno de. 1972. Probability, Induction and Statistics: The Art of Guessing. J. Wiley.\n\n\nHume, David. 1739. A Treatise of Human Nature: Being an Attempt to Introduce the Experimental Method of Reasoning Into Moral Subjects; and Dialogues Concerning Natural Religion. Longmans, Green.\n\n\nPearl, Judea. 2000. Causality: Models, Reasoning, and Inference. Cambridge University Press.",
+    "text": "References\n\n\nFinetti, Bruno de. 1972. Probability, Induction and Statistics: The Art of Guessing. J. Wiley.\n\n\nHume, David. 1739. A Treatise of Human Nature: Being an Attempt to Introduce the Experimental Method of Reasoning Into Moral Subjects; and Dialogues Concerning Natural Religion. Longmans, Green.\n\n\nIyengar, Shanto, and Donald R. Kinder. 2010. News That Matters: Television & American Opinion. University of Chicago Press.\n\n\nPearl, Judea. 2000. Causality: Models, Reasoning, and Inference. Cambridge University Press.",
     "crumbs": [
       "Week 2: {{< var w02.date-md >}}"
     ]
@@ -560,7 +610,7 @@
     "href": "w02/slides.html#bayesian-inference-but-with-pictures",
     "title": "Week 2: Probabilistic Graphical Models (PGMs)",
     "section": "Bayesian Inference but with Pictures",
-    "text": "Bayesian Inference but with Pictures\nA Probabilistic Graphical Model (PGM) provides us with:\n\nA formal-mathematical…\nBut also easily visualizable (by construction)…\nRepresentation of a data-generating process (DGP)!\n\nExample: Let’s model how weather \\(W\\) affects evening plans \\(Y\\): the choice between going to a party or staying in to watch movies\n\n\n\n\n\n\n\nThe Partier’s Dilemma\n\n\n\nA person \\(i\\) wakes up with some initial affinity for partying: \\(\\Pr(Y_i = \\textsf{Go Out})\\)\n\\(i\\) then goes to their window and observes the weather \\(W_i\\) outside:\n\nIf the weather is sunny, \\(i\\)’s affinity increases: \\(\\Pr(Y_i = \\textsf{Go} \\mid W_i = \\textsf{Sun}) &gt; \\Pr(Y = \\textsf{Go})\\)\nOtherwise, if it is rainy, \\(i\\)’s affinity decreases: \\(\\Pr(Y_i = \\textsf{Go} \\mid W_i = \\textsf{Sun}) &lt; \\Pr(Y = \\textsf{Go})\\)"
+    "text": "Bayesian Inference but with Pictures\nA Probabilistic Graphical Model (PGM) provides us with:\n\nA formal-mathematical…\nBut also easily visualizable (by construction)…\nRepresentation of a data-generating process (DGP)!\n\nExample: Let’s model how weather \\(W\\) affects evening plans \\(Y\\): the choice between going to a party or staying in to watch movies\n\n\n\n\n The Partier’s Dilemma\n\n\n\nA person \\(i\\) wakes up with some initial affinity for partying: \\(\\Pr(Y_i = \\textsf{Go Out})\\)\n\\(i\\) then goes to their window and observes the weather \\(W_i\\) outside:\n\nIf the weather is sunny, \\(i\\)’s affinity increases: \\(\\Pr(Y_i = \\textsf{Go} \\mid W_i = \\textsf{Sun}) &gt; \\Pr(Y = \\textsf{Go})\\)\nOtherwise, if it is rainy, \\(i\\)’s affinity decreases: \\(\\Pr(Y_i = \\textsf{Go} \\mid W_i = \\textsf{Sun}) &lt; \\Pr(Y = \\textsf{Go})\\)"
   },
   {
     "objectID": "w02/slides.html#two-main-building-blocks",
@@ -598,11 +648,46 @@
     "text": "Computation via Bayes’ Rule\n\nBayes’ Rule, \\(\\Pr(A \\mid B) = \\frac{\\Pr(B \\mid A)\\Pr(A)}{\\Pr(B)}\\), tells us how to use info about \\(\\Pr(B \\mid A)\\) to obtain info about \\(\\Pr(A \\mid B)\\)!\nWe use it to obtain a distribution for \\(W\\) updated to incorporate new info \\([Y = \\textsf{Go}]\\):\n\n\\[\n\\begin{align*}\n&\\Pr(W = \\textsf{Sun} \\mid Y = \\textsf{Go})\n= \\frac{\\Pr(Y = \\textsf{Go} \\mid W = \\textsf{Sun}) \\Pr(W = \\textsf{Sun})}{\\Pr(Y = \\textsf{Go})} \\\\\n=\\, &\\frac{\\Pr(Y = \\textsf{Go} \\mid W = \\textsf{Sun}) \\Pr(W = \\textsf{Sun})}{\\Pr(Y = \\textsf{Go} \\mid W = \\textsf{Sun}) \\Pr(W = \\textsf{Sun}) + \\Pr(Y = \\textsf{Go} \\mid W = \\textsf{Rain}) \\Pr(W = \\textsf{Rain})}\n\\end{align*}\n\\]\n\nPlug in info from CPT to obtain our new (conditional) probability of interest:\n\n\\[\n\\begin{align*}\n\\Pr(W = \\textsf{Sun} \\mid Y = \\textsf{Go}) &= \\frac{(0.8)(0.5)}{(0.8)(0.5) + (0.1)(0.5)} = \\frac{0.4}{0.4 + 0.05} \\approx 0.89\n\\end{align*}\n\\]\n\nWe’ve learned something interesting! Observing \\(i\\) at the party \\(\\leadsto\\) probability of sun jumps from \\(0.5\\) (“prior” estimate of \\(W\\), best guess without any other relevant info) to \\(0.89\\) (“posterior” estimate of \\(W\\), best guess after incorporating relevant info)."
   },
   {
+    "objectID": "w02/slides.html#importance-of-observed-vs.-latent-distinction",
+    "href": "w02/slides.html#importance-of-observed-vs.-latent-distinction",
+    "title": "Week 2: Probabilistic Graphical Models (PGMs)",
+    "section": "Importance of Observed vs. Latent Distinction!",
+    "text": "Importance of Observed vs. Latent Distinction!\n\nAcross many different fields, hidden stumbling-block in your project may be failure to model this distinction and pursue its implications!\n\n\n\n\n\n\n\n\n\nFigure 3: Your model failing to achieve its goal bc you haven’t yet distinguished observed vs. latent variables"
+  },
+  {
+    "objectID": "w02/slides.html#example-from-cognitive-neuroscience-visual-perception",
+    "href": "w02/slides.html#example-from-cognitive-neuroscience-visual-perception",
+    "title": "Week 2: Probabilistic Graphical Models (PGMs)",
+    "section": "Example from Cognitive Neuroscience: Visual Perception",
+    "text": "Example from Cognitive Neuroscience: Visual Perception\n\n\n\n\n\n\n\nWe “see” 3D objects like a basketballs, but our eyes are (curved) 2D surfaces!\n\\(\\Rightarrow\\) Our brains construct 3D environment by combining 2D info (observed photons-hitting-light-cones) with latent heuristic info:\n\nInstantaneous Binocular Disparity, fusing info from two slightly-offset eyes,\nShort-term Motion Parallax: How does object shift over short temporal “windows” of movement?\nLong-term mental models (orange-ish circle with this line pattern is usually a basketball, which is usually this big, etc.)\n\n\n\n\n\n\n\nImage source (a very cool article!)\n\n\n\n\n\n\nSimilar examples in many other fields \\(\\leadsto\\) science is a strange waltz of general models vs. field-specific details, but there’s one model that is infinitely helpful imo…"
+  },
+  {
+    "objectID": "w02/slides.html#hidden-markov-models-hmms-are-our-ur-pgms",
+    "href": "w02/slides.html#hidden-markov-models-hmms-are-our-ur-pgms",
+    "title": "Week 2: Probabilistic Graphical Models (PGMs)",
+    "section": "Hidden Markov Models (HMMs) Are Our Ur-PGMs!",
+    "text": "Hidden Markov Models (HMMs) Are Our Ur-PGMs!\n\nUsing “Ur” in the same sense as “America’s Ur-Choropleths”…\nHMMs are our “Ur-Models” for Computational Social Science specifically\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nLet’s consider an extremely currently-popular strand of CSS research, and step through why (a) it may be harder than it initially seems, but (b) we can use HMMs to “organize”/manage/visualize the complexity!\n\n\nAs in, how America’s Ur-Choropleths are two visualizations you can keep at hand before launching into a specific nation-wide choropleth about a specific issue!"
+  },
+  {
+    "objectID": "w02/slides.html#studying-fake-news",
+    "href": "w02/slides.html#studying-fake-news",
+    "title": "Week 2: Probabilistic Graphical Models (PGMs)",
+    "section": "Studying “Fake News”",
+    "text": "Studying “Fake News”\n\n\n\n\n\n\n\nStudying “fake news” with Machine Learning and/or Deep Learning and/or Big Data is a big fad at the moment in Computational Social Science: let’s use HMMs to see why it might be more… difficult/complicated than it seems at first 🙈\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nIyengar and Kinder (2010)"
+  },
+  {
+    "objectID": "w02/slides.html#diving-in",
+    "href": "w02/slides.html#diving-in",
+    "title": "Week 2: Probabilistic Graphical Models (PGMs)",
+    "section": "Diving In…",
+    "text": "Diving In…\n\nResidents of the New Haven, Connecticut area participated in one of two experiments, each of which spanned six consecutive days.\n\n\nWe measured problem importance with four questions that appeared in both the pretreatment and posttreatment questionnaires.\n\n\n\n\nPlease indicate how important you consider these problems to be.\nShould the federal government do more to develop solutions to these problems, even if it means raising taxes?\nHow much do you yourself care about these problems?\nThese days how much do you talk about these problems?"
+  },
+  {
     "objectID": "w02/slides.html#references",
     "href": "w02/slides.html#references",
     "title": "Week 2: Probabilistic Graphical Models (PGMs)",
     "section": "References",
-    "text": "References\n\n\nFinetti, Bruno de. 1972. Probability, Induction and Statistics: The Art of Guessing. J. Wiley.\n\n\nHume, David. 1739. A Treatise of Human Nature: Being an Attempt to Introduce the Experimental Method of Reasoning Into Moral Subjects; and Dialogues Concerning Natural Religion. Longmans, Green.\n\n\nPearl, Judea. 2000. Causality: Models, Reasoning, and Inference. Cambridge University Press."
+    "text": "References\n\n\nFinetti, Bruno de. 1972. Probability, Induction and Statistics: The Art of Guessing. J. Wiley.\n\n\nHume, David. 1739. A Treatise of Human Nature: Being an Attempt to Introduce the Experimental Method of Reasoning Into Moral Subjects; and Dialogues Concerning Natural Religion. Longmans, Green.\n\n\nIyengar, Shanto, and Donald R. Kinder. 2010. News That Matters: Television & American Opinion. University of Chicago Press.\n\n\nPearl, Judea. 2000. Causality: Models, Reasoning, and Inference. Cambridge University Press."
   },
   {
     "objectID": "writeups/index.html",

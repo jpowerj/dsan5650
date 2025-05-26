@@ -20,7 +20,7 @@ format:
     link-external-newwindow: true
     theme: [default, "../dsan-globals/jjquarto.scss"]
     include-in-header:
-      text: "<link rel='stylesheet' href='https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css'><link rel='stylesheet' type='text/css' href='https://cdn.jsdelivr.net/gh/dreampulse/computer-modern-web-font@master/fonts.css'>"
+      text: "<link rel='stylesheet' href='https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css'><link rel='stylesheet' type='text/css' href='https://cdn.jsdelivr.net/gh/dreampulse/computer-modern-web-font@master/fonts.css'><link rel='preconnect' href='https://fonts.googleapis.com'><link rel='preconnect' href='https://fonts.gstatic.com' crossorigin><link href='https://fonts.googleapis.com/css2?family=Barrio&display=swap' rel='stylesheet'>"
     slide-number: true
     simplemenu:
       flat: true
@@ -51,8 +51,8 @@ Today's Planned Schedule:
 
 | | Start | End | Topic |
 |:- |:- |:- |:- |
-| **Lecture** | 6:30pm | 6:45pm | [TA Intros &rarr;](#motivation-ii-causal-inference) |
-| | 6:45pm | 7:00pm | [HW1 Questions and Concerns &rarr;]()
+| **Lecture** | 6:30pm | 6:45pm | [TA Intros &rarr;](#ta-intros) |
+| | 6:45pm | 7:00pm | [HW1 Questions and Concerns &rarr;](#hw1-questions-andor-concerns)
 | | 7:00pm | 7:30pm | [Motivating Examples: Causal Inference &rarr;](#motivation-ii-causal-inference) |
 | | 7:30pm | 7:45pm | [Your First Probabilistic Graphical Model! &rarr;](#your-first-probabilistic-graphical-model)
 | **Break!** | 7:45pm | 8:00pm | |
@@ -64,6 +64,21 @@ Today's Planned Schedule:
 {{< include ../dsan-globals/_globals-py.qmd >}}
 
 {{< include ../dsan-globals/_globals-tex.qmd >}}
+
+
+::: {.hidden}
+
+```{=html}
+<style>
+.barrio-jj {
+  font-family: "Barrio", system-ui;
+  /* font-weight: 400; */
+  font-style: normal;
+}
+</style>
+```
+
+:::
 
 # TA Intros {data-stack-name="TA Intros"}
 
@@ -284,7 +299,7 @@ A **Probabilistic Graphical Model (PGM)** provides us with:
 
 Example: Let's model how **weather** $W$ affects **evening plans** $Y$: the choice between **going to a party** or **staying in to watch movies**
 
-::: {.callout-tip title="The Partier's Dilemma"}
+::: {.callout-tip title="<i class='bi bi-info-circle'></i> The Partier's Dilemma" icon="false"}
 
 1.  A person $i$ wakes up with some initial affinity for partying: $\Pr(Y_i = \textsf{Go Out})$
 2.  $i$ then goes to their window and observes the weather $W_i$ outside:
@@ -388,6 +403,109 @@ $$
 $$
 
 * We've learned something interesting! Observing $i$ at the party $\leadsto$ probability of sun jumps from $0.5$ (**"prior"** estimate of $W$, best guess without any other relevant info) to $0.89$ (**"posterior"** estimate of $W$, best guess after incorporating relevant info).
+
+## Importance of Observed vs. Latent Distinction! {.smaller .crunch-title .title-10}
+
+* Across many different fields, hidden stumbling-block in your project may be **failure to model this distinction** and pursue its implications!
+
+::: {#fig-fence-dog}
+
+<center>
+
+{{< video https://jpj.georgetown.domains/dsan5650-scratch/fence_dog.mp4 height="400" align="center" >}}
+
+</center>
+
+Your model failing to achieve its goal bc you haven't yet distinguished observed vs. latent variables
+:::
+
+## Example from Cognitive Neuroscience: Visual Perception {.smaller .crunch-title .title-08 .crunch-ul .crunch-quarto-figure .crunch-quarto-layout-panel}
+
+:::: {layout="[55,45]" layout-valign="center"}
+::: {#cog-neuro-text}
+
+* We "see" **3D objects** like a basketballs, but our eyes are (curved) **2D surfaces!**
+* $\Rightarrow$ Our brains **construct** 3D environment by combining 2D info (**observed** photons-hitting-light-cones) with **latent** heuristic info:
+  * Instantaneous **Binocular Disparity**, fusing info from **two** slightly-offset eyes,
+  * Short-term **Motion** [**Parallax**](https://en.wikipedia.org/wiki/Parallax): How does object shift over short temporal "windows" of movement?
+  * Long-term mental models (orange-ish circle with this line pattern is usually a basketball, which is usually this big, etc.)
+
+:::
+::: {#cog-neuro-img}
+
+![[Image source](https://royalsocietypublishing.org/doi/10.1098/rstb.2015.0256) (a very cool article!)](images/parallax.jpg){fig-align="center"}
+
+:::
+::::
+
+* Similar examples in many other fields $\leadsto$ science is a strange waltz of general models vs. field-specific details, but there's one model that is **infinitely helpful** imo...
+
+## Hidden Markov Models (HMMs) Are Our Ur-PGMs! {.smaller .crunch-title .title-09 .crunch-quarto-figure .crunch-quarto-layout-cell .callout-fw}
+
+* Using ["Ur"](https://blogs.transparent.com/german/the-german-prefix-ur/) in the same sense as ["America's Ur-Choropleths"](https://kieranhealy.org/blog/archives/2015/06/12/americas-ur-choropleths/)...
+* HMMs are our "Ur-Models" for Computational [**Social** Science]{.barrio-jj} specifically
+
+:::: {layout="[3,1]" layout-valign="center"}
+
+![](images/hmm.svg){fig-align="right" width="700"}
+
+![](images/mood_crop.jpg){fig-align="left" width="100"}
+
+::::
+
+* Let's consider an extremely currently-popular strand of CSS research, and step through why (a) it may be harder than it initially seems, but (b) we can use HMMs to "organize"/manage/visualize the complexity!
+
+::: {.notes}
+
+As in, how America's Ur-Choropleths are two visualizations you can keep at hand before launching into a specific nation-wide choropleth about a specific issue!
+
+:::
+
+## Studying "Fake News" {.smaller .callout-fw .callout-valign .crunch-img .crunch-p .crunch-quarto-figure .crunch-title .crunch-callout}
+
+
+::::: {.callout}
+:::: {#callout-container}
+::: {style="float: left; margin-right: 12px; margin-bottom: -2px"}
+
+![](images/real-tired.png){width="90"}
+
+:::
+
+Studying "fake news" with Machine Learning and/or Deep Learning and/or Big Data is a big fad at the moment in Computational Social Science: let's use HMMs to see why it might be more... difficult/complicated than it seems at first 🙈
+
+::::
+:::::
+
+:::: {layout="[60,40]" layout-valign="center" layout-align="center"}
+::: {#iyengar-text}
+
+![](images/hmm_media.svg){fig-align="center"}
+
+:::
+::: {#iyengar-img}
+
+![@iyengar_news_2010](images/iyengar_kinder.jpg){fig-align="center" width="60%"}
+
+:::
+::::
+
+## Diving In...
+
+> Residents of the New Haven, Connecticut area
+participated in one of two experiments, each of
+which spanned six consecutive days.
+
+> We measured **problem importance** with four questions that appeared in both the pretreatment and posttreatment questionnaires.
+
+> * Please indicate how important you consider these
+problems to be.
+> * Should the federal government do more to develop
+solutions to these problems, even if it means raising
+taxes?
+> * How much do you yourself care about these problems?
+> * These days how much do you talk about these
+problems?
 
 ## References
 
