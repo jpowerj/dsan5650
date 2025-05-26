@@ -414,7 +414,7 @@ Jeff Jacobs
 <div>
 
 </div>
-<div class="quarto-layout-panel" data-layout-align="center" data-layout="[55,45]">
+<div class="quarto-layout-panel" data-layout="[55,45]" data-layout-align="center">
 <div class="quarto-layout-row quarto-layout-valign-center">
 <div id="dgps-5100" class="quarto-layout-cell" style="flex-basis: 55.0%;justify-content: center;">
 <ul>
@@ -923,7 +923,7 @@ Figure&nbsp;3: Your model failing to achieve its goal bc you haven’t yet disti
 <div>
 
 </div>
-<div class="quarto-layout-panel" data-layout-align="center" data-layout="[65,35]">
+<div class="quarto-layout-panel" data-layout="[65,35]" data-layout-align="center">
 <div class="quarto-layout-row quarto-layout-valign-center">
 <div id="iyengar-text" class="quarto-layout-cell" style="flex-basis: 65.0%;justify-content: center;">
 <div class="quarto-figure quarto-figure-center">
@@ -996,6 +996,25 @@ Figure&nbsp;3: Your model failing to achieve its goal bc you haven’t yet disti
 <ul>
 <li>…These are the types of things we usually <strong>don’t</strong> have control over as data scientists (we’re just handed a <code>.csv</code>!)</li>
 </ul>
+</section>
+<section id="the-final-piece-plate-notation" class="slide level2">
+<h2>The Final Piece: Plate Notation</h2>
+<ul>
+<li>For describing general distributions, there is often a “single node generating a bunch of nodes” structure:</li>
+</ul>
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="images/hmm_clusters_single_dist.svg" class="quarto-figure quarto-figure-center"></p>
+</figure>
+</div>
+<ul>
+<li>PGM notation has a built-in tool for this: <strong>plates!</strong></li>
+</ul>
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="images/pgm_plates.svg" class="quarto-figure quarto-figure-center"></p>
+</figure>
+</div>
 </section>
 <section id="references" class="slide level2 smaller scrollable">
 <h2>References</h2>

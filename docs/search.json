@@ -476,6 +476,16 @@
     ]
   },
   {
+    "objectID": "w02/index.html#the-final-piece-plate-notation",
+    "href": "w02/index.html#the-final-piece-plate-notation",
+    "title": "Week 2: Probabilistic Graphical Models (PGMs)",
+    "section": "The Final Piece: Plate Notation",
+    "text": "The Final Piece: Plate Notation\n\nFor describing general distributions, there is often a “single node generating a bunch of nodes” structure:\n\n\n\n\n\n\n\nPGM notation has a built-in tool for this: plates!",
+    "crumbs": [
+      "Week 2: {{< var w02.date-md >}}"
+    ]
+  },
+  {
     "objectID": "w02/index.html#references",
     "href": "w02/index.html#references",
     "title": "Week 2: Probabilistic Graphical Models (PGMs)",
@@ -715,6 +725,13 @@
     "title": "Week 2: Probabilistic Graphical Models (PGMs)",
     "section": "Randomization and Fine-Tuned Treatment",
     "text": "Randomization and Fine-Tuned Treatment\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n…These are the types of things we usually don’t have control over as data scientists (we’re just handed a .csv!)"
+  },
+  {
+    "objectID": "w02/slides.html#the-final-piece-plate-notation",
+    "href": "w02/slides.html#the-final-piece-plate-notation",
+    "title": "Week 2: Probabilistic Graphical Models (PGMs)",
+    "section": "The Final Piece: Plate Notation",
+    "text": "The Final Piece: Plate Notation\n\nFor describing general distributions, there is often a “single node generating a bunch of nodes” structure:\n\n\n\n\n\n\n\nPGM notation has a built-in tool for this: plates!"
   },
   {
     "objectID": "w02/slides.html#references",

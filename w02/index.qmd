@@ -525,6 +525,16 @@ problems?
 
 * ...These are the types of things we usually **don't** have control over as data scientists (we're just handed a `.csv`!)
 
+## The Final Piece: Plate Notation
+
+* For describing general distributions, there is often a "single node generating a bunch of nodes" structure:
+
+![](images/hmm_clusters_single_dist.svg){fig-align="center"}
+
+* PGM notation has a built-in tool for this: **plates!**
+
+![](images/pgm_plates.svg){fig-align="center"}
+
 ## References
 
 ::: {#refs}

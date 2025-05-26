@@ -263,7 +263,7 @@ window.Quarto = {
     </ul>
     </div>
 <div class="quarto-sidebar-footer"><div class="sidebar-footer-item">
-<p><em>Updated 2025-05-26, 03:37:56 PM</em></p>
+<p><em>Updated 2025-05-26, 06:04:22 PM</em></p>
 </div></div></nav>
 <div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
@@ -317,6 +317,7 @@ window.Quarto = {
   <li><a href="#the-devil-in-the-details-i" id="toc-the-devil-in-the-details-i" class="nav-link" data-scroll-target="#the-devil-in-the-details-i">The Devil in the Details I</a></li>
   <li><a href="#the-devil-in-the-details-ii" id="toc-the-devil-in-the-details-ii" class="nav-link" data-scroll-target="#the-devil-in-the-details-ii">The Devil in the Details II</a></li>
   <li><a href="#randomization-and-fine-tuned-treatment" id="toc-randomization-and-fine-tuned-treatment" class="nav-link" data-scroll-target="#randomization-and-fine-tuned-treatment">Randomization and Fine-Tuned Treatment</a></li>
+  <li><a href="#the-final-piece-plate-notation" id="toc-the-final-piece-plate-notation" class="nav-link" data-scroll-target="#the-final-piece-plate-notation">The Final Piece: Plate Notation</a></li>
   <li><a href="#references" id="toc-references" class="nav-link" data-scroll-target="#references">References</a></li>
   </ul></li>
   </ul>
@@ -434,7 +435,7 @@ window.Quarto = {
 </tbody>
 </table>
 <div class="hidden">
-<div id="a0d75bf9" class="cell" data-execution_count="1">
+<div id="b61a1d89" class="cell" data-execution_count="1">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>cb_palette <span class="op">=</span> [</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>    <span class="st">"#E69F00"</span>, <span class="st">"#56B4E9"</span>, <span class="st">"#009E73"</span>,</span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>    <span class="st">"#F0E442"</span>, <span class="st">"#0072B2"</span>, <span class="st">"#D55E00"</span>,</span>
@@ -1164,6 +1165,25 @@ Figure&nbsp;3: Your model failing to achieve its goal bc you haven’t yet disti
 <ul>
 <li>…These are the types of things we usually <strong>don’t</strong> have control over as data scientists (we’re just handed a <code>.csv</code>!)</li>
 </ul>
+</section>
+<section id="the-final-piece-plate-notation" class="level2">
+<h2 class="anchored" data-anchor-id="the-final-piece-plate-notation">The Final Piece: Plate Notation</h2>
+<ul>
+<li>For describing general distributions, there is often a “single node generating a bunch of nodes” structure:</li>
+</ul>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/hmm_clusters_single_dist.svg" class="img-fluid quarto-figure quarto-figure-center figure-img"></p>
+</figure>
+</div>
+<ul>
+<li>PGM notation has a built-in tool for this: <strong>plates!</strong></li>
+</ul>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/pgm_plates.svg" class="img-fluid quarto-figure quarto-figure-center figure-img"></p>
+</figure>
+</div>
 </section>
 <section id="references" class="level2">
 <h2 class="anchored" data-anchor-id="references">References</h2>
