@@ -82,7 +82,27 @@ Today's Planned Schedule:
 
 # TA Intros {data-stack-name="TA Intros"}
 
-## Courtney Green
+## Courtney Green {.crunch-title .text-90}
+
+**Background:** BA in Public Policy & Leadership, now interested in using data to examine structural disparities.
+
+**Interests & what I can help with:** How sociodemographic factors (e.g., race, gender, income, immigration status, education level) shape policy outcomes and institutional practices in areas like criminal justice, housing, healthcare, education, and environment.
+
+* **Ask me about:** Counterfactual balancing, handling messy or privacy-limited datasets, and framing causal questions around inequality.
+
+* Reach out if you're thinking about a final project that touches social systems, systemic inequity, or fairness! 
+
+## What Got Me Interested in Causal Inference {.crunch-title .text-75}
+**5000 Project: Over-Policing and Wrongful Convictions in Illinois** 
+
+* **Motivation:** Explore what demographic factors predict wrongful convictions using real exoneration data.
+* **Challenge:** No data on “non-exonerated innocents,” so I (with prof's help) created a counterfactual dataset by sampling from the incarcerated population
+* **Method:** Trained models (logistic regression, random forest, KNN) on a balanced dataset of 548 exonerated and 548 non-exonerated individuals
+* **Finding:** Race and geography (esp. Cook Count/Chicago) were the strongest predictors of exoneration
+* **Takeaway:** Questions about systemic bias can’t be answered with just descriptive stats, you need counterfactual reasoning and causal inference
+
+<span style="font-size: 80%;">[(Optional) View the counterfactual setup](https://crg123.georgetown.domains/projects/dsan-5000/_site/technical-details/data-balancing/main.html)</span>
+
 
 ## Wendy Hu
 
