@@ -98,13 +98,13 @@ The following is a rough map of what we will work through together throughout th
     <td><span data-qmd="**Unit 1**: The Language of Causal Modeling"></span></td>
     <td>1</td>
     <td><span data-qmd="{{< var w01.date-md >}}"></span></td>
-    <td><span data-qmd="[{{< var w01.title >}}](./w01/)"></span></td>
+    <td><span data-qmd='[{{< var w01.title >}}](./w01/)<br>**Relevant Supplementary Material:**<br>Santa Fe Institute online course: [*Introduction to Renormalization*](https://www.youtube.com/playlist?list=PLF0b3ThojznTzAA7bfLWh4RKzRrwNF4L0), up through Video 5, "Coarse Graining II: Entropy"^[Challenge yourself to keep watching to the end of the 5th video here, if you can! Even if you feel frustrated/scared! Because, the *examples* (e.g., macro vs. microeconomics) are what we mainly care about here, more so than e.g. the mathematical definition of entropy (which we will go towards at a slower pace!)]'></span></td>
 </tr>
 <tr>
     <td></td>
     <td>2</td>
     <td><span data-qmd="{{< var w02.date-md >}}"></span></td>
-    <td><span data-qmd='[{{< var w02.title >}}](./w02/)<br>**Relevant Reading:**<br>@koller_probabilistic_2009, Chapter 2: "Foundations" *(especially pp. 15-34, as a DSAN 5100 refresher!)*'></span></td>
+    <td><span data-qmd='[{{< var w02.title >}}](./w02/)<br>**Relevant Reading:**<br>@koller_probabilistic_2009, Chapter 2: "Foundations". *Especially pp. 15-34, as a DSAN 5100 refresher!*'></span></td>
 </tr>
 <tr class='new-unit'>
     <td><span data-qmd="**Unit 2**: Doin Thangs"></span></td>
