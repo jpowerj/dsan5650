@@ -30,8 +30,12 @@ border: 1px solid black !important;
 }
 
 .boxed {
-border: 3px solid black !important;
-padding: 2px !important;
+    border: 3px solid black !important;
+    padding: 2px !important;
+}
+.boxed-cb {
+    border: 3px solid #e69f00 !important;
+    padding: 5px !important;
 }
 
 /* div.callout-note > .callout-header {

@@ -117,7 +117,7 @@
     div.csl-indent {
       margin-left: 2em;
     }  </style>
-  <link rel="stylesheet" href="../site_libs/revealjs/dist/theme/quarto-c1856fe0ed50d2cd52c7955f33a2b3e0.css">
+  <link rel="stylesheet" href="../site_libs/revealjs/dist/theme/quarto-4261e097f3972e5b4b0605035c3b5be8.css">
   <link href="../site_libs/revealjs/plugin/quarto-line-highlight/line-highlight.css" rel="stylesheet">
   <link href="../site_libs/revealjs/plugin/reveal-menu/menu.css" rel="stylesheet">
   <link href="../site_libs/revealjs/plugin/reveal-menu/quarto-menu.css" rel="stylesheet">
@@ -286,14 +286,8 @@ Jeff Jacobs
 <tr class="even">
 <td style="text-align: left;"></td>
 <td style="text-align: left;">8:00pm</td>
-<td style="text-align: left;">8:30pm</td>
-<td style="text-align: left;"><a href="#/pgm-nuts-and-bolts">PGM Nuts and Bolts →</a></td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;"></td>
-<td style="text-align: left;">8:30pm</td>
 <td style="text-align: left;">9:00pm</td>
-<td style="text-align: left;"><a href="#/course-logistics">Course Logistics →</a></td>
+<td style="text-align: left;"><a href="#/hidden-markov-models-(hmms-are-our-ur-pgms)">PGM “Lab” →</a></td>
 </tr>
 </tbody>
 </table>
@@ -383,17 +377,38 @@ Jeff Jacobs
 <li><strong>Ask me about:</strong> Framing social justice questions in data terms, working with community or clinical datasets and interpreting model results in context.</li>
 <li>If you’re designing a project around health, inequality, nonprofit impact, or any socially embedded issue—I’d love to help bridge rigor and relevance.</li>
 </ul>
-</section></section>
-<section>
-<section id="hw1-questions-andor-concerns" class="title-slide slide level1 center" data-stack-name="HW1">
-<h1>HW1 Questions and/or Concerns</h1>
-
 </section>
-<section id="technical-issues-jupyterhub" class="slide level2">
-<h2>Technical Issues (JupyterHub)</h2>
+<section id="jeffs-hw1-updateapology" class="slide level2">
+<h2>Jeff’s HW1 Update/Apology</h2>
+<ul>
+<li>Basically… I goofed by trying to shove a homework into the first two weeks of class 😭</li>
+<li>Last week was “setting the table”, so there are a few (multiple-choice) questions on that</li>
+<li>But, really only makes sense to have HW starting from <strong>end of today</strong>, once we’ve introduced <strong>PGMs</strong>, the <strong>language</strong> we need to actually do Causal Computational Social Science!</li>
+</ul>
+<center>
+<p><i class="bi bi-exclamation-triangle"></i> <strong>Due date pushed</strong> to <strong>Friday, June 6, 5:59pm</strong> <i class="bi bi-exclamation-triangle"></i></p>
+</center>
 </section>
-<section id="content-issues" class="slide level2">
-<h2>Content Issues</h2>
+<section id="hw1-detail-plz-dont-hate-me" class="slide level2 crunch-title smaller title-09">
+<h2>HW1 Detail (Plz Don’t Hate Me 🙈)</h2>
+<p><em>(The main reason this is taking me so long)</em></p>
+<ul>
+<li>Two key libraries for “main” course content (HW2 onwards):
+<ul>
+<li>In R: <a href="https://github.com/rmcelreath/rethinking"><code>rethinking</code></a>, “lite” version of <a href="https://mc-stan.org/">Stan</a></li>
+<li>In Python: <a href="https://www.pymc.io/welcome.html"><code>PyMC</code></a></li>
+</ul></li>
+<li>Both are overkill for current unit: lots of work required to “turn off” fancy features and <a href="https://discourse.pymc.io/t/bayes-nets-belief-networks-and-pymc/5150/2">implement basic PGMs</a></li>
+<li><span class="math inline">\(\leadsto\)</span> Only way I know to achieve two goals:
+<ul>
+<li><i class="bi bi-1-circle"></i> Learning <strong>simple PGMs first</strong>, as tools for <strong>thinking</strong>, before adding in additional full-on <strong>coding</strong> baggage of Stan/PyMC</li>
+<li><i class="bi bi-2-circle"></i> Having an entire <strong>textbook</strong> on these base PGMs that you can use as reference</li>
+</ul></li>
+<li>Is to use [small, restricted] subset of JavaScript, called <a href="http://webppl.org/">WebPPL</a>, because…</li>
+</ul>
+<center>
+<p><a href="http://probmods.org/" class="boxed-cb">http://probmods.org/</a></p>
+</center>
 </section></section>
 <section>
 <section id="motivating-examples-causal-inference" class="title-slide slide level1 center" data-stack-name="Causal Inference">
@@ -437,7 +452,7 @@ Jeff Jacobs
 <div>
 
 </div>
-<div class="quarto-layout-panel" data-layout-align="center" data-layout="[55,45]">
+<div class="quarto-layout-panel" data-layout="[55,45]" data-layout-align="center">
 <div class="quarto-layout-row quarto-layout-valign-center">
 <div id="dgps-5100" class="quarto-layout-cell" style="flex-basis: 55.0%;justify-content: center;">
 <ul>
@@ -651,7 +666,7 @@ Jeff Jacobs
 <li><i class="bi bi-3-circle"></i> Can we use this to find the <strong>“root cause”</strong> of (e.g.) observed <strong>chest pain</strong>? Or conversely, to <strong>predict</strong> possible ↑ in likelihood of chest pain if we start smoking?</li>
 </ul>
 </section>
-<section id="bayesian-inference-but-with-pictures" class="slide level2 title-09 crunch-title crunch-ul crunch-li-8 crunch-callout text-90 scrollable">
+<section id="bayesian-inference-but-with-pictures" class="slide level2 title-09 crunch-title crunch-ul crunch-li-8 crunch-callout text-90 inline-90 scrollable">
 <h2>Bayesian Inference but with Pictures</h2>
 <p>A <strong>Probabilistic Graphical Model (PGM)</strong> provides us with:</p>
 <ul>
@@ -668,11 +683,11 @@ Jeff Jacobs
 </div>
 <div class="callout-content">
 <ol type="1">
-<li>A person <span class="math inline">\(i\)</span> wakes up with some initial affinity for partying: <span class="math inline">\(\Pr(Y_i = \textsf{Go Out})\)</span></li>
+<li>A person <span class="math inline">\(i\)</span> wakes up with some initial affinity for partying: <span class="math inline">\(\Pr(Y_i = \textsf{Go})\)</span></li>
 <li><span class="math inline">\(i\)</span> then goes to their window and observes the weather <span class="math inline">\(W_i\)</span> outside:
 <ol type="i">
 <li>If the weather is <strong>sunny</strong>, <span class="math inline">\(i\)</span>’s affinity increases: <span class="math inline">\(\Pr(Y_i = \textsf{Go} \mid W_i = \textsf{Sun}) &gt; \Pr(Y = \textsf{Go})\)</span></li>
-<li>Otherwise, if it is <strong>rainy</strong>, <span class="math inline">\(i\)</span>’s affinity decreases: <span class="math inline">\(\Pr(Y_i = \textsf{Go} \mid W_i = \textsf{Sun}) &lt; \Pr(Y = \textsf{Go})\)</span></li>
+<li>Otherwise, if it is <strong>rainy</strong>, <span class="math inline">\(i\)</span>’s affinity decreases: <span class="math inline">\(\Pr(Y_i = \textsf{Go} \mid W_i = \textsf{Rain}) &lt; \Pr(Y = \textsf{Go})\)</span></li>
 </ol></li>
 </ol>
 </div>
@@ -946,7 +961,7 @@ Figure&nbsp;3: Your model failing to achieve its goal bc you haven’t yet disti
 <div>
 
 </div>
-<div class="quarto-layout-panel" data-layout-align="center" data-layout="[65,35]">
+<div class="quarto-layout-panel" data-layout="[65,35]" data-layout-align="center">
 <div class="quarto-layout-row quarto-layout-valign-center">
 <div id="iyengar-text" class="quarto-layout-cell" style="flex-basis: 65.0%;justify-content: center;">
 <div class="quarto-figure quarto-figure-center">
@@ -993,7 +1008,7 @@ Figure&nbsp;3: Your model failing to achieve its goal bc you haven’t yet disti
 <h2>The Devil in the Details II</h2>
 
 <img data-src="images/iyengar_experiment.jpg" class="quarto-figure quarto-figure-center r-stretch"></section>
-<section id="randomization-and-fine-tuned-treatment" class="slide level2 smaller crunch-quarto-figure crunch-quarto-layout-panel">
+<section id="randomization-and-fine-tuned-treatment" class="slide level2 smaller title-10 crunch-quarto-figure crunch-quarto-layout-panel">
 <h2>Randomization and Fine-Tuned Treatment</h2>
 <div>
 
@@ -1020,7 +1035,10 @@ Figure&nbsp;3: Your model failing to achieve its goal bc you haven’t yet disti
 <li>…These are the types of things we usually <strong>don’t</strong> have control over as data scientists (we’re just handed a <code>.csv</code>!)</li>
 </ul>
 </section>
-<section id="the-final-piece-plate-notation" class="slide level2">
+<section id="lets-model-it" class="slide level2">
+<h2>Let’s Model It!</h2>
+</section>
+<section id="the-final-piece-plate-notation" class="slide level2 crunch-title crunch-quarto-figure">
 <h2>The Final Piece: Plate Notation</h2>
 <ul>
 <li>For describing general distributions, there is often a “single node generating a bunch of nodes” structure:</li>
@@ -1039,6 +1057,14 @@ Figure&nbsp;3: Your model failing to achieve its goal bc you haven’t yet disti
 </figure>
 </div>
 </section>
+<section id="crucial-css-model-we-can-now-dive-into" class="slide level2">
+<h2>Crucial CSS Model We Can Now Dive Into!</h2>
+
+<img data-src="images/lda_pgm.webp" class="r-stretch quarto-figure-center"><p class="caption"><a href="https://www.markovml.com/blog/latent-dirichlet-allocation">Image source</a></p></section>
+<section id="what-does-this-give-us" class="slide level2">
+<h2>What Does This Give Us?</h2>
+
+<img data-src="images/lda.jpg" class="quarto-figure quarto-figure-center r-stretch"></section>
 <section id="references" class="slide level2 smaller scrollable">
 <h2>References</h2>
 <div id="refs" class="references csl-bib-body hanging-indent" data-entry-spacing="0" role="list">

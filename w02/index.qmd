@@ -56,8 +56,7 @@ Today's Planned Schedule:
 | | 7:00pm | 7:30pm | [Motivating Examples: Causal Inference &rarr;](#motivation-ii-causal-inference) |
 | | 7:30pm | 7:45pm | [Your First Probabilistic Graphical Model! &rarr;](#your-first-probabilistic-graphical-model)
 | **Break!** | 7:45pm | 8:00pm | |
-| | 8:00pm | 8:30pm | [PGM Nuts and Bolts &rarr;](#pgm-nuts-and-bolts)
-| | 8:30pm | 9:00pm | [Course Logistics &rarr;](#course-logistics) |
+| | 8:00pm | 9:00pm | [PGM "Lab" &rarr;](#hidden-markov-models-(hmms-are-our-ur-pgms))
 
 : {tbl-colwidths="[12,12,12,64]"}
 
@@ -111,11 +110,37 @@ Today's Planned Schedule:
 * **Ask me about:** Framing social justice questions in data terms, working with community or clinical datasets and interpreting model results in context.
 * If you’re designing a project around health, inequality, nonprofit impact, or any socially embedded issue—I’d love to help bridge rigor and relevance.
 
-# HW1 Questions and/or Concerns {data-stack-name="HW1"}
+## Jeff's HW1 Update/Apology
 
-## Technical Issues (JupyterHub)
+* Basically... I goofed by trying to shove a homework into the first two weeks of class 😭
+* Last week was "setting the table", so there are a few (multiple-choice) questions on that
+* But, really only makes sense to have HW starting from **end of today**, once we've introduced **PGMs**, the **language** we need to actually do Causal Computational Social Science!
 
-## Content Issues
+<center>
+
+<i class='bi bi-exclamation-triangle'></i> **Due date pushed** to **Friday, June 6, 5:59pm** <i class='bi bi-exclamation-triangle'></i>
+
+</center>
+
+## HW1 Detail (Plz Don't Hate Me 🙈) {.crunch-title .smaller .title-09}
+
+*(The main reason this is taking me so long)*
+
+* Two key libraries for "main" course content (HW2 onwards):
+  * In R: [`rethinking`](https://github.com/rmcelreath/rethinking), "lite" version of [Stan](https://mc-stan.org/)
+  * In Python: [`PyMC`](https://www.pymc.io/welcome.html)
+* Both are overkill for current unit: lots of work required to "turn off" fancy features and [implement basic PGMs](https://discourse.pymc.io/t/bayes-nets-belief-networks-and-pymc/5150/2)
+* $\leadsto$ Only way I know to achieve two goals:
+  * <i class='bi bi-1-circle'></i> Learning **simple PGMs first**, as tools for **thinking**, before adding in additional full-on **coding** baggage of Stan/PyMC
+  * <i class='bi bi-2-circle'></i> Having an entire **textbook** on these base PGMs that you can use as reference
+* Is to use [small, restricted] subset of JavaScript, called [WebPPL](http://webppl.org/), because...
+
+
+<center>
+
+[http://probmods.org/](http://probmods.org/){.boxed-cb}
+
+</center>
 
 # Motivating Examples: Causal Inference {data-stack-name="Causal Inference"}
 
@@ -314,7 +339,7 @@ $X$ causes $Y$ if and only if:
 * <i class='bi bi-2-circle'></i> What do you think the arrows represent?
 * <i class='bi bi-3-circle'></i> Can we use this to find the **"root cause"** of (e.g.) observed **chest pain**? Or conversely, to **predict** possible &uarr; in likelihood of chest pain if we start smoking?
 
-## Bayesian Inference but with Pictures {.title-09 .crunch-title .crunch-ul .crunch-li-8 .crunch-callout .text-90}
+## Bayesian Inference but with Pictures {.title-09 .crunch-title .crunch-ul .crunch-li-8 .crunch-callout .text-90 .inline-90}
 
 A **Probabilistic Graphical Model (PGM)** provides us with:
 
@@ -326,10 +351,10 @@ Example: Let's model how **weather** $W$ affects **evening plans** $Y$: the choi
 
 ::: {.callout-tip title="<i class='bi bi-info-circle'></i> The Partier's Dilemma" icon="false"}
 
-1.  A person $i$ wakes up with some initial affinity for partying: $\Pr(Y_i = \textsf{Go Out})$
+1.  A person $i$ wakes up with some initial affinity for partying: $\Pr(Y_i = \textsf{Go})$
 2.  $i$ then goes to their window and observes the weather $W_i$ outside:
     i. If the weather is **sunny**, $i$'s affinity increases: $\Pr(Y_i = \textsf{Go} \mid W_i = \textsf{Sun}) > \Pr(Y = \textsf{Go})$
-    ii. Otherwise, if it is **rainy**, $i$'s affinity decreases: $\Pr(Y_i = \textsf{Go} \mid W_i = \textsf{Sun}) < \Pr(Y = \textsf{Go})$
+    ii. Otherwise, if it is **rainy**, $i$'s affinity decreases: $\Pr(Y_i = \textsf{Go} \mid W_i = \textsf{Rain}) < \Pr(Y = \textsf{Go})$
 
 :::
 
@@ -538,7 +563,7 @@ problems?
 
 ![](images/iyengar_experiment.jpg){fig-align="center"}
 
-## Randomization and Fine-Tuned Treatment {.smaller .crunch-quarto-figure .crunch-quarto-layout-panel}
+## Randomization and Fine-Tuned Treatment {.smaller .title-10 .crunch-quarto-figure .crunch-quarto-layout-panel}
 
 :::: {layout="[50,50]" layout-valign="center"}
 
@@ -550,7 +575,9 @@ problems?
 
 * ...These are the types of things we usually **don't** have control over as data scientists (we're just handed a `.csv`!)
 
-## The Final Piece: Plate Notation
+## Let's Model It!
+
+## The Final Piece: Plate Notation {.crunch-title .crunch-quarto-figure}
 
 * For describing general distributions, there is often a "single node generating a bunch of nodes" structure:
 
@@ -559,6 +586,14 @@ problems?
 * PGM notation has a built-in tool for this: **plates!**
 
 ![](images/pgm_plates.svg){fig-align="center"}
+
+## Crucial CSS Model We Can Now Dive Into!
+
+![[Image source](https://www.markovml.com/blog/latent-dirichlet-allocation)](images/lda_pgm.webp){fig-align="center"}
+
+## What Does This Give Us?
+
+![](images/lda.jpg){fig-align="center"}
 
 ## References
 

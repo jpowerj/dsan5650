@@ -263,7 +263,7 @@ window.Quarto = {
     </ul>
     </div>
 <div class="quarto-sidebar-footer"><div class="sidebar-footer-item">
-<p><em>Updated 2025-05-28, 04:58:12 PM</em></p>
+<p><em>Updated 2025-05-28, 05:37:04 PM</em></p>
 </div></div></nav>
 <div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
@@ -278,11 +278,8 @@ window.Quarto = {
   <li><a href="#courtney-green" id="toc-courtney-green" class="nav-link" data-scroll-target="#courtney-green">Courtney Green</a></li>
   <li><a href="#what-got-me-interested-in-causal-inference" id="toc-what-got-me-interested-in-causal-inference" class="nav-link" data-scroll-target="#what-got-me-interested-in-causal-inference">What Got Me Interested in Causal Inference</a></li>
   <li><a href="#wendy-hu" id="toc-wendy-hu" class="nav-link" data-scroll-target="#wendy-hu">Wendy Hu</a></li>
-  </ul></li>
-  <li><a href="#hw1-questions-andor-concerns" id="toc-hw1-questions-andor-concerns" class="nav-link" data-scroll-target="#hw1-questions-andor-concerns">HW1 Questions and/or Concerns</a>
-  <ul class="collapse">
-  <li><a href="#technical-issues-jupyterhub" id="toc-technical-issues-jupyterhub" class="nav-link" data-scroll-target="#technical-issues-jupyterhub">Technical Issues (JupyterHub)</a></li>
-  <li><a href="#content-issues" id="toc-content-issues" class="nav-link" data-scroll-target="#content-issues">Content Issues</a></li>
+  <li><a href="#jeffs-hw1-updateapology" id="toc-jeffs-hw1-updateapology" class="nav-link" data-scroll-target="#jeffs-hw1-updateapology">Jeff’s HW1 Update/Apology</a></li>
+  <li><a href="#hw1-detail-plz-dont-hate-me" id="toc-hw1-detail-plz-dont-hate-me" class="nav-link" data-scroll-target="#hw1-detail-plz-dont-hate-me">HW1 Detail (Plz Don’t Hate Me 🙈)</a></li>
   </ul></li>
   <li><a href="#motivating-examples-causal-inference" id="toc-motivating-examples-causal-inference" class="nav-link" data-scroll-target="#motivating-examples-causal-inference">Motivating Examples: Causal Inference</a>
   <ul class="collapse">
@@ -318,7 +315,10 @@ window.Quarto = {
   <li><a href="#the-devil-in-the-details-i" id="toc-the-devil-in-the-details-i" class="nav-link" data-scroll-target="#the-devil-in-the-details-i">The Devil in the Details I</a></li>
   <li><a href="#the-devil-in-the-details-ii" id="toc-the-devil-in-the-details-ii" class="nav-link" data-scroll-target="#the-devil-in-the-details-ii">The Devil in the Details II</a></li>
   <li><a href="#randomization-and-fine-tuned-treatment" id="toc-randomization-and-fine-tuned-treatment" class="nav-link" data-scroll-target="#randomization-and-fine-tuned-treatment">Randomization and Fine-Tuned Treatment</a></li>
+  <li><a href="#lets-model-it" id="toc-lets-model-it" class="nav-link" data-scroll-target="#lets-model-it">Let’s Model It!</a></li>
   <li><a href="#the-final-piece-plate-notation" id="toc-the-final-piece-plate-notation" class="nav-link" data-scroll-target="#the-final-piece-plate-notation">The Final Piece: Plate Notation</a></li>
+  <li><a href="#crucial-css-model-we-can-now-dive-into" id="toc-crucial-css-model-we-can-now-dive-into" class="nav-link" data-scroll-target="#crucial-css-model-we-can-now-dive-into">Crucial CSS Model We Can Now Dive Into!</a></li>
+  <li><a href="#what-does-this-give-us" id="toc-what-does-this-give-us" class="nav-link" data-scroll-target="#what-does-this-give-us">What Does This Give Us?</a></li>
   <li><a href="#references" id="toc-references" class="nav-link" data-scroll-target="#references">References</a></li>
   </ul></li>
   </ul>
@@ -424,19 +424,13 @@ window.Quarto = {
 <tr class="even">
 <td style="text-align: left;"></td>
 <td style="text-align: left;">8:00pm</td>
-<td style="text-align: left;">8:30pm</td>
-<td style="text-align: left;"><a href="#pgm-nuts-and-bolts">PGM Nuts and Bolts →</a></td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;"></td>
-<td style="text-align: left;">8:30pm</td>
 <td style="text-align: left;">9:00pm</td>
-<td style="text-align: left;"><a href="#course-logistics">Course Logistics →</a></td>
+<td style="text-align: left;"><a href="#hidden-markov-models-(hmms-are-our-ur-pgms)">PGM “Lab” →</a></td>
 </tr>
 </tbody>
 </table>
 <div class="hidden">
-<div id="f1405e6c" class="cell" data-execution_count="1">
+<div id="6aab98f9" class="cell" data-execution_count="1">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>cb_palette <span class="op">=</span> [</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>    <span class="st">"#E69F00"</span>, <span class="st">"#56B4E9"</span>, <span class="st">"#009E73"</span>,</span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>    <span class="st">"#F0E442"</span>, <span class="st">"#0072B2"</span>, <span class="st">"#D55E00"</span>,</span>
@@ -524,14 +518,37 @@ window.Quarto = {
 <li>If you’re designing a project around health, inequality, nonprofit impact, or any socially embedded issue—I’d love to help bridge rigor and relevance.</li>
 </ul>
 </section>
+<section id="jeffs-hw1-updateapology" class="level2">
+<h2 class="anchored" data-anchor-id="jeffs-hw1-updateapology">Jeff’s HW1 Update/Apology</h2>
+<ul>
+<li>Basically… I goofed by trying to shove a homework into the first two weeks of class 😭</li>
+<li>Last week was “setting the table”, so there are a few (multiple-choice) questions on that</li>
+<li>But, really only makes sense to have HW starting from <strong>end of today</strong>, once we’ve introduced <strong>PGMs</strong>, the <strong>language</strong> we need to actually do Causal Computational Social Science!</li>
+</ul>
+<center>
+<p><i class="bi bi-exclamation-triangle"></i> <strong>Due date pushed</strong> to <strong>Friday, June 6, 5:59pm</strong> <i class="bi bi-exclamation-triangle"></i></p>
+</center>
 </section>
-<section id="hw1-questions-andor-concerns" class="level1" data-stack-name="HW1">
-<h1 data-stack-name="HW1">HW1 Questions and/or Concerns</h1>
-<section id="technical-issues-jupyterhub" class="level2">
-<h2 class="anchored" data-anchor-id="technical-issues-jupyterhub">Technical Issues (JupyterHub)</h2>
-</section>
-<section id="content-issues" class="level2">
-<h2 class="anchored" data-anchor-id="content-issues">Content Issues</h2>
+<section id="hw1-detail-plz-dont-hate-me" class="level2 crunch-title smaller title-09">
+<h2 class="crunch-title smaller title-09 anchored" data-anchor-id="hw1-detail-plz-dont-hate-me">HW1 Detail (Plz Don’t Hate Me 🙈)</h2>
+<p><em>(The main reason this is taking me so long)</em></p>
+<ul>
+<li>Two key libraries for “main” course content (HW2 onwards):
+<ul>
+<li>In R: <a href="https://github.com/rmcelreath/rethinking"><code>rethinking</code></a>, “lite” version of <a href="https://mc-stan.org/">Stan</a></li>
+<li>In Python: <a href="https://www.pymc.io/welcome.html"><code>PyMC</code></a></li>
+</ul></li>
+<li>Both are overkill for current unit: lots of work required to “turn off” fancy features and <a href="https://discourse.pymc.io/t/bayes-nets-belief-networks-and-pymc/5150/2">implement basic PGMs</a></li>
+<li><span class="math inline">\(\leadsto\)</span> Only way I know to achieve two goals:
+<ul>
+<li><i class="bi bi-1-circle"></i> Learning <strong>simple PGMs first</strong>, as tools for <strong>thinking</strong>, before adding in additional full-on <strong>coding</strong> baggage of Stan/PyMC</li>
+<li><i class="bi bi-2-circle"></i> Having an entire <strong>textbook</strong> on these base PGMs that you can use as reference</li>
+</ul></li>
+<li>Is to use [small, restricted] subset of JavaScript, called <a href="http://webppl.org/">WebPPL</a>, because…</li>
+</ul>
+<center>
+<p><a href="http://probmods.org/" class="boxed-cb">http://probmods.org/</a></p>
+</center>
 </section>
 </section>
 <section id="motivating-examples-causal-inference" class="level1" data-stack-name="Causal Inference">
@@ -819,8 +836,8 @@ window.Quarto = {
 <li><i class="bi bi-2-circle"></i> What do you think the arrows represent?</li>
 <li><i class="bi bi-3-circle"></i> Can we use this to find the <strong>“root cause”</strong> of (e.g.) observed <strong>chest pain</strong>? Or conversely, to <strong>predict</strong> possible ↑ in likelihood of chest pain if we start smoking?</li>
 </ul>
-<section id="bayesian-inference-but-with-pictures" class="level2 title-09 crunch-title crunch-ul crunch-li-8 crunch-callout text-90">
-<h2 class="title-09 crunch-title crunch-ul crunch-li-8 crunch-callout text-90 anchored" data-anchor-id="bayesian-inference-but-with-pictures">Bayesian Inference but with Pictures</h2>
+<section id="bayesian-inference-but-with-pictures" class="level2 title-09 crunch-title crunch-ul crunch-li-8 crunch-callout text-90 inline-90">
+<h2 class="title-09 crunch-title crunch-ul crunch-li-8 crunch-callout text-90 inline-90 anchored" data-anchor-id="bayesian-inference-but-with-pictures">Bayesian Inference but with Pictures</h2>
 <p>A <strong>Probabilistic Graphical Model (PGM)</strong> provides us with:</p>
 <ul>
 <li>A <strong>formal</strong>-mathematical…</li>
@@ -839,11 +856,11 @@ window.Quarto = {
 </div>
 <div class="callout-body-container callout-body">
 <ol type="1">
-<li>A person <span class="math inline">\(i\)</span> wakes up with some initial affinity for partying: <span class="math inline">\(\Pr(Y_i = \textsf{Go Out})\)</span></li>
+<li>A person <span class="math inline">\(i\)</span> wakes up with some initial affinity for partying: <span class="math inline">\(\Pr(Y_i = \textsf{Go})\)</span></li>
 <li><span class="math inline">\(i\)</span> then goes to their window and observes the weather <span class="math inline">\(W_i\)</span> outside:
 <ol type="i">
 <li>If the weather is <strong>sunny</strong>, <span class="math inline">\(i\)</span>’s affinity increases: <span class="math inline">\(\Pr(Y_i = \textsf{Go} \mid W_i = \textsf{Sun}) &gt; \Pr(Y = \textsf{Go})\)</span></li>
-<li>Otherwise, if it is <strong>rainy</strong>, <span class="math inline">\(i\)</span>’s affinity decreases: <span class="math inline">\(\Pr(Y_i = \textsf{Go} \mid W_i = \textsf{Sun}) &lt; \Pr(Y = \textsf{Go})\)</span></li>
+<li>Otherwise, if it is <strong>rainy</strong>, <span class="math inline">\(i\)</span>’s affinity decreases: <span class="math inline">\(\Pr(Y_i = \textsf{Go} \mid W_i = \textsf{Rain}) &lt; \Pr(Y = \textsf{Go})\)</span></li>
 </ol></li>
 </ol>
 </div>
@@ -1163,8 +1180,8 @@ Figure&nbsp;3: Your model failing to achieve its goal bc you haven’t yet disti
 </figure>
 </div>
 </section>
-<section id="randomization-and-fine-tuned-treatment" class="level2 smaller crunch-quarto-figure crunch-quarto-layout-panel">
-<h2 class="smaller crunch-quarto-figure crunch-quarto-layout-panel anchored" data-anchor-id="randomization-and-fine-tuned-treatment">Randomization and Fine-Tuned Treatment</h2>
+<section id="randomization-and-fine-tuned-treatment" class="level2 smaller title-10 crunch-quarto-figure crunch-quarto-layout-panel">
+<h2 class="smaller title-10 crunch-quarto-figure crunch-quarto-layout-panel anchored" data-anchor-id="randomization-and-fine-tuned-treatment">Randomization and Fine-Tuned Treatment</h2>
 <div>
 
 </div>
@@ -1190,8 +1207,11 @@ Figure&nbsp;3: Your model failing to achieve its goal bc you haven’t yet disti
 <li>…These are the types of things we usually <strong>don’t</strong> have control over as data scientists (we’re just handed a <code>.csv</code>!)</li>
 </ul>
 </section>
-<section id="the-final-piece-plate-notation" class="level2">
-<h2 class="anchored" data-anchor-id="the-final-piece-plate-notation">The Final Piece: Plate Notation</h2>
+<section id="lets-model-it" class="level2">
+<h2 class="anchored" data-anchor-id="lets-model-it">Let’s Model It!</h2>
+</section>
+<section id="the-final-piece-plate-notation" class="level2 crunch-title crunch-quarto-figure">
+<h2 class="crunch-title crunch-quarto-figure anchored" data-anchor-id="the-final-piece-plate-notation">The Final Piece: Plate Notation</h2>
 <ul>
 <li>For describing general distributions, there is often a “single node generating a bunch of nodes” structure:</li>
 </ul>
@@ -1206,6 +1226,23 @@ Figure&nbsp;3: Your model failing to achieve its goal bc you haven’t yet disti
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><img src="images/pgm_plates.svg" class="img-fluid quarto-figure quarto-figure-center figure-img"></p>
+</figure>
+</div>
+</section>
+<section id="crucial-css-model-we-can-now-dive-into" class="level2">
+<h2 class="anchored" data-anchor-id="crucial-css-model-we-can-now-dive-into">Crucial CSS Model We Can Now Dive Into!</h2>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/lda_pgm.webp" class="img-fluid figure-img"></p>
+<figcaption><a href="https://www.markovml.com/blog/latent-dirichlet-allocation">Image source</a></figcaption>
+</figure>
+</div>
+</section>
+<section id="what-does-this-give-us" class="level2">
+<h2 class="anchored" data-anchor-id="what-does-this-give-us">What Does This Give Us?</h2>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/lda.jpg" class="img-fluid quarto-figure quarto-figure-center figure-img"></p>
 </figure>
 </div>
 </section>

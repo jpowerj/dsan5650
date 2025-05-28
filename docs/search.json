@@ -176,21 +176,21 @@
     ]
   },
   {
-    "objectID": "w02/index.html#technical-issues-jupyterhub",
-    "href": "w02/index.html#technical-issues-jupyterhub",
+    "objectID": "w02/index.html#jeffs-hw1-updateapology",
+    "href": "w02/index.html#jeffs-hw1-updateapology",
     "title": "Week 2: Probabilistic Graphical Models (PGMs)",
-    "section": "Technical Issues (JupyterHub)",
-    "text": "Technical Issues (JupyterHub)",
+    "section": "Jeff’s HW1 Update/Apology",
+    "text": "Jeff’s HW1 Update/Apology\n\nBasically… I goofed by trying to shove a homework into the first two weeks of class 😭\nLast week was “setting the table”, so there are a few (multiple-choice) questions on that\nBut, really only makes sense to have HW starting from end of today, once we’ve introduced PGMs, the language we need to actually do Causal Computational Social Science!\n\n\n Due date pushed to Friday, June 6, 5:59pm",
     "crumbs": [
       "Week 2: {{< var w02.date-md >}}"
     ]
   },
   {
-    "objectID": "w02/index.html#content-issues",
-    "href": "w02/index.html#content-issues",
+    "objectID": "w02/index.html#hw1-detail-plz-dont-hate-me",
+    "href": "w02/index.html#hw1-detail-plz-dont-hate-me",
     "title": "Week 2: Probabilistic Graphical Models (PGMs)",
-    "section": "Content Issues",
-    "text": "Content Issues",
+    "section": "HW1 Detail (Plz Don’t Hate Me 🙈)",
+    "text": "HW1 Detail (Plz Don’t Hate Me 🙈)\n(The main reason this is taking me so long)\n\nTwo key libraries for “main” course content (HW2 onwards):\n\nIn R: rethinking, “lite” version of Stan\nIn Python: PyMC\n\nBoth are overkill for current unit: lots of work required to “turn off” fancy features and implement basic PGMs\n\\(\\leadsto\\) Only way I know to achieve two goals:\n\n Learning simple PGMs first, as tools for thinking, before adding in additional full-on coding baggage of Stan/PyMC\n Having an entire textbook on these base PGMs that you can use as reference\n\nIs to use [small, restricted] subset of JavaScript, called WebPPL, because…\n\n\nhttp://probmods.org/",
     "crumbs": [
       "Week 2: {{< var w02.date-md >}}"
     ]
@@ -360,7 +360,7 @@
     "href": "w02/index.html#bayesian-inference-but-with-pictures",
     "title": "Week 2: Probabilistic Graphical Models (PGMs)",
     "section": "Bayesian Inference but with Pictures",
-    "text": "Bayesian Inference but with Pictures\nA Probabilistic Graphical Model (PGM) provides us with:\n\nA formal-mathematical…\nBut also easily visualizable (by construction)…\nRepresentation of a data-generating process (DGP)!\n\nExample: Let’s model how weather \\(W\\) affects evening plans \\(Y\\): the choice between going to a party or staying in to watch movies\n\n\n\n\n\n\n The Partier’s Dilemma\n\n\n\n\nA person \\(i\\) wakes up with some initial affinity for partying: \\(\\Pr(Y_i = \\textsf{Go Out})\\)\n\\(i\\) then goes to their window and observes the weather \\(W_i\\) outside:\n\nIf the weather is sunny, \\(i\\)’s affinity increases: \\(\\Pr(Y_i = \\textsf{Go} \\mid W_i = \\textsf{Sun}) &gt; \\Pr(Y = \\textsf{Go})\\)\nOtherwise, if it is rainy, \\(i\\)’s affinity decreases: \\(\\Pr(Y_i = \\textsf{Go} \\mid W_i = \\textsf{Sun}) &lt; \\Pr(Y = \\textsf{Go})\\)",
+    "text": "Bayesian Inference but with Pictures\nA Probabilistic Graphical Model (PGM) provides us with:\n\nA formal-mathematical…\nBut also easily visualizable (by construction)…\nRepresentation of a data-generating process (DGP)!\n\nExample: Let’s model how weather \\(W\\) affects evening plans \\(Y\\): the choice between going to a party or staying in to watch movies\n\n\n\n\n\n\n The Partier’s Dilemma\n\n\n\n\nA person \\(i\\) wakes up with some initial affinity for partying: \\(\\Pr(Y_i = \\textsf{Go})\\)\n\\(i\\) then goes to their window and observes the weather \\(W_i\\) outside:\n\nIf the weather is sunny, \\(i\\)’s affinity increases: \\(\\Pr(Y_i = \\textsf{Go} \\mid W_i = \\textsf{Sun}) &gt; \\Pr(Y = \\textsf{Go})\\)\nOtherwise, if it is rainy, \\(i\\)’s affinity decreases: \\(\\Pr(Y_i = \\textsf{Go} \\mid W_i = \\textsf{Rain}) &lt; \\Pr(Y = \\textsf{Go})\\)",
     "crumbs": [
       "Week 2: {{< var w02.date-md >}}"
     ]
@@ -486,11 +486,41 @@
     ]
   },
   {
+    "objectID": "w02/index.html#lets-model-it",
+    "href": "w02/index.html#lets-model-it",
+    "title": "Week 2: Probabilistic Graphical Models (PGMs)",
+    "section": "Let’s Model It!",
+    "text": "Let’s Model It!",
+    "crumbs": [
+      "Week 2: {{< var w02.date-md >}}"
+    ]
+  },
+  {
     "objectID": "w02/index.html#the-final-piece-plate-notation",
     "href": "w02/index.html#the-final-piece-plate-notation",
     "title": "Week 2: Probabilistic Graphical Models (PGMs)",
     "section": "The Final Piece: Plate Notation",
     "text": "The Final Piece: Plate Notation\n\nFor describing general distributions, there is often a “single node generating a bunch of nodes” structure:\n\n\n\n\n\n\n\nPGM notation has a built-in tool for this: plates!",
+    "crumbs": [
+      "Week 2: {{< var w02.date-md >}}"
+    ]
+  },
+  {
+    "objectID": "w02/index.html#crucial-css-model-we-can-now-dive-into",
+    "href": "w02/index.html#crucial-css-model-we-can-now-dive-into",
+    "title": "Week 2: Probabilistic Graphical Models (PGMs)",
+    "section": "Crucial CSS Model We Can Now Dive Into!",
+    "text": "Crucial CSS Model We Can Now Dive Into!\n\n\n\nImage source",
+    "crumbs": [
+      "Week 2: {{< var w02.date-md >}}"
+    ]
+  },
+  {
+    "objectID": "w02/index.html#what-does-this-give-us",
+    "href": "w02/index.html#what-does-this-give-us",
+    "title": "Week 2: Probabilistic Graphical Models (PGMs)",
+    "section": "What Does This Give Us?",
+    "text": "What Does This Give Us?",
     "crumbs": [
       "Week 2: {{< var w02.date-md >}}"
     ]
@@ -527,18 +557,18 @@
     "text": "Wendy Hu\n\nBackground: BS in Social Work, passionate about advancing social equity through computational tools\nInterest: I bring a background in social welfare, public health, and NGO data, with experience analyzing behavioral and institutional outcomes. My work spans Indigenous health, gender equity, and trauma-informed service design—always with a focus on equity, system change, and policy relevance.\nAsk me about: Framing social justice questions in data terms, working with community or clinical datasets and interpreting model results in context.\nIf you’re designing a project around health, inequality, nonprofit impact, or any socially embedded issue—I’d love to help bridge rigor and relevance."
   },
   {
-    "objectID": "w02/slides.html#technical-issues-jupyterhub",
-    "href": "w02/slides.html#technical-issues-jupyterhub",
+    "objectID": "w02/slides.html#jeffs-hw1-updateapology",
+    "href": "w02/slides.html#jeffs-hw1-updateapology",
     "title": "Week 2: Probabilistic Graphical Models (PGMs)",
-    "section": "Technical Issues (JupyterHub)",
-    "text": "Technical Issues (JupyterHub)"
+    "section": "Jeff’s HW1 Update/Apology",
+    "text": "Jeff’s HW1 Update/Apology\n\nBasically… I goofed by trying to shove a homework into the first two weeks of class 😭\nLast week was “setting the table”, so there are a few (multiple-choice) questions on that\nBut, really only makes sense to have HW starting from end of today, once we’ve introduced PGMs, the language we need to actually do Causal Computational Social Science!\n\n\n Due date pushed to Friday, June 6, 5:59pm"
   },
   {
-    "objectID": "w02/slides.html#content-issues",
-    "href": "w02/slides.html#content-issues",
+    "objectID": "w02/slides.html#hw1-detail-plz-dont-hate-me",
+    "href": "w02/slides.html#hw1-detail-plz-dont-hate-me",
     "title": "Week 2: Probabilistic Graphical Models (PGMs)",
-    "section": "Content Issues",
-    "text": "Content Issues"
+    "section": "HW1 Detail (Plz Don’t Hate Me 🙈)",
+    "text": "HW1 Detail (Plz Don’t Hate Me 🙈)\n(The main reason this is taking me so long)\n\nTwo key libraries for “main” course content (HW2 onwards):\n\nIn R: rethinking, “lite” version of Stan\nIn Python: PyMC\n\nBoth are overkill for current unit: lots of work required to “turn off” fancy features and implement basic PGMs\n\\(\\leadsto\\) Only way I know to achieve two goals:\n\n Learning simple PGMs first, as tools for thinking, before adding in additional full-on coding baggage of Stan/PyMC\n Having an entire textbook on these base PGMs that you can use as reference\n\nIs to use [small, restricted] subset of JavaScript, called WebPPL, because…\n\n\nhttp://probmods.org/"
   },
   {
     "objectID": "w02/slides.html#disclaimer-unfortunate-side-effects-of-engaging-seriously-with-causality",
@@ -657,7 +687,7 @@
     "href": "w02/slides.html#bayesian-inference-but-with-pictures",
     "title": "Week 2: Probabilistic Graphical Models (PGMs)",
     "section": "Bayesian Inference but with Pictures",
-    "text": "Bayesian Inference but with Pictures\nA Probabilistic Graphical Model (PGM) provides us with:\n\nA formal-mathematical…\nBut also easily visualizable (by construction)…\nRepresentation of a data-generating process (DGP)!\n\nExample: Let’s model how weather \\(W\\) affects evening plans \\(Y\\): the choice between going to a party or staying in to watch movies\n\n\n\n\n The Partier’s Dilemma\n\n\n\nA person \\(i\\) wakes up with some initial affinity for partying: \\(\\Pr(Y_i = \\textsf{Go Out})\\)\n\\(i\\) then goes to their window and observes the weather \\(W_i\\) outside:\n\nIf the weather is sunny, \\(i\\)’s affinity increases: \\(\\Pr(Y_i = \\textsf{Go} \\mid W_i = \\textsf{Sun}) &gt; \\Pr(Y = \\textsf{Go})\\)\nOtherwise, if it is rainy, \\(i\\)’s affinity decreases: \\(\\Pr(Y_i = \\textsf{Go} \\mid W_i = \\textsf{Sun}) &lt; \\Pr(Y = \\textsf{Go})\\)"
+    "text": "Bayesian Inference but with Pictures\nA Probabilistic Graphical Model (PGM) provides us with:\n\nA formal-mathematical…\nBut also easily visualizable (by construction)…\nRepresentation of a data-generating process (DGP)!\n\nExample: Let’s model how weather \\(W\\) affects evening plans \\(Y\\): the choice between going to a party or staying in to watch movies\n\n\n\n\n The Partier’s Dilemma\n\n\n\nA person \\(i\\) wakes up with some initial affinity for partying: \\(\\Pr(Y_i = \\textsf{Go})\\)\n\\(i\\) then goes to their window and observes the weather \\(W_i\\) outside:\n\nIf the weather is sunny, \\(i\\)’s affinity increases: \\(\\Pr(Y_i = \\textsf{Go} \\mid W_i = \\textsf{Sun}) &gt; \\Pr(Y = \\textsf{Go})\\)\nOtherwise, if it is rainy, \\(i\\)’s affinity decreases: \\(\\Pr(Y_i = \\textsf{Go} \\mid W_i = \\textsf{Rain}) &lt; \\Pr(Y = \\textsf{Go})\\)"
   },
   {
     "objectID": "w02/slides.html#two-main-building-blocks",
@@ -744,11 +774,32 @@
     "text": "Randomization and Fine-Tuned Treatment\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n…These are the types of things we usually don’t have control over as data scientists (we’re just handed a .csv!)"
   },
   {
+    "objectID": "w02/slides.html#lets-model-it",
+    "href": "w02/slides.html#lets-model-it",
+    "title": "Week 2: Probabilistic Graphical Models (PGMs)",
+    "section": "Let’s Model It!",
+    "text": "Let’s Model It!"
+  },
+  {
     "objectID": "w02/slides.html#the-final-piece-plate-notation",
     "href": "w02/slides.html#the-final-piece-plate-notation",
     "title": "Week 2: Probabilistic Graphical Models (PGMs)",
     "section": "The Final Piece: Plate Notation",
     "text": "The Final Piece: Plate Notation\n\nFor describing general distributions, there is often a “single node generating a bunch of nodes” structure:\n\n\n\n\n\n\n\nPGM notation has a built-in tool for this: plates!"
+  },
+  {
+    "objectID": "w02/slides.html#crucial-css-model-we-can-now-dive-into",
+    "href": "w02/slides.html#crucial-css-model-we-can-now-dive-into",
+    "title": "Week 2: Probabilistic Graphical Models (PGMs)",
+    "section": "Crucial CSS Model We Can Now Dive Into!",
+    "text": "Crucial CSS Model We Can Now Dive Into!\n\nImage source"
+  },
+  {
+    "objectID": "w02/slides.html#what-does-this-give-us",
+    "href": "w02/slides.html#what-does-this-give-us",
+    "title": "Week 2: Probabilistic Graphical Models (PGMs)",
+    "section": "What Does This Give Us?",
+    "text": "What Does This Give Us?"
   },
   {
     "objectID": "w02/slides.html#references",
