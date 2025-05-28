@@ -1,0 +1,268 @@
+/*-- scss:defaults --*/
+$font-family-sans-serif: "Computer Modern Sans", sans-serif !default;
+
+/*-- scss:rules --*/
+
+.after-arrow ::after {
+    content: "&rarr;" !important;
+    display: inline-block !important;
+    position: absolute !important;
+    background: #000;
+    width: 30px;
+    height: 30px;
+    top: 25px;
+    left: -15px;
+    transform: rotate(45deg);
+}
+
+aside {
+    font-size: 0.5em !important;
+}
+
+.bold {
+    font-weight: bold !important;
+}
+
+.callout-star .callout-content {
+    font-size: 1.8em !important;
+    border: 1px solid black !important;
+}
+
+.callout-tip {
+    margin-bottom: 1px !important;
+}
+
+.caption {
+    text-align: center !important;
+}
+
+.caption-sized {
+    font-size: 0.5em !important;
+}
+
+.cb1 {
+    color: #E69F00 !important;
+}
+
+.cb2 {
+    color: #56B4E9 !important;
+}
+
+.cb3 {
+    color: #009E73 !important;
+}
+
+.cb4 {
+    color: #F0E442 !important;
+}
+
+.coef-label {
+    width: 100% !important;
+    height: 100% !important;
+    margin: auto !important;
+    color: blue !important;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif !important;
+}
+
+.coef-table {
+    font-family: 'Courier New', Courier, monospace !important;
+    font-size: 1.5rem !important;
+}
+
+.coef-table td {
+    vertical-align: middle !important;
+}
+
+.crunch-caption figcaption {
+    margin-top: 0px !important;
+}
+
+.crunch-figures .quarto-figure {
+    margin-bottom: 0 !important;
+}
+
+.crunch-figures figcaption {
+    margin-top: 0 !important;
+}
+
+.crunch-math .MathJax_Display {
+    margin-top: 0px !important;
+    margin-bottom: 0px !important;
+}
+
+.crunch-output pre {
+    font-size: 1.08rem !important;
+}
+
+.dataTables_paginate {
+    font-size: 0.8em !important;
+}
+
+figcaption {
+    text-align: center !important;
+}
+
+.fig-half figure {
+    width: 50% !important;
+    margin-left: auto !important;
+    margin-right: auto !important;
+}
+
+.fw-block {
+    font-family: 'Courier New', Courier, monospace;
+}
+
+.fw-table {
+    /* For tables with fixed-width font */
+    font-family: 'Courier New', Courier, monospace;
+}
+
+.green {
+    color: green !important;
+}
+
+.green-bg {
+    background-color: rgba(0,128,0,0.1);
+}
+
+.gsym-large {
+    font-size: 1.5em !important;
+}
+
+.gsym-medium {
+    font-size: 1.2em !important;
+}
+
+.highlight-below {
+    background-color: transparent !important;
+}
+
+.highlight-block {
+    border: 1px solid black !important;
+    width: fit-content !important;
+    padding: 10px !important;
+    filter: drop-shadow(0rem 0rem 0.8rem black) !important;
+    border-radius: 3px !important;
+    // margin-bottom: 10px !important;
+}
+
+.material-symbols-outlined {
+    font-variation-settings:
+        'FILL' 1,
+        'wght' 400,
+        'GRAD' 200,
+        'opsz' 48
+}
+
+.nobotmargin * {
+    margin-bottom: 0px !important;
+}
+
+.notopmargin * {
+    margin-top: 0px !important;
+}
+
+.param {
+    color: purple !important;
+}
+
+.red {
+    color: red !important;
+}
+
+.red-bg {
+    background-color: rgba(255,0,0,0.1);
+}
+
+.small-aside {
+    font-size: 1rem !important;
+}
+
+.smallish-caption figcaption {
+    font-size: 1.5rem !important;
+}
+
+.small-caption figcaption {
+    font-size: 0.45em !important;
+}
+
+.small-footer {
+    font-size: 0.4em !important;
+}
+
+.smallish-math .math.display {
+    font-size: 90% !important;
+}
+
+.small-math .math.display {
+    font-size: 85% !important;
+}
+
+.smaller-text {
+    font-size: 85% !important;
+}
+
+.small-inline .math.inline {
+    font-size: 85% !important;
+}
+
+.smaller-math .math.display {
+    font-size: 80% !important;
+}
+
+.small-codeblock {
+    font-size: 1.2rem !important;
+}
+
+.smallish-codeblock {
+    font-size: 1.75rem !important;
+}
+
+.small-table td, th {
+    font-size: 1.5rem !important;
+}
+
+.small-title h2 {
+    // font-size: var(--r-heading2-size) !important;
+    font-size: var(--r-heading3-size) !important;
+}
+
+summary {
+    font-size: 80% !important;
+    cursor: pointer !important;
+    background-color: #ffffff !important;
+    user-select: none;
+    -moz-user-select: none;
+    -webkit-user-select: none;
+    -ms-user-select: none;
+    border-bottom: 1px solid transparent !important;
+}
+
+summary:hover {
+    background-color: #fafafa !important;
+    // border-bottom: 1px solid black !important;
+}
+
+.unnumbered h2 {
+    margin-bottom: 0px !important;
+}
+
+.zigzag {
+    position: relative;
+    padding: 8px 8px 32px 8px;
+    background: #dddccf;
+}
+
+.zigzag:after {
+    background: linear-gradient(-45deg, #ffffff 16px, transparent 0), linear-gradient(45deg, #ffffff 16px, transparent 0);
+    background-position: left-bottom;
+    background-repeat: repeat-x;
+    background-size: 32px 32px;
+    content: " ";
+    display: block;
+    position: absolute;
+    bottom: 0px;
+    left: 0px;
+    width: 100%;
+    height: 32px;
+}

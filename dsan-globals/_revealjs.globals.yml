@@ -1,0 +1,24 @@
+format:
+  revealjs:
+    section-divs: false
+    #center: true
+    simplemenu:
+      flat: true
+      barhtml:
+        header: "<div class='menubar'><ul class='menu'></ul></div>"
+      scale: 0.5
+    slide-number: true
+    #toc: true
+    #toc-title: "What are we covering today?"
+    number-sections: false
+    number-depth: 2
+    bibliography: "../assets/data/Georgetown_Refs.bib"
+    #smaller: true
+    code-fold: true
+    footnotes-hover: true
+    scrollable: true
+    theme: [default, "../assets/css/jjslides.scss"]
+    revealjs-plugins:
+      - simplemenu
+    title-slide-attributes:
+      data-state: "hide-menubar"

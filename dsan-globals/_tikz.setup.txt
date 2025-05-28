@@ -1,0 +1,11 @@
+```{r, engine='tikz', opts.label="tikz_settings_fancy", fig.ext='svg'}
+\usetikzlibrary{calc}
+\usetikzlibrary{bayesnet}
+\begin{tikzpicture}[scale=1.0]
+  \node[obs] (w) {$W$} ;
+  \node[right=0.5cm of w] (middle) {} ;
+  \node[latent, right=0.5cm of middle] (a) {$A$} ;
+  \node[above=-1mm of middle] (label) {$\footnotesize\text{DGP}$} ;
+  \edge[>=latex] {w} {a} ;
+\end{tikzpicture}
+```
