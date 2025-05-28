@@ -8,6 +8,7 @@ email: "jj1088@georgetown.edu"
 term: "Summer 2025, Georgetown University"
 # latex-auto-install: false
 bibliography: "_DSAN5650.bib"
+csl: chicago-17-no-url.csl
 format:
   html:
     link-external-icon: true
@@ -103,13 +104,13 @@ The following is a rough map of what we will work through together throughout th
     <td></td>
     <td>2</td>
     <td><span data-qmd="{{< var w02.date-md >}}"></span></td>
-    <td><span data-qmd="[{{< var w02.title >}}](./w02/)"></span></td>
+    <td><span data-qmd='[{{< var w02.title >}}](./w02/)<br>**Relevant Reading:**<br>@koller_probabilistic_2009, Chapter 2: "Foundations" *(especially pp. 15-34, as a DSAN 5100 refresher!)*'></span></td>
 </tr>
 <tr class='new-unit'>
     <td><span data-qmd="**Unit 2**: Doin Thangs"></span></td>
     <td>3</td>
     <td><span data-qmd="{{< var w03.date-md >}}"></span></td>
-    <td><span data-qmd="[{{< var w03.title >}}](./w03/)<br>*[Deliverable] [HW1: {{< var hw1.title >}}]({{< var hw1.url >}})*"></span></td>
+    <td><span data-qmd="[{{< var w03.title >}}](./w03/)<br>*[Deliverable, 11:59pm EDT] [HW1: {{< var hw1.title >}}]({{< var hw1.url >}})*"></span></td>
 </tr>
 <tr>
     <td></td>

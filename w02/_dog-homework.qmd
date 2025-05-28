@@ -1,0 +1,63 @@
+
+## My Dog Ate My Homework {.smaller}
+
+* The issue: for some students $h_i$ is **missing**, since **their dog ate their homework**
+* Let $D = \begin{cases}1 &\text{if dog ate homework} \\ 0 &\text{otherwise}\end{cases}$
+* This means we don't observe $H$ but $H^* = \begin{cases} H &\text{if }D = 0 \\ \texttt{NA} &\text{otherwise}\end{cases}$
+* In the **easy case**, let's say that dogs eat homework **at random** (i.e., without reference to $S$ or $H$). Then we say $H$ is "missing at random".  Our PGM now looks like:
+
+![](images/pgm_hw_missing_at_random.svg){fig-align="center"}
+
+## My Dog Ate My Homework Because of Reasons {.smaller .small-title .nostretch}
+
+![](images/reasons_crop.jpeg){.absolute top="-15" right="10%"}
+
+There are scarier alternatives, though! What if...
+
+::: {layout-ncol=3}
+
+::: {#dog-study}
+
+Dogs eat homework because their owner studied so much that the dog got ignored?
+
+![](images/pgm_hw_missing_study.svg){fig-align="center" width="280"}
+
+:::
+
+::: {#dog-bad-hw}
+
+Dogs hate sloppy work, and eat bad homework that would have gotten a low score
+
+![](images/pgm_hw_missing_badhw.svg){fig-align="center" width="280"}
+
+:::
+
+::: {#dog-noisy}
+
+Noisy homes ($Z = 1$) cause dogs to get agitated and eat homework more often, **and** students do worse
+
+![](images/pgm_hw_missing_noisy.svg){fig-align="center" width="280"}
+
+:::
+
+:::
+
+## Why Do We Need To Think About DGPs? {.nostretch}
+
+::: {layout-ncol=2}
+
+![Figure (and DGP analysis) from @dignazio_numbers_2020](images/kidnappings.jpg){fig-align="center"}
+
+::: {#kidnapping-dgp}
+
+Presumed DGP:
+
+![$K$ = Kidnappings, $C$ = Counts](images/dgp_kidnappings.svg){fig-align="center" width="300"}
+
+Actual DGP:
+
+![$K$ = Kidnappings, $R$ = **News reports** about kidnappings, $C$ = Counts](images/dgp_kidnappings_true.svg){fig-align="center" width="300"}
+
+:::
+
+:::

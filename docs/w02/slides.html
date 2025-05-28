@@ -1,1259 +1,1731 @@
 <!DOCTYPE html>
-<html lang="en"><head>
-<link href="../favicon.png" rel="icon" type="image/png">
-<script src="../site_libs/clipboard/clipboard.min.js"></script>
-<script src="../site_libs/quarto-html/tabby.min.js"></script>
-<script src="../site_libs/quarto-html/popper.min.js"></script>
-<script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
-<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="../site_libs/quarto-html/light-border.css" rel="stylesheet">
-<link href="../site_libs/quarto-html/quarto-html.min.css" rel="stylesheet" data-mode="light">
-<link href="../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
-<script src="../site_libs/quarto-contrib/videojs/video.min.js"></script>
-<link href="../site_libs/quarto-contrib/videojs/video-js.css" rel="stylesheet"><meta charset="utf-8">
+<html lang="en">
+
+<head>
+  <link href="../favicon.png" rel="icon" type="image/png">
+  <script src="../site_libs/clipboard/clipboard.min.js"></script>
+  <script src="../site_libs/quarto-html/tabby.min.js"></script>
+  <script src="../site_libs/quarto-html/popper.min.js"></script>
+  <script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
+  <link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
+  <link href="../site_libs/quarto-html/light-border.css" rel="stylesheet">
+  <link href="../site_libs/quarto-html/quarto-html.min.css" rel="stylesheet" data-mode="light">
+  <link href="../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet"
+    id="quarto-text-highlighting-styles">
+  <script src="../site_libs/quarto-contrib/videojs/video.min.js"></script>
+  <link href="../site_libs/quarto-contrib/videojs/video-js.css" rel="stylesheet">
+  <meta charset="utf-8">
   <meta name="generator" content="quarto-1.5.54">
 
   <meta name="author" content="Jeff Jacobs">
   <title>DSAN 5650 – Week 2: Probabilistic Graphical Models (PGMs)</title>
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
+  <meta name="viewport"
+    content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
   <link rel="stylesheet" href="../site_libs/revealjs/dist/reset.css">
   <link rel="stylesheet" href="../site_libs/revealjs/dist/reveal.css">
   <style>
-    code{white-space: pre-wrap;}
-    span.smallcaps{font-variant: small-caps;}
-    div.columns{display: flex; gap: min(4vw, 1.5em);}
-    div.column{flex: auto; overflow-x: auto;}
-    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
-    ul.task-list{list-style: none;}
+    code {
+      white-space: pre-wrap;
+    }
+
+    span.smallcaps {
+      font-variant: small-caps;
+    }
+
+    div.columns {
+      display: flex;
+      gap: min(4vw, 1.5em);
+    }
+
+    div.column {
+      flex: auto;
+      overflow-x: auto;
+    }
+
+    div.hanging-indent {
+      margin-left: 1.5em;
+      text-indent: -1.5em;
+    }
+
+    ul.task-list {
+      list-style: none;
+    }
+
     ul.task-list li input[type="checkbox"] {
       width: 0.8em;
-      margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+      margin: 0 0.8em 0.2em -1em;
+      /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */
       vertical-align: middle;
     }
+
     /* CSS for syntax highlighting */
-    pre > code.sourceCode { white-space: pre; position: relative; }
-    pre > code.sourceCode > span { line-height: 1.25; }
-    pre > code.sourceCode > span:empty { height: 1.2em; }
-    .sourceCode { overflow: visible; }
-    code.sourceCode > span { color: inherit; text-decoration: inherit; }
-    div.sourceCode { margin: 1em 0; }
-    pre.sourceCode { margin: 0; }
+    pre>code.sourceCode {
+      white-space: pre;
+      position: relative;
+    }
+
+    pre>code.sourceCode>span {
+      line-height: 1.25;
+    }
+
+    pre>code.sourceCode>span:empty {
+      height: 1.2em;
+    }
+
+    .sourceCode {
+      overflow: visible;
+    }
+
+    code.sourceCode>span {
+      color: inherit;
+      text-decoration: inherit;
+    }
+
+    div.sourceCode {
+      margin: 1em 0;
+    }
+
+    pre.sourceCode {
+      margin: 0;
+    }
+
     @media screen {
-    div.sourceCode { overflow: auto; }
-    }
-    @media print {
-    pre > code.sourceCode { white-space: pre-wrap; }
-    pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
-    }
-    pre.numberSource code
-      { counter-reset: source-line 0; }
-    pre.numberSource code > span
-      { position: relative; left: -4em; counter-increment: source-line; }
-    pre.numberSource code > span > a:first-child::before
-      { content: counter(source-line);
-        position: relative; left: -1em; text-align: right; vertical-align: baseline;
-        border: none; display: inline-block;
-        -webkit-touch-callout: none; -webkit-user-select: none;
-        -khtml-user-select: none; -moz-user-select: none;
-        -ms-user-select: none; user-select: none;
-        padding: 0 4px; width: 4em;
-        color: #aaaaaa;
+      div.sourceCode {
+        overflow: auto;
       }
-    pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
-    div.sourceCode
-      { color: #003b4f; background-color: #f1f3f5; }
-    @media screen {
-    pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
     }
-    code span { color: #003b4f; } /* Normal */
-    code span.al { color: #ad0000; } /* Alert */
-    code span.an { color: #5e5e5e; } /* Annotation */
-    code span.at { color: #657422; } /* Attribute */
-    code span.bn { color: #ad0000; } /* BaseN */
-    code span.bu { } /* BuiltIn */
-    code span.cf { color: #003b4f; font-weight: bold; } /* ControlFlow */
-    code span.ch { color: #20794d; } /* Char */
-    code span.cn { color: #8f5902; } /* Constant */
-    code span.co { color: #5e5e5e; } /* Comment */
-    code span.cv { color: #5e5e5e; font-style: italic; } /* CommentVar */
-    code span.do { color: #5e5e5e; font-style: italic; } /* Documentation */
-    code span.dt { color: #ad0000; } /* DataType */
-    code span.dv { color: #ad0000; } /* DecVal */
-    code span.er { color: #ad0000; } /* Error */
-    code span.ex { } /* Extension */
-    code span.fl { color: #ad0000; } /* Float */
-    code span.fu { color: #4758ab; } /* Function */
-    code span.im { color: #00769e; } /* Import */
-    code span.in { color: #5e5e5e; } /* Information */
-    code span.kw { color: #003b4f; font-weight: bold; } /* Keyword */
-    code span.op { color: #5e5e5e; } /* Operator */
-    code span.ot { color: #003b4f; } /* Other */
-    code span.pp { color: #ad0000; } /* Preprocessor */
-    code span.sc { color: #5e5e5e; } /* SpecialChar */
-    code span.ss { color: #20794d; } /* SpecialString */
-    code span.st { color: #20794d; } /* String */
-    code span.va { color: #111111; } /* Variable */
-    code span.vs { color: #20794d; } /* VerbatimString */
-    code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
+
+    @media print {
+      pre>code.sourceCode {
+        white-space: pre-wrap;
+      }
+
+      pre>code.sourceCode>span {
+        display: inline-block;
+        text-indent: -5em;
+        padding-left: 5em;
+      }
+    }
+
+    pre.numberSource code {
+      counter-reset: source-line 0;
+    }
+
+    pre.numberSource code>span {
+      position: relative;
+      left: -4em;
+      counter-increment: source-line;
+    }
+
+    pre.numberSource code>span>a:first-child::before {
+      content: counter(source-line);
+      position: relative;
+      left: -1em;
+      text-align: right;
+      vertical-align: baseline;
+      border: none;
+      display: inline-block;
+      -webkit-touch-callout: none;
+      -webkit-user-select: none;
+      -khtml-user-select: none;
+      -moz-user-select: none;
+      -ms-user-select: none;
+      user-select: none;
+      padding: 0 4px;
+      width: 4em;
+      color: #aaaaaa;
+    }
+
+    pre.numberSource {
+      margin-left: 3em;
+      border-left: 1px solid #aaaaaa;
+      padding-left: 4px;
+    }
+
+    div.sourceCode {
+      color: #003b4f;
+      background-color: #f1f3f5;
+    }
+
+    @media screen {
+      pre>code.sourceCode>span>a:first-child::before {
+        text-decoration: underline;
+      }
+    }
+
+    code span {
+      color: #003b4f;
+    }
+
+    /* Normal */
+    code span.al {
+      color: #ad0000;
+    }
+
+    /* Alert */
+    code span.an {
+      color: #5e5e5e;
+    }
+
+    /* Annotation */
+    code span.at {
+      color: #657422;
+    }
+
+    /* Attribute */
+    code span.bn {
+      color: #ad0000;
+    }
+
+    /* BaseN */
+    code span.bu {}
+
+    /* BuiltIn */
+    code span.cf {
+      color: #003b4f;
+      font-weight: bold;
+    }
+
+    /* ControlFlow */
+    code span.ch {
+      color: #20794d;
+    }
+
+    /* Char */
+    code span.cn {
+      color: #8f5902;
+    }
+
+    /* Constant */
+    code span.co {
+      color: #5e5e5e;
+    }
+
+    /* Comment */
+    code span.cv {
+      color: #5e5e5e;
+      font-style: italic;
+    }
+
+    /* CommentVar */
+    code span.do {
+      color: #5e5e5e;
+      font-style: italic;
+    }
+
+    /* Documentation */
+    code span.dt {
+      color: #ad0000;
+    }
+
+    /* DataType */
+    code span.dv {
+      color: #ad0000;
+    }
+
+    /* DecVal */
+    code span.er {
+      color: #ad0000;
+    }
+
+    /* Error */
+    code span.ex {}
+
+    /* Extension */
+    code span.fl {
+      color: #ad0000;
+    }
+
+    /* Float */
+    code span.fu {
+      color: #4758ab;
+    }
+
+    /* Function */
+    code span.im {
+      color: #00769e;
+    }
+
+    /* Import */
+    code span.in {
+      color: #5e5e5e;
+    }
+
+    /* Information */
+    code span.kw {
+      color: #003b4f;
+      font-weight: bold;
+    }
+
+    /* Keyword */
+    code span.op {
+      color: #5e5e5e;
+    }
+
+    /* Operator */
+    code span.ot {
+      color: #003b4f;
+    }
+
+    /* Other */
+    code span.pp {
+      color: #ad0000;
+    }
+
+    /* Preprocessor */
+    code span.sc {
+      color: #5e5e5e;
+    }
+
+    /* SpecialChar */
+    code span.ss {
+      color: #20794d;
+    }
+
+    /* SpecialString */
+    code span.st {
+      color: #20794d;
+    }
+
+    /* String */
+    code span.va {
+      color: #111111;
+    }
+
+    /* Variable */
+    code span.vs {
+      color: #20794d;
+    }
+
+    /* VerbatimString */
+    code span.wa {
+      color: #5e5e5e;
+      font-style: italic;
+    }
+
+    /* Warning */
     /* CSS for citations */
-    div.csl-bib-body { }
+    div.csl-bib-body {}
+
     div.csl-entry {
       clear: both;
       margin-bottom: 0em;
     }
+
     .hanging-indent div.csl-entry {
-      margin-left:2em;
-      text-indent:-2em;
+      margin-left: 2em;
+      text-indent: -2em;
     }
+
     div.csl-left-margin {
-      min-width:2em;
-      float:left;
+      min-width: 2em;
+      float: left;
     }
+
     div.csl-right-inline {
-      margin-left:2em;
-      padding-left:1em;
+      margin-left: 2em;
+      padding-left: 1em;
     }
+
     div.csl-indent {
       margin-left: 2em;
-    }  </style>
-  <link rel="stylesheet" href="../site_libs/revealjs/dist/theme/quarto.css">
+    }
+  </style>
+  <link rel="stylesheet" href="../site_libs/revealjs/dist/theme/quarto-3acbdb777127f0c96ee1b4923a9556d4.css">
   <link href="../site_libs/revealjs/plugin/quarto-line-highlight/line-highlight.css" rel="stylesheet">
   <link href="../site_libs/revealjs/plugin/reveal-menu/menu.css" rel="stylesheet">
   <link href="../site_libs/revealjs/plugin/reveal-menu/quarto-menu.css" rel="stylesheet">
   <link href="../site_libs/revealjs/plugin/simplemenu/simplemenu.css" rel="stylesheet">
   <link href="../site_libs/revealjs/plugin/quarto-support/footer.css" rel="stylesheet">
   <style type="text/css">
+    .callout {
+      margin-top: 1em;
+      margin-bottom: 1em;
+      border-radius: .25rem;
+    }
 
-  .callout {
-    margin-top: 1em;
-    margin-bottom: 1em;  
-    border-radius: .25rem;
-  }
-
-  .callout.callout-style-simple { 
-    padding: 0em 0.5em;
-    border-left: solid #acacac .3rem;
-    border-right: solid 1px silver;
-    border-top: solid 1px silver;
-    border-bottom: solid 1px silver;
-    display: flex;
-  }
-
-  .callout.callout-style-default {
-    border-left: solid #acacac .3rem;
-    border-right: solid 1px silver;
-    border-top: solid 1px silver;
-    border-bottom: solid 1px silver;
-  }
-
-  .callout .callout-body-container {
-    flex-grow: 1;
-  }
-
-  .callout.callout-style-simple .callout-body {
-    font-size: 1rem;
-    font-weight: 400;
-  }
-
-  .callout.callout-style-default .callout-body {
-    font-size: 0.9rem;
-    font-weight: 400;
-  }
-
-  .callout.callout-titled.callout-style-simple .callout-body {
-    margin-top: 0.2em;
-  }
-
-  .callout:not(.callout-titled) .callout-body {
+    .callout.callout-style-simple {
+      padding: 0em 0.5em;
+      border-left: solid #acacac .3rem;
+      border-right: solid 1px silver;
+      border-top: solid 1px silver;
+      border-bottom: solid 1px silver;
       display: flex;
-  }
+    }
 
-  .callout:not(.no-icon).callout-titled.callout-style-simple .callout-content {
-    padding-left: 1.6em;
-  }
+    .callout.callout-style-default {
+      border-left: solid #acacac .3rem;
+      border-right: solid 1px silver;
+      border-top: solid 1px silver;
+      border-bottom: solid 1px silver;
+    }
 
-  .callout.callout-titled .callout-header {
-    padding-top: 0.2em;
-    margin-bottom: -0.2em;
-  }
+    .callout .callout-body-container {
+      flex-grow: 1;
+    }
 
-  .callout.callout-titled .callout-title  p {
-    margin-top: 0.5em;
-    margin-bottom: 0.5em;
-  }
-    
-  .callout.callout-titled.callout-style-simple .callout-content  p {
-    margin-top: 0;
-  }
+    .callout.callout-style-simple .callout-body {
+      font-size: 1rem;
+      font-weight: 400;
+    }
 
-  .callout.callout-titled.callout-style-default .callout-content  p {
-    margin-top: 0.7em;
-  }
+    .callout.callout-style-default .callout-body {
+      font-size: 0.9rem;
+      font-weight: 400;
+    }
 
-  .callout.callout-style-simple div.callout-title {
-    border-bottom: none;
-    font-size: .9rem;
-    font-weight: 600;
-    opacity: 75%;
-  }
+    .callout.callout-titled.callout-style-simple .callout-body {
+      margin-top: 0.2em;
+    }
 
-  .callout.callout-style-default  div.callout-title {
-    border-bottom: none;
-    font-weight: 600;
-    opacity: 85%;
-    font-size: 0.9rem;
-    padding-left: 0.5em;
-    padding-right: 0.5em;
-  }
+    .callout:not(.callout-titled) .callout-body {
+      display: flex;
+    }
 
-  .callout.callout-style-default div.callout-content {
-    padding-left: 0.5em;
-    padding-right: 0.5em;
-  }
+    .callout:not(.no-icon).callout-titled.callout-style-simple .callout-content {
+      padding-left: 1.6em;
+    }
 
-  .callout.callout-style-simple .callout-icon::before {
-    height: 1rem;
-    width: 1rem;
-    display: inline-block;
-    content: "";
-    background-repeat: no-repeat;
-    background-size: 1rem 1rem;
-  }
+    .callout.callout-titled .callout-header {
+      padding-top: 0.2em;
+      margin-bottom: -0.2em;
+    }
 
-  .callout.callout-style-default .callout-icon::before {
-    height: 0.9rem;
-    width: 0.9rem;
-    display: inline-block;
-    content: "";
-    background-repeat: no-repeat;
-    background-size: 0.9rem 0.9rem;
-  }
+    .callout.callout-titled .callout-title p {
+      margin-top: 0.5em;
+      margin-bottom: 0.5em;
+    }
 
-  .callout-title {
-    display: flex
-  }
-    
-  .callout-icon::before {
-    margin-top: 1rem;
-    padding-right: .5rem;
-  }
+    .callout.callout-titled.callout-style-simple .callout-content p {
+      margin-top: 0;
+    }
 
-  .callout.no-icon::before {
-    display: none !important;
-  }
+    .callout.callout-titled.callout-style-default .callout-content p {
+      margin-top: 0.7em;
+    }
 
-  .callout.callout-titled .callout-body > .callout-content > :last-child {
-    padding-bottom: 0.5rem;
-    margin-bottom: 0;
-  }
+    .callout.callout-style-simple div.callout-title {
+      border-bottom: none;
+      font-size: .9rem;
+      font-weight: 600;
+      opacity: 75%;
+    }
 
-  .callout.callout-titled .callout-icon::before {
-    margin-top: .5rem;
-    padding-right: .5rem;
-  }
+    .callout.callout-style-default div.callout-title {
+      border-bottom: none;
+      font-weight: 600;
+      opacity: 85%;
+      font-size: 0.9rem;
+      padding-left: 0.5em;
+      padding-right: 0.5em;
+    }
 
-  .callout:not(.callout-titled) .callout-icon::before {
-    margin-top: 1rem;
-    padding-right: .5rem;
-  }
+    .callout.callout-style-default div.callout-content {
+      padding-left: 0.5em;
+      padding-right: 0.5em;
+    }
 
-  /* Callout Types */
+    .callout.callout-style-simple .callout-icon::before {
+      height: 1rem;
+      width: 1rem;
+      display: inline-block;
+      content: "";
+      background-repeat: no-repeat;
+      background-size: 1rem 1rem;
+    }
 
-  div.callout-note {
-    border-left-color: #4582ec !important;
-  }
+    .callout.callout-style-default .callout-icon::before {
+      height: 0.9rem;
+      width: 0.9rem;
+      display: inline-block;
+      content: "";
+      background-repeat: no-repeat;
+      background-size: 0.9rem 0.9rem;
+    }
 
-  div.callout-note .callout-icon::before {
-    background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAAAXNSR0IArs4c6QAAAERlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAA6ABAAMAAAABAAEAAKACAAQAAAABAAAAIKADAAQAAAABAAAAIAAAAACshmLzAAAEU0lEQVRYCcVXTWhcVRQ+586kSUMMxkyaElstCto2SIhitS5Ek8xUKV2poatCcVHtUlFQk8mbaaziwpWgglJwVaquitBOfhQXFlqlzSJpFSpIYyXNjBNiTCck7x2/8/LeNDOZxDuEkgOXe++553zfefee+/OYLOXFk3+1LLrRdiO81yNqZ6K9cG0P3MeFaMIQjXssE8Z1JzLO9ls20MBZX7oG8w9GxB0goaPrW5aNMp1yOZIa7Wv6o2ykpLtmAPs/vrG14Z+6d4jpbSKuhdcSyq9wGMPXjonwmESXrriLzFGOdDBLB8Y6MNYBu0dRokSygMA/mrun8MGFN3behm6VVAwg4WR3i6FvYK1T7MHo9BK7ydH+1uurECoouk5MPRyVSBrBHMYwVobG2aOXM07sWrn5qgB60rc6mcwIDJtQrnrEr44kmy+UO9r0u9O5/YbkS9juQckLed3DyW2XV/qWBBB3ptvI8EUY3I9p/67OW+g967TNr3Sotn3IuVlfMLVnsBwH4fsnebJvyGm5GeIUA3jljERmrv49SizPYuq+z7c2H/jlGC+Ghhupn/hcapqmcudB9jwJ/3jvnvu6vu5lVzF1fXyZuZZ7U8nRmVzytvT+H3kilYvH09mLWrQdwFSsFEsxFVs5fK7A0g8gMZjbif4ACpKbjv7gNGaD8bUrlk8x+KRflttr22JEMRUbTUwwDQScyzPgedQHZT0xnx7ujw2jfVfExwYHwOsDTjLdJ2ebmeQIlJ7neo41s/DrsL3kl+W2lWvAga0tR3zueGr6GL78M3ifH0rGXrBC2aAR8uYcIA5gwV8zIE8onoh8u0Fca/ciF7j1uOzEnqcIm59sEXoGc0+z6+H45V1CvAvHcD7THztu669cnp+L0okAeIc6zjbM/24LgGM1gZk7jnRu1aQWoU9sfUOuhrmtaPIO3YY1KLLWZaEO5TKUbMY5zx8W9UJ6elpLwKXbsaZ4EFl7B4bMtDv0iRipKoDQT2sNQI9b1utXFdYisi+wzZ/ri/1m7QfDgEuvgUUEIJPq3DhX/5DWNqIXDOweC2wvIR90Oq3lDpdMIgD2r0dXvGdsEW5H6x6HLRJYU7C69VefO1x8Gde1ZFSJLfWS1jbCnhtOPxmpfv2LXOA2Xk2tvnwKKPFuZ/oRmwBwqRQDcKNeVQkYcOjtWVBuM/JuYw5b6isojIkYxyYAFn5K7ZBF10fea52y8QltAg6jnMqNHFBmGkQ1j+U43HMi2xMar1Nv0zGsf1s8nUsmUtPOOrbFIR8bHFDMB5zL13Gmr/kGlCkUzedTzzmzsaJXhYawnA3UmARpiYj5ooJZiUoxFRtK3X6pgNPv+IZVPcnwbOl6f+aBaO1CNvPW9n9LmCp01nuSaTRF2YxHqZ8DYQT6WsXT+RD6eUztwYLZ8rM+rcPxamv1VQzFUkzFXvkiVrySGQgJNvXHJAxiU3/NwiC03rSf05VBaPtu/Z7/B8Yn/w7eguloAAAAAElFTkSuQmCC');
-  }
+    .callout-title {
+      display: flex
+    }
 
-  div.callout-note.callout-style-default .callout-title {
-    background-color: #dae6fb
-  }
+    .callout-icon::before {
+      margin-top: 1rem;
+      padding-right: .5rem;
+    }
 
-  div.callout-important {
-    border-left-color: #d9534f !important;
-  }
+    .callout.no-icon::before {
+      display: none !important;
+    }
 
-  div.callout-important .callout-icon::before {
-    background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAAAXNSR0IArs4c6QAAAERlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAA6ABAAMAAAABAAEAAKACAAQAAAABAAAAIKADAAQAAAABAAAAIAAAAACshmLzAAAEKklEQVRYCcVXTWhcVRS+575MJym48A+hSRFr00ySRQhURRfd2HYjk2SSTokuBCkU2o0LoSKKraKIBTcuFCoidGFD08nkBzdREbpQ1EDNIv8qSGMFUboImMSZd4/f9zJv8ibJMC8xJQfO3HPPPef7zrvvvnvviIkpC9nsw0UttFunbUhpFzFtarSd6WJkStVMw5xyVqYTvkwfzuf/5FgtkVoB0729j1rjXwThS7Vio+Mo6DNnvLfahoZ+i/o32lULuJ3NNiz7q6+pyAUkJaFF6JwaM2lUJlV0MlnQn5aTRbEu0SEqHUa0A4AdiGuB1kFXRfVyg5d87+Dg4DL6m2TLAub60ilj7A1Ec4odSAc8X95sHh7+ZRPCFo6Fnp7HfU/fBng/hi10CjCnWnJjsxvDNxWw0NfV6Rv5GgP3I3jGWXumdTD/3cbEOP2ZbOZp69yniG3FQ9z1jD7bnBu9Fc2tKGC2q+uAJOQHBDRiZX1x36o7fWBs7J9ownbtO+n0/qWkvW7UPIfc37WgT6ZGR++EOJyeQDSb9UB+DZ1G6DdLDzyS+b/kBCYGsYgJbSQHuThGKRcw5xdeQf8YdNHsc6ePXrlSYMBuSIAFTGAtQo+VuALo4BX83N190NWZWbynBjhOHsmNfFWLeL6v+ynsA58zDvvAC8j5PkbOcXCMg2PZFk3q8MjI7WAG/Dp9AwP7jdGBOOQkAvlFUB+irtm16I1Zw9YBcpGTGXYmk3kQIC/Cds55l+iMI3jqhjAuaoe+am2Jw5GT3Nbz3CkE12NavmzN5+erJW7046n/CH1RO/RVa8lBLozXk9uqykkGAyRXLWlLv5jyp4RFsG5vGVzpDLnIjTWgnRy2Rr+tDKvRc7Y8AyZq10jj8DqXdnIRNtFZb+t/ZRtXcDiVnzpqx8mPcDWxgARUqx0W1QB9MeUZiNrV4qP+Ehc+BpNgATsTX8ozYKL2NtFYAHc84fG7ndxUPr+AR/iQSns7uSUufAymwDOb2+NjK27lEFocm/EE2WpyIy/Hi66MWuMKJn8RvxIcj87IM5Vh9663ziW36kR0HNenXuxmfaD8JC7tfKbrhFr7LiZCrMjrzTeGx+PmkosrkNzW94ObzwocJ7A1HokLolY+AvkTiD/q1H0cN48c5EL8Crkttsa/AXQVDmutfyku0E7jShx49XqV3MFK8IryDhYVbj7Sj2P2eBxwcXoe8T8idsKKPRcnZw1b+slFTubwUwhktrfnAt7J++jwQtLZcm3sr9LQrjRzz6cfMv9aLvgmnAGvpoaGLxM4mAEaLV7iAzQ3oU0IvD5x9ix3yF2RAAuYAOO2f7PEFWCXZ4C9Pb2UsgDeVnFSpbFK7/IWu7TPTvBqzbGdCHOJQSxiEjt6IyZmxQyEJHv6xyQsYk//moVFsN2zP6fRImjfq7/n/wFDguUQFNEwugAAAABJRU5ErkJggg==');
-  }
+    .callout.callout-titled .callout-body>.callout-content> :last-child {
+      padding-bottom: 0.5rem;
+      margin-bottom: 0;
+    }
 
-  div.callout-important.callout-style-default .callout-title {
-    background-color: #f7dddc
-  }
+    .callout.callout-titled .callout-icon::before {
+      margin-top: .5rem;
+      padding-right: .5rem;
+    }
 
-  div.callout-warning {
-    border-left-color: #f0ad4e !important;
-  }
+    .callout:not(.callout-titled) .callout-icon::before {
+      margin-top: 1rem;
+      padding-right: .5rem;
+    }
 
-  div.callout-warning .callout-icon::before {
-    background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAAAXNSR0IArs4c6QAAAERlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAA6ABAAMAAAABAAEAAKACAAQAAAABAAAAIKADAAQAAAABAAAAIAAAAACshmLzAAAETklEQVRYCeVWW2gcVRg+58yaTUnizqbipZeX4uWhBEniBaoUX1Ioze52t7sRq6APio9V9MEaoWlVsFasRq0gltaAPuxms8lu0gcviE/FFOstVbSIxgcv6SU7EZqmdc7v9+9mJtNks51NTUH84ed889/PP+cmxP+d5FIbMJmNbpREu4WUkiTtCicKny0l1pIKmBzovF2S+hIJHX8iEu3hZJ5lNZGqyRrGSIQpq15AzF28jgpeY6yk6GVdrfFqdrD6Iw+QlB8g0YS2g7dyQmXM/IDhBhT0UCiRf59lfqmmDvzRt6kByV/m4JjtzuaujMUM2c5Z2d6JdKrRb3K2q6mA+oYVz8JnDdKPmmNthzkAk/lN63sYPgevrguc72aZX/L9C6x09GYyxBgCX4NlvyGUHOKELlm5rXeR1kchuChJt4SSwyddZRXgvwMGvYo4QSlk3/zkHD8UHxwVJA6zjZZqP8v8kK8OWLnIZtLyCAJagYC4rTGW/9Pqj92N/c+LUaAj27movwbi19tk/whRCIE7Q9vyI6yvRpftAKVTdUjOW40X3h5OXsKCdmFcx0xlLJoSuQngnrJe7Kcjm4OMq9FlC7CMmScQANuNvjfP3PjGXDBaUQmbp296S5L4DrpbrHN1T87ZVEZVCzg1FF0Ft+dKrlLukI+/c9ENo+TvlTDbYFvuKPtQ9+l052rXrgKoWkDAFnvh0wTOmYn8R5f4k/jN/fZiCM1tQx9jQQ4ANhqG4hiL0qIFTGViG9DKB7GYzgubnpofgYRwO+DFjh0Zin2m4b/97EDkXkc+f6xYAPX0KK2I/7fUQuwzuwo/L3AkcjugPNixC8cHf0FyPjWlItmLxWw4Ou9YsQCr5fijMGoD/zpdRy95HRysyXA74MWOnscpO4j2y3HAVisw85hX5+AFBRSHt4ShfLFkIMXTqyKFc46xdzQM6XbAi702a7sy04J0+feReMFKp5q9esYLCqAZYw/k14E/xcLLsFElaornTuJB0svMuJINy8xkIYuL+xPAlWRceH6+HX7THJ0djLUom46zREu7tTkxwmf/FdOZ/sh6Q8qvEAiHpm4PJ4a/doJe0gH1t+aHRgCzOvBvJedEK5OFE5jpm4AGP2a8Dxe3gGJ/pAutug9Gp6he92CsSsWBaEcxGx0FHytmIpuqGkOpldqNYQK8cSoXvd+xLxXADw0kf6UkJNFtdo5MOgaLjiQOQHcn+A6h5NuL2s0qsC2LOM75PcF3yr5STuBSAcGG+meA14K/CI21HcS4LBT6tv0QAh8Dr5l93AhZzG5ZJ4VxAqdZUEl9z7WJ4aN+svMvwHHL21UKTd1mqvChH7/Za5xzXBBKrUcB0TQ+Ulgkfbi/H/YT5EptrGzsEK7tR1B7ln9BBwckYfMiuSqklSznIuoIIOM42MQO+QnduCoFCI0bpkzjCjddHPN/F+2Yu+sd9bKNpVwHhbS3LluK/0zgfwD0xYI5dXuzlQAAAABJRU5ErkJggg==');
-  }
+    /* Callout Types */
 
-  div.callout-warning.callout-style-default .callout-title {
-    background-color: #fcefdc
-  }
+    div.callout-note {
+      border-left-color: #4582ec !important;
+    }
 
-  div.callout-tip {
-    border-left-color: #02b875 !important;
-  }
+    div.callout-note .callout-icon::before {
+      background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAAAXNSR0IArs4c6QAAAERlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAA6ABAAMAAAABAAEAAKACAAQAAAABAAAAIKADAAQAAAABAAAAIAAAAACshmLzAAAEU0lEQVRYCcVXTWhcVRQ+586kSUMMxkyaElstCto2SIhitS5Ek8xUKV2poatCcVHtUlFQk8mbaaziwpWgglJwVaquitBOfhQXFlqlzSJpFSpIYyXNjBNiTCck7x2/8/LeNDOZxDuEkgOXe++553zfefee+/OYLOXFk3+1LLrRdiO81yNqZ6K9cG0P3MeFaMIQjXssE8Z1JzLO9ls20MBZX7oG8w9GxB0goaPrW5aNMp1yOZIa7Wv6o2ykpLtmAPs/vrG14Z+6d4jpbSKuhdcSyq9wGMPXjonwmESXrriLzFGOdDBLB8Y6MNYBu0dRokSygMA/mrun8MGFN3behm6VVAwg4WR3i6FvYK1T7MHo9BK7ydH+1uurECoouk5MPRyVSBrBHMYwVobG2aOXM07sWrn5qgB60rc6mcwIDJtQrnrEr44kmy+UO9r0u9O5/YbkS9juQckLed3DyW2XV/qWBBB3ptvI8EUY3I9p/67OW+g967TNr3Sotn3IuVlfMLVnsBwH4fsnebJvyGm5GeIUA3jljERmrv49SizPYuq+z7c2H/jlGC+Ghhupn/hcapqmcudB9jwJ/3jvnvu6vu5lVzF1fXyZuZZ7U8nRmVzytvT+H3kilYvH09mLWrQdwFSsFEsxFVs5fK7A0g8gMZjbif4ACpKbjv7gNGaD8bUrlk8x+KRflttr22JEMRUbTUwwDQScyzPgedQHZT0xnx7ujw2jfVfExwYHwOsDTjLdJ2ebmeQIlJ7neo41s/DrsL3kl+W2lWvAga0tR3zueGr6GL78M3ifH0rGXrBC2aAR8uYcIA5gwV8zIE8onoh8u0Fca/ciF7j1uOzEnqcIm59sEXoGc0+z6+H45V1CvAvHcD7THztu669cnp+L0okAeIc6zjbM/24LgGM1gZk7jnRu1aQWoU9sfUOuhrmtaPIO3YY1KLLWZaEO5TKUbMY5zx8W9UJ6elpLwKXbsaZ4EFl7B4bMtDv0iRipKoDQT2sNQI9b1utXFdYisi+wzZ/ri/1m7QfDgEuvgUUEIJPq3DhX/5DWNqIXDOweC2wvIR90Oq3lDpdMIgD2r0dXvGdsEW5H6x6HLRJYU7C69VefO1x8Gde1ZFSJLfWS1jbCnhtOPxmpfv2LXOA2Xk2tvnwKKPFuZ/oRmwBwqRQDcKNeVQkYcOjtWVBuM/JuYw5b6isojIkYxyYAFn5K7ZBF10fea52y8QltAg6jnMqNHFBmGkQ1j+U43HMi2xMar1Nv0zGsf1s8nUsmUtPOOrbFIR8bHFDMB5zL13Gmr/kGlCkUzedTzzmzsaJXhYawnA3UmARpiYj5ooJZiUoxFRtK3X6pgNPv+IZVPcnwbOl6f+aBaO1CNvPW9n9LmCp01nuSaTRF2YxHqZ8DYQT6WsXT+RD6eUztwYLZ8rM+rcPxamv1VQzFUkzFXvkiVrySGQgJNvXHJAxiU3/NwiC03rSf05VBaPtu/Z7/B8Yn/w7eguloAAAAAElFTkSuQmCC');
+    }
 
-  div.callout-tip .callout-icon::before {
-    background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAAAXNSR0IArs4c6QAAAERlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAA6ABAAMAAAABAAEAAKACAAQAAAABAAAAIKADAAQAAAABAAAAIAAAAACshmLzAAADr0lEQVRYCe1XTWgTQRj9ZjZV8a9SPIkKgj8I1bMHsUWrqYLVg4Ue6v9BwZOxSYsIerFao7UiUryIqJcqgtpimhbBXoSCVxUFe9CTiogUrUp2Pt+3aUI2u5vdNh4dmMzOzHvvezuz8xNFM0mjnbXaNu1MvFWRXkXEyE6aYOYJpdW4IXuA4r0fo8qqSMDBU0v1HJUgVieAXxzCsdE/YJTdFcVIZQNMyhruOMJKXYFoLfIfIvVIMWdsrd+Rpd86ZmyzzjJmLStqRn0v8lzkb4rVIXvnpScOJuAn2ACC65FkPzEdEy4TPWRLJ2h7z4cArXzzaOdKlbOvKKX25Wl00jSnrwVxAg3o4dRxhO13RBSdNvH0xSARv3adTXbBdTf64IWO2vH0LT+cv4GR1DJt+DUItaQogeBX/chhbTBxEiZ6gftlDNXTrvT7co4ub5A6gp9HIcHvzTa46OS5fBeP87Qm0fQkr4FsYgVQ7Qg+ZayaDg9jhg1GkWj8RG6lkeSacrrHgDaxdoBiZPg+NXV/KifMuB6//JmYH4CntVEHy/keA6x4h4CU5oFy8GzrBS18cLJMXcljAKB6INjWsRcuZBWVaS3GDrqB7rdapVIeA+isQ57Eev9eCqzqOa81CY05VLd6SamW2wA2H3SiTbnbSxmzfp7WtKZkqy4mdyAlGx7ennghYf8voqp9cLSgKdqNfa6RdRsAAkPwRuJZNbpByn+RrJi1RXTwdi8RQF6ymDwGMAtZ6TVE+4uoKh+MYkcLsT0Hk8eAienbiGdjJHZTpmNjlbFJNKDVAp2fJlYju6IreQxQ08UJDNYdoLSl6AadO+fFuCQqVMB1NJwPm69T04Wv5WhfcWyfXQB+wXRs1pt+nCknRa0LVzSA/2B+a9+zQJadb7IyyV24YAxKp2Jqs3emZTuNnKxsah+uabKbMk7CbTgJx/zIgQYErIeTKRQ9yD9wxVof5YolPHqaWo7TD6tJlh7jQnK5z2n3+fGdggIOx2kaa2YI9QWarc5Ce1ipNWMKeSG4DysFF52KBmTNMmn5HqCFkwy34rDg05gDwgH3bBi+sgFhN/e8QvRn8kbamCOhgrZ9GJhFDgfcMHzFb6BAtjKpFhzTjwv1KCVuxHvCbsSiEz4CANnj84cwHdFXAbAOJ4LTSAawGWFn5tDhLMYz6nWeU2wJfIhmIJBefcd/A5FWQWGgrWzyORZ3Q6HuV+Jf0Bj+BTX69fm1zWgK7By1YTXchFDORywnfQ7GpzOo6S+qECrsx2ifVQAAAABJRU5ErkJggg==');
-  }
+    div.callout-note.callout-style-default .callout-title {
+      background-color: #dae6fb
+    }
 
-  div.callout-tip.callout-style-default .callout-title {
-    background-color: #ccf1e3
-  }
+    div.callout-important {
+      border-left-color: #d9534f !important;
+    }
 
-  div.callout-caution {
-    border-left-color: #fd7e14 !important;
-  }
+    div.callout-important .callout-icon::before {
+      background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAAAXNSR0IArs4c6QAAAERlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAA6ABAAMAAAABAAEAAKACAAQAAAABAAAAIKADAAQAAAABAAAAIAAAAACshmLzAAAEKklEQVRYCcVXTWhcVRS+575MJym48A+hSRFr00ySRQhURRfd2HYjk2SSTokuBCkU2o0LoSKKraKIBTcuFCoidGFD08nkBzdREbpQ1EDNIv8qSGMFUboImMSZd4/f9zJv8ibJMC8xJQfO3HPPPef7zrvvvnvviIkpC9nsw0UttFunbUhpFzFtarSd6WJkStVMw5xyVqYTvkwfzuf/5FgtkVoB0729j1rjXwThS7Vio+Mo6DNnvLfahoZ+i/o32lULuJ3NNiz7q6+pyAUkJaFF6JwaM2lUJlV0MlnQn5aTRbEu0SEqHUa0A4AdiGuB1kFXRfVyg5d87+Dg4DL6m2TLAub60ilj7A1Ec4odSAc8X95sHh7+ZRPCFo6Fnp7HfU/fBng/hi10CjCnWnJjsxvDNxWw0NfV6Rv5GgP3I3jGWXumdTD/3cbEOP2ZbOZp69yniG3FQ9z1jD7bnBu9Fc2tKGC2q+uAJOQHBDRiZX1x36o7fWBs7J9ownbtO+n0/qWkvW7UPIfc37WgT6ZGR++EOJyeQDSb9UB+DZ1G6DdLDzyS+b/kBCYGsYgJbSQHuThGKRcw5xdeQf8YdNHsc6ePXrlSYMBuSIAFTGAtQo+VuALo4BX83N190NWZWbynBjhOHsmNfFWLeL6v+ynsA58zDvvAC8j5PkbOcXCMg2PZFk3q8MjI7WAG/Dp9AwP7jdGBOOQkAvlFUB+irtm16I1Zw9YBcpGTGXYmk3kQIC/Cds55l+iMI3jqhjAuaoe+am2Jw5GT3Nbz3CkE12NavmzN5+erJW7046n/CH1RO/RVa8lBLozXk9uqykkGAyRXLWlLv5jyp4RFsG5vGVzpDLnIjTWgnRy2Rr+tDKvRc7Y8AyZq10jj8DqXdnIRNtFZb+t/ZRtXcDiVnzpqx8mPcDWxgARUqx0W1QB9MeUZiNrV4qP+Ehc+BpNgATsTX8ozYKL2NtFYAHc84fG7ndxUPr+AR/iQSns7uSUufAymwDOb2+NjK27lEFocm/EE2WpyIy/Hi66MWuMKJn8RvxIcj87IM5Vh9663ziW36kR0HNenXuxmfaD8JC7tfKbrhFr7LiZCrMjrzTeGx+PmkosrkNzW94ObzwocJ7A1HokLolY+AvkTiD/q1H0cN48c5EL8Crkttsa/AXQVDmutfyku0E7jShx49XqV3MFK8IryDhYVbj7Sj2P2eBxwcXoe8T8idsKKPRcnZw1b+slFTubwUwhktrfnAt7J++jwQtLZcm3sr9LQrjRzz6cfMv9aLvgmnAGvpoaGLxM4mAEaLV7iAzQ3oU0IvD5x9ix3yF2RAAuYAOO2f7PEFWCXZ4C9Pb2UsgDeVnFSpbFK7/IWu7TPTvBqzbGdCHOJQSxiEjt6IyZmxQyEJHv6xyQsYk//moVFsN2zP6fRImjfq7/n/wFDguUQFNEwugAAAABJRU5ErkJggg==');
+    }
 
-  div.callout-caution .callout-icon::before {
-    background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAAAXNSR0IArs4c6QAAAERlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAA6ABAAMAAAABAAEAAKACAAQAAAABAAAAIKADAAQAAAABAAAAIAAAAACshmLzAAACV0lEQVRYCdVWzWoUQRCuqp2ICBLJXgITZL1EfQDBW/bkzUMUD7klD+ATSHBEfAIfQO+iXsWDxJsHL96EHAwhgzlkg8nBg25XWb0zIb0zs9muYYWkoKeru+vn664fBqElyZNuyh167NXJ8Ut8McjbmEraKHkd7uAnAFku+VWdb3reSmRV8PKSLfZ0Gjn3a6Xlcq9YGb6tADjn+lUfTXtVmaZ1KwBIvFI11rRXlWlatwIAAv2asaa9mlB9wwygiDX26qaw1yYPzFXg2N1GgG0FMF8Oj+VIx7E/03lHx8UhvYyNZLN7BwSPgekXXLribw7w5/c8EF+DBK5idvDVYtEEwMeYefjjLAdEyQ3M9nfOkgnPTEkYU+sxMq0BxNR6jExrAI31H1rzvLEfRIdgcv1XEdj6QTQAS2wtstEALLG1yEZ3QhH6oDX7ExBSFEkFINXH98NTrme5IOaaA7kIfiu2L8A3qhH9zRbukdCqdsA98TdElyeMe5BI8Rs2xHRIsoTSSVFfCFCWGPn9XHb4cdobRIWABNf0add9jakDjQJpJ1bTXOJXnnRXHRf+dNL1ZV1MBRCXhMbaHqGI1JkKIL7+i8uffuP6wVQAzO7+qVEbF6NbS0LJureYcWXUUhH66nLR5rYmva+2tjRFtojkM2aD76HEGAD3tPtKM309FJg5j/K682ywcWJ3PASCcycH/22u+Bh7Aa0ehM2Fu4z0SAE81HF9RkB21c5bEn4Dzw+/qNOyXr3DCTQDMBOdhi4nAgiFDGCinIa2owCEChUwD8qzd03PG+qdW/4fDzjUMcE1ZpIAAAAASUVORK5CYII=');
-  }
+    div.callout-important.callout-style-default .callout-title {
+      background-color: #f7dddc
+    }
 
-  div.callout-caution.callout-style-default .callout-title {
-    background-color: #ffe5d0
-  }
+    div.callout-warning {
+      border-left-color: #f0ad4e !important;
+    }
 
+    div.callout-warning .callout-icon::before {
+      background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAAAXNSR0IArs4c6QAAAERlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAA6ABAAMAAAABAAEAAKACAAQAAAABAAAAIKADAAQAAAABAAAAIAAAAACshmLzAAAETklEQVRYCeVWW2gcVRg+58yaTUnizqbipZeX4uWhBEniBaoUX1Ioze52t7sRq6APio9V9MEaoWlVsFasRq0gltaAPuxms8lu0gcviE/FFOstVbSIxgcv6SU7EZqmdc7v9+9mJtNks51NTUH84ed889/PP+cmxP+d5FIbMJmNbpREu4WUkiTtCicKny0l1pIKmBzovF2S+hIJHX8iEu3hZJ5lNZGqyRrGSIQpq15AzF28jgpeY6yk6GVdrfFqdrD6Iw+QlB8g0YS2g7dyQmXM/IDhBhT0UCiRf59lfqmmDvzRt6kByV/m4JjtzuaujMUM2c5Z2d6JdKrRb3K2q6mA+oYVz8JnDdKPmmNthzkAk/lN63sYPgevrguc72aZX/L9C6x09GYyxBgCX4NlvyGUHOKELlm5rXeR1kchuChJt4SSwyddZRXgvwMGvYo4QSlk3/zkHD8UHxwVJA6zjZZqP8v8kK8OWLnIZtLyCAJagYC4rTGW/9Pqj92N/c+LUaAj27movwbi19tk/whRCIE7Q9vyI6yvRpftAKVTdUjOW40X3h5OXsKCdmFcx0xlLJoSuQngnrJe7Kcjm4OMq9FlC7CMmScQANuNvjfP3PjGXDBaUQmbp296S5L4DrpbrHN1T87ZVEZVCzg1FF0Ft+dKrlLukI+/c9ENo+TvlTDbYFvuKPtQ9+l052rXrgKoWkDAFnvh0wTOmYn8R5f4k/jN/fZiCM1tQx9jQQ4ANhqG4hiL0qIFTGViG9DKB7GYzgubnpofgYRwO+DFjh0Zin2m4b/97EDkXkc+f6xYAPX0KK2I/7fUQuwzuwo/L3AkcjugPNixC8cHf0FyPjWlItmLxWw4Ou9YsQCr5fijMGoD/zpdRy95HRysyXA74MWOnscpO4j2y3HAVisw85hX5+AFBRSHt4ShfLFkIMXTqyKFc46xdzQM6XbAi702a7sy04J0+feReMFKp5q9esYLCqAZYw/k14E/xcLLsFElaornTuJB0svMuJINy8xkIYuL+xPAlWRceH6+HX7THJ0djLUom46zREu7tTkxwmf/FdOZ/sh6Q8qvEAiHpm4PJ4a/doJe0gH1t+aHRgCzOvBvJedEK5OFE5jpm4AGP2a8Dxe3gGJ/pAutug9Gp6he92CsSsWBaEcxGx0FHytmIpuqGkOpldqNYQK8cSoXvd+xLxXADw0kf6UkJNFtdo5MOgaLjiQOQHcn+A6h5NuL2s0qsC2LOM75PcF3yr5STuBSAcGG+meA14K/CI21HcS4LBT6tv0QAh8Dr5l93AhZzG5ZJ4VxAqdZUEl9z7WJ4aN+svMvwHHL21UKTd1mqvChH7/Za5xzXBBKrUcB0TQ+Ulgkfbi/H/YT5EptrGzsEK7tR1B7ln9BBwckYfMiuSqklSznIuoIIOM42MQO+QnduCoFCI0bpkzjCjddHPN/F+2Yu+sd9bKNpVwHhbS3LluK/0zgfwD0xYI5dXuzlQAAAABJRU5ErkJggg==');
+    }
+
+    div.callout-warning.callout-style-default .callout-title {
+      background-color: #fcefdc
+    }
+
+    div.callout-tip {
+      border-left-color: #02b875 !important;
+    }
+
+    div.callout-tip .callout-icon::before {
+      background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAAAXNSR0IArs4c6QAAAERlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAA6ABAAMAAAABAAEAAKACAAQAAAABAAAAIKADAAQAAAABAAAAIAAAAACshmLzAAADr0lEQVRYCe1XTWgTQRj9ZjZV8a9SPIkKgj8I1bMHsUWrqYLVg4Ue6v9BwZOxSYsIerFao7UiUryIqJcqgtpimhbBXoSCVxUFe9CTiogUrUp2Pt+3aUI2u5vdNh4dmMzOzHvvezuz8xNFM0mjnbXaNu1MvFWRXkXEyE6aYOYJpdW4IXuA4r0fo8qqSMDBU0v1HJUgVieAXxzCsdE/YJTdFcVIZQNMyhruOMJKXYFoLfIfIvVIMWdsrd+Rpd86ZmyzzjJmLStqRn0v8lzkb4rVIXvnpScOJuAn2ACC65FkPzEdEy4TPWRLJ2h7z4cArXzzaOdKlbOvKKX25Wl00jSnrwVxAg3o4dRxhO13RBSdNvH0xSARv3adTXbBdTf64IWO2vH0LT+cv4GR1DJt+DUItaQogeBX/chhbTBxEiZ6gftlDNXTrvT7co4ub5A6gp9HIcHvzTa46OS5fBeP87Qm0fQkr4FsYgVQ7Qg+ZayaDg9jhg1GkWj8RG6lkeSacrrHgDaxdoBiZPg+NXV/KifMuB6//JmYH4CntVEHy/keA6x4h4CU5oFy8GzrBS18cLJMXcljAKB6INjWsRcuZBWVaS3GDrqB7rdapVIeA+isQ57Eev9eCqzqOa81CY05VLd6SamW2wA2H3SiTbnbSxmzfp7WtKZkqy4mdyAlGx7ennghYf8voqp9cLSgKdqNfa6RdRsAAkPwRuJZNbpByn+RrJi1RXTwdi8RQF6ymDwGMAtZ6TVE+4uoKh+MYkcLsT0Hk8eAienbiGdjJHZTpmNjlbFJNKDVAp2fJlYju6IreQxQ08UJDNYdoLSl6AadO+fFuCQqVMB1NJwPm69T04Wv5WhfcWyfXQB+wXRs1pt+nCknRa0LVzSA/2B+a9+zQJadb7IyyV24YAxKp2Jqs3emZTuNnKxsah+uabKbMk7CbTgJx/zIgQYErIeTKRQ9yD9wxVof5YolPHqaWo7TD6tJlh7jQnK5z2n3+fGdggIOx2kaa2YI9QWarc5Ce1ipNWMKeSG4DysFF52KBmTNMmn5HqCFkwy34rDg05gDwgH3bBi+sgFhN/e8QvRn8kbamCOhgrZ9GJhFDgfcMHzFb6BAtjKpFhzTjwv1KCVuxHvCbsSiEz4CANnj84cwHdFXAbAOJ4LTSAawGWFn5tDhLMYz6nWeU2wJfIhmIJBefcd/A5FWQWGgrWzyORZ3Q6HuV+Jf0Bj+BTX69fm1zWgK7By1YTXchFDORywnfQ7GpzOo6S+qECrsx2ifVQAAAABJRU5ErkJggg==');
+    }
+
+    div.callout-tip.callout-style-default .callout-title {
+      background-color: #ccf1e3
+    }
+
+    div.callout-caution {
+      border-left-color: #fd7e14 !important;
+    }
+
+    div.callout-caution .callout-icon::before {
+      background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAAAXNSR0IArs4c6QAAAERlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAA6ABAAMAAAABAAEAAKACAAQAAAABAAAAIKADAAQAAAABAAAAIAAAAACshmLzAAACV0lEQVRYCdVWzWoUQRCuqp2ICBLJXgITZL1EfQDBW/bkzUMUD7klD+ATSHBEfAIfQO+iXsWDxJsHL96EHAwhgzlkg8nBg25XWb0zIb0zs9muYYWkoKeru+vn664fBqElyZNuyh167NXJ8Ut8McjbmEraKHkd7uAnAFku+VWdb3reSmRV8PKSLfZ0Gjn3a6Xlcq9YGb6tADjn+lUfTXtVmaZ1KwBIvFI11rRXlWlatwIAAv2asaa9mlB9wwygiDX26qaw1yYPzFXg2N1GgG0FMF8Oj+VIx7E/03lHx8UhvYyNZLN7BwSPgekXXLribw7w5/c8EF+DBK5idvDVYtEEwMeYefjjLAdEyQ3M9nfOkgnPTEkYU+sxMq0BxNR6jExrAI31H1rzvLEfRIdgcv1XEdj6QTQAS2wtstEALLG1yEZ3QhH6oDX7ExBSFEkFINXH98NTrme5IOaaA7kIfiu2L8A3qhH9zRbukdCqdsA98TdElyeMe5BI8Rs2xHRIsoTSSVFfCFCWGPn9XHb4cdobRIWABNf0add9jakDjQJpJ1bTXOJXnnRXHRf+dNL1ZV1MBRCXhMbaHqGI1JkKIL7+i8uffuP6wVQAzO7+qVEbF6NbS0LJureYcWXUUhH66nLR5rYmva+2tjRFtojkM2aD76HEGAD3tPtKM309FJg5j/K682ywcWJ3PASCcycH/22u+Bh7Aa0ehM2Fu4z0SAE81HF9RkB21c5bEn4Dzw+/qNOyXr3DCTQDMBOdhi4nAgiFDGCinIa2owCEChUwD8qzd03PG+qdW/4fDzjUMcE1ZpIAAAAASUVORK5CYII=');
+    }
+
+    div.callout-caution.callout-style-default .callout-title {
+      background-color: #ffe5d0
+    }
   </style>
   <style type="text/css">
     .reveal div.sourceCode {
       margin: 0;
       overflow: auto;
     }
+
     .reveal div.hanging-indent {
       margin-left: 1em;
       text-indent: -1em;
     }
+
     .reveal .slide:not(.center) {
       height: 100%;
       overflow-y: auto;
     }
+
     .reveal .slide.scrollable {
       overflow-y: auto;
     }
+
     .reveal .footnotes {
       height: 100%;
       overflow-y: auto;
     }
+
     .reveal .slide .absolute {
       position: absolute;
       display: block;
     }
+
     .reveal .footnotes ol {
       counter-reset: ol;
-      list-style-type: none; 
+      list-style-type: none;
       margin-left: 0;
     }
+
     .reveal .footnotes ol li:before {
       counter-increment: ol;
-      content: counter(ol) ". "; 
+      content: counter(ol) ". ";
     }
-    .reveal .footnotes ol li > p:first-child {
+
+    .reveal .footnotes ol li>p:first-child {
       display: inline-block;
     }
+
     .reveal .slide ul,
     .reveal .slide ol {
       margin-bottom: 0.5em;
     }
+
     .reveal .slide ul li,
     .reveal .slide ol li {
       margin-top: 0.4em;
       margin-bottom: 0.2em;
     }
+
     .reveal .slide ul[role="tablist"] li {
       margin-bottom: 0;
     }
-    .reveal .slide ul li > *:first-child,
-    .reveal .slide ol li > *:first-child {
+
+    .reveal .slide ul li>*:first-child,
+    .reveal .slide ol li>*:first-child {
       margin-block-start: 0;
     }
-    .reveal .slide ul li > *:last-child,
-    .reveal .slide ol li > *:last-child {
+
+    .reveal .slide ul li>*:last-child,
+    .reveal .slide ol li>*:last-child {
       margin-block-end: 0;
     }
+
     .reveal .slide .columns:nth-child(3) {
       margin-block-start: 0.8em;
     }
+
     .reveal blockquote {
       box-shadow: none;
     }
+
     .reveal .tippy-content>* {
       margin-top: 0.2em;
       margin-bottom: 0.7em;
     }
+
     .reveal .tippy-content>*:last-child {
       margin-bottom: 0.2em;
     }
-    .reveal .slide > img.stretch.quarto-figure-center,
-    .reveal .slide > img.r-stretch.quarto-figure-center {
+
+    .reveal .slide>img.stretch.quarto-figure-center,
+    .reveal .slide>img.r-stretch.quarto-figure-center {
       display: block;
       margin-left: auto;
-      margin-right: auto; 
+      margin-right: auto;
     }
-    .reveal .slide > img.stretch.quarto-figure-left,
-    .reveal .slide > img.r-stretch.quarto-figure-left  {
+
+    .reveal .slide>img.stretch.quarto-figure-left,
+    .reveal .slide>img.r-stretch.quarto-figure-left {
       display: block;
       margin-left: 0;
-      margin-right: auto; 
+      margin-right: auto;
     }
-    .reveal .slide > img.stretch.quarto-figure-right,
-    .reveal .slide > img.r-stretch.quarto-figure-right  {
+
+    .reveal .slide>img.stretch.quarto-figure-right,
+    .reveal .slide>img.r-stretch.quarto-figure-right {
       display: block;
       margin-left: auto;
-      margin-right: 0; 
+      margin-right: 0;
     }
   </style>
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css"><link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/gh/dreampulse/computer-modern-web-font@master/fonts.css"><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin=""><link href="https://fonts.googleapis.com/css2?family=Barrio&amp;display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+  <link rel="stylesheet" type="text/css"
+    href="https://cdn.jsdelivr.net/gh/dreampulse/computer-modern-web-font@master/fonts.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+  <link href="https://fonts.googleapis.com/css2?family=Barrio&amp;display=swap" rel="stylesheet">
 </head>
+
 <body class="quarto-light">
   <div class="reveal">
     <div class="slides">
 
-<section id="title-slide" class="quarto-title-block center">
-  <h1 class="title">Week 2: Probabilistic Graphical Models (PGMs)</h1>
-  <p class="subtitle"><em>DSAN 5650: Causal Inference for Computational Social Science</em><br><span class="subsubtitle">Summer 2025, Georgetown University</span></p>
+      <section id="title-slide" class="quarto-title-block center">
+        <h1 class="title">Week 2: Probabilistic Graphical Models (PGMs)</h1>
+        <p class="subtitle"><em>DSAN 5650: Causal Inference for Computational Social Science</em><br><span
+            class="subsubtitle">Summer 2025, Georgetown University</span></p>
 
-<div class="quarto-title-authors">
-<div class="quarto-title-author">
-<div class="quarto-title-author-name">
-Jeff Jacobs 
-</div>
-        <p class="quarto-title-affiliation">
-            <a href="mailto:jj1088@georgetown.edu"><code>jj1088@georgetown.edu</code></a>
-          </p>
-    </div>
-</div>
+        <div class="quarto-title-authors">
+          <div class="quarto-title-author">
+            <div class="quarto-title-author-name">
+              Jeff Jacobs
+            </div>
+            <p class="quarto-title-affiliation">
+              <a href="mailto:jj1088@georgetown.edu"><code>jj1088@georgetown.edu</code></a>
+            </p>
+          </div>
+        </div>
 
-  <p class="date">Wednesday, May 28, 2025</p>
-</section>
-<section id="schedule" class="title-slide slide level1 smaller crunch-title crunch-callout code-90 center" data-name="Schedule">
-<h1>Schedule</h1>
-<p>Today’s Planned Schedule:</p>
-<table class="caption-top">
-<colgroup>
-<col style="width: 12%">
-<col style="width: 12%">
-<col style="width: 12%">
-<col style="width: 64%">
-</colgroup>
-<thead>
-<tr class="header">
-<th style="text-align: left;"></th>
-<th style="text-align: left;">Start</th>
-<th style="text-align: left;">End</th>
-<th style="text-align: left;">Topic</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td style="text-align: left;"><strong>Lecture</strong></td>
-<td style="text-align: left;">6:30pm</td>
-<td style="text-align: left;">6:45pm</td>
-<td style="text-align: left;"><a href="#/ta-intros">TA Intros →</a></td>
-</tr>
-<tr class="even">
-<td style="text-align: left;"></td>
-<td style="text-align: left;">6:45pm</td>
-<td style="text-align: left;">7:00pm</td>
-<td style="text-align: left;"><a href="#/hw1-questions-andor-concerns">HW1 Questions and Concerns →</a></td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;"></td>
-<td style="text-align: left;">7:00pm</td>
-<td style="text-align: left;">7:30pm</td>
-<td style="text-align: left;"><a href="#/motivation-ii-causal-inference">Motivating Examples: Causal Inference →</a></td>
-</tr>
-<tr class="even">
-<td style="text-align: left;"></td>
-<td style="text-align: left;">7:30pm</td>
-<td style="text-align: left;">7:45pm</td>
-<td style="text-align: left;"><a href="#/your-first-probabilistic-graphical-model">Your First Probabilistic Graphical Model! →</a></td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;"><strong>Break!</strong></td>
-<td style="text-align: left;">7:45pm</td>
-<td style="text-align: left;">8:00pm</td>
-<td style="text-align: left;"></td>
-</tr>
-<tr class="even">
-<td style="text-align: left;"></td>
-<td style="text-align: left;">8:00pm</td>
-<td style="text-align: left;">8:30pm</td>
-<td style="text-align: left;"><a href="#/pgm-nuts-and-bolts">PGM Nuts and Bolts →</a></td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;"></td>
-<td style="text-align: left;">8:30pm</td>
-<td style="text-align: left;">9:00pm</td>
-<td style="text-align: left;"><a href="#/course-logistics">Course Logistics →</a></td>
-</tr>
-</tbody>
-</table>
-<div class="hidden">
+        <p class="date">Wednesday, May 28, 2025</p>
+      </section>
+      <section id="schedule" class="title-slide slide level1 smaller crunch-title crunch-callout code-90 center"
+        data-name="Schedule">
+        <h1>Schedule</h1>
+        <p>Today’s Planned Schedule:</p>
+        <table class="caption-top">
+          <colgroup>
+            <col style="width: 12%">
+            <col style="width: 12%">
+            <col style="width: 12%">
+            <col style="width: 64%">
+          </colgroup>
+          <thead>
+            <tr class="header">
+              <th style="text-align: left;"></th>
+              <th style="text-align: left;">Start</th>
+              <th style="text-align: left;">End</th>
+              <th style="text-align: left;">Topic</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr class="odd">
+              <td style="text-align: left;"><strong>Lecture</strong></td>
+              <td style="text-align: left;">6:30pm</td>
+              <td style="text-align: left;">6:45pm</td>
+              <td style="text-align: left;"><a href="#/ta-intros">TA Intros →</a></td>
+            </tr>
+            <tr class="even">
+              <td style="text-align: left;"></td>
+              <td style="text-align: left;">6:45pm</td>
+              <td style="text-align: left;">7:00pm</td>
+              <td style="text-align: left;"><a href="#/hw1-questions-andor-concerns">HW1 Questions and Concerns →</a>
+              </td>
+            </tr>
+            <tr class="odd">
+              <td style="text-align: left;"></td>
+              <td style="text-align: left;">7:00pm</td>
+              <td style="text-align: left;">7:30pm</td>
+              <td style="text-align: left;"><a href="#/motivation-ii-causal-inference">Motivating Examples: Causal
+                  Inference →</a></td>
+            </tr>
+            <tr class="even">
+              <td style="text-align: left;"></td>
+              <td style="text-align: left;">7:30pm</td>
+              <td style="text-align: left;">7:45pm</td>
+              <td style="text-align: left;"><a href="#/your-first-probabilistic-graphical-model">Your First
+                  Probabilistic Graphical Model! →</a></td>
+            </tr>
+            <tr class="odd">
+              <td style="text-align: left;"><strong>Break!</strong></td>
+              <td style="text-align: left;">7:45pm</td>
+              <td style="text-align: left;">8:00pm</td>
+              <td style="text-align: left;"></td>
+            </tr>
+            <tr class="even">
+              <td style="text-align: left;"></td>
+              <td style="text-align: left;">8:00pm</td>
+              <td style="text-align: left;">8:30pm</td>
+              <td style="text-align: left;"><a href="#/pgm-nuts-and-bolts">PGM Nuts and Bolts →</a></td>
+            </tr>
+            <tr class="odd">
+              <td style="text-align: left;"></td>
+              <td style="text-align: left;">8:30pm</td>
+              <td style="text-align: left;">9:00pm</td>
+              <td style="text-align: left;"><a href="#/course-logistics">Course Logistics →</a></td>
+            </tr>
+          </tbody>
+        </table>
+        <div class="hidden">
 
-</div>
-<div class="hidden">
-<p><span class="math display">\[
-\DeclareMathOperator*{\argmax}{argmax}
-\DeclareMathOperator*{\argmin}{argmin}
-\newcommand{\bigexp}[1]{\exp\mkern-4mu\left[ #1 \right]}
-\newcommand{\bigexpect}[1]{\mathbb{E}\mkern-4mu \left[ #1 \right]}
-\newcommand{\definedas}{\overset{\small\text{def}}{=}}
-\newcommand{\definedalign}{\overset{\phantom{\text{defn}}}{=}}
-\newcommand{\eqeventual}{\overset{\text{eventually}}{=}}
-\newcommand{\Err}{\text{Err}}
-\newcommand{\expect}[1]{\mathbb{E}[#1]}
-\newcommand{\expectsq}[1]{\mathbb{E}^2[#1]}
-\newcommand{\fw}[1]{\texttt{#1}}
-\newcommand{\given}{\mid}
-\newcommand{\green}[1]{\color{green}{#1}}
-\newcommand{\heads}{\outcome{heads}}
-\newcommand{\iid}{\overset{\text{\small{iid}}}{\sim}}
-\newcommand{\lik}{\mathcal{L}}
-\newcommand{\loglik}{\ell}
-\DeclareMathOperator*{\maximize}{maximize}
-\DeclareMathOperator*{\minimize}{minimize}
-\newcommand{\mle}{\textsf{ML}}
-\newcommand{\nimplies}{\;\not\!\!\!\!\implies}
-\newcommand{\orange}[1]{\color{orange}{#1}}
-\newcommand{\outcome}[1]{\textsf{#1}}
-\newcommand{\param}[1]{{\color{purple} #1}}
-\newcommand{\pgsamplespace}{\{\green{1},\green{2},\green{3},\purp{4},\purp{5},\purp{6}\}}
-\newcommand{\prob}[1]{P\left( #1 \right)}
-\newcommand{\purp}[1]{\color{purple}{#1}}
-\newcommand{\sign}{\text{Sign}}
-\newcommand{\spacecap}{\; \cap \;}
-\newcommand{\spacewedge}{\; \wedge \;}
-\newcommand{\tails}{\outcome{tails}}
-\newcommand{\Var}[1]{\text{Var}[#1]}
-\newcommand{\bigVar}[1]{\text{Var}\mkern-4mu \left[ #1 \right]}
-\]</span></p>
-</div>
-<div class="hidden">
-<style>
-.barrio-jj {
-  font-family: "Barrio", system-ui;
-  /* font-weight: 400; */
-  font-style: normal;
-}
-</style>
-</div>
-</section>
+        </div>
+        <div class="hidden">
+          <p><span class="math display">\[
+              \DeclareMathOperator*{\argmax}{argmax}
+              \DeclareMathOperator*{\argmin}{argmin}
+              \newcommand{\bigexp}[1]{\exp\mkern-4mu\left[ #1 \right]}
+              \newcommand{\bigexpect}[1]{\mathbb{E}\mkern-4mu \left[ #1 \right]}
+              \newcommand{\definedas}{\overset{\small\text{def}}{=}}
+              \newcommand{\definedalign}{\overset{\phantom{\text{defn}}}{=}}
+              \newcommand{\eqeventual}{\overset{\text{eventually}}{=}}
+              \newcommand{\Err}{\text{Err}}
+              \newcommand{\expect}[1]{\mathbb{E}[#1]}
+              \newcommand{\expectsq}[1]{\mathbb{E}^2[#1]}
+              \newcommand{\fw}[1]{\texttt{#1}}
+              \newcommand{\given}{\mid}
+              \newcommand{\green}[1]{\color{green}{#1}}
+              \newcommand{\heads}{\outcome{heads}}
+              \newcommand{\iid}{\overset{\text{\small{iid}}}{\sim}}
+              \newcommand{\lik}{\mathcal{L}}
+              \newcommand{\loglik}{\ell}
+              \DeclareMathOperator*{\maximize}{maximize}
+              \DeclareMathOperator*{\minimize}{minimize}
+              \newcommand{\mle}{\textsf{ML}}
+              \newcommand{\nimplies}{\;\not\!\!\!\!\implies}
+              \newcommand{\orange}[1]{\color{orange}{#1}}
+              \newcommand{\outcome}[1]{\textsf{#1}}
+              \newcommand{\param}[1]{{\color{purple} #1}}
+              \newcommand{\pgsamplespace}{\{\green{1},\green{2},\green{3},\purp{4},\purp{5},\purp{6}\}}
+              \newcommand{\prob}[1]{P\left( #1 \right)}
+              \newcommand{\purp}[1]{\color{purple}{#1}}
+              \newcommand{\sign}{\text{Sign}}
+              \newcommand{\spacecap}{\; \cap \;}
+              \newcommand{\spacewedge}{\; \wedge \;}
+              \newcommand{\tails}{\outcome{tails}}
+              \newcommand{\Var}[1]{\text{Var}[#1]}
+              \newcommand{\bigVar}[1]{\text{Var}\mkern-4mu \left[ #1 \right]}
+              \]</span></p>
+        </div>
+        <div class="hidden">
+          <style>
+            .barrio-jj {
+              font-family: "Barrio", system-ui;
+              /* font-weight: 400; */
+              font-style: normal;
+            }
+          </style>
+        </div>
+      </section>
 
-<section>
-<section id="ta-intros" class="title-slide slide level1 center" data-stack-name="TA Intros">
-<h1>TA Intros</h1>
+      <section>
+        <section id="ta-intros" class="title-slide slide level1 center" data-stack-name="TA Intros">
+          <h1>TA Intros</h1>
 
-</section>
-<section id="courtney-green" class="slide level2 crunch-title text-90">
-<h2>Courtney Green</h2>
-<p><strong>Background:</strong> BA in Public Policy &amp; Leadership, now interested in using data to examine structural disparities.</p>
-<p><strong>Interests &amp; what I can help with:</strong> How sociodemographic factors (e.g., race, gender, income, immigration status, education level) shape policy outcomes and institutional practices in areas like criminal justice, housing, healthcare, education, and environment.</p>
-<ul>
-<li><p><strong>Ask me about:</strong> Counterfactual balancing, handling messy or privacy-limited datasets, and framing causal questions around inequality.</p></li>
-<li><p>Reach out if you’re thinking about a final project that touches social systems, systemic inequity, or fairness!</p></li>
-</ul>
-</section>
-<section id="what-got-me-interested-in-causal-inference" class="slide level2 crunch-title text-75">
-<h2>What Got Me Interested in Causal Inference</h2>
-<p><strong>5000 Project: Over-Policing and Wrongful Convictions in Illinois</strong></p>
-<ul>
-<li><strong>Motivation:</strong> Explore what demographic factors predict wrongful convictions using real exoneration data.</li>
-<li><strong>Challenge:</strong> No data on “non-exonerated innocents,” so I (with prof’s help) created a counterfactual dataset by sampling from the incarcerated population</li>
-<li><strong>Method:</strong> Trained models (logistic regression, random forest, KNN) on a balanced dataset of 548 exonerated and 548 non-exonerated individuals</li>
-<li><strong>Finding:</strong> Race and geography (esp.&nbsp;Cook Count/Chicago) were the strongest predictors of exoneration</li>
-<li><strong>Takeaway:</strong> Questions about systemic bias can’t be answered with just descriptive stats, you need counterfactual reasoning and causal inference</li>
-</ul>
-<p><span style="font-size: 80%;"><a href="https://crg123.georgetown.domains/projects/dsan-5000/_site/technical-details/data-balancing/main.html">(Optional) View the counterfactual setup</a></span></p>
-</section>
-<section id="wendy-hu" class="slide level2">
-<h2>Wendy Hu</h2>
-</section></section>
-<section>
-<section id="hw1-questions-andor-concerns" class="title-slide slide level1 center" data-stack-name="HW1">
-<h1>HW1 Questions and/or Concerns</h1>
+        </section>
+        <section id="courtney-green" class="slide level2 crunch-title text-90">
+          <h2>Courtney Green</h2>
+          <p><strong>Background:</strong> BA in Public Policy &amp; Leadership, now interested in using data to examine
+            structural disparities.</p>
+          <p><strong>Interests &amp; what I can help with:</strong> How sociodemographic factors (e.g., race, gender,
+            income, immigration status, education level) shape policy outcomes and institutional practices in areas like
+            criminal justice, housing, healthcare, education, and environment.</p>
+          <ul>
+            <li>
+              <p><strong>Ask me about:</strong> Counterfactual balancing, handling messy or privacy-limited datasets,
+                and framing causal questions around inequality.</p>
+            </li>
+            <li>
+              <p>Reach out if you’re thinking about a final project that touches social systems, systemic inequity, or
+                fairness!</p>
+            </li>
+          </ul>
+        </section>
+        <section id="what-got-me-interested-in-causal-inference" class="slide level2 crunch-title text-75">
+          <h2>What Got Me Interested in Causal Inference</h2>
+          <p><strong>5000 Project: Over-Policing and Wrongful Convictions in Illinois</strong></p>
+          <ul>
+            <li><strong>Motivation:</strong> Explore what demographic factors predict wrongful convictions using real
+              exoneration data.</li>
+            <li><strong>Challenge:</strong> No data on “non-exonerated innocents,” so I (with prof’s help) created a
+              counterfactual dataset by sampling from the incarcerated population</li>
+            <li><strong>Method:</strong> Trained models (logistic regression, random forest, KNN) on a balanced dataset
+              of 548 exonerated and 548 non-exonerated individuals</li>
+            <li><strong>Finding:</strong> Race and geography (esp.&nbsp;Cook Count/Chicago) were the strongest
+              predictors of exoneration</li>
+            <li><strong>Takeaway:</strong> Questions about systemic bias can’t be answered with just descriptive stats,
+              you need counterfactual reasoning and causal inference</li>
+          </ul>
+          <p><span style="font-size: 80%;"><a
+                href="https://crg123.georgetown.domains/projects/dsan-5000/_site/technical-details/data-balancing/main.html">(Optional)
+                View the counterfactual setup</a></span></p>
+        </section>
+        <section id="wendy-hu" class="slide level2">
+          <h2>Wendy Hu</h2>
+        </section>
+      </section>
+      <section>
+        <section id="hw1-questions-andor-concerns" class="title-slide slide level1 center" data-stack-name="HW1">
+          <h1>HW1 Questions and/or Concerns</h1>
 
-</section>
-<section id="technical-issues-jupyterhub" class="slide level2">
-<h2>Technical Issues (JupyterHub)</h2>
-</section>
-<section id="content-issues" class="slide level2">
-<h2>Content Issues</h2>
-</section></section>
-<section>
-<section id="motivating-examples-causal-inference" class="title-slide slide level1 center" data-stack-name="Causal Inference">
-<h1>Motivating Examples: Causal Inference</h1>
-<ul>
-<li>The <em>methodology</em> we’ll use to <em>draw inferences</em> about social phenomena from data</li>
-</ul>
-</section>
-<section id="disclaimer-unfortunate-side-effects-of-engaging-seriously-with-causality" class="slide level2 smaller crunch-title title-10 crunch-p crunch-img">
-<h2>Disclaimer: Unfortunate Side Effects of Engaging Seriously with Causality</h2>
-<div class="columns">
-<div class="column" style="width:50%;">
-<p><i class="bi bi-1-circle"></i> You’ll no longer be able to read “scientific” writing without striking this expression (involuntarily):</p>
-</div><div class="column" style="width:50%;">
-<p><i class="bi bi-2-circle"></i> “Scientific” talks will begin to sound like the following:</p>
-</div></div>
-<div>
+        </section>
+        <section id="technical-issues-jupyterhub" class="slide level2">
+          <h2>Technical Issues (JupyterHub)</h2>
+        </section>
+        <section id="content-issues" class="slide level2">
+          <h2>Content Issues</h2>
+        </section>
+      </section>
+      <section>
+        <section id="motivating-examples-causal-inference" class="title-slide slide level1 center"
+          data-stack-name="Causal Inference">
+          <h1>Motivating Examples: Causal Inference</h1>
+          <ul>
+            <li>The <em>methodology</em> we’ll use to <em>draw inferences</em> about social phenomena from data</li>
+          </ul>
+        </section>
+        <section id="disclaimer-unfortunate-side-effects-of-engaging-seriously-with-causality"
+          class="slide level2 smaller crunch-title title-10 crunch-p crunch-img">
+          <h2>Disclaimer: Unfortunate Side Effects of Engaging Seriously with Causality</h2>
+          <div class="columns">
+            <div class="column" style="width:50%;">
+              <p><i class="bi bi-1-circle"></i> You’ll no longer be able to read “scientific” writing without striking
+                this expression (involuntarily):</p>
+            </div>
+            <div class="column" style="width:50%;">
+              <p><i class="bi bi-2-circle"></i> “Scientific” talks will begin to sound like the following:</p>
+            </div>
+          </div>
+          <div>
 
-</div>
-<div class="quarto-layout-panel" data-layout="[5,5]">
-<div class="quarto-layout-row quarto-layout-valign-top">
-<div id="expression" class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
-<div class="quarto-figure quarto-figure-center">
-<figure>
-<p><img data-src="images/hrngg.png" class="quarto-figure quarto-figure-center" width="300"></p>
-</figure>
-</div>
-</div>
-<div id="looked-at-the-data" class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: flex-start;">
-<video id="video_shortcode_videojs_video1" class="video-js vjs-default-skin vjs-fluid" controls="" preload="auto" data-setup="{}" title=""><source src="https://jpj.georgetown.domains/dsan5650-scratch/looked_at_the_data.mp4"></video>
-</div>
-</div>
-</div>
-</section>
-<section id="blasting-off-into-causality" class="slide level2 title-10 crunch-title not-title-slide">
-<h2>Blasting Off Into Causality!</h2>
+          </div>
+          <div class="quarto-layout-panel" data-layout="[5,5]">
+            <div class="quarto-layout-row quarto-layout-valign-top">
+              <div id="expression" class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
+                <div class="quarto-figure quarto-figure-center">
+                  <figure>
+                    <p><img data-src="images/hrngg.png" class="quarto-figure quarto-figure-center" width="300"></p>
+                  </figure>
+                </div>
+              </div>
+              <div id="looked-at-the-data" class="quarto-layout-cell"
+                style="flex-basis: 50.0%;justify-content: flex-start;">
+                <video id="video_shortcode_videojs_video1" class="video-js vjs-default-skin vjs-fluid" controls=""
+                  preload="auto" data-setup="{}" title="">
+                  <source src="https://jpj.georgetown.domains/dsan5650-scratch/looked_at_the_data.mp4">
+                </video>
+              </div>
+            </div>
+          </div>
+        </section>
+        <section id="blasting-off-into-causality" class="slide level2 title-10 crunch-title not-title-slide">
+          <h2>Blasting Off Into Causality!</h2>
 
-<img data-src="images/posadism_causal.jpg" class="quarto-figure quarto-figure-center r-stretch"></section>
-<section id="data-generating-processes-dgps" class="slide level2 title-09 text-85 crunch-title crunch-ul crunch-quarto-figure crunch-quarto-layout-panel crunch-li-5">
-<h2>Data-Generating Processes (DGPs)</h2>
-<div>
+          <img data-src="images/posadism_causal.jpg" class="quarto-figure quarto-figure-center r-stretch">
+        </section>
+        <section id="data-generating-processes-dgps"
+          class="slide level2 title-09 text-85 crunch-title crunch-ul crunch-quarto-figure crunch-quarto-layout-panel crunch-li-5">
+          <h2>Data-Generating Processes (DGPs)</h2>
+          <div>
 
-</div>
-<div class="quarto-layout-panel" data-layout="[55,45]" data-layout-align="center">
-<div class="quarto-layout-row quarto-layout-valign-center">
-<div id="dgps-5100" class="quarto-layout-cell" style="flex-basis: 55.0%;justify-content: center;">
-<ul>
-<li>You saw this in DSAN 5100!</li>
-<li>«<span class="math inline">\(X_1, \ldots, X_n\)</span> drawn i.i.d. Normal, mean <span class="math inline">\(\mu\)</span> variance <span class="math inline">\(\sigma^2\)</span>» characterizes <strong>DGP of <span class="math inline">\((X_1, \ldots, X_n)\)</span></strong></li>
-</ul>
-</div>
-<div class="quarto-layout-cell" style="flex-basis: 45.0%;justify-content: center;">
-<div class="quarto-figure quarto-figure-center">
-<figure>
-<p><img data-src="images/hmm_clusters_single_dist.svg" class="quarto-figure quarto-figure-center" width="280"></p>
-</figure>
-</div>
-</div>
-</div>
-</div>
-<ul>
-<li>5650: <strong>Dive into DGPs</strong>, rather than treating as black box/footnote to Law of Large Numbers, so we can move [<em>asymptotically!</em>]…</li>
-<li><strong>From <em>associational</em> statements</strong>:
-<ul>
-<li>«<span class="math inline">\(\underbrace{\text{An increase}}_{\small\text{noun}}\)</span> in <span class="math inline">\(X\)</span> by 1 is associated with increase in <span class="math inline">\(Y\)</span> by <span class="math inline">\(\beta\)</span>»</li>
-</ul></li>
-<li><strong>To <em>causal</em> ones</strong>: «<span class="math inline">\(\underbrace{\text{Increasing}}_{\small\text{verb}}\)</span> <span class="math inline">\(X\)</span> by 1 <em>causes</em> <span class="math inline">\(Y\)</span> to increase by <span class="math inline">\(\beta\)</span>»</li>
-</ul>
-</section>
-<section id="dgps-and-the-emergence-of-order" class="slide level2 crunch-title crunch-quarto-layout-panel title-09 crunch-quarto-figure">
-<h2>DGPs and the Emergence of Order</h2>
-<div>
+          </div>
+          <div class="quarto-layout-panel" data-layout-align="center" data-layout="[55,45]">
+            <div class="quarto-layout-row quarto-layout-valign-center">
+              <div id="dgps-5100" class="quarto-layout-cell" style="flex-basis: 55.0%;justify-content: center;">
+                <ul>
+                  <li>You saw this in DSAN 5100!</li>
+                  <li>«<span class="math inline">\(X_1, \ldots, X_n\)</span> drawn i.i.d. Normal, mean <span
+                      class="math inline">\(\mu\)</span> variance <span class="math inline">\(\sigma^2\)</span>»
+                    characterizes <strong>DGP of <span class="math inline">\((X_1, \ldots, X_n)\)</span></strong></li>
+                </ul>
+              </div>
+              <div class="quarto-layout-cell" style="flex-basis: 45.0%;justify-content: center;">
+                <div class="quarto-figure quarto-figure-center">
+                  <figure>
+                    <p><img data-src="images/hmm_clusters_single_dist.svg" class="quarto-figure quarto-figure-center"
+                        width="280"></p>
+                  </figure>
+                </div>
+              </div>
+            </div>
+          </div>
+          <ul>
+            <li>5650: <strong>Dive into DGPs</strong>, rather than treating as black box/footnote to Law of Large
+              Numbers, so we can move [<em>asymptotically!</em>]…</li>
+            <li><strong>From <em>associational</em> statements</strong>:
+              <ul>
+                <li>«<span class="math inline">\(\underbrace{\text{An increase}}_{\small\text{noun}}\)</span> in <span
+                    class="math inline">\(X\)</span> by 1 is associated with increase in <span
+                    class="math inline">\(Y\)</span> by <span class="math inline">\(\beta\)</span>»</li>
+              </ul>
+            </li>
+            <li><strong>To <em>causal</em> ones</strong>: «<span
+                class="math inline">\(\underbrace{\text{Increasing}}_{\small\text{verb}}\)</span> <span
+                class="math inline">\(X\)</span> by 1 <em>causes</em> <span class="math inline">\(Y\)</span> to increase
+              by <span class="math inline">\(\beta\)</span>»</li>
+          </ul>
+        </section>
+        <section id="dgps-and-the-emergence-of-order"
+          class="slide level2 crunch-title crunch-quarto-layout-panel title-09 crunch-quarto-figure">
+          <h2>DGPs and the Emergence of Order</h2>
+          <div>
 
-</div>
-<div class="quarto-layout-panel" data-layout="[1,1]">
-<div class="quarto-layout-row">
-<div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: flex-start;">
-<ul>
-<li>Who can guess the state of this process after 10 steps, with 1 person?</li>
-<li>10 people? 50? 100? (If they find themselves on the same spot, they stand on each other’s heads)</li>
-<li>100 steps? 1000?</li>
-</ul>
-</div>
-<div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
-<div class="quarto-figure quarto-figure-center">
-<figure>
-<p><img data-src="images/random_walk.svg" class="quarto-figure quarto-figure-center" width="430"></p>
-</figure>
-</div>
-</div>
-</div>
-</div>
-</section>
-<section id="the-result-16-steps" class="slide level2">
-<h2>The Result: 16 Steps</h2>
+          </div>
+          <div class="quarto-layout-panel" data-layout="[1,1]">
+            <div class="quarto-layout-row">
+              <div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: flex-start;">
+                <ul>
+                  <li>Who can guess the state of this process after 10 steps, with 1 person?</li>
+                  <li>10 people? 50? 100? (If they find themselves on the same spot, they stand on each other’s heads)
+                  </li>
+                  <li>100 steps? 1000?</li>
+                </ul>
+              </div>
+              <div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
+                <div class="quarto-figure quarto-figure-center">
+                  <figure>
+                    <p><img data-src="images/random_walk.svg" class="quarto-figure quarto-figure-center" width="430">
+                    </p>
+                  </figure>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+        <section id="the-result-16-steps" class="slide level2">
+          <h2>The Result: 16 Steps</h2>
 
-<img data-src="images/random-walk-16-1.png" class="quarto-figure quarto-figure-center r-stretch"></section>
-<section id="the-result-64-steps" class="slide level2">
-<h2>The Result: 64 Steps</h2>
+          <img data-src="images/random-walk-16-1.png" class="quarto-figure quarto-figure-center r-stretch">
+        </section>
+        <section id="the-result-64-steps" class="slide level2">
+          <h2>The Result: 64 Steps</h2>
 
-<img data-src="images/random-walk-64-1.png" class="quarto-figure quarto-figure-center r-stretch"></section>
-<section id="mathematicalscientific-modeling" class="slide level2 smaller crunch-title crunch-ul">
-<h2>“Mathematical/Scientific Modeling”</h2>
-<ul>
-<li>Thing we observe (poking out of water): <strong>data</strong></li>
-<li>Hidden but possibly discoverable via deeper dive (ecosystem under surface): <strong>DGP</strong></li>
-</ul>
-<!-- My sincere belief and definitely not an image forwarded to me unironically by a family member when I was a tween -->
+          <img data-src="images/random-walk-64-1.png" class="quarto-figure quarto-figure-center r-stretch">
+        </section>
+        <section id="mathematicalscientific-modeling" class="slide level2 smaller crunch-title crunch-ul">
+          <h2>“Mathematical/Scientific Modeling”</h2>
+          <ul>
+            <li>Thing we observe (poking out of water): <strong>data</strong></li>
+            <li>Hidden but possibly discoverable via deeper dive (ecosystem under surface): <strong>DGP</strong></li>
+          </ul>
+          <!-- My sincere belief and definitely not an image forwarded to me unironically by a family member when I was a tween -->
 
-<img data-src="images/fwds_from_grandma.jpg" class="quarto-figure quarto-figure-center r-stretch"></section>
-<section id="so-whats-the-problem" class="slide level2 crunch-title crunch-ul crunch-li-8 inline-90">
-<h2>So What’s the Problem?</h2>
-<ul>
-<li>Non-probabilistic models: High potential for being garbage
-<ul>
-<li><em>tldr: even if SUPER certain, using <span class="math inline">\(\Pr(\mathcal{H}) = 1-\varepsilon\)</span> with tiny <span class="math inline">\(\varepsilon\)</span> has literal life-saving advantages</em> <span class="citation" data-cites="finetti_probability_1972">(<a href="#/references" role="doc-biblioref" onclick="">Finetti 1972</a>)</span></li>
-</ul></li>
-<li>Probabilistic models: Getting there, still looking at “surface”
-<ul>
-<li>Of the <span class="math inline">\(N = 100\)</span> times we observed event <span class="math inline">\(X\)</span> occurring, event <span class="math inline">\(Y\)</span> also occurred <span class="math inline">\(90\)</span> of those times</li>
-<li><span class="math inline">\(\implies \Pr(Y \mid X) = \frac{\#[X, Y]}{\#[X]} = \frac{90}{100} = 0.9\)</span></li>
-</ul></li>
-<li>Causal models: Does <span class="math inline">\(Y\)</span> happen <strong>because of</strong> <span class="math inline">\(X\)</span> happening? For that, need to start modeling <strong>what’s happening under the surface</strong> making <span class="math inline">\(X\)</span> and <span class="math inline">\(Y\)</span> <strong>“pop up” together</strong> so often</li>
-</ul>
-</section>
-<section id="the-shallow-problem-of-causal-inference" class="slide level2 title-08">
-<h2>The <em>Shallow</em> Problem of Causal Inference</h2>
-<div class="columns">
-<div class="column" style="width:65%;">
-<div class="quarto-figure quarto-figure-center">
-<figure>
-<p><img data-src="images/ski-revenue-lawyers-1.png" class="quarto-figure quarto-figure-center"></p>
-</figure>
-</div>
-</div><div class="column" style="width:35%;">
-<div class="sourceCode" id="cb1" style="font-size: 72%;"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a></a><span class="fu">cor</span>(ski_df<span class="sc">$</span>value, law_df<span class="sc">$</span>value)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<pre><code>[1] 0.9921178</code></pre>
-<div style="font-size: 50% !important;">
-<p>(Data from Vigen, <a href="http://web.archive.org/web/20191006000802/http://tylervigen.com/view_correlation?id=29272" target="_blank">Spurious Correlations</a>)</p>
-</div>
-<p>This, however, is only a <em>mini-boss</em>. Beyond it lies the truly invincible <strong>FINAL BOSS</strong>… 🙀</p>
-</div></div>
-</section>
-<section id="the-fundamental-problem-of-causal-inference" class="slide level2 crunch-title crunch-ul crunch-callout title-07 scrollable">
-<h2>The <em>Fundamental</em> Problem of Causal Inference</h2>
-<p>The only workable definition of «<span class="math inline">\(X\)</span> causes <span class="math inline">\(Y\)</span>»:</p>
-<div title="<i class='bi bi-info-circle pe-1'></i> Defining Causality [@hume_treatise_1739, ruining everything as usual 😤]">
-<div class="callout callout-note no-icon callout-titled callout-style-default">
-<div class="callout-body">
-<div class="callout-title">
-<p><strong><i class="bi bi-info-circle pe-1"></i> Defining Causality <span class="citation" data-cites="hume_treatise_1739">(<a href="#/references" role="doc-biblioref" onclick="">Hume 1739</a>, ruining everything as usual 😤)</span></strong></p>
-</div>
-<div class="callout-content">
-<p><span class="math inline">\(X\)</span> causes <span class="math inline">\(Y\)</span> if and only if:</p>
-<ol type="1">
-<li><span class="math inline">\(X\)</span> <em>temporally precedes</em> <span class="math inline">\(Y\)</span> and</li>
-<li><ul>
-<li>In <strong>two worlds</strong> <span class="math inline">\(W_0\)</span> and <span class="math inline">\(W_1\)</span> where</li>
-<li>everything is exactly the same <strong>except that</strong> <span class="math inline">\(X = 0\)</span> in <span class="math inline">\(W_0\)</span> and <span class="math inline">\(X = 1\)</span> in <span class="math inline">\(W_1\)</span>,</li>
-<li><span class="math inline">\(Y = 0\)</span> in <span class="math inline">\(W_0\)</span> and <span class="math inline">\(Y = 1\)</span> in <span class="math inline">\(W_1\)</span></li>
-</ul></li>
-</ol>
-</div>
-</div>
-</div>
-</div>
-<ul>
-<li>The problem? We live in <strong>one</strong> world, not two identical worlds simultaneously 😭</li>
-</ul>
-</section>
-<section id="what-is-to-be-done" class="slide level2">
-<h2>What Is To Be Done?</h2>
+          <img data-src="images/fwds_from_grandma.jpg" class="quarto-figure quarto-figure-center r-stretch">
+        </section>
+        <section id="so-whats-the-problem" class="slide level2 crunch-title crunch-ul crunch-li-8 inline-90">
+          <h2>So What’s the Problem?</h2>
+          <ul>
+            <li>Non-probabilistic models: High potential for being garbage
+              <ul>
+                <li><em>tldr: even if SUPER certain, using <span class="math inline">\(\Pr(\mathcal{H}) =
+                      1-\varepsilon\)</span> with tiny <span class="math inline">\(\varepsilon\)</span> has literal
+                    life-saving advantages</em> <span class="citation" data-cites="finetti_probability_1972">(<a
+                      href="#/references" role="doc-biblioref" onclick="">Finetti 1972</a>)</span></li>
+              </ul>
+            </li>
+            <li>Probabilistic models: Getting there, still looking at “surface”
+              <ul>
+                <li>Of the <span class="math inline">\(N = 100\)</span> times we observed event <span
+                    class="math inline">\(X\)</span> occurring, event <span class="math inline">\(Y\)</span> also
+                  occurred <span class="math inline">\(90\)</span> of those times</li>
+                <li><span class="math inline">\(\implies \Pr(Y \mid X) = \frac{\#[X, Y]}{\#[X]} = \frac{90}{100} =
+                    0.9\)</span></li>
+              </ul>
+            </li>
+            <li>Causal models: Does <span class="math inline">\(Y\)</span> happen <strong>because of</strong> <span
+                class="math inline">\(X\)</span> happening? For that, need to start modeling <strong>what’s happening
+                under the surface</strong> making <span class="math inline">\(X\)</span> and <span
+                class="math inline">\(Y\)</span> <strong>“pop up” together</strong> so often</li>
+          </ul>
+        </section>
+        <section id="the-shallow-problem-of-causal-inference" class="slide level2 title-08">
+          <h2>The <em>Shallow</em> Problem of Causal Inference</h2>
+          <div class="columns">
+            <div class="column" style="width:65%;">
+              <div class="quarto-figure quarto-figure-center">
+                <figure>
+                  <p><img data-src="images/ski-revenue-lawyers-1.png" class="quarto-figure quarto-figure-center"></p>
+                </figure>
+              </div>
+            </div>
+            <div class="column" style="width:35%;">
+              <div class="sourceCode" id="cb1" style="font-size: 72%;">
+                <pre
+                  class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a></a><span class="fu">cor</span>(ski_df<span class="sc">$</span>value, law_df<span class="sc">$</span>value)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre>
+              </div>
+              <pre><code>[1] 0.9921178</code></pre>
+              <div style="font-size: 50% !important;">
+                <p>(Data from Vigen, <a
+                    href="http://web.archive.org/web/20191006000802/http://tylervigen.com/view_correlation?id=29272"
+                    target="_blank">Spurious Correlations</a>)</p>
+              </div>
+              <p>This, however, is only a <em>mini-boss</em>. Beyond it lies the truly invincible <strong>FINAL
+                  BOSS</strong>… 🙀</p>
+            </div>
+          </div>
+        </section>
+        <section id="the-fundamental-problem-of-causal-inference"
+          class="slide level2 crunch-title crunch-ul crunch-callout title-07 scrollable">
+          <h2>The <em>Fundamental</em> Problem of Causal Inference</h2>
+          <p>The only workable definition of «<span class="math inline">\(X\)</span> causes <span
+              class="math inline">\(Y\)</span>»:</p>
+          <div
+            title="<i class='bi bi-info-circle pe-1'></i> Defining Causality [@hume_treatise_1739, ruining everything as usual 😤]">
+            <div class="callout callout-note no-icon callout-titled callout-style-default">
+              <div class="callout-body">
+                <div class="callout-title">
+                  <p><strong><i class="bi bi-info-circle pe-1"></i> Defining Causality <span class="citation"
+                        data-cites="hume_treatise_1739">(<a href="#/references" role="doc-biblioref" onclick="">Hume
+                          1739</a>, ruining everything as usual 😤)</span></strong></p>
+                </div>
+                <div class="callout-content">
+                  <p><span class="math inline">\(X\)</span> causes <span class="math inline">\(Y\)</span> if and only
+                    if:</p>
+                  <ol type="1">
+                    <li><span class="math inline">\(X\)</span> <em>temporally precedes</em> <span
+                        class="math inline">\(Y\)</span> and</li>
+                    <li>
+                      <ul>
+                        <li>In <strong>two worlds</strong> <span class="math inline">\(W_0\)</span> and <span
+                            class="math inline">\(W_1\)</span> where</li>
+                        <li>everything is exactly the same <strong>except that</strong> <span class="math inline">\(X =
+                            0\)</span> in <span class="math inline">\(W_0\)</span> and <span class="math inline">\(X =
+                            1\)</span> in <span class="math inline">\(W_1\)</span>,</li>
+                        <li><span class="math inline">\(Y = 0\)</span> in <span class="math inline">\(W_0\)</span> and
+                          <span class="math inline">\(Y = 1\)</span> in <span class="math inline">\(W_1\)</span></li>
+                      </ul>
+                    </li>
+                  </ol>
+                </div>
+              </div>
+            </div>
+          </div>
+          <ul>
+            <li>The problem? We live in <strong>one</strong> world, not two identical worlds simultaneously 😭</li>
+          </ul>
+        </section>
+        <section id="what-is-to-be-done" class="slide level2">
+          <h2>What Is To Be Done?</h2>
 
-<img data-src="images/face_everything_and_rise.jpg" class="quarto-figure quarto-figure-center r-stretch"></section>
-<section id="probability" class="slide level2 crunch-title">
-<h2>Probability++</h2>
-<ul>
-<li>Tools from prob/stats (RVs, CDFs, Conditional Probability) <strong>necessary but not sufficient</strong> for causal inference!</li>
-<li>Example: Say we use DSAN 5100 tools to discover:
-<ul>
-<li>Probability that event <span class="math inline">\(E_1\)</span> occurs is <span class="math inline">\(\Pr(E_1) = 0.5\)</span></li>
-<li>Probability that <span class="math inline">\(E_1\)</span> occurs <strong>conditional on</strong> another event <span class="math inline">\(E_0\)</span> occurring is <span class="math inline">\(\Pr(E_1 \mid E_0) = 0.75\)</span></li>
-</ul></li>
-<li>Unfortunately, we still <strong>cannot</strong> infer that the occurrence of <span class="math inline">\(E_0\)</span> <strong>causes</strong> an increase in the likelihood of <span class="math inline">\(E_1\)</span> occurring.</li>
-</ul>
-</section>
-<section id="beyond-conditional-probability" class="slide level2 crunch-title text-90">
-<h2>Beyond Conditional Probability</h2>
-<ul>
-<li>This issue (that <strong>conditional probabilities</strong> could not be interpreted causally) at first represented a kind of dead end for scientists interested in employing probability theory to study causal relationships…</li>
-<li>Recent decades: researchers have built up an additional “layer” of modeling tools, augmenting existing machinery of probability to address causality head-on!</li>
-<li><span class="citation" data-cites="pearl_causality_2000">Pearl (<a href="#/references" role="doc-biblioref" onclick="">2000</a>)</span>: Formal proofs that (<span class="math inline">\(\Pr\)</span> axioms) <span class="math inline">\(\cup\)</span> (<span class="math inline">\(\textsf{do}\)</span> axioms) <span class="math inline">\(\Rightarrow\)</span> causal inference procedures successfully recover causal effects</li>
-</ul>
-</section>
-<section id="preview-do-calculus" class="slide level2 crunch-title crunch-math text-85 table-85 crunch-ul inline-90 math-90 crunch-li-6">
-<h2>Preview: do-Calculus</h2>
-<ul>
-<li><em>Extends</em> core of probability to incorporate causality, via <span class="math inline">\(\textsf{do}\)</span> operator</li>
-<li><span class="math inline">\(\textsf{do}(X = 5)\)</span> is a “special” <strong>event</strong>, representing <strong>intervention in DGP</strong> to <strong>force</strong> <span class="math inline">\(X \leftarrow 5\)</span>… <span class="math inline">\(\textsf{do}(X = 5)\)</span> <strong>not the same event</strong> as <span class="math inline">\(X = 5\)</span>!</li>
-</ul>
-<table class="caption-top">
-<colgroup>
-<col style="width: 46%">
-<col style="width: 2%">
-<col style="width: 52%">
-</colgroup>
-<thead>
-<tr class="header">
-<th style="text-align: center;"><span class="math inline">\(X = 5\)</span></th>
-<th style="text-align: center;"><span class="math inline">\(\neq\)</span></th>
-<th style="text-align: center;"><span class="math inline">\(\textsf{do}(X = 5)\)</span></th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td style="text-align: center;"><em>Observing</em> that <span class="math inline">\(X\)</span> took on value 5 (for some possibly-unknown reason)</td>
-<td style="text-align: center;"><span class="math inline">\(\neq\)</span></td>
-<td style="text-align: center;"><em>Intervening</em> to force <span class="math inline">\(X \leftarrow 5\)</span>, all else in DGP remaining the same (intervention then “flows” through rest of DGP)</td>
-</tr>
-</tbody>
-</table>
-<ul>
-<li><p>Probably the most difficult thing in 5650 to wrap head around</p></li>
-<li><p>“Special”: <span class="math inline">\(\Pr(\textsf{do}(X = 5))\)</span> <em>not</em> well-defined, only <span class="math inline">\(\Pr(Y = 6 \mid \textsf{do}(X = 5))\)</span></p></li>
-<li><p>To emphasize special-ness, we may use notation like:</p>
-<p><span class="math display">\[
-\Pr(Y = 6 \mid \textsf{do}(X = 5)) \equiv \textstyle \Pr_{\textsf{do}(X = 5)}(Y = 6)
-\]</span></p>
-<p>to avoid confusion with “normal” events</p></li>
-</ul>
-</section>
-<section id="causal-world-unlocked-with-great-power-comes-great-responsibility" class="slide level2 title-08 crunch-title crunch-ul">
-<h2>Causal World Unlocked 😎 (With Great Power Comes Great Responsibility…)</h2>
-<ul>
-<li>With <span class="math inline">\(\textsf{do}(\cdot)\)</span> in hand… (Alongside DGP satisfying axioms slightly more strict than core probability axioms)</li>
-<li>We <em>can</em> make causal inferences from similar pair of facts! If:
-<ul>
-<li>Probability that event <span class="math inline">\(E_1\)</span> occurs is <span class="math inline">\(\Pr(E_1) = 0.5\)</span>,</li>
-<li>The probability that <span class="math inline">\(E_1\)</span> occurs <strong>conditional on</strong> the event <span class="math inline">\(\textsf{do}(E_0)\)</span> occurring is <span class="math inline">\(\Pr(E_1 \mid \textsf{do}(E_0)) = 0.75\)</span>,</li>
-</ul></li>
-<li><strong>Now</strong> we can actually infer that the occurrence of <span class="math inline">\(E_0\)</span> <strong>caused</strong> an increase in the likelihood of <span class="math inline">\(E_1\)</span> occurring!</li>
-</ul>
-</section>
-<section id="ulysses-and-the-computational-sirens" class="slide level2 smaller crunch-title">
-<h2>Ulysses and the [Computational] Sirens</h2>
+          <img data-src="images/face_everything_and_rise.jpg" class="quarto-figure quarto-figure-center r-stretch">
+        </section>
+        <section id="probability" class="slide level2 crunch-title">
+          <h2>Probability++</h2>
+          <ul>
+            <li>Tools from prob/stats (RVs, CDFs, Conditional Probability) <strong>necessary but not sufficient</strong>
+              for causal inference!</li>
+            <li>Example: Say we use DSAN 5100 tools to discover:
+              <ul>
+                <li>Probability that event <span class="math inline">\(E_1\)</span> occurs is <span
+                    class="math inline">\(\Pr(E_1) = 0.5\)</span></li>
+                <li>Probability that <span class="math inline">\(E_1\)</span> occurs <strong>conditional on</strong>
+                  another event <span class="math inline">\(E_0\)</span> occurring is <span
+                    class="math inline">\(\Pr(E_1 \mid E_0) = 0.75\)</span></li>
+              </ul>
+            </li>
+            <li>Unfortunately, we still <strong>cannot</strong> infer that the occurrence of <span
+                class="math inline">\(E_0\)</span> <strong>causes</strong> an increase in the likelihood of <span
+                class="math inline">\(E_1\)</span> occurring.</li>
+          </ul>
+        </section>
+        <section id="beyond-conditional-probability" class="slide level2 crunch-title text-90">
+          <h2>Beyond Conditional Probability</h2>
+          <ul>
+            <li>This issue (that <strong>conditional probabilities</strong> could not be interpreted causally) at first
+              represented a kind of dead end for scientists interested in employing probability theory to study causal
+              relationships…</li>
+            <li>Recent decades: researchers have built up an additional “layer” of modeling tools, augmenting existing
+              machinery of probability to address causality head-on!</li>
+            <li><span class="citation" data-cites="pearl_causality_2000">Pearl (<a href="#/references"
+                  role="doc-biblioref" onclick="">2000</a>)</span>: Formal proofs that (<span
+                class="math inline">\(\Pr\)</span> axioms) <span class="math inline">\(\cup\)</span> (<span
+                class="math inline">\(\textsf{do}\)</span> axioms) <span class="math inline">\(\Rightarrow\)</span>
+              causal inference procedures successfully recover causal effects</li>
+          </ul>
+        </section>
+        <section id="preview-do-calculus"
+          class="slide level2 crunch-title crunch-math text-85 table-85 crunch-ul inline-90 math-90 crunch-li-6">
+          <h2>Preview: do-Calculus</h2>
+          <ul>
+            <li><em>Extends</em> core of probability to incorporate causality, via <span
+                class="math inline">\(\textsf{do}\)</span> operator</li>
+            <li><span class="math inline">\(\textsf{do}(X = 5)\)</span> is a “special” <strong>event</strong>,
+              representing <strong>intervention in DGP</strong> to <strong>force</strong> <span class="math inline">\(X
+                \leftarrow 5\)</span>… <span class="math inline">\(\textsf{do}(X = 5)\)</span> <strong>not the same
+                event</strong> as <span class="math inline">\(X = 5\)</span>!</li>
+          </ul>
+          <table class="caption-top">
+            <colgroup>
+              <col style="width: 46%">
+              <col style="width: 2%">
+              <col style="width: 52%">
+            </colgroup>
+            <thead>
+              <tr class="header">
+                <th style="text-align: center;"><span class="math inline">\(X = 5\)</span></th>
+                <th style="text-align: center;"><span class="math inline">\(\neq\)</span></th>
+                <th style="text-align: center;"><span class="math inline">\(\textsf{do}(X = 5)\)</span></th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr class="odd">
+                <td style="text-align: center;"><em>Observing</em> that <span class="math inline">\(X\)</span> took on
+                  value 5 (for some possibly-unknown reason)</td>
+                <td style="text-align: center;"><span class="math inline">\(\neq\)</span></td>
+                <td style="text-align: center;"><em>Intervening</em> to force <span class="math inline">\(X \leftarrow
+                    5\)</span>, all else in DGP remaining the same (intervention then “flows” through rest of DGP)</td>
+              </tr>
+            </tbody>
+          </table>
+          <ul>
+            <li>
+              <p>Probably the most difficult thing in 5650 to wrap head around</p>
+            </li>
+            <li>
+              <p>“Special”: <span class="math inline">\(\Pr(\textsf{do}(X = 5))\)</span> <em>not</em> well-defined, only
+                <span class="math inline">\(\Pr(Y = 6 \mid \textsf{do}(X = 5))\)</span></p>
+            </li>
+            <li>
+              <p>To emphasize special-ness, we may use notation like:</p>
+              <p><span class="math display">\[
+                  \Pr(Y = 6 \mid \textsf{do}(X = 5)) \equiv \textstyle \Pr_{\textsf{do}(X = 5)}(Y = 6)
+                  \]</span></p>
+              <p>to avoid confusion with “normal” events</p>
+            </li>
+          </ul>
+        </section>
+        <section id="causal-world-unlocked-with-great-power-comes-great-responsibility"
+          class="slide level2 title-08 crunch-title crunch-ul">
+          <h2>Causal World Unlocked 😎 (With Great Power Comes Great Responsibility…)</h2>
+          <ul>
+            <li>With <span class="math inline">\(\textsf{do}(\cdot)\)</span> in hand… (Alongside DGP satisfying axioms
+              slightly more strict than core probability axioms)</li>
+            <li>We <em>can</em> make causal inferences from similar pair of facts! If:
+              <ul>
+                <li>Probability that event <span class="math inline">\(E_1\)</span> occurs is <span
+                    class="math inline">\(\Pr(E_1) = 0.5\)</span>,</li>
+                <li>The probability that <span class="math inline">\(E_1\)</span> occurs <strong>conditional on</strong>
+                  the event <span class="math inline">\(\textsf{do}(E_0)\)</span> occurring is <span
+                    class="math inline">\(\Pr(E_1 \mid \textsf{do}(E_0)) = 0.75\)</span>,</li>
+              </ul>
+            </li>
+            <li><strong>Now</strong> we can actually infer that the occurrence of <span
+                class="math inline">\(E_0\)</span> <strong>caused</strong> an increase in the likelihood of <span
+                class="math inline">\(E_1\)</span> occurring!</li>
+          </ul>
+        </section>
+        <section id="ulysses-and-the-computational-sirens" class="slide level2 smaller crunch-title">
+          <h2>Ulysses and the [Computational] Sirens</h2>
 
-<img data-src="images/sirens.jpg" class="quarto-figure quarto-figure-center r-stretch"></section></section>
-<section>
-<section id="your-first-pgm" class="title-slide slide level1 smaller crunch-title title-10 crunch-ul crunch-li-8 crunch-quarto-figure crunch-img crunch-p center" data-stack-name="PGMs">
-<h1>Your First PGM!</h1>
+          <img data-src="images/sirens.jpg" class="quarto-figure quarto-figure-center r-stretch">
+        </section>
+      </section>
+      <section>
+        <section id="your-first-pgm"
+          class="title-slide slide level1 smaller crunch-title title-10 crunch-ul crunch-li-8 crunch-quarto-figure crunch-img crunch-p center"
+          data-stack-name="PGMs">
+          <h1>Your First PGM!</h1>
 
-<img data-src="images/medical.jpg" class="r-stretch quarto-figure-center"><p class="caption"><a href="http://probmods.org/chapters/dependence.html">Image source</a></p><ul>
-<li><i class="bi bi-1-circle"></i> Which of the variables (ovals) are <strong>observed</strong>? Which are <strong>latent</strong>?</li>
-<li><i class="bi bi-2-circle"></i> What do you think the arrows represent?</li>
-<li><i class="bi bi-3-circle"></i> Can we use this to find the <strong>“root cause”</strong> of (e.g.) observed <strong>chest pain</strong>? Or conversely, to <strong>predict</strong> possible ↑ in likelihood of chest pain if we start smoking?</li>
-</ul>
-</section>
-<section id="bayesian-inference-but-with-pictures" class="slide level2 title-09 crunch-title crunch-ul crunch-li-8 crunch-callout text-90 scrollable">
-<h2>Bayesian Inference but with Pictures</h2>
-<p>A <strong>Probabilistic Graphical Model (PGM)</strong> provides us with:</p>
-<ul>
-<li>A <strong>formal</strong>-mathematical…</li>
-<li>But also easily <strong>visualizable</strong> (by construction)…</li>
-<li>Representation of a <strong>data-generating process (DGP)!</strong></li>
-</ul>
-<p>Example: Let’s model how <strong>weather</strong> <span class="math inline">\(W\)</span> affects <strong>evening plans</strong> <span class="math inline">\(Y\)</span>: the choice between <strong>going to a party</strong> or <strong>staying in to watch movies</strong></p>
-<div title="<i class='bi bi-info-circle'></i> The Partier's Dilemma">
-<div class="callout callout-tip no-icon callout-titled callout-style-default">
-<div class="callout-body">
-<div class="callout-title">
-<p><strong><i class="bi bi-info-circle"></i> The Partier’s Dilemma</strong></p>
-</div>
-<div class="callout-content">
-<ol type="1">
-<li>A person <span class="math inline">\(i\)</span> wakes up with some initial affinity for partying: <span class="math inline">\(\Pr(Y_i = \textsf{Go Out})\)</span></li>
-<li><span class="math inline">\(i\)</span> then goes to their window and observes the weather <span class="math inline">\(W_i\)</span> outside:
-<ol type="i">
-<li>If the weather is <strong>sunny</strong>, <span class="math inline">\(i\)</span>’s affinity increases: <span class="math inline">\(\Pr(Y_i = \textsf{Go} \mid W_i = \textsf{Sun}) &gt; \Pr(Y = \textsf{Go})\)</span></li>
-<li>Otherwise, if it is <strong>rainy</strong>, <span class="math inline">\(i\)</span>’s affinity decreases: <span class="math inline">\(\Pr(Y_i = \textsf{Go} \mid W_i = \textsf{Sun}) &lt; \Pr(Y = \textsf{Go})\)</span></li>
-</ol></li>
-</ol>
-</div>
-</div>
-</div>
-</div>
-</section>
-<section id="two-main-building-blocks" class="slide level2 crunch-title title-09 inline-95 math-80 crunch-ul crunch-math crunch-li-8 text-90">
-<h2>Two Main “Building Blocks”</h2>
-<ul>
-<li><strong>Nodes</strong> like <span class="math inline">\(\require{enclose}\enclose{circle}{\kern .01em ~X~\kern .01em}\)</span> denote <strong>Random Variables</strong></li>
-</ul>
-<p><span class="math display">\[
-\boxed{\require{enclose}\enclose{circle}{\kern .01em ~X~\kern .01em}} \simeq \boxed{ \begin{array}{c|cc}x &amp; \textsf{Tails} &amp; \textsf{Heads} \\\hline \Pr(X = x) &amp; 0.5 &amp; 0.5\end{array}}
-\]</span></p>
-<ul>
-<li><strong>Edges</strong> like <span class="math inline">\(\require{enclose}\enclose{circle}{\kern .01em ~X~\kern .01em} \rightarrow \; \enclose{circle}{\kern.01em Y~\kern .01em}\)</span> denote <strong>relationships</strong> between RVs
-<ul>
-<li>What an edge “means” can get [ontologically] tricky!</li>
-<li>Retain sanity by just remembering: an edge <span class="math inline">\(\require{enclose}\enclose{circle}{\kern .01em ~X~\kern .01em} \rightarrow \; \enclose{circle}{\kern.01em Y~\kern .01em}\)</span> is included in our PGM if we “care about” modeling the <strong>conditional probability table (CPT)</strong> of <span class="math inline">\(Y\)</span> w.r.t. <span class="math inline">\(X\)</span></li>
-</ul></li>
-</ul>
-<p><span class="math display">\[
-\require{enclose}\boxed{ \enclose{circle}{\kern .01em ~X~\kern .01em} \rightarrow \; \enclose{circle}{\kern.01em Y~\kern .01em} } \simeq \boxed{
-  \begin{array}{c|cc}
-  x &amp; \Pr(Y = \textsf{Lose} \mid X = x) &amp; \Pr(Y = \textsf{Win} \mid X = x) \\\hline
-  \textsf{Tails} &amp; 0.8 &amp; 0.2 \\
-  \textsf{Heads} &amp; 0.5 &amp; 0.5
-  \end{array}
-}
-\]</span></p>
-</section>
-<section id="pgm-for-the-partiers-dilemma" class="slide level2 smaller crunch-title crunch-ul table-90">
-<h2>PGM for the Partier’s Dilemma</h2>
-<ul>
-<li>A node <span class="math inline">\(\pnode{W}\)</span> denoting RV <span class="math inline">\(W\)</span>, which can take on values in <span class="math inline">\(\mathcal{R}_W = \{\textsf{Sun}, \textsf{Rain}\}\)</span>,</li>
-<li>A node <span class="math inline">\(\pnode{Y}\)</span> denoting RV <span class="math inline">\(Y\)</span>, which can take on values in <span class="math inline">\(\mathcal{R}_Y = \{\textsf{Go}, \textsf{Stay}\}\)</span>, and</li>
-<li>An edge <span class="math inline">\(\pedge{W}{Y}\)</span> representing the following relationship between <span class="math inline">\(W\)</span> and <span class="math inline">\(Y\)</span>:
-<ul>
-<li><span class="math inline">\(\Pr(Y = \textsf{Go} \mid W = \textsf{Sun}) = 0.8\)</span></li>
-<li><span class="math inline">\(\Pr(Y = \textsf{Stay} \mid W = \textsf{Sun}) = 0.2\)</span></li>
-<li><span class="math inline">\(\Pr(Y = \textsf{Go} \mid W = \textsf{Rain}) = 0.1\)</span></li>
-<li><span class="math inline">\(\Pr(Y = \textsf{Stay} \mid W = \textsf{Rain}) = 0.9\)</span></li>
-</ul></li>
-</ul>
-<div>
+          <img data-src="images/medical.jpg" class="r-stretch quarto-figure-center">
+          <p class="caption"><a href="http://probmods.org/chapters/dependence.html">Image source</a></p>
+          <ul>
+            <li><i class="bi bi-1-circle"></i> Which of the variables (ovals) are <strong>observed</strong>? Which are
+              <strong>latent</strong>?</li>
+            <li><i class="bi bi-2-circle"></i> What do you think the arrows represent?</li>
+            <li><i class="bi bi-3-circle"></i> Can we use this to find the <strong>“root cause”</strong> of (e.g.)
+              observed <strong>chest pain</strong>? Or conversely, to <strong>predict</strong> possible ↑ in likelihood
+              of chest pain if we start smoking?</li>
+          </ul>
+        </section>
+        <section id="bayesian-inference-but-with-pictures"
+          class="slide level2 title-09 crunch-title crunch-ul crunch-li-8 crunch-callout text-90 scrollable">
+          <h2>Bayesian Inference but with Pictures</h2>
+          <p>A <strong>Probabilistic Graphical Model (PGM)</strong> provides us with:</p>
+          <ul>
+            <li>A <strong>formal</strong>-mathematical…</li>
+            <li>But also easily <strong>visualizable</strong> (by construction)…</li>
+            <li>Representation of a <strong>data-generating process (DGP)!</strong></li>
+          </ul>
+          <p>Example: Let’s model how <strong>weather</strong> <span class="math inline">\(W\)</span> affects
+            <strong>evening plans</strong> <span class="math inline">\(Y\)</span>: the choice between <strong>going to a
+              party</strong> or <strong>staying in to watch movies</strong></p>
+          <div title="<i class='bi bi-info-circle'></i> The Partier's Dilemma">
+            <div class="callout callout-tip no-icon callout-titled callout-style-default">
+              <div class="callout-body">
+                <div class="callout-title">
+                  <p><strong><i class="bi bi-info-circle"></i> The Partier’s Dilemma</strong></p>
+                </div>
+                <div class="callout-content">
+                  <ol type="1">
+                    <li>A person <span class="math inline">\(i\)</span> wakes up with some initial affinity for
+                      partying: <span class="math inline">\(\Pr(Y_i = \textsf{Go Out})\)</span></li>
+                    <li><span class="math inline">\(i\)</span> then goes to their window and observes the weather <span
+                        class="math inline">\(W_i\)</span> outside:
+                      <ol type="i">
+                        <li>If the weather is <strong>sunny</strong>, <span class="math inline">\(i\)</span>’s affinity
+                          increases: <span class="math inline">\(\Pr(Y_i = \textsf{Go} \mid W_i = \textsf{Sun}) &gt;
+                            \Pr(Y = \textsf{Go})\)</span></li>
+                        <li>Otherwise, if it is <strong>rainy</strong>, <span class="math inline">\(i\)</span>’s
+                          affinity decreases: <span class="math inline">\(\Pr(Y_i = \textsf{Go} \mid W_i = \textsf{Sun})
+                            &lt; \Pr(Y = \textsf{Go})\)</span></li>
+                      </ol>
+                    </li>
+                  </ol>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+        <section id="two-main-building-blocks"
+          class="slide level2 crunch-title title-09 inline-95 math-80 crunch-ul crunch-math crunch-li-8 text-90">
+          <h2>Two Main “Building Blocks”</h2>
+          <ul>
+            <li><strong>Nodes</strong> like <span class="math inline">\(\require{enclose}\enclose{circle}{\kern .01em
+                ~X~\kern .01em}\)</span> denote <strong>Random Variables</strong></li>
+          </ul>
+          <p><span class="math display">\[
+              \boxed{\require{enclose}\enclose{circle}{\kern .01em ~X~\kern .01em}} \simeq \boxed{ \begin{array}{c|cc}x
+              &amp; \textsf{Tails} &amp; \textsf{Heads} \\\hline \Pr(X = x) &amp; 0.5 &amp; 0.5\end{array}}
+              \]</span></p>
+          <ul>
+            <li><strong>Edges</strong> like <span class="math inline">\(\require{enclose}\enclose{circle}{\kern .01em
+                ~X~\kern .01em} \rightarrow \; \enclose{circle}{\kern.01em Y~\kern .01em}\)</span> denote
+              <strong>relationships</strong> between RVs
+              <ul>
+                <li>What an edge “means” can get [ontologically] tricky!</li>
+                <li>Retain sanity by just remembering: an edge <span
+                    class="math inline">\(\require{enclose}\enclose{circle}{\kern .01em ~X~\kern .01em} \rightarrow \;
+                    \enclose{circle}{\kern.01em Y~\kern .01em}\)</span> is included in our PGM if we “care about”
+                  modeling the <strong>conditional probability table (CPT)</strong> of <span
+                    class="math inline">\(Y\)</span> w.r.t. <span class="math inline">\(X\)</span></li>
+              </ul>
+            </li>
+          </ul>
+          <p><span class="math display">\[
+              \require{enclose}\boxed{ \enclose{circle}{\kern .01em ~X~\kern .01em} \rightarrow \;
+              \enclose{circle}{\kern.01em Y~\kern .01em} } \simeq \boxed{
+              \begin{array}{c|cc}
+              x &amp; \Pr(Y = \textsf{Lose} \mid X = x) &amp; \Pr(Y = \textsf{Win} \mid X = x) \\\hline
+              \textsf{Tails} &amp; 0.8 &amp; 0.2 \\
+              \textsf{Heads} &amp; 0.5 &amp; 0.5
+              \end{array}
+              }
+              \]</span></p>
+        </section>
+        <section id="pgm-for-the-partiers-dilemma" class="slide level2 smaller crunch-title crunch-ul table-90">
+          <h2>PGM for the Partier’s Dilemma</h2>
+          <ul>
+            <li>A node <span class="math inline">\(\pnode{W}\)</span> denoting RV <span
+                class="math inline">\(W\)</span>, which can take on values in <span class="math inline">\(\mathcal{R}_W
+                = \{\textsf{Sun}, \textsf{Rain}\}\)</span>,</li>
+            <li>A node <span class="math inline">\(\pnode{Y}\)</span> denoting RV <span
+                class="math inline">\(Y\)</span>, which can take on values in <span class="math inline">\(\mathcal{R}_Y
+                = \{\textsf{Go}, \textsf{Stay}\}\)</span>, and</li>
+            <li>An edge <span class="math inline">\(\pedge{W}{Y}\)</span> representing the following relationship
+              between <span class="math inline">\(W\)</span> and <span class="math inline">\(Y\)</span>:
+              <ul>
+                <li><span class="math inline">\(\Pr(Y = \textsf{Go} \mid W = \textsf{Sun}) = 0.8\)</span></li>
+                <li><span class="math inline">\(\Pr(Y = \textsf{Stay} \mid W = \textsf{Sun}) = 0.2\)</span></li>
+                <li><span class="math inline">\(\Pr(Y = \textsf{Go} \mid W = \textsf{Rain}) = 0.1\)</span></li>
+                <li><span class="math inline">\(\Pr(Y = \textsf{Stay} \mid W = \textsf{Rain}) = 0.9\)</span></li>
+              </ul>
+            </li>
+          </ul>
+          <div>
 
-</div>
-<div class="quarto-layout-panel" data-layout="[1,1]">
-<div class="quarto-layout-row">
-<div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: flex-start;">
-<div id="fig-partier-dgp" class="quarto-float quarto-figure quarto-figure-center" data-fig-align="center">
-<figure class="quarto-float quarto-float-fig">
-<div aria-describedby="fig-partier-dgp-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img data-src="images/pgm.svg" class="quarto-figure quarto-figure-center" width="400">
-</div>
-<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-partier-dgp-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;1: Our PGM of the Partier’s Dilemma
-</figcaption>
-</figure>
-</div>
-</div>
-<div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
-<div id="fig-partier-cpt" class="quarto-float quarto-figure quarto-figure-center">
-<figure class="quarto-float quarto-float-fig">
-<div aria-describedby="fig-partier-cpt-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<table class="caption-top">
-<thead>
-<tr class="header">
-<th style="text-align: right;"></th>
-<th style="text-align: center;"><span class="math inline">\(\Pr(Y = \textsf{Stay} \mid W)\)</span></th>
-<th style="text-align: center;"><span class="math inline">\(\Pr(Y = \textsf{Go} \mid W)\)</span></th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td style="text-align: right;"><span class="math inline">\(W = \textsf{Sun}\)</span></td>
-<td style="text-align: center;">0.2</td>
-<td style="text-align: center;">0.8</td>
-</tr>
-<tr class="even">
-<td style="text-align: right;"><span class="math inline">\(W = \textsf{Rain}\)</span></td>
-<td style="text-align: center;">0.9</td>
-<td style="text-align: center;">0.1</td>
-</tr>
-</tbody>
-</table>
-</div>
-<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-partier-cpt-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;2: The Conditional Probability Table (CPT) for the edge <span class="math inline">\(\pedge{W}{Y}\)</span> in <a href="#/pgm-for-the-partiers-dilemma" class="quarto-xref">Figure&nbsp;1</a>
-</figcaption>
-</figure>
-</div>
-</div>
-</div>
-</div>
-</section>
-<section id="observed-vs.-latent-nodes" class="slide level2">
-<h2>Observed vs.&nbsp;Latent Nodes</h2>
-<ul>
-<li>PGMs help us make <strong>valid (Bayesian) inferences</strong> about the world in the face of <strong>incomplete information</strong>!</li>
-<li>Key remaining tool: separation of nodes into two categories:
-<ul>
-<li><strong>Observed nodes</strong> (shaded)</li>
-<li><strong>Latent nodes</strong> (unshaded)</li>
-</ul></li>
-<li><span class="math inline">\(\Rightarrow\)</span> Can use our PGM as a <strong>weather-inference machine!</strong></li>
-<li>If we <strong>observe</strong> <span class="math inline">\(i\)</span> at a party, what can we infer about the <strong>weather</strong> outside?</li>
-</ul>
-</section>
-<section id="observed-partier-latent-weather" class="slide level2 title-09">
-<h2>Observed Partier, Latent Weather</h2>
-<ul>
-<li>We can draw this situation as a PGM with <strong>shaded</strong> and <strong>unshaded nodes</strong>, distinguishing what we <strong>know</strong> from what we’d like to <strong>infer</strong>:</li>
-</ul>
+          </div>
+          <div class="quarto-layout-panel" data-layout="[1,1]">
+            <div class="quarto-layout-row">
+              <div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: flex-start;">
+                <div id="fig-partier-dgp" class="quarto-float quarto-figure quarto-figure-center"
+                  data-fig-align="center">
+                  <figure class="quarto-float quarto-float-fig">
+                    <div aria-describedby="fig-partier-dgp-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+                      <img data-src="images/pgm.svg" class="quarto-figure quarto-figure-center" width="400">
+                    </div>
+                    <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig"
+                      id="fig-partier-dgp-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+                      Figure&nbsp;1: Our PGM of the Partier’s Dilemma
+                    </figcaption>
+                  </figure>
+                </div>
+              </div>
+              <div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
+                <div id="fig-partier-cpt" class="quarto-float quarto-figure quarto-figure-center">
+                  <figure class="quarto-float quarto-float-fig">
+                    <div aria-describedby="fig-partier-cpt-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+                      <table class="caption-top">
+                        <thead>
+                          <tr class="header">
+                            <th style="text-align: right;"></th>
+                            <th style="text-align: center;"><span class="math inline">\(\Pr(Y = \textsf{Stay} \mid
+                                W)\)</span></th>
+                            <th style="text-align: center;"><span class="math inline">\(\Pr(Y = \textsf{Go} \mid
+                                W)\)</span></th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          <tr class="odd">
+                            <td style="text-align: right;"><span class="math inline">\(W = \textsf{Sun}\)</span></td>
+                            <td style="text-align: center;">0.2</td>
+                            <td style="text-align: center;">0.8</td>
+                          </tr>
+                          <tr class="even">
+                            <td style="text-align: right;"><span class="math inline">\(W = \textsf{Rain}\)</span></td>
+                            <td style="text-align: center;">0.9</td>
+                            <td style="text-align: center;">0.1</td>
+                          </tr>
+                        </tbody>
+                      </table>
+                    </div>
+                    <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig"
+                      id="fig-partier-cpt-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+                      Figure&nbsp;2: The Conditional Probability Table (CPT) for the edge <span
+                        class="math inline">\(\pedge{W}{Y}\)</span> in <a href="#/pgm-for-the-partiers-dilemma"
+                        class="quarto-xref">Figure&nbsp;1</a>
+                    </figcaption>
+                  </figure>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+        <section id="observed-vs.-latent-nodes" class="slide level2">
+          <h2>Observed vs.&nbsp;Latent Nodes</h2>
+          <ul>
+            <li>PGMs help us make <strong>valid (Bayesian) inferences</strong> about the world in the face of
+              <strong>incomplete information</strong>!</li>
+            <li>Key remaining tool: separation of nodes into two categories:
+              <ul>
+                <li><strong>Observed nodes</strong> (shaded)</li>
+                <li><strong>Latent nodes</strong> (unshaded)</li>
+              </ul>
+            </li>
+            <li><span class="math inline">\(\Rightarrow\)</span> Can use our PGM as a <strong>weather-inference
+                machine!</strong></li>
+            <li>If we <strong>observe</strong> <span class="math inline">\(i\)</span> at a party, what can we infer
+              about the <strong>weather</strong> outside?</li>
+          </ul>
+        </section>
+        <section id="observed-partier-latent-weather" class="slide level2 title-09">
+          <h2>Observed Partier, Latent Weather</h2>
+          <ul>
+            <li>We can draw this situation as a PGM with <strong>shaded</strong> and <strong>unshaded nodes</strong>,
+              distinguishing what we <strong>know</strong> from what we’d like to <strong>infer</strong>:</li>
+          </ul>
 
-<img data-src="images/pgm_yobs.svg" class="quarto-figure quarto-figure-center r-stretch" width="400"><table class="caption-top">
-<colgroup>
-<col style="width: 18%">
-<col style="width: 64%">
-<col style="width: 18%">
-</colgroup>
-<tbody>
-<tr class="odd">
-<td style="text-align: center;">❓</td>
-<td style="text-align: center;">&nbsp;</td>
-<td style="text-align: center;">✅</td>
-</tr>
-</tbody>
-</table>
-<ul>
-<li>And we can now use Bayes’ Rule to compute how observed information (<span class="math inline">\(i\)</span> at party <span class="math inline">\(\Rightarrow [Y = \textsf{Go}]\)</span>) “flows” back into <span class="math inline">\(W\)</span></li>
-</ul>
-</section>
-<section id="computation-via-bayes-rule" class="slide level2 smaller crunch-title crunch-ul crunch-math math-80">
-<h2>Computation via Bayes’ Rule</h2>
-<ul>
-<li>Bayes’ Rule, <span class="math inline">\(\Pr(A \mid B) = \frac{\Pr(B \mid A)\Pr(A)}{\Pr(B)}\)</span>, tells us how to use info about <span class="math inline">\(\Pr(B \mid A)\)</span> to obtain info about <span class="math inline">\(\Pr(A \mid B)\)</span>!</li>
-<li>We use it to obtain a distribution for <span class="math inline">\(W\)</span> <strong>updated to incorporate</strong> new info <span class="math inline">\([Y = \textsf{Go}]\)</span>:</li>
-</ul>
-<p><span class="math display">\[
-\begin{align*}
-&amp;\Pr(W = \textsf{Sun} \mid Y = \textsf{Go})
-= \frac{\Pr(Y = \textsf{Go} \mid W = \textsf{Sun}) \Pr(W = \textsf{Sun})}{\Pr(Y = \textsf{Go})} \\
-=\, &amp;\frac{\Pr(Y = \textsf{Go} \mid W = \textsf{Sun}) \Pr(W = \textsf{Sun})}{\Pr(Y = \textsf{Go} \mid W = \textsf{Sun}) \Pr(W = \textsf{Sun}) + \Pr(Y = \textsf{Go} \mid W = \textsf{Rain}) \Pr(W = \textsf{Rain})}
-\end{align*}
-\]</span></p>
-<ul>
-<li>Plug in info from CPT to obtain our new (conditional) probability of interest:</li>
-</ul>
-<p><span class="math display">\[
-\begin{align*}
-\Pr(W = \textsf{Sun} \mid Y = \textsf{Go}) &amp;= \frac{(0.8)(0.5)}{(0.8)(0.5) + (0.1)(0.5)} = \frac{0.4}{0.4 + 0.05} \approx 0.89
-\end{align*}
-\]</span></p>
-<ul>
-<li>We’ve learned something interesting! Observing <span class="math inline">\(i\)</span> at the party <span class="math inline">\(\leadsto\)</span> probability of sun jumps from <span class="math inline">\(0.5\)</span> (<strong>“prior”</strong> estimate of <span class="math inline">\(W\)</span>, best guess without any other relevant info) to <span class="math inline">\(0.89\)</span> (<strong>“posterior”</strong> estimate of <span class="math inline">\(W\)</span>, best guess after incorporating relevant info).</li>
-</ul>
-</section>
-<section id="importance-of-observed-vs.-latent-distinction" class="slide level2 smaller crunch-title title-10">
-<h2>Importance of Observed vs.&nbsp;Latent Distinction!</h2>
-<ul>
-<li>Across many different fields, hidden stumbling-block in your project may be <strong>failure to model this distinction</strong> and pursue its implications!</li>
-</ul>
-<div id="fig-fence-dog" class="quarto-float quarto-figure quarto-figure-center">
-<figure class="quarto-float quarto-float-fig">
-<div aria-describedby="fig-fence-dog-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<center>
-<video id="video_shortcode_videojs_video2" height="400" class="video-js vjs-default-skin " controls="" preload="auto" data-setup="{}" title=""><source src="https://jpj.georgetown.domains/dsan5650-scratch/fence_dog.mp4"></video>
-</center>
-</div>
-<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-fence-dog-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;3: Your model failing to achieve its goal bc you haven’t yet distinguished observed vs.&nbsp;latent variables
-</figcaption>
-</figure>
-</div>
-</section>
-<section id="example-from-cognitive-neuroscience-visual-perception" class="slide level2 smaller crunch-title title-08 crunch-ul crunch-quarto-figure crunch-quarto-layout-panel">
-<h2>Example from Cognitive Neuroscience: Visual Perception</h2>
-<div>
+          <img data-src="images/pgm_yobs.svg" class="quarto-figure quarto-figure-center r-stretch" width="400">
+          <table class="caption-top">
+            <colgroup>
+              <col style="width: 18%">
+              <col style="width: 64%">
+              <col style="width: 18%">
+            </colgroup>
+            <tbody>
+              <tr class="odd">
+                <td style="text-align: center;">❓</td>
+                <td style="text-align: center;">&nbsp;</td>
+                <td style="text-align: center;">✅</td>
+              </tr>
+            </tbody>
+          </table>
+          <ul>
+            <li>And we can now use Bayes’ Rule to compute how observed information (<span
+                class="math inline">\(i\)</span> at party <span class="math inline">\(\Rightarrow [Y =
+                \textsf{Go}]\)</span>) “flows” back into <span class="math inline">\(W\)</span></li>
+          </ul>
+        </section>
+        <section id="computation-via-bayes-rule"
+          class="slide level2 smaller crunch-title crunch-ul crunch-math math-80">
+          <h2>Computation via Bayes’ Rule</h2>
+          <ul>
+            <li>Bayes’ Rule, <span class="math inline">\(\Pr(A \mid B) = \frac{\Pr(B \mid A)\Pr(A)}{\Pr(B)}\)</span>,
+              tells us how to use info about <span class="math inline">\(\Pr(B \mid A)\)</span> to obtain info about
+              <span class="math inline">\(\Pr(A \mid B)\)</span>!</li>
+            <li>We use it to obtain a distribution for <span class="math inline">\(W\)</span> <strong>updated to
+                incorporate</strong> new info <span class="math inline">\([Y = \textsf{Go}]\)</span>:</li>
+          </ul>
+          <p><span class="math display">\[
+              \begin{align*}
+              &amp;\Pr(W = \textsf{Sun} \mid Y = \textsf{Go})
+              = \frac{\Pr(Y = \textsf{Go} \mid W = \textsf{Sun}) \Pr(W = \textsf{Sun})}{\Pr(Y = \textsf{Go})} \\
+              =\, &amp;\frac{\Pr(Y = \textsf{Go} \mid W = \textsf{Sun}) \Pr(W = \textsf{Sun})}{\Pr(Y = \textsf{Go} \mid
+              W = \textsf{Sun}) \Pr(W = \textsf{Sun}) + \Pr(Y = \textsf{Go} \mid W = \textsf{Rain}) \Pr(W =
+              \textsf{Rain})}
+              \end{align*}
+              \]</span></p>
+          <ul>
+            <li>Plug in info from CPT to obtain our new (conditional) probability of interest:</li>
+          </ul>
+          <p><span class="math display">\[
+              \begin{align*}
+              \Pr(W = \textsf{Sun} \mid Y = \textsf{Go}) &amp;= \frac{(0.8)(0.5)}{(0.8)(0.5) + (0.1)(0.5)} =
+              \frac{0.4}{0.4 + 0.05} \approx 0.89
+              \end{align*}
+              \]</span></p>
+          <ul>
+            <li>We’ve learned something interesting! Observing <span class="math inline">\(i\)</span> at the party <span
+                class="math inline">\(\leadsto\)</span> probability of sun jumps from <span
+                class="math inline">\(0.5\)</span> (<strong>“prior”</strong> estimate of <span
+                class="math inline">\(W\)</span>, best guess without any other relevant info) to <span
+                class="math inline">\(0.89\)</span> (<strong>“posterior”</strong> estimate of <span
+                class="math inline">\(W\)</span>, best guess after incorporating relevant info).</li>
+          </ul>
+        </section>
+        <section id="importance-of-observed-vs.-latent-distinction" class="slide level2 smaller crunch-title title-10">
+          <h2>Importance of Observed vs.&nbsp;Latent Distinction!</h2>
+          <ul>
+            <li>Across many different fields, hidden stumbling-block in your project may be <strong>failure to model
+                this distinction</strong> and pursue its implications!</li>
+          </ul>
+          <div id="fig-fence-dog" class="quarto-float quarto-figure quarto-figure-center">
+            <figure class="quarto-float quarto-float-fig">
+              <div aria-describedby="fig-fence-dog-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+                <center>
+                  <video id="video_shortcode_videojs_video2" height="400" class="video-js vjs-default-skin " controls=""
+                    preload="auto" data-setup="{}" title="">
+                    <source src="https://jpj.georgetown.domains/dsan5650-scratch/fence_dog.mp4">
+                  </video>
+                </center>
+              </div>
+              <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig"
+                id="fig-fence-dog-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+                Figure&nbsp;3: Your model failing to achieve its goal bc you haven’t yet distinguished observed
+                vs.&nbsp;latent variables
+              </figcaption>
+            </figure>
+          </div>
+        </section>
+        <section id="example-from-cognitive-neuroscience-visual-perception"
+          class="slide level2 smaller crunch-title title-08 crunch-ul crunch-quarto-figure crunch-quarto-layout-panel">
+          <h2>Example from Cognitive Neuroscience: Visual Perception</h2>
+          <div>
 
-</div>
-<div class="quarto-layout-panel" data-layout="[55,45]">
-<div class="quarto-layout-row quarto-layout-valign-center">
-<div id="cog-neuro-text" class="quarto-layout-cell" style="flex-basis: 55.0%;justify-content: flex-start;">
-<ul>
-<li>We “see” <strong>3D objects</strong> like a basketballs, but our eyes are (curved) <strong>2D surfaces!</strong></li>
-<li><span class="math inline">\(\Rightarrow\)</span> Our brains <strong>construct</strong> 3D environment by combining 2D info (<strong>observed</strong> photons-hitting-light-cones) with <strong>latent</strong> heuristic info:
-<ul>
-<li>Instantaneous <strong>Binocular Disparity</strong>, fusing info from <strong>two</strong> slightly-offset eyes,</li>
-<li>Short-term <strong>Motion</strong> <a href="https://en.wikipedia.org/wiki/Parallax"><strong>Parallax</strong></a>: How does object shift over short temporal “windows” of movement?</li>
-<li>Long-term mental models (orange-ish circle with this line pattern is usually a basketball, which is usually this big, etc.)</li>
-</ul></li>
-</ul>
-</div>
-<div id="cog-neuro-img" class="quarto-layout-cell" style="flex-basis: 45.0%;justify-content: flex-start;">
-<div class="quarto-figure quarto-figure-center">
-<figure>
-<p><img data-src="images/parallax.jpg"></p>
-<figcaption><a href="https://royalsocietypublishing.org/doi/10.1098/rstb.2015.0256">Image source</a> (a very cool article!)</figcaption>
-</figure>
-</div>
-</div>
-</div>
-</div>
-<ul>
-<li>Similar examples in many other fields <span class="math inline">\(\leadsto\)</span> science is a strange waltz of general models vs.&nbsp;field-specific details, but there’s one model that is <strong>infinitely helpful</strong> imo…</li>
-</ul>
-</section>
-<section id="hidden-markov-models-hmms-are-our-ur-pgms" class="slide level2 smaller crunch-title title-09 crunch-quarto-figure crunch-quarto-layout-cell callout-fw">
-<h2>Hidden Markov Models (HMMs) Are Our Ur-PGMs!</h2>
-<ul>
-<li>Using <a href="https://blogs.transparent.com/german/the-german-prefix-ur/">“Ur”</a> in the same sense as <a href="https://kieranhealy.org/blog/archives/2015/06/12/americas-ur-choropleths/">“America’s Ur-Choropleths”</a>…</li>
-<li>HMMs are our “Ur-Models” for Computational <span class="barrio-jj"><strong>Social</strong> Science</span> specifically</li>
-</ul>
-<div>
+          </div>
+          <div class="quarto-layout-panel" data-layout="[55,45]">
+            <div class="quarto-layout-row quarto-layout-valign-center">
+              <div id="cog-neuro-text" class="quarto-layout-cell"
+                style="flex-basis: 55.0%;justify-content: flex-start;">
+                <ul>
+                  <li>We “see” <strong>3D objects</strong> like a basketballs, but our eyes are (curved) <strong>2D
+                      surfaces!</strong></li>
+                  <li><span class="math inline">\(\Rightarrow\)</span> Our brains <strong>construct</strong> 3D
+                    environment by combining 2D info (<strong>observed</strong> photons-hitting-light-cones) with
+                    <strong>latent</strong> heuristic info:
+                    <ul>
+                      <li>Instantaneous <strong>Binocular Disparity</strong>, fusing info from <strong>two</strong>
+                        slightly-offset eyes,</li>
+                      <li>Short-term <strong>Motion</strong> <a
+                          href="https://en.wikipedia.org/wiki/Parallax"><strong>Parallax</strong></a>: How does object
+                        shift over short temporal “windows” of movement?</li>
+                      <li>Long-term mental models (orange-ish circle with this line pattern is usually a basketball,
+                        which is usually this big, etc.)</li>
+                    </ul>
+                  </li>
+                </ul>
+              </div>
+              <div id="cog-neuro-img" class="quarto-layout-cell" style="flex-basis: 45.0%;justify-content: flex-start;">
+                <div class="quarto-figure quarto-figure-center">
+                  <figure>
+                    <p><img data-src="images/parallax.jpg"></p>
+                    <figcaption><a href="https://royalsocietypublishing.org/doi/10.1098/rstb.2015.0256">Image source</a>
+                      (a very cool article!)</figcaption>
+                  </figure>
+                </div>
+              </div>
+            </div>
+          </div>
+          <ul>
+            <li>Similar examples in many other fields <span class="math inline">\(\leadsto\)</span> science is a strange
+              waltz of general models vs.&nbsp;field-specific details, but there’s one model that is <strong>infinitely
+                helpful</strong> imo…</li>
+          </ul>
+        </section>
+        <section id="hidden-markov-models-hmms-are-our-ur-pgms"
+          class="slide level2 smaller crunch-title title-09 crunch-quarto-figure crunch-quarto-layout-cell callout-fw">
+          <h2>Hidden Markov Models (HMMs) Are Our Ur-PGMs!</h2>
+          <ul>
+            <li>Using <a href="https://blogs.transparent.com/german/the-german-prefix-ur/">“Ur”</a> in the same sense as
+              <a href="https://kieranhealy.org/blog/archives/2015/06/12/americas-ur-choropleths/">“America’s
+                Ur-Choropleths”</a>…</li>
+            <li>HMMs are our “Ur-Models” for Computational <span class="barrio-jj"><strong>Social</strong>
+                Science</span> specifically</li>
+          </ul>
+          <div>
 
-</div>
-<div class="quarto-layout-panel" data-layout="[3,1]">
-<div class="quarto-layout-row quarto-layout-valign-center">
-<div class="quarto-layout-cell" style="flex-basis: 75.0%;justify-content: center;">
-<div class="quarto-figure quarto-figure-right">
-<figure>
-<p><img data-src="images/hmm.svg" class="quarto-figure quarto-figure-right" width="700"></p>
-</figure>
-</div>
-</div>
-<div class="quarto-layout-cell" style="flex-basis: 25.0%;justify-content: center;">
-<div class="quarto-figure quarto-figure-left">
-<figure>
-<p><img data-src="images/mood_crop.jpg" class="quarto-figure quarto-figure-left" width="100"></p>
-</figure>
-</div>
-</div>
-</div>
-</div>
-<ul>
-<li>Let’s consider an extremely currently-popular strand of CSS research, and step through why (a) it may be harder than it initially seems, but (b) we can use HMMs to “organize”/manage/visualize the complexity!</li>
-</ul>
-<aside class="notes">
-<p>As in, how America’s Ur-Choropleths are two visualizations you can keep at hand before launching into a specific nation-wide choropleth about a specific issue!</p>
-<style type="text/css">
-        span.MJX_Assistive_MathML {
-          position:absolute!important;
-          clip: rect(1px, 1px, 1px, 1px);
-          padding: 1px 0 0 0!important;
-          border: 0!important;
-          height: 1px!important;
-          width: 1px!important;
-          overflow: hidden!important;
-          display:block!important;
-      }</style></aside>
-</section>
-<section id="studying-fake-news" class="slide level2 smaller callout-fw callout-valign crunch-img crunch-p crunch-quarto-figure crunch-title crunch-callout text-70 crunch-ul crunch-li-5 crunch-quarto-layout-panel">
-<h2>Studying “Fake News”</h2>
-<div class="callout callout-none no-icon callout-style-simple">
-<div class="callout-body">
-<div class="callout-content">
-<div id="callout-container">
-<div style="float: left; margin-right: 12px; margin-bottom: -2px">
-<p><img data-src="images/real-tired.png" width="50"></p>
-</div>
-<p>Studying “fake news” with ML and/or Deep Learning and/or Big Data is very popular in Computational Social Science: let’s use HMMs to see why it might be more… difficult/complicated than it seems at first 🙈</p>
-</div>
-</div>
-</div>
-</div>
-<ul>
-<li>The (implicit) model in studies like <span class="citation" data-cites="iyengar_news_2010">Iyengar and Kinder (<a href="#/references" role="doc-biblioref" onclick="">2010</a>)</span> is something like:</li>
-</ul>
-<div>
+          </div>
+          <div class="quarto-layout-panel" data-layout="[3,1]">
+            <div class="quarto-layout-row quarto-layout-valign-center">
+              <div class="quarto-layout-cell" style="flex-basis: 75.0%;justify-content: center;">
+                <div class="quarto-figure quarto-figure-right">
+                  <figure>
+                    <p><img data-src="images/hmm.svg" class="quarto-figure quarto-figure-right" width="700"></p>
+                  </figure>
+                </div>
+              </div>
+              <div class="quarto-layout-cell" style="flex-basis: 25.0%;justify-content: center;">
+                <div class="quarto-figure quarto-figure-left">
+                  <figure>
+                    <p><img data-src="images/mood_crop.jpg" class="quarto-figure quarto-figure-left" width="100"></p>
+                  </figure>
+                </div>
+              </div>
+            </div>
+          </div>
+          <ul>
+            <li>Let’s consider an extremely currently-popular strand of CSS research, and step through why (a) it may be
+              harder than it initially seems, but (b) we can use HMMs to “organize”/manage/visualize the complexity!
+            </li>
+          </ul>
+          <aside class="notes">
+            <p>As in, how America’s Ur-Choropleths are two visualizations you can keep at hand before launching into a
+              specific nation-wide choropleth about a specific issue!</p>
+            <style type="text/css">
+              span.MJX_Assistive_MathML {
+                position: absolute !important;
+                clip: rect(1px, 1px, 1px, 1px);
+                padding: 1px 0 0 0 !important;
+                border: 0 !important;
+                height: 1px !important;
+                width: 1px !important;
+                overflow: hidden !important;
+                display: block !important;
+              }
+            </style>
+          </aside>
+        </section>
+        <section id="studying-fake-news"
+          class="slide level2 smaller callout-fw callout-valign crunch-img crunch-p crunch-quarto-figure crunch-title crunch-callout text-70 crunch-ul crunch-li-5 crunch-quarto-layout-panel">
+          <h2>Studying “Fake News”</h2>
+          <div class="callout callout-none no-icon callout-style-simple">
+            <div class="callout-body">
+              <div class="callout-content">
+                <div id="callout-container">
+                  <div style="float: left; margin-right: 12px; margin-bottom: -2px">
+                    <p><img data-src="images/real-tired.png" width="50"></p>
+                  </div>
+                  <p>Studying “fake news” with ML and/or Deep Learning and/or Big Data is very popular in Computational
+                    Social Science: let’s use HMMs to see why it might be more… difficult/complicated than it seems at
+                    first 🙈</p>
+                </div>
+              </div>
+            </div>
+          </div>
+          <ul>
+            <li>The (implicit) model in studies like <span class="citation" data-cites="iyengar_news_2010">Iyengar and
+                Kinder (<a href="#/references" role="doc-biblioref" onclick="">2010</a>)</span> is something like:</li>
+          </ul>
+          <div>
 
-</div>
-<div class="quarto-layout-panel" data-layout="[65,35]" data-layout-align="center">
-<div class="quarto-layout-row quarto-layout-valign-center">
-<div id="iyengar-text" class="quarto-layout-cell" style="flex-basis: 65.0%;justify-content: center;">
-<div class="quarto-figure quarto-figure-center">
-<figure>
-<p><img data-src="images/hmm_media.svg" class="quarto-figure quarto-figure-center" width="520"></p>
-</figure>
-</div>
-<ul>
-<li>Thus allowing results to be summarized in a table like:</li>
-</ul>
-<div class="quarto-figure quarto-figure-center">
-<figure>
-<p><img data-src="images/iyengar_results.jpg" class="quarto-figure quarto-figure-center" width="400"></p>
-</figure>
-</div>
-</div>
-<div id="iyengar-img" class="quarto-layout-cell" style="flex-basis: 35.0%;justify-content: center;">
-<div class="quarto-figure quarto-figure-center">
-<figure>
-<p><img data-src="images/iyengar_kinder.jpg" style="width:60.0%"></p>
-<figcaption><span class="citation" data-cites="iyengar_news_2010">Iyengar and Kinder (<a href="#/references" role="doc-biblioref" onclick="">2010</a>)</span></figcaption>
-</figure>
-</div>
-</div>
-</div>
-</div>
-</section>
-<section id="the-devil-in-the-details-i" class="slide level2 smaller crunch-title lh-adjust">
-<h2>The Devil in the Details I</h2>
-<blockquote>
-<p>Residents of the <span class="jjbox">New Haven, Connecticut area</span> participated in one of two experiments, each of which spanned <span class="jjbox">six consecutive days</span> […] took place in <span class="jjbox">November 1980</span>, shortly after the <span class="jjbox">presidential election</span></p>
-</blockquote>
-<blockquote>
-<p>We measured <strong>problem importance</strong> with four questions that appeared in both the pretreatment and posttreatment questionnaires:</p>
-<ul>
-<li>Please <span class="jjbox">indicate how important</span> you consider these problems to be.</li>
-<li>Should the federal government <span class="jjbox">do more</span> to develop solutions to these problems, even if it means <span class="jjbox">raising taxes</span>?</li>
-<li>How much do you yourself <span class="jjbox">care</span> about these problems?</li>
-<li><span class="jjbox">These days</span> how much do you <span class="jjbox">talk</span> about these problems?</li>
-</ul>
-</blockquote>
-</section>
-<section id="the-devil-in-the-details-ii" class="slide level2">
-<h2>The Devil in the Details II</h2>
+          </div>
+          <div class="quarto-layout-panel" data-layout-align="center" data-layout="[65,35]">
+            <div class="quarto-layout-row quarto-layout-valign-center">
+              <div id="iyengar-text" class="quarto-layout-cell" style="flex-basis: 65.0%;justify-content: center;">
+                <div class="quarto-figure quarto-figure-center">
+                  <figure>
+                    <p><img data-src="images/hmm_media.svg" class="quarto-figure quarto-figure-center" width="520"></p>
+                  </figure>
+                </div>
+                <ul>
+                  <li>Thus allowing results to be summarized in a table like:</li>
+                </ul>
+                <div class="quarto-figure quarto-figure-center">
+                  <figure>
+                    <p><img data-src="images/iyengar_results.jpg" class="quarto-figure quarto-figure-center"
+                        width="400"></p>
+                  </figure>
+                </div>
+              </div>
+              <div id="iyengar-img" class="quarto-layout-cell" style="flex-basis: 35.0%;justify-content: center;">
+                <div class="quarto-figure quarto-figure-center">
+                  <figure>
+                    <p><img data-src="images/iyengar_kinder.jpg" style="width:60.0%"></p>
+                    <figcaption><span class="citation" data-cites="iyengar_news_2010">Iyengar and Kinder (<a
+                          href="#/references" role="doc-biblioref" onclick="">2010</a>)</span></figcaption>
+                  </figure>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+        <section id="the-devil-in-the-details-i" class="slide level2 smaller crunch-title lh-adjust">
+          <h2>The Devil in the Details I</h2>
+          <blockquote>
+            <p>Residents of the <span class="jjbox">New Haven, Connecticut area</span> participated in one of two
+              experiments, each of which spanned <span class="jjbox">six consecutive days</span> […] took place in <span
+                class="jjbox">November 1980</span>, shortly after the <span class="jjbox">presidential election</span>
+            </p>
+          </blockquote>
+          <blockquote>
+            <p>We measured <strong>problem importance</strong> with four questions that appeared in both the
+              pretreatment and posttreatment questionnaires:</p>
+            <ul>
+              <li>Please <span class="jjbox">indicate how important</span> you consider these problems to be.</li>
+              <li>Should the federal government <span class="jjbox">do more</span> to develop solutions to these
+                problems, even if it means <span class="jjbox">raising taxes</span>?</li>
+              <li>How much do you yourself <span class="jjbox">care</span> about these problems?</li>
+              <li><span class="jjbox">These days</span> how much do you <span class="jjbox">talk</span> about these
+                problems?</li>
+            </ul>
+          </blockquote>
+        </section>
+        <section id="the-devil-in-the-details-ii" class="slide level2">
+          <h2>The Devil in the Details II</h2>
 
-<img data-src="images/iyengar_experiment.jpg" class="quarto-figure quarto-figure-center r-stretch"></section>
-<section id="randomization-and-fine-tuned-treatment" class="slide level2 smaller crunch-quarto-figure crunch-quarto-layout-panel">
-<h2>Randomization and Fine-Tuned Treatment</h2>
-<div>
+          <img data-src="images/iyengar_experiment.jpg" class="quarto-figure quarto-figure-center r-stretch">
+        </section>
+        <section id="randomization-and-fine-tuned-treatment"
+          class="slide level2 smaller crunch-quarto-figure crunch-quarto-layout-panel">
+          <h2>Randomization and Fine-Tuned Treatment</h2>
+          <div>
 
-</div>
-<div class="quarto-layout-panel" data-layout="[50,50]">
-<div class="quarto-layout-row quarto-layout-valign-center">
-<div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
-<div class="quarto-figure quarto-figure-center">
-<figure>
-<p><img data-src="images/iyengar_treatment.jpg" class="quarto-figure quarto-figure-center"></p>
-</figure>
-</div>
-</div>
-<div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
-<div class="quarto-figure quarto-figure-center">
-<figure>
-<p><img data-src="images/iyengar_control.jpg" class="quarto-figure quarto-figure-center"></p>
-</figure>
-</div>
-</div>
-</div>
-</div>
-<ul>
-<li>…These are the types of things we usually <strong>don’t</strong> have control over as data scientists (we’re just handed a <code>.csv</code>!)</li>
-</ul>
-</section>
-<section id="the-final-piece-plate-notation" class="slide level2">
-<h2>The Final Piece: Plate Notation</h2>
-<ul>
-<li>For describing general distributions, there is often a “single node generating a bunch of nodes” structure:</li>
-</ul>
-<div class="quarto-figure quarto-figure-center">
-<figure>
-<p><img data-src="images/hmm_clusters_single_dist.svg" class="quarto-figure quarto-figure-center"></p>
-</figure>
-</div>
-<ul>
-<li>PGM notation has a built-in tool for this: <strong>plates!</strong></li>
-</ul>
-<div class="quarto-figure quarto-figure-center">
-<figure>
-<p><img data-src="images/pgm_plates.svg" class="quarto-figure quarto-figure-center"></p>
-</figure>
-</div>
-</section>
-<section id="references" class="slide level2 smaller scrollable">
-<h2>References</h2>
-<div id="refs" class="references csl-bib-body hanging-indent" data-entry-spacing="0" role="list">
-<div id="ref-finetti_probability_1972" class="csl-entry" role="listitem">
-Finetti, Bruno de. 1972. <em>Probability, <span>Induction</span> and <span>Statistics</span>: <span>The Art</span> of <span>Guessing</span></em>. J. Wiley.
-</div>
-<div id="ref-hume_treatise_1739" class="csl-entry" role="listitem">
-Hume, David. 1739. <em>A <span>Treatise</span> of <span>Human Nature</span>: <span>Being</span> an <span>Attempt</span> to <span>Introduce</span> the <span>Experimental Method</span> of <span>Reasoning Into Moral Subjects</span>; and <span>Dialogues Concerning Natural Religion</span></em>. Longmans, Green.
-</div>
-<div id="ref-iyengar_news_2010" class="csl-entry" role="listitem">
-Iyengar, Shanto, and Donald R. Kinder. 2010. <em>News <span>That Matters</span>: <span>Television</span> &amp; <span>American Opinion</span></em>. University of Chicago Press.
-</div>
-<div id="ref-pearl_causality_2000" class="csl-entry" role="listitem">
-Pearl, Judea. 2000. <em>Causality: <span>Models</span>, <span>Reasoning</span>, and <span>Inference</span></em>. Cambridge University Press.
-</div>
-</div>
+          </div>
+          <div class="quarto-layout-panel" data-layout="[50,50]">
+            <div class="quarto-layout-row quarto-layout-valign-center">
+              <div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
+                <div class="quarto-figure quarto-figure-center">
+                  <figure>
+                    <p><img data-src="images/iyengar_treatment.jpg" class="quarto-figure quarto-figure-center"></p>
+                  </figure>
+                </div>
+              </div>
+              <div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
+                <div class="quarto-figure quarto-figure-center">
+                  <figure>
+                    <p><img data-src="images/iyengar_control.jpg" class="quarto-figure quarto-figure-center"></p>
+                  </figure>
+                </div>
+              </div>
+            </div>
+          </div>
+          <ul>
+            <li>…These are the types of things we usually <strong>don’t</strong> have control over as data scientists
+              (we’re just handed a <code>.csv</code>!)</li>
+          </ul>
+        </section>
+        <section id="the-final-piece-plate-notation" class="slide level2">
+          <h2>The Final Piece: Plate Notation</h2>
+          <ul>
+            <li>For describing general distributions, there is often a “single node generating a bunch of nodes”
+              structure:</li>
+          </ul>
+          <div class="quarto-figure quarto-figure-center">
+            <figure>
+              <p><img data-src="images/hmm_clusters_single_dist.svg" class="quarto-figure quarto-figure-center"></p>
+            </figure>
+          </div>
+          <ul>
+            <li>PGM notation has a built-in tool for this: <strong>plates!</strong></li>
+          </ul>
+          <div class="quarto-figure quarto-figure-center">
+            <figure>
+              <p><img data-src="images/pgm_plates.svg" class="quarto-figure quarto-figure-center"></p>
+            </figure>
+          </div>
+        </section>
+        <section id="references" class="slide level2 smaller scrollable">
+          <h2>References</h2>
+          <div id="refs" class="references csl-bib-body hanging-indent" data-entry-spacing="0" role="list">
+            <div id="ref-finetti_probability_1972" class="csl-entry" role="listitem">
+              Finetti, Bruno de. 1972. <em>Probability, <span>Induction</span> and <span>Statistics</span>: <span>The
+                  Art</span> of <span>Guessing</span></em>. J. Wiley.
+            </div>
+            <div id="ref-hume_treatise_1739" class="csl-entry" role="listitem">
+              Hume, David. 1739. <em>A <span>Treatise</span> of <span>Human Nature</span>: <span>Being</span> an
+                <span>Attempt</span> to <span>Introduce</span> the <span>Experimental Method</span> of <span>Reasoning
+                  Into Moral Subjects</span>; and <span>Dialogues Concerning Natural Religion</span></em>. Longmans,
+              Green.
+            </div>
+            <div id="ref-iyengar_news_2010" class="csl-entry" role="listitem">
+              Iyengar, Shanto, and Donald R. Kinder. 2010. <em>News <span>That Matters</span>: <span>Television</span>
+                &amp; <span>American Opinion</span></em>. University of Chicago Press.
+            </div>
+            <div id="ref-pearl_causality_2000" class="csl-entry" role="listitem">
+              Pearl, Judea. 2000. <em>Causality: <span>Models</span>, <span>Reasoning</span>, and
+                <span>Inference</span></em>. Cambridge University Press.
+            </div>
+          </div>
 
-<div class="quarto-auto-generated-content">
-<div class="footer footer-default">
-<p>DSAN 5650 Week 2: Probabilistic Graphical Models (PGMs)</p>
-</div>
-</div>
-</section></section>
+          <div class="quarto-auto-generated-content">
+            <div class="footer footer-default">
+              <p>DSAN 5650 Week 2: Probabilistic Graphical Models (PGMs)</p>
+            </div>
+          </div>
+        </section>
+      </section>
     </div>
   </div>
 
@@ -1266,7 +1738,7 @@ Pearl, Judea. 2000. <em>Causality: <span>Models</span>, <span>Reasoning</span>, 
   <script src="../site_libs/revealjs/plugin/reveal-menu/quarto-menu.js"></script>
   <script src="../site_libs/revealjs/plugin/simplemenu/simplemenu.js"></script>
   <script src="../site_libs/revealjs/plugin/quarto-support/support.js"></script>
-  
+
 
   <script src="../site_libs/revealjs/plugin/notes/notes.js"></script>
   <script src="../site_libs/revealjs/plugin/search/search.js"></script>
@@ -1276,197 +1748,197 @@ Pearl, Judea. 2000. <em>Causality: <span>Models</span>, <span>Reasoning</span>, 
 
   <script>
 
-      // Full list of configuration options available at:
-      // https://revealjs.com/config/
-      Reveal.initialize({
-'controlsAuto': true,
-'previewLinksAuto': false,
-'pdfSeparateFragments': false,
-'autoAnimateEasing': "ease",
-'autoAnimateDuration': 1,
-'autoAnimateUnmatched': true,
-'menu': {"side":"left","useTextContentForMissingTitles":true,"markers":false,"loadIcons":false,"custom":[{"title":"Tools","icon":"<i class=\"fas fa-gear\"></i>","content":"<ul class=\"slide-menu-items\">\n<li class=\"slide-tool-item active\" data-item=\"0\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.fullscreen(event)\"><kbd>f</kbd> Fullscreen</a></li>\n<li class=\"slide-tool-item\" data-item=\"1\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.speakerMode(event)\"><kbd>s</kbd> Speaker View</a></li>\n<li class=\"slide-tool-item\" data-item=\"2\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.overview(event)\"><kbd>o</kbd> Slide Overview</a></li>\n<li class=\"slide-tool-item\" data-item=\"3\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.togglePdfExport(event)\"><kbd>e</kbd> PDF Export Mode</a></li>\n<li class=\"slide-tool-item\" data-item=\"4\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.keyboardHelp(event)\"><kbd>?</kbd> Keyboard Help</a></li>\n</ul>"}],"openButton":true},
-'simplemenu': {"menubarclass":"menubar","menuclass":"menu","activeclass":"active","activeelement":"li","flat":true,"barhtml":{"header":"<div class='menubar'><span style='position: absolute; left: 8; padding-left: 8px;'><a href='./index.html'>&larr; Return to Notes</a></span><ul class='menu'></ul></div>","footer":""},"scale":0.5},
-'smaller': false,
- 
-        // Display controls in the bottom right corner
-        controls: false,
+    // Full list of configuration options available at:
+    // https://revealjs.com/config/
+    Reveal.initialize({
+      'controlsAuto': true,
+      'previewLinksAuto': false,
+      'pdfSeparateFragments': false,
+      'autoAnimateEasing': "ease",
+      'autoAnimateDuration': 1,
+      'autoAnimateUnmatched': true,
+      'menu': { "side": "left", "useTextContentForMissingTitles": true, "markers": false, "loadIcons": false, "custom": [{ "title": "Tools", "icon": "<i class=\"fas fa-gear\"></i>", "content": "<ul class=\"slide-menu-items\">\n<li class=\"slide-tool-item active\" data-item=\"0\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.fullscreen(event)\"><kbd>f</kbd> Fullscreen</a></li>\n<li class=\"slide-tool-item\" data-item=\"1\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.speakerMode(event)\"><kbd>s</kbd> Speaker View</a></li>\n<li class=\"slide-tool-item\" data-item=\"2\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.overview(event)\"><kbd>o</kbd> Slide Overview</a></li>\n<li class=\"slide-tool-item\" data-item=\"3\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.togglePdfExport(event)\"><kbd>e</kbd> PDF Export Mode</a></li>\n<li class=\"slide-tool-item\" data-item=\"4\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.keyboardHelp(event)\"><kbd>?</kbd> Keyboard Help</a></li>\n</ul>" }], "openButton": true },
+      'simplemenu': { "menubarclass": "menubar", "menuclass": "menu", "activeclass": "active", "activeelement": "li", "flat": true, "barhtml": { "header": "<div class='menubar'><span style='position: absolute; left: 8; padding-left: 8px;'><a href='./index.html'>&larr; Return to Notes</a></span><ul class='menu'></ul></div>", "footer": "" }, "scale": 0.5 },
+      'smaller': false,
 
-        // Help the user learn the controls by providing hints, for example by
-        // bouncing the down arrow when they first encounter a vertical slide
-        controlsTutorial: false,
+      // Display controls in the bottom right corner
+      controls: false,
 
-        // Determines where controls appear, "edges" or "bottom-right"
-        controlsLayout: 'edges',
+      // Help the user learn the controls by providing hints, for example by
+      // bouncing the down arrow when they first encounter a vertical slide
+      controlsTutorial: false,
 
-        // Visibility rule for backwards navigation arrows; "faded", "hidden"
-        // or "visible"
-        controlsBackArrows: 'faded',
+      // Determines where controls appear, "edges" or "bottom-right"
+      controlsLayout: 'edges',
 
-        // Display a presentation progress bar
-        progress: true,
+      // Visibility rule for backwards navigation arrows; "faded", "hidden"
+      // or "visible"
+      controlsBackArrows: 'faded',
 
-        // Display the page number of the current slide
-        slideNumber: 'c/t',
+      // Display a presentation progress bar
+      progress: true,
 
-        // 'all', 'print', or 'speaker'
-        showSlideNumber: 'all',
+      // Display the page number of the current slide
+      slideNumber: 'c/t',
 
-        // Add the current slide number to the URL hash so that reloading the
-        // page/copying the URL will return you to the same slide
-        hash: true,
+      // 'all', 'print', or 'speaker'
+      showSlideNumber: 'all',
 
-        // Start with 1 for the hash rather than 0
-        hashOneBasedIndex: false,
+      // Add the current slide number to the URL hash so that reloading the
+      // page/copying the URL will return you to the same slide
+      hash: true,
 
-        // Flags if we should monitor the hash and change slides accordingly
-        respondToHashChanges: true,
+      // Start with 1 for the hash rather than 0
+      hashOneBasedIndex: false,
 
-        // Push each slide change to the browser history
-        history: true,
+      // Flags if we should monitor the hash and change slides accordingly
+      respondToHashChanges: true,
 
-        // Enable keyboard shortcuts for navigation
-        keyboard: true,
+      // Push each slide change to the browser history
+      history: true,
 
-        // Enable the slide overview mode
-        overview: true,
+      // Enable keyboard shortcuts for navigation
+      keyboard: true,
 
-        // Disables the default reveal.js slide layout (scaling and centering)
-        // so that you can use custom CSS layout
-        disableLayout: false,
+      // Enable the slide overview mode
+      overview: true,
 
-        // Vertical centering of slides
-        center: false,
+      // Disables the default reveal.js slide layout (scaling and centering)
+      // so that you can use custom CSS layout
+      disableLayout: false,
 
-        // Enables touch navigation on devices with touch input
-        touch: true,
+      // Vertical centering of slides
+      center: false,
 
-        // Loop the presentation
-        loop: false,
+      // Enables touch navigation on devices with touch input
+      touch: true,
 
-        // Change the presentation direction to be RTL
-        rtl: false,
+      // Loop the presentation
+      loop: false,
 
-        // see https://revealjs.com/vertical-slides/#navigation-mode
-        navigationMode: 'linear',
+      // Change the presentation direction to be RTL
+      rtl: false,
 
-        // Randomizes the order of slides each time the presentation loads
-        shuffle: false,
+      // see https://revealjs.com/vertical-slides/#navigation-mode
+      navigationMode: 'linear',
 
-        // Turns fragments on and off globally
-        fragments: true,
+      // Randomizes the order of slides each time the presentation loads
+      shuffle: false,
 
-        // Flags whether to include the current fragment in the URL,
-        // so that reloading brings you to the same fragment position
-        fragmentInURL: false,
+      // Turns fragments on and off globally
+      fragments: true,
 
-        // Flags if the presentation is running in an embedded mode,
-        // i.e. contained within a limited portion of the screen
-        embedded: false,
+      // Flags whether to include the current fragment in the URL,
+      // so that reloading brings you to the same fragment position
+      fragmentInURL: false,
 
-        // Flags if we should show a help overlay when the questionmark
-        // key is pressed
-        help: true,
+      // Flags if the presentation is running in an embedded mode,
+      // i.e. contained within a limited portion of the screen
+      embedded: false,
 
-        // Flags if it should be possible to pause the presentation (blackout)
-        pause: true,
+      // Flags if we should show a help overlay when the questionmark
+      // key is pressed
+      help: true,
 
-        // Flags if speaker notes should be visible to all viewers
-        showNotes: false,
+      // Flags if it should be possible to pause the presentation (blackout)
+      pause: true,
 
-        // Global override for autoplaying embedded media (null/true/false)
-        autoPlayMedia: null,
+      // Flags if speaker notes should be visible to all viewers
+      showNotes: false,
 
-        // Global override for preloading lazy-loaded iframes (null/true/false)
-        preloadIframes: null,
+      // Global override for autoplaying embedded media (null/true/false)
+      autoPlayMedia: null,
 
-        // Number of milliseconds between automatically proceeding to the
-        // next slide, disabled when set to 0, this value can be overwritten
-        // by using a data-autoslide attribute on your slides
-        autoSlide: 0,
+      // Global override for preloading lazy-loaded iframes (null/true/false)
+      preloadIframes: null,
 
-        // Stop auto-sliding after user input
-        autoSlideStoppable: true,
+      // Number of milliseconds between automatically proceeding to the
+      // next slide, disabled when set to 0, this value can be overwritten
+      // by using a data-autoslide attribute on your slides
+      autoSlide: 0,
 
-        // Use this method for navigation when auto-sliding
-        autoSlideMethod: null,
+      // Stop auto-sliding after user input
+      autoSlideStoppable: true,
 
-        // Specify the average time in seconds that you think you will spend
-        // presenting each slide. This is used to show a pacing timer in the
-        // speaker view
-        defaultTiming: null,
+      // Use this method for navigation when auto-sliding
+      autoSlideMethod: null,
 
-        // Enable slide navigation via mouse wheel
-        mouseWheel: false,
+      // Specify the average time in seconds that you think you will spend
+      // presenting each slide. This is used to show a pacing timer in the
+      // speaker view
+      defaultTiming: null,
 
-        // The display mode that will be used to show slides
-        display: 'block',
+      // Enable slide navigation via mouse wheel
+      mouseWheel: false,
 
-        // Hide cursor if inactive
-        hideInactiveCursor: true,
+      // The display mode that will be used to show slides
+      display: 'block',
 
-        // Time before the cursor is hidden (in ms)
-        hideCursorTime: 5000,
+      // Hide cursor if inactive
+      hideInactiveCursor: true,
 
-        // Opens links in an iframe preview overlay
-        previewLinks: false,
+      // Time before the cursor is hidden (in ms)
+      hideCursorTime: 5000,
 
-        // Transition style (none/fade/slide/convex/concave/zoom)
-        transition: 'none',
+      // Opens links in an iframe preview overlay
+      previewLinks: false,
 
-        // Transition speed (default/fast/slow)
-        transitionSpeed: 'default',
+      // Transition style (none/fade/slide/convex/concave/zoom)
+      transition: 'none',
 
-        // Transition style for full page slide backgrounds
-        // (none/fade/slide/convex/concave/zoom)
-        backgroundTransition: 'none',
+      // Transition speed (default/fast/slow)
+      transitionSpeed: 'default',
 
-        // Number of slides away from the current that are visible
-        viewDistance: 3,
+      // Transition style for full page slide backgrounds
+      // (none/fade/slide/convex/concave/zoom)
+      backgroundTransition: 'none',
 
-        // Number of slides away from the current that are visible on mobile
-        // devices. It is advisable to set this to a lower number than
-        // viewDistance in order to save resources.
-        mobileViewDistance: 2,
+      // Number of slides away from the current that are visible
+      viewDistance: 3,
 
-        // The "normal" size of the presentation, aspect ratio will be preserved
-        // when the presentation is scaled to fit different resolutions. Can be
-        // specified using percentage units.
-        width: 1050,
+      // Number of slides away from the current that are visible on mobile
+      // devices. It is advisable to set this to a lower number than
+      // viewDistance in order to save resources.
+      mobileViewDistance: 2,
 
-        height: 700,
+      // The "normal" size of the presentation, aspect ratio will be preserved
+      // when the presentation is scaled to fit different resolutions. Can be
+      // specified using percentage units.
+      width: 1050,
 
-        // Factor of the display size that should remain empty around the content
-        margin: 0.1,
+      height: 700,
 
-        math: {
-          mathjax: 'https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js',
-          config: 'TeX-AMS_HTML-full',
-          tex2jax: {
-            inlineMath: [['\\(','\\)']],
-            displayMath: [['\\[','\\]']],
-            balanceBraces: true,
-            processEscapes: false,
-            processRefs: true,
-            processEnvironments: true,
-            preview: 'TeX',
-            skipTags: ['script','noscript','style','textarea','pre','code'],
-            ignoreClass: 'tex2jax_ignore',
-            processClass: 'tex2jax_process'
-          },
+      // Factor of the display size that should remain empty around the content
+      margin: 0.1,
+
+      math: {
+        mathjax: 'https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js',
+        config: 'TeX-AMS_HTML-full',
+        tex2jax: {
+          inlineMath: [['\\(', '\\)']],
+          displayMath: [['\\[', '\\]']],
+          balanceBraces: true,
+          processEscapes: false,
+          processRefs: true,
+          processEnvironments: true,
+          preview: 'TeX',
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+          ignoreClass: 'tex2jax_ignore',
+          processClass: 'tex2jax_process'
         },
+      },
 
-        // reveal.js plugins
-        plugins: [QuartoLineHighlight, PdfExport, RevealMenu, Simplemenu, QuartoSupport,
+      // reveal.js plugins
+      plugins: [QuartoLineHighlight, PdfExport, RevealMenu, Simplemenu, QuartoSupport,
 
-          RevealMath,
-          RevealNotes,
-          RevealSearch,
-          RevealZoom
-        ]
-      });
-    </script>
-    <script id="quarto-html-after-body" type="application/javascript">
+        RevealMath,
+        RevealNotes,
+        RevealSearch,
+        RevealZoom
+      ]
+    });
+  </script>
+  <script id="quarto-html-after-body" type="application/javascript">
     window.document.addEventListener("DOMContentLoaded", function (event) {
       const toggleBodyColorMode = (bsSheetEl) => {
         const mode = bsSheetEl.getAttribute("data-mode");
@@ -1485,20 +1957,20 @@ Pearl, Judea. 2000. <em>Causality: <span>Models</span>, <span>Reasoning</span>, 
           toggleBodyColorMode(bsSheetEl);
         }
       }
-      toggleBodyColorPrimary();  
-      const tabsets =  window.document.querySelectorAll(".panel-tabset-tabby")
-      tabsets.forEach(function(tabset) {
+      toggleBodyColorPrimary();
+      const tabsets = window.document.querySelectorAll(".panel-tabset-tabby")
+      tabsets.forEach(function (tabset) {
         const tabby = new Tabby('#' + tabset.id);
       });
       const isCodeAnnotation = (el) => {
         for (const clz of el.classList) {
-          if (clz.startsWith('code-annotation-')) {                     
+          if (clz.startsWith('code-annotation-')) {
             return true;
           }
         }
         return false;
       }
-      const onCopySuccess = function(e) {
+      const onCopySuccess = function (e) {
         // button target
         const button = e.trigger;
         // don't keep focus
@@ -1512,13 +1984,15 @@ Pearl, Judea. 2000. <em>Causality: <span>Models</span>, <span>Reasoning</span>, 
           button.setAttribute("data-bs-toggle", "tooltip");
           button.setAttribute("data-bs-placement", "left");
           button.setAttribute("data-bs-title", "Copied!");
-          tooltip = new bootstrap.Tooltip(button, 
-            { trigger: "manual", 
+          tooltip = new bootstrap.Tooltip(button,
+            {
+              trigger: "manual",
               customClass: "code-copy-button-tooltip",
-              offset: [0, -8]});
-          tooltip.show();    
+              offset: [0, -8]
+            });
+          tooltip.show();
         }
-        setTimeout(function() {
+        setTimeout(function () {
           if (tooltip) {
             tooltip.hide();
             button.removeAttribute("data-bs-title");
@@ -1531,14 +2005,14 @@ Pearl, Judea. 2000. <em>Causality: <span>Models</span>, <span>Reasoning</span>, 
         // clear code selection
         e.clearSelection();
       }
-      const getTextToCopy = function(trigger) {
-          const codeEl = trigger.previousElementSibling.cloneNode(true);
-          for (const childEl of codeEl.children) {
-            if (isCodeAnnotation(childEl)) {
-              childEl.remove();
-            }
+      const getTextToCopy = function (trigger) {
+        const codeEl = trigger.previousElementSibling.cloneNode(true);
+        for (const childEl of codeEl.children) {
+          if (isCodeAnnotation(childEl)) {
+            childEl.remove();
           }
-          return codeEl.innerText;
+        }
+        return codeEl.innerText;
       }
       const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
         text: getTextToCopy
@@ -1553,39 +2027,39 @@ Pearl, Judea. 2000. <em>Causality: <span>Models</span>, <span>Reasoning</span>, 
         });
         clipboardModal.on('success', onCopySuccess);
       }
-        var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
-        var mailtoRegex = new RegExp(/^mailto:/);
-          var filterRegex = new RegExp('/' + window.location.host + '/');
-        var isInternal = (href) => {
-            return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
-        }
-        // Inspect non-navigation links and adorn them if external
-     	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
-        for (var i=0; i<links.length; i++) {
-          const link = links[i];
-          if (!isInternal(link.href)) {
-            // undo the damage that might have been done by quarto-nav.js in the case of
-            // links that we want to consider external
-            if (link.dataset.originalHref !== undefined) {
-              link.href = link.dataset.originalHref;
-            }
-              // target, if specified
-              link.setAttribute("target", "_blank");
-              if (link.getAttribute("rel") === null) {
-                link.setAttribute("rel", "noopener");
-              }
-              // default icon
-              link.classList.add("external");
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+      var filterRegex = new RegExp('/' + window.location.host + '/');
+      var isInternal = (href) => {
+        return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+      var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i = 0; i < links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
           }
+          // target, if specified
+          link.setAttribute("target", "_blank");
+          if (link.getAttribute("rel") === null) {
+            link.setAttribute("rel", "noopener");
+          }
+          // default icon
+          link.classList.add("external");
         }
+      }
       function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
         const config = {
           allowHTML: true,
           maxWidth: 500,
           delay: 100,
           arrow: false,
-          appendTo: function(el) {
-              return el.closest('section.slide') || el.parentElement;
+          appendTo: function (el) {
+            return el.closest('section.slide') || el.parentElement;
           },
           interactive: true,
           interactiveBorder: 10,
@@ -1601,17 +2075,17 @@ Pearl, Judea. 2000. <em>Causality: <span>Models</span>, <span>Reasoning</span>, 
         if (onUntriggerFn) {
           config.onUntrigger = onUntriggerFn;
         }
-          config['offset'] = [0,0];
-          config['maxWidth'] = 700;
-        window.tippy(el, config); 
+        config['offset'] = [0, 0];
+        config['maxWidth'] = 700;
+        window.tippy(el, config);
       }
       const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
-      for (var i=0; i<noterefs.length; i++) {
+      for (var i = 0; i < noterefs.length; i++) {
         const ref = noterefs[i];
-        tippyHover(ref, function() {
+        tippyHover(ref, function () {
           // use id or data attribute instead here
           let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
-          try { href = new URL(href).hash; } catch {}
+          try { href = new URL(href).hash; } catch { }
           const id = href.replace(/^#\/?/, "");
           const note = window.document.getElementById(id);
           if (note) {
@@ -1638,13 +2112,13 @@ Pearl, Judea. 2000. <em>Causality: <span>Models</span>, <span>Reasoning</span>, 
         }
       };
       var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
-      for (var i=0; i<bibliorefs.length; i++) {
+      for (var i = 0; i < bibliorefs.length; i++) {
         const ref = bibliorefs[i];
         const citeInfo = findCites(ref);
         if (citeInfo) {
-          tippyHover(citeInfo.el, function() {
+          tippyHover(citeInfo.el, function () {
             var popup = window.document.createElement('div');
-            citeInfo.cites.forEach(function(cite) {
+            citeInfo.cites.forEach(function (cite) {
               var citeDiv = window.document.createElement('div');
               citeDiv.classList.add('hanging-indent');
               citeDiv.classList.add('csl-entry');
@@ -1659,9 +2133,11 @@ Pearl, Judea. 2000. <em>Causality: <span>Models</span>, <span>Reasoning</span>, 
         }
       }
     });
-    </script>
-    <script>videojs(video_shortcode_videojs_video1);</script>
-    <script>videojs(video_shortcode_videojs_video2);</script>
-    
+  </script>
+  <script>videojs(video_shortcode_videojs_video1);</script>
+  <script>videojs(video_shortcode_videojs_video2);</script>
 
-</body></html>
+
+</body>
+
+</html>
