@@ -170,7 +170,7 @@
     "href": "w02/index.html#wendy-hu",
     "title": "Week 2: Probabilistic Graphical Models (PGMs)",
     "section": "Wendy Hu",
-    "text": "Wendy Hu",
+    "text": "Wendy Hu\nBackground: BS in Social Work, passionate about advancing social equity through computational tools\nInterest: I bring a background in social welfare, public health, and NGO data, with experience analyzing behavioral and institutional outcomes. My work spans Indigenous health, gender equity, and trauma-informed service design—always with a focus on equity, system change, and policy relevance.\n\nAsk me about: Framing social justice questions in data terms, working with community or clinical datasets and interpreting model results in context.\nIf you’re designing a project around health, inequality, nonprofit impact, or any socially embedded issue—I’d love to help bridge rigor and relevance.",
     "crumbs": [
       "Week 2: {{< var w02.date-md >}}"
     ]
@@ -524,7 +524,7 @@
     "href": "w02/slides.html#wendy-hu",
     "title": "Week 2: Probabilistic Graphical Models (PGMs)",
     "section": "Wendy Hu",
-    "text": "Wendy Hu"
+    "text": "Wendy Hu\nBackground: BS in Social Work, passionate about advancing social equity through computational tools\nInterest: I bring a background in social welfare, public health, and NGO data, with experience analyzing behavioral and institutional outcomes. My work spans Indigenous health, gender equity, and trauma-informed service design—always with a focus on equity, system change, and policy relevance.\n\nAsk me about: Framing social justice questions in data terms, working with community or clinical datasets and interpreting model results in context.\nIf you’re designing a project around health, inequality, nonprofit impact, or any socially embedded issue—I’d love to help bridge rigor and relevance."
   },
   {
     "objectID": "w02/slides.html#technical-issues-jupyterhub",
