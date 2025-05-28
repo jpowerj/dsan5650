@@ -500,7 +500,7 @@
     "href": "w02/slides.html#courtney-green",
     "title": "Week 2: Probabilistic Graphical Models (PGMs)",
     "section": "Courtney Green",
-    "text": "Courtney Green"
+    "text": "Courtney Green\nBackground: BA in Public Policy & Leadership, now interested in using data to examine structural disparities.\nInterests & what I can help with: How sociodemographic factors (e.g., race, gender, income, immigration status, education level) shape policy outcomes and institutional practices in areas like criminal justice, housing, healthcare, education, and environment.\n\nAsk me about: Counterfactual balancing, handling messy or privacy-limited datasets, and framing causal questions around inequality.\nReach out if you’re thinking about a final project that touches social systems, systemic inequity, or fairness!"
   },
   {
     "objectID": "w02/slides.html#wendy-hu",
@@ -738,7 +738,7 @@
     "href": "w02/slides.html#references",
     "title": "Week 2: Probabilistic Graphical Models (PGMs)",
     "section": "References",
-    "text": "References\n\n\nFinetti, Bruno de. 1972. Probability, Induction and Statistics: The Art of Guessing. J. Wiley.\n\n\nHume, David. 1739. A Treatise of Human Nature: Being an Attempt to Introduce the Experimental Method of Reasoning Into Moral Subjects; and Dialogues Concerning Natural Religion. Longmans, Green.\n\n\nIyengar, Shanto, and Donald R. Kinder. 2010. News That Matters: Television & American Opinion. University of Chicago Press.\n\n\nPearl, Judea. 2000. Causality: Models, Reasoning, and Inference. Cambridge University Press."
+    "text": "References\n\n\nFinetti, Bruno de. 1972. Probability, Induction and Statistics: The Art of Guessing. J. Wiley.\n\n\nHume, David. 1739. A Treatise of Human Nature: Being an Attempt to Introduce the Experimental Method of Reasoning Into Moral Subjects; and Dialogues Concerning Natural Religion. Longmans, Green.\n\n\nIyengar, Shanto, and Donald R. Kinder. 2010. News That Matters: Television & American Opinion. University of Chicago Press.\n\n\nPearl, Judea. 2000. Causality: Models, Reasoning, and Inference. Cambridge University Press.\n\n\n\n\n\nDSAN 5650 Week 2: Probabilistic Graphical Models (PGMs)"
   },
   {
     "objectID": "writeups/index.html",
@@ -1248,5 +1248,19 @@
     "crumbs": [
       "Syllabus"
     ]
+  },
+  {
+    "objectID": "w02/slides.html#interests-what-i-can-help-with",
+    "href": "w02/slides.html#interests-what-i-can-help-with",
+    "title": "Week 2: Probabilistic Graphical Models (PGMs)",
+    "section": "Interests & what I can help with",
+    "text": "Interests & what I can help with"
+  },
+  {
+    "objectID": "w02/slides.html#what-got-me-interested-in-causal-inference",
+    "href": "w02/slides.html#what-got-me-interested-in-causal-inference",
+    "title": "Week 2: Probabilistic Graphical Models (PGMs)",
+    "section": "What Got Me Interested in Causal Inference",
+    "text": "What Got Me Interested in Causal Inference\n5000 Project: Over-Policing and Wrongful Convictions in Illinois\n\nMotivation: Explore what demographic factors predict wrongful convictions using real exoneration data.\nChallenge: No data on “non-exonerated innocents,” so I (with prof’s help) created a counterfactual dataset by sampling from the incarcerated population\nMethod: Trained models (logistic regression, random forest, KNN) on a balanced dataset of 548 exonerated and 548 non-exonerated individuals\nFinding: Race and geography (esp. Cook Count/Chicago) were the strongest predictors of exoneration\nTakeaway: Questions about systemic bias can’t be answered with just descriptive stats, you need counterfactual reasoning and causal inference\n\n(Optional) View the counterfactual setup"
   }
 ]
