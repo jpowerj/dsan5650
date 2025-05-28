@@ -537,6 +537,13 @@ font-size: 90% !important;
 font-size: 95% !important;
 }
 
+.reveal .title {
+    font-size: 200% !important;
+}
+.reveal .subtitle {
+    font-size: 90% !important;
+}
+
 .title-06 h2, .title-06 h1 {
     font-size: calc(0.6 * var(--r-heading2-size)) !important;
 }
