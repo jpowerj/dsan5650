@@ -106,14 +106,13 @@ Today's Planned Schedule:
 
 ## Wendy Hu
 
-**Background:** BS in Social Work, passionate about advancing social equity through computaitonal tools
+**Background:** BS in Social Work, passionate about advancing social equity through computational tools
 
 **Interest:** I bring a background in social welfare, public health, and NGO data, with experience analyzing behavioral and institutional outcomes. My work spans Indigenous health, gender equity, and trauma-informed service design—always with a focus on equity, system change, and policy relevance.
 
 * **Ask me about:** Framing social justice questions in data terms, working with community or clinical datasets and interpreting model results in context.
-* 
-* If you’re designing a project around health, inequality, nonprofit impact, or any socially embedded issue—I’d love to help bridge rigor and relevance.
 
+* If you’re designing a project around health, inequality, nonprofit impact, or any socially embedded issue—I’d love to help bridge rigor and relevance.
 
 # HW1 Questions and/or Concerns {data-stack-name="HW1"}
 
