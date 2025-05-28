@@ -104,14 +104,11 @@ Today's Planned Schedule:
 <span style="font-size: 80%;">[(Optional) View the counterfactual setup](https://crg123.georgetown.domains/projects/dsan-5000/_site/technical-details/data-balancing/main.html)</span>
 
 
-## Wendy Hu
+## Wendy Hu {.crunch-title .text-82 .crunch-ul}
 
-**Background:** BS in Social Work, passionate about advancing social equity through computational tools
-
-**Interest:** I bring a background in social welfare, public health, and NGO data, with experience analyzing behavioral and institutional outcomes. My work spans Indigenous health, gender equity, and trauma-informed service design—always with a focus on equity, system change, and policy relevance.
-
+* **Background:** BS in Social Work, passionate about advancing social equity through computational tools
+* **Interest:** I bring a background in social welfare, public health, and NGO data, with experience analyzing behavioral and institutional outcomes. My work spans Indigenous health, gender equity, and trauma-informed service design—always with a focus on equity, system change, and policy relevance.
 * **Ask me about:** Framing social justice questions in data terms, working with community or clinical datasets and interpreting model results in context.
-
 * If you’re designing a project around health, inequality, nonprofit impact, or any socially embedded issue—I’d love to help bridge rigor and relevance.
 
 # HW1 Questions and/or Concerns {data-stack-name="HW1"}

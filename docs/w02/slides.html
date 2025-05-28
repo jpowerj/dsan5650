@@ -117,7 +117,7 @@
     div.csl-indent {
       margin-left: 2em;
     }  </style>
-  <link rel="stylesheet" href="../site_libs/revealjs/dist/theme/quarto-3acbdb777127f0c96ee1b4923a9556d4.css">
+  <link rel="stylesheet" href="../site_libs/revealjs/dist/theme/quarto-c1856fe0ed50d2cd52c7955f33a2b3e0.css">
   <link href="../site_libs/revealjs/plugin/quarto-line-highlight/line-highlight.css" rel="stylesheet">
   <link href="../site_libs/revealjs/plugin/reveal-menu/menu.css" rel="stylesheet">
   <link href="../site_libs/revealjs/plugin/reveal-menu/quarto-menu.css" rel="stylesheet">
@@ -327,7 +327,8 @@ Jeff Jacobs
 \newcommand{\outcome}[1]{\textsf{#1}}
 \newcommand{\param}[1]{{\color{purple} #1}}
 \newcommand{\pgsamplespace}{\{\green{1},\green{2},\green{3},\purp{4},\purp{5},\purp{6}\}}
-\newcommand{\prob}[1]{P\left( #1 \right)}
+\newcommand{\pedge}[2]{\require{enclose}\enclose{circle}{~{#1}~} \rightarrow \; \enclose{circle}{\kern.01em {#2}~\kern.01em}}
+\newcommand{\pnode}[1]{\require{enclose}\enclose{circle}{~{#1}~}}
 \newcommand{\purp}[1]{\color{purple}{#1}}
 \newcommand{\sign}{\text{Sign}}
 \newcommand{\spacecap}{\; \cap \;}
@@ -374,13 +375,13 @@ Jeff Jacobs
 </ul>
 <p><span style="font-size: 80%;"><a href="https://crg123.georgetown.domains/projects/dsan-5000/_site/technical-details/data-balancing/main.html">(Optional) View the counterfactual setup</a></span></p>
 </section>
-<section id="wendy-hu" class="slide level2">
+<section id="wendy-hu" class="slide level2 crunch-title text-82 crunch-ul">
 <h2>Wendy Hu</h2>
-<p><strong>Background:</strong> BS in Social Work, passionate about advancing social equity through computational tools</p>
-<p><strong>Interest:</strong> I bring a background in social welfare, public health, and NGO data, with experience analyzing behavioral and institutional outcomes. My work spans Indigenous health, gender equity, and trauma-informed service design—always with a focus on equity, system change, and policy relevance.</p>
 <ul>
-<li><p><strong>Ask me about:</strong> Framing social justice questions in data terms, working with community or clinical datasets and interpreting model results in context.</p></li>
-<li><p>If you’re designing a project around health, inequality, nonprofit impact, or any socially embedded issue—I’d love to help bridge rigor and relevance.</p></li>
+<li><strong>Background:</strong> BS in Social Work, passionate about advancing social equity through computational tools</li>
+<li><strong>Interest:</strong> I bring a background in social welfare, public health, and NGO data, with experience analyzing behavioral and institutional outcomes. My work spans Indigenous health, gender equity, and trauma-informed service design—always with a focus on equity, system change, and policy relevance.</li>
+<li><strong>Ask me about:</strong> Framing social justice questions in data terms, working with community or clinical datasets and interpreting model results in context.</li>
+<li>If you’re designing a project around health, inequality, nonprofit impact, or any socially embedded issue—I’d love to help bridge rigor and relevance.</li>
 </ul>
 </section></section>
 <section>
@@ -436,7 +437,7 @@ Jeff Jacobs
 <div>
 
 </div>
-<div class="quarto-layout-panel" data-layout="[55,45]" data-layout-align="center">
+<div class="quarto-layout-panel" data-layout-align="center" data-layout="[55,45]">
 <div class="quarto-layout-row quarto-layout-valign-center">
 <div id="dgps-5100" class="quarto-layout-cell" style="flex-basis: 55.0%;justify-content: center;">
 <ul>
@@ -945,7 +946,7 @@ Figure&nbsp;3: Your model failing to achieve its goal bc you haven’t yet disti
 <div>
 
 </div>
-<div class="quarto-layout-panel" data-layout="[65,35]" data-layout-align="center">
+<div class="quarto-layout-panel" data-layout-align="center" data-layout="[65,35]">
 <div class="quarto-layout-row quarto-layout-valign-center">
 <div id="iyengar-text" class="quarto-layout-cell" style="flex-basis: 65.0%;justify-content: center;">
 <div class="quarto-figure quarto-figure-center">
