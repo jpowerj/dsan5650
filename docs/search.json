@@ -270,7 +270,7 @@
     "href": "w02/index.html#so-whats-the-problem",
     "title": "Week 2: Probabilistic Graphical Models (PGMs)",
     "section": "So What’s the Problem?",
-    "text": "So What’s the Problem?\n\nNon-probabilistic models: High potential for being garbage\n\ntldr: even if SUPER certain, using \\(\\Pr(\\mathcal{H}) = 1-\\varepsilon\\) with tiny \\(\\varepsilon\\) has literal life-saving advantages (Finetti 1972)\n\nProbabilistic models: Getting there, still looking at “surface”\n\nOf the \\(N = 100\\) times we observed event \\(X\\) occurring, event \\(Y\\) also occurred \\(90\\) of those times\n\\(\\implies \\Pr(Y \\mid X) = \\frac{\\#[X, Y]}{\\#[X]} = \\frac{90}{100} = 0.9\\)\n\nCausal models: Does \\(Y\\) happen because of \\(X\\) happening? For that, need to start modeling what’s happening under the surface making \\(X\\) and \\(Y\\) “pop up” together so often",
+    "text": "So What’s the Problem?\n\nNon-probabilistic models: High potential for being garbage\n\ntldr: even if SUPER certain, using \\(\\Pr(\\mathcal{H}) = 1-\\varepsilon\\) with tiny \\(\\varepsilon\\) has literal life-saving advantages1 (Finetti 1972)\n\nProbabilistic models: Getting there, still looking at “surface”\n\nOf the \\(N = 100\\) times we observed event \\(X\\) occurring, event \\(Y\\) also occurred \\(90\\) of those times\n\\(\\implies \\Pr(Y \\mid X) = \\frac{\\#[X, Y]}{\\#[X]} = \\frac{90}{100} = 0.9\\)\n\nCausal models: Does \\(Y\\) happen because of \\(X\\) happening? For that, need to start modeling what’s happening under the surface making \\(X\\) and \\(Y\\) “pop up” together so often",
     "crumbs": [
       "Week 2: {{< var w02.date-md >}}"
     ]
@@ -530,7 +530,27 @@
     "href": "w02/index.html#references",
     "title": "Week 2: Probabilistic Graphical Models (PGMs)",
     "section": "References",
-    "text": "References\n\n\nFinetti, Bruno de. 1972. Probability, Induction and Statistics: The Art of Guessing. J. Wiley.\n\n\nHume, David. 1739. A Treatise of Human Nature: Being an Attempt to Introduce the Experimental Method of Reasoning Into Moral Subjects; and Dialogues Concerning Natural Religion. Longmans, Green.\n\n\nIyengar, Shanto, and Donald R. Kinder. 2010. News That Matters: Television & American Opinion. University of Chicago Press.\n\n\nPearl, Judea. 2000. Causality: Models, Reasoning, and Inference. Cambridge University Press. https://www.dropbox.com/scl/fi/4kfpro4gpx7tg55fwd7qt/Judea-Pearl-Causality_-Models-Reasoning-and-Inference.pdf?rlkey=f0abw0cgmsyiegx6xapq5z7j2&dl=1.",
+    "text": "References\n\n\nFinetti, Bruno de. 1972. Probability, Induction and Statistics: The Art of Guessing. J. Wiley.\n\n\nHume, David. 1739. A Treatise of Human Nature: Being an Attempt to Introduce the Experimental Method of Reasoning Into Moral Subjects; and Dialogues Concerning Natural Religion. Longmans, Green.\n\n\nIyengar, Shanto, and Donald R. Kinder. 2010. News That Matters: Television & American Opinion. University of Chicago Press.\n\n\nKoller, Daphne, and Nir Friedman. 2009. Probabilistic Graphical Models: Principles and Techniques. MIT Press. https://www.dropbox.com/scl/fi/6qmnr9feizngaq4005isj/Probabilistic-Graphical-Models.pdf?rlkey=4803nmsffh4xtsdfiji8jppb1&dl=1.\n\n\nPearl, Judea. 2000. Causality: Models, Reasoning, and Inference. Cambridge University Press. https://www.dropbox.com/scl/fi/4kfpro4gpx7tg55fwd7qt/Judea-Pearl-Causality_-Models-Reasoning-and-Inference.pdf?rlkey=f0abw0cgmsyiegx6xapq5z7j2&dl=1.",
+    "crumbs": [
+      "Week 2: {{< var w02.date-md >}}"
+    ]
+  },
+  {
+    "objectID": "w02/index.html#appendix-zero-probabilities",
+    "href": "w02/index.html#appendix-zero-probabilities",
+    "title": "Week 2: Probabilistic Graphical Models (PGMs)",
+    "section": "Appendix: Zero Probabilities",
+    "text": "Appendix: Zero Probabilities\nFrom Koller and Friedman (2009), pp. 66-67:\n\nZero probabilities: A common mistake is to assign a probability of zero to an event that is extremely unlikely, but not impossible. The problem is that one can never condition away a zero probability, no matter how much evidence we get. When an event is unlikely but not impossible, giving it probability zero is guaranteed to lead to irrecoverable errors. For example, in one of the early versions of the the Pathfinder system (box 3.D), 10 percent of the misdiagnoses were due to zero probability estimates given by the expert to events that were unlikely but not impossible.\n\n← Back to slide",
+    "crumbs": [
+      "Week 2: {{< var w02.date-md >}}"
+    ]
+  },
+  {
+    "objectID": "w02/index.html#footnotes",
+    "href": "w02/index.html#footnotes",
+    "title": "Week 2: Probabilistic Graphical Models (PGMs)",
+    "section": "Footnotes",
+    "text": "Footnotes\n\n\nSee Appendix Slide↩︎",
     "crumbs": [
       "Week 2: {{< var w02.date-md >}}"
     ]
@@ -624,7 +644,7 @@
     "href": "w02/slides.html#so-whats-the-problem",
     "title": "Week 2: Probabilistic Graphical Models (PGMs)",
     "section": "So What’s the Problem?",
-    "text": "So What’s the Problem?\n\nNon-probabilistic models: High potential for being garbage\n\ntldr: even if SUPER certain, using \\(\\Pr(\\mathcal{H}) = 1-\\varepsilon\\) with tiny \\(\\varepsilon\\) has literal life-saving advantages (Finetti 1972)\n\nProbabilistic models: Getting there, still looking at “surface”\n\nOf the \\(N = 100\\) times we observed event \\(X\\) occurring, event \\(Y\\) also occurred \\(90\\) of those times\n\\(\\implies \\Pr(Y \\mid X) = \\frac{\\#[X, Y]}{\\#[X]} = \\frac{90}{100} = 0.9\\)\n\nCausal models: Does \\(Y\\) happen because of \\(X\\) happening? For that, need to start modeling what’s happening under the surface making \\(X\\) and \\(Y\\) “pop up” together so often"
+    "text": "So What’s the Problem?\n\nNon-probabilistic models: High potential for being garbage\n\ntldr: even if SUPER certain, using \\(\\Pr(\\mathcal{H}) = 1-\\varepsilon\\) with tiny \\(\\varepsilon\\) has literal life-saving advantages1 (Finetti 1972)\n\nProbabilistic models: Getting there, still looking at “surface”\n\nOf the \\(N = 100\\) times we observed event \\(X\\) occurring, event \\(Y\\) also occurred \\(90\\) of those times\n\\(\\implies \\Pr(Y \\mid X) = \\frac{\\#[X, Y]}{\\#[X]} = \\frac{90}{100} = 0.9\\)\n\nCausal models: Does \\(Y\\) happen because of \\(X\\) happening? For that, need to start modeling what’s happening under the surface making \\(X\\) and \\(Y\\) “pop up” together so often\n\nSee Appendix Slide"
   },
   {
     "objectID": "w02/slides.html#the-shallow-problem-of-causal-inference",
@@ -806,7 +826,14 @@
     "href": "w02/slides.html#references",
     "title": "Week 2: Probabilistic Graphical Models (PGMs)",
     "section": "References",
-    "text": "References\n\n\nFinetti, Bruno de. 1972. Probability, Induction and Statistics: The Art of Guessing. J. Wiley.\n\n\nHume, David. 1739. A Treatise of Human Nature: Being an Attempt to Introduce the Experimental Method of Reasoning Into Moral Subjects; and Dialogues Concerning Natural Religion. Longmans, Green.\n\n\nIyengar, Shanto, and Donald R. Kinder. 2010. News That Matters: Television & American Opinion. University of Chicago Press.\n\n\nPearl, Judea. 2000. Causality: Models, Reasoning, and Inference. Cambridge University Press. https://www.dropbox.com/scl/fi/4kfpro4gpx7tg55fwd7qt/Judea-Pearl-Causality_-Models-Reasoning-and-Inference.pdf?rlkey=f0abw0cgmsyiegx6xapq5z7j2&dl=1."
+    "text": "References\n\n\nFinetti, Bruno de. 1972. Probability, Induction and Statistics: The Art of Guessing. J. Wiley.\n\n\nHume, David. 1739. A Treatise of Human Nature: Being an Attempt to Introduce the Experimental Method of Reasoning Into Moral Subjects; and Dialogues Concerning Natural Religion. Longmans, Green.\n\n\nIyengar, Shanto, and Donald R. Kinder. 2010. News That Matters: Television & American Opinion. University of Chicago Press.\n\n\nKoller, Daphne, and Nir Friedman. 2009. Probabilistic Graphical Models: Principles and Techniques. MIT Press. https://www.dropbox.com/scl/fi/6qmnr9feizngaq4005isj/Probabilistic-Graphical-Models.pdf?rlkey=4803nmsffh4xtsdfiji8jppb1&dl=1.\n\n\nPearl, Judea. 2000. Causality: Models, Reasoning, and Inference. Cambridge University Press. https://www.dropbox.com/scl/fi/4kfpro4gpx7tg55fwd7qt/Judea-Pearl-Causality_-Models-Reasoning-and-Inference.pdf?rlkey=f0abw0cgmsyiegx6xapq5z7j2&dl=1."
+  },
+  {
+    "objectID": "w02/slides.html#appendix-zero-probabilities",
+    "href": "w02/slides.html#appendix-zero-probabilities",
+    "title": "Week 2: Probabilistic Graphical Models (PGMs)",
+    "section": "Appendix: Zero Probabilities",
+    "text": "Appendix: Zero Probabilities\nFrom Koller and Friedman (2009), pp. 66-67:\n\nZero probabilities: A common mistake is to assign a probability of zero to an event that is extremely unlikely, but not impossible. The problem is that one can never condition away a zero probability, no matter how much evidence we get. When an event is unlikely but not impossible, giving it probability zero is guaranteed to lead to irrecoverable errors. For example, in one of the early versions of the the Pathfinder system (box 3.D), 10 percent of the misdiagnoses were due to zero probability estimates given by the expert to events that were unlikely but not impossible.\n\n← Back to slide"
   },
   {
     "objectID": "writeups/index.html",

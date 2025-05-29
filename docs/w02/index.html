@@ -263,7 +263,7 @@ window.Quarto = {
     </ul>
     </div>
 <div class="quarto-sidebar-footer"><div class="sidebar-footer-item">
-<p><em>Updated 2025-05-28, 06:26:48 PM</em></p>
+<p><em>Updated 2025-05-28, 08:14:27 PM</em></p>
 </div></div></nav>
 <div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
@@ -320,6 +320,7 @@ window.Quarto = {
   <li><a href="#crucial-css-model-we-can-now-dive-into" id="toc-crucial-css-model-we-can-now-dive-into" class="nav-link" data-scroll-target="#crucial-css-model-we-can-now-dive-into">Crucial CSS Model We Can Now Dive Into!</a></li>
   <li><a href="#what-does-this-give-us" id="toc-what-does-this-give-us" class="nav-link" data-scroll-target="#what-does-this-give-us">What Does This Give Us?</a></li>
   <li><a href="#references" id="toc-references" class="nav-link" data-scroll-target="#references">References</a></li>
+  <li><a href="#appendix-zero-probabilities" id="toc-appendix-zero-probabilities" class="nav-link" data-scroll-target="#appendix-zero-probabilities">Appendix: Zero Probabilities</a></li>
   </ul></li>
   </ul>
 <div class="toc-actions"><ul><li><a href="https://github.com/jpowerj/dsan5650/blob/main/w02/index.qmd" target="_blank" class="toc-action"><i class="bi bi-github"></i>View source</a></li></ul></div><div class="quarto-alternate-formats"><h2>Other Formats</h2><ul><li><a href="slides.html"><i class="bi bi-file-slides"></i>RevealJS</a></li></ul></div></nav>
@@ -430,7 +431,7 @@ window.Quarto = {
 </tbody>
 </table>
 <div class="hidden">
-<div id="7df83947" class="cell" data-execution_count="1">
+<div id="c6a15acd" class="cell" data-execution_count="1">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>cb_palette <span class="op">=</span> [</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>    <span class="st">"#E69F00"</span>, <span class="st">"#56B4E9"</span>, <span class="st">"#009E73"</span>,</span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>    <span class="st">"#F0E442"</span>, <span class="st">"#0072B2"</span>, <span class="st">"#D55E00"</span>,</span>
@@ -675,12 +676,12 @@ window.Quarto = {
 </figure>
 </div>
 </section>
-<section id="so-whats-the-problem" class="level2 crunch-title crunch-ul crunch-li-8 inline-90">
-<h2 class="crunch-title crunch-ul crunch-li-8 inline-90 anchored" data-anchor-id="so-whats-the-problem">So What’s the Problem?</h2>
+<section id="so-whats-the-problem" class="level2 crunch-title crunch-ul crunch-li-8 inline-90 text-90">
+<h2 class="crunch-title crunch-ul crunch-li-8 inline-90 text-90 anchored" data-anchor-id="so-whats-the-problem">So What’s the Problem?</h2>
 <ul>
 <li>Non-probabilistic models: High potential for being garbage
 <ul>
-<li><em>tldr: even if SUPER certain, using <span class="math inline">\(\Pr(\mathcal{H}) = 1-\varepsilon\)</span> with tiny <span class="math inline">\(\varepsilon\)</span> has literal life-saving advantages</em> <span class="citation" data-cites="finetti_probability_1972">(<a href="#ref-finetti_probability_1972" role="doc-biblioref">Finetti 1972</a>)</span></li>
+<li><em>tldr: even if SUPER certain, using <span class="math inline">\(\Pr(\mathcal{H}) = 1-\varepsilon\)</span> with tiny <span class="math inline">\(\varepsilon\)</span> has literal life-saving advantages</em><a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a> <span class="citation" data-cites="finetti_probability_1972">(<a href="#ref-finetti_probability_1972" role="doc-biblioref">Finetti 1972</a>)</span></li>
 </ul></li>
 <li>Probabilistic models: Getting there, still looking at “surface”
 <ul>
@@ -1258,16 +1259,33 @@ Hume, David. 1739. <em>A <span>Treatise</span> of <span>Human Nature</span>: <sp
 <div id="ref-iyengar_news_2010" class="csl-entry" role="listitem">
 Iyengar, Shanto, and Donald R. Kinder. 2010. <em>News <span>That Matters</span>: <span>Television</span> &amp; <span>American Opinion</span></em>. University of Chicago Press.
 </div>
+<div id="ref-koller_probabilistic_2009" class="csl-entry" role="listitem">
+Koller, Daphne, and Nir Friedman. 2009. <em>Probabilistic <span>Graphical Models</span>: <span>Principles</span> and <span>Techniques</span></em>. MIT Press. <a href="https://www.dropbox.com/scl/fi/6qmnr9feizngaq4005isj/Probabilistic-Graphical-Models.pdf?rlkey=4803nmsffh4xtsdfiji8jppb1&amp;dl=1">https://www.dropbox.com/scl/fi/6qmnr9feizngaq4005isj/Probabilistic-Graphical-Models.pdf?rlkey=4803nmsffh4xtsdfiji8jppb1&amp;dl=1</a>.
+</div>
 <div id="ref-pearl_causality_2000" class="csl-entry" role="listitem">
 Pearl, Judea. 2000. <em>Causality: <span>Models</span>, <span>Reasoning</span>, and <span>Inference</span></em>. Cambridge University Press. <a href="https://www.dropbox.com/scl/fi/4kfpro4gpx7tg55fwd7qt/Judea-Pearl-Causality_-Models-Reasoning-and-Inference.pdf?rlkey=f0abw0cgmsyiegx6xapq5z7j2&amp;dl=1">https://www.dropbox.com/scl/fi/4kfpro4gpx7tg55fwd7qt/Judea-Pearl-Causality_-Models-Reasoning-and-Inference.pdf?rlkey=f0abw0cgmsyiegx6xapq5z7j2&amp;dl=1</a>.
 </div>
 </div>
+</section>
+<section id="appendix-zero-probabilities" class="level2 smaller">
+<h2 class="smaller anchored" data-anchor-id="appendix-zero-probabilities">Appendix: Zero Probabilities</h2>
+<p>From <span class="citation" data-cites="koller_probabilistic_2009">Koller and Friedman (<a href="#ref-koller_probabilistic_2009" role="doc-biblioref">2009</a>)</span>, pp.&nbsp;66-67:</p>
+<blockquote class="blockquote">
+<p><strong>Zero probabilities</strong>: A common mistake is to assign a probability of zero to an event that is extremely unlikely, but not impossible. The problem is that one can never condition away a zero probability, no matter how much evidence we get. When an event is unlikely but not impossible, giving it probability zero is guaranteed to lead to irrecoverable errors. For example, in one of the early versions of the the Pathfinder system (box 3.D), <strong>10 percent of the misdiagnoses were due to zero probability estimates given by the expert to events that were unlikely but not impossible.</strong></p>
+</blockquote>
+<p><a href="#so-whats-the-problem">← Back to slide</a></p>
 
 
 </section>
 </section>
 
-</main> <!-- /main -->
+
+<div id="quarto-appendix" class="default"><section id="footnotes" class="footnotes footnotes-end-of-document" role="doc-endnotes"><h2 class="anchored quarto-appendix-heading">Footnotes</h2>
+
+<ol>
+<li id="fn1"><p>See <a href="#appendix-zero-probabilities">Appendix Slide</a><a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+</ol>
+</section></div></main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
 window.document.addEventListener("DOMContentLoaded", function (event) {
   const toggleBodyColorMode = (bsSheetEl) => {

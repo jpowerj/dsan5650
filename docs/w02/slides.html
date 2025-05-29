@@ -452,7 +452,7 @@ Jeff Jacobs
 <div>
 
 </div>
-<div class="quarto-layout-panel" data-layout-align="center" data-layout="[55,45]">
+<div class="quarto-layout-panel" data-layout="[55,45]" data-layout-align="center">
 <div class="quarto-layout-row quarto-layout-valign-center">
 <div id="dgps-5100" class="quarto-layout-cell" style="flex-basis: 55.0%;justify-content: center;">
 <ul>
@@ -519,12 +519,12 @@ Jeff Jacobs
 <!-- My sincere belief and definitely not an image forwarded to me unironically by a family member when I was a tween -->
 
 <img data-src="images/fwds_from_grandma.jpg" class="quarto-figure quarto-figure-center r-stretch"></section>
-<section id="so-whats-the-problem" class="slide level2 crunch-title crunch-ul crunch-li-8 inline-90">
+<section id="so-whats-the-problem" class="slide level2 crunch-title crunch-ul crunch-li-8 inline-90 text-90 scrollable">
 <h2>So What’s the Problem?</h2>
 <ul>
 <li>Non-probabilistic models: High potential for being garbage
 <ul>
-<li><em>tldr: even if SUPER certain, using <span class="math inline">\(\Pr(\mathcal{H}) = 1-\varepsilon\)</span> with tiny <span class="math inline">\(\varepsilon\)</span> has literal life-saving advantages</em> <span class="citation" data-cites="finetti_probability_1972">(<a href="#/references" role="doc-biblioref" onclick="">Finetti 1972</a>)</span></li>
+<li><em>tldr: even if SUPER certain, using <span class="math inline">\(\Pr(\mathcal{H}) = 1-\varepsilon\)</span> with tiny <span class="math inline">\(\varepsilon\)</span> has literal life-saving advantages</em><sup>1</sup> <span class="citation" data-cites="finetti_probability_1972">(<a href="#/references" role="doc-biblioref" onclick="">Finetti 1972</a>)</span></li>
 </ul></li>
 <li>Probabilistic models: Getting there, still looking at “surface”
 <ul>
@@ -533,7 +533,7 @@ Jeff Jacobs
 </ul></li>
 <li>Causal models: Does <span class="math inline">\(Y\)</span> happen <strong>because of</strong> <span class="math inline">\(X\)</span> happening? For that, need to start modeling <strong>what’s happening under the surface</strong> making <span class="math inline">\(X\)</span> and <span class="math inline">\(Y\)</span> <strong>“pop up” together</strong> so often</li>
 </ul>
-</section>
+<aside><ol class="aside-footnotes"><li id="fn1"><p>See <a href="#/appendix-zero-probabilities">Appendix Slide</a></p></li></ol></aside></section>
 <section id="the-shallow-problem-of-causal-inference" class="slide level2 title-08">
 <h2>The <em>Shallow</em> Problem of Causal Inference</h2>
 <div class="columns">
@@ -961,7 +961,7 @@ Figure&nbsp;3: Your model failing to achieve its goal bc you haven’t yet disti
 <div>
 
 </div>
-<div class="quarto-layout-panel" data-layout-align="center" data-layout="[65,35]">
+<div class="quarto-layout-panel" data-layout="[65,35]" data-layout-align="center">
 <div class="quarto-layout-row quarto-layout-valign-center">
 <div id="iyengar-text" class="quarto-layout-cell" style="flex-basis: 65.0%;justify-content: center;">
 <div class="quarto-figure quarto-figure-center">
@@ -1077,13 +1077,25 @@ Hume, David. 1739. <em>A <span>Treatise</span> of <span>Human Nature</span>: <sp
 <div id="ref-iyengar_news_2010" class="csl-entry" role="listitem">
 Iyengar, Shanto, and Donald R. Kinder. 2010. <em>News <span>That Matters</span>: <span>Television</span> &amp; <span>American Opinion</span></em>. University of Chicago Press.
 </div>
+<div id="ref-koller_probabilistic_2009" class="csl-entry" role="listitem">
+Koller, Daphne, and Nir Friedman. 2009. <em>Probabilistic <span>Graphical Models</span>: <span>Principles</span> and <span>Techniques</span></em>. MIT Press. <a href="https://www.dropbox.com/scl/fi/6qmnr9feizngaq4005isj/Probabilistic-Graphical-Models.pdf?rlkey=4803nmsffh4xtsdfiji8jppb1&amp;dl=1">https://www.dropbox.com/scl/fi/6qmnr9feizngaq4005isj/Probabilistic-Graphical-Models.pdf?rlkey=4803nmsffh4xtsdfiji8jppb1&amp;dl=1</a>.
+</div>
 <div id="ref-pearl_causality_2000" class="csl-entry" role="listitem">
 Pearl, Judea. 2000. <em>Causality: <span>Models</span>, <span>Reasoning</span>, and <span>Inference</span></em>. Cambridge University Press. <a href="https://www.dropbox.com/scl/fi/4kfpro4gpx7tg55fwd7qt/Judea-Pearl-Causality_-Models-Reasoning-and-Inference.pdf?rlkey=f0abw0cgmsyiegx6xapq5z7j2&amp;dl=1">https://www.dropbox.com/scl/fi/4kfpro4gpx7tg55fwd7qt/Judea-Pearl-Causality_-Models-Reasoning-and-Inference.pdf?rlkey=f0abw0cgmsyiegx6xapq5z7j2&amp;dl=1</a>.
 </div>
 </div>
+</section>
+<section id="appendix-zero-probabilities" class="slide level2 smaller">
+<h2>Appendix: Zero Probabilities</h2>
+<p>From <span class="citation" data-cites="koller_probabilistic_2009">Koller and Friedman (<a href="#/references" role="doc-biblioref" onclick="">2009</a>)</span>, pp.&nbsp;66-67:</p>
+<blockquote>
+<p><strong>Zero probabilities</strong>: A common mistake is to assign a probability of zero to an event that is extremely unlikely, but not impossible. The problem is that one can never condition away a zero probability, no matter how much evidence we get. When an event is unlikely but not impossible, giving it probability zero is guaranteed to lead to irrecoverable errors. For example, in one of the early versions of the the Pathfinder system (box 3.D), <strong>10 percent of the misdiagnoses were due to zero probability estimates given by the expert to events that were unlikely but not impossible.</strong></p>
+</blockquote>
+<p><a href="#/so-whats-the-problem">← Back to slide</a></p>
 
 
 </section></section>
+
     </div>
   <div class="quarto-auto-generated-content" style="display: none;">
 <div class="footer footer-default">
