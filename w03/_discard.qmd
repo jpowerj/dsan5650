@@ -1,0 +1,45 @@
+
+## The Fork {.smaller}
+
+:::: {.columns}
+::: {.column width="50%"}
+
+```{r}
+#| label: fork-sim
+#| echo: true
+#| code-fold: show
+library(tidyverse)
+library(extraDistr)
+n <- 10000
+fork_df <- tibble(
+    Z = rbern(n),
+    X = rbern(n, (1-Z)*0.1 + Z*0.9),
+    Y = rbern(n, (1-Z)*0.1 + Z*0.9),
+)
+fork_freq_df <- fork_df |> group_by(X, Y) |>
+  summarize(count=n())
+fork_freq_df |> ggplot(aes(x=factor(X), y=factor(Y), fill=count)) +
+  geom_tile() +
+  theme_classic(base_size=22) +
+  coord_equal() +
+  scale_fill_distiller(palette="Greens", direction=1) +
+  geom_label(aes(label=count), fill="white", color="black", size=10) +
+  labs(
+    x="X", y="Y"
+  )
+# The full df
+# table(fork_df$X, fork_df$Y)
+cor(fork_df$X, fork_df$Y)
+# Conditioning on Z = 0
+z0_df <- fork_df |> filter(Z == 0)
+cor(z0_df$X, z0_df$Y)
+# Conditioning on Z = 1
+z1_df <- fork_df |> filter(Z == 1)
+cor(z1_df$X, z1_df$Y)
+```
+
+:::
+::: {.column width="50%"}
+
+:::
+::::

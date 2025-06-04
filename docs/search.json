@@ -349,16 +349,6 @@
     ]
   },
   {
-    "objectID": "w03/index.html#the-fork",
-    "href": "w03/index.html#the-fork",
-    "title": "Week 3: From PGMs to Causal Diagrams",
-    "section": "The Fork",
-    "text": "The Fork\n\n\nCode\nlibrary(tidyverse)\n\n\n── Attaching core tidyverse packages ──────────────────────── tidyverse 2.0.0 ──\n✔ dplyr     1.1.4     ✔ readr     2.1.5\n✔ forcats   1.0.0     ✔ stringr   1.5.1\n✔ ggplot2   3.5.1     ✔ tibble    3.2.1\n✔ lubridate 1.9.3     ✔ tidyr     1.3.1\n✔ purrr     1.0.2     \n── Conflicts ────────────────────────────────────────── tidyverse_conflicts() ──\n✖ dplyr::filter() masks stats::filter()\n✖ dplyr::lag()    masks stats::lag()\nℹ Use the conflicted package (&lt;http://conflicted.r-lib.org/&gt;) to force all conflicts to become errors\n\n\nCode\nlibrary(extraDistr)\n\n\n\nAttaching package: 'extraDistr'\n\nThe following object is masked from 'package:purrr':\n\n    rdunif\n\n\nCode\nn &lt;- 10000\nfork_df &lt;- tibble(\n    Z = rbern(n),\n    X = rbern(n, (1-Z)*0.1 + Z*0.9),\n    Y = rbern(n, (1-Z)*0.1 + Z*0.9),\n)\n# fork_df |&gt; group_by(X, Y) |&gt;\n#   summarize(Z=n())\n# The full df\ntable(fork_df$X, fork_df$Y)\n\n\n   \n       0    1\n  0 4040  911\n  1  866 4183\n\n\nCode\ncor(fork_df$X, fork_df$Y)\n\n\n[1] 0.6445606\n\n\nCode\n# Conditioning on Z = 0\nz0_df &lt;- fork_df |&gt; filter(Z == 0)\ncor(z0_df$X, z0_df$Y)\n\n\n[1] -0.003036962\n\n\nCode\n# Conditioning on Z = 1\nz1_df &lt;- fork_df |&gt; filter(Z == 1)\ncor(z1_df$X, z1_df$Y)\n\n\n[1] -0.0003034739",
-    "crumbs": [
-      "Week 3: {{< var w03.date-md >}}"
-    ]
-  },
-  {
     "objectID": "w03/index.html#references",
     "href": "w03/index.html#references",
     "title": "Week 3: From PGMs to Causal Diagrams",
@@ -517,13 +507,6 @@
     "title": "Week 3: From PGMs to Causal Diagrams",
     "section": "Getting Shot By A Firing Squad",
     "text": "Getting Shot By A Firing Squad\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\\(O\\)\n\\(C\\)\n\\(A\\)\n\\(B\\)\n\\(D\\)\n\n\n\n\n0\n0\n0\n0\n0\n\n\n1\n1\n1\n1\n1\n\n\n0\n0\n0\n0\n0\n\n\n0\n0\n0\n0\n0\n\n\n1\n1\n1\n1\n1\n\n\n\n\\[\n\\begin{align*}\n\\Pr(D) &= 0.4 \\\\\n\\Pr(D \\mid A) &= 1\n\\end{align*}\n\\]"
-  },
-  {
-    "objectID": "w03/slides.html#the-fork",
-    "href": "w03/slides.html#the-fork",
-    "title": "Week 3: From PGMs to Causal Diagrams",
-    "section": "The Fork",
-    "text": "The Fork\n\n\nCode\nlibrary(tidyverse)\nlibrary(extraDistr)\nn &lt;- 10000\nfork_df &lt;- tibble(\n    Z = rbern(n),\n    X = rbern(n, (1-Z)*0.1 + Z*0.9),\n    Y = rbern(n, (1-Z)*0.1 + Z*0.9),\n)\n# fork_df |&gt; group_by(X, Y) |&gt;\n#   summarize(Z=n())\n# The full df\ntable(fork_df$X, fork_df$Y)\n\n\n   \n       0    1\n  0 4146  930\n  1  861 4063\n\n\nCode\ncor(fork_df$X, fork_df$Y)\n\n\n[1] 0.6418535\n\n\nCode\n# Conditioning on Z = 0\nz0_df &lt;- fork_df |&gt; filter(Z == 0)\ncor(z0_df$X, z0_df$Y)\n\n\n[1] -0.007488787\n\n\nCode\n# Conditioning on Z = 1\nz1_df &lt;- fork_df |&gt; filter(Z == 1)\ncor(z1_df$X, z1_df$Y)\n\n\n[1] -0.004484599"
   },
   {
     "objectID": "w03/slides.html#references",
