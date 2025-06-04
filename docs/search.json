@@ -109,7 +109,7 @@
     "href": "index.html",
     "title": "DSAN 5650: Causal Inference for Computational Social Science",
     "section": "",
-    "text": "Welcome to the homepage for DSAN 5650: Causal Inference for Computational Social Science at Georgetown University, for the Summer 2025 session!\nThe course meets on Wednesdays from 6:30pm to 9:00pm online, via the Zoom Link provided in the sidebar.\nCheck out the syllabus (or any other link in the sidebar) for more info! Or, use the following links to view notes for individual weeks:\n\n\n\n\n\nTitle\n\n\nDate\n\n\n\n\n\n\nWeek 1: Science from Particles to People\n\n\nMay 21\n\n\n\n\nWeek 2: Probabilistic Graphical Models (PGMs)\n\n\nMay 28\n\n\n\n\n\nNo matching items\n\n\nCourse Description:\nThis course provides students with the opportunity to take the analytical skills, machine learning algorithms, and statistical methods learned throughout their first year in the program and explore how they can be employed towards carrying out rigorous, original research in the behavioral and social sciences. With a particular emphasis on tackling the additional challenges which arise when moving from associational to causal inference, particularly when only observational (as opposed to experimental) data is available, students will become proficient in cutting-edge causal Machine Learning techniques such as propensity score matching, synthetic controls, causal program evaluation, inverse social welfare function estimation from panel data, and Double-Debiased Machine Learning.\nIn-class examples will cover continuous, discrete-choice, and textual data from a wide swath of social and behavioral sciences: economics, political science, sociology, anthropology, quantitative history, and digital humanities. After gaining experience through in-class labs and homework assignments focused on reproducing key findings from recent journal articles in each of these disciplines, students will spend the final weeks of the course on a final project demonstrating their ability to develop, evaluate, and test the robustness of a causal hypothesis.\nPrerequisites: DSAN 5000, DSAN 5100 (DSAN 5300 recommended but not required)",
+    "text": "Welcome to the homepage for DSAN 5650: Causal Inference for Computational Social Science at Georgetown University, for the Summer 2025 session!\nThe course meets on Wednesdays from 6:30pm to 9:00pm online, via the Zoom Link provided in the sidebar.\nCheck out the syllabus (or any other link in the sidebar) for more info! Or, use the following links to view notes for individual weeks:\n\n\n\n\n\nTitle\n\n\nDate\n\n\n\n\n\n\nWeek 1: Science from Particles to People\n\n\nMay 21\n\n\n\n\nWeek 2: Probabilistic Graphical Models (PGMs)\n\n\nMay 28\n\n\n\n\nWeek 3: From PGMs to Causal Diagrams\n\n\nJune 4\n\n\n\n\n\nNo matching items\n\n\nCourse Description:\nThis course provides students with the opportunity to take the analytical skills, machine learning algorithms, and statistical methods learned throughout their first year in the program and explore how they can be employed towards carrying out rigorous, original research in the behavioral and social sciences. With a particular emphasis on tackling the additional challenges which arise when moving from associational to causal inference, particularly when only observational (as opposed to experimental) data is available, students will become proficient in cutting-edge causal Machine Learning techniques such as propensity score matching, synthetic controls, causal program evaluation, inverse social welfare function estimation from panel data, and Double-Debiased Machine Learning.\nIn-class examples will cover continuous, discrete-choice, and textual data from a wide swath of social and behavioral sciences: economics, political science, sociology, anthropology, quantitative history, and digital humanities. After gaining experience through in-class labs and homework assignments focused on reproducing key findings from recent journal articles in each of these disciplines, students will spend the final weeks of the course on a final project demonstrating their ability to develop, evaluate, and test the robustness of a causal hypothesis.\nPrerequisites: DSAN 5000, DSAN 5100 (DSAN 5300 recommended but not required)",
     "crumbs": [
       "<i class='bi bi-house pe-1'></i> Home"
     ]
@@ -133,7 +133,404 @@
     "href": "assignments.html",
     "title": "Assignment Point Distributions",
     "section": "",
-    "text": "Use the tabs below to view the point distributions for different assignments.\nThe distributions are imported from Google Sheets mainly for transparency: so that you can see exactly how totals are computed as a sum of the individual points allocated for each test!\n\nHW1HW2\n\n\n\n\n\n\n\n\n\npart\nqid\ntest_type\npoints\npart_total\n\n\n\n\n1\nQ1.1\npublic\n0\n12\n\n\n\nQ1.1\nhidden\n1\n\n\n\n\nQ1.2\npublic\n0\n\n\n\n\nQ1.2\nhidden\n1\n\n\n\n\nQ1.3\npublic\n0\n\n\n\n\nQ1.3\nhidden\n1\n\n\n\n\nQ1.4\npublic\n0\n\n\n\n\nQ1.4\nhidden\n1\n\n\n\n\nQ1.5\npublic\n0\n\n\n\n\nQ1.5\nhidden\n1\n\n\n\n\nQ1.6\npublic\n0\n\n\n\n\nQ1.6\nhidden\n1\n\n\n\n\nQ1.7\npublic\n0\n\n\n\n\nQ1.7\nhidden\n1\n\n\n\n\nQ1.8\npublic\n0\n\n\n\n\nQ1.8\nhidden\n1\n\n\n\n\nQ1.9\npublic\n0\n\n\n\n\nQ1.9\nhidden\n1\n\n\n\n\nQ1.10\npublic\n0\n\n\n\n\nQ1.10\nhidden\n1\n\n\n\n\nQ1.11\npublic\n0\n\n\n\n\nQ1.11\nhidden\n1\n\n\n\n\nQ1.12\npublic\n0\n\n\n\n\nQ1.12\nhidden\n1\n\n\n\n2\nQ2.1\npublic\n0\n7\n\n\n\nQ2.1\nhidden\n1\n\n\n\n\nQ2.2\npublic\n0\n\n\n\n\nQ2.2\nhidden\n1\n\n\n\n\nQ2.3\npublic\n0\n\n\n\n\nQ2.3\nhidden\n1\n\n\n\n\nQ2.4\npublic\n0\n\n\n\n\nQ2.4\nhidden\n1\n\n\n\n\nQ2.5\npublic\n0\n\n\n\n\nQ2.5\nhidden\n1\n\n\n\n\nQ2.6\npublic\n0\n\n\n\n\nQ2.6\nhidden\n2\n\n\n\n3\nQ3.1\npublic\n0\n5\n\n\n\nQ3.1\nhidden\n1\n\n\n\n\nQ3.2\npublic\n0\n\n\n\n\nQ3.2\nhidden\n1\n\n\n\n\nQ3.3a\npublic\n0\n\n\n\n\nQ3.3a\nhidden\n1\n\n\n\n\nQ3.3b\npublic\n0\n\n\n\n\nQ3.3b\nhidden\n1\n\n\n\n\nQ3.3c\npublic\n0\n\n\n\n\nQ3.3c\nhidden\n1\n\n\n\n4.1\nQ4.1.1\npublic\n1\n13\n\n\n\nQ4.1.1\nhidden\n2\n\n\n\n\nQ4.1.2\npublic\n1\n\n\n\n\nQ4.1.2\nhidden\n2\n\n\n\n\nQ4.1.3\npublic\n1\n\n\n\n\nQ4.1.3\nhidden\n1\n\n\n\n\nQ4.1.4\npublic\n1\n\n\n\n\nQ4.1.4\nhidden\n2\n\n\n\n\nQ4.1.5\npublic\n1\n\n\n\n\nQ4.1.5\nhidden\n1\n\n\n\n4.2\nQ4.2.1\npublic\n1\n4\n\n\n\nQ4.2.1\nhidden\n1\n\n\n\n\nQ4.2.2\npublic\n1\n\n\n\n\nQ4.2.2\nhidden\n1\n\n\n\n4.3\nQ4.3.1\npublic\n1\n4\n\n\n\nQ4.3.1\nhidden\n1\n\n\n\n\nQ4.3.2\npublic\n1\n\n\n\n\nQ4.3.2\nhidden\n1\n\n\n\n4.4\nQ4.4.1\npublic\n1\n3\n\n\n\nQ4.4.1\nhidden\n2\n\n\n\n4.5\nQ4.5.1\npublic\n1\n4\n\n\n\nQ4.5.1\nhidden\n2\n\n\n\n\nQ4.5.2\npublic\n0\n\n\n\n\nQ4.5.2\nhidden\n1\n\n\n\n4.6\nQ4.6.1\npublic\n1\n3\n\n\n\nQ4.6.1\nhidden\n2\n\n\n\n4.7\nQ4.7.1\npublic\n1\n5\n\n\n\nQ4.7.1\nhidden\n2\n\n\n\n\nQ4.7.2\npublic\n1\n\n\n\n\nQ4.7.2\nhidden\n1\n\n\n\n4.8\nQ4.8.1\npublic\n1\n11\n\n\n\nQ4.8.1\nhidden\n2\n\n\n\n\nQ4.8.2\npublic\n0\n\n\n\n\nQ4.8.2\nhidden\n1\n\n\n\n\nQ4.8.3\npublic\n0\n\n\n\n\nQ4.8.3\nhidden\n1\n\n\n\n\nQ4.8.4\npublic\n1\n\n\n\n\nQ4.8.4\nhidden\n2\n\n\n\n\nQ4.8.5\npublic\n1\n\n\n\n\nQ4.8.5\nhidden\n2\n\n\n\n4.9\nQ4.9.1\npublic\n0\n2\n\n\n\nQ4.9.1\nhidden\n1\n\n\n\n\nQ4.9.2\npublic\n0\n\n\n\n\nQ4.9.2\nhidden\n1\n\n\n\n4.10\nQ4.10.1\npublic\n0\n8\n\n\n\nQ4.10.1\nhidden\n1\n\n\n\n\nQ4.10.2\npublic\n0\n\n\n\n\nQ4.10.2\nhidden\n1\n\n\n\n\nQ4.10.3\npublic\n1\n\n\n\n\nQ4.10.3\nhidden\n2\n\n\n\n\nQ4.10.4\npublic\n1\n\n\n\n\nQ4.10.4\nhidden\n2\n\n\n\n4.11\nQ4.11.1\npublic\n1\n6\n\n\n\nQ4.11.1\nhidden\n2\n\n\n\n\nQ4.11.2\npublic\n1\n\n\n\n\nQ4.11.2\nhidden\n2\n\n\n\n4.12\nQ4.12\npublic\n1\n5\n\n\n\nQ4.12\nhidden\n4\n\n\n\n5\nQ5.1\npublic\n0\n8\n\n\n\nQ5.1\nhidden\n2\n\n\n\n\nQ5.2\npublic\n0\n\n\n\n\nQ5.2\nhidden\n2\n\n\n\n\nQ5.3\npublic\n0\n\n\n\n\nQ5.3\nhidden\n2\n\n\n\n\nQ5.4\npublic\n0\n\n\n\n\nQ5.4\nhidden\n2\n\n\n\nTotal\n\n\n100\n100\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\npart\nqid\ntest_type\npoints\npart_total\n\n\n\n\n1\nQ1.1\npublic\n0\n\n\n\n\nQ1.1\nhidden\n2\n\n\n\n\nQ1.2\npublic\n0\n\n\n\n\nQ1.2\nhidden\n2\n\n\n\n\nQ1.3a\npublic\n0\n\n\n\n\nQ1.3a\nhidden\n2\n\n\n\n\nQ1.3b\npublic\n0\n\n\n\n\nQ1.3b\nhidden\n2\n\n\n\n\nQ1.4a\npublic\n0\n\n\n\n\nQ1.4a\nhidden\n2\n\n\n\n\nQ1.4b\npublic\n0\n\n\n\n\nQ1.4b\nhidden\n2\n\n\n\n\nQ1.5\npublic\n0\n\n\n\n\nQ1.5\nhidden\n2\n\n\n\n\nQ1.6\npublic\n0\n\n\n\n\nQ1.6\nhidden\n2\n\n\n\n\nQ1.7\npublic\n0\n\n\n\n\nQ1.7\nhidden\n2\n\n\n\n\nQ1.8\npublic\n0\n\n\n\n\nQ1.8\nhidden\n2\n20\n\n\n2\nQ2.1\npublic\n0\n\n\n\n\nQ2.1\nhidden\n5\n\n\n\n\nQ2.2\npublic\n0\n\n\n\n\nQ2.2\nhidden\n5\n10\n\n\n3\nQ3.1a\npublic\n0\n\n\n\n\nQ3.1a\nhidden\n2\n\n\n\n\nQ3.1b\npublic\n0\n\n\n\n\nQ3.1b\nhidden\n2\n\n\n\n\nQ3.2a\npublic\n0\n\n\n\n\nQ3.2a\nhidden\n2\n\n\n\n\nQ3.2b\npublic\n0\n\n\n\n\nQ3.2b\nhidden\n2\n\n\n\n\nQ3.3a\npublic\n0\n\n\n\n\nQ3.3a\nhidden\n2\n\n\n\n\nQ3.3b\npublic\n0\n\n\n\n\nQ3.3b\nhidden\n2\n12\n\n\n4\nQ4.1a\npublic\n0\n\n\n\n\nQ4.1a\nhidden\n2\n\n\n\n\nQ4.1b\npublic\n0\n\n\n\n\nQ4.1b\nhidden\n2\n\n\n\n\nQ4.2a\npublic\n0\n\n\n\n\nQ4.2a\nhidden\n2\n\n\n\n\nQ4.2b\npublic\n0\n\n\n\n\nQ4.2b\nhidden\n2\n\n\n\n\nQ4.3a\npublic\n0\n\n\n\n\nQ4.3a\nhidden\n2\n\n\n\n\nQ4.3b\npublic\n0\n\n\n\n\nQ4.3b\nhidden\n2\n12\n\n\n5\nQ5.1\npublic\n0\n\n\n\n\nQ5.1\nhidden\n4\n\n\n\n\nQ5.2\npublic\n0\n\n\n\n\nQ5.2\nhidden\n4\n\n\n\n\nQ5.3\npublic\n0\n\n\n\n\nQ5.3\nhidden\n4\n12\n\n\n6\nQ6.1\npublic\n0\n\n\n\n\nQ6.1\nhidden\n7\n\n\n\n\nQ6.2\npublic\n0\n\n\n\n\nQ6.2\nhidden\n7\n14\n\n\n7\nQ7.1\npublic\n0\n\n\n\n\nQ7.1\nhidden\n5\n\n\n\n\nQ7.2\npublic\n0\n\n\n\n\nQ7.2\nhidden\n5\n\n\n\n\nQ7.3\npublic\n0\n\n\n\n\nQ7.3\nhidden\n5\n\n\n\n\nQ7.4\npublic\n0\n\n\n\n\nQ7.4\nhidden\n5\n20\n\n\nTotal\n\n\n100\n100"
+    "text": "Use the tabs below to view the point distributions for different assignments.\nThe distributions are imported from Google Sheets mainly for transparency: so that you can see exactly how totals are computed as a sum of the individual points allocated for each test!\n\nHW1\n\n\n\n\n\n\n\n\n\npart\nqid\npoints\nq_total\npart_total\n\n\n\n\n1\nQ1.1a\n4\n\n\n\n\n\nQ1.1b\n2\n6\n\n\n\n\nQ1.2\n8\n8\n\n\n\n\nQ1.3a\n3\n\n\n\n\n\nQ1.3b\n3\n\n\n\n\n\nQ1.3c\n3\n9\n\n\n\n\nQ1.4a\n3\n\n\n\n\n\nQ1.4b\n3\n6\n29\n\n\n2\nQ2.1\n4\n\n\n\n\n\nQ2.2\n4\n\n\n\n\n\nQ2.3\n4\n\n\n\n\n\nQ2.4\n4\n\n16\n\n\n3\nQ3.1\n4\n\n\n\n\n\nQ3.2\n4\n\n\n\n\n\nQ3.3\n4\n\n12\n\n\n4\nQ4.1\n3\n3\n\n\n\n\nQ4.2a\n4\n\n\n\n\n\nQ4.2b\n2\n6\n\n\n\n\nQ4.3a\n2\n\n\n\n\n\nQ4.3b\n2\n4\n\n\n\n\nQ4.4a\n2\n\n\n\n\n\nQ4.4b\n2\n4\n\n\n\n\nQ4.5a\n2\n\n\n\n\n\nQ4.5b\n2\n4\n\n\n\n\nQ4.6a\n2\n\n\n\n\n\nQ4.6b\n2\n4\n25\n\n\n5\nQ5.1\n4\n4\n\n\n\n\nQ5.2\n2\n2\n\n\n\n\nQ5.3\n2\n\n\n\n\n\nQ5.4a\n4\n\n\n\n\n\nQ5.4b\n3\n\n\n\n\n\nQ5.4c\n3\n10\n18\n\n\n\nTotal\n100",
+    "crumbs": [
+      "Assignments"
+    ]
+  },
+  {
+    "objectID": "w03/index.html",
+    "href": "w03/index.html",
+    "title": "Week 3: From PGMs to Causal Diagrams",
+    "section": "",
+    "text": "Open slides in new window →",
+    "crumbs": [
+      "Week 3: {{< var w03.date-md >}}"
+    ]
+  },
+  {
+    "objectID": "w03/index.html#so-whats-the-problem",
+    "href": "w03/index.html#so-whats-the-problem",
+    "title": "Week 3: From PGMs to Causal Diagrams",
+    "section": "So What’s the Problem?",
+    "text": "So What’s the Problem?\n\nNon-probabilistic models: High potential for being garbage\n\ntldr: even if SUPER certain, using \\(\\Pr(\\mathcal{H}) = 1-\\varepsilon\\) with tiny \\(\\varepsilon\\) has literal life-saving advantages1 (Finetti 1972)\n\nProbabilistic models: Getting there, still looking at “surface”\n\nOf the \\(N = 100\\) times we observed event \\(X\\) occurring, event \\(Y\\) also occurred \\(90\\) of those times\n\\(\\implies \\Pr(Y \\mid X) = \\frac{\\#[X, Y]}{\\#[X]} = \\frac{90}{100} = 0.9\\)\n\nCausal models: Does \\(Y\\) happen because of \\(X\\) happening? For that, need to start modeling what’s happening under the surface making \\(X\\) and \\(Y\\) “pop up” together so often",
+    "crumbs": [
+      "Week 3: {{< var w03.date-md >}}"
+    ]
+  },
+  {
+    "objectID": "w03/index.html#the-fundamental-problem-of-causal-inference",
+    "href": "w03/index.html#the-fundamental-problem-of-causal-inference",
+    "title": "Week 3: From PGMs to Causal Diagrams",
+    "section": "The Fundamental Problem of Causal Inference",
+    "text": "The Fundamental Problem of Causal Inference\nThe only workable definition of «\\(X\\) causes \\(Y\\)»:\n\n\n\n\n\n\n Defining Causality (Hume 1739, ruining everything as usual 😤)\n\n\n\n\\(X\\) causes \\(Y\\) if and only if:\n\n\\(X\\) temporally precedes \\(Y\\) and\n\nIn two worlds \\(W_0\\) and \\(W_1\\) where\neverything is exactly the same except that \\(X = 0\\) in \\(W_0\\) and \\(X = 1\\) in \\(W_1\\),\n\\(Y = 0\\) in \\(W_0\\) and \\(Y = 1\\) in \\(W_1\\)\n\n\n\n\n\nThe problem? We live in one world, not two identical worlds simultaneously 😭",
+    "crumbs": [
+      "Week 3: {{< var w03.date-md >}}"
+    ]
+  },
+  {
+    "objectID": "w03/index.html#what-is-to-be-done",
+    "href": "w03/index.html#what-is-to-be-done",
+    "title": "Week 3: From PGMs to Causal Diagrams",
+    "section": "What Is To Be Done?",
+    "text": "What Is To Be Done?",
+    "crumbs": [
+      "Week 3: {{< var w03.date-md >}}"
+    ]
+  },
+  {
+    "objectID": "w03/index.html#probability",
+    "href": "w03/index.html#probability",
+    "title": "Week 3: From PGMs to Causal Diagrams",
+    "section": "Probability++",
+    "text": "Probability++\n\nTools from prob/stats (RVs, CDFs, Conditional Probability) necessary but not sufficient for causal inference!\nExample: Say we use DSAN 5100 tools to discover:\n\nProbability that event \\(E_1\\) occurs is \\(\\Pr(E_1) = 0.5\\)\nProbability that \\(E_1\\) occurs conditional on another event \\(E_0\\) occurring is \\(\\Pr(E_1 \\mid E_0) = 0.75\\)\n\nUnfortunately, we still cannot infer that the occurrence of \\(E_0\\) causes an increase in the likelihood of \\(E_1\\) occurring.",
+    "crumbs": [
+      "Week 3: {{< var w03.date-md >}}"
+    ]
+  },
+  {
+    "objectID": "w03/index.html#beyond-conditional-probability",
+    "href": "w03/index.html#beyond-conditional-probability",
+    "title": "Week 3: From PGMs to Causal Diagrams",
+    "section": "Beyond Conditional Probability",
+    "text": "Beyond Conditional Probability\n\nThis issue (that conditional probabilities could not be interpreted causally) at first represented a kind of dead end for scientists interested in employing probability theory to study causal relationships…\nRecent decades: researchers have built up an additional “layer” of modeling tools, augmenting existing machinery of probability to address causality head-on!\nPearl (2000): Formal proofs that (\\(\\Pr\\) axioms) \\(\\cup\\) (\\(\\textsf{do}\\) axioms) \\(\\Rightarrow\\) causal inference procedures successfully recover causal effects",
+    "crumbs": [
+      "Week 3: {{< var w03.date-md >}}"
+    ]
+  },
+  {
+    "objectID": "w03/index.html#preview-do-calculus",
+    "href": "w03/index.html#preview-do-calculus",
+    "title": "Week 3: From PGMs to Causal Diagrams",
+    "section": "Preview: do-Calculus",
+    "text": "Preview: do-Calculus\n\nExtends core of probability to incorporate causality, via \\(\\textsf{do}\\) operator\n\\(\\textsf{do}(X = 5)\\) is a “special” event, representing intervention in DGP to force \\(X \\leftarrow 5\\)… \\(\\textsf{do}(X = 5)\\) not the same event as \\(X = 5\\)!\n\n\n\n\n\n\n\n\n\n\\(X = 5\\)\n\\(\\neq\\)\n\\(\\textsf{do}(X = 5)\\)\n\n\n\n\nObserving that \\(X\\) took on value 5 (for some possibly-unknown reason)\n\\(\\neq\\)\nIntervening to force \\(X \\leftarrow 5\\), all else in DGP remaining the same (intervention then “flows” through rest of DGP)\n\n\n\n\nProbably the most difficult thing in 5650 to wrap head around\n“Special”: \\(\\Pr(\\textsf{do}(X = 5))\\) not well-defined, only \\(\\Pr(Y = 6 \\mid \\textsf{do}(X = 5))\\)\nTo emphasize special-ness, we may use notation like:\n\\[\n\\Pr(Y = 6 \\mid \\textsf{do}(X = 5)) \\equiv \\textstyle \\Pr_{\\textsf{do}(X = 5)}(Y = 6)\n\\]\nto avoid confusion with “normal” events",
+    "crumbs": [
+      "Week 3: {{< var w03.date-md >}}"
+    ]
+  },
+  {
+    "objectID": "w03/index.html#causal-world-unlocked-with-great-power-comes-great-responsibility",
+    "href": "w03/index.html#causal-world-unlocked-with-great-power-comes-great-responsibility",
+    "title": "Week 3: From PGMs to Causal Diagrams",
+    "section": "Causal World Unlocked 😎 (With Great Power Comes Great Responsibility…)",
+    "text": "Causal World Unlocked 😎 (With Great Power Comes Great Responsibility…)\n\nWith \\(\\textsf{do}(\\cdot)\\) in hand… (Alongside DGP satisfying axioms slightly more strict than core probability axioms)\nWe can make causal inferences from similar pair of facts! If:\n\nProbability that event \\(E_1\\) occurs is \\(\\Pr(E_1) = 0.5\\),\nThe probability that \\(E_1\\) occurs conditional on the event \\(\\textsf{do}(E_0)\\) occurring is \\(\\Pr(E_1 \\mid \\textsf{do}(E_0)) = 0.75\\),\n\nNow we can actually infer that the occurrence of \\(E_0\\) caused an increase in the likelihood of \\(E_1\\) occurring!",
+    "crumbs": [
+      "Week 3: {{< var w03.date-md >}}"
+    ]
+  },
+  {
+    "objectID": "w03/index.html#importance-of-observed-vs.-latent-distinction",
+    "href": "w03/index.html#importance-of-observed-vs.-latent-distinction",
+    "title": "Week 3: From PGMs to Causal Diagrams",
+    "section": "Importance of Observed vs. Latent Distinction!",
+    "text": "Importance of Observed vs. Latent Distinction!\n\nAcross many different fields, hidden stumbling-block in your project may be failure to model this distinction and pursue its implications!\n\n\n\n\n\n\n\n\n\nFigure 1: Your model failing to achieve its goal bc you haven’t yet distinguished observed vs. latent variables",
+    "crumbs": [
+      "Week 3: {{< var w03.date-md >}}"
+    ]
+  },
+  {
+    "objectID": "w03/index.html#example-from-cognitive-neuroscience-visual-perception",
+    "href": "w03/index.html#example-from-cognitive-neuroscience-visual-perception",
+    "title": "Week 3: From PGMs to Causal Diagrams",
+    "section": "Example from Cognitive Neuroscience: Visual Perception",
+    "text": "Example from Cognitive Neuroscience: Visual Perception\n\n\n\n\n\n\n\nWe “see” 3D objects like a basketballs, but our eyes are (curved) 2D surfaces!\n\\(\\Rightarrow\\) Our brains construct 3D environment by combining 2D info (observed photons-hitting-light-cones) with latent heuristic info:\n\nInstantaneous Binocular Disparity, fusing info from two slightly-offset eyes,\nShort-term Motion Parallax: How does object shift over short temporal “windows” of movement?\nLong-term mental models (orange-ish circle with this line pattern is usually a basketball, which is usually this big, etc.)\n\n\n\n\n\n\n\nImage source (a very cool article!)\n\n\n\n\n\n\nSimilar examples in many other fields \\(\\leadsto\\) science is a strange waltz of general models vs. field-specific details, but there’s one model that is infinitely helpful imo…",
+    "crumbs": [
+      "Week 3: {{< var w03.date-md >}}"
+    ]
+  },
+  {
+    "objectID": "w03/index.html#hidden-markov-models-hmms-are-our-ur-pgms",
+    "href": "w03/index.html#hidden-markov-models-hmms-are-our-ur-pgms",
+    "title": "Week 3: From PGMs to Causal Diagrams",
+    "section": "Hidden Markov Models (HMMs) Are Our Ur-PGMs!",
+    "text": "Hidden Markov Models (HMMs) Are Our Ur-PGMs!\n\nUsing “Ur” in the same sense as “America’s Ur-Choropleths”…\nHMMs are our “Ur-Models” for Computational Social Science specifically\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nLet’s consider an extremely currently-popular strand of CSS research, and step through why (a) it may be harder than it initially seems, but (b) we can use HMMs to “organize”/manage/visualize the complexity!\n\n\nAs in, how America’s Ur-Choropleths are two visualizations you can keep at hand before launching into a specific nation-wide choropleth about a specific issue!",
+    "crumbs": [
+      "Week 3: {{< var w03.date-md >}}"
+    ]
+  },
+  {
+    "objectID": "w03/index.html#studying-fake-news",
+    "href": "w03/index.html#studying-fake-news",
+    "title": "Week 3: From PGMs to Causal Diagrams",
+    "section": "Studying “Fake News”",
+    "text": "Studying “Fake News”\n\n\n\n\n\n\n\n\n\n\nStudying “fake news” with ML and/or Deep Learning and/or Big Data is very popular in Computational Social Science: let’s use HMMs to see why it might be more… difficult/complicated than it seems at first 🙈\n\n\n\n\n\nThe (implicit) model in studies like Iyengar and Kinder (2010) is something like:\n\n\n\n\n\n\n\n\n\n\n\n\n\nThus allowing results to be summarized in a table like:\n\n\n\n\n\n\n\n\n\n\n\nIyengar and Kinder (2010)",
+    "crumbs": [
+      "Week 3: {{< var w03.date-md >}}"
+    ]
+  },
+  {
+    "objectID": "w03/index.html#the-devil-in-the-details-i",
+    "href": "w03/index.html#the-devil-in-the-details-i",
+    "title": "Week 3: From PGMs to Causal Diagrams",
+    "section": "The Devil in the Details I",
+    "text": "The Devil in the Details I\n\nResidents of the New Haven, Connecticut area participated in one of two experiments, each of which spanned six consecutive days […] took place in November 1980, shortly after the presidential election\n\n\nWe measured problem importance with four questions that appeared in both the pretreatment and posttreatment questionnaires:\n\nPlease indicate how important you consider these problems to be.\nShould the federal government do more to develop solutions to these problems, even if it means raising taxes?\nHow much do you yourself care about these problems?\nThese days how much do you talk about these problems?",
+    "crumbs": [
+      "Week 3: {{< var w03.date-md >}}"
+    ]
+  },
+  {
+    "objectID": "w03/index.html#the-devil-in-the-details-ii",
+    "href": "w03/index.html#the-devil-in-the-details-ii",
+    "title": "Week 3: From PGMs to Causal Diagrams",
+    "section": "The Devil in the Details II",
+    "text": "The Devil in the Details II",
+    "crumbs": [
+      "Week 3: {{< var w03.date-md >}}"
+    ]
+  },
+  {
+    "objectID": "w03/index.html#randomization-and-fine-tuned-treatment",
+    "href": "w03/index.html#randomization-and-fine-tuned-treatment",
+    "title": "Week 3: From PGMs to Causal Diagrams",
+    "section": "Randomization and Fine-Tuned Treatment",
+    "text": "Randomization and Fine-Tuned Treatment\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n…These are the types of things we usually don’t have control over as data scientists (we’re just handed a .csv!)",
+    "crumbs": [
+      "Week 3: {{< var w03.date-md >}}"
+    ]
+  },
+  {
+    "objectID": "w03/index.html#lets-model-it",
+    "href": "w03/index.html#lets-model-it",
+    "title": "Week 3: From PGMs to Causal Diagrams",
+    "section": "Let’s Model It!",
+    "text": "Let’s Model It!",
+    "crumbs": [
+      "Week 3: {{< var w03.date-md >}}"
+    ]
+  },
+  {
+    "objectID": "w03/index.html#the-final-piece-plate-notation",
+    "href": "w03/index.html#the-final-piece-plate-notation",
+    "title": "Week 3: From PGMs to Causal Diagrams",
+    "section": "The Final Piece: Plate Notation",
+    "text": "The Final Piece: Plate Notation\n\nFor describing general distributions, there is often a “single node generating a bunch of nodes” structure:\n\n\n\n\n\n\n\nPGM notation has a built-in tool for this: plates!",
+    "crumbs": [
+      "Week 3: {{< var w03.date-md >}}"
+    ]
+  },
+  {
+    "objectID": "w03/index.html#crucial-css-model-we-can-now-dive-into",
+    "href": "w03/index.html#crucial-css-model-we-can-now-dive-into",
+    "title": "Week 3: From PGMs to Causal Diagrams",
+    "section": "Crucial CSS Model We Can Now Dive Into!",
+    "text": "Crucial CSS Model We Can Now Dive Into!\n\n\n\nImage source",
+    "crumbs": [
+      "Week 3: {{< var w03.date-md >}}"
+    ]
+  },
+  {
+    "objectID": "w03/index.html#what-does-this-give-us",
+    "href": "w03/index.html#what-does-this-give-us",
+    "title": "Week 3: From PGMs to Causal Diagrams",
+    "section": "What Does This Give Us?",
+    "text": "What Does This Give Us?",
+    "crumbs": [
+      "Week 3: {{< var w03.date-md >}}"
+    ]
+  },
+  {
+    "objectID": "w03/index.html#before-we-branch-off-of-pgms",
+    "href": "w03/index.html#before-we-branch-off-of-pgms",
+    "title": "Week 3: From PGMs to Causal Diagrams",
+    "section": "Before We Branch Off Of PGMs",
+    "text": "Before We Branch Off Of PGMs\n(Even in non-causal settings)\n\n\n\nImage source\n\n\n\nWe don’t exactly think “Shakespeare decided on a set of topics,”",
+    "crumbs": [
+      "Week 3: {{< var w03.date-md >}}"
+    ]
+  },
+  {
+    "objectID": "w03/index.html#getting-shot-by-a-firing-squad",
+    "href": "w03/index.html#getting-shot-by-a-firing-squad",
+    "title": "Week 3: From PGMs to Causal Diagrams",
+    "section": "Getting Shot By A Firing Squad",
+    "text": "Getting Shot By A Firing Squad\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\\(O\\)\n\\(C\\)\n\\(A\\)\n\\(B\\)\n\\(D\\)\n\n\n\n\n0\n0\n0\n0\n0\n\n\n1\n1\n1\n1\n1\n\n\n0\n0\n0\n0\n0\n\n\n0\n0\n0\n0\n0\n\n\n1\n1\n1\n1\n1\n\n\n\n\\[\n\\begin{align*}\n\\Pr(D) &= 0.4 \\\\\n\\Pr(D \\mid A) &= 1\n\\end{align*}\n\\]",
+    "crumbs": [
+      "Week 3: {{< var w03.date-md >}}"
+    ]
+  },
+  {
+    "objectID": "w03/index.html#the-fork",
+    "href": "w03/index.html#the-fork",
+    "title": "Week 3: From PGMs to Causal Diagrams",
+    "section": "The Fork",
+    "text": "The Fork\n\n\nCode\nlibrary(tidyverse)\n\n\n── Attaching core tidyverse packages ──────────────────────── tidyverse 2.0.0 ──\n✔ dplyr     1.1.4     ✔ readr     2.1.5\n✔ forcats   1.0.0     ✔ stringr   1.5.1\n✔ ggplot2   3.5.1     ✔ tibble    3.2.1\n✔ lubridate 1.9.3     ✔ tidyr     1.3.1\n✔ purrr     1.0.2     \n── Conflicts ────────────────────────────────────────── tidyverse_conflicts() ──\n✖ dplyr::filter() masks stats::filter()\n✖ dplyr::lag()    masks stats::lag()\nℹ Use the conflicted package (&lt;http://conflicted.r-lib.org/&gt;) to force all conflicts to become errors\n\n\nCode\nlibrary(extraDistr)\n\n\n\nAttaching package: 'extraDistr'\n\nThe following object is masked from 'package:purrr':\n\n    rdunif\n\n\nCode\nn &lt;- 10000\nfork_df &lt;- tibble(\n    Z = rbern(n),\n    X = rbern(n, (1-Z)*0.1 + Z*0.9),\n    Y = rbern(n, (1-Z)*0.1 + Z*0.9),\n)\n# fork_df |&gt; group_by(X, Y) |&gt;\n#   summarize(Z=n())\n# The full df\ntable(fork_df$X, fork_df$Y)\n\n\n   \n       0    1\n  0 4040  911\n  1  866 4183\n\n\nCode\ncor(fork_df$X, fork_df$Y)\n\n\n[1] 0.6445606\n\n\nCode\n# Conditioning on Z = 0\nz0_df &lt;- fork_df |&gt; filter(Z == 0)\ncor(z0_df$X, z0_df$Y)\n\n\n[1] -0.003036962\n\n\nCode\n# Conditioning on Z = 1\nz1_df &lt;- fork_df |&gt; filter(Z == 1)\ncor(z1_df$X, z1_df$Y)\n\n\n[1] -0.0003034739",
+    "crumbs": [
+      "Week 3: {{< var w03.date-md >}}"
+    ]
+  },
+  {
+    "objectID": "w03/index.html#references",
+    "href": "w03/index.html#references",
+    "title": "Week 3: From PGMs to Causal Diagrams",
+    "section": "References",
+    "text": "References\n\n\nFinetti, Bruno de. 1972. Probability, Induction and Statistics: The Art of Guessing. J. Wiley.\n\n\nHume, David. 1739. A Treatise of Human Nature: Being an Attempt to Introduce the Experimental Method of Reasoning Into Moral Subjects; and Dialogues Concerning Natural Religion. Longmans, Green.\n\n\nIyengar, Shanto, and Donald R. Kinder. 2010. News That Matters: Television & American Opinion. University of Chicago Press.\n\n\nPearl, Judea. 2000. Causality: Models, Reasoning, and Inference. Cambridge University Press. https://www.dropbox.com/scl/fi/4kfpro4gpx7tg55fwd7qt/Judea-Pearl-Causality_-Models-Reasoning-and-Inference.pdf?rlkey=f0abw0cgmsyiegx6xapq5z7j2&dl=1.",
+    "crumbs": [
+      "Week 3: {{< var w03.date-md >}}"
+    ]
+  },
+  {
+    "objectID": "w03/index.html#footnotes",
+    "href": "w03/index.html#footnotes",
+    "title": "Week 3: From PGMs to Causal Diagrams",
+    "section": "Footnotes",
+    "text": "Footnotes\n\n\nSee Appendix Slide↩︎",
+    "crumbs": [
+      "Week 3: {{< var w03.date-md >}}"
+    ]
+  },
+  {
+    "objectID": "w03/slides.html#so-whats-the-problem",
+    "href": "w03/slides.html#so-whats-the-problem",
+    "title": "Week 3: From PGMs to Causal Diagrams",
+    "section": "So What’s the Problem?",
+    "text": "So What’s the Problem?\n\nNon-probabilistic models: High potential for being garbage\n\ntldr: even if SUPER certain, using \\(\\Pr(\\mathcal{H}) = 1-\\varepsilon\\) with tiny \\(\\varepsilon\\) has literal life-saving advantages1 (Finetti 1972)\n\nProbabilistic models: Getting there, still looking at “surface”\n\nOf the \\(N = 100\\) times we observed event \\(X\\) occurring, event \\(Y\\) also occurred \\(90\\) of those times\n\\(\\implies \\Pr(Y \\mid X) = \\frac{\\#[X, Y]}{\\#[X]} = \\frac{90}{100} = 0.9\\)\n\nCausal models: Does \\(Y\\) happen because of \\(X\\) happening? For that, need to start modeling what’s happening under the surface making \\(X\\) and \\(Y\\) “pop up” together so often\n\nSee Appendix Slide"
+  },
+  {
+    "objectID": "w03/slides.html#the-fundamental-problem-of-causal-inference",
+    "href": "w03/slides.html#the-fundamental-problem-of-causal-inference",
+    "title": "Week 3: From PGMs to Causal Diagrams",
+    "section": "The Fundamental Problem of Causal Inference",
+    "text": "The Fundamental Problem of Causal Inference\nThe only workable definition of «\\(X\\) causes \\(Y\\)»:\n\n\n\n\n Defining Causality (Hume 1739, ruining everything as usual 😤)\n\n\n\\(X\\) causes \\(Y\\) if and only if:\n\n\\(X\\) temporally precedes \\(Y\\) and\n\nIn two worlds \\(W_0\\) and \\(W_1\\) where\neverything is exactly the same except that \\(X = 0\\) in \\(W_0\\) and \\(X = 1\\) in \\(W_1\\),\n\\(Y = 0\\) in \\(W_0\\) and \\(Y = 1\\) in \\(W_1\\)\n\n\n\n\n\n\n\nThe problem? We live in one world, not two identical worlds simultaneously 😭"
+  },
+  {
+    "objectID": "w03/slides.html#what-is-to-be-done",
+    "href": "w03/slides.html#what-is-to-be-done",
+    "title": "Week 3: From PGMs to Causal Diagrams",
+    "section": "What Is To Be Done?",
+    "text": "What Is To Be Done?"
+  },
+  {
+    "objectID": "w03/slides.html#probability",
+    "href": "w03/slides.html#probability",
+    "title": "Week 3: From PGMs to Causal Diagrams",
+    "section": "Probability++",
+    "text": "Probability++\n\nTools from prob/stats (RVs, CDFs, Conditional Probability) necessary but not sufficient for causal inference!\nExample: Say we use DSAN 5100 tools to discover:\n\nProbability that event \\(E_1\\) occurs is \\(\\Pr(E_1) = 0.5\\)\nProbability that \\(E_1\\) occurs conditional on another event \\(E_0\\) occurring is \\(\\Pr(E_1 \\mid E_0) = 0.75\\)\n\nUnfortunately, we still cannot infer that the occurrence of \\(E_0\\) causes an increase in the likelihood of \\(E_1\\) occurring."
+  },
+  {
+    "objectID": "w03/slides.html#beyond-conditional-probability",
+    "href": "w03/slides.html#beyond-conditional-probability",
+    "title": "Week 3: From PGMs to Causal Diagrams",
+    "section": "Beyond Conditional Probability",
+    "text": "Beyond Conditional Probability\n\nThis issue (that conditional probabilities could not be interpreted causally) at first represented a kind of dead end for scientists interested in employing probability theory to study causal relationships…\nRecent decades: researchers have built up an additional “layer” of modeling tools, augmenting existing machinery of probability to address causality head-on!\nPearl (2000): Formal proofs that (\\(\\Pr\\) axioms) \\(\\cup\\) (\\(\\textsf{do}\\) axioms) \\(\\Rightarrow\\) causal inference procedures successfully recover causal effects"
+  },
+  {
+    "objectID": "w03/slides.html#preview-do-calculus",
+    "href": "w03/slides.html#preview-do-calculus",
+    "title": "Week 3: From PGMs to Causal Diagrams",
+    "section": "Preview: do-Calculus",
+    "text": "Preview: do-Calculus\n\nExtends core of probability to incorporate causality, via \\(\\textsf{do}\\) operator\n\\(\\textsf{do}(X = 5)\\) is a “special” event, representing intervention in DGP to force \\(X \\leftarrow 5\\)… \\(\\textsf{do}(X = 5)\\) not the same event as \\(X = 5\\)!\n\n\n\n\n\n\n\n\n\n\\(X = 5\\)\n\\(\\neq\\)\n\\(\\textsf{do}(X = 5)\\)\n\n\n\n\nObserving that \\(X\\) took on value 5 (for some possibly-unknown reason)\n\\(\\neq\\)\nIntervening to force \\(X \\leftarrow 5\\), all else in DGP remaining the same (intervention then “flows” through rest of DGP)\n\n\n\n\nProbably the most difficult thing in 5650 to wrap head around\n“Special”: \\(\\Pr(\\textsf{do}(X = 5))\\) not well-defined, only \\(\\Pr(Y = 6 \\mid \\textsf{do}(X = 5))\\)\nTo emphasize special-ness, we may use notation like:\n\\[\n\\Pr(Y = 6 \\mid \\textsf{do}(X = 5)) \\equiv \\textstyle \\Pr_{\\textsf{do}(X = 5)}(Y = 6)\n\\]\nto avoid confusion with “normal” events"
+  },
+  {
+    "objectID": "w03/slides.html#causal-world-unlocked-with-great-power-comes-great-responsibility",
+    "href": "w03/slides.html#causal-world-unlocked-with-great-power-comes-great-responsibility",
+    "title": "Week 3: From PGMs to Causal Diagrams",
+    "section": "Causal World Unlocked 😎 (With Great Power Comes Great Responsibility…)",
+    "text": "Causal World Unlocked 😎 (With Great Power Comes Great Responsibility…)\n\nWith \\(\\textsf{do}(\\cdot)\\) in hand… (Alongside DGP satisfying axioms slightly more strict than core probability axioms)\nWe can make causal inferences from similar pair of facts! If:\n\nProbability that event \\(E_1\\) occurs is \\(\\Pr(E_1) = 0.5\\),\nThe probability that \\(E_1\\) occurs conditional on the event \\(\\textsf{do}(E_0)\\) occurring is \\(\\Pr(E_1 \\mid \\textsf{do}(E_0)) = 0.75\\),\n\nNow we can actually infer that the occurrence of \\(E_0\\) caused an increase in the likelihood of \\(E_1\\) occurring!"
+  },
+  {
+    "objectID": "w03/slides.html#importance-of-observed-vs.-latent-distinction",
+    "href": "w03/slides.html#importance-of-observed-vs.-latent-distinction",
+    "title": "Week 3: From PGMs to Causal Diagrams",
+    "section": "Importance of Observed vs. Latent Distinction!",
+    "text": "Importance of Observed vs. Latent Distinction!\n\nAcross many different fields, hidden stumbling-block in your project may be failure to model this distinction and pursue its implications!\n\n\n\n\n\n\n\n\n\nFigure 1: Your model failing to achieve its goal bc you haven’t yet distinguished observed vs. latent variables"
+  },
+  {
+    "objectID": "w03/slides.html#example-from-cognitive-neuroscience-visual-perception",
+    "href": "w03/slides.html#example-from-cognitive-neuroscience-visual-perception",
+    "title": "Week 3: From PGMs to Causal Diagrams",
+    "section": "Example from Cognitive Neuroscience: Visual Perception",
+    "text": "Example from Cognitive Neuroscience: Visual Perception\n\n\n\n\n\n\n\nWe “see” 3D objects like a basketballs, but our eyes are (curved) 2D surfaces!\n\\(\\Rightarrow\\) Our brains construct 3D environment by combining 2D info (observed photons-hitting-light-cones) with latent heuristic info:\n\nInstantaneous Binocular Disparity, fusing info from two slightly-offset eyes,\nShort-term Motion Parallax: How does object shift over short temporal “windows” of movement?\nLong-term mental models (orange-ish circle with this line pattern is usually a basketball, which is usually this big, etc.)\n\n\n\n\n\n\n\nImage source (a very cool article!)\n\n\n\n\n\n\nSimilar examples in many other fields \\(\\leadsto\\) science is a strange waltz of general models vs. field-specific details, but there’s one model that is infinitely helpful imo…"
+  },
+  {
+    "objectID": "w03/slides.html#hidden-markov-models-hmms-are-our-ur-pgms",
+    "href": "w03/slides.html#hidden-markov-models-hmms-are-our-ur-pgms",
+    "title": "Week 3: From PGMs to Causal Diagrams",
+    "section": "Hidden Markov Models (HMMs) Are Our Ur-PGMs!",
+    "text": "Hidden Markov Models (HMMs) Are Our Ur-PGMs!\n\nUsing “Ur” in the same sense as “America’s Ur-Choropleths”…\nHMMs are our “Ur-Models” for Computational Social Science specifically\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nLet’s consider an extremely currently-popular strand of CSS research, and step through why (a) it may be harder than it initially seems, but (b) we can use HMMs to “organize”/manage/visualize the complexity!\n\n\nAs in, how America’s Ur-Choropleths are two visualizations you can keep at hand before launching into a specific nation-wide choropleth about a specific issue!"
+  },
+  {
+    "objectID": "w03/slides.html#studying-fake-news",
+    "href": "w03/slides.html#studying-fake-news",
+    "title": "Week 3: From PGMs to Causal Diagrams",
+    "section": "Studying “Fake News”",
+    "text": "Studying “Fake News”\n\n\n\n\n\n\n\nStudying “fake news” with ML and/or Deep Learning and/or Big Data is very popular in Computational Social Science: let’s use HMMs to see why it might be more… difficult/complicated than it seems at first 🙈\n\n\n\n\n\nThe (implicit) model in studies like Iyengar and Kinder (2010) is something like:\n\n\n\n\n\n\n\n\n\n\n\n\n\nThus allowing results to be summarized in a table like:\n\n\n\n\n\n\n\n\n\n\n\nIyengar and Kinder (2010)"
+  },
+  {
+    "objectID": "w03/slides.html#the-devil-in-the-details-i",
+    "href": "w03/slides.html#the-devil-in-the-details-i",
+    "title": "Week 3: From PGMs to Causal Diagrams",
+    "section": "The Devil in the Details I",
+    "text": "The Devil in the Details I\n\nResidents of the New Haven, Connecticut area participated in one of two experiments, each of which spanned six consecutive days […] took place in November 1980, shortly after the presidential election\n\n\nWe measured problem importance with four questions that appeared in both the pretreatment and posttreatment questionnaires:\n\nPlease indicate how important you consider these problems to be.\nShould the federal government do more to develop solutions to these problems, even if it means raising taxes?\nHow much do you yourself care about these problems?\nThese days how much do you talk about these problems?"
+  },
+  {
+    "objectID": "w03/slides.html#the-devil-in-the-details-ii",
+    "href": "w03/slides.html#the-devil-in-the-details-ii",
+    "title": "Week 3: From PGMs to Causal Diagrams",
+    "section": "The Devil in the Details II",
+    "text": "The Devil in the Details II"
+  },
+  {
+    "objectID": "w03/slides.html#randomization-and-fine-tuned-treatment",
+    "href": "w03/slides.html#randomization-and-fine-tuned-treatment",
+    "title": "Week 3: From PGMs to Causal Diagrams",
+    "section": "Randomization and Fine-Tuned Treatment",
+    "text": "Randomization and Fine-Tuned Treatment\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n…These are the types of things we usually don’t have control over as data scientists (we’re just handed a .csv!)"
+  },
+  {
+    "objectID": "w03/slides.html#lets-model-it",
+    "href": "w03/slides.html#lets-model-it",
+    "title": "Week 3: From PGMs to Causal Diagrams",
+    "section": "Let’s Model It!",
+    "text": "Let’s Model It!"
+  },
+  {
+    "objectID": "w03/slides.html#the-final-piece-plate-notation",
+    "href": "w03/slides.html#the-final-piece-plate-notation",
+    "title": "Week 3: From PGMs to Causal Diagrams",
+    "section": "The Final Piece: Plate Notation",
+    "text": "The Final Piece: Plate Notation\n\nFor describing general distributions, there is often a “single node generating a bunch of nodes” structure:\n\n\n\n\n\n\n\nPGM notation has a built-in tool for this: plates!"
+  },
+  {
+    "objectID": "w03/slides.html#crucial-css-model-we-can-now-dive-into",
+    "href": "w03/slides.html#crucial-css-model-we-can-now-dive-into",
+    "title": "Week 3: From PGMs to Causal Diagrams",
+    "section": "Crucial CSS Model We Can Now Dive Into!",
+    "text": "Crucial CSS Model We Can Now Dive Into!\n\nImage source"
+  },
+  {
+    "objectID": "w03/slides.html#what-does-this-give-us",
+    "href": "w03/slides.html#what-does-this-give-us",
+    "title": "Week 3: From PGMs to Causal Diagrams",
+    "section": "What Does This Give Us?",
+    "text": "What Does This Give Us?"
+  },
+  {
+    "objectID": "w03/slides.html#before-we-branch-off-of-pgms",
+    "href": "w03/slides.html#before-we-branch-off-of-pgms",
+    "title": "Week 3: From PGMs to Causal Diagrams",
+    "section": "Before We Branch Off Of PGMs",
+    "text": "Before We Branch Off Of PGMs\n(Even in non-causal settings)\n\nImage source\nWe don’t exactly think “Shakespeare decided on a set of topics,”"
+  },
+  {
+    "objectID": "w03/slides.html#getting-shot-by-a-firing-squad",
+    "href": "w03/slides.html#getting-shot-by-a-firing-squad",
+    "title": "Week 3: From PGMs to Causal Diagrams",
+    "section": "Getting Shot By A Firing Squad",
+    "text": "Getting Shot By A Firing Squad\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\\(O\\)\n\\(C\\)\n\\(A\\)\n\\(B\\)\n\\(D\\)\n\n\n\n\n0\n0\n0\n0\n0\n\n\n1\n1\n1\n1\n1\n\n\n0\n0\n0\n0\n0\n\n\n0\n0\n0\n0\n0\n\n\n1\n1\n1\n1\n1\n\n\n\n\\[\n\\begin{align*}\n\\Pr(D) &= 0.4 \\\\\n\\Pr(D \\mid A) &= 1\n\\end{align*}\n\\]"
+  },
+  {
+    "objectID": "w03/slides.html#the-fork",
+    "href": "w03/slides.html#the-fork",
+    "title": "Week 3: From PGMs to Causal Diagrams",
+    "section": "The Fork",
+    "text": "The Fork\n\n\nCode\nlibrary(tidyverse)\nlibrary(extraDistr)\nn &lt;- 10000\nfork_df &lt;- tibble(\n    Z = rbern(n),\n    X = rbern(n, (1-Z)*0.1 + Z*0.9),\n    Y = rbern(n, (1-Z)*0.1 + Z*0.9),\n)\n# fork_df |&gt; group_by(X, Y) |&gt;\n#   summarize(Z=n())\n# The full df\ntable(fork_df$X, fork_df$Y)\n\n\n   \n       0    1\n  0 4146  930\n  1  861 4063\n\n\nCode\ncor(fork_df$X, fork_df$Y)\n\n\n[1] 0.6418535\n\n\nCode\n# Conditioning on Z = 0\nz0_df &lt;- fork_df |&gt; filter(Z == 0)\ncor(z0_df$X, z0_df$Y)\n\n\n[1] -0.007488787\n\n\nCode\n# Conditioning on Z = 1\nz1_df &lt;- fork_df |&gt; filter(Z == 1)\ncor(z1_df$X, z1_df$Y)\n\n\n[1] -0.004484599"
+  },
+  {
+    "objectID": "w03/slides.html#references",
+    "href": "w03/slides.html#references",
+    "title": "Week 3: From PGMs to Causal Diagrams",
+    "section": "References",
+    "text": "References\n\n\nFinetti, Bruno de. 1972. Probability, Induction and Statistics: The Art of Guessing. J. Wiley.\n\n\nHume, David. 1739. A Treatise of Human Nature: Being an Attempt to Introduce the Experimental Method of Reasoning Into Moral Subjects; and Dialogues Concerning Natural Religion. Longmans, Green.\n\n\nIyengar, Shanto, and Donald R. Kinder. 2010. News That Matters: Television & American Opinion. University of Chicago Press.\n\n\nPearl, Judea. 2000. Causality: Models, Reasoning, and Inference. Cambridge University Press. https://www.dropbox.com/scl/fi/4kfpro4gpx7tg55fwd7qt/Judea-Pearl-Causality_-Models-Reasoning-and-Inference.pdf?rlkey=f0abw0cgmsyiegx6xapq5z7j2&dl=1."
   },
   {
     "objectID": "w02/index.html",
@@ -416,121 +813,11 @@
     ]
   },
   {
-    "objectID": "w02/index.html#importance-of-observed-vs.-latent-distinction",
-    "href": "w02/index.html#importance-of-observed-vs.-latent-distinction",
-    "title": "Week 2: Probabilistic Graphical Models (PGMs)",
-    "section": "Importance of Observed vs. Latent Distinction!",
-    "text": "Importance of Observed vs. Latent Distinction!\n\nAcross many different fields, hidden stumbling-block in your project may be failure to model this distinction and pursue its implications!\n\n\n\n\n\n\n\n\n\nFigure 3: Your model failing to achieve its goal bc you haven’t yet distinguished observed vs. latent variables",
-    "crumbs": [
-      "Week 2: {{< var w02.date-md >}}"
-    ]
-  },
-  {
-    "objectID": "w02/index.html#example-from-cognitive-neuroscience-visual-perception",
-    "href": "w02/index.html#example-from-cognitive-neuroscience-visual-perception",
-    "title": "Week 2: Probabilistic Graphical Models (PGMs)",
-    "section": "Example from Cognitive Neuroscience: Visual Perception",
-    "text": "Example from Cognitive Neuroscience: Visual Perception\n\n\n\n\n\n\n\nWe “see” 3D objects like a basketballs, but our eyes are (curved) 2D surfaces!\n\\(\\Rightarrow\\) Our brains construct 3D environment by combining 2D info (observed photons-hitting-light-cones) with latent heuristic info:\n\nInstantaneous Binocular Disparity, fusing info from two slightly-offset eyes,\nShort-term Motion Parallax: How does object shift over short temporal “windows” of movement?\nLong-term mental models (orange-ish circle with this line pattern is usually a basketball, which is usually this big, etc.)\n\n\n\n\n\n\n\nImage source (a very cool article!)\n\n\n\n\n\n\nSimilar examples in many other fields \\(\\leadsto\\) science is a strange waltz of general models vs. field-specific details, but there’s one model that is infinitely helpful imo…",
-    "crumbs": [
-      "Week 2: {{< var w02.date-md >}}"
-    ]
-  },
-  {
-    "objectID": "w02/index.html#hidden-markov-models-hmms-are-our-ur-pgms",
-    "href": "w02/index.html#hidden-markov-models-hmms-are-our-ur-pgms",
-    "title": "Week 2: Probabilistic Graphical Models (PGMs)",
-    "section": "Hidden Markov Models (HMMs) Are Our Ur-PGMs!",
-    "text": "Hidden Markov Models (HMMs) Are Our Ur-PGMs!\n\nUsing “Ur” in the same sense as “America’s Ur-Choropleths”…\nHMMs are our “Ur-Models” for Computational Social Science specifically\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nLet’s consider an extremely currently-popular strand of CSS research, and step through why (a) it may be harder than it initially seems, but (b) we can use HMMs to “organize”/manage/visualize the complexity!\n\n\nAs in, how America’s Ur-Choropleths are two visualizations you can keep at hand before launching into a specific nation-wide choropleth about a specific issue!",
-    "crumbs": [
-      "Week 2: {{< var w02.date-md >}}"
-    ]
-  },
-  {
-    "objectID": "w02/index.html#studying-fake-news",
-    "href": "w02/index.html#studying-fake-news",
-    "title": "Week 2: Probabilistic Graphical Models (PGMs)",
-    "section": "Studying “Fake News”",
-    "text": "Studying “Fake News”\n\n\n\n\n\n\n\n\n\n\nStudying “fake news” with ML and/or Deep Learning and/or Big Data is very popular in Computational Social Science: let’s use HMMs to see why it might be more… difficult/complicated than it seems at first 🙈\n\n\n\n\n\nThe (implicit) model in studies like Iyengar and Kinder (2010) is something like:\n\n\n\n\n\n\n\n\n\n\n\n\n\nThus allowing results to be summarized in a table like:\n\n\n\n\n\n\n\n\n\n\n\nIyengar and Kinder (2010)",
-    "crumbs": [
-      "Week 2: {{< var w02.date-md >}}"
-    ]
-  },
-  {
-    "objectID": "w02/index.html#the-devil-in-the-details-i",
-    "href": "w02/index.html#the-devil-in-the-details-i",
-    "title": "Week 2: Probabilistic Graphical Models (PGMs)",
-    "section": "The Devil in the Details I",
-    "text": "The Devil in the Details I\n\nResidents of the New Haven, Connecticut area participated in one of two experiments, each of which spanned six consecutive days […] took place in November 1980, shortly after the presidential election\n\n\nWe measured problem importance with four questions that appeared in both the pretreatment and posttreatment questionnaires:\n\nPlease indicate how important you consider these problems to be.\nShould the federal government do more to develop solutions to these problems, even if it means raising taxes?\nHow much do you yourself care about these problems?\nThese days how much do you talk about these problems?",
-    "crumbs": [
-      "Week 2: {{< var w02.date-md >}}"
-    ]
-  },
-  {
-    "objectID": "w02/index.html#the-devil-in-the-details-ii",
-    "href": "w02/index.html#the-devil-in-the-details-ii",
-    "title": "Week 2: Probabilistic Graphical Models (PGMs)",
-    "section": "The Devil in the Details II",
-    "text": "The Devil in the Details II",
-    "crumbs": [
-      "Week 2: {{< var w02.date-md >}}"
-    ]
-  },
-  {
-    "objectID": "w02/index.html#randomization-and-fine-tuned-treatment",
-    "href": "w02/index.html#randomization-and-fine-tuned-treatment",
-    "title": "Week 2: Probabilistic Graphical Models (PGMs)",
-    "section": "Randomization and Fine-Tuned Treatment",
-    "text": "Randomization and Fine-Tuned Treatment\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n…These are the types of things we usually don’t have control over as data scientists (we’re just handed a .csv!)",
-    "crumbs": [
-      "Week 2: {{< var w02.date-md >}}"
-    ]
-  },
-  {
-    "objectID": "w02/index.html#lets-model-it",
-    "href": "w02/index.html#lets-model-it",
-    "title": "Week 2: Probabilistic Graphical Models (PGMs)",
-    "section": "Let’s Model It!",
-    "text": "Let’s Model It!",
-    "crumbs": [
-      "Week 2: {{< var w02.date-md >}}"
-    ]
-  },
-  {
-    "objectID": "w02/index.html#the-final-piece-plate-notation",
-    "href": "w02/index.html#the-final-piece-plate-notation",
-    "title": "Week 2: Probabilistic Graphical Models (PGMs)",
-    "section": "The Final Piece: Plate Notation",
-    "text": "The Final Piece: Plate Notation\n\nFor describing general distributions, there is often a “single node generating a bunch of nodes” structure:\n\n\n\n\n\n\n\nPGM notation has a built-in tool for this: plates!",
-    "crumbs": [
-      "Week 2: {{< var w02.date-md >}}"
-    ]
-  },
-  {
-    "objectID": "w02/index.html#crucial-css-model-we-can-now-dive-into",
-    "href": "w02/index.html#crucial-css-model-we-can-now-dive-into",
-    "title": "Week 2: Probabilistic Graphical Models (PGMs)",
-    "section": "Crucial CSS Model We Can Now Dive Into!",
-    "text": "Crucial CSS Model We Can Now Dive Into!\n\n\n\nImage source",
-    "crumbs": [
-      "Week 2: {{< var w02.date-md >}}"
-    ]
-  },
-  {
-    "objectID": "w02/index.html#what-does-this-give-us",
-    "href": "w02/index.html#what-does-this-give-us",
-    "title": "Week 2: Probabilistic Graphical Models (PGMs)",
-    "section": "What Does This Give Us?",
-    "text": "What Does This Give Us?",
-    "crumbs": [
-      "Week 2: {{< var w02.date-md >}}"
-    ]
-  },
-  {
     "objectID": "w02/index.html#references",
     "href": "w02/index.html#references",
     "title": "Week 2: Probabilistic Graphical Models (PGMs)",
     "section": "References",
-    "text": "References\n\n\nFinetti, Bruno de. 1972. Probability, Induction and Statistics: The Art of Guessing. J. Wiley.\n\n\nHume, David. 1739. A Treatise of Human Nature: Being an Attempt to Introduce the Experimental Method of Reasoning Into Moral Subjects; and Dialogues Concerning Natural Religion. Longmans, Green.\n\n\nIyengar, Shanto, and Donald R. Kinder. 2010. News That Matters: Television & American Opinion. University of Chicago Press.\n\n\nKoller, Daphne, and Nir Friedman. 2009. Probabilistic Graphical Models: Principles and Techniques. MIT Press. https://www.dropbox.com/scl/fi/6qmnr9feizngaq4005isj/Probabilistic-Graphical-Models.pdf?rlkey=4803nmsffh4xtsdfiji8jppb1&dl=1.\n\n\nPearl, Judea. 2000. Causality: Models, Reasoning, and Inference. Cambridge University Press. https://www.dropbox.com/scl/fi/4kfpro4gpx7tg55fwd7qt/Judea-Pearl-Causality_-Models-Reasoning-and-Inference.pdf?rlkey=f0abw0cgmsyiegx6xapq5z7j2&dl=1.",
+    "text": "References\n\n\nFinetti, Bruno de. 1972. Probability, Induction and Statistics: The Art of Guessing. J. Wiley.\n\n\nHume, David. 1739. A Treatise of Human Nature: Being an Attempt to Introduce the Experimental Method of Reasoning Into Moral Subjects; and Dialogues Concerning Natural Religion. Longmans, Green.\n\n\nKoller, Daphne, and Nir Friedman. 2009. Probabilistic Graphical Models: Principles and Techniques. MIT Press. https://www.dropbox.com/scl/fi/6qmnr9feizngaq4005isj/Probabilistic-Graphical-Models.pdf?rlkey=4803nmsffh4xtsdfiji8jppb1&dl=1.\n\n\nPearl, Judea. 2000. Causality: Models, Reasoning, and Inference. Cambridge University Press. https://www.dropbox.com/scl/fi/4kfpro4gpx7tg55fwd7qt/Judea-Pearl-Causality_-Models-Reasoning-and-Inference.pdf?rlkey=f0abw0cgmsyiegx6xapq5z7j2&dl=1.",
     "crumbs": [
       "Week 2: {{< var w02.date-md >}}"
     ]
@@ -745,88 +1032,11 @@
     "text": "Computation via Bayes’ Rule\n\nBayes’ Rule, \\(\\Pr(A \\mid B) = \\frac{\\Pr(B \\mid A)\\Pr(A)}{\\Pr(B)}\\), tells us how to use info about \\(\\Pr(B \\mid A)\\) to obtain info about \\(\\Pr(A \\mid B)\\)!\nWe use it to obtain a distribution for \\(W\\) updated to incorporate new info \\([Y = \\textsf{Go}]\\):\n\n\\[\n\\begin{align*}\n&\\Pr(W = \\textsf{Sun} \\mid Y = \\textsf{Go})\n= \\frac{\\Pr(Y = \\textsf{Go} \\mid W = \\textsf{Sun}) \\Pr(W = \\textsf{Sun})}{\\Pr(Y = \\textsf{Go})} \\\\\n=\\, &\\frac{\\Pr(Y = \\textsf{Go} \\mid W = \\textsf{Sun}) \\Pr(W = \\textsf{Sun})}{\\Pr(Y = \\textsf{Go} \\mid W = \\textsf{Sun}) \\Pr(W = \\textsf{Sun}) + \\Pr(Y = \\textsf{Go} \\mid W = \\textsf{Rain}) \\Pr(W = \\textsf{Rain})}\n\\end{align*}\n\\]\n\nPlug in info from CPT to obtain our new (conditional) probability of interest:\n\n\\[\n\\begin{align*}\n\\Pr(W = \\textsf{Sun} \\mid Y = \\textsf{Go}) &= \\frac{(0.8)(0.5)}{(0.8)(0.5) + (0.1)(0.5)} = \\frac{0.4}{0.4 + 0.05} \\approx 0.89\n\\end{align*}\n\\]\n\nWe’ve learned something interesting! Observing \\(i\\) at the party \\(\\leadsto\\) probability of sun jumps from \\(0.5\\) (“prior” estimate of \\(W\\), best guess without any other relevant info) to \\(0.89\\) (“posterior” estimate of \\(W\\), best guess after incorporating relevant info)."
   },
   {
-    "objectID": "w02/slides.html#importance-of-observed-vs.-latent-distinction",
-    "href": "w02/slides.html#importance-of-observed-vs.-latent-distinction",
-    "title": "Week 2: Probabilistic Graphical Models (PGMs)",
-    "section": "Importance of Observed vs. Latent Distinction!",
-    "text": "Importance of Observed vs. Latent Distinction!\n\nAcross many different fields, hidden stumbling-block in your project may be failure to model this distinction and pursue its implications!\n\n\n\n\n\n\n\n\n\nFigure 3: Your model failing to achieve its goal bc you haven’t yet distinguished observed vs. latent variables"
-  },
-  {
-    "objectID": "w02/slides.html#example-from-cognitive-neuroscience-visual-perception",
-    "href": "w02/slides.html#example-from-cognitive-neuroscience-visual-perception",
-    "title": "Week 2: Probabilistic Graphical Models (PGMs)",
-    "section": "Example from Cognitive Neuroscience: Visual Perception",
-    "text": "Example from Cognitive Neuroscience: Visual Perception\n\n\n\n\n\n\n\nWe “see” 3D objects like a basketballs, but our eyes are (curved) 2D surfaces!\n\\(\\Rightarrow\\) Our brains construct 3D environment by combining 2D info (observed photons-hitting-light-cones) with latent heuristic info:\n\nInstantaneous Binocular Disparity, fusing info from two slightly-offset eyes,\nShort-term Motion Parallax: How does object shift over short temporal “windows” of movement?\nLong-term mental models (orange-ish circle with this line pattern is usually a basketball, which is usually this big, etc.)\n\n\n\n\n\n\n\nImage source (a very cool article!)\n\n\n\n\n\n\nSimilar examples in many other fields \\(\\leadsto\\) science is a strange waltz of general models vs. field-specific details, but there’s one model that is infinitely helpful imo…"
-  },
-  {
-    "objectID": "w02/slides.html#hidden-markov-models-hmms-are-our-ur-pgms",
-    "href": "w02/slides.html#hidden-markov-models-hmms-are-our-ur-pgms",
-    "title": "Week 2: Probabilistic Graphical Models (PGMs)",
-    "section": "Hidden Markov Models (HMMs) Are Our Ur-PGMs!",
-    "text": "Hidden Markov Models (HMMs) Are Our Ur-PGMs!\n\nUsing “Ur” in the same sense as “America’s Ur-Choropleths”…\nHMMs are our “Ur-Models” for Computational Social Science specifically\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nLet’s consider an extremely currently-popular strand of CSS research, and step through why (a) it may be harder than it initially seems, but (b) we can use HMMs to “organize”/manage/visualize the complexity!\n\n\nAs in, how America’s Ur-Choropleths are two visualizations you can keep at hand before launching into a specific nation-wide choropleth about a specific issue!"
-  },
-  {
-    "objectID": "w02/slides.html#studying-fake-news",
-    "href": "w02/slides.html#studying-fake-news",
-    "title": "Week 2: Probabilistic Graphical Models (PGMs)",
-    "section": "Studying “Fake News”",
-    "text": "Studying “Fake News”\n\n\n\n\n\n\n\nStudying “fake news” with ML and/or Deep Learning and/or Big Data is very popular in Computational Social Science: let’s use HMMs to see why it might be more… difficult/complicated than it seems at first 🙈\n\n\n\n\n\nThe (implicit) model in studies like Iyengar and Kinder (2010) is something like:\n\n\n\n\n\n\n\n\n\n\n\n\n\nThus allowing results to be summarized in a table like:\n\n\n\n\n\n\n\n\n\n\n\nIyengar and Kinder (2010)"
-  },
-  {
-    "objectID": "w02/slides.html#the-devil-in-the-details-i",
-    "href": "w02/slides.html#the-devil-in-the-details-i",
-    "title": "Week 2: Probabilistic Graphical Models (PGMs)",
-    "section": "The Devil in the Details I",
-    "text": "The Devil in the Details I\n\nResidents of the New Haven, Connecticut area participated in one of two experiments, each of which spanned six consecutive days […] took place in November 1980, shortly after the presidential election\n\n\nWe measured problem importance with four questions that appeared in both the pretreatment and posttreatment questionnaires:\n\nPlease indicate how important you consider these problems to be.\nShould the federal government do more to develop solutions to these problems, even if it means raising taxes?\nHow much do you yourself care about these problems?\nThese days how much do you talk about these problems?"
-  },
-  {
-    "objectID": "w02/slides.html#the-devil-in-the-details-ii",
-    "href": "w02/slides.html#the-devil-in-the-details-ii",
-    "title": "Week 2: Probabilistic Graphical Models (PGMs)",
-    "section": "The Devil in the Details II",
-    "text": "The Devil in the Details II"
-  },
-  {
-    "objectID": "w02/slides.html#randomization-and-fine-tuned-treatment",
-    "href": "w02/slides.html#randomization-and-fine-tuned-treatment",
-    "title": "Week 2: Probabilistic Graphical Models (PGMs)",
-    "section": "Randomization and Fine-Tuned Treatment",
-    "text": "Randomization and Fine-Tuned Treatment\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n…These are the types of things we usually don’t have control over as data scientists (we’re just handed a .csv!)"
-  },
-  {
-    "objectID": "w02/slides.html#lets-model-it",
-    "href": "w02/slides.html#lets-model-it",
-    "title": "Week 2: Probabilistic Graphical Models (PGMs)",
-    "section": "Let’s Model It!",
-    "text": "Let’s Model It!"
-  },
-  {
-    "objectID": "w02/slides.html#the-final-piece-plate-notation",
-    "href": "w02/slides.html#the-final-piece-plate-notation",
-    "title": "Week 2: Probabilistic Graphical Models (PGMs)",
-    "section": "The Final Piece: Plate Notation",
-    "text": "The Final Piece: Plate Notation\n\nFor describing general distributions, there is often a “single node generating a bunch of nodes” structure:\n\n\n\n\n\n\n\nPGM notation has a built-in tool for this: plates!"
-  },
-  {
-    "objectID": "w02/slides.html#crucial-css-model-we-can-now-dive-into",
-    "href": "w02/slides.html#crucial-css-model-we-can-now-dive-into",
-    "title": "Week 2: Probabilistic Graphical Models (PGMs)",
-    "section": "Crucial CSS Model We Can Now Dive Into!",
-    "text": "Crucial CSS Model We Can Now Dive Into!\n\nImage source"
-  },
-  {
-    "objectID": "w02/slides.html#what-does-this-give-us",
-    "href": "w02/slides.html#what-does-this-give-us",
-    "title": "Week 2: Probabilistic Graphical Models (PGMs)",
-    "section": "What Does This Give Us?",
-    "text": "What Does This Give Us?"
-  },
-  {
     "objectID": "w02/slides.html#references",
     "href": "w02/slides.html#references",
     "title": "Week 2: Probabilistic Graphical Models (PGMs)",
     "section": "References",
-    "text": "References\n\n\nFinetti, Bruno de. 1972. Probability, Induction and Statistics: The Art of Guessing. J. Wiley.\n\n\nHume, David. 1739. A Treatise of Human Nature: Being an Attempt to Introduce the Experimental Method of Reasoning Into Moral Subjects; and Dialogues Concerning Natural Religion. Longmans, Green.\n\n\nIyengar, Shanto, and Donald R. Kinder. 2010. News That Matters: Television & American Opinion. University of Chicago Press.\n\n\nKoller, Daphne, and Nir Friedman. 2009. Probabilistic Graphical Models: Principles and Techniques. MIT Press. https://www.dropbox.com/scl/fi/6qmnr9feizngaq4005isj/Probabilistic-Graphical-Models.pdf?rlkey=4803nmsffh4xtsdfiji8jppb1&dl=1.\n\n\nPearl, Judea. 2000. Causality: Models, Reasoning, and Inference. Cambridge University Press. https://www.dropbox.com/scl/fi/4kfpro4gpx7tg55fwd7qt/Judea-Pearl-Causality_-Models-Reasoning-and-Inference.pdf?rlkey=f0abw0cgmsyiegx6xapq5z7j2&dl=1."
+    "text": "References\n\n\nFinetti, Bruno de. 1972. Probability, Induction and Statistics: The Art of Guessing. J. Wiley.\n\n\nHume, David. 1739. A Treatise of Human Nature: Being an Attempt to Introduce the Experimental Method of Reasoning Into Moral Subjects; and Dialogues Concerning Natural Religion. Longmans, Green.\n\n\nKoller, Daphne, and Nir Friedman. 2009. Probabilistic Graphical Models: Principles and Techniques. MIT Press. https://www.dropbox.com/scl/fi/6qmnr9feizngaq4005isj/Probabilistic-Graphical-Models.pdf?rlkey=4803nmsffh4xtsdfiji8jppb1&dl=1.\n\n\nPearl, Judea. 2000. Causality: Models, Reasoning, and Inference. Cambridge University Press. https://www.dropbox.com/scl/fi/4kfpro4gpx7tg55fwd7qt/Judea-Pearl-Causality_-Models-Reasoning-and-Inference.pdf?rlkey=f0abw0cgmsyiegx6xapq5z7j2&dl=1."
   },
   {
     "objectID": "w02/slides.html#appendix-zero-probabilities",

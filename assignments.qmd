@@ -1,6 +1,6 @@
 ---
 title: "Assignment Point Distributions"
-subtitle: "DSAN 5450: Data Ethics and Policy"
+subtitle: "DSAN 5650: Causal Inference for Computational Social Science"
 sidebar: mainnav
 format:
   html:
@@ -19,13 +19,16 @@ library(tidyverse)
 gen_points_table <- function(hw_url) {
   hw_df <- read_csv(hw_url)
   hw_df <- hw_df |> drop_na(points)
+  hw_df$part <- as.character(hw_df$part)
   hw_df$points <- as.character(hw_df$points)
+  hw_df$q_total <- as.character(hw_df$q_total)
   hw_df$part_total <- as.character(hw_df$part_total)
   hw_df <- hw_df |> mutate(
     part = replace_na(part, ""),
     part_total = replace_na(part_total, ""),
     qid = replace_na(qid, ""),
-    test_type = replace_na(test_type, "")
+    q_total = replace_na(q_total, "")
+    # test_type = replace_na(test_type, "")
   )
   return(hw_df)
 }
@@ -41,22 +44,8 @@ gen_points_table <- function(hw_url) {
 #| label: hw1-points-table
 #| warning: false
 #| echo: false
-hw1_url <- "https://docs.google.com/spreadsheets/d/e/2PACX-1vStpSHtuJy38apEKdY7akAsUTo1ovM2AR5VQ7AuVUpK4kbbxOSaaWeChP-zg2VKfGcvdctPTIxVy4NG/pub?output=csv"
+hw1_url <- "https://docs.google.com/spreadsheets/d/e/2PACX-1vRmtsonhPXNJ-OvGuroF3LajqBYksct2jZyIuPg9QyWSo8dZHOCFYEq8XzzGq-yf8feyYgCijKgLc12/pub?gid=0&single=true&output=csv"
 gen_points_table(hw1_url)
-```
-
-</div>
-
-## HW2
-
-<div style="height: 400px !important; max-height: 400px !important; overflow-y: scroll !important;">
-
-```{r}
-#| label: hw2-points-table
-#| warning: false
-#| echo: false
-hw2_url <- "https://docs.google.com/spreadsheets/d/e/2PACX-1vQ1fr2J_zV58whxhQXYWB2irpfR68RbBGODkoyPetulIEITLso0mgQ4H0exsPHte0zdiFn0w9t-lkAF/pub?output=csv"
-gen_points_table(hw2_url)
 ```
 
 </div>

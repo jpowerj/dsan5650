@@ -22,8 +22,8 @@ website:
         href: resources.qmd
       # - text: "Writeups"
       #   href: writeups/index.qmd
-      # - text: "Assignments"
-      #   href: assignments.qmd
+      - text: "Assignments"
+        href: assignments.qmd
       # - text: "Midterm"
       #   href: midterm.qmd
       # - text: "Final Project"
@@ -39,8 +39,8 @@ website:
         href: "w01/index.qmd"
       - text: "Week 2: {{< var w02.date-md >}}"
         href: "w02/index.qmd"
-      # - text: "Week 3: {{< var w03.date-md >}}"
-      #   href: "w03/index.qmd"
+      - text: "Week 3: {{< var w03.date-md >}}"
+        href: "w03/index.qmd"
       # - text: "Week 4: {{< var w04.date-md >}}"
       #   href: "w04/index.qmd"
       # - text: "Week 5: {{< var w05.date-md >}}"

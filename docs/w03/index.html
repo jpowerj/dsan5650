@@ -8,7 +8,7 @@
 
 <meta name="author" content="Jeff Jacobs">
 
-<title>Week 2: Probabilistic Graphical Models (PGMs) – DSAN 5650</title>
+<title>Week 3: From PGMs to Causal Diagrams – DSAN 5650</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -126,7 +126,7 @@ div.csl-indent {
     "search-label": "Search"
   }
 }</script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js" integrity="sha512-v2CJ7UaYy4JwqLDIrZUI/4hqeoQieOmAZNXBeQyjo21dadnwR+8ZaIJVT8EE2iyI61OV8e6M8PP2/4hpQINQ/g==" crossorigin="anonymous" referrerpolicy="no-referrer"></script><link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/gh/dreampulse/computer-modern-web-font@master/fonts.css"><script src="../sidebar.js"></script>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css"><link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/gh/dreampulse/computer-modern-web-font@master/fonts.css"><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin=""><link href="https://fonts.googleapis.com/css2?family=Barrio&amp;display=swap" rel="stylesheet">
 
   <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
   <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
@@ -170,7 +170,7 @@ window.Quarto = {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../w02/index.html">Week 2: {{&lt; var w02.date-md &gt;}}</a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../w03/index.html">Week 3: {{&lt; var w03.date-md &gt;}}</a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -243,13 +243,13 @@ window.Quarto = {
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../w02/index.html" class="sidebar-item-text sidebar-link active">
+  <a href="../w02/index.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Week 2: May 28</span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../w03/index.html" class="sidebar-item-text sidebar-link">
+  <a href="../w03/index.html" class="sidebar-item-text sidebar-link active">
  <span class="menu-text">Week 3: Jun 4</span></a>
   </div>
 </li>
@@ -285,53 +285,50 @@ window.Quarto = {
    
   <ul>
   <li><a href="#schedule" id="toc-schedule" class="nav-link active" data-scroll-target="#schedule">Schedule</a></li>
-  <li><a href="#ta-intros" id="toc-ta-intros" class="nav-link" data-scroll-target="#ta-intros">TA Intros</a>
+  <li><a href="#hw1-questions-andor-concerns" id="toc-hw1-questions-andor-concerns" class="nav-link" data-scroll-target="#hw1-questions-andor-concerns">HW1 Questions and/or Concerns</a></li>
+  <li><a href="#causality-recap" id="toc-causality-recap" class="nav-link" data-scroll-target="#causality-recap">Causality Recap</a>
   <ul class="collapse">
-  <li><a href="#courtney-green" id="toc-courtney-green" class="nav-link" data-scroll-target="#courtney-green">Courtney Green</a></li>
-  <li><a href="#what-got-me-interested-in-causal-inference" id="toc-what-got-me-interested-in-causal-inference" class="nav-link" data-scroll-target="#what-got-me-interested-in-causal-inference">What Got Me Interested in Causal Inference</a></li>
-  <li><a href="#wendy-hu" id="toc-wendy-hu" class="nav-link" data-scroll-target="#wendy-hu">Wendy Hu</a></li>
-  <li><a href="#jeffs-hw1-updateapology" id="toc-jeffs-hw1-updateapology" class="nav-link" data-scroll-target="#jeffs-hw1-updateapology">Jeff’s HW1 Update/Apology</a></li>
-  <li><a href="#hw1-detail-plz-dont-hate-me" id="toc-hw1-detail-plz-dont-hate-me" class="nav-link" data-scroll-target="#hw1-detail-plz-dont-hate-me">HW1 Detail (Plz Don’t Hate Me 🙈)</a></li>
-  </ul></li>
-  <li><a href="#motivating-examples-causal-inference" id="toc-motivating-examples-causal-inference" class="nav-link" data-scroll-target="#motivating-examples-causal-inference">Motivating Examples: Causal Inference</a>
-  <ul class="collapse">
-  <li><a href="#disclaimer-unfortunate-side-effects-of-engaging-seriously-with-causality" id="toc-disclaimer-unfortunate-side-effects-of-engaging-seriously-with-causality" class="nav-link" data-scroll-target="#disclaimer-unfortunate-side-effects-of-engaging-seriously-with-causality">Disclaimer: Unfortunate Side Effects of Engaging Seriously with Causality</a></li>
-  <li><a href="#blasting-off-into-causality" id="toc-blasting-off-into-causality" class="nav-link" data-scroll-target="#blasting-off-into-causality">Blasting Off Into Causality!</a></li>
-  <li><a href="#data-generating-processes-dgps" id="toc-data-generating-processes-dgps" class="nav-link" data-scroll-target="#data-generating-processes-dgps">Data-Generating Processes (DGPs)</a></li>
-  <li><a href="#dgps-and-the-emergence-of-order" id="toc-dgps-and-the-emergence-of-order" class="nav-link" data-scroll-target="#dgps-and-the-emergence-of-order">DGPs and the Emergence of Order</a></li>
-  <li><a href="#the-result-16-steps" id="toc-the-result-16-steps" class="nav-link" data-scroll-target="#the-result-16-steps">The Result: 16 Steps</a></li>
-  <li><a href="#the-result-64-steps" id="toc-the-result-64-steps" class="nav-link" data-scroll-target="#the-result-64-steps">The Result: 64 Steps</a></li>
-  <li><a href="#mathematicalscientific-modeling" id="toc-mathematicalscientific-modeling" class="nav-link" data-scroll-target="#mathematicalscientific-modeling">“Mathematical/Scientific Modeling”</a></li>
   <li><a href="#so-whats-the-problem" id="toc-so-whats-the-problem" class="nav-link" data-scroll-target="#so-whats-the-problem">So What’s the Problem?</a></li>
-  <li><a href="#the-shallow-problem-of-causal-inference" id="toc-the-shallow-problem-of-causal-inference" class="nav-link" data-scroll-target="#the-shallow-problem-of-causal-inference">The <em>Shallow</em> Problem of Causal Inference</a></li>
   <li><a href="#the-fundamental-problem-of-causal-inference" id="toc-the-fundamental-problem-of-causal-inference" class="nav-link" data-scroll-target="#the-fundamental-problem-of-causal-inference">The <em>Fundamental</em> Problem of Causal Inference</a></li>
   <li><a href="#what-is-to-be-done" id="toc-what-is-to-be-done" class="nav-link" data-scroll-target="#what-is-to-be-done">What Is To Be Done?</a></li>
   <li><a href="#probability" id="toc-probability" class="nav-link" data-scroll-target="#probability">Probability++</a></li>
   <li><a href="#beyond-conditional-probability" id="toc-beyond-conditional-probability" class="nav-link" data-scroll-target="#beyond-conditional-probability">Beyond Conditional Probability</a></li>
   <li><a href="#preview-do-calculus" id="toc-preview-do-calculus" class="nav-link" data-scroll-target="#preview-do-calculus">Preview: do-Calculus</a></li>
   <li><a href="#causal-world-unlocked-with-great-power-comes-great-responsibility" id="toc-causal-world-unlocked-with-great-power-comes-great-responsibility" class="nav-link" data-scroll-target="#causal-world-unlocked-with-great-power-comes-great-responsibility">Causal World Unlocked 😎 (With Great Power Comes Great Responsibility…)</a></li>
-  <li><a href="#ulysses-and-the-computational-sirens" id="toc-ulysses-and-the-computational-sirens" class="nav-link" data-scroll-target="#ulysses-and-the-computational-sirens">Ulysses and the [Computational] Sirens</a></li>
   </ul></li>
-  <li><a href="#your-first-pgm" id="toc-your-first-pgm" class="nav-link" data-scroll-target="#your-first-pgm">Your First PGM!</a>
+  <li><a href="#back-to-pgms-case-studies" id="toc-back-to-pgms-case-studies" class="nav-link" data-scroll-target="#back-to-pgms-case-studies">Back to PGMs: Case Studies</a>
   <ul class="collapse">
-  <li><a href="#bayesian-inference-but-with-pictures" id="toc-bayesian-inference-but-with-pictures" class="nav-link" data-scroll-target="#bayesian-inference-but-with-pictures">Bayesian Inference but with Pictures</a></li>
-  <li><a href="#two-main-building-blocks" id="toc-two-main-building-blocks" class="nav-link" data-scroll-target="#two-main-building-blocks">Two Main “Building Blocks”</a></li>
-  <li><a href="#pgm-for-the-partiers-dilemma" id="toc-pgm-for-the-partiers-dilemma" class="nav-link" data-scroll-target="#pgm-for-the-partiers-dilemma">PGM for the Partier’s Dilemma</a></li>
-  <li><a href="#observed-vs.-latent-nodes" id="toc-observed-vs.-latent-nodes" class="nav-link" data-scroll-target="#observed-vs.-latent-nodes">Observed vs.&nbsp;Latent Nodes</a></li>
-  <li><a href="#observed-partier-latent-weather" id="toc-observed-partier-latent-weather" class="nav-link" data-scroll-target="#observed-partier-latent-weather">Observed Partier, Latent Weather</a></li>
-  <li><a href="#computation-via-bayes-rule" id="toc-computation-via-bayes-rule" class="nav-link" data-scroll-target="#computation-via-bayes-rule">Computation via Bayes’ Rule</a></li>
+  <li><a href="#importance-of-observed-vs.-latent-distinction" id="toc-importance-of-observed-vs.-latent-distinction" class="nav-link" data-scroll-target="#importance-of-observed-vs.-latent-distinction">Importance of Observed vs.&nbsp;Latent Distinction!</a></li>
+  <li><a href="#example-from-cognitive-neuroscience-visual-perception" id="toc-example-from-cognitive-neuroscience-visual-perception" class="nav-link" data-scroll-target="#example-from-cognitive-neuroscience-visual-perception">Example from Cognitive Neuroscience: Visual Perception</a></li>
+  <li><a href="#hidden-markov-models-hmms-are-our-ur-pgms" id="toc-hidden-markov-models-hmms-are-our-ur-pgms" class="nav-link" data-scroll-target="#hidden-markov-models-hmms-are-our-ur-pgms">Hidden Markov Models (HMMs) Are Our Ur-PGMs!</a></li>
+  <li><a href="#studying-fake-news" id="toc-studying-fake-news" class="nav-link" data-scroll-target="#studying-fake-news">Studying “Fake News”</a></li>
+  <li><a href="#the-devil-in-the-details-i" id="toc-the-devil-in-the-details-i" class="nav-link" data-scroll-target="#the-devil-in-the-details-i">The Devil in the Details I</a></li>
+  <li><a href="#the-devil-in-the-details-ii" id="toc-the-devil-in-the-details-ii" class="nav-link" data-scroll-target="#the-devil-in-the-details-ii">The Devil in the Details II</a></li>
+  <li><a href="#randomization-and-fine-tuned-treatment" id="toc-randomization-and-fine-tuned-treatment" class="nav-link" data-scroll-target="#randomization-and-fine-tuned-treatment">Randomization and Fine-Tuned Treatment</a></li>
+  <li><a href="#lets-model-it" id="toc-lets-model-it" class="nav-link" data-scroll-target="#lets-model-it">Let’s Model It!</a></li>
+  <li><a href="#the-final-piece-plate-notation" id="toc-the-final-piece-plate-notation" class="nav-link" data-scroll-target="#the-final-piece-plate-notation">The Final Piece: Plate Notation</a></li>
+  <li><a href="#crucial-css-model-we-can-now-dive-into" id="toc-crucial-css-model-we-can-now-dive-into" class="nav-link" data-scroll-target="#crucial-css-model-we-can-now-dive-into">Crucial CSS Model We Can Now Dive Into!</a></li>
+  <li><a href="#what-does-this-give-us" id="toc-what-does-this-give-us" class="nav-link" data-scroll-target="#what-does-this-give-us">What Does This Give Us?</a></li>
+  <li><a href="#before-we-branch-off-of-pgms" id="toc-before-we-branch-off-of-pgms" class="nav-link" data-scroll-target="#before-we-branch-off-of-pgms">Before We Branch Off Of PGMs</a></li>
+  </ul></li>
+  <li><a href="#your-first-causal-diagram" id="toc-your-first-causal-diagram" class="nav-link" data-scroll-target="#your-first-causal-diagram">Your First Causal Diagram</a>
+  <ul class="collapse">
+  <li><a href="#getting-shot-by-a-firing-squad" id="toc-getting-shot-by-a-firing-squad" class="nav-link" data-scroll-target="#getting-shot-by-a-firing-squad">Getting Shot By A Firing Squad</a></li>
+  </ul></li>
+  <li><a href="#the-four-elemental-confounds" id="toc-the-four-elemental-confounds" class="nav-link" data-scroll-target="#the-four-elemental-confounds">The Four Elemental Confounds</a>
+  <ul class="collapse">
+  <li><a href="#the-fork" id="toc-the-fork" class="nav-link" data-scroll-target="#the-fork">The Fork</a></li>
   <li><a href="#references" id="toc-references" class="nav-link" data-scroll-target="#references">References</a></li>
-  <li><a href="#appendix-zero-probabilities" id="toc-appendix-zero-probabilities" class="nav-link" data-scroll-target="#appendix-zero-probabilities">Appendix: Zero Probabilities</a></li>
   </ul></li>
   </ul>
-<div class="toc-actions"><ul><li><a href="https://github.com/jpowerj/dsan5650/blob/main/w02/index.qmd" target="_blank" class="toc-action"><i class="bi bi-github"></i>View source</a></li></ul></div><div class="quarto-alternate-formats"><h2>Other Formats</h2><ul><li><a href="slides.html"><i class="bi bi-file-slides"></i>RevealJS</a></li></ul></div></nav>
+<div class="toc-actions"><ul><li><a href="https://github.com/jpowerj/dsan5650/blob/main/w03/index.qmd" target="_blank" class="toc-action"><i class="bi bi-github"></i>View source</a></li></ul></div><div class="quarto-alternate-formats"><h2>Other Formats</h2><ul><li><a href="slides.html"><i class="bi bi-file-slides"></i>RevealJS</a></li></ul></div></nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Week 2: Probabilistic Graphical Models (PGMs)</h1>
+<h1 class="title">Week 3: From PGMs to Causal Diagrams</h1>
 <p class="subtitle lead"><em>DSAN 5650: Causal Inference for Computational Social Science</em><br><span class="subsubtitle">Summer 2025, Georgetown University</span></p>
   <div class="quarto-categories">
     <div class="quarto-category">Class Sessions</div>
@@ -359,7 +356,7 @@ window.Quarto = {
     <div>
     <div class="quarto-title-meta-heading">Published</div>
     <div class="quarto-title-meta-contents">
-      <p class="date">Wednesday, May 28, 2025</p>
+      <p class="date">Wednesday, June 4, 2025</p>
     </div>
   </div>
   
@@ -397,13 +394,13 @@ window.Quarto = {
 <td style="text-align: left;"><strong>Lecture</strong></td>
 <td style="text-align: left;">6:30pm</td>
 <td style="text-align: left;">6:45pm</td>
-<td style="text-align: left;"><a href="#ta-intros">TA Intros →</a></td>
+<td style="text-align: left;"><a href="#hw1-questions-andor-concerns">HW1 Questions and Concerns →</a></td>
 </tr>
 <tr class="even">
 <td style="text-align: left;"></td>
 <td style="text-align: left;">6:45pm</td>
-<td style="text-align: left;">7:00pm</td>
-<td style="text-align: left;"><a href="#hw1-questions-andor-concerns">HW1 Questions and Concerns →</a></td>
+<td style="text-align: left;">7:15pm</td>
+<td style="text-align: left;"><a href="#causality-recap">Causality Recap →</a></td>
 </tr>
 <tr class="odd">
 <td style="text-align: left;"></td>
@@ -432,7 +429,7 @@ window.Quarto = {
 </tbody>
 </table>
 <div class="hidden">
-<div id="1a2431db" class="cell" data-execution_count="1">
+<div class="cell">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>cb_palette <span class="op">=</span> [</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>    <span class="st">"#E69F00"</span>, <span class="st">"#56B4E9"</span>, <span class="st">"#009E73"</span>,</span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>    <span class="st">"#F0E442"</span>, <span class="st">"#0072B2"</span>, <span class="st">"#D55E00"</span>,</span>
@@ -488,195 +485,14 @@ window.Quarto = {
 </style>
 </div>
 </section>
-<section id="ta-intros" class="level1" data-stack-name="TA Intros">
-<h1 data-stack-name="TA Intros">TA Intros</h1>
-<section id="courtney-green" class="level2 crunch-title text-90">
-<h2 class="crunch-title text-90 anchored" data-anchor-id="courtney-green">Courtney Green</h2>
-<p><strong>Background:</strong> BA in Public Policy &amp; Leadership, now interested in using data to examine structural disparities.</p>
-<p><strong>Interests &amp; what I can help with:</strong> How sociodemographic factors (e.g., race, gender, income, immigration status, education level) shape policy outcomes and institutional practices in areas like criminal justice, housing, healthcare, education, and environment.</p>
+<section id="hw1-questions-andor-concerns" class="level1" data-name="HW1">
+<h1 data-name="HW1">HW1 Questions and/or Concerns</h1>
 <ul>
-<li><p><strong>Ask me about:</strong> Counterfactual balancing, handling messy or privacy-limited datasets, and framing causal questions around inequality.</p></li>
-<li><p>Reach out if you’re thinking about a final project that touches social systems, systemic inequity, or fairness!</p></li>
+<li>🆕 Submitting to AutoHinter! 🆕</li>
 </ul>
 </section>
-<section id="what-got-me-interested-in-causal-inference" class="level2 crunch-title text-75">
-<h2 class="crunch-title text-75 anchored" data-anchor-id="what-got-me-interested-in-causal-inference">What Got Me Interested in Causal Inference</h2>
-<p><strong>5000 Project: Over-Policing and Wrongful Convictions in Illinois</strong></p>
-<ul>
-<li><strong>Motivation:</strong> Explore what demographic factors predict wrongful convictions using real exoneration data.</li>
-<li><strong>Challenge:</strong> No data on “non-exonerated innocents,” so I (with prof’s help) created a counterfactual dataset by sampling from the incarcerated population</li>
-<li><strong>Method:</strong> Trained models (logistic regression, random forest, KNN) on a balanced dataset of 548 exonerated and 548 non-exonerated individuals</li>
-<li><strong>Finding:</strong> Race and geography (esp.&nbsp;Cook Count/Chicago) were the strongest predictors of exoneration</li>
-<li><strong>Takeaway:</strong> Questions about systemic bias can’t be answered with just descriptive stats, you need counterfactual reasoning and causal inference</li>
-</ul>
-<p><span style="font-size: 80%;"><a href="https://crg123.georgetown.domains/projects/dsan-5000/_site/technical-details/data-balancing/main.html">(Optional) View the counterfactual setup</a></span></p>
-</section>
-<section id="wendy-hu" class="level2 crunch-title text-82 crunch-ul">
-<h2 class="crunch-title text-82 crunch-ul anchored" data-anchor-id="wendy-hu">Wendy Hu</h2>
-<ul>
-<li><strong>Background:</strong> BS in Social Work, passionate about advancing social equity through computational tools</li>
-<li><strong>Interest:</strong> I bring a background in social welfare, public health, and NGO data, with experience analyzing behavioral and institutional outcomes. My work spans Indigenous health, gender equity, and trauma-informed service design—always with a focus on equity, system change, and policy relevance.</li>
-<li><strong>Ask me about:</strong> Framing social justice questions in data terms, working with community or clinical datasets and interpreting model results in context.</li>
-<li>If you’re designing a project around health, inequality, nonprofit impact, or any socially embedded issue—I’d love to help bridge rigor and relevance.</li>
-</ul>
-</section>
-<section id="jeffs-hw1-updateapology" class="level2">
-<h2 class="anchored" data-anchor-id="jeffs-hw1-updateapology">Jeff’s HW1 Update/Apology</h2>
-<ul>
-<li>Basically… I goofed by trying to shove a homework into the first two weeks of class 😭</li>
-<li>Last week was “setting the table”, so there are a few (multiple-choice) questions on that</li>
-<li>But, really only makes sense to have HW starting from <strong>end of today</strong>, once we’ve introduced <strong>PGMs</strong>, the <strong>language</strong> we need to actually do Causal Computational Social Science!</li>
-</ul>
-<center>
-<p><i class="bi bi-exclamation-triangle"></i> <strong>Due date pushed</strong> to <strong>Friday, June 6, 5:59pm</strong> <i class="bi bi-exclamation-triangle"></i></p>
-</center>
-</section>
-<section id="hw1-detail-plz-dont-hate-me" class="level2 crunch-title smaller title-09">
-<h2 class="crunch-title smaller title-09 anchored" data-anchor-id="hw1-detail-plz-dont-hate-me">HW1 Detail (Plz Don’t Hate Me 🙈)</h2>
-<p><em>(The main reason this is taking me so long)</em></p>
-<ul>
-<li>Two key libraries for “main” course content (HW2 onwards):
-<ul>
-<li>In R: <a href="https://github.com/rmcelreath/rethinking"><code>rethinking</code></a>, “lite” version of <a href="https://mc-stan.org/">Stan</a></li>
-<li>In Python: <a href="https://www.pymc.io/welcome.html"><code>PyMC</code></a></li>
-</ul></li>
-<li>Both are overkill for current unit: lots of work required to “turn off” fancy features and <a href="https://discourse.pymc.io/t/bayes-nets-belief-networks-and-pymc/5150/2">implement basic PGMs</a></li>
-<li><span class="math inline">\(\leadsto\)</span> Only way I know to achieve two goals:
-<ul>
-<li><i class="bi bi-1-circle"></i> Learning <strong>simple PGMs first</strong>, as tools for <strong>thinking</strong>, before adding in additional full-on <strong>coding</strong> baggage of Stan/PyMC</li>
-<li><i class="bi bi-2-circle"></i> Having an entire <strong>textbook</strong> on these base PGMs that you can use as reference</li>
-</ul></li>
-<li>Is to use [small, restricted] subset of JavaScript, called <a href="http://webppl.org/">WebPPL</a>, because…</li>
-</ul>
-<center>
-<p><a href="http://probmods.org/" class="boxed-cb">http://probmods.org/</a></p>
-</center>
-</section>
-</section>
-<section id="motivating-examples-causal-inference" class="level1" data-stack-name="Causal Inference">
-<h1 data-stack-name="Causal Inference">Motivating Examples: Causal Inference</h1>
-<ul>
-<li>The <em>methodology</em> we’ll use to <em>draw inferences</em> about social phenomena from data</li>
-</ul>
-<section id="disclaimer-unfortunate-side-effects-of-engaging-seriously-with-causality" class="level2 smaller crunch-title title-10 crunch-p crunch-img">
-<h2 class="smaller crunch-title title-10 crunch-p crunch-img anchored" data-anchor-id="disclaimer-unfortunate-side-effects-of-engaging-seriously-with-causality">Disclaimer: Unfortunate Side Effects of Engaging Seriously with Causality</h2>
-<div class="columns">
-<div class="column" style="width:50%;">
-<p><i class="bi bi-1-circle"></i> You’ll no longer be able to read “scientific” writing without striking this expression (involuntarily):</p>
-</div><div class="column" style="width:50%;">
-<p><i class="bi bi-2-circle"></i> “Scientific” talks will begin to sound like the following:</p>
-</div>
-</div>
-<div>
-
-</div>
-<div class="quarto-layout-panel" data-layout="[5,5]">
-<div class="quarto-layout-row quarto-layout-valign-top">
-<div id="expression" class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="images/hrngg.png" class="img-fluid quarto-figure quarto-figure-center figure-img" width="300"></p>
-</figure>
-</div>
-</div>
-<div id="looked-at-the-data" class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: flex-start;">
-<div class="quarto-video"><video id="video_shortcode_videojs_video1" class="video-js vjs-default-skin vjs-fluid" controls="" preload="auto" data-setup="{}" title=""><source src="https://jpj.georgetown.domains/dsan5650-scratch/looked_at_the_data.mp4"></video></div>
-</div>
-</div>
-</div>
-</section>
-<section id="blasting-off-into-causality" class="level2 title-10 crunch-title not-title-slide">
-<h2 class="title-10 crunch-title not-title-slide anchored" data-anchor-id="blasting-off-into-causality">Blasting Off Into Causality!</h2>
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="images/posadism_causal.jpg" class="img-fluid quarto-figure quarto-figure-center figure-img"></p>
-</figure>
-</div>
-</section>
-<section id="data-generating-processes-dgps" class="level2 title-09 text-85 crunch-title crunch-ul crunch-quarto-figure crunch-quarto-layout-panel crunch-li-5">
-<h2 class="title-09 text-85 crunch-title crunch-ul crunch-quarto-figure crunch-quarto-layout-panel crunch-li-5 anchored" data-anchor-id="data-generating-processes-dgps">Data-Generating Processes (DGPs)</h2>
-<div>
-
-</div>
-<div class="quarto-layout-panel" data-layout-align="center" data-layout="[55,45]">
-<div class="quarto-layout-row quarto-layout-valign-center">
-<div id="dgps-5100" class="quarto-layout-cell" style="flex-basis: 55.0%;justify-content: center;">
-<ul>
-<li>You saw this in DSAN 5100!</li>
-<li>«<span class="math inline">\(X_1, \ldots, X_n\)</span> drawn i.i.d. Normal, mean <span class="math inline">\(\mu\)</span> variance <span class="math inline">\(\sigma^2\)</span>» characterizes <strong>DGP of <span class="math inline">\((X_1, \ldots, X_n)\)</span></strong></li>
-</ul>
-</div>
-<div class="quarto-layout-cell" style="flex-basis: 45.0%;justify-content: center;">
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="images/hmm_clusters_single_dist.svg" class="img-fluid quarto-figure quarto-figure-center figure-img" width="280"></p>
-</figure>
-</div>
-</div>
-</div>
-</div>
-<ul>
-<li>5650: <strong>Dive into DGPs</strong>, rather than treating as black box/footnote to Law of Large Numbers, so we can move [<em>asymptotically!</em>]…</li>
-<li><strong>From <em>associational</em> statements</strong>:
-<ul>
-<li>«<span class="math inline">\(\underbrace{\text{An increase}}_{\small\text{noun}}\)</span> in <span class="math inline">\(X\)</span> by 1 is associated with increase in <span class="math inline">\(Y\)</span> by <span class="math inline">\(\beta\)</span>»</li>
-</ul></li>
-<li><strong>To <em>causal</em> ones</strong>: «<span class="math inline">\(\underbrace{\text{Increasing}}_{\small\text{verb}}\)</span> <span class="math inline">\(X\)</span> by 1 <em>causes</em> <span class="math inline">\(Y\)</span> to increase by <span class="math inline">\(\beta\)</span>»</li>
-</ul>
-</section>
-<section id="dgps-and-the-emergence-of-order" class="level2 crunch-title crunch-quarto-layout-panel title-09 crunch-quarto-figure">
-<h2 class="crunch-title crunch-quarto-layout-panel title-09 crunch-quarto-figure anchored" data-anchor-id="dgps-and-the-emergence-of-order">DGPs and the Emergence of Order</h2>
-<div>
-
-</div>
-<div class="quarto-layout-panel" data-layout="[1,1]">
-<div class="quarto-layout-row">
-<div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: flex-start;">
-<ul>
-<li>Who can guess the state of this process after 10 steps, with 1 person?</li>
-<li>10 people? 50? 100? (If they find themselves on the same spot, they stand on each other’s heads)</li>
-<li>100 steps? 1000?</li>
-</ul>
-</div>
-<div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="images/random_walk.svg" class="img-fluid quarto-figure quarto-figure-center figure-img" width="430"></p>
-</figure>
-</div>
-</div>
-</div>
-</div>
-</section>
-<section id="the-result-16-steps" class="level2">
-<h2 class="anchored" data-anchor-id="the-result-16-steps">The Result: 16 Steps</h2>
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="images/random-walk-16-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img"></p>
-</figure>
-</div>
-</section>
-<section id="the-result-64-steps" class="level2">
-<h2 class="anchored" data-anchor-id="the-result-64-steps">The Result: 64 Steps</h2>
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="images/random-walk-64-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img"></p>
-</figure>
-</div>
-</section>
-<section id="mathematicalscientific-modeling" class="level2 smaller crunch-title crunch-ul">
-<h2 class="smaller crunch-title crunch-ul anchored" data-anchor-id="mathematicalscientific-modeling">“Mathematical/Scientific Modeling”</h2>
-<ul>
-<li>Thing we observe (poking out of water): <strong>data</strong></li>
-<li>Hidden but possibly discoverable via deeper dive (ecosystem under surface): <strong>DGP</strong></li>
-</ul>
-<!-- My sincere belief and definitely not an image forwarded to me unironically by a family member when I was a tween -->
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="images/fwds_from_grandma.jpg" class="img-fluid quarto-figure quarto-figure-center figure-img"></p>
-</figure>
-</div>
-</section>
+<section id="causality-recap" class="level1" data-stack-name="Recap">
+<h1 data-stack-name="Recap">Causality Recap</h1>
 <section id="so-whats-the-problem" class="level2 crunch-title crunch-ul crunch-li-8 inline-90 text-90">
 <h2 class="crunch-title crunch-ul crunch-li-8 inline-90 text-90 anchored" data-anchor-id="so-whats-the-problem">So What’s the Problem?</h2>
 <ul>
@@ -691,25 +507,6 @@ window.Quarto = {
 </ul></li>
 <li>Causal models: Does <span class="math inline">\(Y\)</span> happen <strong>because of</strong> <span class="math inline">\(X\)</span> happening? For that, need to start modeling <strong>what’s happening under the surface</strong> making <span class="math inline">\(X\)</span> and <span class="math inline">\(Y\)</span> <strong>“pop up” together</strong> so often</li>
 </ul>
-</section>
-<section id="the-shallow-problem-of-causal-inference" class="level2 title-08">
-<h2 class="title-08 anchored" data-anchor-id="the-shallow-problem-of-causal-inference">The <em>Shallow</em> Problem of Causal Inference</h2>
-<div class="columns">
-<div class="column" style="width:65%;">
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="images/ski-revenue-lawyers-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img"></p>
-</figure>
-</div>
-</div><div class="column" style="width:35%;">
-<div class="sourceCode" id="cb2" style="font-size: 72%;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cor</span>(ski_df<span class="sc">$</span>value, law_df<span class="sc">$</span>value)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<pre><code>[1] 0.9921178</code></pre>
-<div style="font-size: 50% !important;">
-<p>(Data from Vigen, <a href="http://web.archive.org/web/20191006000802/http://tylervigen.com/view_correlation?id=29272" target="_blank">Spurious Correlations</a>)</p>
-</div>
-<p>This, however, is only a <em>mini-boss</em>. Beyond it lies the truly invincible <strong>FINAL BOSS</strong>… 🙀</p>
-</div>
-</div>
 </section>
 <section id="the-fundamental-problem-of-causal-inference" class="level2 crunch-title crunch-ul crunch-callout title-07">
 <h2 class="crunch-title crunch-ul crunch-callout title-07 anchored" data-anchor-id="the-fundamental-problem-of-causal-inference">The <em>Fundamental</em> Problem of Causal Inference</h2>
@@ -816,213 +613,406 @@ window.Quarto = {
 <li><strong>Now</strong> we can actually infer that the occurrence of <span class="math inline">\(E_0\)</span> <strong>caused</strong> an increase in the likelihood of <span class="math inline">\(E_1\)</span> occurring!</li>
 </ul>
 </section>
-<section id="ulysses-and-the-computational-sirens" class="level2 smaller crunch-title">
-<h2 class="smaller crunch-title anchored" data-anchor-id="ulysses-and-the-computational-sirens">Ulysses and the [Computational] Sirens</h2>
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="images/sirens.jpg" class="img-fluid quarto-figure quarto-figure-center figure-img"></p>
+</section>
+<section id="back-to-pgms-case-studies" class="level1" data-stack-name="PGMs">
+<h1 data-stack-name="PGMs">Back to PGMs: Case Studies</h1>
+<section id="importance-of-observed-vs.-latent-distinction" class="level2 smaller crunch-title title-10">
+<h2 class="smaller crunch-title title-10 anchored" data-anchor-id="importance-of-observed-vs.-latent-distinction">Importance of Observed vs.&nbsp;Latent Distinction!</h2>
+<ul>
+<li>Across many different fields, hidden stumbling-block in your project may be <strong>failure to model this distinction</strong> and pursue its implications!</li>
+</ul>
+<div id="fig-fence-dog" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-fence-dog-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<center>
+<div class="quarto-video"><video id="video_shortcode_videojs_video1" height="400" class="video-js vjs-default-skin " controls="" preload="auto" data-setup="{}" title=""><source src="https://jpj.georgetown.domains/dsan5650-scratch/fence_dog.mp4"></video></div>
+</center>
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-fence-dog-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;1: Your model failing to achieve its goal bc you haven’t yet distinguished observed vs.&nbsp;latent variables
+</figcaption>
 </figure>
 </div>
 </section>
-</section>
-<section id="your-first-pgm" class="level1 smaller crunch-title title-10 crunch-ul crunch-li-8 crunch-quarto-figure crunch-img crunch-p" data-stack-name="PGMs">
-<h1 class="smaller crunch-title title-10 crunch-ul crunch-li-8 crunch-quarto-figure crunch-img crunch-p" data-stack-name="PGMs">Your First PGM!</h1>
+<section id="example-from-cognitive-neuroscience-visual-perception" class="level2 smaller crunch-title title-08 crunch-ul crunch-quarto-figure crunch-quarto-layout-panel">
+<h2 class="smaller crunch-title title-08 crunch-ul crunch-quarto-figure crunch-quarto-layout-panel anchored" data-anchor-id="example-from-cognitive-neuroscience-visual-perception">Example from Cognitive Neuroscience: Visual Perception</h2>
+<div>
+
+</div>
+<div class="quarto-layout-panel" data-layout="[55,45]">
+<div class="quarto-layout-row quarto-layout-valign-center">
+<div id="cog-neuro-text" class="quarto-layout-cell" style="flex-basis: 55.0%;justify-content: flex-start;">
+<ul>
+<li>We “see” <strong>3D objects</strong> like a basketballs, but our eyes are (curved) <strong>2D surfaces!</strong></li>
+<li><span class="math inline">\(\Rightarrow\)</span> Our brains <strong>construct</strong> 3D environment by combining 2D info (<strong>observed</strong> photons-hitting-light-cones) with <strong>latent</strong> heuristic info:
+<ul>
+<li>Instantaneous <strong>Binocular Disparity</strong>, fusing info from <strong>two</strong> slightly-offset eyes,</li>
+<li>Short-term <strong>Motion</strong> <a href="https://en.wikipedia.org/wiki/Parallax"><strong>Parallax</strong></a>: How does object shift over short temporal “windows” of movement?</li>
+<li>Long-term mental models (orange-ish circle with this line pattern is usually a basketball, which is usually this big, etc.)</li>
+</ul></li>
+</ul>
+</div>
+<div id="cog-neuro-img" class="quarto-layout-cell" style="flex-basis: 45.0%;justify-content: flex-start;">
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="images/medical.jpg" class="img-fluid figure-img"></p>
-<figcaption><a href="http://probmods.org/chapters/dependence.html">Image source</a></figcaption>
+<p><img src="images/parallax.jpg" class="img-fluid figure-img"></p>
+<figcaption><a href="https://royalsocietypublishing.org/doi/10.1098/rstb.2015.0256">Image source</a> (a very cool article!)</figcaption>
 </figure>
 </div>
+</div>
+</div>
+</div>
 <ul>
-<li><i class="bi bi-1-circle"></i> Which of the variables (ovals) are <strong>observed</strong>? Which are <strong>latent</strong>?</li>
-<li><i class="bi bi-2-circle"></i> What do you think the arrows represent?</li>
-<li><i class="bi bi-3-circle"></i> Can we use this to find the <strong>“root cause”</strong> of (e.g.) observed <strong>chest pain</strong>? Or conversely, to <strong>predict</strong> possible ↑ in likelihood of chest pain if we start smoking?</li>
+<li>Similar examples in many other fields <span class="math inline">\(\leadsto\)</span> science is a strange waltz of general models vs.&nbsp;field-specific details, but there’s one model that is <strong>infinitely helpful</strong> imo…</li>
 </ul>
-<section id="bayesian-inference-but-with-pictures" class="level2 title-09 crunch-title crunch-ul crunch-li-8 crunch-callout text-90 inline-90">
-<h2 class="title-09 crunch-title crunch-ul crunch-li-8 crunch-callout text-90 inline-90 anchored" data-anchor-id="bayesian-inference-but-with-pictures">Bayesian Inference but with Pictures</h2>
-<p>A <strong>Probabilistic Graphical Model (PGM)</strong> provides us with:</p>
-<ul>
-<li>A <strong>formal</strong>-mathematical…</li>
-<li>But also easily <strong>visualizable</strong> (by construction)…</li>
-<li>Representation of a <strong>data-generating process (DGP)!</strong></li>
-</ul>
-<p>Example: Let’s model how <strong>weather</strong> <span class="math inline">\(W\)</span> affects <strong>evening plans</strong> <span class="math inline">\(Y\)</span>: the choice between <strong>going to a party</strong> or <strong>staying in to watch movies</strong></p>
-<div class="callout callout-style-default callout-tip no-icon callout-titled" title="<i class='bi bi-info-circle'></i> The Partier's Dilemma">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon no-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-<i class="bi bi-info-circle"></i> The Partier’s Dilemma
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<ol type="1">
-<li>A person <span class="math inline">\(i\)</span> wakes up with some initial affinity for partying: <span class="math inline">\(\Pr(Y_i = \textsf{Go})\)</span></li>
-<li><span class="math inline">\(i\)</span> then goes to their window and observes the weather <span class="math inline">\(W_i\)</span> outside:
-<ol type="i">
-<li>If the weather is <strong>sunny</strong>, <span class="math inline">\(i\)</span>’s affinity increases: <span class="math inline">\(\Pr(Y_i = \textsf{Go} \mid W_i = \textsf{Sun}) &gt; \Pr(Y = \textsf{Go})\)</span></li>
-<li>Otherwise, if it is <strong>rainy</strong>, <span class="math inline">\(i\)</span>’s affinity decreases: <span class="math inline">\(\Pr(Y_i = \textsf{Go} \mid W_i = \textsf{Rain}) &lt; \Pr(Y = \textsf{Go})\)</span></li>
-</ol></li>
-</ol>
-</div>
-</div>
 </section>
-<section id="two-main-building-blocks" class="level2 crunch-title title-09 inline-95 math-80 crunch-ul crunch-math crunch-li-8 text-90">
-<h2 class="crunch-title title-09 inline-95 math-80 crunch-ul crunch-math crunch-li-8 text-90 anchored" data-anchor-id="two-main-building-blocks">Two Main “Building Blocks”</h2>
+<section id="hidden-markov-models-hmms-are-our-ur-pgms" class="level2 smaller crunch-title title-09 crunch-quarto-figure crunch-quarto-layout-cell callout-fw">
+<h2 class="smaller crunch-title title-09 crunch-quarto-figure crunch-quarto-layout-cell callout-fw anchored" data-anchor-id="hidden-markov-models-hmms-are-our-ur-pgms">Hidden Markov Models (HMMs) Are Our Ur-PGMs!</h2>
 <ul>
-<li><strong>Nodes</strong> like <span class="math inline">\(\require{enclose}\enclose{circle}{\kern .01em ~X~\kern .01em}\)</span> denote <strong>Random Variables</strong></li>
-</ul>
-<p><span class="math display">\[
-\boxed{\require{enclose}\enclose{circle}{\kern .01em ~X~\kern .01em}} \simeq \boxed{ \begin{array}{c|cc}x &amp; \textsf{Tails} &amp; \textsf{Heads} \\\hline \Pr(X = x) &amp; 0.5 &amp; 0.5\end{array}}
-\]</span></p>
-<ul>
-<li><strong>Edges</strong> like <span class="math inline">\(\require{enclose}\enclose{circle}{\kern .01em ~X~\kern .01em} \rightarrow \; \enclose{circle}{\kern.01em Y~\kern .01em}\)</span> denote <strong>relationships</strong> between RVs
-<ul>
-<li>What an edge “means” can get [ontologically] tricky!</li>
-<li>Retain sanity by just remembering: an edge <span class="math inline">\(\require{enclose}\enclose{circle}{\kern .01em ~X~\kern .01em} \rightarrow \; \enclose{circle}{\kern.01em Y~\kern .01em}\)</span> is included in our PGM if we “care about” modeling the <strong>conditional probability table (CPT)</strong> of <span class="math inline">\(Y\)</span> w.r.t. <span class="math inline">\(X\)</span></li>
-</ul></li>
-</ul>
-<p><span class="math display">\[
-\require{enclose}\boxed{ \enclose{circle}{\kern .01em ~X~\kern .01em} \rightarrow \; \enclose{circle}{\kern.01em Y~\kern .01em} } \simeq \boxed{
-  \begin{array}{c|cc}
-  x &amp; \Pr(Y = \textsf{Lose} \mid X = x) &amp; \Pr(Y = \textsf{Win} \mid X = x) \\\hline
-  \textsf{Tails} &amp; 0.8 &amp; 0.2 \\
-  \textsf{Heads} &amp; 0.5 &amp; 0.5
-  \end{array}
-}
-\]</span></p>
-</section>
-<section id="pgm-for-the-partiers-dilemma" class="level2 smaller crunch-title crunch-ul table-90">
-<h2 class="smaller crunch-title crunch-ul table-90 anchored" data-anchor-id="pgm-for-the-partiers-dilemma">PGM for the Partier’s Dilemma</h2>
-<ul>
-<li>A node <span class="math inline">\(\pnode{W}\)</span> denoting RV <span class="math inline">\(W\)</span>, which can take on values in <span class="math inline">\(\mathcal{R}_W = \{\textsf{Sun}, \textsf{Rain}\}\)</span>,</li>
-<li>A node <span class="math inline">\(\pnode{Y}\)</span> denoting RV <span class="math inline">\(Y\)</span>, which can take on values in <span class="math inline">\(\mathcal{R}_Y = \{\textsf{Go}, \textsf{Stay}\}\)</span>, and</li>
-<li>An edge <span class="math inline">\(\pedge{W}{Y}\)</span> representing the following relationship between <span class="math inline">\(W\)</span> and <span class="math inline">\(Y\)</span>:
-<ul>
-<li><span class="math inline">\(\Pr(Y = \textsf{Go} \mid W = \textsf{Sun}) = 0.8\)</span></li>
-<li><span class="math inline">\(\Pr(Y = \textsf{Stay} \mid W = \textsf{Sun}) = 0.2\)</span></li>
-<li><span class="math inline">\(\Pr(Y = \textsf{Go} \mid W = \textsf{Rain}) = 0.1\)</span></li>
-<li><span class="math inline">\(\Pr(Y = \textsf{Stay} \mid W = \textsf{Rain}) = 0.9\)</span></li>
-</ul></li>
+<li>Using <a href="https://blogs.transparent.com/german/the-german-prefix-ur/">“Ur”</a> in the same sense as <a href="https://kieranhealy.org/blog/archives/2015/06/12/americas-ur-choropleths/">“America’s Ur-Choropleths”</a>…</li>
+<li>HMMs are our “Ur-Models” for Computational <span class="barrio-jj"><strong>Social</strong> Science</span> specifically</li>
 </ul>
 <div>
 
 </div>
-<div class="quarto-layout-panel" data-layout="[1,1]">
-<div class="quarto-layout-row">
-<div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: flex-start;">
-<div id="fig-partier-dgp" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
-<figure class="quarto-float quarto-float-fig figure">
-<div aria-describedby="fig-partier-dgp-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="images/pgm.svg" class="img-fluid quarto-figure quarto-figure-center figure-img" width="400">
+<div class="quarto-layout-panel" data-layout="[3,1]">
+<div class="quarto-layout-row quarto-layout-valign-center">
+<div class="quarto-layout-cell" style="flex-basis: 75.0%;justify-content: center;">
+<div class="quarto-figure quarto-figure-right">
+<figure class="figure">
+<p><img src="images/hmm.svg" class="img-fluid quarto-figure quarto-figure-right figure-img" width="700"></p>
+</figure>
 </div>
-<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-partier-dgp-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;1: Our PGM of the Partier’s Dilemma
-</figcaption>
+</div>
+<div class="quarto-layout-cell" style="flex-basis: 25.0%;justify-content: center;">
+<div class="quarto-figure quarto-figure-left">
+<figure class="figure">
+<p><img src="images/mood_crop.jpg" class="img-fluid quarto-figure quarto-figure-left figure-img" width="100"></p>
+</figure>
+</div>
+</div>
+</div>
+</div>
+<ul>
+<li>Let’s consider an extremely currently-popular strand of CSS research, and step through why (a) it may be harder than it initially seems, but (b) we can use HMMs to “organize”/manage/visualize the complexity!</li>
+</ul>
+<div class="notes">
+<p>As in, how America’s Ur-Choropleths are two visualizations you can keep at hand before launching into a specific nation-wide choropleth about a specific issue!</p>
+</div>
+</section>
+<section id="studying-fake-news" class="level2 smaller callout-fw callout-valign crunch-img crunch-p crunch-quarto-figure crunch-title crunch-callout text-70 crunch-ul crunch-li-5 crunch-quarto-layout-panel">
+<h2 class="smaller callout-fw callout-valign crunch-img crunch-p crunch-quarto-figure crunch-title crunch-callout text-70 crunch-ul crunch-li-5 crunch-quarto-layout-panel anchored" data-anchor-id="studying-fake-news">Studying “Fake News”</h2>
+<div class="callout callout-style-simple callout-none no-icon">
+<div class="callout-body d-flex">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-body-container">
+<div id="callout-container">
+<div style="float: left; margin-right: 12px; margin-bottom: -2px">
+<p><img src="images/real-tired.png" class="img-fluid" width="50"></p>
+</div>
+<p>Studying “fake news” with ML and/or Deep Learning and/or Big Data is very popular in Computational Social Science: let’s use HMMs to see why it might be more… difficult/complicated than it seems at first 🙈</p>
+</div>
+</div>
+</div>
+</div>
+<ul>
+<li>The (implicit) model in studies like <span class="citation" data-cites="iyengar_news_2010">Iyengar and Kinder (<a href="#ref-iyengar_news_2010" role="doc-biblioref">2010</a>)</span> is something like:</li>
+</ul>
+<div>
+
+</div>
+<div class="quarto-layout-panel" data-layout="[65,35]" data-layout-align="center">
+<div class="quarto-layout-row quarto-layout-valign-center">
+<div id="iyengar-text" class="quarto-layout-cell" style="flex-basis: 65.0%;justify-content: center;">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/hmm_media.svg" class="img-fluid quarto-figure quarto-figure-center figure-img" width="520"></p>
+</figure>
+</div>
+<ul>
+<li>Thus allowing results to be summarized in a table like:</li>
+</ul>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/iyengar_results.jpg" class="img-fluid quarto-figure quarto-figure-center figure-img" width="400"></p>
+</figure>
+</div>
+</div>
+<div id="iyengar-img" class="quarto-layout-cell" style="flex-basis: 35.0%;justify-content: center;">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/iyengar_kinder.jpg" class="img-fluid figure-img" style="width:60.0%"></p>
+<figcaption><span class="citation" data-cites="iyengar_news_2010">Iyengar and Kinder (<a href="#ref-iyengar_news_2010" role="doc-biblioref">2010</a>)</span></figcaption>
+</figure>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id="the-devil-in-the-details-i" class="level2 smaller crunch-title lh-adjust">
+<h2 class="smaller crunch-title lh-adjust anchored" data-anchor-id="the-devil-in-the-details-i">The Devil in the Details I</h2>
+<blockquote class="blockquote">
+<p>Residents of the <span class="jjbox">New Haven, Connecticut area</span> participated in one of two experiments, each of which spanned <span class="jjbox">six consecutive days</span> […] took place in <span class="jjbox">November 1980</span>, shortly after the <span class="jjbox">presidential election</span></p>
+</blockquote>
+<blockquote class="blockquote">
+<p>We measured <strong>problem importance</strong> with four questions that appeared in both the pretreatment and posttreatment questionnaires:</p>
+<ul>
+<li>Please <span class="jjbox">indicate how important</span> you consider these problems to be.</li>
+<li>Should the federal government <span class="jjbox">do more</span> to develop solutions to these problems, even if it means <span class="jjbox">raising taxes</span>?</li>
+<li>How much do you yourself <span class="jjbox">care</span> about these problems?</li>
+<li><span class="jjbox">These days</span> how much do you <span class="jjbox">talk</span> about these problems?</li>
+</ul>
+</blockquote>
+</section>
+<section id="the-devil-in-the-details-ii" class="level2">
+<h2 class="anchored" data-anchor-id="the-devil-in-the-details-ii">The Devil in the Details II</h2>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/iyengar_experiment.jpg" class="img-fluid quarto-figure quarto-figure-center figure-img"></p>
+</figure>
+</div>
+</section>
+<section id="randomization-and-fine-tuned-treatment" class="level2 smaller title-10 crunch-quarto-figure crunch-quarto-layout-panel">
+<h2 class="smaller title-10 crunch-quarto-figure crunch-quarto-layout-panel anchored" data-anchor-id="randomization-and-fine-tuned-treatment">Randomization and Fine-Tuned Treatment</h2>
+<div>
+
+</div>
+<div class="quarto-layout-panel" data-layout="[50,50]">
+<div class="quarto-layout-row quarto-layout-valign-center">
+<div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/iyengar_treatment.jpg" class="img-fluid quarto-figure quarto-figure-center figure-img"></p>
 </figure>
 </div>
 </div>
 <div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
-<div id="fig-partier-cpt" class="quarto-float quarto-figure quarto-figure-center anchored">
-<figure class="quarto-float quarto-float-fig figure">
-<div aria-describedby="fig-partier-cpt-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/iyengar_control.jpg" class="img-fluid quarto-figure quarto-figure-center figure-img"></p>
+</figure>
+</div>
+</div>
+</div>
+</div>
+<ul>
+<li>…These are the types of things we usually <strong>don’t</strong> have control over as data scientists (we’re just handed a <code>.csv</code>!)</li>
+</ul>
+</section>
+<section id="lets-model-it" class="level2">
+<h2 class="anchored" data-anchor-id="lets-model-it">Let’s Model It!</h2>
+</section>
+<section id="the-final-piece-plate-notation" class="level2 crunch-title crunch-quarto-figure">
+<h2 class="crunch-title crunch-quarto-figure anchored" data-anchor-id="the-final-piece-plate-notation">The Final Piece: Plate Notation</h2>
+<ul>
+<li>For describing general distributions, there is often a “single node generating a bunch of nodes” structure:</li>
+</ul>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/hmm_clusters_single_dist.svg" class="img-fluid quarto-figure quarto-figure-center figure-img"></p>
+</figure>
+</div>
+<ul>
+<li>PGM notation has a built-in tool for this: <strong>plates!</strong></li>
+</ul>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/pgm_plates.svg" class="img-fluid quarto-figure quarto-figure-center figure-img"></p>
+</figure>
+</div>
+</section>
+<section id="crucial-css-model-we-can-now-dive-into" class="level2">
+<h2 class="anchored" data-anchor-id="crucial-css-model-we-can-now-dive-into">Crucial CSS Model We Can Now Dive Into!</h2>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/lda_pgm.webp" class="img-fluid figure-img"></p>
+<figcaption><a href="https://www.markovml.com/blog/latent-dirichlet-allocation">Image source</a></figcaption>
+</figure>
+</div>
+</section>
+<section id="what-does-this-give-us" class="level2">
+<h2 class="anchored" data-anchor-id="what-does-this-give-us">What Does This Give Us?</h2>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/lda.jpg" class="img-fluid quarto-figure quarto-figure-center figure-img"></p>
+</figure>
+</div>
+</section>
+<section id="before-we-branch-off-of-pgms" class="level2 smaller">
+<h2 class="smaller anchored" data-anchor-id="before-we-branch-off-of-pgms">Before We Branch Off Of PGMs</h2>
+<p><em>(Even in non-causal settings)</em></p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/lda_pgm.webp" class="img-fluid figure-img"></p>
+<figcaption><a href="https://www.markovml.com/blog/latent-dirichlet-allocation">Image source</a></figcaption>
+</figure>
+</div>
+<ul>
+<li>We don’t exactly think “Shakespeare decided on a set of topics,”</li>
+</ul>
+</section>
+</section>
+<section id="your-first-causal-diagram" class="level1" data-stack-name="Causal PGMs">
+<h1 data-stack-name="Causal PGMs">Your First Causal Diagram</h1>
+<section id="getting-shot-by-a-firing-squad" class="level2 crunch-title crunch-quarto-figure">
+<h2 class="crunch-title crunch-quarto-figure anchored" data-anchor-id="getting-shot-by-a-firing-squad">Getting Shot By A Firing Squad</h2>
+<div>
+
+</div>
+<div class="quarto-layout-panel" data-layout="[1,1]" data-layout-align="center">
+<div class="quarto-layout-row">
+<div id="firing-squad-img" class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/causal_firing_squad.svg" class="img-fluid quarto-figure quarto-figure-center figure-img" width="360"></p>
+</figure>
+</div>
+</div>
+<div id="firing-squad-table" class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
 <table class="caption-top table">
 <thead>
 <tr class="header">
-<th style="text-align: right;"></th>
-<th style="text-align: center;"><span class="math inline">\(\Pr(Y = \textsf{Stay} \mid W)\)</span></th>
-<th style="text-align: center;"><span class="math inline">\(\Pr(Y = \textsf{Go} \mid W)\)</span></th>
+<th style="text-align: left;"><span class="math inline">\(O\)</span></th>
+<th style="text-align: left;"><span class="math inline">\(C\)</span></th>
+<th style="text-align: left;"><span class="math inline">\(A\)</span></th>
+<th style="text-align: left;"><span class="math inline">\(B\)</span></th>
+<th style="text-align: left;"><span class="math inline">\(D\)</span></th>
 </tr>
 </thead>
 <tbody>
 <tr class="odd">
-<td style="text-align: right;"><span class="math inline">\(W = \textsf{Sun}\)</span></td>
-<td style="text-align: center;">0.2</td>
-<td style="text-align: center;">0.8</td>
+<td style="text-align: left;">0</td>
+<td style="text-align: left;">0</td>
+<td style="text-align: left;">0</td>
+<td style="text-align: left;">0</td>
+<td style="text-align: left;">0</td>
 </tr>
 <tr class="even">
-<td style="text-align: right;"><span class="math inline">\(W = \textsf{Rain}\)</span></td>
-<td style="text-align: center;">0.9</td>
-<td style="text-align: center;">0.1</td>
+<td style="text-align: left;">1</td>
+<td style="text-align: left;">1</td>
+<td style="text-align: left;">1</td>
+<td style="text-align: left;">1</td>
+<td style="text-align: left;">1</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">0</td>
+<td style="text-align: left;">0</td>
+<td style="text-align: left;">0</td>
+<td style="text-align: left;">0</td>
+<td style="text-align: left;">0</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">0</td>
+<td style="text-align: left;">0</td>
+<td style="text-align: left;">0</td>
+<td style="text-align: left;">0</td>
+<td style="text-align: left;">0</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">1</td>
+<td style="text-align: left;">1</td>
+<td style="text-align: left;">1</td>
+<td style="text-align: left;">1</td>
+<td style="text-align: left;">1</td>
 </tr>
 </tbody>
 </table>
-</div>
-<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-partier-cpt-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;2: The Conditional Probability Table (CPT) for the edge <span class="math inline">\(\pedge{W}{Y}\)</span> in <a href="#fig-partier-dgp" class="quarto-xref">Figure&nbsp;1</a>
-</figcaption>
-</figure>
-</div>
+<p><span class="math display">\[
+\begin{align*}
+\Pr(D) &amp;= 0.4 \\
+\Pr(D \mid A) &amp;= 1
+\end{align*}
+\]</span></p>
 </div>
 </div>
 </div>
 </section>
-<section id="observed-vs.-latent-nodes" class="level2">
-<h2 class="anchored" data-anchor-id="observed-vs.-latent-nodes">Observed vs.&nbsp;Latent Nodes</h2>
-<ul>
-<li>PGMs help us make <strong>valid (Bayesian) inferences</strong> about the world in the face of <strong>incomplete information</strong>!</li>
-<li>Key remaining tool: separation of nodes into two categories:
-<ul>
-<li><strong>Observed nodes</strong> (shaded)</li>
-<li><strong>Latent nodes</strong> (unshaded)</li>
-</ul></li>
-<li><span class="math inline">\(\Rightarrow\)</span> Can use our PGM as a <strong>weather-inference machine!</strong></li>
-<li>If we <strong>observe</strong> <span class="math inline">\(i\)</span> at a party, what can we infer about the <strong>weather</strong> outside?</li>
-</ul>
 </section>
-<section id="observed-partier-latent-weather" class="level2 title-09">
-<h2 class="title-09 anchored" data-anchor-id="observed-partier-latent-weather">Observed Partier, Latent Weather</h2>
-<ul>
-<li>We can draw this situation as a PGM with <strong>shaded</strong> and <strong>unshaded nodes</strong>, distinguishing what we <strong>know</strong> from what we’d like to <strong>infer</strong>:</li>
-</ul>
+<section id="the-four-elemental-confounds" class="level1 smaller" data-stack-name="Forks, Pipes, Colliders">
+<h1 class="smaller" data-stack-name="Forks, Pipes, Colliders">The Four Elemental Confounds</h1>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="images/pgm_yobs.svg" class="img-fluid quarto-figure quarto-figure-center figure-img" width="400"></p>
+<p><img src="images/elemental-confounds.png" class="img-fluid quarto-figure quarto-figure-center figure-img"></p>
 </figure>
 </div>
-<table class="caption-top table">
-<colgroup>
-<col style="width: 18%">
-<col style="width: 64%">
-<col style="width: 18%">
-</colgroup>
-<tbody>
-<tr class="odd">
-<td style="text-align: center;">❓</td>
-<td style="text-align: center;">&nbsp;</td>
-<td style="text-align: center;">✅</td>
-</tr>
-</tbody>
-</table>
-<ul>
-<li>And we can now use Bayes’ Rule to compute how observed information (<span class="math inline">\(i\)</span> at party <span class="math inline">\(\Rightarrow [Y = \textsf{Go}]\)</span>) “flows” back into <span class="math inline">\(W\)</span></li>
-</ul>
-</section>
-<section id="computation-via-bayes-rule" class="level2 smaller crunch-title crunch-ul crunch-math math-80">
-<h2 class="smaller crunch-title crunch-ul crunch-math math-80 anchored" data-anchor-id="computation-via-bayes-rule">Computation via Bayes’ Rule</h2>
-<ul>
-<li>Bayes’ Rule, <span class="math inline">\(\Pr(A \mid B) = \frac{\Pr(B \mid A)\Pr(A)}{\Pr(B)}\)</span>, tells us how to use info about <span class="math inline">\(\Pr(B \mid A)\)</span> to obtain info about <span class="math inline">\(\Pr(A \mid B)\)</span>!</li>
-<li>We use it to obtain a distribution for <span class="math inline">\(W\)</span> <strong>updated to incorporate</strong> new info <span class="math inline">\([Y = \textsf{Go}]\)</span>:</li>
-</ul>
-<p><span class="math display">\[
-\begin{align*}
-&amp;\Pr(W = \textsf{Sun} \mid Y = \textsf{Go})
-= \frac{\Pr(Y = \textsf{Go} \mid W = \textsf{Sun}) \Pr(W = \textsf{Sun})}{\Pr(Y = \textsf{Go})} \\
-=\, &amp;\frac{\Pr(Y = \textsf{Go} \mid W = \textsf{Sun}) \Pr(W = \textsf{Sun})}{\Pr(Y = \textsf{Go} \mid W = \textsf{Sun}) \Pr(W = \textsf{Sun}) + \Pr(Y = \textsf{Go} \mid W = \textsf{Rain}) \Pr(W = \textsf{Rain})}
-\end{align*}
-\]</span></p>
-<ul>
-<li>Plug in info from CPT to obtain our new (conditional) probability of interest:</li>
-</ul>
-<p><span class="math display">\[
-\begin{align*}
-\Pr(W = \textsf{Sun} \mid Y = \textsf{Go}) &amp;= \frac{(0.8)(0.5)}{(0.8)(0.5) + (0.1)(0.5)} = \frac{0.4}{0.4 + 0.05} \approx 0.89
-\end{align*}
-\]</span></p>
-<ul>
-<li>We’ve learned something interesting! Observing <span class="math inline">\(i\)</span> at the party <span class="math inline">\(\leadsto\)</span> probability of sun jumps from <span class="math inline">\(0.5\)</span> (<strong>“prior”</strong> estimate of <span class="math inline">\(W\)</span>, best guess without any other relevant info) to <span class="math inline">\(0.89\)</span> (<strong>“posterior”</strong> estimate of <span class="math inline">\(W\)</span>, best guess after incorporating relevant info).</li>
-</ul>
+<section id="the-fork" class="level2 smaller">
+<h2 class="smaller anchored" data-anchor-id="the-fork">The Fork</h2>
+<div class="cell">
+<details open="" class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stderr">
+<pre><code>── Attaching core tidyverse packages ──────────────────────── tidyverse 2.0.0 ──
+✔ dplyr     1.1.4     ✔ readr     2.1.5
+✔ forcats   1.0.0     ✔ stringr   1.5.1
+✔ ggplot2   3.5.1     ✔ tibble    3.2.1
+✔ lubridate 1.9.3     ✔ tidyr     1.3.1
+✔ purrr     1.0.2     
+── Conflicts ────────────────────────────────────────── tidyverse_conflicts() ──
+✖ dplyr::filter() masks stats::filter()
+✖ dplyr::lag()    masks stats::lag()
+ℹ Use the conflicted package (&lt;http://conflicted.r-lib.org/&gt;) to force all conflicts to become errors</code></pre>
+</div>
+<details open="" class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(extraDistr)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stderr">
+<pre><code>
+Attaching package: 'extraDistr'
+
+The following object is masked from 'package:purrr':
+
+    rdunif</code></pre>
+</div>
+<details open="" class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>n <span class="ot">&lt;-</span> <span class="dv">10000</span></span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>fork_df <span class="ot">&lt;-</span> <span class="fu">tibble</span>(</span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>    <span class="at">Z =</span> <span class="fu">rbern</span>(n),</span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>    <span class="at">X =</span> <span class="fu">rbern</span>(n, (<span class="dv">1</span><span class="sc">-</span>Z)<span class="sc">*</span><span class="fl">0.1</span> <span class="sc">+</span> Z<span class="sc">*</span><span class="fl">0.9</span>),</span>
+<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a>    <span class="at">Y =</span> <span class="fu">rbern</span>(n, (<span class="dv">1</span><span class="sc">-</span>Z)<span class="sc">*</span><span class="fl">0.1</span> <span class="sc">+</span> Z<span class="sc">*</span><span class="fl">0.9</span>),</span>
+<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a><span class="co"># fork_df |&gt; group_by(X, Y) |&gt;</span></span>
+<span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a><span class="co">#   summarize(Z=n())</span></span>
+<span id="cb6-9"><a href="#cb6-9" aria-hidden="true" tabindex="-1"></a><span class="co"># The full df</span></span>
+<span id="cb6-10"><a href="#cb6-10" aria-hidden="true" tabindex="-1"></a><span class="fu">table</span>(fork_df<span class="sc">$</span>X, fork_df<span class="sc">$</span>Y)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>   
+       0    1
+  0 4040  911
+  1  866 4183</code></pre>
+</div>
+<details open="" class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cor</span>(fork_df<span class="sc">$</span>X, fork_df<span class="sc">$</span>Y)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 0.6445606</code></pre>
+</div>
+<details open="" class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Conditioning on Z = 0</span></span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>z0_df <span class="ot">&lt;-</span> fork_df <span class="sc">|&gt;</span> <span class="fu">filter</span>(Z <span class="sc">==</span> <span class="dv">0</span>)</span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a><span class="fu">cor</span>(z0_df<span class="sc">$</span>X, z0_df<span class="sc">$</span>Y)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] -0.003036962</code></pre>
+</div>
+<details open="" class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Conditioning on Z = 1</span></span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>z1_df <span class="ot">&lt;-</span> fork_df <span class="sc">|&gt;</span> <span class="fu">filter</span>(Z <span class="sc">==</span> <span class="dv">1</span>)</span>
+<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a><span class="fu">cor</span>(z1_df<span class="sc">$</span>X, z1_df<span class="sc">$</span>Y)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] -0.0003034739</code></pre>
+</div>
+</div>
 </section>
 <section id="references" class="level2">
 <h2 class="anchored" data-anchor-id="references">References</h2>
@@ -1033,21 +1023,13 @@ Finetti, Bruno de. 1972. <em>Probability, <span>Induction</span> and <span>Stati
 <div id="ref-hume_treatise_1739" class="csl-entry" role="listitem">
 Hume, David. 1739. <em>A <span>Treatise</span> of <span>Human Nature</span>: <span>Being</span> an <span>Attempt</span> to <span>Introduce</span> the <span>Experimental Method</span> of <span>Reasoning Into Moral Subjects</span>; and <span>Dialogues Concerning Natural Religion</span></em>. Longmans, Green.
 </div>
-<div id="ref-koller_probabilistic_2009" class="csl-entry" role="listitem">
-Koller, Daphne, and Nir Friedman. 2009. <em>Probabilistic <span>Graphical Models</span>: <span>Principles</span> and <span>Techniques</span></em>. MIT Press. <a href="https://www.dropbox.com/scl/fi/6qmnr9feizngaq4005isj/Probabilistic-Graphical-Models.pdf?rlkey=4803nmsffh4xtsdfiji8jppb1&amp;dl=1">https://www.dropbox.com/scl/fi/6qmnr9feizngaq4005isj/Probabilistic-Graphical-Models.pdf?rlkey=4803nmsffh4xtsdfiji8jppb1&amp;dl=1</a>.
+<div id="ref-iyengar_news_2010" class="csl-entry" role="listitem">
+Iyengar, Shanto, and Donald R. Kinder. 2010. <em>News <span>That Matters</span>: <span>Television</span> &amp; <span>American Opinion</span></em>. University of Chicago Press.
 </div>
 <div id="ref-pearl_causality_2000" class="csl-entry" role="listitem">
 Pearl, Judea. 2000. <em>Causality: <span>Models</span>, <span>Reasoning</span>, and <span>Inference</span></em>. Cambridge University Press. <a href="https://www.dropbox.com/scl/fi/4kfpro4gpx7tg55fwd7qt/Judea-Pearl-Causality_-Models-Reasoning-and-Inference.pdf?rlkey=f0abw0cgmsyiegx6xapq5z7j2&amp;dl=1">https://www.dropbox.com/scl/fi/4kfpro4gpx7tg55fwd7qt/Judea-Pearl-Causality_-Models-Reasoning-and-Inference.pdf?rlkey=f0abw0cgmsyiegx6xapq5z7j2&amp;dl=1</a>.
 </div>
 </div>
-</section>
-<section id="appendix-zero-probabilities" class="level2 smaller">
-<h2 class="smaller anchored" data-anchor-id="appendix-zero-probabilities">Appendix: Zero Probabilities</h2>
-<p>From <span class="citation" data-cites="koller_probabilistic_2009">Koller and Friedman (<a href="#ref-koller_probabilistic_2009" role="doc-biblioref">2009</a>)</span>, pp.&nbsp;66-67:</p>
-<blockquote class="blockquote">
-<p><strong>Zero probabilities</strong>: A common mistake is to assign a probability of zero to an event that is extremely unlikely, but not impossible. The problem is that one can never condition away a zero probability, no matter how much evidence we get. When an event is unlikely but not impossible, giving it probability zero is guaranteed to lead to irrecoverable errors. For example, in one of the early versions of the the Pathfinder system (box 3.D), <strong>10 percent of the misdiagnoses were due to zero probability estimates given by the expert to events that were unlikely but not impossible.</strong></p>
-</blockquote>
-<p><a href="#so-whats-the-problem">← Back to slide</a></p>
 
 
 </section>
@@ -1629,7 +1611,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 });
 </script>
 </div> <!-- /content -->
-<footer class="footer"><div class="nav-footer"><div class="nav-footer-center"><div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/jpowerj/dsan5650/blob/main/w02/index.qmd" target="_blank" class="toc-action"><i class="bi bi-github"></i>View source</a></li></ul></div></div></div></footer><script>videojs(video_shortcode_videojs_video1);</script>
+<footer class="footer"><div class="nav-footer"><div class="nav-footer-center"><div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/jpowerj/dsan5650/blob/main/w03/index.qmd" target="_blank" class="toc-action"><i class="bi bi-github"></i>View source</a></li></ul></div></div></div></footer><script>videojs(video_shortcode_videojs_video1);</script>
 
 
 

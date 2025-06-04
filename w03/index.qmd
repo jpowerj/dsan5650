@@ -1,0 +1,379 @@
+---
+title: "Week 3: From PGMs to Causal Diagrams"
+subtitle: "*DSAN 5650: Causal Inference for Computational Social Science*<br><span class='subsubtitle'>Summer 2025, Georgetown University</span>"
+author: "Jeff Jacobs"
+institute: "[`jj1088@georgetown.edu`](mailto:jj1088@georgetown.edu)"
+bibliography: "../_DSAN5650.bib"
+date: 2025-06-04
+date-format: full
+lecnum: 3
+categories:
+  - "Class Sessions"
+format:
+  revealjs:
+    df-print: kable
+    footer: "DSAN 5650 Week 3: {{< var w03.footer >}}"
+    output-file: "slides.html"
+    html-math-method: mathjax
+    scrollable: true
+    link-external-icon: true
+    link-external-newwindow: true
+    theme: [default, "../dsan-globals/jjquarto.scss"]
+    include-in-header:
+      text: "<link rel='stylesheet' href='https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css'><link rel='stylesheet' type='text/css' href='https://cdn.jsdelivr.net/gh/dreampulse/computer-modern-web-font@master/fonts.css'><link rel='preconnect' href='https://fonts.googleapis.com'><link rel='preconnect' href='https://fonts.gstatic.com' crossorigin><link href='https://fonts.googleapis.com/css2?family=Barrio&display=swap' rel='stylesheet'>"
+    slide-number: true
+    simplemenu:
+      flat: true
+      barhtml:
+        header: "<div class='menubar'><span style='position: absolute; left: 8; padding-left: 8px;'><a href='./index.html'>&larr; Return to Notes</a></span><ul class='menu'></ul></div>"
+      scale: 0.5
+    revealjs-plugins:
+      - simplemenu
+  html:
+    df-print: kable
+    output-file: "index.html"
+    html-math-method: mathjax
+    link-external-icon: true
+    link-external-newwindow: true
+    include-in-header:
+      text: "<link rel='stylesheet' href='https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css'><link rel='stylesheet' type='text/css' href='https://cdn.jsdelivr.net/gh/dreampulse/computer-modern-web-font@master/fonts.css'><link rel='preconnect' href='https://fonts.googleapis.com'><link rel='preconnect' href='https://fonts.gstatic.com' crossorigin><link href='https://fonts.googleapis.com/css2?family=Barrio&display=swap' rel='stylesheet'>"
+---
+
+::: {.content-visible unless-format="revealjs"}
+
+<center>
+<a class="h2" href="./slides.html" target="_blank">Open slides in new window &rarr;</a>
+</center>
+
+:::
+
+# Schedule {.smaller .crunch-title .crunch-callout .code-90 data-name="Schedule"}
+
+Today's Planned Schedule:
+
+| | Start | End | Topic |
+|:- |:- |:- |:- |
+| **Lecture** | 6:30pm | 6:45pm | [HW1 Questions and Concerns &rarr;](#hw1-questions-andor-concerns)
+|  | 6:45pm | 7:15pm | [Causality Recap &rarr;](#causality-recap) |
+| | 7:00pm | 7:30pm | [Motivating Examples: Causal Inference &rarr;](#motivation-ii-causal-inference) |
+| | 7:30pm | 7:45pm | [Your First Probabilistic Graphical Model! &rarr;](#your-first-probabilistic-graphical-model)
+| **Break!** | 7:45pm | 8:00pm | |
+| | 8:00pm | 9:00pm | [PGM "Lab" &rarr;](#hidden-markov-models-(hmms-are-our-ur-pgms))
+
+: {tbl-colwidths="[12,12,12,64]"}
+
+{{< include ../dsan-globals/_globals-py.qmd >}}
+
+{{< include ../dsan-globals/_globals-tex.qmd >}}
+
+
+::: {.hidden}
+
+```{=html}
+<style>
+.barrio-jj {
+  font-family: "Barrio", system-ui;
+  /* font-weight: 400; */
+  font-style: normal;
+}
+</style>
+```
+
+:::
+
+# HW1 Questions and/or Concerns {data-name="HW1"}
+
+* 🆕 Submitting to AutoHinter! 🆕
+
+# Causality Recap {data-stack-name="Recap"}
+
+## So What's the Problem? {.crunch-title .crunch-ul .crunch-li-8 .inline-90 .text-90}
+
+* Non-probabilistic models: High potential for being garbage
+  * *tldr: even if SUPER certain, using $\Pr(\mathcal{H}) = 1-\varepsilon$ with tiny $\varepsilon$ has literal life-saving advantages*^[See [Appendix Slide](#appendix-zero-probabilities)] [@finetti_probability_1972]
+* Probabilistic models: Getting there, still looking at "surface"
+  * Of the $N = 100$ times we observed event $X$ occurring, event $Y$ also occurred $90$ of those times
+  * $\implies \Pr(Y \mid X) = \frac{\#[X, Y]}{\#[X]} = \frac{90}{100} = 0.9$
+* Causal models: Does $Y$ happen **because of** $X$ happening? For that, need to start modeling **what's happening under the surface** making $X$ and $Y$ **"pop up" together** so often
+
+## The *Fundamental* Problem of Causal Inference {.crunch-title .crunch-ul .crunch-callout .title-07}
+
+The only workable definition of «$X$ causes $Y$»:
+
+::: {.callout-note icon="false" title="<i class='bi bi-info-circle pe-1'></i> Defining Causality [@hume_treatise_1739, ruining everything as usual 😤]"}
+
+$X$ causes $Y$ if and only if:
+
+1. $X$ *temporally precedes* $Y$ and
+2. 
+    * In **two worlds** $W_0$ and $W_1$ where
+    * everything is exactly the same **except that** $X = 0$ in $W_0$ and $X = 1$ in $W_1$,
+    * $Y = 0$ in $W_0$ and $Y = 1$ in $W_1$
+
+:::
+
+* The problem? We live in **one** world, not two identical worlds simultaneously 😭
+
+## What Is To Be Done?
+
+![](images/face_everything_and_rise.jpg){fig-align="center"}
+
+## Probability++ {.crunch-title}
+  
+* Tools from prob/stats (RVs, CDFs, Conditional Probability) **necessary but not sufficient** for causal inference!
+* Example: Say we use DSAN 5100 tools to discover:
+  * Probability that event $E_1$ occurs is $\Pr(E_1) = 0.5$
+  * Probability that $E_1$ occurs **conditional on** another event $E_0$ occurring is $\Pr(E_1 \mid E_0) = 0.75$
+* Unfortunately, we still **cannot** infer that the occurrence of $E_0$ **causes** an increase in the likelihood of $E_1$ occurring.
+
+## Beyond Conditional Probability {.crunch-title .text-90}
+
+* This issue (that **conditional probabilities** could not be interpreted causally) at first represented a kind of dead end for scientists interested in employing probability theory to study causal relationships...
+* Recent decades: researchers have built up an additional "layer" of modeling tools, augmenting existing machinery of probability to address causality head-on!
+* @pearl_causality_2000: Formal proofs that ($\Pr$ axioms) $\cup$ ($\textsf{do}$ axioms) $\Rightarrow$ causal inference procedures successfully recover causal effects
+
+## Preview: do-Calculus {.crunch-title .crunch-math .text-85 .table-85 .crunch-ul .inline-90 .math-90 .crunch-li-6}
+
+* *Extends* core of probability to incorporate causality, via $\textsf{do}$ operator
+* $\textsf{do}(X = 5)$ is a "special" **event**, representing **intervention in DGP** to **force** $X \leftarrow 5$... $\textsf{do}(X = 5)$ **not the same event** as $X = 5$!
+
+| $X = 5$ | $\neq$ | $\textsf{do}(X = 5)$ |
+|:-:|:-:|:-:|
+| *Observing* that $X$ took on value 5 (for some possibly-unknown reason) | $\neq$ | *Intervening* to force $X \leftarrow 5$, all else in DGP remaining the same (intervention then "flows" through rest of DGP) |
+
+: {tbl-colwidths="[46,2,52]"}
+
+* Probably the most difficult thing in 5650 to wrap head around
+* "Special": $\Pr(\textsf{do}(X = 5))$ *not* well-defined, only $\Pr(Y = 6 \mid \textsf{do}(X = 5))$
+* To emphasize special-ness, we may use notation like:
+
+  $$
+  \Pr(Y = 6 \mid \textsf{do}(X = 5)) \equiv \textstyle \Pr_{\textsf{do}(X = 5)}(Y = 6)
+  $$
+
+  to avoid confusion with "normal" events
+
+## Causal World Unlocked 😎 (With Great Power Comes Great Responsibility...) {.title-08 .crunch-title .crunch-ul}
+
+* With $\textsf{do}(\cdot)$ in hand... (Alongside DGP satisfying axioms slightly more strict than core probability axioms)
+* We *can* make causal inferences from similar pair of facts! If:
+  * Probability that event $E_1$ occurs is $\Pr(E_1) = 0.5$,
+  * The probability that $E_1$ occurs **conditional on** the event $\textsf{do}(E_0)$ occurring is $\Pr(E_1 \mid \textsf{do}(E_0)) = 0.75$,
+* **Now** we can actually infer that the occurrence of $E_0$ **caused** an increase in the likelihood of $E_1$ occurring!
+
+# Back to PGMs: Case Studies {data-stack-name="PGMs"}
+
+## Importance of Observed vs. Latent Distinction! {.smaller .crunch-title .title-10}
+
+* Across many different fields, hidden stumbling-block in your project may be **failure to model this distinction** and pursue its implications!
+
+::: {#fig-fence-dog}
+
+<center>
+
+{{< video https://jpj.georgetown.domains/dsan5650-scratch/fence_dog.mp4 height="400" align="center" >}}
+
+</center>
+
+Your model failing to achieve its goal bc you haven't yet distinguished observed vs. latent variables
+:::
+
+## Example from Cognitive Neuroscience: Visual Perception {.smaller .crunch-title .title-08 .crunch-ul .crunch-quarto-figure .crunch-quarto-layout-panel}
+
+:::: {layout="[55,45]" layout-valign="center"}
+::: {#cog-neuro-text}
+
+* We "see" **3D objects** like a basketballs, but our eyes are (curved) **2D surfaces!**
+* $\Rightarrow$ Our brains **construct** 3D environment by combining 2D info (**observed** photons-hitting-light-cones) with **latent** heuristic info:
+  * Instantaneous **Binocular Disparity**, fusing info from **two** slightly-offset eyes,
+  * Short-term **Motion** [**Parallax**](https://en.wikipedia.org/wiki/Parallax): How does object shift over short temporal "windows" of movement?
+  * Long-term mental models (orange-ish circle with this line pattern is usually a basketball, which is usually this big, etc.)
+
+:::
+::: {#cog-neuro-img}
+
+![[Image source](https://royalsocietypublishing.org/doi/10.1098/rstb.2015.0256) (a very cool article!)](images/parallax.jpg){fig-align="center"}
+
+:::
+::::
+
+* Similar examples in many other fields $\leadsto$ science is a strange waltz of general models vs. field-specific details, but there's one model that is **infinitely helpful** imo...
+
+## Hidden Markov Models (HMMs) Are Our Ur-PGMs! {.smaller .crunch-title .title-09 .crunch-quarto-figure .crunch-quarto-layout-cell .callout-fw}
+
+* Using ["Ur"](https://blogs.transparent.com/german/the-german-prefix-ur/) in the same sense as ["America's Ur-Choropleths"](https://kieranhealy.org/blog/archives/2015/06/12/americas-ur-choropleths/)...
+* HMMs are our "Ur-Models" for Computational [**Social** Science]{.barrio-jj} specifically
+
+:::: {layout="[3,1]" layout-valign="center"}
+
+![](images/hmm.svg){fig-align="right" width="700"}
+
+![](images/mood_crop.jpg){fig-align="left" width="100"}
+
+::::
+
+* Let's consider an extremely currently-popular strand of CSS research, and step through why (a) it may be harder than it initially seems, but (b) we can use HMMs to "organize"/manage/visualize the complexity!
+
+::: {.notes}
+
+As in, how America's Ur-Choropleths are two visualizations you can keep at hand before launching into a specific nation-wide choropleth about a specific issue!
+
+:::
+
+## Studying "Fake News" {.smaller .callout-fw .callout-valign .crunch-img .crunch-p .crunch-quarto-figure .crunch-title .crunch-callout .text-70 .crunch-ul .crunch-li-5 .crunch-quarto-layout-panel}
+
+
+::::: {.callout}
+:::: {#callout-container}
+::: {style="float: left; margin-right: 12px; margin-bottom: -2px"}
+
+![](images/real-tired.png){width="50"}
+
+:::
+
+Studying "fake news" with ML and/or Deep Learning and/or Big Data is very popular in Computational Social Science: let's use HMMs to see why it might be more... difficult/complicated than it seems at first 🙈
+
+::::
+:::::
+
+* The (implicit) model in studies like @iyengar_news_2010 is something like:
+
+:::: {layout="[65,35]" layout-valign="center" layout-align="center"}
+::: {#iyengar-text}
+
+![](images/hmm_media.svg){fig-align="center" width="520"}
+
+* Thus allowing results to be summarized in a table like:
+
+![](images/iyengar_results.jpg){fig-align="center" width="400"}
+
+:::
+::: {#iyengar-img}
+
+![@iyengar_news_2010](images/iyengar_kinder.jpg){fig-align="center" width="60%"}
+
+:::
+::::
+
+## The Devil in the Details I {.smaller .crunch-title .lh-adjust}
+
+> Residents of the [New Haven, Connecticut area]{.jjbox} participated in one of two experiments, each of which spanned [six consecutive days]{.jjbox} [...] took place in [November 1980]{.jjbox}, shortly after the [presidential election]{.jjbox}
+
+> We measured **problem importance** with four questions that appeared in both the pretreatment and posttreatment questionnaires:
+> 
+> * Please [indicate how important]{.jjbox} you consider these
+problems to be.
+> * Should the federal government [do more]{.jjbox} to develop solutions to these problems, even if it means [raising taxes]{.jjbox}?
+> * How much do you yourself [care]{.jjbox} about these problems?
+> * [These days]{.jjbox} how much do you [talk]{.jjbox} about these
+problems?
+
+## The Devil in the Details II
+
+![](images/iyengar_experiment.jpg){fig-align="center"}
+
+## Randomization and Fine-Tuned Treatment {.smaller .title-10 .crunch-quarto-figure .crunch-quarto-layout-panel}
+
+:::: {layout="[50,50]" layout-valign="center"}
+
+![](images/iyengar_treatment.jpg){fig-align="center"}
+
+![](images/iyengar_control.jpg){fig-align="center"}
+
+::::
+
+* ...These are the types of things we usually **don't** have control over as data scientists (we're just handed a `.csv`!)
+
+## Let's Model It!
+
+## The Final Piece: Plate Notation {.crunch-title .crunch-quarto-figure}
+
+* For describing general distributions, there is often a "single node generating a bunch of nodes" structure:
+
+![](images/hmm_clusters_single_dist.svg){fig-align="center"}
+
+* PGM notation has a built-in tool for this: **plates!**
+
+![](images/pgm_plates.svg){fig-align="center"}
+
+## Crucial CSS Model We Can Now Dive Into!
+
+![[Image source](https://www.markovml.com/blog/latent-dirichlet-allocation)](images/lda_pgm.webp){fig-align="center"}
+
+## What Does This Give Us?
+
+![](images/lda.jpg){fig-align="center"}
+
+## Before We Branch Off Of PGMs {.smaller}
+
+*(Even in non-causal settings)*
+
+![[Image source](https://www.markovml.com/blog/latent-dirichlet-allocation)](images/lda_pgm.webp){fig-align="center"}
+
+* We don't exactly think "Shakespeare decided on a set of topics, "
+
+# Your First Causal Diagram {data-stack-name="Causal PGMs"}
+
+## Getting Shot By A Firing Squad {.crunch-title .crunch-quarto-figure}
+
+:::: {layout="[1,1]" layout-align="center"}
+::: {#firing-squad-img}
+
+![](images/causal_firing_squad.svg){fig-align="center" width="360"}
+
+:::
+::: {#firing-squad-table}
+
+| $O$ | $C$ | $A$ | $B$ | $D$ |
+| - | - | - | - | - |
+| 0 | 0 | 0 | 0 | 0 |
+| 1 | 1 | 1 | 1 | 1 |
+| 0 | 0 | 0 | 0 | 0 |
+| 0 | 0 | 0 | 0 | 0 |
+| 1 | 1 | 1 | 1 | 1 |
+
+$$
+\begin{align*}
+\Pr(D) &= 0.4 \\
+\Pr(D \mid A) &= 1
+\end{align*}
+$$
+
+:::
+::::
+
+# The Four Elemental Confounds {.smaller data-stack-name="Forks, Pipes, Colliders"}
+
+![](images/elemental-confounds.png){fig-align="center"}
+
+## The Fork {.smaller}
+
+```{r}
+#| label: fork-sim
+#| echo: true
+#| code-fold: show
+library(tidyverse)
+library(extraDistr)
+n <- 10000
+fork_df <- tibble(
+    Z = rbern(n),
+    X = rbern(n, (1-Z)*0.1 + Z*0.9),
+    Y = rbern(n, (1-Z)*0.1 + Z*0.9),
+)
+# fork_df |> group_by(X, Y) |>
+#   summarize(Z=n())
+# The full df
+table(fork_df$X, fork_df$Y)
+cor(fork_df$X, fork_df$Y)
+# Conditioning on Z = 0
+z0_df <- fork_df |> filter(Z == 0)
+cor(z0_df$X, z0_df$Y)
+# Conditioning on Z = 1
+z1_df <- fork_df |> filter(Z == 1)
+cor(z1_df$X, z1_df$Y)
+```
+
+## References
+
+::: {#refs}
+:::
