@@ -13,13 +13,13 @@ w02:
   date-md: "May 28"
 w03:
   weeknum: 3
-  title: "PGMs as Causal Graphs via do-Calculus: Chains, Forks, and Colliders"
+  title: "From PGMs to Causal Diagrams"
   footer: "PGMs as Causal Graphs"
   date-md: "Jun 4"
 w04:
   weeknum: 4
-  title: "Some Humility via Theory: Have We Closed All Backdoor Paths?"
-  footer: "The do-Operator"
+  title: "Clearing the Path from Cause to Effect: The Four Elemental Confounds"
+  footer: "The Four Elemental Confounds"
   date-md: "Jun 11"
 w05:
   weeknum: 5
@@ -63,8 +63,8 @@ w12:
   date-md: "Aug 6"
 hw1:
   title: "Causal Modeling with DAGs and PGMs: Direct and Indirect Effects"
-  date-md: "Jun 4, 11:59pm EDT"
-  date-full: "Wednesday, **June 4**"
+  date-md: "Jun 9, 11:59pm EDT"
+  date-full: "Monday, **June 9**"
   url: "#"
 hw2:
   title: "Traversing the Sea of Causality with the do-Harpoon in Hand: Chains, Forks, and Colliders"
