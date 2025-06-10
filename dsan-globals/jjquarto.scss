@@ -14,7 +14,7 @@ pointer-events: none;
 }
 
 .alg {
-font-variant-caps: small-caps !important;
+    font-variant-caps: small-caps !important;
 }
 
 .aside-80 aside {
@@ -560,15 +560,16 @@ font-size: calc(0.8 * var(--r-heading2-size)) !important;
 font-size: calc(0.9 * var(--r-heading2-size)) !important;
 }
 .title-10 h2, .title-10 h1 {
-font-size: calc(1.0 * var(--r-heading2-size)) !important;
+    font-size: calc(1.0 * var(--r-heading2-size)) !important;
 }
-
 .title-11 h2, .title-11 h1 {
-font-size: calc(1.1 * var(--r-heading2-size)) !important;
+    font-size: calc(1.1 * var(--r-heading2-size)) !important;
 }
-
 .title-12 h2, .title-12 h1 {
-font-size: calc(1.2 * var(--r-heading2-size)) !important;
+    font-size: calc(1.2 * var(--r-heading2-size)) !important;
+}
+.title-13 h2, .title-13 h1 {
+    font-size: calc(1.3 * var(--r-heading2-size)) !important;
 }
 
 .title-center h2 {
