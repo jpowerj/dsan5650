@@ -57,13 +57,12 @@ Today's Planned Schedule:
 
 | | Start | End | Topic |
 |:- |:- |:- |:- |
-| **Lecture** | 6:30pm | 6:45pm | [The Ladder of Causal Inference &rarr;]() |
-| **Lecture** | 6:30pm | 6:45pm | [Paths from Cause to Effect &rarr;](#paths) |
-|  | 6:45pm | 7:15pm | [Causality Recap &rarr;](#causality-recap) |
-| | 7:00pm | 7:30pm | [Motivating Examples: Causal Inference &rarr;](#motivation-ii-causal-inference) |
-| | 7:30pm | 7:45pm | [Your First Probabilistic Graphical Model! &rarr;](#your-first-probabilistic-graphical-model)
+| **Lecture** | 6:30pm | 7:10pm | [PGM as Modeling Language &rarr;](#roadmap) |
+| | 7:10pm | 7:30pm | [The Ladder of Causal Inference &rarr;](#the-ladder-of-causal-inference) |
+| | 7:30pm | 7:50pm | [Elemental Confounds I: Forks and Chains &rarr;](#the-four-elemental-confounds)
 | **Break!** | 7:50pm | 8:00pm | |
-| | 8:00pm | 9:00pm | [PGM "Lab" &rarr;](#hidden-markov-models-(hmms-are-our-ur-pgms))
+| | 8:00pm | 8:50pm | [Elemental Confounds II: ⚠️Colliders⚠️ &rarr;](#the-collider) |
+| | 8:50pm | 9:00pm | [Elemental Confounds III: Proxies &rarr;](#proxies-for-Z) |
 
 : {tbl-colwidths="[12,12,12,64]"}
 
@@ -78,10 +77,7 @@ source("../dsan-globals/_globals.r")
 
 :::
 
-## Roadmap {.smaller .crunch-title .crunch-ul .crunch-quarto-figure .crunch-li-8 .crunch-p}
-
-:::: {layout="[1,1]"}
-::: {#left-5300}
+# Roadmap {.smaller .crunch-title .title-12 .crunch-ul .crunch-quarto-figure .crunch-li-8 .crunch-p .crunch-quarto-layout-panel .caption-60 data-stack-name="PGM as Language"}
 
 <center>
 
@@ -89,48 +85,96 @@ source("../dsan-globals/_globals.r")
 
 </center>
 
-* In e.g. 5300, you learned a bunch of *ad hoc* models: Linear Regression, Decision Trees, SVMs, Neural Nets
-* PGMs provide a **language** we can use to tell a computer how to estimate **parameters** in these models from **data**
+:::: {layout="[60,40]"}
+::: {#left-5300}
+
+* In e.g. 5300, you learned a bunch of *ad hoc* models: Linear Regression, Decision Trees, SVMs
+* PGMs provide a formalized **modeling language** for "writing out" models unambiguously in a way your computer understands: specifying exactly how to estimate **parameters** from **data**
 
 :::
 ::: {#img-5300}
 
-![Linear Regression as a PGM ([Source](https://revbayes.github.io/tutorials/intro/graph_models.html#bayesian-linear-regression))](images/linear_regression.png){fig-align="center" width="310"}
+![Linear Regression as a PGM ([Source](https://revbayes.github.io/tutorials/intro/graph_models.html#bayesian-linear-regression))](images/linear_regression.png){fig-align="center" width="220"}
 
 :::
 ::::
 
-:::: {layout="[1,1]"}
-::: {#now-august-text}
-
 <center>
 
-**Now &rarr; August**
+**Now &rarr; August**: *Class **splits** into two themes, running in parallel!*
 
 </center>
 
-* The class **splits** into two parallel goals!
-* <i class='bi bi-1-circle'></i> What kinds of cool computational social science models are unlocked, that we can now **implement** in this language?
-* <i class='bi bi-2-circle'></i> How does this language provide a scaffolding for **causal inference**
+:::: {layout="[50,50]" layout-valign="center"}
+::: {#now-august-text}
+
+* <i class='bi bi-1-circle'></i> What kinds of cool comp social sci models are unlocked, that we can now **implement** in this language? [HW2]
+* <i class='bi bi-2-circle'></i> How can we **expand** PGM vocabulary to incorporate **causality**? [Midterm]
 
 :::
 ::: {#now-august-img}
 
-
+![From PGMs to SWIGs [@bezuidenhout_single_2024]](images/dag-swig.svg){fig-align="center" width="410"}
 
 :::
 ::::
 
-## Why Take the Time to Learn a Modeling *Language* (vs. Individual Models)? {.smaller .crunch-title .title-09}
+## Why Take the Time to Learn a Modeling *Language* (vs. Individual Models)? {.smaller .crunch-title .title-09 .crunch-quarto-figure .crunch-p .crunch-ul .table-70 .code-black .table-nolines .table-crunch-td .text-65 .crunch-li-8 .crunch-quarto-layout-panel}
 
 * My answer: allows you to **adapt** to specifics/**idiosyncrasies** of your problem!
-* The "modeling **language**" metaphor: Learning models vs. learning modeling language $\Leftrightarrow$ Learning phrases in a language vs. learning to speak the language
-* "Hello, one hamburger please" is good, but what happens when you need to remove pickles? Or you want to add a sauce?
-* @mcelreath_statistical_2020 example: How do I "tell" my model to (a) Capture specific effects of tanks, but (b) **pool** information about tadpoles across tank sizes?
+* **Language** metaphor: Learning models vs. learning modeling language $\Leftrightarrow$ Learning phrases in a language vs. learning to speak the language
+* "Hello, one hamburger please" is good, but what if you...
+* <i class='bi bi-question-circle'></i> Are allergic to ketchup and need to make sure it's removed
+* <i class='bi bi-question-circle'></i> Want to replace sesame seed bun with poppy seed bun, if they have it
+* <i class='bi bi-question-circle'></i> Prefer spicy, but not too spicy, mustard <i class='bi bi-question-circle'></i> Bun only <i class='bi bi-question-circle'></i> Animal style <i class='bi bi-question-circle'></i> ...
+
+:::: {layout="[40,60]"}
+::: {#syntax-left}
+
+<center>
+
+Languages give us a **syntax**...
+
+| | | |
+|-|-|-|
+| S | $\rightarrow$ | NP VP |
+| NP | $\rightarrow$ | DetP N \| AdjP NP |
+| VP | $\rightarrow$ | V NP |
+| AdjP | $\rightarrow$ | Adj \| Adv AdjP |
+| N | $\rightarrow$ | `frog` \| `tadpole` |
+| V | $\rightarrow$ | `sees` \| `likes` |
+| Adj | $\rightarrow$ | `big` \| `small` |
+| Adv | $\rightarrow$ | `very` |
+| DetP | $\rightarrow$ | `a` \| `the` |
+
+</center>
+
+:::
+::: {#syntax-right}
+
+<center>
+
+...For expressing **arbitrary** (infinitely many!) sentences
+
+</center>
+
+![](images/parse_tree.svg){fig-align="center" width="330"}
+
+:::
+::::
+
+## Example 1: Multilevel Tadpoles (McElreath, Ch. 13) {.smaller .crunch-title .crunch-ul .title-09 .crunch-p .crunch-quarto-figure .crunch-li-7 .crunch-img}
+
+*Need a **language** that can communicate the following info to estimation algorithm:*
+
+* <i class='bi bi-0-circle'></i> Unit of *observation* is **tadpole**, but unit of *analysis* is **tank**
+* <i class='bi bi-1-circle'></i> Ultimately, I **care about** $Y =$ **survival rate** (**dependent** var), as function of $X =$ **tank properties** (**independent** var)
+* <i class='bi bi-2-circle'></i> ...But the $n_i = 48$ tanks actually come in $n_j = 3$ **types**: small (10 bois), medium (25), large (35) *(Bonus: What if there are different numbers of tanks per type?)*
+* <i class='bi bi-3-circle'></i> I need it to account for impact of **tank size**, then <i class='bi bi-4-circle'></i> **pool** info across tank sizes
 
 ![From @mcelreath_statistical_2020](images/tadpoles.svg){fig-align="center"}
 
-## Example: Multilevel Modeling {.smaller .crunch-title .crunch-img .crunch-fig-top .crunch-quarto-figure .crunch-figcaption .crunch-quarto-layout-panel}
+## Example 2: Dissertation Nightmare {.smaller .crunch-title .crunch-img .crunch-fig-top .crunch-quarto-figure .crunch-figcaption .crunch-quarto-layout-panel}
 
 :::: {layout="[45,55]" layout-valign="center" layout-align="center"}
 ::: {#multilevel-left}
@@ -147,7 +191,7 @@ source("../dsan-globals/_globals.r")
 :::
 ::::
 
-## Nightmarish Without a Modeling *Language*! {.smaller .crunch-title .title-11 .crunch-li-7 .table-80 .text-65 .code-85}
+## Nightmarish Without a Modeling *Language*! {.smaller .crunch-title .title-11 .crunch-li-8 .table-80 .text-65 .code-85 .crunch-ul}
 
 * Modeling *language* $\Rightarrow$ **Unambiguously "encode"** idiosyncratic domain knowledge
 * Dissertation: **Cold War** $\times$ **"Third World"** $\leadsto$ **Cuban** 🇨🇺 trans-continental operations^[Helpful metaphor [@gleijeses_visions_2013]: Cuba $\approx$ Forward-deployed "3rd World Outpost" for USSR (Soviet $ but Cuban training of PAIGC &rarr; MPLA), as Israel $\approx$ Forward-deployed "3rd World Outpost" for US (US $ but Israeli training of SAVAK &rarr; SADF)]
@@ -208,25 +252,19 @@ source("../dsan-globals/_globals.r")
 </thead> -->
 <tbody>
 <tr>
-  <td class='tdvc'><span data-qmd="![](images/fanciest_pooh.jpeg)"></span></td>
-  <td><span data-qmd="**Counterfactuals**: What *would have* happened, if history was slightly different...<br>$\Pr(Y_{M=M_0} \mid \textsf{do}(X)) - \Pr(Y_{M=M_0} \mid \textsf{do}(\neg X))$"></span></td>
-  <td align="center">Modding a videogame</td>
+  <td style='width: 8%;'></td>
+  <td align="center" class='tdvc' style="width: 8%;"><span data-qmd="<i class='bi bi-arrow-90deg-right'></i>"></span></td>
+  <td class='tdvc' colspan="2"><span data-qmd="![](images/fanciest_pooh.jpeg)"></span></td>
+  <td colspan="2"><span data-qmd="**Counterfactuals**: What *would have* happened, if history was slightly different...<br>$\Pr(Y_{M=M_0} \mid \textsf{do}(X)) - \Pr(Y_{M=M_0} \mid \textsf{do}(\neg X))$"></span></td>
 </tr>
 <tr>
-  <td colspan="3" align="center">&uarr;</td>
+  <td align="right" class='tdvc'><span data-qmd="<i class='bi bi-arrow-90deg-right'></i>"></span></td>
+  <td class='tdvc' colspan="2"><span data-qmd="![](images/fancy_pooh.jpeg)"></span></td>
+  <td colspan="3" class='tdvc'><span data-qmd="**Intervention**: What happens if I...<br>$\Pr(Y \mid \textsf{do}(X)) - \Pr(Y \mid \textsf{do}(\neg X))$"></span></td>
 </tr>
 <tr>
-  <td class='tdvc'><img src='images/fancy_pooh.jpeg' /></td>
-  <td><span data-qmd="**Intervention**: What happens if I...<br>$\Pr(Y \mid \textsf{do}(X)) - \Pr(Y \mid \textsf{do}(\neg X))$"></span></td>
-  <td>Playing a videogame</td>
-</tr>
-<tr>
-  <td colspan="3" align="center">&uarr;</td>
-</tr>
-<tr>
-  <td class='tdvc'><img src='images/bored_pooh.jpeg' /></td>
-  <td><span data-qmd="**Association**: What happened?<br>$\Pr(Y \mid X) - \Pr(Y \mid \neg X)$"></span></td>
-  <td>Watching someone play a videogame</td>
+  <td class='tdvc' colspan="2"><img src='images/bored_pooh.jpeg' /></td>
+  <td colspan="4" align="left" class='tdvc'><span data-qmd="**Association**: What happened?<br>$\Pr(Y \mid X) - \Pr(Y \mid \neg X)$"></span></td>
 </tr>
 </tbody>
 </table>
@@ -241,6 +279,541 @@ source("../dsan-globals/_globals.r")
 ## In the Real World
 
 ## John Mayer
+
+# The Four Elemental Confounds {.smaller .crunch-title .crunch-quarto-figure .title-12 data-stack-name="Forks, Pipes, Colliders"}
+
+![From Richard McElreath's [*Statistical Rethinking* Lectures](https://youtu.be/mBEA7PKDmiY?si=S0ciQ7W7wfL73kPR)](images/elemental-confounds.png){fig-align="center"}
+
+```{r}
+#| label: r-libraries
+#| echo: true
+#| code-fold: show
+library(tidyverse) # For ggplot
+library(extraDistr) # For rbern()
+library(patchwork) # For side-by-side plotting
+n_d <- 10000 # For discrete RVs
+n_c <- 300 # For continuous RVs
+```
+
+## The Fork: $X \leftarrow Z \rightarrow Y$ {.smaller .crunch-title .crunch-quarto-figure}
+
+:::: {.columns}
+::: {.column width="60%"}
+
+```{r}
+#| label: fork-sim
+#| echo: true
+#| code-fold: show
+set.seed(5650)
+fork_df <- tibble(
+    Z = rbern(n_d),
+    X = rbern(n_d, (1-Z)*0.1 + Z*0.9),
+    Y = rbern(n_d, (1-Z)*0.1 + Z*0.9),
+)
+```
+
+```{r}
+#| label: fork-matrix
+#| echo: true
+#| code-fold: true
+#| crop: false
+plot_freqs <- function(df, plot_title, y_lab=TRUE) {
+  df_cor <- cor(df$X, df$Y)
+  df_label <- paste0("Cor(X,Y) = ",round(df_cor,3))
+  freq_df <- df |>
+    group_by(X, Y) |>
+    summarize(count=n())
+  freq_plot <- freq_df |>
+    ggplot(
+      aes(x=factor(X), y=factor(Y), fill=count)
+    ) +
+    geom_tile() +
+    coord_equal() +
+    scale_fill_distiller(
+      palette="Greens", direction=1,
+      limits=c(0,5000)
+    ) +
+    geom_label(
+      aes(label=count),
+      fill="white", color="black", size=7
+    ) +
+    labs(
+      title = plot_title,
+      subtitle = df_label,
+      x="X", y="Y"
+    ) +
+    theme_dsan(base_size=24) +
+    theme(
+      plot.title = element_text(size=21),
+      plot.subtitle = element_text(size=18)
+    ) +
+    remove_legend()
+  if (!y_lab) {
+    freq_plot <- freq_plot + theme(
+      axis.title.y = element_blank()
+    )
+  }
+  return(freq_plot)
+}
+# The full df
+full_label <- paste0("Raw Data (n = 10K)")
+full_plot <- plot_freqs(fork_df, full_label)
+# Conditioning on Z = 0
+z0_df <- fork_df |> filter(Z == 0)
+z0_n <- nrow(z0_df)
+z0_label <- paste0("Z == 0 (",z0_n," obs)")
+z0_plot <- plot_freqs(z0_df, z0_label, y_lab=FALSE)
+# Conditioning on Z = 1
+z1_df <- fork_df |> filter(Z == 1)
+z1_n <- nrow(z1_df)
+z1_label <- paste0("Z == 1 (",z1_n," obs)")
+z1_plot <- plot_freqs(z1_df, z1_label, y_lab=FALSE)
+full_plot | z0_plot | z1_plot
+```
+
+:::
+::: {.column width="40%"}
+
+```{r}
+#| label: fork-continuous
+#| echo: true
+#| code-fold: show
+set.seed(5650)
+cfork_df <- tibble(
+    Z = rbern(n_c),
+    X = rnorm(n_c, 2 * Z - 1),
+    Y = rnorm(n_c, 2 * Z - 1)
+)
+```
+
+```{r}
+#| label: cfork-plot
+#| echo: true
+#| code-fold: true
+#| crop: false
+library(latex2exp)
+overall_lm <- lm(Y ~ X, data=cfork_df)
+overall_slope <- round(overall_lm$coef['X'], 3)
+z0_lm <- lm(Y ~ X, data=cfork_df |> filter(Z == 0))
+z0_slope <- round(z0_lm$coef['X'], 2)
+z0_label <- paste0("$Slope_{Z=0} = ",z0_slope,"$")
+z0_leg_label <- TeX(paste0("0 $(m=",z0_slope,")$"))
+z1_lm <- lm(Y ~ X, data=cfork_df |> filter(Z == 1))
+z1_slope <- round(z1_lm$coef['X'], 2)
+z1_label <- paste0("$Slope_{Z=1} = ",z1_slope,"$")
+z_texlabel <- TeX(paste0(z0_label, " | ", z1_label))
+cfork_xmin <- min(cfork_df$X)
+cfork_xmax <- max(cfork_df$X)
+ggplot() +
+  # Points
+  geom_point(
+    data=cfork_df,
+    aes(x=X, y=Y, color=factor(Z)),
+    size=0.6*g_pointsize,
+    alpha=0.8
+  ) +
+  # Overall lm
+  geom_smooth(
+    data=cfork_df, aes(x=X, y=Y),
+    method = lm, se = FALSE,
+    linewidth = 2.5, color='black'
+  ) +
+  # Stratified lm
+  # (slightly larger black lines)
+  geom_smooth(
+    data=cfork_df,
+    aes(x=X, y=Y, group=factor(Z)),
+    method=lm, se=FALSE, fullrange=TRUE,
+    linewidth=2.75, color='black'
+  ) +
+  # (Colored lines)
+  geom_smooth(
+    data=cfork_df,
+    aes(x=X, y=Y, color=factor(Z)),
+    method=lm, se=FALSE, fullrange=TRUE,
+    linewidth=2
+  ) +
+  theme_dsan(base_size=24) +
+  theme(
+    plot.title = element_text(size=24),
+    plot.subtitle = element_text(size=20)
+  ) +
+  coord_equal() +
+  labs(
+    title = paste0(
+      "Unstratified Slope = ",overall_slope
+    ),
+    subtitle=z_texlabel,
+    x = "X", y = "Y", color = "Z"
+  )
+```
+
+:::
+::::
+
+## The Pipe: $X \rightarrow Z \rightarrow Y$ {.smaller .crunch-title .crunch-quarto-figure}
+
+:::: {.columns}
+::: {.column width="60%"}
+
+```{r}
+#| label: pipe-sim
+#| echo: true
+#| code-fold: show
+set.seed(5650)
+pipe_df <- tibble(
+    X = rbern(n_d),
+    Z = rbern(n_d, (1-X)*0.1 + X*0.9),
+    Y = rbern(n_d, (1-Z)*0.1 + Z*0.9),
+)
+```
+
+```{r}
+#| label: pipe-matrix
+#| echo: true
+#| code-fold: true
+#| crop: false
+# The full df
+pipe_full_label <- paste0("Raw Data (n = 10K)")
+pipe_full_plot <- plot_freqs(pipe_df, pipe_full_label)
+# Conditioning on Z = 0
+pipe_z0_df <- pipe_df |> filter(Z == 0)
+pipe_z0_n <- nrow(pipe_z0_df)
+pipe_z0_label <- paste0("Z == 0 (",pipe_z0_n," obs)")
+pipe_z0_plot <- plot_freqs(pipe_z0_df, pipe_z0_label, y_lab=FALSE)
+# Conditioning on Z = 1
+pipe_z1_df <- pipe_df |> filter(Z == 1)
+pipe_z1_n <- nrow(pipe_z1_df)
+pipe_z1_label <- paste0("Z == 1 (",pipe_z1_n," obs)")
+pipe_z1_plot <- plot_freqs(pipe_z1_df, pipe_z1_label, y_lab=FALSE)
+pipe_full_plot | pipe_z0_plot | pipe_z1_plot
+```
+
+:::
+::: {.column width="40%"}
+
+<!-- Continuous Pipe plot -->
+
+```{r}
+#| label: pipe-continuous
+#| echo: true
+#| code-fold: show
+set.seed(5650)
+cpipe_df <- tibble(
+    X = rnorm(n_c),
+    Z = rbern(n_c, plogis(X)),
+    Y = rnorm(n_c, 2 * Z - 1)
+)
+```
+
+```{r}
+#| label: cpipe-plot
+#| echo: true
+#| code-fold: true
+#| crop: false
+cpipe_lm <- lm(Y ~ X, data=cpipe_df)
+cpipe_slope <- round(cpipe_lm$coef['X'], 3)
+cpipe_z0_lm <- lm(Y ~ X, data=cpipe_df |> filter(Z == 0))
+cpipe_z0_slope <- round(cpipe_z0_lm$coef['X'], 2)
+cpipe_z0_label <- paste0("$Slope_{Z=0} = ",cpipe_z0_slope,"$")
+cpipe_z1_lm <- lm(Y ~ X, data=cpipe_df |> filter(Z == 1))
+cpipe_z1_slope <- round(cpipe_z1_lm$coef['X'], 2)
+cpipe_z1_label <- paste0("$Slope_{Z=1} = ",cpipe_z1_slope,"$")
+cpipe_z_texlabel <- TeX(paste0(cpipe_z0_label, " | ", cpipe_z1_label))
+cpipe_xmin <- min(cpipe_df$X)
+cpipe_xmax <- max(cpipe_df$X)
+ggplot() +
+  # Points
+  geom_point(
+    data=cpipe_df |> filter(Y > -3),
+    aes(x=X, y=Y, color=factor(Z)),
+    size=0.6*g_pointsize,
+    alpha=0.8
+  ) +
+  # Overall lm
+  geom_smooth(
+    data=cpipe_df, aes(x=X, y=Y),
+    method = lm, se = FALSE,
+    linewidth = 2.5, color='black'
+  ) +
+  # Stratified lm
+  # (slightly larger black lines)
+  geom_smooth(
+    data=cpipe_df,
+    aes(x=X, y=Y, group=factor(Z)),
+    method=lm, se=FALSE, fullrange=TRUE,
+    linewidth=2.75, color='black'
+  ) +
+  # (Colored lines)
+  geom_smooth(
+    data=cpipe_df,
+    aes(x=X, y=Y, color=factor(Z)),
+    method=lm, se=FALSE, fullrange=TRUE,
+    linewidth=2
+  ) +
+  theme_dsan(base_size=24) +
+  theme(
+    plot.title = element_text(size=24),
+    plot.subtitle = element_text(size=20)
+  ) +
+  coord_equal() +
+  labs(
+    title = paste0(
+      "Unstratified Slope = ",cpipe_slope
+    ),
+    subtitle=cpipe_z_texlabel,
+    x = "X", y = "Y", color = "Z"
+  )
+```
+
+:::
+::::
+
+## ⚠️The Collider⚠️: $X \rightarrow Z \leftarrow Y$ {.smaller .crunch-title .crunch-quarto-figure .crunch-ul .crunch-li-5}
+
+:::: {.columns}
+::: {.column width="60%"}
+
+<!-- Discrete Collider Plots -->
+
+```{r}
+#| label: coll-sim
+#| echo: true
+#| code-fold: show
+set.seed(5650)
+coll_df <- tibble(
+    X = rbern(n_d),
+    Y = rbern(n_d),
+    Z = rbern(n_d, ifelse(X + Y > 0, 0.9, 0.2)),
+)
+```
+
+```{r}
+#| label: coll-matrix
+#| echo: true
+#| code-fold: true
+#| crop: false
+# The full df
+coll_full_label <- paste0("Raw Data (n = 10K)")
+coll_full_plot <- plot_freqs(coll_df, coll_full_label)
+# Conditioning on Z = 0
+coll_z0_df <- coll_df |> filter(Z == 0)
+coll_z0_n <- nrow(coll_z0_df)
+coll_z0_label <- paste0("Z == 0 (",coll_z0_n," obs)")
+coll_z0_plot <- plot_freqs(coll_z0_df, coll_z0_label, y_lab=FALSE)
+# Conditioning on Z = 1
+coll_z1_df <- coll_df |> filter(Z == 1)
+coll_z1_n <- nrow(coll_z1_df)
+coll_z1_label <- paste0("Z == 1 (",coll_z1_n," obs)")
+coll_z1_plot <- plot_freqs(coll_z1_df, coll_z1_label, y_lab=FALSE)
+coll_full_plot | coll_z0_plot | coll_z1_plot
+```
+
+* Conditioning on colliders **induces** correlation where there **previously was none** ☠️
+
+:::
+::: {.column width="40%"}
+
+<!-- Continuous Collider Plot -->
+
+```{r}
+#| label: coll-continuous
+#| echo: true
+#| code-fold: show
+set.seed(5650)
+ccoll_df <- tibble(
+    X = rnorm(n_c),
+    Y = rnorm(n_c),
+    Z = rbern(n_c, plogis(2 * (X + Y - 1)))
+)
+```
+
+```{r}
+#| label: ccoll-plot
+#| echo: true
+#| code-fold: true
+#| crop: false
+ccoll_lm <- lm(Y ~ X, data=ccoll_df)
+ccoll_slope <- round(ccoll_lm$coef['X'], 3)
+ccoll_z0_lm <- lm(Y ~ X, data=ccoll_df |> filter(Z == 0))
+ccoll_z0_slope <- round(ccoll_z0_lm$coef['X'], 2)
+ccoll_z0_label <- paste0("$Slope_{Z=0} = ",ccoll_z0_slope,"$")
+ccoll_z1_lm <- lm(Y ~ X, data=ccoll_df |> filter(Z == 1))
+ccoll_z1_slope <- round(ccoll_z1_lm$coef['X'], 2)
+ccoll_z1_label <- paste0("$Slope_{Z=1} = ",ccoll_z1_slope,"$")
+ccoll_z_texlabel <- TeX(paste0(ccoll_z0_label, " | ", ccoll_z1_label))
+ccoll_xmin <- min(ccoll_df$X)
+ccoll_xmax <- max(ccoll_df$X)
+ggplot() +
+  # Points
+  geom_point(
+    data=ccoll_df |> filter(Y > -3),
+    aes(x=X, y=Y, color=factor(Z)),
+    size=0.6*g_pointsize,
+    alpha=0.8
+  ) +
+  # Overall lm
+  geom_smooth(
+    data=ccoll_df, aes(x=X, y=Y),
+    method = lm, se = FALSE,
+    linewidth = 2.5, color='black'
+  ) +
+  # Stratified lm
+  # (slightly larger black lines)
+  geom_smooth(
+    data=ccoll_df,
+    aes(x=X, y=Y, group=factor(Z)),
+    method=lm, se=FALSE, fullrange=TRUE,
+    linewidth=2.75, color='black'
+  ) +
+  # (Colored lines)
+  geom_smooth(
+    data=ccoll_df,
+    aes(x=X, y=Y, color=factor(Z)),
+    method=lm, se=FALSE, fullrange=TRUE,
+    linewidth=2
+  ) +
+  theme_dsan(base_size=24) +
+  theme(
+    plot.title = element_text(size=24),
+    plot.subtitle = element_text(size=20)
+  ) +
+  coord_equal() +
+  labs(
+    title = paste0(
+      "Unstratified Slope = ",ccoll_slope
+    ),
+    subtitle=ccoll_z_texlabel,
+    x = "X", y = "Y", color = "Z"
+  )
+```
+
+:::
+::::
+
+* ...This is why we have to **think**, rather than just "control for everything"! 😭
+
+## Proxies for $Z$ {.smaller .crunch-title .crunch-quarto-figure .crunch-ul .crunch-li-5}
+
+:::: {.columns}
+::: {.column width="60%"}
+
+<!-- Discrete Proxy Plots -->
+
+```{r}
+#| label: prox-sim
+#| echo: true
+#| code-fold: show
+set.seed(5650)
+prox_df <- tibble(
+  X = rbern(n_d),
+  Z = rbern(n_d, (1-X)*0.1 + X*0.9),
+  Y = rbern(n_d, (1-Z)*0.1 + Z*0.9),
+  A = rbern(n_d, (1-Z)*0.1 + Z*0.9)
+)
+```
+
+```{r}
+#| label: prox-matrices
+#| echo: true
+#| code-fold: true
+#| crop: false
+# The full df
+prox_full_label <- paste0("Raw Data (n = 10K)")
+prox_full_plot <- plot_freqs(prox_df, prox_full_label)
+# Conditioning on A == 0
+prox_a0_df <- prox_df |> filter(A == 0)
+prox_a0_n <- nrow(prox_a0_df)
+prox_a0_label <- paste0("A == 0 (",prox_a0_n," obs)")
+prox_a0_plot <- plot_freqs(prox_a0_df, prox_a0_label, y_lab=FALSE)
+# Conditioning on A == 1
+prox_a1_df <- prox_df |> filter(A == 1)
+prox_a1_n <- nrow(prox_a1_df)
+prox_a1_label <- paste0("A == 1 (",prox_a1_n," obs)")
+prox_a1_plot <- plot_freqs(prox_a1_df, prox_a1_label, y_lab=FALSE)
+prox_full_plot | prox_a0_plot | prox_a1_plot
+```
+
+* With just $X \rightarrow Z \rightarrow Y$, we'd have a **pipe**
+* Observing $A$ gives us **some** (not all!) information about $Z$
+
+:::
+::: {.column width="40%"}
+
+<!-- Continuous Proxy Plot -->
+
+![](images/causal_proxy.svg){fig-align="center" width="250"}
+
+```{r}
+#| label: prox-continuous
+#| echo: true
+#| code-fold: true
+library(tidyverse)
+set.seed(5650)
+cprox_df <- tibble(
+    X = rnorm(n_c),
+    Z = rbern(n_c, plogis(X)),
+    Y = rnorm(n_c, 2 * Z - 1),
+    A = rbern(n_c, Z * 0.9 + (1-Z)*0.1)
+)
+# cprox_lm <- lm(Y ~ X, data=cprox_df)
+# cprox_slope <- round(cprox_lm$coef['X'], 3)
+# cprox_a0_lm <- lm(Y ~ X, data=cprox_df |> filter(A == 0))
+# cprox_a0_slope <- round(cprox_a0_lm$coef['X'], 2)
+# cprox_a0_label <- paste0("$Slope_{A=0} = ",cprox_a0_slope,"$")
+# # A == 1 lm
+# cprox_a1_lm <- lm(Y ~ X, data=cprox_df |> filter(A == 1))
+# cprox_a1_slope <- round(cprox_a1_lm$coef['X'], 2)
+# cprox_a1_label <- paste0("$Slope_{A=1} = ",cprox_a1_slope,"$")
+# cprox_a_texlabel <- TeX(paste0(cprox_a0_label, " | ", cprox_a1_label))
+# cprox_xmin <- min(cprox_df$X)
+# cprox_xmax <- max(cprox_df$X)
+# ggplot() +
+#   # Points
+#   geom_point(
+#     data=cprox_df,
+#     aes(x=X, y=Y, color=factor(A)),
+#     size=0.6*g_pointsize,
+#     alpha=0.8
+#   ) +
+#   # Overall lm
+#   geom_smooth(
+#     data=ccoll_df, aes(x=X, y=Y),
+#     method = lm, se = FALSE,
+#     linewidth = 2.5, color='black'
+#   ) +
+#   # Stratified lm
+#   # (slightly larger black lines)
+#   geom_smooth(
+#     data=ccoll_df,
+#     aes(x=X, y=Y, group=factor(A)),
+#     method=lm, se=FALSE, fullrange=TRUE,
+#     linewidth=2.75, color='black'
+#   ) +
+#   # (Colored lines)
+#   geom_smooth(
+#     data=ccoll_df,
+#     aes(x=X, y=Y, color=factor(A)),
+#     method=lm, se=FALSE, fullrange=TRUE,
+#     linewidth=2
+#   ) +
+#   theme_dsan(base_size=24) +
+#   theme(
+#     plot.title = element_text(size=24),
+#     plot.subtitle = element_text(size=20)
+#   ) +
+#   coord_equal() +
+#   labs(
+#     title = paste0(
+#       "Unstratified Slope = ",cprox_slope
+#     ),
+#     subtitle=cprox_a_texlabel,
+#     x = "X", y = "Y", color = "A"
+#   )
+```
+
+:::
+::::
 
 ## References
 

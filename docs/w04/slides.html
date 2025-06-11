@@ -115,7 +115,7 @@
     div.csl-indent {
       margin-left: 2em;
     }  </style>
-  <link rel="stylesheet" href="../site_libs/revealjs/dist/theme/quarto-cc57e7508074242d22df1e28d37b6a90.css">
+  <link rel="stylesheet" href="../site_libs/revealjs/dist/theme/quarto-ecec99f0d0fa3ee28f8b4b4148f8a9ec.css">
   <link href="../site_libs/revealjs/plugin/quarto-line-highlight/line-highlight.css" rel="stylesheet">
   <link href="../site_libs/revealjs/plugin/reveal-menu/menu.css" rel="stylesheet">
   <link href="../site_libs/revealjs/plugin/reveal-menu/quarto-menu.css" rel="stylesheet">
@@ -232,7 +232,6 @@ Jeff Jacobs
 
   <p class="date">Wednesday, June 11, 2025</p>
 </section>
-<section>
 <section id="schedule" class="title-slide slide level1 smaller crunch-title crunch-callout code-90 center" data-name="Schedule">
 <h1>Schedule</h1>
 <p>Today’s Planned Schedule:</p>
@@ -255,32 +254,20 @@ Jeff Jacobs
 <tr class="odd">
 <td style="text-align: left;"><strong>Lecture</strong></td>
 <td style="text-align: left;">6:30pm</td>
-<td style="text-align: left;">6:45pm</td>
-<td style="text-align: left;"><a href="">The Ladder of Causal Inference →</a></td>
-</tr>
-<tr class="even">
-<td style="text-align: left;"><strong>Lecture</strong></td>
-<td style="text-align: left;">6:30pm</td>
-<td style="text-align: left;">6:45pm</td>
-<td style="text-align: left;"><a href="#/paths">Paths from Cause to Effect →</a></td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;"></td>
-<td style="text-align: left;">6:45pm</td>
-<td style="text-align: left;">7:15pm</td>
-<td style="text-align: left;"><a href="#/causality-recap">Causality Recap →</a></td>
+<td style="text-align: left;">7:10pm</td>
+<td style="text-align: left;"><a href="#/roadmap">PGM as Modeling Language →</a></td>
 </tr>
 <tr class="even">
 <td style="text-align: left;"></td>
-<td style="text-align: left;">7:00pm</td>
+<td style="text-align: left;">7:10pm</td>
 <td style="text-align: left;">7:30pm</td>
-<td style="text-align: left;"><a href="#/motivation-ii-causal-inference">Motivating Examples: Causal Inference →</a></td>
+<td style="text-align: left;"><a href="#/the-ladder-of-causal-inference">The Ladder of Causal Inference →</a></td>
 </tr>
 <tr class="odd">
 <td style="text-align: left;"></td>
 <td style="text-align: left;">7:30pm</td>
-<td style="text-align: left;">7:45pm</td>
-<td style="text-align: left;"><a href="#/your-first-probabilistic-graphical-model">Your First Probabilistic Graphical Model! →</a></td>
+<td style="text-align: left;">7:50pm</td>
+<td style="text-align: left;"><a href="#/the-four-elemental-confounds">Elemental Confounds I: Forks and Chains →</a></td>
 </tr>
 <tr class="even">
 <td style="text-align: left;"><strong>Break!</strong></td>
@@ -291,8 +278,14 @@ Jeff Jacobs
 <tr class="odd">
 <td style="text-align: left;"></td>
 <td style="text-align: left;">8:00pm</td>
+<td style="text-align: left;">8:50pm</td>
+<td style="text-align: left;"><a href="#/the-collider">Elemental Confounds II: ⚠️Colliders⚠️ →</a></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"></td>
+<td style="text-align: left;">8:50pm</td>
 <td style="text-align: left;">9:00pm</td>
-<td style="text-align: left;"><a href="#/hidden-markov-models-(hmms-are-our-ur-pgms)">PGM “Lab” →</a></td>
+<td style="text-align: left;"><a href="#/proxies-for-Z">Elemental Confounds III: Proxies →</a></td>
 </tr>
 </tbody>
 </table>
@@ -343,65 +336,154 @@ Jeff Jacobs
 </div>
 </div>
 </section>
-<section id="roadmap" class="slide level2 smaller crunch-title crunch-ul crunch-quarto-figure crunch-li-8 crunch-p">
-<h2>Roadmap</h2>
-<div>
 
-</div>
-<div class="quarto-layout-panel" data-layout="[1,1]">
-<div class="quarto-layout-row">
-<div id="left-5300" class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: flex-start;">
+<section>
+<section id="roadmap" class="title-slide slide level1 smaller crunch-title title-12 crunch-ul crunch-quarto-figure crunch-li-8 crunch-p crunch-quarto-layout-panel caption-60 center" data-stack-name="PGM as Language">
+<h1>Roadmap</h1>
 <center>
 <p><strong>5300 → Now</strong></p>
 </center>
+<div>
+
+</div>
+<div class="quarto-layout-panel" data-layout="[60,40]">
+<div class="quarto-layout-row">
+<div id="left-5300" class="quarto-layout-cell" style="flex-basis: 60.0%;justify-content: flex-start;">
 <ul>
-<li>In e.g.&nbsp;5300, you learned a bunch of <em>ad hoc</em> models: Linear Regression, Decision Trees, SVMs, Neural Nets</li>
-<li>PGMs provide a <strong>language</strong> we can use to tell a computer how to estimate <strong>parameters</strong> in these models from <strong>data</strong></li>
+<li>In e.g.&nbsp;5300, you learned a bunch of <em>ad hoc</em> models: Linear Regression, Decision Trees, SVMs</li>
+<li>PGMs provide a formalized <strong>modeling language</strong> for “writing out” models unambiguously in a way your computer understands: specifying exactly how to estimate <strong>parameters</strong> from <strong>data</strong></li>
 </ul>
 </div>
-<div id="img-5300" class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: flex-start;">
+<div id="img-5300" class="quarto-layout-cell" style="flex-basis: 40.0%;justify-content: flex-start;">
 <div class="quarto-figure quarto-figure-center">
 <figure>
-<p><img data-src="images/linear_regression.png" width="310"></p>
+<p><img data-src="images/linear_regression.png" width="220"></p>
 <figcaption>Linear Regression as a PGM (<a href="https://revbayes.github.io/tutorials/intro/graph_models.html#bayesian-linear-regression">Source</a>)</figcaption>
 </figure>
 </div>
 </div>
 </div>
 </div>
+<center>
+<p><strong>Now → August</strong>: <em>Class <strong>splits</strong> into two themes, running in parallel!</em></p>
+</center>
 <div>
 
 </div>
-<div class="quarto-layout-panel" data-layout="[1,1]">
-<div class="quarto-layout-row">
+<div class="quarto-layout-panel" data-layout="[50,50]">
+<div class="quarto-layout-row quarto-layout-valign-center">
 <div id="now-august-text" class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: flex-start;">
-<center>
-<p><strong>Now → August</strong></p>
-</center>
 <ul>
-<li>The class <strong>splits</strong> into two parallel goals!</li>
-<li><i class="bi bi-1-circle"></i> What kinds of cool computational social science models are unlocked, that we can now <strong>implement</strong> in this language?</li>
-<li><i class="bi bi-2-circle"></i> How does this language provide a scaffolding for <strong>causal inference</strong></li>
+<li><i class="bi bi-1-circle"></i> What kinds of cool comp social sci models are unlocked, that we can now <strong>implement</strong> in this language? [HW2]</li>
+<li><i class="bi bi-2-circle"></i> How can we <strong>expand</strong> PGM vocabulary to incorporate <strong>causality</strong>? [Midterm]</li>
 </ul>
 </div>
 <div id="now-august-img" class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: flex-start;">
-
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="images/dag-swig.svg" width="410"></p>
+<figcaption>From PGMs to SWIGs <span class="citation" data-cites="bezuidenhout_single_2024">(<a href="#/references" role="doc-biblioref" onclick="">Bezuidenhout et al. 2024</a>)</span></figcaption>
+</figure>
+</div>
 </div>
 </div>
 </div>
 </section>
-<section id="why-take-the-time-to-learn-a-modeling-language-vs.-individual-models" class="slide level2 smaller crunch-title title-09">
+<section id="why-take-the-time-to-learn-a-modeling-language-vs.-individual-models" class="slide level2 smaller crunch-title title-09 crunch-quarto-figure crunch-p crunch-ul table-70 code-black table-nolines table-crunch-td text-65 crunch-li-8 crunch-quarto-layout-panel">
 <h2>Why Take the Time to Learn a Modeling <em>Language</em> (vs.&nbsp;Individual Models)?</h2>
 <ul>
 <li>My answer: allows you to <strong>adapt</strong> to specifics/<strong>idiosyncrasies</strong> of your problem!</li>
-<li>The “modeling <strong>language</strong>” metaphor: Learning models vs.&nbsp;learning modeling language <span class="math inline">\(\Leftrightarrow\)</span> Learning phrases in a language vs.&nbsp;learning to speak the language</li>
-<li>“Hello, one hamburger please” is good, but what happens when you need to remove pickles? Or you want to add a sauce?</li>
-<li><span class="citation" data-cites="mcelreath_statistical_2020">McElreath (<a href="#/references" role="doc-biblioref" onclick="">2020</a>)</span> example: How do I “tell” my model to (a) Capture specific effects of tanks, but (b) <strong>pool</strong> information about tadpoles across tank sizes?</li>
+<li><strong>Language</strong> metaphor: Learning models vs.&nbsp;learning modeling language <span class="math inline">\(\Leftrightarrow\)</span> Learning phrases in a language vs.&nbsp;learning to speak the language</li>
+<li>“Hello, one hamburger please” is good, but what if you…</li>
+<li><i class="bi bi-question-circle"></i> Are allergic to ketchup and need to make sure it’s removed</li>
+<li><i class="bi bi-question-circle"></i> Want to replace sesame seed bun with poppy seed bun, if they have it</li>
+<li><i class="bi bi-question-circle"></i> Prefer spicy, but not too spicy, mustard <i class="bi bi-question-circle"></i> Bun only <i class="bi bi-question-circle"></i> Animal style <i class="bi bi-question-circle"></i> …</li>
+</ul>
+<div>
+
+</div>
+<div class="quarto-layout-panel" data-layout="[40,60]">
+<div class="quarto-layout-row">
+<div id="syntax-left" class="quarto-layout-cell" style="flex-basis: 40.0%;justify-content: center;">
+<center>
+<p>Languages give us a <strong>syntax</strong>…</p>
+<table class="caption-top">
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">S</td>
+<td style="text-align: left;"><span class="math inline">\(\rightarrow\)</span></td>
+<td style="text-align: left;">NP VP</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">NP</td>
+<td style="text-align: left;"><span class="math inline">\(\rightarrow\)</span></td>
+<td style="text-align: left;">DetP N | AdjP NP</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">VP</td>
+<td style="text-align: left;"><span class="math inline">\(\rightarrow\)</span></td>
+<td style="text-align: left;">V NP</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">AdjP</td>
+<td style="text-align: left;"><span class="math inline">\(\rightarrow\)</span></td>
+<td style="text-align: left;">Adj | Adv AdjP</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">N</td>
+<td style="text-align: left;"><span class="math inline">\(\rightarrow\)</span></td>
+<td style="text-align: left;"><code>frog</code> | <code>tadpole</code></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">V</td>
+<td style="text-align: left;"><span class="math inline">\(\rightarrow\)</span></td>
+<td style="text-align: left;"><code>sees</code> | <code>likes</code></td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Adj</td>
+<td style="text-align: left;"><span class="math inline">\(\rightarrow\)</span></td>
+<td style="text-align: left;"><code>big</code> | <code>small</code></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Adv</td>
+<td style="text-align: left;"><span class="math inline">\(\rightarrow\)</span></td>
+<td style="text-align: left;"><code>very</code></td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">DetP</td>
+<td style="text-align: left;"><span class="math inline">\(\rightarrow\)</span></td>
+<td style="text-align: left;"><code>a</code> | <code>the</code></td>
+</tr>
+</tbody>
+</table>
+</center>
+</div>
+<div id="syntax-right" class="quarto-layout-cell" style="flex-basis: 60.0%;justify-content: center;">
+<center>
+<p>…For expressing <strong>arbitrary</strong> (infinitely many!) sentences</p>
+</center>
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="images/parse_tree.svg" class="quarto-figure quarto-figure-center" width="330"></p>
+</figure>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id="example-1-multilevel-tadpoles-mcelreath-ch.-13" class="slide level2 smaller crunch-title crunch-ul title-09 crunch-p crunch-quarto-figure crunch-li-7 crunch-img">
+<h2>Example 1: Multilevel Tadpoles (McElreath, Ch. 13)</h2>
+<p><em>Need a <strong>language</strong> that can communicate the following info to estimation algorithm:</em></p>
+<ul>
+<li><i class="bi bi-0-circle"></i> Unit of <em>observation</em> is <strong>tadpole</strong>, but unit of <em>analysis</em> is <strong>tank</strong></li>
+<li><i class="bi bi-1-circle"></i> Ultimately, I <strong>care about</strong> <span class="math inline">\(Y =\)</span> <strong>survival rate</strong> (<strong>dependent</strong> var), as function of <span class="math inline">\(X =\)</span> <strong>tank properties</strong> (<strong>independent</strong> var)</li>
+<li><i class="bi bi-2-circle"></i> …But the <span class="math inline">\(n_i = 48\)</span> tanks actually come in <span class="math inline">\(n_j = 3\)</span> <strong>types</strong>: small (10 bois), medium (25), large (35) <em>(Bonus: What if there are different numbers of tanks per type?)</em></li>
+<li><i class="bi bi-3-circle"></i> I need it to account for impact of <strong>tank size</strong>, then <i class="bi bi-4-circle"></i> <strong>pool</strong> info across tank sizes</li>
 </ul>
 
 <img data-src="images/tadpoles.svg" class="r-stretch quarto-figure-center"><p class="caption">From <span class="citation" data-cites="mcelreath_statistical_2020">McElreath (<a href="#/references" role="doc-biblioref" onclick="">2020</a>)</span></p></section>
-<section id="example-multilevel-modeling" class="slide level2 smaller crunch-title crunch-img crunch-fig-top crunch-quarto-figure crunch-figcaption crunch-quarto-layout-panel">
-<h2>Example: Multilevel Modeling</h2>
+<section id="example-2-dissertation-nightmare" class="slide level2 smaller crunch-title crunch-img crunch-fig-top crunch-quarto-figure crunch-figcaption crunch-quarto-layout-panel">
+<h2>Example 2: Dissertation Nightmare</h2>
 <div>
 
 </div>
@@ -430,7 +512,7 @@ Jeff Jacobs
 </div>
 </div>
 </section>
-<section id="nightmarish-without-a-modeling-language" class="slide level2 smaller crunch-title title-11 crunch-li-7 table-80 text-65 code-85 scrollable">
+<section id="nightmarish-without-a-modeling-language" class="slide level2 smaller crunch-title title-11 crunch-li-8 table-80 text-65 code-85 crunch-ul scrollable">
 <h2>Nightmarish Without a Modeling <em>Language</em>!</h2>
 <ul>
 <li>Modeling <em>language</em> <span class="math inline">\(\Rightarrow\)</span> <strong>Unambiguously “encode”</strong> idiosyncratic domain knowledge</li>
@@ -483,25 +565,19 @@ Jeff Jacobs
 <table class="caption-top" data-quarto-postprocess="true">
 <tbody>
 <tr class="odd">
-<td class="tdvc"><img data-src="images/fanciest_pooh.jpeg"></td>
-<td><strong>Counterfactuals</strong>: What <em>would have</em> happened, if history was slightly different…<br><span class="math inline">\(\Pr(Y_{M=M_0} \mid \textsf{do}(X)) - \Pr(Y_{M=M_0} \mid \textsf{do}(\neg X))\)</span></td>
-<td style="text-align: center;">Modding a videogame</td>
+<td style="width: 8%"></td>
+<td class="tdvc" style="text-align: center; width: 8%;"><i class="bi bi-arrow-90deg-right"></i></td>
+<td colspan="2" class="tdvc"><img data-src="images/fanciest_pooh.jpeg"></td>
+<td colspan="2"><strong>Counterfactuals</strong>: What <em>would have</em> happened, if history was slightly different…<br><span class="math inline">\(\Pr(Y_{M=M_0} \mid \textsf{do}(X)) - \Pr(Y_{M=M_0} \mid \textsf{do}(\neg X))\)</span></td>
 </tr>
 <tr class="even">
-<td colspan="3" style="text-align: center;">↑</td>
+<td class="tdvc" style="text-align: right;"><i class="bi bi-arrow-90deg-right"></i></td>
+<td colspan="2" class="tdvc" style="text-align: center;"><img data-src="images/fancy_pooh.jpeg"></td>
+<td colspan="3" class="tdvc"><strong>Intervention</strong>: What happens if I…<br><span class="math inline">\(\Pr(Y \mid \textsf{do}(X)) - \Pr(Y \mid \textsf{do}(\neg X))\)</span></td>
 </tr>
 <tr class="odd">
-<td class="tdvc"><img data-src="images/fancy_pooh.jpeg"></td>
-<td><strong>Intervention</strong>: What happens if I…<br><span class="math inline">\(\Pr(Y \mid \textsf{do}(X)) - \Pr(Y \mid \textsf{do}(\neg X))\)</span></td>
-<td style="text-align: center;">Playing a videogame</td>
-</tr>
-<tr class="even">
-<td colspan="3" style="text-align: center;">↑</td>
-</tr>
-<tr class="odd">
-<td class="tdvc"><img data-src="images/bored_pooh.jpeg"></td>
-<td><strong>Association</strong>: What happened?<br><span class="math inline">\(\Pr(Y \mid X) - \Pr(Y \mid \neg X)\)</span></td>
-<td style="text-align: center;">Watching someone play a videogame</td>
+<td colspan="2" class="tdvc"><img data-src="images/bored_pooh.jpeg"></td>
+<td colspan="4" class="tdvc" style="text-align: left;"><strong>Association</strong>: What happened?<br><span class="math inline">\(\Pr(Y \mid X) - \Pr(Y \mid \neg X)\)</span></td>
 </tr>
 </tbody>
 </table>
@@ -523,10 +599,560 @@ Jeff Jacobs
 </section>
 <section id="john-mayer" class="slide level2">
 <h2>John Mayer</h2>
+</section></section>
+<section>
+<section id="the-four-elemental-confounds" class="title-slide slide level1 smaller crunch-title crunch-quarto-figure title-12 center" data-stack-name="Forks, Pipes, Colliders">
+<h1>The Four Elemental Confounds</h1>
+
+<img data-src="images/elemental-confounds.png" class="r-stretch quarto-figure-center"><p class="caption">From Richard McElreath’s <a href="https://youtu.be/mBEA7PKDmiY?si=S0ciQ7W7wfL73kPR"><em>Statistical Rethinking</em> Lectures</a></p><div class="cell" data-layout-align="center">
+<details open="" class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a></a><span class="fu">library</span>(tidyverse) <span class="co"># For ggplot</span></span>
+<span id="cb2-2"><a></a><span class="fu">library</span>(extraDistr) <span class="co"># For rbern()</span></span>
+<span id="cb2-3"><a></a><span class="fu">library</span>(patchwork) <span class="co"># For side-by-side plotting</span></span>
+<span id="cb2-4"><a></a>n_d <span class="ot">&lt;-</span> <span class="dv">10000</span> <span class="co"># For discrete RVs</span></span>
+<span id="cb2-5"><a></a>n_c <span class="ot">&lt;-</span> <span class="dv">300</span> <span class="co"># For continuous RVs</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+</div>
+</section>
+<section id="the-fork-x-leftarrow-z-rightarrow-y" class="slide level2 smaller crunch-title crunch-quarto-figure">
+<h2>The Fork: <span class="math inline">\(X \leftarrow Z \rightarrow Y\)</span></h2>
+<div class="columns">
+<div class="column" style="width:60%;">
+<div class="cell" data-layout-align="center">
+<details open="" class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a></a><span class="fu">set.seed</span>(<span class="dv">5650</span>)</span>
+<span id="cb3-2"><a></a>fork_df <span class="ot">&lt;-</span> <span class="fu">tibble</span>(</span>
+<span id="cb3-3"><a></a>    <span class="at">Z =</span> <span class="fu">rbern</span>(n_d),</span>
+<span id="cb3-4"><a></a>    <span class="at">X =</span> <span class="fu">rbern</span>(n_d, (<span class="dv">1</span><span class="sc">-</span>Z)<span class="sc">*</span><span class="fl">0.1</span> <span class="sc">+</span> Z<span class="sc">*</span><span class="fl">0.9</span>),</span>
+<span id="cb3-5"><a></a>    <span class="at">Y =</span> <span class="fu">rbern</span>(n_d, (<span class="dv">1</span><span class="sc">-</span>Z)<span class="sc">*</span><span class="fl">0.1</span> <span class="sc">+</span> Z<span class="sc">*</span><span class="fl">0.9</span>),</span>
+<span id="cb3-6"><a></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+</div>
+<div class="cell" data-layout-align="center" data-crop="false">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a></a>plot_freqs <span class="ot">&lt;-</span> <span class="cf">function</span>(df, plot_title, <span class="at">y_lab=</span><span class="cn">TRUE</span>) {</span>
+<span id="cb4-2"><a></a>  df_cor <span class="ot">&lt;-</span> <span class="fu">cor</span>(df<span class="sc">$</span>X, df<span class="sc">$</span>Y)</span>
+<span id="cb4-3"><a></a>  df_label <span class="ot">&lt;-</span> <span class="fu">paste0</span>(<span class="st">"Cor(X,Y) = "</span>,<span class="fu">round</span>(df_cor,<span class="dv">3</span>))</span>
+<span id="cb4-4"><a></a>  freq_df <span class="ot">&lt;-</span> df <span class="sc">|&gt;</span></span>
+<span id="cb4-5"><a></a>    <span class="fu">group_by</span>(X, Y) <span class="sc">|&gt;</span></span>
+<span id="cb4-6"><a></a>    <span class="fu">summarize</span>(<span class="at">count=</span><span class="fu">n</span>())</span>
+<span id="cb4-7"><a></a>  freq_plot <span class="ot">&lt;-</span> freq_df <span class="sc">|&gt;</span></span>
+<span id="cb4-8"><a></a>    <span class="fu">ggplot</span>(</span>
+<span id="cb4-9"><a></a>      <span class="fu">aes</span>(<span class="at">x=</span><span class="fu">factor</span>(X), <span class="at">y=</span><span class="fu">factor</span>(Y), <span class="at">fill=</span>count)</span>
+<span id="cb4-10"><a></a>    ) <span class="sc">+</span></span>
+<span id="cb4-11"><a></a>    <span class="fu">geom_tile</span>() <span class="sc">+</span></span>
+<span id="cb4-12"><a></a>    <span class="fu">coord_equal</span>() <span class="sc">+</span></span>
+<span id="cb4-13"><a></a>    <span class="fu">scale_fill_distiller</span>(</span>
+<span id="cb4-14"><a></a>      <span class="at">palette=</span><span class="st">"Greens"</span>, <span class="at">direction=</span><span class="dv">1</span>,</span>
+<span id="cb4-15"><a></a>      <span class="at">limits=</span><span class="fu">c</span>(<span class="dv">0</span>,<span class="dv">5000</span>)</span>
+<span id="cb4-16"><a></a>    ) <span class="sc">+</span></span>
+<span id="cb4-17"><a></a>    <span class="fu">geom_label</span>(</span>
+<span id="cb4-18"><a></a>      <span class="fu">aes</span>(<span class="at">label=</span>count),</span>
+<span id="cb4-19"><a></a>      <span class="at">fill=</span><span class="st">"white"</span>, <span class="at">color=</span><span class="st">"black"</span>, <span class="at">size=</span><span class="dv">7</span></span>
+<span id="cb4-20"><a></a>    ) <span class="sc">+</span></span>
+<span id="cb4-21"><a></a>    <span class="fu">labs</span>(</span>
+<span id="cb4-22"><a></a>      <span class="at">title =</span> plot_title,</span>
+<span id="cb4-23"><a></a>      <span class="at">subtitle =</span> df_label,</span>
+<span id="cb4-24"><a></a>      <span class="at">x=</span><span class="st">"X"</span>, <span class="at">y=</span><span class="st">"Y"</span></span>
+<span id="cb4-25"><a></a>    ) <span class="sc">+</span></span>
+<span id="cb4-26"><a></a>    <span class="fu">theme_dsan</span>(<span class="at">base_size=</span><span class="dv">24</span>) <span class="sc">+</span></span>
+<span id="cb4-27"><a></a>    <span class="fu">theme</span>(</span>
+<span id="cb4-28"><a></a>      <span class="at">plot.title =</span> <span class="fu">element_text</span>(<span class="at">size=</span><span class="dv">21</span>),</span>
+<span id="cb4-29"><a></a>      <span class="at">plot.subtitle =</span> <span class="fu">element_text</span>(<span class="at">size=</span><span class="dv">18</span>)</span>
+<span id="cb4-30"><a></a>    ) <span class="sc">+</span></span>
+<span id="cb4-31"><a></a>    <span class="fu">remove_legend</span>()</span>
+<span id="cb4-32"><a></a>  <span class="cf">if</span> (<span class="sc">!</span>y_lab) {</span>
+<span id="cb4-33"><a></a>    freq_plot <span class="ot">&lt;-</span> freq_plot <span class="sc">+</span> <span class="fu">theme</span>(</span>
+<span id="cb4-34"><a></a>      <span class="at">axis.title.y =</span> <span class="fu">element_blank</span>()</span>
+<span id="cb4-35"><a></a>    )</span>
+<span id="cb4-36"><a></a>  }</span>
+<span id="cb4-37"><a></a>  <span class="fu">return</span>(freq_plot)</span>
+<span id="cb4-38"><a></a>}</span>
+<span id="cb4-39"><a></a><span class="co"># The full df</span></span>
+<span id="cb4-40"><a></a>full_label <span class="ot">&lt;-</span> <span class="fu">paste0</span>(<span class="st">"Raw Data (n = 10K)"</span>)</span>
+<span id="cb4-41"><a></a>full_plot <span class="ot">&lt;-</span> <span class="fu">plot_freqs</span>(fork_df, full_label)</span>
+<span id="cb4-42"><a></a><span class="co"># Conditioning on Z = 0</span></span>
+<span id="cb4-43"><a></a>z0_df <span class="ot">&lt;-</span> fork_df <span class="sc">|&gt;</span> <span class="fu">filter</span>(Z <span class="sc">==</span> <span class="dv">0</span>)</span>
+<span id="cb4-44"><a></a>z0_n <span class="ot">&lt;-</span> <span class="fu">nrow</span>(z0_df)</span>
+<span id="cb4-45"><a></a>z0_label <span class="ot">&lt;-</span> <span class="fu">paste0</span>(<span class="st">"Z == 0 ("</span>,z0_n,<span class="st">" obs)"</span>)</span>
+<span id="cb4-46"><a></a>z0_plot <span class="ot">&lt;-</span> <span class="fu">plot_freqs</span>(z0_df, z0_label, <span class="at">y_lab=</span><span class="cn">FALSE</span>)</span>
+<span id="cb4-47"><a></a><span class="co"># Conditioning on Z = 1</span></span>
+<span id="cb4-48"><a></a>z1_df <span class="ot">&lt;-</span> fork_df <span class="sc">|&gt;</span> <span class="fu">filter</span>(Z <span class="sc">==</span> <span class="dv">1</span>)</span>
+<span id="cb4-49"><a></a>z1_n <span class="ot">&lt;-</span> <span class="fu">nrow</span>(z1_df)</span>
+<span id="cb4-50"><a></a>z1_label <span class="ot">&lt;-</span> <span class="fu">paste0</span>(<span class="st">"Z == 1 ("</span>,z1_n,<span class="st">" obs)"</span>)</span>
+<span id="cb4-51"><a></a>z1_plot <span class="ot">&lt;-</span> <span class="fu">plot_freqs</span>(z1_df, z1_label, <span class="at">y_lab=</span><span class="cn">FALSE</span>)</span>
+<span id="cb4-52"><a></a>full_plot <span class="sc">|</span> z0_plot <span class="sc">|</span> z1_plot</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="index_files/figure-revealjs/fork-matrix-1.png" class="quarto-figure quarto-figure-center" width="960"></p>
+</figure>
+</div>
+</div>
+</div>
+</div><div class="column" style="width:40%;">
+<div class="cell" data-layout-align="center">
+<details open="" class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a></a><span class="fu">set.seed</span>(<span class="dv">5650</span>)</span>
+<span id="cb5-2"><a></a>cfork_df <span class="ot">&lt;-</span> <span class="fu">tibble</span>(</span>
+<span id="cb5-3"><a></a>    <span class="at">Z =</span> <span class="fu">rbern</span>(n_c),</span>
+<span id="cb5-4"><a></a>    <span class="at">X =</span> <span class="fu">rnorm</span>(n_c, <span class="dv">2</span> <span class="sc">*</span> Z <span class="sc">-</span> <span class="dv">1</span>),</span>
+<span id="cb5-5"><a></a>    <span class="at">Y =</span> <span class="fu">rnorm</span>(n_c, <span class="dv">2</span> <span class="sc">*</span> Z <span class="sc">-</span> <span class="dv">1</span>)</span>
+<span id="cb5-6"><a></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+</div>
+<div class="cell" data-layout-align="center" data-crop="false">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a></a><span class="fu">library</span>(latex2exp)</span>
+<span id="cb6-2"><a></a>overall_lm <span class="ot">&lt;-</span> <span class="fu">lm</span>(Y <span class="sc">~</span> X, <span class="at">data=</span>cfork_df)</span>
+<span id="cb6-3"><a></a>overall_slope <span class="ot">&lt;-</span> <span class="fu">round</span>(overall_lm<span class="sc">$</span>coef[<span class="st">'X'</span>], <span class="dv">3</span>)</span>
+<span id="cb6-4"><a></a>z0_lm <span class="ot">&lt;-</span> <span class="fu">lm</span>(Y <span class="sc">~</span> X, <span class="at">data=</span>cfork_df <span class="sc">|&gt;</span> <span class="fu">filter</span>(Z <span class="sc">==</span> <span class="dv">0</span>))</span>
+<span id="cb6-5"><a></a>z0_slope <span class="ot">&lt;-</span> <span class="fu">round</span>(z0_lm<span class="sc">$</span>coef[<span class="st">'X'</span>], <span class="dv">2</span>)</span>
+<span id="cb6-6"><a></a>z0_label <span class="ot">&lt;-</span> <span class="fu">paste0</span>(<span class="st">"$Slope_{Z=0} = "</span>,z0_slope,<span class="st">"$"</span>)</span>
+<span id="cb6-7"><a></a>z0_leg_label <span class="ot">&lt;-</span> <span class="fu">TeX</span>(<span class="fu">paste0</span>(<span class="st">"0 $(m="</span>,z0_slope,<span class="st">")$"</span>))</span>
+<span id="cb6-8"><a></a>z1_lm <span class="ot">&lt;-</span> <span class="fu">lm</span>(Y <span class="sc">~</span> X, <span class="at">data=</span>cfork_df <span class="sc">|&gt;</span> <span class="fu">filter</span>(Z <span class="sc">==</span> <span class="dv">1</span>))</span>
+<span id="cb6-9"><a></a>z1_slope <span class="ot">&lt;-</span> <span class="fu">round</span>(z1_lm<span class="sc">$</span>coef[<span class="st">'X'</span>], <span class="dv">2</span>)</span>
+<span id="cb6-10"><a></a>z1_label <span class="ot">&lt;-</span> <span class="fu">paste0</span>(<span class="st">"$Slope_{Z=1} = "</span>,z1_slope,<span class="st">"$"</span>)</span>
+<span id="cb6-11"><a></a>z_texlabel <span class="ot">&lt;-</span> <span class="fu">TeX</span>(<span class="fu">paste0</span>(z0_label, <span class="st">" | "</span>, z1_label))</span>
+<span id="cb6-12"><a></a>cfork_xmin <span class="ot">&lt;-</span> <span class="fu">min</span>(cfork_df<span class="sc">$</span>X)</span>
+<span id="cb6-13"><a></a>cfork_xmax <span class="ot">&lt;-</span> <span class="fu">max</span>(cfork_df<span class="sc">$</span>X)</span>
+<span id="cb6-14"><a></a><span class="fu">ggplot</span>() <span class="sc">+</span></span>
+<span id="cb6-15"><a></a>  <span class="co"># Points</span></span>
+<span id="cb6-16"><a></a>  <span class="fu">geom_point</span>(</span>
+<span id="cb6-17"><a></a>    <span class="at">data=</span>cfork_df,</span>
+<span id="cb6-18"><a></a>    <span class="fu">aes</span>(<span class="at">x=</span>X, <span class="at">y=</span>Y, <span class="at">color=</span><span class="fu">factor</span>(Z)),</span>
+<span id="cb6-19"><a></a>    <span class="at">size=</span><span class="fl">0.6</span><span class="sc">*</span>g_pointsize,</span>
+<span id="cb6-20"><a></a>    <span class="at">alpha=</span><span class="fl">0.8</span></span>
+<span id="cb6-21"><a></a>  ) <span class="sc">+</span></span>
+<span id="cb6-22"><a></a>  <span class="co"># Overall lm</span></span>
+<span id="cb6-23"><a></a>  <span class="fu">geom_smooth</span>(</span>
+<span id="cb6-24"><a></a>    <span class="at">data=</span>cfork_df, <span class="fu">aes</span>(<span class="at">x=</span>X, <span class="at">y=</span>Y),</span>
+<span id="cb6-25"><a></a>    <span class="at">method =</span> lm, <span class="at">se =</span> <span class="cn">FALSE</span>,</span>
+<span id="cb6-26"><a></a>    <span class="at">linewidth =</span> <span class="fl">2.5</span>, <span class="at">color=</span><span class="st">'black'</span></span>
+<span id="cb6-27"><a></a>  ) <span class="sc">+</span></span>
+<span id="cb6-28"><a></a>  <span class="co"># Stratified lm</span></span>
+<span id="cb6-29"><a></a>  <span class="co"># (slightly larger black lines)</span></span>
+<span id="cb6-30"><a></a>  <span class="fu">geom_smooth</span>(</span>
+<span id="cb6-31"><a></a>    <span class="at">data=</span>cfork_df,</span>
+<span id="cb6-32"><a></a>    <span class="fu">aes</span>(<span class="at">x=</span>X, <span class="at">y=</span>Y, <span class="at">group=</span><span class="fu">factor</span>(Z)),</span>
+<span id="cb6-33"><a></a>    <span class="at">method=</span>lm, <span class="at">se=</span><span class="cn">FALSE</span>, <span class="at">fullrange=</span><span class="cn">TRUE</span>,</span>
+<span id="cb6-34"><a></a>    <span class="at">linewidth=</span><span class="fl">2.75</span>, <span class="at">color=</span><span class="st">'black'</span></span>
+<span id="cb6-35"><a></a>  ) <span class="sc">+</span></span>
+<span id="cb6-36"><a></a>  <span class="co"># (Colored lines)</span></span>
+<span id="cb6-37"><a></a>  <span class="fu">geom_smooth</span>(</span>
+<span id="cb6-38"><a></a>    <span class="at">data=</span>cfork_df,</span>
+<span id="cb6-39"><a></a>    <span class="fu">aes</span>(<span class="at">x=</span>X, <span class="at">y=</span>Y, <span class="at">color=</span><span class="fu">factor</span>(Z)),</span>
+<span id="cb6-40"><a></a>    <span class="at">method=</span>lm, <span class="at">se=</span><span class="cn">FALSE</span>, <span class="at">fullrange=</span><span class="cn">TRUE</span>,</span>
+<span id="cb6-41"><a></a>    <span class="at">linewidth=</span><span class="dv">2</span></span>
+<span id="cb6-42"><a></a>  ) <span class="sc">+</span></span>
+<span id="cb6-43"><a></a>  <span class="fu">theme_dsan</span>(<span class="at">base_size=</span><span class="dv">24</span>) <span class="sc">+</span></span>
+<span id="cb6-44"><a></a>  <span class="fu">theme</span>(</span>
+<span id="cb6-45"><a></a>    <span class="at">plot.title =</span> <span class="fu">element_text</span>(<span class="at">size=</span><span class="dv">24</span>),</span>
+<span id="cb6-46"><a></a>    <span class="at">plot.subtitle =</span> <span class="fu">element_text</span>(<span class="at">size=</span><span class="dv">20</span>)</span>
+<span id="cb6-47"><a></a>  ) <span class="sc">+</span></span>
+<span id="cb6-48"><a></a>  <span class="fu">coord_equal</span>() <span class="sc">+</span></span>
+<span id="cb6-49"><a></a>  <span class="fu">labs</span>(</span>
+<span id="cb6-50"><a></a>    <span class="at">title =</span> <span class="fu">paste0</span>(</span>
+<span id="cb6-51"><a></a>      <span class="st">"Unstratified Slope = "</span>,overall_slope</span>
+<span id="cb6-52"><a></a>    ),</span>
+<span id="cb6-53"><a></a>    <span class="at">subtitle=</span>z_texlabel,</span>
+<span id="cb6-54"><a></a>    <span class="at">x =</span> <span class="st">"X"</span>, <span class="at">y =</span> <span class="st">"Y"</span>, <span class="at">color =</span> <span class="st">"Z"</span></span>
+<span id="cb6-55"><a></a>  )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="index_files/figure-revealjs/cfork-plot-1.png" class="quarto-figure quarto-figure-center" width="960"></p>
+</figure>
+</div>
+</div>
+</div>
+</div></div>
+</section>
+<section id="the-pipe-x-rightarrow-z-rightarrow-y" class="slide level2 smaller crunch-title crunch-quarto-figure">
+<h2>The Pipe: <span class="math inline">\(X \rightarrow Z \rightarrow Y\)</span></h2>
+<div class="columns">
+<div class="column" style="width:60%;">
+<div class="cell" data-layout-align="center">
+<details open="" class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a></a><span class="fu">set.seed</span>(<span class="dv">5650</span>)</span>
+<span id="cb7-2"><a></a>pipe_df <span class="ot">&lt;-</span> <span class="fu">tibble</span>(</span>
+<span id="cb7-3"><a></a>    <span class="at">X =</span> <span class="fu">rbern</span>(n_d),</span>
+<span id="cb7-4"><a></a>    <span class="at">Z =</span> <span class="fu">rbern</span>(n_d, (<span class="dv">1</span><span class="sc">-</span>X)<span class="sc">*</span><span class="fl">0.1</span> <span class="sc">+</span> X<span class="sc">*</span><span class="fl">0.9</span>),</span>
+<span id="cb7-5"><a></a>    <span class="at">Y =</span> <span class="fu">rbern</span>(n_d, (<span class="dv">1</span><span class="sc">-</span>Z)<span class="sc">*</span><span class="fl">0.1</span> <span class="sc">+</span> Z<span class="sc">*</span><span class="fl">0.9</span>),</span>
+<span id="cb7-6"><a></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+</div>
+<div class="cell" data-layout-align="center" data-crop="false">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a></a><span class="co"># The full df</span></span>
+<span id="cb8-2"><a></a>pipe_full_label <span class="ot">&lt;-</span> <span class="fu">paste0</span>(<span class="st">"Raw Data (n = 10K)"</span>)</span>
+<span id="cb8-3"><a></a>pipe_full_plot <span class="ot">&lt;-</span> <span class="fu">plot_freqs</span>(pipe_df, pipe_full_label)</span>
+<span id="cb8-4"><a></a><span class="co"># Conditioning on Z = 0</span></span>
+<span id="cb8-5"><a></a>pipe_z0_df <span class="ot">&lt;-</span> pipe_df <span class="sc">|&gt;</span> <span class="fu">filter</span>(Z <span class="sc">==</span> <span class="dv">0</span>)</span>
+<span id="cb8-6"><a></a>pipe_z0_n <span class="ot">&lt;-</span> <span class="fu">nrow</span>(pipe_z0_df)</span>
+<span id="cb8-7"><a></a>pipe_z0_label <span class="ot">&lt;-</span> <span class="fu">paste0</span>(<span class="st">"Z == 0 ("</span>,pipe_z0_n,<span class="st">" obs)"</span>)</span>
+<span id="cb8-8"><a></a>pipe_z0_plot <span class="ot">&lt;-</span> <span class="fu">plot_freqs</span>(pipe_z0_df, pipe_z0_label, <span class="at">y_lab=</span><span class="cn">FALSE</span>)</span>
+<span id="cb8-9"><a></a><span class="co"># Conditioning on Z = 1</span></span>
+<span id="cb8-10"><a></a>pipe_z1_df <span class="ot">&lt;-</span> pipe_df <span class="sc">|&gt;</span> <span class="fu">filter</span>(Z <span class="sc">==</span> <span class="dv">1</span>)</span>
+<span id="cb8-11"><a></a>pipe_z1_n <span class="ot">&lt;-</span> <span class="fu">nrow</span>(pipe_z1_df)</span>
+<span id="cb8-12"><a></a>pipe_z1_label <span class="ot">&lt;-</span> <span class="fu">paste0</span>(<span class="st">"Z == 1 ("</span>,pipe_z1_n,<span class="st">" obs)"</span>)</span>
+<span id="cb8-13"><a></a>pipe_z1_plot <span class="ot">&lt;-</span> <span class="fu">plot_freqs</span>(pipe_z1_df, pipe_z1_label, <span class="at">y_lab=</span><span class="cn">FALSE</span>)</span>
+<span id="cb8-14"><a></a>pipe_full_plot <span class="sc">|</span> pipe_z0_plot <span class="sc">|</span> pipe_z1_plot</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="index_files/figure-revealjs/pipe-matrix-1.png" class="quarto-figure quarto-figure-center" width="960"></p>
+</figure>
+</div>
+</div>
+</div>
+</div><div class="column" style="width:40%;">
+<!-- Continuous Pipe plot -->
+<div class="cell" data-layout-align="center">
+<details open="" class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a></a><span class="fu">set.seed</span>(<span class="dv">5650</span>)</span>
+<span id="cb9-2"><a></a>cpipe_df <span class="ot">&lt;-</span> <span class="fu">tibble</span>(</span>
+<span id="cb9-3"><a></a>    <span class="at">X =</span> <span class="fu">rnorm</span>(n_c),</span>
+<span id="cb9-4"><a></a>    <span class="at">Z =</span> <span class="fu">rbern</span>(n_c, <span class="fu">plogis</span>(X)),</span>
+<span id="cb9-5"><a></a>    <span class="at">Y =</span> <span class="fu">rnorm</span>(n_c, <span class="dv">2</span> <span class="sc">*</span> Z <span class="sc">-</span> <span class="dv">1</span>)</span>
+<span id="cb9-6"><a></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+</div>
+<div class="cell" data-layout-align="center" data-crop="false">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a></a>cpipe_lm <span class="ot">&lt;-</span> <span class="fu">lm</span>(Y <span class="sc">~</span> X, <span class="at">data=</span>cpipe_df)</span>
+<span id="cb10-2"><a></a>cpipe_slope <span class="ot">&lt;-</span> <span class="fu">round</span>(cpipe_lm<span class="sc">$</span>coef[<span class="st">'X'</span>], <span class="dv">3</span>)</span>
+<span id="cb10-3"><a></a>cpipe_z0_lm <span class="ot">&lt;-</span> <span class="fu">lm</span>(Y <span class="sc">~</span> X, <span class="at">data=</span>cpipe_df <span class="sc">|&gt;</span> <span class="fu">filter</span>(Z <span class="sc">==</span> <span class="dv">0</span>))</span>
+<span id="cb10-4"><a></a>cpipe_z0_slope <span class="ot">&lt;-</span> <span class="fu">round</span>(cpipe_z0_lm<span class="sc">$</span>coef[<span class="st">'X'</span>], <span class="dv">2</span>)</span>
+<span id="cb10-5"><a></a>cpipe_z0_label <span class="ot">&lt;-</span> <span class="fu">paste0</span>(<span class="st">"$Slope_{Z=0} = "</span>,cpipe_z0_slope,<span class="st">"$"</span>)</span>
+<span id="cb10-6"><a></a>cpipe_z1_lm <span class="ot">&lt;-</span> <span class="fu">lm</span>(Y <span class="sc">~</span> X, <span class="at">data=</span>cpipe_df <span class="sc">|&gt;</span> <span class="fu">filter</span>(Z <span class="sc">==</span> <span class="dv">1</span>))</span>
+<span id="cb10-7"><a></a>cpipe_z1_slope <span class="ot">&lt;-</span> <span class="fu">round</span>(cpipe_z1_lm<span class="sc">$</span>coef[<span class="st">'X'</span>], <span class="dv">2</span>)</span>
+<span id="cb10-8"><a></a>cpipe_z1_label <span class="ot">&lt;-</span> <span class="fu">paste0</span>(<span class="st">"$Slope_{Z=1} = "</span>,cpipe_z1_slope,<span class="st">"$"</span>)</span>
+<span id="cb10-9"><a></a>cpipe_z_texlabel <span class="ot">&lt;-</span> <span class="fu">TeX</span>(<span class="fu">paste0</span>(cpipe_z0_label, <span class="st">" | "</span>, cpipe_z1_label))</span>
+<span id="cb10-10"><a></a>cpipe_xmin <span class="ot">&lt;-</span> <span class="fu">min</span>(cpipe_df<span class="sc">$</span>X)</span>
+<span id="cb10-11"><a></a>cpipe_xmax <span class="ot">&lt;-</span> <span class="fu">max</span>(cpipe_df<span class="sc">$</span>X)</span>
+<span id="cb10-12"><a></a><span class="fu">ggplot</span>() <span class="sc">+</span></span>
+<span id="cb10-13"><a></a>  <span class="co"># Points</span></span>
+<span id="cb10-14"><a></a>  <span class="fu">geom_point</span>(</span>
+<span id="cb10-15"><a></a>    <span class="at">data=</span>cpipe_df <span class="sc">|&gt;</span> <span class="fu">filter</span>(Y <span class="sc">&gt;</span> <span class="sc">-</span><span class="dv">3</span>),</span>
+<span id="cb10-16"><a></a>    <span class="fu">aes</span>(<span class="at">x=</span>X, <span class="at">y=</span>Y, <span class="at">color=</span><span class="fu">factor</span>(Z)),</span>
+<span id="cb10-17"><a></a>    <span class="at">size=</span><span class="fl">0.6</span><span class="sc">*</span>g_pointsize,</span>
+<span id="cb10-18"><a></a>    <span class="at">alpha=</span><span class="fl">0.8</span></span>
+<span id="cb10-19"><a></a>  ) <span class="sc">+</span></span>
+<span id="cb10-20"><a></a>  <span class="co"># Overall lm</span></span>
+<span id="cb10-21"><a></a>  <span class="fu">geom_smooth</span>(</span>
+<span id="cb10-22"><a></a>    <span class="at">data=</span>cpipe_df, <span class="fu">aes</span>(<span class="at">x=</span>X, <span class="at">y=</span>Y),</span>
+<span id="cb10-23"><a></a>    <span class="at">method =</span> lm, <span class="at">se =</span> <span class="cn">FALSE</span>,</span>
+<span id="cb10-24"><a></a>    <span class="at">linewidth =</span> <span class="fl">2.5</span>, <span class="at">color=</span><span class="st">'black'</span></span>
+<span id="cb10-25"><a></a>  ) <span class="sc">+</span></span>
+<span id="cb10-26"><a></a>  <span class="co"># Stratified lm</span></span>
+<span id="cb10-27"><a></a>  <span class="co"># (slightly larger black lines)</span></span>
+<span id="cb10-28"><a></a>  <span class="fu">geom_smooth</span>(</span>
+<span id="cb10-29"><a></a>    <span class="at">data=</span>cpipe_df,</span>
+<span id="cb10-30"><a></a>    <span class="fu">aes</span>(<span class="at">x=</span>X, <span class="at">y=</span>Y, <span class="at">group=</span><span class="fu">factor</span>(Z)),</span>
+<span id="cb10-31"><a></a>    <span class="at">method=</span>lm, <span class="at">se=</span><span class="cn">FALSE</span>, <span class="at">fullrange=</span><span class="cn">TRUE</span>,</span>
+<span id="cb10-32"><a></a>    <span class="at">linewidth=</span><span class="fl">2.75</span>, <span class="at">color=</span><span class="st">'black'</span></span>
+<span id="cb10-33"><a></a>  ) <span class="sc">+</span></span>
+<span id="cb10-34"><a></a>  <span class="co"># (Colored lines)</span></span>
+<span id="cb10-35"><a></a>  <span class="fu">geom_smooth</span>(</span>
+<span id="cb10-36"><a></a>    <span class="at">data=</span>cpipe_df,</span>
+<span id="cb10-37"><a></a>    <span class="fu">aes</span>(<span class="at">x=</span>X, <span class="at">y=</span>Y, <span class="at">color=</span><span class="fu">factor</span>(Z)),</span>
+<span id="cb10-38"><a></a>    <span class="at">method=</span>lm, <span class="at">se=</span><span class="cn">FALSE</span>, <span class="at">fullrange=</span><span class="cn">TRUE</span>,</span>
+<span id="cb10-39"><a></a>    <span class="at">linewidth=</span><span class="dv">2</span></span>
+<span id="cb10-40"><a></a>  ) <span class="sc">+</span></span>
+<span id="cb10-41"><a></a>  <span class="fu">theme_dsan</span>(<span class="at">base_size=</span><span class="dv">24</span>) <span class="sc">+</span></span>
+<span id="cb10-42"><a></a>  <span class="fu">theme</span>(</span>
+<span id="cb10-43"><a></a>    <span class="at">plot.title =</span> <span class="fu">element_text</span>(<span class="at">size=</span><span class="dv">24</span>),</span>
+<span id="cb10-44"><a></a>    <span class="at">plot.subtitle =</span> <span class="fu">element_text</span>(<span class="at">size=</span><span class="dv">20</span>)</span>
+<span id="cb10-45"><a></a>  ) <span class="sc">+</span></span>
+<span id="cb10-46"><a></a>  <span class="fu">coord_equal</span>() <span class="sc">+</span></span>
+<span id="cb10-47"><a></a>  <span class="fu">labs</span>(</span>
+<span id="cb10-48"><a></a>    <span class="at">title =</span> <span class="fu">paste0</span>(</span>
+<span id="cb10-49"><a></a>      <span class="st">"Unstratified Slope = "</span>,cpipe_slope</span>
+<span id="cb10-50"><a></a>    ),</span>
+<span id="cb10-51"><a></a>    <span class="at">subtitle=</span>cpipe_z_texlabel,</span>
+<span id="cb10-52"><a></a>    <span class="at">x =</span> <span class="st">"X"</span>, <span class="at">y =</span> <span class="st">"Y"</span>, <span class="at">color =</span> <span class="st">"Z"</span></span>
+<span id="cb10-53"><a></a>  )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="index_files/figure-revealjs/cpipe-plot-1.png" class="quarto-figure quarto-figure-center" width="960"></p>
+</figure>
+</div>
+</div>
+</div>
+</div></div>
+</section>
+<section id="the-collider-x-rightarrow-z-leftarrow-y" class="slide level2 smaller crunch-title crunch-quarto-figure crunch-ul crunch-li-5">
+<h2>⚠️The Collider⚠️: <span class="math inline">\(X \rightarrow Z \leftarrow Y\)</span></h2>
+<div class="columns">
+<div class="column" style="width:60%;">
+<!-- Discrete Collider Plots -->
+<div class="cell" data-layout-align="center">
+<details open="" class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a></a><span class="fu">set.seed</span>(<span class="dv">5650</span>)</span>
+<span id="cb11-2"><a></a>coll_df <span class="ot">&lt;-</span> <span class="fu">tibble</span>(</span>
+<span id="cb11-3"><a></a>    <span class="at">X =</span> <span class="fu">rbern</span>(n_d),</span>
+<span id="cb11-4"><a></a>    <span class="at">Y =</span> <span class="fu">rbern</span>(n_d),</span>
+<span id="cb11-5"><a></a>    <span class="at">Z =</span> <span class="fu">rbern</span>(n_d, <span class="fu">ifelse</span>(X <span class="sc">+</span> Y <span class="sc">&gt;</span> <span class="dv">0</span>, <span class="fl">0.9</span>, <span class="fl">0.2</span>)),</span>
+<span id="cb11-6"><a></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+</div>
+<div class="cell" data-layout-align="center" data-crop="false">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a></a><span class="co"># The full df</span></span>
+<span id="cb12-2"><a></a>coll_full_label <span class="ot">&lt;-</span> <span class="fu">paste0</span>(<span class="st">"Raw Data (n = 10K)"</span>)</span>
+<span id="cb12-3"><a></a>coll_full_plot <span class="ot">&lt;-</span> <span class="fu">plot_freqs</span>(coll_df, coll_full_label)</span>
+<span id="cb12-4"><a></a><span class="co"># Conditioning on Z = 0</span></span>
+<span id="cb12-5"><a></a>coll_z0_df <span class="ot">&lt;-</span> coll_df <span class="sc">|&gt;</span> <span class="fu">filter</span>(Z <span class="sc">==</span> <span class="dv">0</span>)</span>
+<span id="cb12-6"><a></a>coll_z0_n <span class="ot">&lt;-</span> <span class="fu">nrow</span>(coll_z0_df)</span>
+<span id="cb12-7"><a></a>coll_z0_label <span class="ot">&lt;-</span> <span class="fu">paste0</span>(<span class="st">"Z == 0 ("</span>,coll_z0_n,<span class="st">" obs)"</span>)</span>
+<span id="cb12-8"><a></a>coll_z0_plot <span class="ot">&lt;-</span> <span class="fu">plot_freqs</span>(coll_z0_df, coll_z0_label, <span class="at">y_lab=</span><span class="cn">FALSE</span>)</span>
+<span id="cb12-9"><a></a><span class="co"># Conditioning on Z = 1</span></span>
+<span id="cb12-10"><a></a>coll_z1_df <span class="ot">&lt;-</span> coll_df <span class="sc">|&gt;</span> <span class="fu">filter</span>(Z <span class="sc">==</span> <span class="dv">1</span>)</span>
+<span id="cb12-11"><a></a>coll_z1_n <span class="ot">&lt;-</span> <span class="fu">nrow</span>(coll_z1_df)</span>
+<span id="cb12-12"><a></a>coll_z1_label <span class="ot">&lt;-</span> <span class="fu">paste0</span>(<span class="st">"Z == 1 ("</span>,coll_z1_n,<span class="st">" obs)"</span>)</span>
+<span id="cb12-13"><a></a>coll_z1_plot <span class="ot">&lt;-</span> <span class="fu">plot_freqs</span>(coll_z1_df, coll_z1_label, <span class="at">y_lab=</span><span class="cn">FALSE</span>)</span>
+<span id="cb12-14"><a></a>coll_full_plot <span class="sc">|</span> coll_z0_plot <span class="sc">|</span> coll_z1_plot</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="index_files/figure-revealjs/coll-matrix-1.png" class="quarto-figure quarto-figure-center" width="960"></p>
+</figure>
+</div>
+</div>
+</div>
+<ul>
+<li>Conditioning on colliders <strong>induces</strong> correlation where there <strong>previously was none</strong> ☠️</li>
+</ul>
+</div><div class="column" style="width:40%;">
+<!-- Continuous Collider Plot -->
+<div class="cell" data-layout-align="center">
+<details open="" class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a></a><span class="fu">set.seed</span>(<span class="dv">5650</span>)</span>
+<span id="cb13-2"><a></a>ccoll_df <span class="ot">&lt;-</span> <span class="fu">tibble</span>(</span>
+<span id="cb13-3"><a></a>    <span class="at">X =</span> <span class="fu">rnorm</span>(n_c),</span>
+<span id="cb13-4"><a></a>    <span class="at">Y =</span> <span class="fu">rnorm</span>(n_c),</span>
+<span id="cb13-5"><a></a>    <span class="at">Z =</span> <span class="fu">rbern</span>(n_c, <span class="fu">plogis</span>(<span class="dv">2</span> <span class="sc">*</span> (X <span class="sc">+</span> Y <span class="sc">-</span> <span class="dv">1</span>)))</span>
+<span id="cb13-6"><a></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+</div>
+<div class="cell" data-layout-align="center" data-crop="false">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a></a>ccoll_lm <span class="ot">&lt;-</span> <span class="fu">lm</span>(Y <span class="sc">~</span> X, <span class="at">data=</span>ccoll_df)</span>
+<span id="cb14-2"><a></a>ccoll_slope <span class="ot">&lt;-</span> <span class="fu">round</span>(ccoll_lm<span class="sc">$</span>coef[<span class="st">'X'</span>], <span class="dv">3</span>)</span>
+<span id="cb14-3"><a></a>ccoll_z0_lm <span class="ot">&lt;-</span> <span class="fu">lm</span>(Y <span class="sc">~</span> X, <span class="at">data=</span>ccoll_df <span class="sc">|&gt;</span> <span class="fu">filter</span>(Z <span class="sc">==</span> <span class="dv">0</span>))</span>
+<span id="cb14-4"><a></a>ccoll_z0_slope <span class="ot">&lt;-</span> <span class="fu">round</span>(ccoll_z0_lm<span class="sc">$</span>coef[<span class="st">'X'</span>], <span class="dv">2</span>)</span>
+<span id="cb14-5"><a></a>ccoll_z0_label <span class="ot">&lt;-</span> <span class="fu">paste0</span>(<span class="st">"$Slope_{Z=0} = "</span>,ccoll_z0_slope,<span class="st">"$"</span>)</span>
+<span id="cb14-6"><a></a>ccoll_z1_lm <span class="ot">&lt;-</span> <span class="fu">lm</span>(Y <span class="sc">~</span> X, <span class="at">data=</span>ccoll_df <span class="sc">|&gt;</span> <span class="fu">filter</span>(Z <span class="sc">==</span> <span class="dv">1</span>))</span>
+<span id="cb14-7"><a></a>ccoll_z1_slope <span class="ot">&lt;-</span> <span class="fu">round</span>(ccoll_z1_lm<span class="sc">$</span>coef[<span class="st">'X'</span>], <span class="dv">2</span>)</span>
+<span id="cb14-8"><a></a>ccoll_z1_label <span class="ot">&lt;-</span> <span class="fu">paste0</span>(<span class="st">"$Slope_{Z=1} = "</span>,ccoll_z1_slope,<span class="st">"$"</span>)</span>
+<span id="cb14-9"><a></a>ccoll_z_texlabel <span class="ot">&lt;-</span> <span class="fu">TeX</span>(<span class="fu">paste0</span>(ccoll_z0_label, <span class="st">" | "</span>, ccoll_z1_label))</span>
+<span id="cb14-10"><a></a>ccoll_xmin <span class="ot">&lt;-</span> <span class="fu">min</span>(ccoll_df<span class="sc">$</span>X)</span>
+<span id="cb14-11"><a></a>ccoll_xmax <span class="ot">&lt;-</span> <span class="fu">max</span>(ccoll_df<span class="sc">$</span>X)</span>
+<span id="cb14-12"><a></a><span class="fu">ggplot</span>() <span class="sc">+</span></span>
+<span id="cb14-13"><a></a>  <span class="co"># Points</span></span>
+<span id="cb14-14"><a></a>  <span class="fu">geom_point</span>(</span>
+<span id="cb14-15"><a></a>    <span class="at">data=</span>ccoll_df <span class="sc">|&gt;</span> <span class="fu">filter</span>(Y <span class="sc">&gt;</span> <span class="sc">-</span><span class="dv">3</span>),</span>
+<span id="cb14-16"><a></a>    <span class="fu">aes</span>(<span class="at">x=</span>X, <span class="at">y=</span>Y, <span class="at">color=</span><span class="fu">factor</span>(Z)),</span>
+<span id="cb14-17"><a></a>    <span class="at">size=</span><span class="fl">0.6</span><span class="sc">*</span>g_pointsize,</span>
+<span id="cb14-18"><a></a>    <span class="at">alpha=</span><span class="fl">0.8</span></span>
+<span id="cb14-19"><a></a>  ) <span class="sc">+</span></span>
+<span id="cb14-20"><a></a>  <span class="co"># Overall lm</span></span>
+<span id="cb14-21"><a></a>  <span class="fu">geom_smooth</span>(</span>
+<span id="cb14-22"><a></a>    <span class="at">data=</span>ccoll_df, <span class="fu">aes</span>(<span class="at">x=</span>X, <span class="at">y=</span>Y),</span>
+<span id="cb14-23"><a></a>    <span class="at">method =</span> lm, <span class="at">se =</span> <span class="cn">FALSE</span>,</span>
+<span id="cb14-24"><a></a>    <span class="at">linewidth =</span> <span class="fl">2.5</span>, <span class="at">color=</span><span class="st">'black'</span></span>
+<span id="cb14-25"><a></a>  ) <span class="sc">+</span></span>
+<span id="cb14-26"><a></a>  <span class="co"># Stratified lm</span></span>
+<span id="cb14-27"><a></a>  <span class="co"># (slightly larger black lines)</span></span>
+<span id="cb14-28"><a></a>  <span class="fu">geom_smooth</span>(</span>
+<span id="cb14-29"><a></a>    <span class="at">data=</span>ccoll_df,</span>
+<span id="cb14-30"><a></a>    <span class="fu">aes</span>(<span class="at">x=</span>X, <span class="at">y=</span>Y, <span class="at">group=</span><span class="fu">factor</span>(Z)),</span>
+<span id="cb14-31"><a></a>    <span class="at">method=</span>lm, <span class="at">se=</span><span class="cn">FALSE</span>, <span class="at">fullrange=</span><span class="cn">TRUE</span>,</span>
+<span id="cb14-32"><a></a>    <span class="at">linewidth=</span><span class="fl">2.75</span>, <span class="at">color=</span><span class="st">'black'</span></span>
+<span id="cb14-33"><a></a>  ) <span class="sc">+</span></span>
+<span id="cb14-34"><a></a>  <span class="co"># (Colored lines)</span></span>
+<span id="cb14-35"><a></a>  <span class="fu">geom_smooth</span>(</span>
+<span id="cb14-36"><a></a>    <span class="at">data=</span>ccoll_df,</span>
+<span id="cb14-37"><a></a>    <span class="fu">aes</span>(<span class="at">x=</span>X, <span class="at">y=</span>Y, <span class="at">color=</span><span class="fu">factor</span>(Z)),</span>
+<span id="cb14-38"><a></a>    <span class="at">method=</span>lm, <span class="at">se=</span><span class="cn">FALSE</span>, <span class="at">fullrange=</span><span class="cn">TRUE</span>,</span>
+<span id="cb14-39"><a></a>    <span class="at">linewidth=</span><span class="dv">2</span></span>
+<span id="cb14-40"><a></a>  ) <span class="sc">+</span></span>
+<span id="cb14-41"><a></a>  <span class="fu">theme_dsan</span>(<span class="at">base_size=</span><span class="dv">24</span>) <span class="sc">+</span></span>
+<span id="cb14-42"><a></a>  <span class="fu">theme</span>(</span>
+<span id="cb14-43"><a></a>    <span class="at">plot.title =</span> <span class="fu">element_text</span>(<span class="at">size=</span><span class="dv">24</span>),</span>
+<span id="cb14-44"><a></a>    <span class="at">plot.subtitle =</span> <span class="fu">element_text</span>(<span class="at">size=</span><span class="dv">20</span>)</span>
+<span id="cb14-45"><a></a>  ) <span class="sc">+</span></span>
+<span id="cb14-46"><a></a>  <span class="fu">coord_equal</span>() <span class="sc">+</span></span>
+<span id="cb14-47"><a></a>  <span class="fu">labs</span>(</span>
+<span id="cb14-48"><a></a>    <span class="at">title =</span> <span class="fu">paste0</span>(</span>
+<span id="cb14-49"><a></a>      <span class="st">"Unstratified Slope = "</span>,ccoll_slope</span>
+<span id="cb14-50"><a></a>    ),</span>
+<span id="cb14-51"><a></a>    <span class="at">subtitle=</span>ccoll_z_texlabel,</span>
+<span id="cb14-52"><a></a>    <span class="at">x =</span> <span class="st">"X"</span>, <span class="at">y =</span> <span class="st">"Y"</span>, <span class="at">color =</span> <span class="st">"Z"</span></span>
+<span id="cb14-53"><a></a>  )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="index_files/figure-revealjs/ccoll-plot-1.png" class="quarto-figure quarto-figure-center" width="960"></p>
+</figure>
+</div>
+</div>
+</div>
+</div></div>
+<ul>
+<li>…This is why we have to <strong>think</strong>, rather than just “control for everything”! 😭</li>
+</ul>
+</section>
+<section id="proxies-for-z" class="slide level2 smaller crunch-title crunch-quarto-figure crunch-ul crunch-li-5">
+<h2>Proxies for <span class="math inline">\(Z\)</span></h2>
+<div class="columns">
+<div class="column" style="width:60%;">
+<!-- Discrete Proxy Plots -->
+<div class="cell" data-layout-align="center">
+<details open="" class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a></a><span class="fu">set.seed</span>(<span class="dv">5650</span>)</span>
+<span id="cb15-2"><a></a>prox_df <span class="ot">&lt;-</span> <span class="fu">tibble</span>(</span>
+<span id="cb15-3"><a></a>  <span class="at">X =</span> <span class="fu">rbern</span>(n_d),</span>
+<span id="cb15-4"><a></a>  <span class="at">Z =</span> <span class="fu">rbern</span>(n_d, (<span class="dv">1</span><span class="sc">-</span>X)<span class="sc">*</span><span class="fl">0.1</span> <span class="sc">+</span> X<span class="sc">*</span><span class="fl">0.9</span>),</span>
+<span id="cb15-5"><a></a>  <span class="at">Y =</span> <span class="fu">rbern</span>(n_d, (<span class="dv">1</span><span class="sc">-</span>Z)<span class="sc">*</span><span class="fl">0.1</span> <span class="sc">+</span> Z<span class="sc">*</span><span class="fl">0.9</span>),</span>
+<span id="cb15-6"><a></a>  <span class="at">A =</span> <span class="fu">rbern</span>(n_d, (<span class="dv">1</span><span class="sc">-</span>Z)<span class="sc">*</span><span class="fl">0.1</span> <span class="sc">+</span> Z<span class="sc">*</span><span class="fl">0.9</span>)</span>
+<span id="cb15-7"><a></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+</div>
+<div class="cell" data-layout-align="center" data-crop="false">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a></a><span class="co"># The full df</span></span>
+<span id="cb16-2"><a></a>prox_full_label <span class="ot">&lt;-</span> <span class="fu">paste0</span>(<span class="st">"Raw Data (n = 10K)"</span>)</span>
+<span id="cb16-3"><a></a>prox_full_plot <span class="ot">&lt;-</span> <span class="fu">plot_freqs</span>(prox_df, prox_full_label)</span>
+<span id="cb16-4"><a></a><span class="co"># Conditioning on A == 0</span></span>
+<span id="cb16-5"><a></a>prox_a0_df <span class="ot">&lt;-</span> prox_df <span class="sc">|&gt;</span> <span class="fu">filter</span>(A <span class="sc">==</span> <span class="dv">0</span>)</span>
+<span id="cb16-6"><a></a>prox_a0_n <span class="ot">&lt;-</span> <span class="fu">nrow</span>(prox_a0_df)</span>
+<span id="cb16-7"><a></a>prox_a0_label <span class="ot">&lt;-</span> <span class="fu">paste0</span>(<span class="st">"A == 0 ("</span>,prox_a0_n,<span class="st">" obs)"</span>)</span>
+<span id="cb16-8"><a></a>prox_a0_plot <span class="ot">&lt;-</span> <span class="fu">plot_freqs</span>(prox_a0_df, prox_a0_label, <span class="at">y_lab=</span><span class="cn">FALSE</span>)</span>
+<span id="cb16-9"><a></a><span class="co"># Conditioning on A == 1</span></span>
+<span id="cb16-10"><a></a>prox_a1_df <span class="ot">&lt;-</span> prox_df <span class="sc">|&gt;</span> <span class="fu">filter</span>(A <span class="sc">==</span> <span class="dv">1</span>)</span>
+<span id="cb16-11"><a></a>prox_a1_n <span class="ot">&lt;-</span> <span class="fu">nrow</span>(prox_a1_df)</span>
+<span id="cb16-12"><a></a>prox_a1_label <span class="ot">&lt;-</span> <span class="fu">paste0</span>(<span class="st">"A == 1 ("</span>,prox_a1_n,<span class="st">" obs)"</span>)</span>
+<span id="cb16-13"><a></a>prox_a1_plot <span class="ot">&lt;-</span> <span class="fu">plot_freqs</span>(prox_a1_df, prox_a1_label, <span class="at">y_lab=</span><span class="cn">FALSE</span>)</span>
+<span id="cb16-14"><a></a>prox_full_plot <span class="sc">|</span> prox_a0_plot <span class="sc">|</span> prox_a1_plot</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="index_files/figure-revealjs/prox-matrices-1.png" class="quarto-figure quarto-figure-center" width="960"></p>
+</figure>
+</div>
+</div>
+</div>
+<ul>
+<li>With just <span class="math inline">\(X \rightarrow Z \rightarrow Y\)</span>, we’d have a <strong>pipe</strong></li>
+<li>Observing <span class="math inline">\(A\)</span> gives us <strong>some</strong> (not all!) information about <span class="math inline">\(Z\)</span></li>
+</ul>
+</div><div class="column" style="width:40%;">
+<!-- Continuous Proxy Plot -->
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="images/causal_proxy.svg" class="quarto-figure quarto-figure-center" width="250"></p>
+</figure>
+</div>
+<div class="cell" data-layout-align="center">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb17-2"><a></a><span class="fu">set.seed</span>(<span class="dv">5650</span>)</span>
+<span id="cb17-3"><a></a>cprox_df <span class="ot">&lt;-</span> <span class="fu">tibble</span>(</span>
+<span id="cb17-4"><a></a>    <span class="at">X =</span> <span class="fu">rnorm</span>(n_c),</span>
+<span id="cb17-5"><a></a>    <span class="at">Z =</span> <span class="fu">rbern</span>(n_c, <span class="fu">plogis</span>(X)),</span>
+<span id="cb17-6"><a></a>    <span class="at">Y =</span> <span class="fu">rnorm</span>(n_c, <span class="dv">2</span> <span class="sc">*</span> Z <span class="sc">-</span> <span class="dv">1</span>),</span>
+<span id="cb17-7"><a></a>    <span class="at">A =</span> <span class="fu">rbern</span>(n_c, Z <span class="sc">*</span> <span class="fl">0.9</span> <span class="sc">+</span> (<span class="dv">1</span><span class="sc">-</span>Z)<span class="sc">*</span><span class="fl">0.1</span>)</span>
+<span id="cb17-8"><a></a>)</span>
+<span id="cb17-9"><a></a><span class="co"># cprox_lm &lt;- lm(Y ~ X, data=cprox_df)</span></span>
+<span id="cb17-10"><a></a><span class="co"># cprox_slope &lt;- round(cprox_lm$coef['X'], 3)</span></span>
+<span id="cb17-11"><a></a><span class="co"># cprox_a0_lm &lt;- lm(Y ~ X, data=cprox_df |&gt; filter(A == 0))</span></span>
+<span id="cb17-12"><a></a><span class="co"># cprox_a0_slope &lt;- round(cprox_a0_lm$coef['X'], 2)</span></span>
+<span id="cb17-13"><a></a><span class="co"># cprox_a0_label &lt;- paste0("$Slope_{A=0} = ",cprox_a0_slope,"$")</span></span>
+<span id="cb17-14"><a></a><span class="co"># # A == 1 lm</span></span>
+<span id="cb17-15"><a></a><span class="co"># cprox_a1_lm &lt;- lm(Y ~ X, data=cprox_df |&gt; filter(A == 1))</span></span>
+<span id="cb17-16"><a></a><span class="co"># cprox_a1_slope &lt;- round(cprox_a1_lm$coef['X'], 2)</span></span>
+<span id="cb17-17"><a></a><span class="co"># cprox_a1_label &lt;- paste0("$Slope_{A=1} = ",cprox_a1_slope,"$")</span></span>
+<span id="cb17-18"><a></a><span class="co"># cprox_a_texlabel &lt;- TeX(paste0(cprox_a0_label, " | ", cprox_a1_label))</span></span>
+<span id="cb17-19"><a></a><span class="co"># cprox_xmin &lt;- min(cprox_df$X)</span></span>
+<span id="cb17-20"><a></a><span class="co"># cprox_xmax &lt;- max(cprox_df$X)</span></span>
+<span id="cb17-21"><a></a><span class="co"># ggplot() +</span></span>
+<span id="cb17-22"><a></a><span class="co">#   # Points</span></span>
+<span id="cb17-23"><a></a><span class="co">#   geom_point(</span></span>
+<span id="cb17-24"><a></a><span class="co">#     data=cprox_df,</span></span>
+<span id="cb17-25"><a></a><span class="co">#     aes(x=X, y=Y, color=factor(A)),</span></span>
+<span id="cb17-26"><a></a><span class="co">#     size=0.6*g_pointsize,</span></span>
+<span id="cb17-27"><a></a><span class="co">#     alpha=0.8</span></span>
+<span id="cb17-28"><a></a><span class="co">#   ) +</span></span>
+<span id="cb17-29"><a></a><span class="co">#   # Overall lm</span></span>
+<span id="cb17-30"><a></a><span class="co">#   geom_smooth(</span></span>
+<span id="cb17-31"><a></a><span class="co">#     data=ccoll_df, aes(x=X, y=Y),</span></span>
+<span id="cb17-32"><a></a><span class="co">#     method = lm, se = FALSE,</span></span>
+<span id="cb17-33"><a></a><span class="co">#     linewidth = 2.5, color='black'</span></span>
+<span id="cb17-34"><a></a><span class="co">#   ) +</span></span>
+<span id="cb17-35"><a></a><span class="co">#   # Stratified lm</span></span>
+<span id="cb17-36"><a></a><span class="co">#   # (slightly larger black lines)</span></span>
+<span id="cb17-37"><a></a><span class="co">#   geom_smooth(</span></span>
+<span id="cb17-38"><a></a><span class="co">#     data=ccoll_df,</span></span>
+<span id="cb17-39"><a></a><span class="co">#     aes(x=X, y=Y, group=factor(A)),</span></span>
+<span id="cb17-40"><a></a><span class="co">#     method=lm, se=FALSE, fullrange=TRUE,</span></span>
+<span id="cb17-41"><a></a><span class="co">#     linewidth=2.75, color='black'</span></span>
+<span id="cb17-42"><a></a><span class="co">#   ) +</span></span>
+<span id="cb17-43"><a></a><span class="co">#   # (Colored lines)</span></span>
+<span id="cb17-44"><a></a><span class="co">#   geom_smooth(</span></span>
+<span id="cb17-45"><a></a><span class="co">#     data=ccoll_df,</span></span>
+<span id="cb17-46"><a></a><span class="co">#     aes(x=X, y=Y, color=factor(A)),</span></span>
+<span id="cb17-47"><a></a><span class="co">#     method=lm, se=FALSE, fullrange=TRUE,</span></span>
+<span id="cb17-48"><a></a><span class="co">#     linewidth=2</span></span>
+<span id="cb17-49"><a></a><span class="co">#   ) +</span></span>
+<span id="cb17-50"><a></a><span class="co">#   theme_dsan(base_size=24) +</span></span>
+<span id="cb17-51"><a></a><span class="co">#   theme(</span></span>
+<span id="cb17-52"><a></a><span class="co">#     plot.title = element_text(size=24),</span></span>
+<span id="cb17-53"><a></a><span class="co">#     plot.subtitle = element_text(size=20)</span></span>
+<span id="cb17-54"><a></a><span class="co">#   ) +</span></span>
+<span id="cb17-55"><a></a><span class="co">#   coord_equal() +</span></span>
+<span id="cb17-56"><a></a><span class="co">#   labs(</span></span>
+<span id="cb17-57"><a></a><span class="co">#     title = paste0(</span></span>
+<span id="cb17-58"><a></a><span class="co">#       "Unstratified Slope = ",cprox_slope</span></span>
+<span id="cb17-59"><a></a><span class="co">#     ),</span></span>
+<span id="cb17-60"><a></a><span class="co">#     subtitle=cprox_a_texlabel,</span></span>
+<span id="cb17-61"><a></a><span class="co">#     x = "X", y = "Y", color = "A"</span></span>
+<span id="cb17-62"><a></a><span class="co">#   )</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+</div>
+</div></div>
 </section>
 <section id="references" class="slide level2 smaller scrollable">
 <h2>References</h2>
 <div id="refs" class="references csl-bib-body hanging-indent" data-entry-spacing="0" role="list">
+<div id="ref-bezuidenhout_single_2024" class="csl-entry" role="listitem">
+Bezuidenhout, Dana, Sarah Forthal, Kara Rudolph, and Matthew R Lamb. 2024. <span>“Single World Intervention Graphs (<span>SWIGs</span>): A Practical Guide.”</span> <em>American Journal of Epidemiology</em>, September, kwae353. <a href="https://doi.org/10.1093/aje/kwae353">https://doi.org/10.1093/aje/kwae353</a>.
+</div>
 <div id="ref-gleijeses_visions_2013" class="csl-entry" role="listitem">
 Gleijeses, Piero. 2013. <em>Visions of <span>Freedom</span>: <span>Havana</span>, <span>Washington</span>, <span>Pretoria</span>, and the <span>Struggle</span> for <span>Southern Africa</span>, 1976-1991</em>. UNC Press Books.
 </div>

@@ -48,7 +48,10 @@ border: 1px solid #dee2e6 !important;
 .caption {
     text-align: center;
 }
-.caption-smaller .caption {
+.caption-60 .caption, .caption-60 figcaption {
+    font-size: 60% !important;
+}
+.caption-50 .caption, .caption-50 figcaption {
     font-size: 50% !important;
 }
 
@@ -118,6 +121,9 @@ color: rgb(230, 159, 0) !important;
 }
 .code-80 code {
     font-size: 80% !important;
+}
+.code-black code {
+    color: black !important;
 }
 
 .cols-clip .column {
@@ -411,8 +417,21 @@ line-height: 0.7em !important;
 .smaller-table th {
     font-size: 80% !important;
 }
-.table-90 th {
+.table-90 td, .table-90 th {
     font-size: 90% !important;
+}
+.table-80 td, .table-80 th {
+    font-size: 80% !important;
+}
+.table-70 td, .table-70 th {
+    font-size: 70% !important;
+}
+.table-nolines td {
+    border: 0px !important;
+}
+.table-crunch-td td {
+    padding-top: 1px !important;
+    padding-bottom: 1px !important;
 }
 
 .sticky-head {
