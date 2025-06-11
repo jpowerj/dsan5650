@@ -59,6 +59,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 div.csl-bib-body { }
 div.csl-entry {
   clear: both;
+  margin-bottom: 0em;
 }
 .hanging-indent div.csl-entry {
   margin-left:2em;
@@ -123,9 +124,6 @@ div.csl-indent {
     "search-label": "Search"
   }
 }</script>
-<script src="../site_libs/quarto-diagram/mermaid.min.js"></script>
-<script src="../site_libs/quarto-diagram/mermaid-init.js"></script>
-<link href="../site_libs/quarto-diagram/mermaid.css" rel="stylesheet">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css"><link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/gh/dreampulse/computer-modern-web-font@master/fonts.css">
 
   <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
@@ -161,12 +159,129 @@ window.Quarto = {
 <link rel="stylesheet" href="../dsan-globals/jjstyles.css">
 </head>
 
-<body>
+<body class="nav-sidebar floating">
 
 <div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+  <nav class="quarto-secondary-nav">
+    <div class="container-fluid d-flex">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+        <i class="bi bi-layout-text-sidebar-reverse"></i>
+      </button>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../w04/index.html">Week 4: {{&lt; var w04.date-md &gt;}}</a></li></ol></nav>
+        <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        </a>
+      <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
+        <i class="bi bi-search"></i>
+      </button>
+    </div>
+  </nav>
+</header>
 <!-- content -->
 <div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
 <!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
+    <div class="pt-lg-2 mt-2 text-left sidebar-header">
+    <div class="sidebar-title mb-0 py-0">
+      <a href="../">DSAN 5650: Causal Inference for Computational Social Science</a> 
+        <div class="sidebar-tools-main">
+  <a href="" class="quarto-color-scheme-toggle quarto-navigation-tool  px-1" onclick="window.quartoToggleColorScheme(); return false;" title="Toggle dark mode"><i class="bi"></i></a>
+</div>
+    </div>
+      </div>
+        <div class="mt-2 flex-shrink-0 align-items-center">
+        <div class="sidebar-search">
+        <div id="quarto-search" class="" title="Search"></div>
+        </div>
+        </div>
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><i class="bi bi-house pe-1"></i> Home</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../syllabus.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Syllabus</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../resources.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Resources</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../assignments.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Assignments</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="https://georgetown.zoom.us/j/94493188667?pwd=s4Q8TbTwZTNyK0G0VJsVe1Lefrd3AY.1" class="sidebar-item-text sidebar-link" target="_blank">
+ <span class="menu-text">Zoom Link <i class="bi bi-box-arrow-up-right ps-1"></i></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="https://georgetown.hosted.panopto.com/Panopto/Pages/Sessions/List.aspx?folderID=413d999a-16d1-4b36-93b6-b2de013af117" class="sidebar-item-text sidebar-link" target="_blank">
+ <span class="menu-text">Recordings <i class="bi bi-box-arrow-up-right ps-1"></i></span></a>
+  </div>
+</li>
+        <li class="px-0"><hr class="sidebar-divider hi "></li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../w01/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Week 1: May 21</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../w02/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Week 2: May 28</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../w03/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Week 3: Jun 4</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../w04/index.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text">Week 4: Jun 11</span></a>
+  </div>
+</li>
+        <li class="px-0"><hr class="sidebar-divider hi "></li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="https://guhub.io" class="sidebar-item-text sidebar-link" target="_blank">
+ <span class="menu-text">JupyterHub <i class="bi bi-box-arrow-up-right ps-1"></i></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="https://jjacobs.me/meet" class="sidebar-item-text sidebar-link" target="_blank">
+ <span class="menu-text">Office Hours <i class="bi bi-box-arrow-up-right ps-1"></i></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="https://forms.gle/PoyySPdVeBN37oBb8" class="sidebar-item-text sidebar-link" target="_blank">
+ <span class="menu-text">Anonymous Feedback <i class="bi bi-box-arrow-up-right ps-1"></i></span></a>
+  </div>
+</li>
+    </ul>
+    </div>
+<div class="quarto-sidebar-footer"><div class="sidebar-footer-item">
+<p><em>Updated 2025-06-10, 08:24:10 PM</em></p>
+</div></div></nav>
+<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
         <nav id="TOC" role="doc-toc" class="toc-active">
@@ -176,6 +291,9 @@ window.Quarto = {
   <li><a href="#schedule" id="toc-schedule" class="nav-link active" data-scroll-target="#schedule">Schedule</a>
   <ul class="collapse">
   <li><a href="#roadmap" id="toc-roadmap" class="nav-link" data-scroll-target="#roadmap">Roadmap</a></li>
+  <li><a href="#why-take-the-time-to-learn-a-modeling-language-vs.-individual-models" id="toc-why-take-the-time-to-learn-a-modeling-language-vs.-individual-models" class="nav-link" data-scroll-target="#why-take-the-time-to-learn-a-modeling-language-vs.-individual-models">Why Take the Time to Learn a Modeling <em>Language</em> (vs.&nbsp;Individual Models)?</a></li>
+  <li><a href="#example-multilevel-modeling" id="toc-example-multilevel-modeling" class="nav-link" data-scroll-target="#example-multilevel-modeling">Example: Multilevel Modeling</a></li>
+  <li><a href="#nightmarish-without-a-modeling-language" id="toc-nightmarish-without-a-modeling-language" class="nav-link" data-scroll-target="#nightmarish-without-a-modeling-language">Nightmarish Without a Modeling <em>Language</em>!</a></li>
   </ul></li>
   <li><a href="#the-ladder-of-causal-inference" id="toc-the-ladder-of-causal-inference" class="nav-link" data-scroll-target="#the-ladder-of-causal-inference">The Ladder of Causal Inference</a></li>
   <li><a href="#paths-from-cause-to-effect" id="toc-paths-from-cause-to-effect" class="nav-link" data-scroll-target="#paths-from-cause-to-effect">Paths from Cause to Effect</a>
@@ -345,8 +463,8 @@ window.Quarto = {
 </details>
 </div>
 </div>
-<section id="roadmap" class="level2 smaller crunch-title crunch-ul crunch-quarto-figure crunch-li-8">
-<h2 class="smaller crunch-title crunch-ul crunch-quarto-figure crunch-li-8 anchored" data-anchor-id="roadmap">Roadmap</h2>
+<section id="roadmap" class="level2 smaller crunch-title crunch-ul crunch-quarto-figure crunch-li-8 crunch-p">
+<h2 class="smaller crunch-title crunch-ul crunch-quarto-figure crunch-li-8 crunch-p anchored" data-anchor-id="roadmap">Roadmap</h2>
 <div>
 
 </div>
@@ -357,27 +475,23 @@ window.Quarto = {
 <p><strong>5300 → Now</strong></p>
 </center>
 <ul>
-<li>In 5300 (or 5000, or 5100), you learned a bunch of <em>ad hoc</em> models: Linear Regression, Decision Trees, SVMs, Neural Nets</li>
+<li>In e.g.&nbsp;5300, you learned a bunch of <em>ad hoc</em> models: Linear Regression, Decision Trees, SVMs, Neural Nets</li>
 <li>PGMs provide a <strong>language</strong> we can use to tell a computer how to estimate <strong>parameters</strong> in these models from <strong>data</strong></li>
 </ul>
 </div>
 <div id="img-5300" class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: flex-start;">
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="images/linear_regression.png" class="img-fluid figure-img" width="320"></p>
-<figcaption>Linear Regression as a PGM (Image from <a href="https://revbayes.github.io/tutorials/intro/graph_models.html#bayesian-linear-regression">RevBayes Documentation</a>)</figcaption>
+<p><img src="images/linear_regression.png" class="img-fluid figure-img" width="310"></p>
+<figcaption>Linear Regression as a PGM (<a href="https://revbayes.github.io/tutorials/intro/graph_models.html#bayesian-linear-regression">Source</a>)</figcaption>
 </figure>
 </div>
 </div>
 </div>
 </div>
-<details class="code-fold">
-<summary>Code</summary>
-<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode default code-with-copy"><code class="sourceCode default"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>flowchart TB</span>
-<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>  P{PGMs}</span>
-<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>  P --&gt; D[Use for Computational&lt;br&gt;Social Science]</span>
-<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>  P --&gt; E[Extend to Causal Inference]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
+<div>
+
+</div>
 <div class="quarto-layout-panel" data-layout="[1,1]">
 <div class="quarto-layout-row">
 <div id="now-august-text" class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: flex-start;">
@@ -391,24 +505,103 @@ window.Quarto = {
 </ul>
 </div>
 <div id="now-august-img" class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: flex-start;">
-<div class="cell" width="340" data-layout-align="center">
-<div class="cell-output-display">
+
+</div>
+</div>
+</div>
+</section>
+<section id="why-take-the-time-to-learn-a-modeling-language-vs.-individual-models" class="level2 smaller crunch-title title-09">
+<h2 class="smaller crunch-title title-09 anchored" data-anchor-id="why-take-the-time-to-learn-a-modeling-language-vs.-individual-models">Why Take the Time to Learn a Modeling <em>Language</em> (vs.&nbsp;Individual Models)?</h2>
+<ul>
+<li>My answer: allows you to <strong>adapt</strong> to specifics/<strong>idiosyncrasies</strong> of your problem!</li>
+<li>The “modeling <strong>language</strong>” metaphor: Learning models vs.&nbsp;learning modeling language <span class="math inline">\(\Leftrightarrow\)</span> Learning phrases in a language vs.&nbsp;learning to speak the language</li>
+<li>“Hello, one hamburger please” is good, but what happens when you need to remove pickles? Or you want to add a sauce?</li>
+<li><span class="citation" data-cites="mcelreath_statistical_2020">McElreath (<a href="#ref-mcelreath_statistical_2020" role="doc-biblioref">2020</a>)</span> example: How do I “tell” my model to (a) Capture specific effects of tanks, but (b) <strong>pool</strong> information about tadpoles across tank sizes?</li>
+</ul>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/tadpoles.svg" class="img-fluid figure-img"></p>
+<figcaption>From <span class="citation" data-cites="mcelreath_statistical_2020">McElreath (<a href="#ref-mcelreath_statistical_2020" role="doc-biblioref">2020</a>)</span></figcaption>
+</figure>
+</div>
+</section>
+<section id="example-multilevel-modeling" class="level2 smaller crunch-title crunch-img crunch-fig-top crunch-quarto-figure crunch-figcaption crunch-quarto-layout-panel">
+<h2 class="smaller crunch-title crunch-img crunch-fig-top crunch-quarto-figure crunch-figcaption crunch-quarto-layout-panel anchored" data-anchor-id="example-multilevel-modeling">Example: Multilevel Modeling</h2>
 <div>
-<p></p><figure class="figure"><p></p>
-<div>
-<pre class="mermaid mermaid-js">flowchart TB
-  P{PGMs}
-  P --&gt; D[Use for Computational&lt;br&gt;Social Science]
-  P --&gt; E[Extend to Causal Inference]
-</pre>
+
 </div>
-<p></p></figure><p></p>
-</div>
-</div>
-</div>
+<div class="quarto-layout-panel" data-layout-align="center" data-layout="[45,55]">
+<div class="quarto-layout-row quarto-layout-valign-center">
+<div id="multilevel-left" class="quarto-layout-cell" style="flex-basis: 45.0%;justify-content: center;">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/regional-totals.PNG" class="img-fluid figure-img"></p>
+<figcaption><em>Above</em>: Data from Soviet archives; <em>Above Right</em>: US Military archives; <em>Below Right</em>: NATO archives</figcaption>
+</figure>
 </div>
 </div>
+<div id="multilevel-right" class="quarto-layout-cell" style="flex-basis: 55.0%;justify-content: center;">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/regional-totals-us.jpeg" class="img-fluid quarto-figure quarto-figure-center figure-img"></p>
+</figure>
 </div>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/regional-totals-nato.jpeg" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:90.0%"></p>
+</figure>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id="nightmarish-without-a-modeling-language" class="level2 smaller crunch-title title-11 crunch-li-7 table-80 text-65 code-85">
+<h2 class="smaller crunch-title title-11 crunch-li-7 table-80 text-65 code-85 anchored" data-anchor-id="nightmarish-without-a-modeling-language">Nightmarish Without a Modeling <em>Language</em>!</h2>
+<ul>
+<li>Modeling <em>language</em> <span class="math inline">\(\Rightarrow\)</span> <strong>Unambiguously “encode”</strong> idiosyncratic domain knowledge</li>
+<li>Dissertation: <strong>Cold War</strong> <span class="math inline">\(\times\)</span> <strong>“Third World”</strong> <span class="math inline">\(\leadsto\)</span> <strong>Cuban</strong> 🇨🇺 trans-continental operations<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a></li>
+<li><strong>Main narrative</strong> (for estimation): <strong>1975</strong> (South Africa <a href="https://en.wikipedia.org/wiki/Operation_Savannah_(Angola)"><strong>invades Angola</strong></a>, 14 Oct → 🇨🇺 <a href="https://en.wikipedia.org/wiki/Cuban_intervention_in_Angola">intervention</a>, 4 Nov) to <strong>1979</strong> (USSR requests 🇨🇺 troops to <strong>Ethiopia</strong> for <a href="https://en.wikipedia.org/wiki/Ogaden_War">Ogaden War</a>)</li>
+<li>[<strong>Ontology</strong>] <strong>Fix</strong> <strong>1979 geographic entities</strong> at <strong>National</strong> level (as modeling choice, like fixing 2000 USD to measure inflation): <span class="math inline">\(\textsf{Cuba}_{1979}\)</span>, <span class="math inline">\(\textsf{Angola}_{1979}\)</span>, <span class="math inline">\(\textsf{PDRY}_{1979}\)</span>, <span class="math inline">\(\textsf{YAR}_{1979}\)</span></li>
+<li>Different <strong>tokens</strong> (Think NLP: <code>"Congo"</code>, <code>"DRC"</code>, <code>"Republic of Congo"</code>) can then be <strong>contextualized</strong>: can “track” and <strong>link</strong> data appropriately despite splits, merges, name changes</li>
+<li>Say we have data on “Number of Communist Militants in <span class="math inline">\(X\)</span>” (<em>Hoover Yearbook</em>)…</li>
+</ul>
+<table class="caption-top table" data-quarto-postprocess="true">
+<thead>
+<tr class="header" style="border-bottom: 0px;">
+<th data-quarto-table-cell-role="th" style="text-align: center; border-bottom: 0px;">Entity</th>
+<th colspan="2" data-quarto-table-cell-role="th" style="text-align: center; border-bottom: 0px;">Data from 1947-1971 at...</th>
+<th colspan="2" data-quarto-table-cell-role="th" style="text-align: center; border-bottom: 0px;">Data from 1971-Present at...</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td rowspan="2" style="text-align: center; vertical-align: middle;"><span class="math inline">\(\textsf{Pakistan}_{1979}\)</span></td>
+<td><strong>National Level:</strong></td>
+<td><span class="math inline">\(\frac{62}{62+70} \times\)</span> “Pakistan”</td>
+<td><strong>National Level:</strong></td>
+<td>“Pakistan”</td>
+</tr>
+<tr class="even">
+<td><strong>Subnational Level:</strong></td>
+<td>“West Pakistan”</td>
+<td><strong>Subnational Level:</strong></td>
+<td><span class="math inline">\(\sum_{i \in \text{Regions}}\text{data}_i\)</span></td>
+</tr>
+<tr class="odd">
+<td rowspan="2" style="text-align: center; vertical-align: middle; border-bottom: 0px;"><span class="math inline">\(\textsf{Bangladesh}_{1979}\)</span></td>
+<td><strong>National Level:</strong></td>
+<td><span class="math inline">\(\frac{70}{62+70} \times\)</span> “Pakistan”</td>
+<td><strong>National Level:</strong></td>
+<td>“Bangladesh”</td>
+</tr>
+<tr class="even">
+<td><strong>Subnational Level:</strong></td>
+<td>“East Pakistan”</td>
+<td><strong>Subnational Level:</strong></td>
+<td><span class="math inline">\(\sum_{i \in \text{Regions}}\text{data}_i\)</span></td>
+</tr>
+</tbody>
+</table>
 </section>
 </section>
 <section id="the-ladder-of-causal-inference" class="level1 smaller title-13" data-name="Ladder">
@@ -455,15 +648,26 @@ window.Quarto = {
 </section>
 <section id="references" class="level2">
 <h2 class="anchored" data-anchor-id="references">References</h2>
-<div id="refs" role="list">
-
+<div id="refs" class="references csl-bib-body hanging-indent" data-entry-spacing="0" role="list">
+<div id="ref-gleijeses_visions_2013" class="csl-entry" role="listitem">
+Gleijeses, Piero. 2013. <em>Visions of <span>Freedom</span>: <span>Havana</span>, <span>Washington</span>, <span>Pretoria</span>, and the <span>Struggle</span> for <span>Southern Africa</span>, 1976-1991</em>. UNC Press Books.
+</div>
+<div id="ref-mcelreath_statistical_2020" class="csl-entry" role="listitem">
+McElreath, Richard. 2020. <em>Statistical <span>Rethinking</span>: <span>A Bayesian Course</span> with <span>Examples</span> in <span>R</span> and <span>STAN</span></em>. CRC Press.
+</div>
 </div>
 
 
 </section>
 </section>
 
-</main> <!-- /main -->
+
+<div id="quarto-appendix" class="default"><section id="footnotes" class="footnotes footnotes-end-of-document" role="doc-endnotes"><h2 class="anchored quarto-appendix-heading">Footnotes</h2>
+
+<ol>
+<li id="fn1"><p>Helpful metaphor <span class="citation" data-cites="gleijeses_visions_2013">(<a href="#ref-gleijeses_visions_2013" role="doc-biblioref">Gleijeses 2013</a>)</span>: Cuba <span class="math inline">\(\approx\)</span> Forward-deployed “3rd World Outpost” for USSR (Soviet $ but Cuban training of PAIGC → MPLA), as Israel <span class="math inline">\(\approx\)</span> Forward-deployed “3rd World Outpost” for US (US $ but Israeli training of SAVAK → SADF)<a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+</ol>
+</section></div></main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
 window.document.addEventListener("DOMContentLoaded", function (event) {
   const toggleBodyColorMode = (bsSheetEl) => {

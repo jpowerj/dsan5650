@@ -35,3 +35,15 @@ button.on_click(on_button_clicked)
 \path[->] (X) (Y);
 \end{tikzpicture}
 ```
+
+---
+
+```{mermaid}
+%%| width: 340
+%%| fig-align: center
+flowchart TB
+  P{PGMs}
+  P --> D[Use for Computational<br>Social Science]
+  P --> E[Extend to Causal Inference]
+```
+

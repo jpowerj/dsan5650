@@ -78,7 +78,7 @@ source("../dsan-globals/_globals.r")
 
 :::
 
-## Roadmap {.smaller .crunch-title .crunch-ul .crunch-quarto-figure .crunch-li-8}
+## Roadmap {.smaller .crunch-title .crunch-ul .crunch-quarto-figure .crunch-li-8 .crunch-p}
 
 :::: {layout="[1,1]"}
 ::: {#left-5300}
@@ -89,13 +89,13 @@ source("../dsan-globals/_globals.r")
 
 </center>
 
-* In 5300 (or 5000, or 5100), you learned a bunch of *ad hoc* models: Linear Regression, Decision Trees, SVMs, Neural Nets
+* In e.g. 5300, you learned a bunch of *ad hoc* models: Linear Regression, Decision Trees, SVMs, Neural Nets
 * PGMs provide a **language** we can use to tell a computer how to estimate **parameters** in these models from **data**
 
 :::
 ::: {#img-5300}
 
-![Linear Regression as a PGM (Image from [RevBayes Documentation](https://revbayes.github.io/tutorials/intro/graph_models.html#bayesian-linear-regression))](images/linear_regression.png){fig-align="center" width="320"}
+![Linear Regression as a PGM ([Source](https://revbayes.github.io/tutorials/intro/graph_models.html#bayesian-linear-regression))](images/linear_regression.png){fig-align="center" width="310"}
 
 :::
 ::::
@@ -116,21 +116,85 @@ source("../dsan-globals/_globals.r")
 :::
 ::: {#now-august-img}
 
-```{mermaid}
-%%| width: 340
-%%| fig-align: center
-flowchart TB
-  P{PGMs}
-  P --> D[Use for Computational<br>Social Science]
-  P --> E[Extend to Causal Inference]
-```
+
 
 :::
 ::::
 
-## Why A Modeling *Language*, Rather Than A Bunch of Individual Models?
+## Why Take the Time to Learn a Modeling *Language* (vs. Individual Models)? {.smaller .crunch-title .title-09}
 
-![](images/tadpoles.svg){fig-align="center"}
+* My answer: allows you to **adapt** to specifics/**idiosyncrasies** of your problem!
+* The "modeling **language**" metaphor: Learning models vs. learning modeling language $\Leftrightarrow$ Learning phrases in a language vs. learning to speak the language
+* "Hello, one hamburger please" is good, but what happens when you need to remove pickles? Or you want to add a sauce?
+* @mcelreath_statistical_2020 example: How do I "tell" my model to (a) Capture specific effects of tanks, but (b) **pool** information about tadpoles across tank sizes?
+
+![From @mcelreath_statistical_2020](images/tadpoles.svg){fig-align="center"}
+
+## Example: Multilevel Modeling {.smaller .crunch-title .crunch-img .crunch-fig-top .crunch-quarto-figure .crunch-figcaption .crunch-quarto-layout-panel}
+
+:::: {layout="[45,55]" layout-valign="center" layout-align="center"}
+::: {#multilevel-left}
+
+![*Above*: Data from Soviet archives; *Above Right*: US Military archives; *Below Right*: NATO archives](images/regional-totals.PNG){fig-align="center"}
+
+:::
+::: {#multilevel-right}
+
+![](images/regional-totals-us.jpeg){fig-align="center" width="85%"}
+
+![](images/regional-totals-nato.jpeg){fig-align="center" width="90%"}
+
+:::
+::::
+
+## Nightmarish Without a Modeling *Language*! {.smaller .crunch-title .title-11 .crunch-li-7 .table-80 .text-65 .code-85}
+
+* Modeling *language* $\Rightarrow$ **Unambiguously "encode"** idiosyncratic domain knowledge
+* Dissertation: **Cold War** $\times$ **"Third World"** $\leadsto$ **Cuban** 🇨🇺 trans-continental operations^[Helpful metaphor [@gleijeses_visions_2013]: Cuba $\approx$ Forward-deployed "3rd World Outpost" for USSR (Soviet $ but Cuban training of PAIGC &rarr; MPLA), as Israel $\approx$ Forward-deployed "3rd World Outpost" for US (US $ but Israeli training of SAVAK &rarr; SADF)]
+* **Main narrative** (for estimation): **1975** (South Africa [**invades Angola**](https://en.wikipedia.org/wiki/Operation_Savannah_(Angola)), 14 Oct &rarr; 🇨🇺 [intervention](https://en.wikipedia.org/wiki/Cuban_intervention_in_Angola), 4 Nov) to **1979** (USSR requests 🇨🇺 troops to **Ethiopia** for [Ogaden War](https://en.wikipedia.org/wiki/Ogaden_War))
+* [**Ontology**] **Fix** **1979 geographic entities** at **National** level (as modeling choice, like fixing 2000 USD to measure inflation): $\textsf{Cuba}_{1979}$, $\textsf{Angola}_{1979}$, $\textsf{PDRY}_{1979}$, $\textsf{YAR}_{1979}$
+* Different **tokens** (Think NLP: `"Congo"`, `"DRC"`, `"Republic of Congo"`) can then be **contextualized**: can "track" and **link** data appropriately despite splits, merges, name changes
+* Say we have data on "Number of Communist Militants in $X$" (*Hoover Yearbook*)...
+
+```{=html}
+<table>
+<thead>
+<tr style="border-bottom: 0px;">
+  <th align="center" style="border-bottom: 0px;">Entity</th>
+  <th colspan="2" align="center" style="border-bottom: 0px;">Data from 1947-1971 at...</th>
+  <th colspan="2" align="center" style="border-bottom: 0px;">Data from 1971-Present at...</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+  <td rowspan="2" style="vertical-align: middle;" align="center"><span data-qmd="$\textsf{Pakistan}_{1979}$"></span></td>
+  <td><span data-qmd="**National Level:**"></span></td>
+  <td><span data-qmd='$\frac{62}{62+70} \times$ "Pakistan"'></span></td>
+  <td><span data-qmd="**National Level:**"></span></td>
+  <td><span data-qmd='"Pakistan"'></span></td>
+</tr>
+<tr>
+  <td><span data-qmd="**Subnational Level:**"></span></td>
+  <td><span data-qmd='"West Pakistan"'></span></td>
+  <td><span data-qmd="**Subnational Level:**"></span></td>
+  <td><span data-qmd="$\sum_{i \in \text{Regions}}\text{data}_i$"></span></td>
+</tr>
+<tr>
+  <td rowspan="2" style="vertical-align: middle; border-bottom: 0px;"><span data-qmd="$\textsf{Bangladesh}_{1979}$"></span></td>
+  <td><span data-qmd="**National Level:**"></span></td>
+  <td><span data-qmd='$\frac{70}{62+70} \times$ "Pakistan"'></span></td>
+  <td><span data-qmd="**National Level:**"></span></td>
+  <td><span data-qmd='"Bangladesh"'></span></td>
+</tr>
+<tr>
+  <td><span data-qmd="**Subnational Level:**"></span></td>
+  <td><span data-qmd='"East Pakistan"'></span></td>
+  <td><span data-qmd="**Subnational Level:**"></span></td>
+  <td><span data-qmd="$\sum_{i \in \text{Regions}}\text{data}_i$"></span></td>
+</tr>
+</tbody>
+</table>
+```
 
 # The Ladder of Causal Inference {.smaller .title-13 data-name="Ladder"}
 

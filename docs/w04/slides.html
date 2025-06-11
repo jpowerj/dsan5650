@@ -98,6 +98,7 @@
     div.csl-bib-body { }
     div.csl-entry {
       clear: both;
+      margin-bottom: 0em;
     }
     .hanging-indent div.csl-entry {
       margin-left:2em;
@@ -114,7 +115,7 @@
     div.csl-indent {
       margin-left: 2em;
     }  </style>
-  <link rel="stylesheet" href="../site_libs/revealjs/dist/theme/quarto-cc354aadd7017e7a07bad8b1aafdaffe.css">
+  <link rel="stylesheet" href="../site_libs/revealjs/dist/theme/quarto-cc57e7508074242d22df1e28d37b6a90.css">
   <link href="../site_libs/revealjs/plugin/quarto-line-highlight/line-highlight.css" rel="stylesheet">
   <link href="../site_libs/revealjs/plugin/reveal-menu/menu.css" rel="stylesheet">
   <link href="../site_libs/revealjs/plugin/reveal-menu/quarto-menu.css" rel="stylesheet">
@@ -208,9 +209,6 @@
       margin-right: 0; 
     }
   </style>
-  <script src="../site_libs/quarto-diagram/mermaid.min.js"></script>
-  <script src="../site_libs/quarto-diagram/mermaid-init.js"></script>
-  <link href="../site_libs/quarto-diagram/mermaid.css" rel="stylesheet">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css"><link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/gh/dreampulse/computer-modern-web-font@master/fonts.css">
 </head>
 <body class="quarto-light">
@@ -345,7 +343,7 @@ Jeff Jacobs
 </div>
 </div>
 </section>
-<section id="roadmap" class="slide level2 smaller crunch-title crunch-ul crunch-quarto-figure crunch-li-8">
+<section id="roadmap" class="slide level2 smaller crunch-title crunch-ul crunch-quarto-figure crunch-li-8 crunch-p">
 <h2>Roadmap</h2>
 <div>
 
@@ -357,27 +355,23 @@ Jeff Jacobs
 <p><strong>5300 → Now</strong></p>
 </center>
 <ul>
-<li>In 5300 (or 5000, or 5100), you learned a bunch of <em>ad hoc</em> models: Linear Regression, Decision Trees, SVMs, Neural Nets</li>
+<li>In e.g.&nbsp;5300, you learned a bunch of <em>ad hoc</em> models: Linear Regression, Decision Trees, SVMs, Neural Nets</li>
 <li>PGMs provide a <strong>language</strong> we can use to tell a computer how to estimate <strong>parameters</strong> in these models from <strong>data</strong></li>
 </ul>
 </div>
 <div id="img-5300" class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: flex-start;">
 <div class="quarto-figure quarto-figure-center">
 <figure>
-<p><img data-src="images/linear_regression.png" width="320"></p>
-<figcaption>Linear Regression as a PGM (Image from <a href="https://revbayes.github.io/tutorials/intro/graph_models.html#bayesian-linear-regression">RevBayes Documentation</a>)</figcaption>
+<p><img data-src="images/linear_regression.png" width="310"></p>
+<figcaption>Linear Regression as a PGM (<a href="https://revbayes.github.io/tutorials/intro/graph_models.html#bayesian-linear-regression">Source</a>)</figcaption>
 </figure>
 </div>
 </div>
 </div>
 </div>
-<details class="code-fold">
-<summary>Code</summary>
-<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode numberSource default number-lines code-with-copy"><code class="sourceCode default"><span id="cb2-1"><a></a>flowchart TB</span>
-<span id="cb2-2"><a></a>  P{PGMs}</span>
-<span id="cb2-3"><a></a>  P --&gt; D[Use for Computational&lt;br&gt;Social Science]</span>
-<span id="cb2-4"><a></a>  P --&gt; E[Extend to Causal Inference]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
+<div>
+
+</div>
 <div class="quarto-layout-panel" data-layout="[1,1]">
 <div class="quarto-layout-row">
 <div id="now-august-text" class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: flex-start;">
@@ -391,25 +385,99 @@ Jeff Jacobs
 </ul>
 </div>
 <div id="now-august-img" class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: flex-start;">
-<div class="cell" data-reveal="true" width="340" data-layout-align="center">
-<div class="cell-output-display">
+
+</div>
+</div>
+</div>
+</section>
+<section id="why-take-the-time-to-learn-a-modeling-language-vs.-individual-models" class="slide level2 smaller crunch-title title-09">
+<h2>Why Take the Time to Learn a Modeling <em>Language</em> (vs.&nbsp;Individual Models)?</h2>
+<ul>
+<li>My answer: allows you to <strong>adapt</strong> to specifics/<strong>idiosyncrasies</strong> of your problem!</li>
+<li>The “modeling <strong>language</strong>” metaphor: Learning models vs.&nbsp;learning modeling language <span class="math inline">\(\Leftrightarrow\)</span> Learning phrases in a language vs.&nbsp;learning to speak the language</li>
+<li>“Hello, one hamburger please” is good, but what happens when you need to remove pickles? Or you want to add a sauce?</li>
+<li><span class="citation" data-cites="mcelreath_statistical_2020">McElreath (<a href="#/references" role="doc-biblioref" onclick="">2020</a>)</span> example: How do I “tell” my model to (a) Capture specific effects of tanks, but (b) <strong>pool</strong> information about tadpoles across tank sizes?</li>
+</ul>
+
+<img data-src="images/tadpoles.svg" class="r-stretch quarto-figure-center"><p class="caption">From <span class="citation" data-cites="mcelreath_statistical_2020">McElreath (<a href="#/references" role="doc-biblioref" onclick="">2020</a>)</span></p></section>
+<section id="example-multilevel-modeling" class="slide level2 smaller crunch-title crunch-img crunch-fig-top crunch-quarto-figure crunch-figcaption crunch-quarto-layout-panel">
+<h2>Example: Multilevel Modeling</h2>
 <div>
-<p></p><figure class=""><p></p>
-<div>
-<pre class="mermaid mermaid-js">flowchart TB
-  P{PGMs}
-  P --&gt; D[Use for Computational&lt;br&gt;Social Science]
-  P --&gt; E[Extend to Causal Inference]
-</pre>
+
 </div>
-<p></p></figure><p></p>
-</div>
-</div>
-</div>
+<div class="quarto-layout-panel" data-layout-align="center" data-layout="[45,55]">
+<div class="quarto-layout-row quarto-layout-valign-center">
+<div id="multilevel-left" class="quarto-layout-cell" style="flex-basis: 45.0%;justify-content: center;">
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="images/regional-totals.PNG"></p>
+<figcaption><em>Above</em>: Data from Soviet archives; <em>Above Right</em>: US Military archives; <em>Below Right</em>: NATO archives</figcaption>
+</figure>
 </div>
 </div>
+<div id="multilevel-right" class="quarto-layout-cell" style="flex-basis: 55.0%;justify-content: center;">
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="images/regional-totals-us.jpeg" class="quarto-figure quarto-figure-center"></p>
+</figure>
 </div>
-</section></section>
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="images/regional-totals-nato.jpeg" class="quarto-figure quarto-figure-center" style="width:90.0%"></p>
+</figure>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id="nightmarish-without-a-modeling-language" class="slide level2 smaller crunch-title title-11 crunch-li-7 table-80 text-65 code-85 scrollable">
+<h2>Nightmarish Without a Modeling <em>Language</em>!</h2>
+<ul>
+<li>Modeling <em>language</em> <span class="math inline">\(\Rightarrow\)</span> <strong>Unambiguously “encode”</strong> idiosyncratic domain knowledge</li>
+<li>Dissertation: <strong>Cold War</strong> <span class="math inline">\(\times\)</span> <strong>“Third World”</strong> <span class="math inline">\(\leadsto\)</span> <strong>Cuban</strong> 🇨🇺 trans-continental operations<sup>1</sup></li>
+<li><strong>Main narrative</strong> (for estimation): <strong>1975</strong> (South Africa <a href="https://en.wikipedia.org/wiki/Operation_Savannah_(Angola)"><strong>invades Angola</strong></a>, 14 Oct → 🇨🇺 <a href="https://en.wikipedia.org/wiki/Cuban_intervention_in_Angola">intervention</a>, 4 Nov) to <strong>1979</strong> (USSR requests 🇨🇺 troops to <strong>Ethiopia</strong> for <a href="https://en.wikipedia.org/wiki/Ogaden_War">Ogaden War</a>)</li>
+<li>[<strong>Ontology</strong>] <strong>Fix</strong> <strong>1979 geographic entities</strong> at <strong>National</strong> level (as modeling choice, like fixing 2000 USD to measure inflation): <span class="math inline">\(\textsf{Cuba}_{1979}\)</span>, <span class="math inline">\(\textsf{Angola}_{1979}\)</span>, <span class="math inline">\(\textsf{PDRY}_{1979}\)</span>, <span class="math inline">\(\textsf{YAR}_{1979}\)</span></li>
+<li>Different <strong>tokens</strong> (Think NLP: <code>"Congo"</code>, <code>"DRC"</code>, <code>"Republic of Congo"</code>) can then be <strong>contextualized</strong>: can “track” and <strong>link</strong> data appropriately despite splits, merges, name changes</li>
+<li>Say we have data on “Number of Communist Militants in <span class="math inline">\(X\)</span>” (<em>Hoover Yearbook</em>)…</li>
+</ul>
+<table class="caption-top" data-quarto-postprocess="true">
+<thead>
+<tr class="header" style="border-bottom: 0px;">
+<th data-quarto-table-cell-role="th" style="text-align: center; border-bottom: 0px;">Entity</th>
+<th colspan="2" data-quarto-table-cell-role="th" style="text-align: center; border-bottom: 0px;">Data from 1947-1971 at...</th>
+<th colspan="2" data-quarto-table-cell-role="th" style="text-align: center; border-bottom: 0px;">Data from 1971-Present at...</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td rowspan="2" style="text-align: center; vertical-align: middle;"><span class="math inline">\(\textsf{Pakistan}_{1979}\)</span></td>
+<td><strong>National Level:</strong></td>
+<td><span class="math inline">\(\frac{62}{62+70} \times\)</span> “Pakistan”</td>
+<td><strong>National Level:</strong></td>
+<td>“Pakistan”</td>
+</tr>
+<tr class="even">
+<td><strong>Subnational Level:</strong></td>
+<td>“West Pakistan”</td>
+<td><strong>Subnational Level:</strong></td>
+<td><span class="math inline">\(\sum_{i \in \text{Regions}}\text{data}_i\)</span></td>
+</tr>
+<tr class="odd">
+<td rowspan="2" style="text-align: center; vertical-align: middle; border-bottom: 0px;"><span class="math inline">\(\textsf{Bangladesh}_{1979}\)</span></td>
+<td><strong>National Level:</strong></td>
+<td><span class="math inline">\(\frac{70}{62+70} \times\)</span> “Pakistan”</td>
+<td><strong>National Level:</strong></td>
+<td>“Bangladesh”</td>
+</tr>
+<tr class="even">
+<td><strong>Subnational Level:</strong></td>
+<td>“East Pakistan”</td>
+<td><strong>Subnational Level:</strong></td>
+<td><span class="math inline">\(\sum_{i \in \text{Regions}}\text{data}_i\)</span></td>
+</tr>
+</tbody>
+</table>
+<aside><ol class="aside-footnotes"><li id="fn1"><p>Helpful metaphor <span class="citation" data-cites="gleijeses_visions_2013">(<a href="#/references" role="doc-biblioref" onclick="">Gleijeses 2013</a>)</span>: Cuba <span class="math inline">\(\approx\)</span> Forward-deployed “3rd World Outpost” for USSR (Soviet $ but Cuban training of PAIGC → MPLA), as Israel <span class="math inline">\(\approx\)</span> Forward-deployed “3rd World Outpost” for US (US $ but Israeli training of SAVAK → SADF)</p></li></ol></aside></section></section>
 <section id="the-ladder-of-causal-inference" class="title-slide slide level1 smaller title-13 center" data-name="Ladder">
 <h1>The Ladder of Causal Inference</h1>
 <table class="caption-top" data-quarto-postprocess="true">
@@ -458,12 +526,18 @@ Jeff Jacobs
 </section>
 <section id="references" class="slide level2 smaller scrollable">
 <h2>References</h2>
-<div id="refs" role="list">
-
+<div id="refs" class="references csl-bib-body hanging-indent" data-entry-spacing="0" role="list">
+<div id="ref-gleijeses_visions_2013" class="csl-entry" role="listitem">
+Gleijeses, Piero. 2013. <em>Visions of <span>Freedom</span>: <span>Havana</span>, <span>Washington</span>, <span>Pretoria</span>, and the <span>Struggle</span> for <span>Southern Africa</span>, 1976-1991</em>. UNC Press Books.
+</div>
+<div id="ref-mcelreath_statistical_2020" class="csl-entry" role="listitem">
+McElreath, Richard. 2020. <em>Statistical <span>Rethinking</span>: <span>A Bayesian Course</span> with <span>Examples</span> in <span>R</span> and <span>STAN</span></em>. CRC Press.
+</div>
 </div>
 
 
 </section></section>
+
     </div>
   <div class="quarto-auto-generated-content" style="display: none;">
 <div class="footer footer-default">
