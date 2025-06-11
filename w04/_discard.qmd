@@ -59,3 +59,21 @@ dag5.1 <- dagitty("dag{ A -> D; A -> M; M -> D;}")
 coordinates(dag5.1) <- list(x=c(A=0,D=1,M=2), y=c(A=0, D=1, M=0))
 drawdag(dag5.1)
 ```
+
+---
+
+## How to De-Confound (We Made It!)
+
+* 
+
+---
+
+# Paths from Cause to Effect {data-stack-name="Causal Paths"}
+
+## In A Perfect World
+
+* $X \rightarrow Y$
+
+## In the Real World
+
+## John Mayer

@@ -240,7 +240,7 @@ Languages give us a **syntax**...
 </table>
 ```
 
-# The Ladder of Causal Inference {.smaller .title-13 data-name="Ladder"}
+# The Ladder of Causal Inference {.smaller .title-12 .not-title-slide .crunch-title data-name="Ladder"}
 
 ```{=html}
 <table>
@@ -270,15 +270,7 @@ Languages give us a **syntax**...
 </table>
 ```
 
-# Paths from Cause to Effect {data-stack-name="Causal Paths"}
-
-## In A Perfect World
-
-* $X \rightarrow Y$
-
-## In the Real World
-
-## John Mayer
+* $\leadsto$ Stuff we add to probability theory in 5650 is to combat **confounding**: to **"fix"** whatever is making $\Pr(Y \mid X) \neq \Pr(Y \mid \textsf{do}(X))$!
 
 # The Four Elemental Confounds {.smaller .crunch-title .crunch-quarto-figure .title-12 data-stack-name="Forks, Pipes, Colliders"}
 
@@ -748,68 +740,72 @@ prox_full_plot | prox_a0_plot | prox_a1_plot
 #| label: prox-continuous
 #| echo: true
 #| code-fold: true
+#| crop: false
 library(tidyverse)
+library(extraDistr)
+library(latex2exp)
 set.seed(5650)
+n_c <- 300
 cprox_df <- tibble(
     X = rnorm(n_c),
     Z = rbern(n_c, plogis(X)),
     Y = rnorm(n_c, 2 * Z - 1),
-    A = rbern(n_c, Z * 0.9 + (1-Z)*0.1)
+    A = rbern(n_c, (1-Z)*0.86 + Z*0.14)
 )
-# cprox_lm <- lm(Y ~ X, data=cprox_df)
-# cprox_slope <- round(cprox_lm$coef['X'], 3)
-# cprox_a0_lm <- lm(Y ~ X, data=cprox_df |> filter(A == 0))
-# cprox_a0_slope <- round(cprox_a0_lm$coef['X'], 2)
-# cprox_a0_label <- paste0("$Slope_{A=0} = ",cprox_a0_slope,"$")
-# # A == 1 lm
-# cprox_a1_lm <- lm(Y ~ X, data=cprox_df |> filter(A == 1))
-# cprox_a1_slope <- round(cprox_a1_lm$coef['X'], 2)
-# cprox_a1_label <- paste0("$Slope_{A=1} = ",cprox_a1_slope,"$")
-# cprox_a_texlabel <- TeX(paste0(cprox_a0_label, " | ", cprox_a1_label))
-# cprox_xmin <- min(cprox_df$X)
-# cprox_xmax <- max(cprox_df$X)
-# ggplot() +
-#   # Points
-#   geom_point(
-#     data=cprox_df,
-#     aes(x=X, y=Y, color=factor(A)),
-#     size=0.6*g_pointsize,
-#     alpha=0.8
-#   ) +
-#   # Overall lm
-#   geom_smooth(
-#     data=ccoll_df, aes(x=X, y=Y),
-#     method = lm, se = FALSE,
-#     linewidth = 2.5, color='black'
-#   ) +
-#   # Stratified lm
-#   # (slightly larger black lines)
-#   geom_smooth(
-#     data=ccoll_df,
-#     aes(x=X, y=Y, group=factor(A)),
-#     method=lm, se=FALSE, fullrange=TRUE,
-#     linewidth=2.75, color='black'
-#   ) +
-#   # (Colored lines)
-#   geom_smooth(
-#     data=ccoll_df,
-#     aes(x=X, y=Y, color=factor(A)),
-#     method=lm, se=FALSE, fullrange=TRUE,
-#     linewidth=2
-#   ) +
-#   theme_dsan(base_size=24) +
-#   theme(
-#     plot.title = element_text(size=24),
-#     plot.subtitle = element_text(size=20)
-#   ) +
-#   coord_equal() +
-#   labs(
-#     title = paste0(
-#       "Unstratified Slope = ",cprox_slope
-#     ),
-#     subtitle=cprox_a_texlabel,
-#     x = "X", y = "Y", color = "A"
-#   )
+cprox_lm <- lm(Y ~ X, data=cprox_df)
+cprox_slope <- round(cprox_lm$coef['X'], 3)
+cprox_a0_lm <- lm(Y ~ X, data=cprox_df |> filter(A == 0))
+cprox_a0_slope <- round(cprox_a0_lm$coef['X'], 2)
+cprox_a0_label <- paste0("$Slope_{A=0} = ",cprox_a0_slope,"$")
+# A == 1 lm
+cprox_a1_lm <- lm(Y ~ X, data=cprox_df |> filter(A == 1))
+cprox_a1_slope <- round(cprox_a1_lm$coef['X'], 2)
+cprox_a1_label <- paste0("$Slope_{A=1} = ",cprox_a1_slope,"$")
+cprox_a_texlabel <- TeX(paste0(cprox_a0_label, " | ", cprox_a1_label))
+cprox_xmin <- min(cprox_df$X)
+cprox_xmax <- max(cprox_df$X)
+ggplot() +
+  # Points
+  geom_point(
+    data=cprox_df |> filter(Y > -3),
+    aes(x=X, y=Y, color=factor(A)),
+    size=0.6*g_pointsize,
+    alpha=0.8
+  ) +
+  # Overall lm
+  geom_smooth(
+    data=cprox_df, aes(x=X, y=Y),
+    method = lm, se = FALSE,
+    linewidth = 2.5, color='black'
+  ) +
+  # Stratified lm
+  # (slightly larger black lines)
+  geom_smooth(
+    data=cprox_df,
+    aes(x=X, y=Y, group=factor(A)),
+    method=lm, se=FALSE, fullrange=TRUE,
+    linewidth=2.75, color='black'
+  ) +
+  # (Colored lines)
+  geom_smooth(
+    data=cprox_df,
+    aes(x=X, y=Y, color=factor(A)),
+    method=lm, se=FALSE, fullrange=TRUE,
+    linewidth=2
+  ) +
+  theme_dsan(base_size=22) +
+  theme(
+    plot.title = element_text(size=22),
+    plot.subtitle = element_text(size=18)
+  ) +
+  coord_equal() +
+  labs(
+    title = paste0(
+      "Unstratified Slope = ",cprox_slope
+    ),
+    subtitle=cprox_a_texlabel,
+    x = "X", y = "Y", color = "A"
+  )
 ```
 
 :::
