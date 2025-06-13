@@ -75,6 +75,10 @@ This book contrasts with the Angrist and Pischke book in using the language of c
 
 Chapter 2, with an overview of probability theory and graph theory, is included in the [Syllabus](./syllabus.qmd) as the recommended reading for Week 2! Then, Chapter 3 will give you the core concepts of Bayes Nets specifically, while Chapter 6 will add in a few of the useful additional tools we use, like **plate notation**.
 
+### Multilevel Modeling
+
+<i class='bi bi-1-circle'></i> **@gelman_data_2007, *Data Analysis Using Regression and Multilevel/Hierarchical Models***
+
 ## Reference Texts
 
 In contrast to the books in the ["Core Textbooks" section](#core-textbooks), these books are *not* "the" textbooks for the class! These are here instead as reference books, to keep on hand (a) for when the lectures or the above books are unclear on some topic, and/or (b) for deeper dives into certain topics (where the latter may become a more relevant mission for you as we move towards the final project 😉)
