@@ -4,6 +4,17 @@ bibliography: "_DSAN5650.bib"
 csl: chicago-17-no-url.csl
 ---
 
+::: {.callout-note title="PDF Links for Jeff's Off-Hand References"}
+
+| What Jeff calls it | Citation (click for PDF link) |
+| - | - |
+| **"The Koller book"** | @koller_probabilistic_2009 |
+| **"The non-technical Pearl book"** | @pearl_book_2018 |
+| **"The technical Pearl book"** (containing, e.g., axioms and proofs) | @pearl_causality_2000 |
+| **"The French Revolution paper"** | @barron_individuals_2018 |
+
+:::
+
 ## Core Textbooks
 
 As mentioned on the [syllabus](./syllabus.qmd), the field of causal inference in general (and causal inference for computational social science in particular) moves excitingly-fast, such that the material has yet to "congeal" into a single, all-encompassing textbook. Nonetheless, the following three books cover a substantial amount of ground (described in more detail below each citation), so that together they form a coherent "three-volume textbook" for this class! If you can only read three books this summer, read these :)
@@ -56,21 +67,29 @@ This book contrasts with the Angrist and Pischke book in using the language of c
 ::::
 :::::
 
+## Topic-Specific Textbooks
+
+### Probabilistic Graphical Models
+
+<i class='bi bi-1-circle'></i> **@koller_probabilistic_2009, *Probabilistic Graphical Models: Principles and Techniques***
+
+Chapter 2, with an overview of probability theory and graph theory, is included in the [Syllabus](./syllabus.qmd) as the recommended reading for Week 2! Then, Chapter 3 will give you the core concepts of Bayes Nets specifically, while Chapter 6 will add in a few of the useful additional tools we use, like **plate notation**.
+
 ## Reference Texts
 
-In contrast to the books in the previous section, these books are *not* "the" textbooks for the class! These are here instead as reference books, to keep on hand (a) for when the lectures or the above books are unclear on some topic, and/or (b) for deeper dives into certain topics (where the latter may become a more relevant mission for you as we move towards the final project 😉)
+In contrast to the books in the ["Core Textbooks" section](#core-textbooks), these books are *not* "the" textbooks for the class! These are here instead as reference books, to keep on hand (a) for when the lectures or the above books are unclear on some topic, and/or (b) for deeper dives into certain topics (where the latter may become a more relevant mission for you as we move towards the final project 😉)
 
-**@pearl_causality_2000, *Causality: Models, Reasoning, and Inference***
+<i class='bi bi-1-circle'></i> **@pearl_causality_2000, *Causality: Models, Reasoning, and Inference***
 
 As mentioned during [Week 2](./w02/index.qmd), this is the book containing the fully-developed "unified theory" of causality, starting from a set of axioms and deriving the possibilities of causal inference as formal theorems.
 
 Within "pure" mathematics, if you kept digging into the foundations of things like calculus or algebra, you would eventually arrive at Alfred North Whitehead and Bertrand Russell's [*Principia Mathematica*](https://en.wikipedia.org/wiki/Principia_Mathematica)---@pearl_causality_2000 is that but for causality: the foundational axioms and core theorems are all in here.
 
-**@hume_enquiry_1748, *An Enquiry Concerning Human Understanding***
+<i class='bi bi-2-circle'></i> **@hume_enquiry_1748, *An Enquiry Concerning Human Understanding***
 
 This book serves as the philosophical "jumping off point" for causality: you can think of it like, there's a nice progress-narrative of the human study of causality, that starts with the uncomfortable questions raised in @hume_enquiry_1748 about the possibility (or impossibility!) of **inferring** knowledge of causality via inductive reasoning, and culminates in @pearl_causality_2000.
 
-**@sperber_explaining_1996, *Explaining Culture: A Naturalistic Approach***
+<i class='bi bi-3-circle'></i> **@sperber_explaining_1996, *Explaining Culture: A Naturalistic Approach***
 
 Mentioned in a footnote in [Week 1](./w01/index.qmd), this is a surprisingly-old book that made waves in certain communities (like, e.g., among people like me who geek about studying culture quantitatively), by essentially proposing a "research program" for the rigorous quantitative/empirical study of culture. In Jeff's perfect world, this book would spark a progress-narrative in the same way that @hume_enquiry_1748
 
@@ -78,19 +97,19 @@ Mentioned in a footnote in [Week 1](./w01/index.qmd), this is a surprisingly-old
 
 ### The Holy Grail (But, Field = Comparative Politics)
 
-**@kalyvas_logic_2006, *The Logic of Violence in Civil War***
+<i class='bi bi-1-circle'></i> **@kalyvas_logic_2006, *The Logic of Violence in Civil War***
 
 This book is essentially... like, when you read stories about people spending decades hand-carving pathways through a mountain using only a hammer and chisel, this is the social science equivalent of that. A painstaking labor-of-love book that checks every single box I can think of in terms of causally-focused computational social science. It's my model for any research I try to carry out.
 
 ### History
 
-**@acharya_slavery_2023, "Slavery, Politics, and Causality", *Harvard Kennedy School Working Paper***
+<i class='bi bi-1-circle'></i> **@barron_individuals_2018, "Individuals, Institutions, and Innovation in the Debates of the French Revolution"**
 
-A rare paper that touches specifically on the veracity of drawing *causal* inferences from historical data!
+<i class='bi bi-2-circle'></i> **@blaydes_mirrors_2018, "Mirrors for Princes and Sultans: Advice on the Art of Governance in the Medieval Christian and Islamic Worlds"**
 
 ### Econometric Policy Evaluation
 
-**@bjorkegren_what_2025, "What Do Policies Value?", *Review of Economic Studies*** \[[PDF](https://dan.bjorkegren.com/bbk_targeting.pdf)\]
+<i class='bi bi-1-circle'></i> **@bjorkegren_what_2025, "What Do Policies Value?", *Review of Economic Studies*** \[[PDF](https://dan.bjorkegren.com/bbk_targeting.pdf)\]
 
 Another "holy grail" paper, but in this case more for the Data Ethics and Policy course than this course. However, it does touch substantially on the issue of associational vs. causal inference, especially in terms of how going towards causality is a "high stakes" endeavor here, since we're inferring normative ethical values from data (as opposed to descriptive statistics like the magnitude of the causal effect $X \rightarrow Y$)
 
@@ -100,12 +119,12 @@ To me (as in, given how my brain works), there are certain topics which I've spe
 
 So, to that end, these video resources are just as important as (for some topics far *more* important than) the resources above!^[For similar reasons, audiobooks may provide more effective ways to digest some topics in the course!]
 
-**@ahrens_robust_2024, "Robust Causal Inference using Double/Debiased Machine Learning: A Guide for Empirical Research", *MZES Methods Bites Seminar*** [Link](https://www.youtube.com/watch?v=iiEi-3gIUbg)
+<i class='bi bi-1-circle'></i> **@ahrens_robust_2024, "Robust Causal Inference using Double/Debiased Machine Learning: A Guide for Empirical Research", *MZES Methods Bites Seminar*** [Link](https://www.youtube.com/watch?v=iiEi-3gIUbg)
 
 Here I literally added it to the resources folder *before* I realized that it has a discussion of a paper I did during the PhD. So, perhaps leaving it in here is some sort of humble brag, but finding it originally was not! (It's what came up for me when I searched "Double/Debiased Machine Learning" on YouTube in May 2025 😜)
 
 ## Miscellaneous / Commonly-Used Books That We're Not Really Using
 
-**@king_designing_1994, *Designing Social Inquiry***
+<i class='bi bi-1-circle'></i> **@king_designing_1994, *Designing Social Inquiry***
 
 I don't really have a substantive critique of this book, or a deep reason for not using it, other than that I find myself getting really bored whenever I try to read it 🙈

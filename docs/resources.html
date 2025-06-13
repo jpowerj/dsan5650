@@ -244,7 +244,7 @@ window.Quarto = {
     </ul>
     </div>
 <div class="quarto-sidebar-footer"><div class="sidebar-footer-item">
-<p><em>Updated 2025-06-11, 06:31:43 PM</em></p>
+<p><em>Updated 2025-06-12, 06:26:27 PM</em></p>
 </div></div></nav>
 <div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
@@ -254,6 +254,10 @@ window.Quarto = {
    
   <ul>
   <li><a href="#core-textbooks" id="toc-core-textbooks" class="nav-link active" data-scroll-target="#core-textbooks">Core Textbooks</a></li>
+  <li><a href="#topic-specific-textbooks" id="toc-topic-specific-textbooks" class="nav-link" data-scroll-target="#topic-specific-textbooks">Topic-Specific Textbooks</a>
+  <ul class="collapse">
+  <li><a href="#probabilistic-graphical-models" id="toc-probabilistic-graphical-models" class="nav-link" data-scroll-target="#probabilistic-graphical-models">Probabilistic Graphical Models</a></li>
+  </ul></li>
   <li><a href="#reference-texts" id="toc-reference-texts" class="nav-link" data-scroll-target="#reference-texts">Reference Texts</a></li>
   <li><a href="#applied-examples" id="toc-applied-examples" class="nav-link" data-scroll-target="#applied-examples">Applied Examples</a>
   <ul class="collapse">
@@ -288,6 +292,48 @@ window.Quarto = {
 </header>
 
 
+<div class="callout callout-style-default callout-note callout-titled" title="PDF Links for Jeff's Off-Hand References">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+PDF Links for Jeff’s Off-Hand References
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<table class="caption-top table">
+<colgroup>
+<col style="width: 50%">
+<col style="width: 50%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>What Jeff calls it</th>
+<th>Citation (click for PDF link)</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong>“The Koller book”</strong></td>
+<td><span class="citation" data-cites="koller_probabilistic_2009">Koller and Friedman (<a href="#ref-koller_probabilistic_2009" role="doc-biblioref">2009</a>)</span></td>
+</tr>
+<tr class="even">
+<td><strong>“The non-technical Pearl book”</strong></td>
+<td><span class="citation" data-cites="pearl_book_2018">Pearl and Mackenzie (<a href="#ref-pearl_book_2018" role="doc-biblioref">2018</a>)</span></td>
+</tr>
+<tr class="odd">
+<td><strong>“The technical Pearl book”</strong> (containing, e.g., axioms and proofs)</td>
+<td><span class="citation" data-cites="pearl_causality_2000">Pearl (<a href="#ref-pearl_causality_2000" role="doc-biblioref">2000</a>)</span></td>
+</tr>
+<tr class="even">
+<td><strong>“The French Revolution paper”</strong></td>
+<td><span class="citation" data-cites="barron_individuals_2018">Barron et al. (<a href="#ref-barron_individuals_2018" role="doc-biblioref">2018</a>)</span></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
 <section id="core-textbooks" class="level2">
 <h2 class="anchored" data-anchor-id="core-textbooks">Core Textbooks</h2>
 <p>As mentioned on the <a href="./syllabus.html">syllabus</a>, the field of causal inference in general (and causal inference for computational social science in particular) moves excitingly-fast, such that the material has yet to “congeal” into a single, all-encompassing textbook. Nonetheless, the following three books cover a substantial amount of ground (described in more detail below each citation), so that together they form a coherent “three-volume textbook” for this class! If you can only read three books this summer, read these :)</p>
@@ -370,32 +416,40 @@ window.Quarto = {
 </div>
 </div>
 </section>
+<section id="topic-specific-textbooks" class="level2">
+<h2 class="anchored" data-anchor-id="topic-specific-textbooks">Topic-Specific Textbooks</h2>
+<section id="probabilistic-graphical-models" class="level3">
+<h3 class="anchored" data-anchor-id="probabilistic-graphical-models">Probabilistic Graphical Models</h3>
+<p><i class="bi bi-1-circle"></i> <strong><span class="citation" data-cites="koller_probabilistic_2009">Koller and Friedman (<a href="#ref-koller_probabilistic_2009" role="doc-biblioref">2009</a>)</span>, <em>Probabilistic Graphical Models: Principles and Techniques</em></strong></p>
+<p>Chapter 2, with an overview of probability theory and graph theory, is included in the <a href="./syllabus.html">Syllabus</a> as the recommended reading for Week 2! Then, Chapter 3 will give you the core concepts of Bayes Nets specifically, while Chapter 6 will add in a few of the useful additional tools we use, like <strong>plate notation</strong>.</p>
+</section>
+</section>
 <section id="reference-texts" class="level2">
 <h2 class="anchored" data-anchor-id="reference-texts">Reference Texts</h2>
-<p>In contrast to the books in the previous section, these books are <em>not</em> “the” textbooks for the class! These are here instead as reference books, to keep on hand (a) for when the lectures or the above books are unclear on some topic, and/or (b) for deeper dives into certain topics (where the latter may become a more relevant mission for you as we move towards the final project 😉)</p>
-<p><strong><span class="citation" data-cites="pearl_causality_2000">Pearl (<a href="#ref-pearl_causality_2000" role="doc-biblioref">2000</a>)</span>, <em>Causality: Models, Reasoning, and Inference</em></strong></p>
+<p>In contrast to the books in the <a href="#core-textbooks">“Core Textbooks” section</a>, these books are <em>not</em> “the” textbooks for the class! These are here instead as reference books, to keep on hand (a) for when the lectures or the above books are unclear on some topic, and/or (b) for deeper dives into certain topics (where the latter may become a more relevant mission for you as we move towards the final project 😉)</p>
+<p><i class="bi bi-1-circle"></i> <strong><span class="citation" data-cites="pearl_causality_2000">Pearl (<a href="#ref-pearl_causality_2000" role="doc-biblioref">2000</a>)</span>, <em>Causality: Models, Reasoning, and Inference</em></strong></p>
 <p>As mentioned during <a href="./w02/index.html">Week 2</a>, this is the book containing the fully-developed “unified theory” of causality, starting from a set of axioms and deriving the possibilities of causal inference as formal theorems.</p>
 <p>Within “pure” mathematics, if you kept digging into the foundations of things like calculus or algebra, you would eventually arrive at Alfred North Whitehead and Bertrand Russell’s <a href="https://en.wikipedia.org/wiki/Principia_Mathematica"><em>Principia Mathematica</em></a>—<span class="citation" data-cites="pearl_causality_2000">Pearl (<a href="#ref-pearl_causality_2000" role="doc-biblioref">2000</a>)</span> is that but for causality: the foundational axioms and core theorems are all in here.</p>
-<p><strong><span class="citation" data-cites="hume_enquiry_1748">Hume (<a href="#ref-hume_enquiry_1748" role="doc-biblioref">1748</a>)</span>, <em>An Enquiry Concerning Human Understanding</em></strong></p>
+<p><i class="bi bi-2-circle"></i> <strong><span class="citation" data-cites="hume_enquiry_1748">Hume (<a href="#ref-hume_enquiry_1748" role="doc-biblioref">1748</a>)</span>, <em>An Enquiry Concerning Human Understanding</em></strong></p>
 <p>This book serves as the philosophical “jumping off point” for causality: you can think of it like, there’s a nice progress-narrative of the human study of causality, that starts with the uncomfortable questions raised in <span class="citation" data-cites="hume_enquiry_1748">Hume (<a href="#ref-hume_enquiry_1748" role="doc-biblioref">1748</a>)</span> about the possibility (or impossibility!) of <strong>inferring</strong> knowledge of causality via inductive reasoning, and culminates in <span class="citation" data-cites="pearl_causality_2000">Pearl (<a href="#ref-pearl_causality_2000" role="doc-biblioref">2000</a>)</span>.</p>
-<p><strong><span class="citation" data-cites="sperber_explaining_1996">Sperber (<a href="#ref-sperber_explaining_1996" role="doc-biblioref">1996</a>)</span>, <em>Explaining Culture: A Naturalistic Approach</em></strong></p>
+<p><i class="bi bi-3-circle"></i> <strong><span class="citation" data-cites="sperber_explaining_1996">Sperber (<a href="#ref-sperber_explaining_1996" role="doc-biblioref">1996</a>)</span>, <em>Explaining Culture: A Naturalistic Approach</em></strong></p>
 <p>Mentioned in a footnote in <a href="./w01/index.html">Week 1</a>, this is a surprisingly-old book that made waves in certain communities (like, e.g., among people like me who geek about studying culture quantitatively), by essentially proposing a “research program” for the rigorous quantitative/empirical study of culture. In Jeff’s perfect world, this book would spark a progress-narrative in the same way that <span class="citation" data-cites="hume_enquiry_1748">Hume (<a href="#ref-hume_enquiry_1748" role="doc-biblioref">1748</a>)</span></p>
 </section>
 <section id="applied-examples" class="level2">
 <h2 class="anchored" data-anchor-id="applied-examples">Applied Examples</h2>
 <section id="the-holy-grail-but-field-comparative-politics" class="level3">
 <h3 class="anchored" data-anchor-id="the-holy-grail-but-field-comparative-politics">The Holy Grail (But, Field = Comparative Politics)</h3>
-<p><strong><span class="citation" data-cites="kalyvas_logic_2006">Kalyvas (<a href="#ref-kalyvas_logic_2006" role="doc-biblioref">2006</a>)</span>, <em>The Logic of Violence in Civil War</em></strong></p>
+<p><i class="bi bi-1-circle"></i> <strong><span class="citation" data-cites="kalyvas_logic_2006">Kalyvas (<a href="#ref-kalyvas_logic_2006" role="doc-biblioref">2006</a>)</span>, <em>The Logic of Violence in Civil War</em></strong></p>
 <p>This book is essentially… like, when you read stories about people spending decades hand-carving pathways through a mountain using only a hammer and chisel, this is the social science equivalent of that. A painstaking labor-of-love book that checks every single box I can think of in terms of causally-focused computational social science. It’s my model for any research I try to carry out.</p>
 </section>
 <section id="history" class="level3">
 <h3 class="anchored" data-anchor-id="history">History</h3>
-<p><strong><span class="citation" data-cites="acharya_slavery_2023">Acharya, Blackwell, and Sen (<a href="#ref-acharya_slavery_2023" role="doc-biblioref">2023</a>)</span>, “Slavery, Politics, and Causality”, <em>Harvard Kennedy School Working Paper</em></strong></p>
-<p>A rare paper that touches specifically on the veracity of drawing <em>causal</em> inferences from historical data!</p>
+<p><i class="bi bi-1-circle"></i> <strong><span class="citation" data-cites="barron_individuals_2018">Barron et al. (<a href="#ref-barron_individuals_2018" role="doc-biblioref">2018</a>)</span>, “Individuals, Institutions, and Innovation in the Debates of the French Revolution”</strong></p>
+<p><i class="bi bi-2-circle"></i> <strong><span class="citation" data-cites="blaydes_mirrors_2018">Blaydes, Grimmer, and McQueen (<a href="#ref-blaydes_mirrors_2018" role="doc-biblioref">2018</a>)</span>, “Mirrors for Princes and Sultans: Advice on the Art of Governance in the Medieval Christian and Islamic Worlds”</strong></p>
 </section>
 <section id="econometric-policy-evaluation" class="level3">
 <h3 class="anchored" data-anchor-id="econometric-policy-evaluation">Econometric Policy Evaluation</h3>
-<p><strong><span class="citation" data-cites="bjorkegren_what_2025">Björkegren, Blumenstock, and Knight (<a href="#ref-bjorkegren_what_2025" role="doc-biblioref">2025</a>)</span>, “What Do Policies Value?”, <em>Review of Economic Studies</em></strong> [<a href="https://dan.bjorkegren.com/bbk_targeting.pdf">PDF</a>]</p>
+<p><i class="bi bi-1-circle"></i> <strong><span class="citation" data-cites="bjorkegren_what_2025">Björkegren, Blumenstock, and Knight (<a href="#ref-bjorkegren_what_2025" role="doc-biblioref">2025</a>)</span>, “What Do Policies Value?”, <em>Review of Economic Studies</em></strong> [<a href="https://dan.bjorkegren.com/bbk_targeting.pdf">PDF</a>]</p>
 <p>Another “holy grail” paper, but in this case more for the Data Ethics and Policy course than this course. However, it does touch substantially on the issue of associational vs.&nbsp;causal inference, especially in terms of how going towards causality is a “high stakes” endeavor here, since we’re inferring normative ethical values from data (as opposed to descriptive statistics like the magnitude of the causal effect <span class="math inline">\(X \rightarrow Y\)</span>)</p>
 </section>
 </section>
@@ -403,12 +457,12 @@ window.Quarto = {
 <h2 class="anchored" data-anchor-id="video-resources">Video Resources</h2>
 <p>To me (as in, given how my brain works), there are certain topics which I’ve spent hours trying to understand via reading, only to realize that there’s some simple diagram or animation out there which “clicks” it in my mind 10000 times more effectively than the reading ever would.</p>
 <p>So, to that end, these video resources are just as important as (for some topics far <em>more</em> important than) the resources above!<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a></p>
-<p><strong><span class="citation" data-cites="ahrens_robust_2024">Ahrens (<a href="#ref-ahrens_robust_2024" role="doc-biblioref">2024</a>)</span>, “Robust Causal Inference using Double/Debiased Machine Learning: A Guide for Empirical Research”, <em>MZES Methods Bites Seminar</em></strong> <a href="https://www.youtube.com/watch?v=iiEi-3gIUbg">Link</a></p>
+<p><i class="bi bi-1-circle"></i> <strong><span class="citation" data-cites="ahrens_robust_2024">Ahrens (<a href="#ref-ahrens_robust_2024" role="doc-biblioref">2024</a>)</span>, “Robust Causal Inference using Double/Debiased Machine Learning: A Guide for Empirical Research”, <em>MZES Methods Bites Seminar</em></strong> <a href="https://www.youtube.com/watch?v=iiEi-3gIUbg">Link</a></p>
 <p>Here I literally added it to the resources folder <em>before</em> I realized that it has a discussion of a paper I did during the PhD. So, perhaps leaving it in here is some sort of humble brag, but finding it originally was not! (It’s what came up for me when I searched “Double/Debiased Machine Learning” on YouTube in May 2025 😜)</p>
 </section>
 <section id="miscellaneous-commonly-used-books-that-were-not-really-using" class="level2">
 <h2 class="anchored" data-anchor-id="miscellaneous-commonly-used-books-that-were-not-really-using">Miscellaneous / Commonly-Used Books That We’re Not Really Using</h2>
-<p><strong><span class="citation" data-cites="king_designing_1994">King, Keohane, and Verba (<a href="#ref-king_designing_1994" role="doc-biblioref">1994</a>)</span>, <em>Designing Social Inquiry</em></strong></p>
+<p><i class="bi bi-1-circle"></i> <strong><span class="citation" data-cites="king_designing_1994">King, Keohane, and Verba (<a href="#ref-king_designing_1994" role="doc-biblioref">1994</a>)</span>, <em>Designing Social Inquiry</em></strong></p>
 <p>I don’t really have a substantive critique of this book, or a deep reason for not using it, other than that I find myself getting really bored whenever I try to read it 🙈</p>
 
 
@@ -417,26 +471,32 @@ window.Quarto = {
 
 
 <div id="quarto-appendix" class="default"><section class="quarto-appendix-contents" role="doc-bibliography" id="quarto-bibliography"><h2 class="anchored quarto-appendix-heading">References</h2><div id="refs" class="references csl-bib-body hanging-indent" data-entry-spacing="0" role="list">
-<div id="ref-acharya_slavery_2023" class="csl-entry" role="listitem">
-Acharya, Avidit, Matthew Blackwell, and Maya Sen. 2023. <span>“<a href="https://www.hks.harvard.edu/publications/slavery-politics-and-causality">Slavery, <span>Politics</span>, and <span>Causality</span></a>.”</span> <em>Harvard Kennedy School Working Paper</em>.
-</div>
 <div id="ref-ahrens_robust_2024" class="csl-entry" role="listitem">
 Ahrens, Achim. 2024. <span>“<a href="https://www.youtube.com/watch?v=iiEi-3gIUbg">Robust <span>Causal Inference</span> Using <span>Double</span>/<span>Debiased Machine Learning</span>: <span>A Guide</span> for <span>Empirical Research</span></a>.”</span>
 </div>
 <div id="ref-angrist_mastering_2014" class="csl-entry" role="listitem">
 Angrist, Joshua D., and Jörn-Steffen Pischke. 2014. <em><a href="https://www.dropbox.com/scl/fi/3xa9tfswmv1w8ez54prtk/Joshua-D.-Angrist-J-rn-Steffen-Pischke-Mastering-Metrics.pdf?rlkey=2w0ipphrgxrejd7ddkv1wd635&amp;dl=1">Mastering ’<span>Metrics</span>: <span>The Path</span> from <span>Cause</span> to <span>Effect</span></a></em>. Princeton University Press.
 </div>
+<div id="ref-barron_individuals_2018" class="csl-entry" role="listitem">
+Barron, Alexander T. J., Jenny Huang, Rebecca L. Spang, and Simon DeDeo. 2018. <span>“<a href="https://doi.org/10.1073/pnas.1717729115">Individuals, <span>Institutions</span>, and <span>Innovation</span> in the <span>Debates</span> of the <span>French Revolution</span></a>.”</span> <em>Proceedings of the National Academy of Sciences</em> 115 (18): 4607–12.
+</div>
 <div id="ref-bjorkegren_what_2025" class="csl-entry" role="listitem">
 Björkegren, Daniel, Joshua E. Blumenstock, and Samsun Knight. 2025. <span>“<a href="https://dan.bjorkegren.com/bbk_targeting.pdf">What <span>Do Policies Value</span>?</a>”</span> <em>Review of Economic Studies</em>.
 </div>
+<div id="ref-blaydes_mirrors_2018" class="csl-entry" role="listitem">
+Blaydes, Lisa, Justin Grimmer, and Alison McQueen. 2018. <span>“<a href="https://doi.org/10.1086/699246">Mirrors for <span>Princes</span> and <span>Sultans</span>: <span>Advice</span> on the <span>Art</span> of <span>Governance</span> in the <span>Medieval Christian</span> and <span>Islamic Worlds</span></a>.”</span> <em>The Journal of Politics</em> 80 (4): 1150–67.
+</div>
 <div id="ref-hume_enquiry_1748" class="csl-entry" role="listitem">
-Hume, David. 1748. <em>An <span>Enquiry Concerning Human Understanding</span></em>. Hackett Publishing.
+Hume, David. 1748. <em><a href="https://www.dropbox.com/scl/fi/i2t4z8rqalaptu0257k5w/David-Hume-An-Enquiry-concerning-Human-Understanding.pdf?rlkey=5zks4tabwdw2hzbjjb1szcani&amp;dl=1">An <span>Enquiry Concerning Human Understanding</span></a></em>. Hackett Publishing.
 </div>
 <div id="ref-kalyvas_logic_2006" class="csl-entry" role="listitem">
 Kalyvas, Stathis N. 2006. <em><a href="https://www.dropbox.com/scl/fi/4es1r44ldnqtcroonr5g7/The-Logic-of-Violence-in-Civil-War.pdf?rlkey=uonfmw5zkx1ja5l8emv2bzfmg&amp;dl=1">The <span>Logic</span> of <span>Violence</span> in <span>Civil War</span></a></em>. Cambridge University Press.
 </div>
 <div id="ref-king_designing_1994" class="csl-entry" role="listitem">
 King, Gary, Robert Owen Keohane, and Sidney Verba. 1994. <em><a href="https://www.dropbox.com/scl/fi/3qgor4gose7kt18glkv94/Designing_Social_Inquiry.pdf?rlkey=bmgm3609931ounix9n28me5tw&amp;dl=1">Designing <span>Social Inquiry</span>: <span>Scientific Inference</span> in <span>Qualitative Research</span></a></em>. Princeton University Press.
+</div>
+<div id="ref-koller_probabilistic_2009" class="csl-entry" role="listitem">
+Koller, Daphne, and Nir Friedman. 2009. <em><a href="https://www.dropbox.com/scl/fi/6qmnr9feizngaq4005isj/Probabilistic-Graphical-Models.pdf?rlkey=4803nmsffh4xtsdfiji8jppb1&amp;dl=1">Probabilistic <span>Graphical Models</span>: <span>Principles</span> and <span>Techniques</span></a></em>. MIT Press.
 </div>
 <div id="ref-morgan_counterfactuals_2015" class="csl-entry" role="listitem">
 Morgan, Stephen L., and Christopher Winship. 2015. <em><a href="https://www.dropbox.com/scl/fi/rmuw9yw0gflg9wprufzu4/Counterfactuals-and-Causal-Inference.pdf?rlkey=gpzpuqgmzgsdwo18j22pl6yiw&amp;dl=1">Counterfactuals and <span>Causal Inference</span>: <span>Methods</span> and <span>Principles</span> for <span>Social Research</span></a></em>. Cambridge University Press.
