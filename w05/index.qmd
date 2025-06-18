@@ -1,0 +1,428 @@
+---
+title: "Week 5: Multilevel Madness, Closing Backdoor Paths"
+subtitle: "*DSAN 5650: Causal Inference for Computational Social Science*<br><span class='subsubtitle'>Summer 2025, Georgetown University</span>"
+author: "Jeff Jacobs"
+institute: "[`jj1088@georgetown.edu`](mailto:jj1088@georgetown.edu)"
+bibliography: "../_DSAN5650.bib"
+date: 2025-06-18
+date-format: full
+lecnum: 5
+categories:
+  - "Class Sessions"
+format:
+  revealjs:
+    df-print: kable
+    footer: "DSAN 5650 Week 5: {{< var w05.footer >}}"
+    output-file: "slides.html"
+    html-math-method: mathjax
+    scrollable: true
+    link-external-icon: true
+    link-external-newwindow: true
+    echo: true
+    code-fold: true
+    theme: [default, "../dsan-globals/jjquarto.scss"]
+    include-in-header:
+      text: "<link rel='stylesheet' href='https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css'><link rel='stylesheet' type='text/css' href='https://cdn.jsdelivr.net/gh/dreampulse/computer-modern-web-font@master/fonts.css'>"
+    slide-number: true
+    simplemenu:
+      flat: true
+      barhtml:
+        header: "<div class='menubar'><span style='position: absolute; left: 8; padding-left: 8px;'><a href='./index.html'>&larr; Return to Notes</a></span><ul class='menu'></ul></div>"
+      scale: 0.5
+    revealjs-plugins:
+      - simplemenu
+  html:
+    df-print: kable
+    output-file: "index.html"
+    html-math-method: mathjax
+    link-external-icon: true
+    link-external-newwindow: true
+    echo: true
+    code-fold: true
+    include-in-header:
+      text: "<link rel='stylesheet' href='https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css'><link rel='stylesheet' type='text/css' href='https://cdn.jsdelivr.net/gh/dreampulse/computer-modern-web-font@master/fonts.css'>"
+---
+
+::: {.content-visible unless-format="revealjs"}
+
+<center>
+<a class="h2" href="./slides.html" target="_blank">Open slides in new window &rarr;</a>
+</center>
+
+:::
+
+# Schedule {.smaller .crunch-title .crunch-callout .code-90 data-name="Schedule"}
+
+Today's Planned Schedule:
+
+| | Start | End | Topic |
+|:- |:- |:- |:- |
+| **Lecture** | 6:30pm | 7:20pm | [Multilevel Madness &rarr;](#roadmap) |
+| | 7:20pm | 7:50pm | [Applying $\textsf{do}()$ &rarr;](#the-ladder-of-causal-inference) |
+| **Break!** | 7:50pm | 8:00pm | |
+| | 8:00pm | 9:00pm | [Closing Backdoor Paths &rarr;](#the-collider) |
+
+: {tbl-colwidths="[12,12,12,64]"}
+
+{{< include ../dsan-globals/_globals-tex.qmd >}}
+
+::: {.hidden}
+
+```{r}
+#| label: r-source-globals
+source("../dsan-globals/_globals.r")
+```
+
+:::
+
+# The Ladder of Causal Inference {.smaller .title-12 .not-title-slide .crunch-title data-name="Ladder"}
+
+```{=html}
+<table>
+<!-- <thead>
+<tr>
+  <th>a</th>
+  <th>b</th>
+</tr>
+</thead> -->
+<tbody>
+<tr>
+  <td style='width: 8%;'></td>
+  <td align="center" class='tdvc' style="width: 8%;"><span data-qmd="<i class='bi bi-arrow-90deg-right'></i>"></span></td>
+  <td class='tdvc' colspan="2"><span data-qmd="![](images/fanciest_pooh.jpeg)"></span></td>
+  <td colspan="2"><span data-qmd="**Counterfactuals**: What *would have* happened, if history was slightly different...<br>$\Pr(Y_{M=M_0} \mid \textsf{do}(X)) - \Pr(Y_{M=M_0} \mid \textsf{do}(\neg X))$"></span></td>
+</tr>
+<tr>
+  <td align="right" class='tdvc'><span data-qmd="<i class='bi bi-arrow-90deg-right'></i>"></span></td>
+  <td class='tdvc' colspan="2"><span data-qmd="![](images/fancy_pooh.jpeg)"></span></td>
+  <td colspan="3" class='tdvc'><span data-qmd="**Intervention**: What happens if I...<br>$\Pr(Y \mid \textsf{do}(X)) - \Pr(Y \mid \textsf{do}(\neg X))$"></span></td>
+</tr>
+<tr>
+  <td class='tdvc' colspan="2"><img src='images/bored_pooh.jpeg' /></td>
+  <td colspan="4" align="left" class='tdvc'><span data-qmd="**Association**: What happened?<br>$\Pr(Y \mid X) - \Pr(Y \mid \neg X)$"></span></td>
+</tr>
+</tbody>
+</table>
+```
+
+* $\leadsto$ Stuff we add to probability theory in 5650 is to combat **confounding**: to **"fix"** whatever is making $\Pr(Y \mid X) \neq \Pr(Y \mid \textsf{do}(X))$!
+
+# The Four Elemental Confounds {.smaller .crunch-title .crunch-quarto-figure .title-12 data-stack-name="Forks, Pipes, Colliders"}
+
+![From Richard McElreath's [*Statistical Rethinking* Lectures](https://youtu.be/mBEA7PKDmiY?si=S0ciQ7W7wfL73kPR)](images/elemental-confounds.png){fig-align="center"}
+
+```{r}
+#| label: r-libraries
+#| echo: true
+#| code-fold: show
+library(tidyverse) # For ggplot
+library(extraDistr) # For rbern()
+library(patchwork) # For side-by-side plotting
+n_d <- 10000 # For discrete RVs
+n_c <- 300 # For continuous RVs
+```
+
+## Conditioning on a Fork: $X \leftarrow Z \rightarrow Y$ {.smaller .crunch-title .title-11 .crunch-quarto-figure}
+
+```{r}
+#| label: fork-continuous
+#| echo: true
+#| code-fold: true
+library(ggtext)
+set.seed(5650)
+cfork_df <- tibble(
+    Z = rbern(n_c),
+    X = rnorm(n_c, 2 * Z - 1),
+    Y = rnorm(n_c, 2 * Z - 1)
+)
+library(latex2exp)
+overall_lm <- lm(Y ~ X, data=cfork_df)
+overall_slope <- round(overall_lm$coef['X'], 3)
+z0_lm <- lm(Y ~ X, data=cfork_df |> filter(Z == 0))
+z0_slope <- round(z0_lm$coef['X'], 2)
+z0_label <- paste0("<span style='color: #e69f00;'>Slope<sub>Z=0</sub> = ",z0_slope,"</span>")
+z1_lm <- lm(Y ~ X, data=cfork_df |> filter(Z == 1))
+z1_slope <- round(z1_lm$coef['X'], 2)
+z1_label <- paste0("<span style='color: #56b4e9;'>Slope<sub>Z=1</sub> = ",z1_slope,"</span>")
+z_texlabel <- paste0(z0_label, " | ", z1_label)
+cfork_xmin <- min(cfork_df$X)
+cfork_xmax <- max(cfork_df$X)
+ggplot() +
+  # Points
+  geom_point(
+    data=cfork_df,
+    aes(x=X, y=Y, color=factor(Z)),
+    size=0.6*g_pointsize,
+    alpha=0.8
+  ) +
+  # Overall lm
+  geom_smooth(
+    data=cfork_df, aes(x=X, y=Y),
+    method = lm, se = FALSE,
+    linewidth = 2.5, color='black'
+  ) +
+  # Stratified lm
+  # (slightly larger black lines)
+  geom_smooth(
+    data=cfork_df,
+    aes(x=X, y=Y, group=factor(Z)),
+    method=lm, se=FALSE, fullrange=TRUE,
+    linewidth=2.75, color='black'
+  ) +
+  # (Colored lines)
+  geom_smooth(
+    data=cfork_df,
+    aes(x=X, y=Y, color=factor(Z)),
+    method=lm, se=FALSE, fullrange=TRUE,
+    linewidth=2
+  ) +
+  theme_dsan(base_size=24) +
+  theme(
+    plot.title = element_text(size=24),
+    plot.subtitle = element_markdown(size=20)
+  ) +
+  coord_equal() +
+  labs(
+    title = paste0(
+      "Unstratified Slope = ",overall_slope
+    ),
+    subtitle=z_texlabel,
+    x = "X", y = "Y", color = "Z"
+  )
+```
+
+## Conditioning on a Pipe: $X \rightarrow Z \rightarrow Y$ {.smaller .crunch-title .title-11 .crunch-quarto-figure}
+
+<!-- Continuous Pipe plot -->
+
+```{r}
+#| label: pipe-continuous
+#| echo: true
+#| code-fold: true
+set.seed(5650)
+cpipe_df <- tibble(
+    X = rnorm(n_c),
+    Z = rbern(n_c, plogis(X)),
+    Y = rnorm(n_c, 2 * Z - 1)
+)
+cpipe_lm <- lm(Y ~ X, data=cpipe_df)
+cpipe_slope <- round(cpipe_lm$coef['X'], 3)
+cpipe_z0_lm <- lm(Y ~ X, data=cpipe_df |> filter(Z == 0))
+cpipe_z0_slope <- round(cpipe_z0_lm$coef['X'], 2)
+cpipe_z0_label <- paste0("<span style='color: #e69f00;'>Slope<sub>Z=0</sub> = ",cpipe_z0_slope,"</span>")
+cpipe_z1_lm <- lm(Y ~ X, data=cpipe_df |> filter(Z == 1))
+cpipe_z1_slope <- round(cpipe_z1_lm$coef['X'], 2)
+cpipe_z1_label <- paste0("<span style='color: #56b4e9;'>Slope<sub>Z=1</sub> = ",cpipe_z1_slope,"</span>")
+cpipe_z_texlabel <- paste0(cpipe_z0_label, " | ", cpipe_z1_label)
+cpipe_xmin <- min(cpipe_df$X)
+cpipe_xmax <- max(cpipe_df$X)
+ggplot() +
+  # Points
+  geom_point(
+    data=cpipe_df |> filter(Y > -3),
+    aes(x=X, y=Y, color=factor(Z)),
+    size=0.6*g_pointsize,
+    alpha=0.8
+  ) +
+  # Overall lm
+  geom_smooth(
+    data=cpipe_df, aes(x=X, y=Y),
+    method = lm, se = FALSE,
+    linewidth = 2.5, color='black'
+  ) +
+  # Stratified lm
+  # (slightly larger black lines)
+  geom_smooth(
+    data=cpipe_df,
+    aes(x=X, y=Y, group=factor(Z)),
+    method=lm, se=FALSE, fullrange=TRUE,
+    linewidth=2.75, color='black'
+  ) +
+  # (Colored lines)
+  geom_smooth(
+    data=cpipe_df,
+    aes(x=X, y=Y, color=factor(Z)),
+    method=lm, se=FALSE, fullrange=TRUE,
+    linewidth=2
+  ) +
+  theme_dsan(base_size=24) +
+  theme(
+    plot.title = element_text(size=24),
+    plot.subtitle = element_markdown(size=20)
+  ) +
+  coord_equal() +
+  labs(
+    title = paste0(
+      "Unstratified Slope = ",cpipe_slope
+    ),
+    subtitle=cpipe_z_texlabel,
+    x = "X", y = "Y", color = "Z"
+  )
+```
+
+## ⚠️Conditioning on a Collider⚠️: $X \rightarrow Z \leftarrow Y$ {.smaller .crunch-title .title-10 .crunch-quarto-figure .crunch-ul .crunch-li-5}
+
+* Conditioning on colliders **induces** correlation where there **previously was none** ☠️
+
+<!-- Continuous Collider Plot -->
+
+```{r}
+#| label: coll-continuous
+#| echo: true
+#| code-fold: true
+set.seed(5650)
+ccoll_df <- tibble(
+    X = rnorm(n_c),
+    Y = rnorm(n_c),
+    Z = rbern(n_c, plogis(2 * (X + Y - 1)))
+)
+ccoll_lm <- lm(Y ~ X, data=ccoll_df)
+ccoll_slope <- round(ccoll_lm$coef['X'], 3)
+ccoll_z0_lm <- lm(Y ~ X, data=ccoll_df |> filter(Z == 0))
+ccoll_z0_slope <- round(ccoll_z0_lm$coef['X'], 2)
+ccoll_z0_label <- paste0("<span style='color: #e69f00;'>Slope<sub>Z=0</sub> = ",ccoll_z0_slope,"</span>")
+ccoll_z1_lm <- lm(Y ~ X, data=ccoll_df |> filter(Z == 1))
+ccoll_z1_slope <- round(ccoll_z1_lm$coef['X'], 2)
+ccoll_z1_label <- paste0("<span style='color: #56b4e9;'>Slope<sub>Z=1</sub> = ",ccoll_z1_slope,"</span>")
+ccoll_z_texlabel <- paste0(ccoll_z0_label, " | ", ccoll_z1_label)
+ccoll_xmin <- min(ccoll_df$X)
+ccoll_xmax <- max(ccoll_df$X)
+ggplot() +
+  # Points
+  geom_point(
+    data=ccoll_df |> filter(Y > -3),
+    aes(x=X, y=Y, color=factor(Z)),
+    size=0.6*g_pointsize,
+    alpha=0.8
+  ) +
+  # Overall lm
+  geom_smooth(
+    data=ccoll_df, aes(x=X, y=Y),
+    method = lm, se = FALSE,
+    linewidth = 2.5, color='black'
+  ) +
+  # Stratified lm
+  # (slightly larger black lines)
+  geom_smooth(
+    data=ccoll_df,
+    aes(x=X, y=Y, group=factor(Z)),
+    method=lm, se=FALSE, fullrange=TRUE,
+    linewidth=2.75, color='black'
+  ) +
+  # (Colored lines)
+  geom_smooth(
+    data=ccoll_df,
+    aes(x=X, y=Y, color=factor(Z)),
+    method=lm, se=FALSE, fullrange=TRUE,
+    linewidth=2
+  ) +
+  theme_dsan(base_size=24) +
+  theme(
+    plot.title = element_text(size=24),
+    plot.subtitle = element_markdown(size=20)
+  ) +
+  coord_equal() +
+  labs(
+    title = paste0(
+      "Unstratified Slope = ",ccoll_slope
+    ),
+    subtitle=ccoll_z_texlabel,
+    x = "X", y = "Y", color = "Z"
+  )
+```
+
+* ...This is why we have to **think**, rather than just "control for everything"! 😭
+
+## Conditioning on a Proxy for $Z$ {.smaller .crunch-title .title-11 .crunch-quarto-figure .crunch-ul .crunch-li-5 .crunch-quarto-layout-panel .crunch-img}
+
+:::: {layout="[65,35]" layout-valign="center"}
+::: {#proxy-text}
+
+* With just $X \rightarrow Z \rightarrow Y$, we'd have a **pipe**
+* Observing $A \Rightarrow$ **some** (not all!) info about $Z$
+
+:::
+::: {#proxy-img}
+
+![](images/causal_proxy.svg){fig-align="center" width="180"}
+
+:::
+::::
+
+<!-- Continuous Proxy Plot -->
+
+```{r}
+#| label: prox-continuous
+#| echo: true
+#| code-fold: true
+library(tidyverse)
+library(extraDistr)
+library(latex2exp)
+set.seed(5650)
+n_c <- 350
+cprox_df <- tibble(
+    X = rnorm(n_c),
+    Z = rbern(n_c, plogis(X)),
+    Y = rnorm(n_c, 2 * Z - 1),
+    A = rbern(n_c, (1-Z)*0.86 + Z*0.14)
+)
+cprox_lm <- lm(Y ~ X, data=cprox_df)
+cprox_slope <- round(cprox_lm$coef['X'], 3)
+cprox_a0_lm <- lm(Y ~ X, data=cprox_df |> filter(A == 0))
+cprox_a0_slope <- round(cprox_a0_lm$coef['X'], 2)
+cprox_a0_label <- paste0("<span style='color: #e69f00;'>Slope<sub>Z=0</sub> = ",cprox_a0_slope,"</span>")
+# A == 1 lm
+cprox_a1_lm <- lm(Y ~ X, data=cprox_df |> filter(A == 1))
+cprox_a1_slope <- round(cprox_a1_lm$coef['X'], 2)
+cprox_a1_label <- paste0("<span style='color: #56b4e9;'>Slope<sub>Z=1</sub> = ",cprox_a1_slope,"</span>")
+cprox_a_texlabel <- paste0(cprox_a0_label, " | ", cprox_a1_label)
+cprox_xmin <- min(cprox_df$X)
+cprox_xmax <- max(cprox_df$X)
+ggplot() +
+  # Points
+  geom_point(
+    data=cprox_df |> filter(Y > -3),
+    aes(x=X, y=Y, color=factor(A)),
+    size=0.5*g_pointsize,
+    alpha=0.8
+  ) +
+  # Overall lm
+  geom_smooth(
+    data=cprox_df, aes(x=X, y=Y),
+    method = lm, se = FALSE,
+    linewidth = 2.5, color='black'
+  ) +
+  # Stratified lm
+  # (slightly larger black lines)
+  geom_smooth(
+    data=cprox_df,
+    aes(x=X, y=Y, group=factor(A)),
+    method=lm, se=FALSE, fullrange=TRUE,
+    linewidth=2.75, color='black'
+  ) +
+  # (Colored lines)
+  geom_smooth(
+    data=cprox_df,
+    aes(x=X, y=Y, color=factor(A)),
+    method=lm, se=FALSE, fullrange=TRUE,
+    linewidth=2
+  ) +
+  theme_dsan(base_size=22) +
+  theme(
+    plot.title = element_text(size=22),
+    plot.subtitle = element_markdown(size=20)
+  ) +
+  coord_equal() +
+  labs(
+    title = paste0(
+      "Unstratified Slope = ",cprox_slope
+    ),
+    subtitle=cprox_a_texlabel,
+    x = "X", y = "Y", color = "A"
+  )
+```
+
+## References
+
+::: {#refs}
+:::

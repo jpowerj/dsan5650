@@ -119,7 +119,7 @@
     "href": "index.html",
     "title": "DSAN 5650: Causal Inference for Computational Social Science",
     "section": "",
-    "text": "Welcome to the homepage for DSAN 5650: Causal Inference for Computational Social Science at Georgetown University, for the Summer 2025 session!\nThe course meets on Wednesdays from 6:30pm to 9:00pm online, via the Zoom Link provided in the sidebar.\nCheck out the syllabus (or any other link in the sidebar) for more info! Or, use the following links to view notes for individual weeks:\n\n\n\n\n\nTitle\n\n\nDate\n\n\n\n\n\n\nWeek 1: Science from Particles to People\n\n\nMay 21\n\n\n\n\nWeek 2: Probabilistic Graphical Models (PGMs)\n\n\nMay 28\n\n\n\n\nWeek 3: From PGMs to Causal Diagrams\n\n\nJune 4\n\n\n\n\nWeek 4: Clearing the Path from Cause to Effect\n\n\nJune 11\n\n\n\n\n\nNo matching items\n\n\nCourse Description:\nThis course provides students with the opportunity to take the analytical skills, machine learning algorithms, and statistical methods learned throughout their first year in the program and explore how they can be employed towards carrying out rigorous, original research in the behavioral and social sciences. With a particular emphasis on tackling the additional challenges which arise when moving from associational to causal inference, particularly when only observational (as opposed to experimental) data is available, students will become proficient in cutting-edge causal Machine Learning techniques such as propensity score matching, synthetic controls, causal program evaluation, inverse social welfare function estimation from panel data, and Double-Debiased Machine Learning.\nIn-class examples will cover continuous, discrete-choice, and textual data from a wide swath of social and behavioral sciences: economics, political science, sociology, anthropology, quantitative history, and digital humanities. After gaining experience through in-class labs and homework assignments focused on reproducing key findings from recent journal articles in each of these disciplines, students will spend the final weeks of the course on a final project demonstrating their ability to develop, evaluate, and test the robustness of a causal hypothesis.\nPrerequisites: DSAN 5000, DSAN 5100 (DSAN 5300 recommended but not required)",
+    "text": "Welcome to the homepage for DSAN 5650: Causal Inference for Computational Social Science at Georgetown University, for the Summer 2025 session!\nThe course meets on Wednesdays from 6:30pm to 9:00pm online, via the Zoom Link provided in the sidebar.\nCheck out the syllabus (or any other link in the sidebar) for more info! Or, use the following links to view notes for individual weeks:\n\n\n\n\n\nTitle\n\n\nDate\n\n\n\n\n\n\nWeek 1: Science from Particles to People\n\n\nMay 21\n\n\n\n\nWeek 2: Probabilistic Graphical Models (PGMs)\n\n\nMay 28\n\n\n\n\nWeek 3: From PGMs to Causal Diagrams\n\n\nJune 4\n\n\n\n\nWeek 4: Clearing the Path from Cause to Effect\n\n\nJune 11\n\n\n\n\nWeek 5: Multilevel Madness, Closing Backdoor Paths\n\n\nJune 18\n\n\n\n\n\nNo matching items\n\n\nCourse Description:\nThis course provides students with the opportunity to take the analytical skills, machine learning algorithms, and statistical methods learned throughout their first year in the program and explore how they can be employed towards carrying out rigorous, original research in the behavioral and social sciences. With a particular emphasis on tackling the additional challenges which arise when moving from associational to causal inference, particularly when only observational (as opposed to experimental) data is available, students will become proficient in cutting-edge causal Machine Learning techniques such as propensity score matching, synthetic controls, causal program evaluation, inverse social welfare function estimation from panel data, and Double-Debiased Machine Learning.\nIn-class examples will cover continuous, discrete-choice, and textual data from a wide swath of social and behavioral sciences: economics, political science, sociology, anthropology, quantitative history, and digital humanities. After gaining experience through in-class labs and homework assignments focused on reproducing key findings from recent journal articles in each of these disciplines, students will spend the final weeks of the course on a final project demonstrating their ability to develop, evaluate, and test the robustness of a causal hypothesis.\nPrerequisites: DSAN 5000, DSAN 5100 (DSAN 5300 recommended but not required)",
     "crumbs": [
       "<i class='bi bi-house pe-1'></i> Home"
     ]
@@ -139,161 +139,272 @@
     "text": "Footnotes\n\n\nThe term “Graphical” in Probabilistic Graphical Model is not used in the same sense as the “graphical” we’re used to from vernacular English. Capital-G Graphical denotes that the Probabilistic Model is represented as a Graph, a well-defined mathematical object consisting of nodes and edges, which does not have to be represented graphically (though it could be, like in our example here with circles and arrows). In fact, when a computer program is estimating a PGM, it is by definition not in a graphical form—it’s in the form of 0s and 1s, stored in the computer’s memory.↩︎"
   },
   {
-    "objectID": "assignments.html",
-    "href": "assignments.html",
-    "title": "Assignment Point Distributions",
+    "objectID": "w05/slides.html#conditioning-on-a-fork-x-leftarrow-z-rightarrow-y",
+    "href": "w05/slides.html#conditioning-on-a-fork-x-leftarrow-z-rightarrow-y",
+    "title": "Week 5: Multilevel Madness, Closing Backdoor Paths",
+    "section": "Conditioning on a Fork: \\(X \\leftarrow Z \\rightarrow Y\\)",
+    "text": "Conditioning on a Fork: \\(X \\leftarrow Z \\rightarrow Y\\)\n\n\nCode\nlibrary(ggtext)\nset.seed(5650)\ncfork_df &lt;- tibble(\n    Z = rbern(n_c),\n    X = rnorm(n_c, 2 * Z - 1),\n    Y = rnorm(n_c, 2 * Z - 1)\n)\nlibrary(latex2exp)\noverall_lm &lt;- lm(Y ~ X, data=cfork_df)\noverall_slope &lt;- round(overall_lm$coef['X'], 3)\nz0_lm &lt;- lm(Y ~ X, data=cfork_df |&gt; filter(Z == 0))\nz0_slope &lt;- round(z0_lm$coef['X'], 2)\nz0_label &lt;- paste0(\"&lt;span style='color: #e69f00;'&gt;Slope&lt;sub&gt;Z=0&lt;/sub&gt; = \",z0_slope,\"&lt;/span&gt;\")\nz1_lm &lt;- lm(Y ~ X, data=cfork_df |&gt; filter(Z == 1))\nz1_slope &lt;- round(z1_lm$coef['X'], 2)\nz1_label &lt;- paste0(\"&lt;span style='color: #56b4e9;'&gt;Slope&lt;sub&gt;Z=1&lt;/sub&gt; = \",z1_slope,\"&lt;/span&gt;\")\nz_texlabel &lt;- paste0(z0_label, \" | \", z1_label)\ncfork_xmin &lt;- min(cfork_df$X)\ncfork_xmax &lt;- max(cfork_df$X)\nggplot() +\n  # Points\n  geom_point(\n    data=cfork_df,\n    aes(x=X, y=Y, color=factor(Z)),\n    size=0.6*g_pointsize,\n    alpha=0.8\n  ) +\n  # Overall lm\n  geom_smooth(\n    data=cfork_df, aes(x=X, y=Y),\n    method = lm, se = FALSE,\n    linewidth = 2.5, color='black'\n  ) +\n  # Stratified lm\n  # (slightly larger black lines)\n  geom_smooth(\n    data=cfork_df,\n    aes(x=X, y=Y, group=factor(Z)),\n    method=lm, se=FALSE, fullrange=TRUE,\n    linewidth=2.75, color='black'\n  ) +\n  # (Colored lines)\n  geom_smooth(\n    data=cfork_df,\n    aes(x=X, y=Y, color=factor(Z)),\n    method=lm, se=FALSE, fullrange=TRUE,\n    linewidth=2\n  ) +\n  theme_dsan(base_size=24) +\n  theme(\n    plot.title = element_text(size=24),\n    plot.subtitle = element_markdown(size=20)\n  ) +\n  coord_equal() +\n  labs(\n    title = paste0(\n      \"Unstratified Slope = \",overall_slope\n    ),\n    subtitle=z_texlabel,\n    x = \"X\", y = \"Y\", color = \"Z\"\n  )"
+  },
+  {
+    "objectID": "w05/slides.html#conditioning-on-a-pipe-x-rightarrow-z-rightarrow-y",
+    "href": "w05/slides.html#conditioning-on-a-pipe-x-rightarrow-z-rightarrow-y",
+    "title": "Week 5: Multilevel Madness, Closing Backdoor Paths",
+    "section": "Conditioning on a Pipe: \\(X \\rightarrow Z \\rightarrow Y\\)",
+    "text": "Conditioning on a Pipe: \\(X \\rightarrow Z \\rightarrow Y\\)\n\n\n\nCode\nset.seed(5650)\ncpipe_df &lt;- tibble(\n    X = rnorm(n_c),\n    Z = rbern(n_c, plogis(X)),\n    Y = rnorm(n_c, 2 * Z - 1)\n)\ncpipe_lm &lt;- lm(Y ~ X, data=cpipe_df)\ncpipe_slope &lt;- round(cpipe_lm$coef['X'], 3)\ncpipe_z0_lm &lt;- lm(Y ~ X, data=cpipe_df |&gt; filter(Z == 0))\ncpipe_z0_slope &lt;- round(cpipe_z0_lm$coef['X'], 2)\ncpipe_z0_label &lt;- paste0(\"&lt;span style='color: #e69f00;'&gt;Slope&lt;sub&gt;Z=0&lt;/sub&gt; = \",cpipe_z0_slope,\"&lt;/span&gt;\")\ncpipe_z1_lm &lt;- lm(Y ~ X, data=cpipe_df |&gt; filter(Z == 1))\ncpipe_z1_slope &lt;- round(cpipe_z1_lm$coef['X'], 2)\ncpipe_z1_label &lt;- paste0(\"&lt;span style='color: #56b4e9;'&gt;Slope&lt;sub&gt;Z=1&lt;/sub&gt; = \",cpipe_z1_slope,\"&lt;/span&gt;\")\ncpipe_z_texlabel &lt;- paste0(cpipe_z0_label, \" | \", cpipe_z1_label)\ncpipe_xmin &lt;- min(cpipe_df$X)\ncpipe_xmax &lt;- max(cpipe_df$X)\nggplot() +\n  # Points\n  geom_point(\n    data=cpipe_df |&gt; filter(Y &gt; -3),\n    aes(x=X, y=Y, color=factor(Z)),\n    size=0.6*g_pointsize,\n    alpha=0.8\n  ) +\n  # Overall lm\n  geom_smooth(\n    data=cpipe_df, aes(x=X, y=Y),\n    method = lm, se = FALSE,\n    linewidth = 2.5, color='black'\n  ) +\n  # Stratified lm\n  # (slightly larger black lines)\n  geom_smooth(\n    data=cpipe_df,\n    aes(x=X, y=Y, group=factor(Z)),\n    method=lm, se=FALSE, fullrange=TRUE,\n    linewidth=2.75, color='black'\n  ) +\n  # (Colored lines)\n  geom_smooth(\n    data=cpipe_df,\n    aes(x=X, y=Y, color=factor(Z)),\n    method=lm, se=FALSE, fullrange=TRUE,\n    linewidth=2\n  ) +\n  theme_dsan(base_size=24) +\n  theme(\n    plot.title = element_text(size=24),\n    plot.subtitle = element_markdown(size=20)\n  ) +\n  coord_equal() +\n  labs(\n    title = paste0(\n      \"Unstratified Slope = \",cpipe_slope\n    ),\n    subtitle=cpipe_z_texlabel,\n    x = \"X\", y = \"Y\", color = \"Z\"\n  )"
+  },
+  {
+    "objectID": "w05/slides.html#conditioning-on-a-collider-x-rightarrow-z-leftarrow-y",
+    "href": "w05/slides.html#conditioning-on-a-collider-x-rightarrow-z-leftarrow-y",
+    "title": "Week 5: Multilevel Madness, Closing Backdoor Paths",
+    "section": "⚠️Conditioning on a Collider⚠️: \\(X \\rightarrow Z \\leftarrow Y\\)",
+    "text": "⚠️Conditioning on a Collider⚠️: \\(X \\rightarrow Z \\leftarrow Y\\)\n\nConditioning on colliders induces correlation where there previously was none ☠️\n\n\n\n\nCode\nset.seed(5650)\nccoll_df &lt;- tibble(\n    X = rnorm(n_c),\n    Y = rnorm(n_c),\n    Z = rbern(n_c, plogis(2 * (X + Y - 1)))\n)\nccoll_lm &lt;- lm(Y ~ X, data=ccoll_df)\nccoll_slope &lt;- round(ccoll_lm$coef['X'], 3)\nccoll_z0_lm &lt;- lm(Y ~ X, data=ccoll_df |&gt; filter(Z == 0))\nccoll_z0_slope &lt;- round(ccoll_z0_lm$coef['X'], 2)\nccoll_z0_label &lt;- paste0(\"&lt;span style='color: #e69f00;'&gt;Slope&lt;sub&gt;Z=0&lt;/sub&gt; = \",ccoll_z0_slope,\"&lt;/span&gt;\")\nccoll_z1_lm &lt;- lm(Y ~ X, data=ccoll_df |&gt; filter(Z == 1))\nccoll_z1_slope &lt;- round(ccoll_z1_lm$coef['X'], 2)\nccoll_z1_label &lt;- paste0(\"&lt;span style='color: #56b4e9;'&gt;Slope&lt;sub&gt;Z=1&lt;/sub&gt; = \",ccoll_z1_slope,\"&lt;/span&gt;\")\nccoll_z_texlabel &lt;- paste0(ccoll_z0_label, \" | \", ccoll_z1_label)\nccoll_xmin &lt;- min(ccoll_df$X)\nccoll_xmax &lt;- max(ccoll_df$X)\nggplot() +\n  # Points\n  geom_point(\n    data=ccoll_df |&gt; filter(Y &gt; -3),\n    aes(x=X, y=Y, color=factor(Z)),\n    size=0.6*g_pointsize,\n    alpha=0.8\n  ) +\n  # Overall lm\n  geom_smooth(\n    data=ccoll_df, aes(x=X, y=Y),\n    method = lm, se = FALSE,\n    linewidth = 2.5, color='black'\n  ) +\n  # Stratified lm\n  # (slightly larger black lines)\n  geom_smooth(\n    data=ccoll_df,\n    aes(x=X, y=Y, group=factor(Z)),\n    method=lm, se=FALSE, fullrange=TRUE,\n    linewidth=2.75, color='black'\n  ) +\n  # (Colored lines)\n  geom_smooth(\n    data=ccoll_df,\n    aes(x=X, y=Y, color=factor(Z)),\n    method=lm, se=FALSE, fullrange=TRUE,\n    linewidth=2\n  ) +\n  theme_dsan(base_size=24) +\n  theme(\n    plot.title = element_text(size=24),\n    plot.subtitle = element_markdown(size=20)\n  ) +\n  coord_equal() +\n  labs(\n    title = paste0(\n      \"Unstratified Slope = \",ccoll_slope\n    ),\n    subtitle=ccoll_z_texlabel,\n    x = \"X\", y = \"Y\", color = \"Z\"\n  )\n\n\n\n\n…This is why we have to think, rather than just “control for everything”! 😭"
+  },
+  {
+    "objectID": "w05/slides.html#conditioning-on-a-proxy-for-z",
+    "href": "w05/slides.html#conditioning-on-a-proxy-for-z",
+    "title": "Week 5: Multilevel Madness, Closing Backdoor Paths",
+    "section": "Conditioning on a Proxy for \\(Z\\)",
+    "text": "Conditioning on a Proxy for \\(Z\\)\n\n\n\n\n\n\n\nWith just \\(X \\rightarrow Z \\rightarrow Y\\), we’d have a pipe\nObserving \\(A \\Rightarrow\\) some (not all!) info about \\(Z\\)\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nCode\nlibrary(tidyverse)\nlibrary(extraDistr)\nlibrary(latex2exp)\nset.seed(5650)\nn_c &lt;- 350\ncprox_df &lt;- tibble(\n    X = rnorm(n_c),\n    Z = rbern(n_c, plogis(X)),\n    Y = rnorm(n_c, 2 * Z - 1),\n    A = rbern(n_c, (1-Z)*0.86 + Z*0.14)\n)\ncprox_lm &lt;- lm(Y ~ X, data=cprox_df)\ncprox_slope &lt;- round(cprox_lm$coef['X'], 3)\ncprox_a0_lm &lt;- lm(Y ~ X, data=cprox_df |&gt; filter(A == 0))\ncprox_a0_slope &lt;- round(cprox_a0_lm$coef['X'], 2)\ncprox_a0_label &lt;- paste0(\"&lt;span style='color: #e69f00;'&gt;Slope&lt;sub&gt;Z=0&lt;/sub&gt; = \",cprox_a0_slope,\"&lt;/span&gt;\")\n# A == 1 lm\ncprox_a1_lm &lt;- lm(Y ~ X, data=cprox_df |&gt; filter(A == 1))\ncprox_a1_slope &lt;- round(cprox_a1_lm$coef['X'], 2)\ncprox_a1_label &lt;- paste0(\"&lt;span style='color: #56b4e9;'&gt;Slope&lt;sub&gt;Z=1&lt;/sub&gt; = \",cprox_a1_slope,\"&lt;/span&gt;\")\ncprox_a_texlabel &lt;- paste0(cprox_a0_label, \" | \", cprox_a1_label)\ncprox_xmin &lt;- min(cprox_df$X)\ncprox_xmax &lt;- max(cprox_df$X)\nggplot() +\n  # Points\n  geom_point(\n    data=cprox_df |&gt; filter(Y &gt; -3),\n    aes(x=X, y=Y, color=factor(A)),\n    size=0.5*g_pointsize,\n    alpha=0.8\n  ) +\n  # Overall lm\n  geom_smooth(\n    data=cprox_df, aes(x=X, y=Y),\n    method = lm, se = FALSE,\n    linewidth = 2.5, color='black'\n  ) +\n  # Stratified lm\n  # (slightly larger black lines)\n  geom_smooth(\n    data=cprox_df,\n    aes(x=X, y=Y, group=factor(A)),\n    method=lm, se=FALSE, fullrange=TRUE,\n    linewidth=2.75, color='black'\n  ) +\n  # (Colored lines)\n  geom_smooth(\n    data=cprox_df,\n    aes(x=X, y=Y, color=factor(A)),\n    method=lm, se=FALSE, fullrange=TRUE,\n    linewidth=2\n  ) +\n  theme_dsan(base_size=22) +\n  theme(\n    plot.title = element_text(size=22),\n    plot.subtitle = element_markdown(size=20)\n  ) +\n  coord_equal() +\n  labs(\n    title = paste0(\n      \"Unstratified Slope = \",cprox_slope\n    ),\n    subtitle=cprox_a_texlabel,\n    x = \"X\", y = \"Y\", color = \"A\"\n  )"
+  },
+  {
+    "objectID": "w05/slides.html#references",
+    "href": "w05/slides.html#references",
+    "title": "Week 5: Multilevel Madness, Closing Backdoor Paths",
+    "section": "References",
+    "text": "References"
+  },
+  {
+    "objectID": "w05/index.html",
+    "href": "w05/index.html",
+    "title": "Week 5: Multilevel Madness, Closing Backdoor Paths",
     "section": "",
-    "text": "Use the tabs below to view the point distributions for different assignments.\nThe distributions are imported from Google Sheets mainly for transparency: so that you can see exactly how totals are computed as a sum of the individual points allocated for each test!\n\nHW1\n\n\n\n\n\n\n\n\n\npart\nqid\npoints\nq_total\npart_total\n\n\n\n\n1\nQ1.1a\n4\n\n\n\n\n\nQ1.1b\n2\n6\n\n\n\n\nQ1.2\n8\n8\n\n\n\n\nQ1.3a\n3\n\n\n\n\n\nQ1.3b\n3\n\n\n\n\n\nQ1.3c\n3\n9\n\n\n\n\nQ1.4a\n3\n\n\n\n\n\nQ1.4b\n3\n6\n29\n\n\n2\nQ2.1\n4\n\n\n\n\n\nQ2.2\n4\n\n\n\n\n\nQ2.3\n4\n\n\n\n\n\nQ2.4\n4\n\n16\n\n\n3\nQ3.1\n4\n\n\n\n\n\nQ3.2\n4\n\n\n\n\n\nQ3.3\n4\n\n12\n\n\n4\nQ4.1\n3\n3\n\n\n\n\nQ4.2a\n4\n\n\n\n\n\nQ4.2b\n2\n6\n\n\n\n\nQ4.3a\n2\n\n\n\n\n\nQ4.3b\n2\n4\n\n\n\n\nQ4.4a\n2\n\n\n\n\n\nQ4.4b\n2\n4\n\n\n\n\nQ4.5a\n2\n\n\n\n\n\nQ4.5b\n2\n4\n\n\n\n\nQ4.6a\n2\n\n\n\n\n\nQ4.6b\n2\n4\n25\n\n\n5\nQ5.1\n4\n4\n\n\n\n\nQ5.2\n2\n2\n\n\n\n\nQ5.3\n2\n\n\n\n\n\nQ5.4a\n4\n\n\n\n\n\nQ5.4b\n3\n\n\n\n\n\nQ5.4c\n3\n10\n18\n\n\n\nTotal\n100",
+    "text": "Open slides in new window →",
     "crumbs": [
-      "Assignments"
+      "Week 5: {{< var w05.date-md >}}"
     ]
   },
   {
-    "objectID": "w03/slides.html#so-whats-the-problem",
-    "href": "w03/slides.html#so-whats-the-problem",
-    "title": "Week 3: From PGMs to Causal Diagrams",
-    "section": "So What’s the Problem?",
-    "text": "So What’s the Problem?\n\nNon-probabilistic models: High potential for being garbage\n\ntldr: even if SUPER certain, using \\(\\Pr(\\mathcal{H}) = 1-\\varepsilon\\) with tiny \\(\\varepsilon\\) has literal life-saving advantages1 (Finetti 1972)\n\nProbabilistic models: Getting there, still looking at “surface”\n\nOf the \\(N = 100\\) times we observed event \\(X\\) occurring, event \\(Y\\) also occurred \\(90\\) of those times\n\\(\\implies \\Pr(Y \\mid X) = \\frac{\\#[X, Y]}{\\#[X]} = \\frac{90}{100} = 0.9\\)\n\nCausal models: Does \\(Y\\) happen because of \\(X\\) happening? For that, need to start modeling what’s happening under the surface making \\(X\\) and \\(Y\\) “pop up” together so often\n\nSee Appendix Slide"
+    "objectID": "w05/index.html#conditioning-on-a-fork-x-leftarrow-z-rightarrow-y",
+    "href": "w05/index.html#conditioning-on-a-fork-x-leftarrow-z-rightarrow-y",
+    "title": "Week 5: Multilevel Madness, Closing Backdoor Paths",
+    "section": "Conditioning on a Fork: \\(X \\leftarrow Z \\rightarrow Y\\)",
+    "text": "Conditioning on a Fork: \\(X \\leftarrow Z \\rightarrow Y\\)\n\n\nCode\nlibrary(ggtext)\nset.seed(5650)\ncfork_df &lt;- tibble(\n    Z = rbern(n_c),\n    X = rnorm(n_c, 2 * Z - 1),\n    Y = rnorm(n_c, 2 * Z - 1)\n)\nlibrary(latex2exp)\noverall_lm &lt;- lm(Y ~ X, data=cfork_df)\noverall_slope &lt;- round(overall_lm$coef['X'], 3)\nz0_lm &lt;- lm(Y ~ X, data=cfork_df |&gt; filter(Z == 0))\nz0_slope &lt;- round(z0_lm$coef['X'], 2)\nz0_label &lt;- paste0(\"&lt;span style='color: #e69f00;'&gt;Slope&lt;sub&gt;Z=0&lt;/sub&gt; = \",z0_slope,\"&lt;/span&gt;\")\nz1_lm &lt;- lm(Y ~ X, data=cfork_df |&gt; filter(Z == 1))\nz1_slope &lt;- round(z1_lm$coef['X'], 2)\nz1_label &lt;- paste0(\"&lt;span style='color: #56b4e9;'&gt;Slope&lt;sub&gt;Z=1&lt;/sub&gt; = \",z1_slope,\"&lt;/span&gt;\")\nz_texlabel &lt;- paste0(z0_label, \" | \", z1_label)\ncfork_xmin &lt;- min(cfork_df$X)\ncfork_xmax &lt;- max(cfork_df$X)\nggplot() +\n  # Points\n  geom_point(\n    data=cfork_df,\n    aes(x=X, y=Y, color=factor(Z)),\n    size=0.6*g_pointsize,\n    alpha=0.8\n  ) +\n  # Overall lm\n  geom_smooth(\n    data=cfork_df, aes(x=X, y=Y),\n    method = lm, se = FALSE,\n    linewidth = 2.5, color='black'\n  ) +\n  # Stratified lm\n  # (slightly larger black lines)\n  geom_smooth(\n    data=cfork_df,\n    aes(x=X, y=Y, group=factor(Z)),\n    method=lm, se=FALSE, fullrange=TRUE,\n    linewidth=2.75, color='black'\n  ) +\n  # (Colored lines)\n  geom_smooth(\n    data=cfork_df,\n    aes(x=X, y=Y, color=factor(Z)),\n    method=lm, se=FALSE, fullrange=TRUE,\n    linewidth=2\n  ) +\n  theme_dsan(base_size=24) +\n  theme(\n    plot.title = element_text(size=24),\n    plot.subtitle = element_markdown(size=20)\n  ) +\n  coord_equal() +\n  labs(\n    title = paste0(\n      \"Unstratified Slope = \",overall_slope\n    ),\n    subtitle=z_texlabel,\n    x = \"X\", y = \"Y\", color = \"Z\"\n  )\n\n\n`geom_smooth()` using formula = 'y ~ x'\n`geom_smooth()` using formula = 'y ~ x'\n`geom_smooth()` using formula = 'y ~ x'",
+    "crumbs": [
+      "Week 5: {{< var w05.date-md >}}"
+    ]
   },
   {
-    "objectID": "w03/slides.html#the-fundamental-problem-of-causal-inference",
-    "href": "w03/slides.html#the-fundamental-problem-of-causal-inference",
-    "title": "Week 3: From PGMs to Causal Diagrams",
-    "section": "The Fundamental Problem of Causal Inference",
-    "text": "The Fundamental Problem of Causal Inference\nThe only workable definition of «\\(X\\) causes \\(Y\\)»:\n\n\n\n\n Defining Causality (Hume 1739, ruining everything as usual 😤)\n\n\n\\(X\\) causes \\(Y\\) if and only if:\n\n\\(X\\) temporally precedes \\(Y\\) and\n\nIn two worlds \\(W_0\\) and \\(W_1\\) where\neverything is exactly the same except that \\(X = 0\\) in \\(W_0\\) and \\(X = 1\\) in \\(W_1\\),\n\\(Y = 0\\) in \\(W_0\\) and \\(Y = 1\\) in \\(W_1\\)\n\n\n\n\n\n\n\nThe problem? We live in one world, not two identical worlds simultaneously 😭"
+    "objectID": "w05/index.html#conditioning-on-a-pipe-x-rightarrow-z-rightarrow-y",
+    "href": "w05/index.html#conditioning-on-a-pipe-x-rightarrow-z-rightarrow-y",
+    "title": "Week 5: Multilevel Madness, Closing Backdoor Paths",
+    "section": "Conditioning on a Pipe: \\(X \\rightarrow Z \\rightarrow Y\\)",
+    "text": "Conditioning on a Pipe: \\(X \\rightarrow Z \\rightarrow Y\\)\n\n\n\nCode\nset.seed(5650)\ncpipe_df &lt;- tibble(\n    X = rnorm(n_c),\n    Z = rbern(n_c, plogis(X)),\n    Y = rnorm(n_c, 2 * Z - 1)\n)\ncpipe_lm &lt;- lm(Y ~ X, data=cpipe_df)\ncpipe_slope &lt;- round(cpipe_lm$coef['X'], 3)\ncpipe_z0_lm &lt;- lm(Y ~ X, data=cpipe_df |&gt; filter(Z == 0))\ncpipe_z0_slope &lt;- round(cpipe_z0_lm$coef['X'], 2)\ncpipe_z0_label &lt;- paste0(\"&lt;span style='color: #e69f00;'&gt;Slope&lt;sub&gt;Z=0&lt;/sub&gt; = \",cpipe_z0_slope,\"&lt;/span&gt;\")\ncpipe_z1_lm &lt;- lm(Y ~ X, data=cpipe_df |&gt; filter(Z == 1))\ncpipe_z1_slope &lt;- round(cpipe_z1_lm$coef['X'], 2)\ncpipe_z1_label &lt;- paste0(\"&lt;span style='color: #56b4e9;'&gt;Slope&lt;sub&gt;Z=1&lt;/sub&gt; = \",cpipe_z1_slope,\"&lt;/span&gt;\")\ncpipe_z_texlabel &lt;- paste0(cpipe_z0_label, \" | \", cpipe_z1_label)\ncpipe_xmin &lt;- min(cpipe_df$X)\ncpipe_xmax &lt;- max(cpipe_df$X)\nggplot() +\n  # Points\n  geom_point(\n    data=cpipe_df |&gt; filter(Y &gt; -3),\n    aes(x=X, y=Y, color=factor(Z)),\n    size=0.6*g_pointsize,\n    alpha=0.8\n  ) +\n  # Overall lm\n  geom_smooth(\n    data=cpipe_df, aes(x=X, y=Y),\n    method = lm, se = FALSE,\n    linewidth = 2.5, color='black'\n  ) +\n  # Stratified lm\n  # (slightly larger black lines)\n  geom_smooth(\n    data=cpipe_df,\n    aes(x=X, y=Y, group=factor(Z)),\n    method=lm, se=FALSE, fullrange=TRUE,\n    linewidth=2.75, color='black'\n  ) +\n  # (Colored lines)\n  geom_smooth(\n    data=cpipe_df,\n    aes(x=X, y=Y, color=factor(Z)),\n    method=lm, se=FALSE, fullrange=TRUE,\n    linewidth=2\n  ) +\n  theme_dsan(base_size=24) +\n  theme(\n    plot.title = element_text(size=24),\n    plot.subtitle = element_markdown(size=20)\n  ) +\n  coord_equal() +\n  labs(\n    title = paste0(\n      \"Unstratified Slope = \",cpipe_slope\n    ),\n    subtitle=cpipe_z_texlabel,\n    x = \"X\", y = \"Y\", color = \"Z\"\n  )\n\n\n`geom_smooth()` using formula = 'y ~ x'\n`geom_smooth()` using formula = 'y ~ x'\n`geom_smooth()` using formula = 'y ~ x'",
+    "crumbs": [
+      "Week 5: {{< var w05.date-md >}}"
+    ]
   },
   {
-    "objectID": "w03/slides.html#what-is-to-be-done",
-    "href": "w03/slides.html#what-is-to-be-done",
-    "title": "Week 3: From PGMs to Causal Diagrams",
-    "section": "What Is To Be Done?",
-    "text": "What Is To Be Done?"
+    "objectID": "w05/index.html#conditioning-on-a-collider-x-rightarrow-z-leftarrow-y",
+    "href": "w05/index.html#conditioning-on-a-collider-x-rightarrow-z-leftarrow-y",
+    "title": "Week 5: Multilevel Madness, Closing Backdoor Paths",
+    "section": "⚠️Conditioning on a Collider⚠️: \\(X \\rightarrow Z \\leftarrow Y\\)",
+    "text": "⚠️Conditioning on a Collider⚠️: \\(X \\rightarrow Z \\leftarrow Y\\)\n\nConditioning on colliders induces correlation where there previously was none ☠️\n\n\n\n\nCode\nset.seed(5650)\nccoll_df &lt;- tibble(\n    X = rnorm(n_c),\n    Y = rnorm(n_c),\n    Z = rbern(n_c, plogis(2 * (X + Y - 1)))\n)\nccoll_lm &lt;- lm(Y ~ X, data=ccoll_df)\nccoll_slope &lt;- round(ccoll_lm$coef['X'], 3)\nccoll_z0_lm &lt;- lm(Y ~ X, data=ccoll_df |&gt; filter(Z == 0))\nccoll_z0_slope &lt;- round(ccoll_z0_lm$coef['X'], 2)\nccoll_z0_label &lt;- paste0(\"&lt;span style='color: #e69f00;'&gt;Slope&lt;sub&gt;Z=0&lt;/sub&gt; = \",ccoll_z0_slope,\"&lt;/span&gt;\")\nccoll_z1_lm &lt;- lm(Y ~ X, data=ccoll_df |&gt; filter(Z == 1))\nccoll_z1_slope &lt;- round(ccoll_z1_lm$coef['X'], 2)\nccoll_z1_label &lt;- paste0(\"&lt;span style='color: #56b4e9;'&gt;Slope&lt;sub&gt;Z=1&lt;/sub&gt; = \",ccoll_z1_slope,\"&lt;/span&gt;\")\nccoll_z_texlabel &lt;- paste0(ccoll_z0_label, \" | \", ccoll_z1_label)\nccoll_xmin &lt;- min(ccoll_df$X)\nccoll_xmax &lt;- max(ccoll_df$X)\nggplot() +\n  # Points\n  geom_point(\n    data=ccoll_df |&gt; filter(Y &gt; -3),\n    aes(x=X, y=Y, color=factor(Z)),\n    size=0.6*g_pointsize,\n    alpha=0.8\n  ) +\n  # Overall lm\n  geom_smooth(\n    data=ccoll_df, aes(x=X, y=Y),\n    method = lm, se = FALSE,\n    linewidth = 2.5, color='black'\n  ) +\n  # Stratified lm\n  # (slightly larger black lines)\n  geom_smooth(\n    data=ccoll_df,\n    aes(x=X, y=Y, group=factor(Z)),\n    method=lm, se=FALSE, fullrange=TRUE,\n    linewidth=2.75, color='black'\n  ) +\n  # (Colored lines)\n  geom_smooth(\n    data=ccoll_df,\n    aes(x=X, y=Y, color=factor(Z)),\n    method=lm, se=FALSE, fullrange=TRUE,\n    linewidth=2\n  ) +\n  theme_dsan(base_size=24) +\n  theme(\n    plot.title = element_text(size=24),\n    plot.subtitle = element_markdown(size=20)\n  ) +\n  coord_equal() +\n  labs(\n    title = paste0(\n      \"Unstratified Slope = \",ccoll_slope\n    ),\n    subtitle=ccoll_z_texlabel,\n    x = \"X\", y = \"Y\", color = \"Z\"\n  )\n\n\n`geom_smooth()` using formula = 'y ~ x'\n`geom_smooth()` using formula = 'y ~ x'\n`geom_smooth()` using formula = 'y ~ x'\n\n\n\n\n\n\n\n\n\n\n…This is why we have to think, rather than just “control for everything”! 😭",
+    "crumbs": [
+      "Week 5: {{< var w05.date-md >}}"
+    ]
   },
   {
-    "objectID": "w03/slides.html#probability",
-    "href": "w03/slides.html#probability",
-    "title": "Week 3: From PGMs to Causal Diagrams",
-    "section": "Probability++",
-    "text": "Probability++\n\nTools from prob/stats (RVs, CDFs, Conditional Probability) necessary but not sufficient for causal inference!\nExample: Say we use DSAN 5100 tools to discover:\n\nProbability that event \\(E_1\\) occurs is \\(\\Pr(E_1) = 0.5\\)\nProbability that \\(E_1\\) occurs conditional on another event \\(E_0\\) occurring is \\(\\Pr(E_1 \\mid E_0) = 0.75\\)\n\nUnfortunately, we still cannot infer that the occurrence of \\(E_0\\) causes an increase in the likelihood of \\(E_1\\) occurring."
+    "objectID": "w05/index.html#conditioning-on-a-proxy-for-z",
+    "href": "w05/index.html#conditioning-on-a-proxy-for-z",
+    "title": "Week 5: Multilevel Madness, Closing Backdoor Paths",
+    "section": "Conditioning on a Proxy for \\(Z\\)",
+    "text": "Conditioning on a Proxy for \\(Z\\)\n\n\n\n\n\n\n\nWith just \\(X \\rightarrow Z \\rightarrow Y\\), we’d have a pipe\nObserving \\(A \\Rightarrow\\) some (not all!) info about \\(Z\\)\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nCode\nlibrary(tidyverse)\nlibrary(extraDistr)\nlibrary(latex2exp)\nset.seed(5650)\nn_c &lt;- 350\ncprox_df &lt;- tibble(\n    X = rnorm(n_c),\n    Z = rbern(n_c, plogis(X)),\n    Y = rnorm(n_c, 2 * Z - 1),\n    A = rbern(n_c, (1-Z)*0.86 + Z*0.14)\n)\ncprox_lm &lt;- lm(Y ~ X, data=cprox_df)\ncprox_slope &lt;- round(cprox_lm$coef['X'], 3)\ncprox_a0_lm &lt;- lm(Y ~ X, data=cprox_df |&gt; filter(A == 0))\ncprox_a0_slope &lt;- round(cprox_a0_lm$coef['X'], 2)\ncprox_a0_label &lt;- paste0(\"&lt;span style='color: #e69f00;'&gt;Slope&lt;sub&gt;Z=0&lt;/sub&gt; = \",cprox_a0_slope,\"&lt;/span&gt;\")\n# A == 1 lm\ncprox_a1_lm &lt;- lm(Y ~ X, data=cprox_df |&gt; filter(A == 1))\ncprox_a1_slope &lt;- round(cprox_a1_lm$coef['X'], 2)\ncprox_a1_label &lt;- paste0(\"&lt;span style='color: #56b4e9;'&gt;Slope&lt;sub&gt;Z=1&lt;/sub&gt; = \",cprox_a1_slope,\"&lt;/span&gt;\")\ncprox_a_texlabel &lt;- paste0(cprox_a0_label, \" | \", cprox_a1_label)\ncprox_xmin &lt;- min(cprox_df$X)\ncprox_xmax &lt;- max(cprox_df$X)\nggplot() +\n  # Points\n  geom_point(\n    data=cprox_df |&gt; filter(Y &gt; -3),\n    aes(x=X, y=Y, color=factor(A)),\n    size=0.5*g_pointsize,\n    alpha=0.8\n  ) +\n  # Overall lm\n  geom_smooth(\n    data=cprox_df, aes(x=X, y=Y),\n    method = lm, se = FALSE,\n    linewidth = 2.5, color='black'\n  ) +\n  # Stratified lm\n  # (slightly larger black lines)\n  geom_smooth(\n    data=cprox_df,\n    aes(x=X, y=Y, group=factor(A)),\n    method=lm, se=FALSE, fullrange=TRUE,\n    linewidth=2.75, color='black'\n  ) +\n  # (Colored lines)\n  geom_smooth(\n    data=cprox_df,\n    aes(x=X, y=Y, color=factor(A)),\n    method=lm, se=FALSE, fullrange=TRUE,\n    linewidth=2\n  ) +\n  theme_dsan(base_size=22) +\n  theme(\n    plot.title = element_text(size=22),\n    plot.subtitle = element_markdown(size=20)\n  ) +\n  coord_equal() +\n  labs(\n    title = paste0(\n      \"Unstratified Slope = \",cprox_slope\n    ),\n    subtitle=cprox_a_texlabel,\n    x = \"X\", y = \"Y\", color = \"A\"\n  )\n\n\n`geom_smooth()` using formula = 'y ~ x'\n`geom_smooth()` using formula = 'y ~ x'\n`geom_smooth()` using formula = 'y ~ x'",
+    "crumbs": [
+      "Week 5: {{< var w05.date-md >}}"
+    ]
   },
   {
-    "objectID": "w03/slides.html#beyond-conditional-probability",
-    "href": "w03/slides.html#beyond-conditional-probability",
-    "title": "Week 3: From PGMs to Causal Diagrams",
-    "section": "Beyond Conditional Probability",
-    "text": "Beyond Conditional Probability\n\nThis issue (that conditional probabilities could not be interpreted causally) at first represented a kind of dead end for scientists interested in employing probability theory to study causal relationships…\nRecent decades: researchers have built up an additional “layer” of modeling tools, augmenting existing machinery of probability to address causality head-on!\nPearl (2000): Formal proofs that (\\(\\Pr\\) axioms) \\(\\cup\\) (\\(\\textsf{do}\\) axioms) \\(\\Rightarrow\\) causal inference procedures successfully recover causal effects"
-  },
-  {
-    "objectID": "w03/slides.html#preview-do-calculus",
-    "href": "w03/slides.html#preview-do-calculus",
-    "title": "Week 3: From PGMs to Causal Diagrams",
-    "section": "Preview: do-Calculus",
-    "text": "Preview: do-Calculus\n\nExtends core of probability to incorporate causality, via \\(\\textsf{do}\\) operator\n\\(\\textsf{do}(X = 5)\\) is a “special” event, representing intervention in DGP to force \\(X \\leftarrow 5\\)… \\(\\textsf{do}(X = 5)\\) not the same event as \\(X = 5\\)!\n\n\n\n\n\n\n\n\n\n\\(X = 5\\)\n\\(\\neq\\)\n\\(\\textsf{do}(X = 5)\\)\n\n\n\n\nObserving that \\(X\\) took on value 5 (for some possibly-unknown reason)\n\\(\\neq\\)\nIntervening to force \\(X \\leftarrow 5\\), all else in DGP remaining the same (intervention then “flows” through rest of DGP)\n\n\n\n\nProbably the most difficult thing in 5650 to wrap head around\n“Special”: \\(\\Pr(\\textsf{do}(X = 5))\\) not well-defined, only \\(\\Pr(Y = 6 \\mid \\textsf{do}(X = 5))\\)\nTo emphasize special-ness, we may use notation like:\n\\[\n\\Pr(Y = 6 \\mid \\textsf{do}(X = 5)) \\equiv \\textstyle \\Pr_{\\textsf{do}(X = 5)}(Y = 6)\n\\]\nto avoid confusion with “normal” events"
-  },
-  {
-    "objectID": "w03/slides.html#causal-world-unlocked-with-great-power-comes-great-responsibility",
-    "href": "w03/slides.html#causal-world-unlocked-with-great-power-comes-great-responsibility",
-    "title": "Week 3: From PGMs to Causal Diagrams",
-    "section": "Causal World Unlocked 😎 (With Great Power Comes Great Responsibility…)",
-    "text": "Causal World Unlocked 😎 (With Great Power Comes Great Responsibility…)\n\nWith \\(\\textsf{do}(\\cdot)\\) in hand… (Alongside DGP satisfying axioms slightly more strict than core probability axioms)\nWe can make causal inferences from similar pair of facts! If:\n\nProbability that event \\(E_1\\) occurs is \\(\\Pr(E_1) = 0.5\\),\nThe probability that \\(E_1\\) occurs conditional on the event \\(\\textsf{do}(E_0)\\) occurring is \\(\\Pr(E_1 \\mid \\textsf{do}(E_0)) = 0.75\\),\n\nNow we can actually infer that the occurrence of \\(E_0\\) caused an increase in the likelihood of \\(E_1\\) occurring!"
-  },
-  {
-    "objectID": "w03/slides.html#importance-of-observed-vs.-latent-distinction",
-    "href": "w03/slides.html#importance-of-observed-vs.-latent-distinction",
-    "title": "Week 3: From PGMs to Causal Diagrams",
-    "section": "Importance of Observed vs. Latent Distinction!",
-    "text": "Importance of Observed vs. Latent Distinction!\n\nAcross many different fields, hidden stumbling-block in your project may be failure to model this distinction and pursue its implications!\n\n\n\n\n\n\n\n\n\nFigure 1: Your model failing to achieve its goal bc you haven’t yet distinguished observed vs. latent variables"
-  },
-  {
-    "objectID": "w03/slides.html#example-from-cognitive-neuroscience-visual-perception",
-    "href": "w03/slides.html#example-from-cognitive-neuroscience-visual-perception",
-    "title": "Week 3: From PGMs to Causal Diagrams",
-    "section": "Example from Cognitive Neuroscience: Visual Perception",
-    "text": "Example from Cognitive Neuroscience: Visual Perception\n\n\n\n\n\n\n\nWe “see” 3D objects like a basketballs, but our eyes are (curved) 2D surfaces!\n\\(\\Rightarrow\\) Our brains construct 3D environment by combining 2D info (observed photons-hitting-light-cones) with latent heuristic info:\n\nInstantaneous Binocular Disparity, fusing info from two slightly-offset eyes,\nShort-term Motion Parallax: How does object shift over short temporal “windows” of movement?\nLong-term mental models (orange-ish circle with this line pattern is usually a basketball, which is usually this big, etc.)\n\n\n\n\n\n\n\nImage source (a very cool article!)\n\n\n\n\n\n\nSimilar examples in many other fields \\(\\leadsto\\) science is a strange waltz of general models vs. field-specific details, but there’s one model that is infinitely helpful imo…"
-  },
-  {
-    "objectID": "w03/slides.html#hidden-markov-models-hmms-are-our-ur-pgms",
-    "href": "w03/slides.html#hidden-markov-models-hmms-are-our-ur-pgms",
-    "title": "Week 3: From PGMs to Causal Diagrams",
-    "section": "Hidden Markov Models (HMMs) Are Our Ur-PGMs!",
-    "text": "Hidden Markov Models (HMMs) Are Our Ur-PGMs!\n\nUsing “Ur” in the same sense as “America’s Ur-Choropleths”…\nHMMs are our “Ur-Models” for Computational Social Science specifically\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nLet’s consider an extremely currently-popular strand of CSS research, and step through why (a) it may be harder than it initially seems, but (b) we can use HMMs to “organize”/manage/visualize the complexity!\n\n\nAs in, how America’s Ur-Choropleths are two visualizations you can keep at hand before launching into a specific nation-wide choropleth about a specific issue!"
-  },
-  {
-    "objectID": "w03/slides.html#studying-fake-news",
-    "href": "w03/slides.html#studying-fake-news",
-    "title": "Week 3: From PGMs to Causal Diagrams",
-    "section": "Studying “Fake News”",
-    "text": "Studying “Fake News”\n\n\n\n\n\n\n\nStudying “fake news” with ML and/or Deep Learning and/or Big Data is very popular in Computational Social Science: let’s use HMMs to see why it might be more… difficult/complicated than it seems at first 🙈\n\n\n\n\n\nThe (implicit) model in studies like Iyengar and Kinder (2010) is something like:\n\n\n\n\n\n\n\n\n\n\n\n\n\nThus allowing results to be summarized in a table like:\n\n\n\n\n\n\n\n\n\n\n\nIyengar and Kinder (2010)"
-  },
-  {
-    "objectID": "w03/slides.html#the-devil-in-the-details-i",
-    "href": "w03/slides.html#the-devil-in-the-details-i",
-    "title": "Week 3: From PGMs to Causal Diagrams",
-    "section": "The Devil in the Details I",
-    "text": "The Devil in the Details I\n\nResidents of the New Haven, Connecticut area participated in one of two experiments, each of which spanned six consecutive days […] took place in November 1980, shortly after the presidential election\n\n\nWe measured problem importance with four questions that appeared in both the pretreatment and posttreatment questionnaires:\n\nPlease indicate how important you consider these problems to be.\nShould the federal government do more to develop solutions to these problems, even if it means raising taxes?\nHow much do you yourself care about these problems?\nThese days how much do you talk about these problems?"
-  },
-  {
-    "objectID": "w03/slides.html#the-devil-in-the-details-ii",
-    "href": "w03/slides.html#the-devil-in-the-details-ii",
-    "title": "Week 3: From PGMs to Causal Diagrams",
-    "section": "The Devil in the Details II",
-    "text": "The Devil in the Details II"
-  },
-  {
-    "objectID": "w03/slides.html#randomization-and-fine-tuned-treatment",
-    "href": "w03/slides.html#randomization-and-fine-tuned-treatment",
-    "title": "Week 3: From PGMs to Causal Diagrams",
-    "section": "Randomization and Fine-Tuned Treatment",
-    "text": "Randomization and Fine-Tuned Treatment\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n…These are the types of things we usually don’t have control over as data scientists (we’re just handed a .csv!)"
-  },
-  {
-    "objectID": "w03/slides.html#lets-model-it",
-    "href": "w03/slides.html#lets-model-it",
-    "title": "Week 3: From PGMs to Causal Diagrams",
-    "section": "Let’s Model It!",
-    "text": "Let’s Model It!"
-  },
-  {
-    "objectID": "w03/slides.html#the-final-piece-plate-notation",
-    "href": "w03/slides.html#the-final-piece-plate-notation",
-    "title": "Week 3: From PGMs to Causal Diagrams",
-    "section": "The Final Piece: Plate Notation",
-    "text": "The Final Piece: Plate Notation\n\nFor describing general distributions, there is often a “single node generating a bunch of nodes” structure:\n\n\n\n\n\n\n\nPGM notation has a built-in tool for this: plates!"
-  },
-  {
-    "objectID": "w03/slides.html#crucial-css-model-we-can-now-dive-into",
-    "href": "w03/slides.html#crucial-css-model-we-can-now-dive-into",
-    "title": "Week 3: From PGMs to Causal Diagrams",
-    "section": "Crucial CSS Model We Can Now Dive Into!",
-    "text": "Crucial CSS Model We Can Now Dive Into!\n\nImage source"
-  },
-  {
-    "objectID": "w03/slides.html#what-does-this-give-us",
-    "href": "w03/slides.html#what-does-this-give-us",
-    "title": "Week 3: From PGMs to Causal Diagrams",
-    "section": "What Does This Give Us?",
-    "text": "What Does This Give Us?"
-  },
-  {
-    "objectID": "w03/slides.html#before-we-branch-off-of-pgms",
-    "href": "w03/slides.html#before-we-branch-off-of-pgms",
-    "title": "Week 3: From PGMs to Causal Diagrams",
-    "section": "Before We Branch Off Of PGMs",
-    "text": "Before We Branch Off Of PGMs\n(Even in non-causal settings)\n\nImage source\nWe don’t exactly think “Shakespeare decided on a set of topics,”"
-  },
-  {
-    "objectID": "w03/slides.html#getting-shot-by-a-firing-squad",
-    "href": "w03/slides.html#getting-shot-by-a-firing-squad",
-    "title": "Week 3: From PGMs to Causal Diagrams",
-    "section": "Getting Shot By A Firing Squad",
-    "text": "Getting Shot By A Firing Squad\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\\(O\\)\n\\(C\\)\n\\(A\\)\n\\(B\\)\n\\(D\\)\n\n\n\n\n0\n0\n0\n0\n0\n\n\n1\n1\n1\n1\n1\n\n\n0\n0\n0\n0\n0\n\n\n0\n0\n0\n0\n0\n\n\n1\n1\n1\n1\n1\n\n\n\n\\[\n\\begin{align*}\n\\Pr(D) &= 0.4 \\\\\n\\Pr(D \\mid A) &= 1\n\\end{align*}\n\\]"
-  },
-  {
-    "objectID": "w03/slides.html#references",
-    "href": "w03/slides.html#references",
-    "title": "Week 3: From PGMs to Causal Diagrams",
+    "objectID": "w05/index.html#references",
+    "href": "w05/index.html#references",
+    "title": "Week 5: Multilevel Madness, Closing Backdoor Paths",
     "section": "References",
-    "text": "References\n\n\nFinetti, Bruno de. 1972. Probability, Induction and Statistics: The Art of Guessing. J. Wiley.\n\n\nHume, David. 1739. A Treatise of Human Nature: Being an Attempt to Introduce the Experimental Method of Reasoning Into Moral Subjects; and Dialogues Concerning Natural Religion. Longmans, Green.\n\n\nIyengar, Shanto, and Donald R. Kinder. 2010. News That Matters: Television & American Opinion. University of Chicago Press.\n\n\nPearl, Judea. 2000. Causality: Models, Reasoning, and Inference. Cambridge University Press. https://www.dropbox.com/scl/fi/4kfpro4gpx7tg55fwd7qt/Judea-Pearl-Causality_-Models-Reasoning-and-Inference.pdf?rlkey=f0abw0cgmsyiegx6xapq5z7j2&dl=1."
+    "text": "References",
+    "crumbs": [
+      "Week 5: {{< var w05.date-md >}}"
+    ]
+  },
+  {
+    "objectID": "w04/slides.html#why-take-the-time-to-learn-a-modeling-language-vs.-individual-models",
+    "href": "w04/slides.html#why-take-the-time-to-learn-a-modeling-language-vs.-individual-models",
+    "title": "Week 4: Clearing the Path from Cause to Effect",
+    "section": "Why Take the Time to Learn a Modeling Language (vs. Individual Models)?",
+    "text": "Why Take the Time to Learn a Modeling Language (vs. Individual Models)?\n\nMy answer: allows you to adapt to specifics/idiosyncrasies of your problem!\nLanguage metaphor: Learning models vs. learning modeling language \\(\\Leftrightarrow\\) Learning phrases in a language vs. learning to speak the language\n“Hello, one hamburger please” is good, but what if you…\n Are allergic to ketchup and need to make sure it’s removed\n Want to replace sesame seed bun with poppy seed bun, if they have it\n Prefer spicy, but not too spicy, mustard  Bun only  Animal style  …\n\n\n\n\n\n\n\n\nLanguages give us a syntax…\n\n\n\nS\n\\(\\rightarrow\\)\nNP VP\n\n\nNP\n\\(\\rightarrow\\)\nDetP N | AdjP NP\n\n\nVP\n\\(\\rightarrow\\)\nV NP\n\n\nAdjP\n\\(\\rightarrow\\)\nAdj | Adv AdjP\n\n\nN\n\\(\\rightarrow\\)\nfrog | tadpole\n\n\nV\n\\(\\rightarrow\\)\nsees | likes\n\n\nAdj\n\\(\\rightarrow\\)\nbig | small\n\n\nAdv\n\\(\\rightarrow\\)\nvery\n\n\nDetP\n\\(\\rightarrow\\)\na | the\n\n\n\n\n\n\n\n…For expressing arbitrary (infinitely many!) sentences"
+  },
+  {
+    "objectID": "w04/slides.html#example-1-multilevel-tadpoles-mcelreath-ch.-13",
+    "href": "w04/slides.html#example-1-multilevel-tadpoles-mcelreath-ch.-13",
+    "title": "Week 4: Clearing the Path from Cause to Effect",
+    "section": "Example 1: Multilevel Tadpoles (McElreath, Ch. 13)",
+    "text": "Example 1: Multilevel Tadpoles (McElreath, Ch. 13)\nNeed a language that can communicate the following info to estimation algorithm:\n\n Unit of observation is tadpole, but unit of analysis is tank\n Ultimately, I care about \\(Y =\\) survival rate (dependent var), as function of \\(X =\\) tank properties (independent var)\n …But the \\(n_i = 48\\) tanks actually come in \\(n_j = 3\\) types: small (10 bois), medium (25), large (35) (Bonus: What if there are different numbers of tanks per type?)\n I need it to account for impact of tank size, then  pool info across tank sizes\n\n\nFrom McElreath (2020)"
+  },
+  {
+    "objectID": "w04/slides.html#example-2-dissertation-nightmare",
+    "href": "w04/slides.html#example-2-dissertation-nightmare",
+    "title": "Week 4: Clearing the Path from Cause to Effect",
+    "section": "Example 2: Dissertation Nightmare",
+    "text": "Example 2: Dissertation Nightmare\n\n\n\n\n\n\n\n\n\nAbove: Data from Soviet archives; Above Right: US Military archives; Below Right: NATO archives"
+  },
+  {
+    "objectID": "w04/slides.html#nightmarish-without-a-modeling-language",
+    "href": "w04/slides.html#nightmarish-without-a-modeling-language",
+    "title": "Week 4: Clearing the Path from Cause to Effect",
+    "section": "Nightmarish Without a Modeling Language!",
+    "text": "Nightmarish Without a Modeling Language!\n\nModeling language \\(\\Rightarrow\\) Unambiguously “encode” idiosyncratic domain knowledge\nDissertation: Cold War \\(\\times\\) “Third World” \\(\\leadsto\\) Cuban 🇨🇺 trans-continental operations1\nMain narrative (for estimation): 1975 (South Africa invades Angola, 14 Oct → 🇨🇺 intervention, 4 Nov) to 1979 (USSR requests 🇨🇺 troops to Ethiopia for Ogaden War)\n[Ontology] Fix 1979 geographic entities at National level (as modeling choice, like fixing 2000 USD to measure inflation): \\(\\textsf{Cuba}_{1979}\\), \\(\\textsf{Angola}_{1979}\\), \\(\\textsf{PDRY}_{1979}\\), \\(\\textsf{YAR}_{1979}\\)\nDifferent tokens (Think NLP: \"Congo\", \"DRC\", \"Republic of Congo\") can then be contextualized: can “track” and link data appropriately despite splits, merges, name changes\nSay we have data on “Number of Communist Militants in \\(X\\)” (Hoover Yearbook)…\n\n\n\n\nEntity\nData from 1947-1971 at...\nData from 1971-Present at...\n\n\n\n\n\\(\\textsf{Pakistan}_{1979}\\)\nNational Level:\n\\(\\frac{62}{62+70} \\times\\) “Pakistan”\nNational Level:\n“Pakistan”\n\n\nSubnational Level:\n“West Pakistan”\nSubnational Level:\n\\(\\sum_{i \\in \\text{Regions}}\\text{data}_i\\)\n\n\n\\(\\textsf{Bangladesh}_{1979}\\)\nNational Level:\n\\(\\frac{70}{62+70} \\times\\) “Pakistan”\nNational Level:\n“Bangladesh”\n\n\nSubnational Level:\n“East Pakistan”\nSubnational Level:\n\\(\\sum_{i \\in \\text{Regions}}\\text{data}_i\\)\n\n\n\nHelpful metaphor (Gleijeses 2013): Cuba \\(\\approx\\) Forward-deployed “3rd World Outpost” for USSR (Soviet $ but Cuban training of PAIGC → MPLA), as Israel \\(\\approx\\) Forward-deployed “3rd World Outpost” for US (US $ but Israeli training of SAVAK → SADF)"
+  },
+  {
+    "objectID": "w04/slides.html#the-fork-x-leftarrow-z-rightarrow-y",
+    "href": "w04/slides.html#the-fork-x-leftarrow-z-rightarrow-y",
+    "title": "Week 4: Clearing the Path from Cause to Effect",
+    "section": "The Fork: \\(X \\leftarrow Z \\rightarrow Y\\)",
+    "text": "The Fork: \\(X \\leftarrow Z \\rightarrow Y\\)\n\n\n\n\nCode\nset.seed(5650)\nfork_df &lt;- tibble(\n    Z = rbern(n_d),\n    X = rbern(n_d, (1-Z)*0.1 + Z*0.9),\n    Y = rbern(n_d, (1-Z)*0.1 + Z*0.9),\n)\n\n\n\n\nCode\nplot_freqs &lt;- function(df, plot_title, y_lab=TRUE) {\n  df_cor &lt;- cor(df$X, df$Y)\n  df_label &lt;- paste0(\"Cor(X,Y) = \",round(df_cor,3))\n  freq_df &lt;- df |&gt;\n    group_by(X, Y) |&gt;\n    summarize(count=n())\n  freq_plot &lt;- freq_df |&gt;\n    ggplot(\n      aes(x=factor(X), y=factor(Y), fill=count)\n    ) +\n    geom_tile() +\n    coord_equal() +\n    scale_fill_distiller(\n      palette=\"Greens\", direction=1,\n      limits=c(0,5000)\n    ) +\n    geom_label(\n      aes(label=count),\n      fill=\"white\", color=\"black\", size=7\n    ) +\n    labs(\n      title = plot_title,\n      subtitle = df_label,\n      x=\"X\", y=\"Y\"\n    ) +\n    theme_dsan(base_size=24) +\n    theme(\n      plot.title = element_text(size=21),\n      plot.subtitle = element_text(size=18)\n    ) +\n    remove_legend()\n  if (!y_lab) {\n    freq_plot &lt;- freq_plot + theme(\n      axis.title.y = element_blank()\n    )\n  }\n  return(freq_plot)\n}\n# The full df\nfull_label &lt;- paste0(\"Raw Data (n = 10K)\")\nfull_plot &lt;- plot_freqs(fork_df, full_label)\n# Conditioning on Z = 0\nz0_df &lt;- fork_df |&gt; filter(Z == 0)\nz0_n &lt;- nrow(z0_df)\nz0_label &lt;- paste0(\"Z == 0 (\",z0_n,\" obs)\")\nz0_plot &lt;- plot_freqs(z0_df, z0_label, y_lab=FALSE)\n# Conditioning on Z = 1\nz1_df &lt;- fork_df |&gt; filter(Z == 1)\nz1_n &lt;- nrow(z1_df)\nz1_label &lt;- paste0(\"Z == 1 (\",z1_n,\" obs)\")\nz1_plot &lt;- plot_freqs(z1_df, z1_label, y_lab=FALSE)\nfull_plot | z0_plot | z1_plot\n\n\n\n\n\n\n\n\n\n\n\n\nCode\nset.seed(5650)\ncfork_df &lt;- tibble(\n    Z = rbern(n_c),\n    X = rnorm(n_c, 2 * Z - 1),\n    Y = rnorm(n_c, 2 * Z - 1)\n)\n\n\n\n\nCode\nlibrary(latex2exp)\noverall_lm &lt;- lm(Y ~ X, data=cfork_df)\noverall_slope &lt;- round(overall_lm$coef['X'], 3)\nz0_lm &lt;- lm(Y ~ X, data=cfork_df |&gt; filter(Z == 0))\nz0_slope &lt;- round(z0_lm$coef['X'], 2)\nz0_label &lt;- paste0(\"$Slope_{Z=0} = \",z0_slope,\"$\")\nz0_leg_label &lt;- TeX(paste0(\"0 $(m=\",z0_slope,\")$\"))\nz1_lm &lt;- lm(Y ~ X, data=cfork_df |&gt; filter(Z == 1))\nz1_slope &lt;- round(z1_lm$coef['X'], 2)\nz1_label &lt;- paste0(\"$Slope_{Z=1} = \",z1_slope,\"$\")\nz_texlabel &lt;- TeX(paste0(z0_label, \" | \", z1_label))\ncfork_xmin &lt;- min(cfork_df$X)\ncfork_xmax &lt;- max(cfork_df$X)\nggplot() +\n  # Points\n  geom_point(\n    data=cfork_df,\n    aes(x=X, y=Y, color=factor(Z)),\n    size=0.6*g_pointsize,\n    alpha=0.8\n  ) +\n  # Overall lm\n  geom_smooth(\n    data=cfork_df, aes(x=X, y=Y),\n    method = lm, se = FALSE,\n    linewidth = 2.5, color='black'\n  ) +\n  # Stratified lm\n  # (slightly larger black lines)\n  geom_smooth(\n    data=cfork_df,\n    aes(x=X, y=Y, group=factor(Z)),\n    method=lm, se=FALSE, fullrange=TRUE,\n    linewidth=2.75, color='black'\n  ) +\n  # (Colored lines)\n  geom_smooth(\n    data=cfork_df,\n    aes(x=X, y=Y, color=factor(Z)),\n    method=lm, se=FALSE, fullrange=TRUE,\n    linewidth=2\n  ) +\n  theme_dsan(base_size=24) +\n  theme(\n    plot.title = element_text(size=24),\n    plot.subtitle = element_text(size=20)\n  ) +\n  coord_equal() +\n  labs(\n    title = paste0(\n      \"Unstratified Slope = \",overall_slope\n    ),\n    subtitle=z_texlabel,\n    x = \"X\", y = \"Y\", color = \"Z\"\n  )"
+  },
+  {
+    "objectID": "w04/slides.html#the-pipe-x-rightarrow-z-rightarrow-y",
+    "href": "w04/slides.html#the-pipe-x-rightarrow-z-rightarrow-y",
+    "title": "Week 4: Clearing the Path from Cause to Effect",
+    "section": "The Pipe: \\(X \\rightarrow Z \\rightarrow Y\\)",
+    "text": "The Pipe: \\(X \\rightarrow Z \\rightarrow Y\\)\n\n\n\n\nCode\nset.seed(5650)\npipe_df &lt;- tibble(\n    X = rbern(n_d),\n    Z = rbern(n_d, (1-X)*0.1 + X*0.9),\n    Y = rbern(n_d, (1-Z)*0.1 + Z*0.9),\n)\n\n\n\n\nCode\n# The full df\npipe_full_label &lt;- paste0(\"Raw Data (n = 10K)\")\npipe_full_plot &lt;- plot_freqs(pipe_df, pipe_full_label)\n# Conditioning on Z = 0\npipe_z0_df &lt;- pipe_df |&gt; filter(Z == 0)\npipe_z0_n &lt;- nrow(pipe_z0_df)\npipe_z0_label &lt;- paste0(\"Z == 0 (\",pipe_z0_n,\" obs)\")\npipe_z0_plot &lt;- plot_freqs(pipe_z0_df, pipe_z0_label, y_lab=FALSE)\n# Conditioning on Z = 1\npipe_z1_df &lt;- pipe_df |&gt; filter(Z == 1)\npipe_z1_n &lt;- nrow(pipe_z1_df)\npipe_z1_label &lt;- paste0(\"Z == 1 (\",pipe_z1_n,\" obs)\")\npipe_z1_plot &lt;- plot_freqs(pipe_z1_df, pipe_z1_label, y_lab=FALSE)\npipe_full_plot | pipe_z0_plot | pipe_z1_plot\n\n\n\n\n\n\n\n\n\n\n\n\n\nCode\nset.seed(5650)\ncpipe_df &lt;- tibble(\n    X = rnorm(n_c),\n    Z = rbern(n_c, plogis(X)),\n    Y = rnorm(n_c, 2 * Z - 1)\n)\n\n\n\n\nCode\ncpipe_lm &lt;- lm(Y ~ X, data=cpipe_df)\ncpipe_slope &lt;- round(cpipe_lm$coef['X'], 3)\ncpipe_z0_lm &lt;- lm(Y ~ X, data=cpipe_df |&gt; filter(Z == 0))\ncpipe_z0_slope &lt;- round(cpipe_z0_lm$coef['X'], 2)\ncpipe_z0_label &lt;- paste0(\"$Slope_{Z=0} = \",cpipe_z0_slope,\"$\")\ncpipe_z1_lm &lt;- lm(Y ~ X, data=cpipe_df |&gt; filter(Z == 1))\ncpipe_z1_slope &lt;- round(cpipe_z1_lm$coef['X'], 2)\ncpipe_z1_label &lt;- paste0(\"$Slope_{Z=1} = \",cpipe_z1_slope,\"$\")\ncpipe_z_texlabel &lt;- TeX(paste0(cpipe_z0_label, \" | \", cpipe_z1_label))\ncpipe_xmin &lt;- min(cpipe_df$X)\ncpipe_xmax &lt;- max(cpipe_df$X)\nggplot() +\n  # Points\n  geom_point(\n    data=cpipe_df |&gt; filter(Y &gt; -3),\n    aes(x=X, y=Y, color=factor(Z)),\n    size=0.6*g_pointsize,\n    alpha=0.8\n  ) +\n  # Overall lm\n  geom_smooth(\n    data=cpipe_df, aes(x=X, y=Y),\n    method = lm, se = FALSE,\n    linewidth = 2.5, color='black'\n  ) +\n  # Stratified lm\n  # (slightly larger black lines)\n  geom_smooth(\n    data=cpipe_df,\n    aes(x=X, y=Y, group=factor(Z)),\n    method=lm, se=FALSE, fullrange=TRUE,\n    linewidth=2.75, color='black'\n  ) +\n  # (Colored lines)\n  geom_smooth(\n    data=cpipe_df,\n    aes(x=X, y=Y, color=factor(Z)),\n    method=lm, se=FALSE, fullrange=TRUE,\n    linewidth=2\n  ) +\n  theme_dsan(base_size=24) +\n  theme(\n    plot.title = element_text(size=24),\n    plot.subtitle = element_text(size=20)\n  ) +\n  coord_equal() +\n  labs(\n    title = paste0(\n      \"Unstratified Slope = \",cpipe_slope\n    ),\n    subtitle=cpipe_z_texlabel,\n    x = \"X\", y = \"Y\", color = \"Z\"\n  )"
+  },
+  {
+    "objectID": "w04/slides.html#the-collider-x-rightarrow-z-leftarrow-y",
+    "href": "w04/slides.html#the-collider-x-rightarrow-z-leftarrow-y",
+    "title": "Week 4: Clearing the Path from Cause to Effect",
+    "section": "⚠️The Collider⚠️: \\(X \\rightarrow Z \\leftarrow Y\\)",
+    "text": "⚠️The Collider⚠️: \\(X \\rightarrow Z \\leftarrow Y\\)\n\n\n\n\n\nCode\nset.seed(5650)\ncoll_df &lt;- tibble(\n    X = rbern(n_d),\n    Y = rbern(n_d),\n    Z = rbern(n_d, ifelse(X + Y &gt; 0, 0.9, 0.2)),\n)\n\n\n\n\nCode\n# The full df\ncoll_full_label &lt;- paste0(\"Raw Data (n = 10K)\")\ncoll_full_plot &lt;- plot_freqs(coll_df, coll_full_label)\n# Conditioning on Z = 0\ncoll_z0_df &lt;- coll_df |&gt; filter(Z == 0)\ncoll_z0_n &lt;- nrow(coll_z0_df)\ncoll_z0_label &lt;- paste0(\"Z == 0 (\",coll_z0_n,\" obs)\")\ncoll_z0_plot &lt;- plot_freqs(coll_z0_df, coll_z0_label, y_lab=FALSE)\n# Conditioning on Z = 1\ncoll_z1_df &lt;- coll_df |&gt; filter(Z == 1)\ncoll_z1_n &lt;- nrow(coll_z1_df)\ncoll_z1_label &lt;- paste0(\"Z == 1 (\",coll_z1_n,\" obs)\")\ncoll_z1_plot &lt;- plot_freqs(coll_z1_df, coll_z1_label, y_lab=FALSE)\ncoll_full_plot | coll_z0_plot | coll_z1_plot\n\n\n\n\n\n\n\n\n\n\nConditioning on colliders induces correlation where there previously was none ☠️\n\n\n\n\n\nCode\nset.seed(5650)\nccoll_df &lt;- tibble(\n    X = rnorm(n_c),\n    Y = rnorm(n_c),\n    Z = rbern(n_c, plogis(2 * (X + Y - 1)))\n)\n\n\n\n\nCode\nccoll_lm &lt;- lm(Y ~ X, data=ccoll_df)\nccoll_slope &lt;- round(ccoll_lm$coef['X'], 3)\nccoll_z0_lm &lt;- lm(Y ~ X, data=ccoll_df |&gt; filter(Z == 0))\nccoll_z0_slope &lt;- round(ccoll_z0_lm$coef['X'], 2)\nccoll_z0_label &lt;- paste0(\"$Slope_{Z=0} = \",ccoll_z0_slope,\"$\")\nccoll_z1_lm &lt;- lm(Y ~ X, data=ccoll_df |&gt; filter(Z == 1))\nccoll_z1_slope &lt;- round(ccoll_z1_lm$coef['X'], 2)\nccoll_z1_label &lt;- paste0(\"$Slope_{Z=1} = \",ccoll_z1_slope,\"$\")\nccoll_z_texlabel &lt;- TeX(paste0(ccoll_z0_label, \" | \", ccoll_z1_label))\nccoll_xmin &lt;- min(ccoll_df$X)\nccoll_xmax &lt;- max(ccoll_df$X)\nggplot() +\n  # Points\n  geom_point(\n    data=ccoll_df |&gt; filter(Y &gt; -3),\n    aes(x=X, y=Y, color=factor(Z)),\n    size=0.6*g_pointsize,\n    alpha=0.8\n  ) +\n  # Overall lm\n  geom_smooth(\n    data=ccoll_df, aes(x=X, y=Y),\n    method = lm, se = FALSE,\n    linewidth = 2.5, color='black'\n  ) +\n  # Stratified lm\n  # (slightly larger black lines)\n  geom_smooth(\n    data=ccoll_df,\n    aes(x=X, y=Y, group=factor(Z)),\n    method=lm, se=FALSE, fullrange=TRUE,\n    linewidth=2.75, color='black'\n  ) +\n  # (Colored lines)\n  geom_smooth(\n    data=ccoll_df,\n    aes(x=X, y=Y, color=factor(Z)),\n    method=lm, se=FALSE, fullrange=TRUE,\n    linewidth=2\n  ) +\n  theme_dsan(base_size=24) +\n  theme(\n    plot.title = element_text(size=24),\n    plot.subtitle = element_text(size=20)\n  ) +\n  coord_equal() +\n  labs(\n    title = paste0(\n      \"Unstratified Slope = \",ccoll_slope\n    ),\n    subtitle=ccoll_z_texlabel,\n    x = \"X\", y = \"Y\", color = \"Z\"\n  )\n\n\n\n\n\n\n\n\n\n\n\n…This is why we have to think, rather than just “control for everything”! 😭"
+  },
+  {
+    "objectID": "w04/slides.html#proxies-for-z",
+    "href": "w04/slides.html#proxies-for-z",
+    "title": "Week 4: Clearing the Path from Cause to Effect",
+    "section": "Proxies for \\(Z\\)",
+    "text": "Proxies for \\(Z\\)\n\n\n\n\n\nCode\nset.seed(5650)\nprox_df &lt;- tibble(\n  X = rbern(n_d),\n  Z = rbern(n_d, (1-X)*0.1 + X*0.9),\n  Y = rbern(n_d, (1-Z)*0.1 + Z*0.9),\n  A = rbern(n_d, (1-Z)*0.1 + Z*0.9)\n)\n\n\n\n\nCode\n# The full df\nprox_full_label &lt;- paste0(\"Raw Data (n = 10K)\")\nprox_full_plot &lt;- plot_freqs(prox_df, prox_full_label)\n# Conditioning on A == 0\nprox_a0_df &lt;- prox_df |&gt; filter(A == 0)\nprox_a0_n &lt;- nrow(prox_a0_df)\nprox_a0_label &lt;- paste0(\"A == 0 (\",prox_a0_n,\" obs)\")\nprox_a0_plot &lt;- plot_freqs(prox_a0_df, prox_a0_label, y_lab=FALSE)\n# Conditioning on A == 1\nprox_a1_df &lt;- prox_df |&gt; filter(A == 1)\nprox_a1_n &lt;- nrow(prox_a1_df)\nprox_a1_label &lt;- paste0(\"A == 1 (\",prox_a1_n,\" obs)\")\nprox_a1_plot &lt;- plot_freqs(prox_a1_df, prox_a1_label, y_lab=FALSE)\nprox_full_plot | prox_a0_plot | prox_a1_plot\n\n\n\n\n\n\n\n\n\n\nWith just \\(X \\rightarrow Z \\rightarrow Y\\), we’d have a pipe\nObserving \\(A\\) gives us some (not all!) information about \\(Z\\)\n\n\n\n\n\n\n\n\n\n\nCode\nlibrary(tidyverse)\nlibrary(extraDistr)\nlibrary(latex2exp)\nset.seed(5650)\nn_c &lt;- 300\ncprox_df &lt;- tibble(\n    X = rnorm(n_c),\n    Z = rbern(n_c, plogis(X)),\n    Y = rnorm(n_c, 2 * Z - 1),\n    A = rbern(n_c, (1-Z)*0.86 + Z*0.14)\n)\ncprox_lm &lt;- lm(Y ~ X, data=cprox_df)\ncprox_slope &lt;- round(cprox_lm$coef['X'], 3)\ncprox_a0_lm &lt;- lm(Y ~ X, data=cprox_df |&gt; filter(A == 0))\ncprox_a0_slope &lt;- round(cprox_a0_lm$coef['X'], 2)\ncprox_a0_label &lt;- paste0(\"$Slope_{A=0} = \",cprox_a0_slope,\"$\")\n# A == 1 lm\ncprox_a1_lm &lt;- lm(Y ~ X, data=cprox_df |&gt; filter(A == 1))\ncprox_a1_slope &lt;- round(cprox_a1_lm$coef['X'], 2)\ncprox_a1_label &lt;- paste0(\"$Slope_{A=1} = \",cprox_a1_slope,\"$\")\ncprox_a_texlabel &lt;- TeX(paste0(cprox_a0_label, \" | \", cprox_a1_label))\ncprox_xmin &lt;- min(cprox_df$X)\ncprox_xmax &lt;- max(cprox_df$X)\nggplot() +\n  # Points\n  geom_point(\n    data=cprox_df |&gt; filter(Y &gt; -3),\n    aes(x=X, y=Y, color=factor(A)),\n    size=0.6*g_pointsize,\n    alpha=0.8\n  ) +\n  # Overall lm\n  geom_smooth(\n    data=cprox_df, aes(x=X, y=Y),\n    method = lm, se = FALSE,\n    linewidth = 2.5, color='black'\n  ) +\n  # Stratified lm\n  # (slightly larger black lines)\n  geom_smooth(\n    data=cprox_df,\n    aes(x=X, y=Y, group=factor(A)),\n    method=lm, se=FALSE, fullrange=TRUE,\n    linewidth=2.75, color='black'\n  ) +\n  # (Colored lines)\n  geom_smooth(\n    data=cprox_df,\n    aes(x=X, y=Y, color=factor(A)),\n    method=lm, se=FALSE, fullrange=TRUE,\n    linewidth=2\n  ) +\n  theme_dsan(base_size=22) +\n  theme(\n    plot.title = element_text(size=22),\n    plot.subtitle = element_text(size=18)\n  ) +\n  coord_equal() +\n  labs(\n    title = paste0(\n      \"Unstratified Slope = \",cprox_slope\n    ),\n    subtitle=cprox_a_texlabel,\n    x = \"X\", y = \"Y\", color = \"A\"\n  )"
+  },
+  {
+    "objectID": "w04/slides.html#references",
+    "href": "w04/slides.html#references",
+    "title": "Week 4: Clearing the Path from Cause to Effect",
+    "section": "References",
+    "text": "References\n\n\nBezuidenhout, Dana, Sarah Forthal, Kara Rudolph, and Matthew R Lamb. 2024. “Single World Intervention Graphs (SWIGs): A Practical Guide.” American Journal of Epidemiology, September, kwae353. https://doi.org/10.1093/aje/kwae353.\n\n\nGleijeses, Piero. 2013. Visions of Freedom: Havana, Washington, Pretoria, and the Struggle for Southern Africa, 1976-1991. UNC Press Books.\n\n\nMcElreath, Richard. 2020. Statistical Rethinking: A Bayesian Course with Examples in R and STAN. CRC Press."
+  },
+  {
+    "objectID": "w04/index.html",
+    "href": "w04/index.html",
+    "title": "Week 4: Clearing the Path from Cause to Effect",
+    "section": "",
+    "text": "Open slides in new window →",
+    "crumbs": [
+      "Week 4: {{< var w04.date-md >}}"
+    ]
+  },
+  {
+    "objectID": "w04/index.html#why-take-the-time-to-learn-a-modeling-language-vs.-individual-models",
+    "href": "w04/index.html#why-take-the-time-to-learn-a-modeling-language-vs.-individual-models",
+    "title": "Week 4: Clearing the Path from Cause to Effect",
+    "section": "Why Take the Time to Learn a Modeling Language (vs. Individual Models)?",
+    "text": "Why Take the Time to Learn a Modeling Language (vs. Individual Models)?\n\nMy answer: allows you to adapt to specifics/idiosyncrasies of your problem!\nLanguage metaphor: Learning models vs. learning modeling language \\(\\Leftrightarrow\\) Learning phrases in a language vs. learning to speak the language\n“Hello, one hamburger please” is good, but what if you…\n Are allergic to ketchup and need to make sure it’s removed\n Want to replace sesame seed bun with poppy seed bun, if they have it\n Prefer spicy, but not too spicy, mustard  Bun only  Animal style  …\n\n\n\n\n\n\n\n\nLanguages give us a syntax…\n\n\n\nS\n\\(\\rightarrow\\)\nNP VP\n\n\nNP\n\\(\\rightarrow\\)\nDetP N | AdjP NP\n\n\nVP\n\\(\\rightarrow\\)\nV NP\n\n\nAdjP\n\\(\\rightarrow\\)\nAdj | Adv AdjP\n\n\nN\n\\(\\rightarrow\\)\nfrog | tadpole\n\n\nV\n\\(\\rightarrow\\)\nsees | likes\n\n\nAdj\n\\(\\rightarrow\\)\nbig | small\n\n\nAdv\n\\(\\rightarrow\\)\nvery\n\n\nDetP\n\\(\\rightarrow\\)\na | the\n\n\n\n\n\n\n\n…For expressing arbitrary (infinitely many!) sentences",
+    "crumbs": [
+      "Week 4: {{< var w04.date-md >}}"
+    ]
+  },
+  {
+    "objectID": "w04/index.html#example-1-multilevel-tadpoles-mcelreath-ch.-13",
+    "href": "w04/index.html#example-1-multilevel-tadpoles-mcelreath-ch.-13",
+    "title": "Week 4: Clearing the Path from Cause to Effect",
+    "section": "Example 1: Multilevel Tadpoles (McElreath, Ch. 13)",
+    "text": "Example 1: Multilevel Tadpoles (McElreath, Ch. 13)\nNeed a language that can communicate the following info to estimation algorithm:\n\n Unit of observation is tadpole, but unit of analysis is tank\n Ultimately, I care about \\(Y =\\) survival rate (dependent var), as function of \\(X =\\) tank properties (independent var)\n …But the \\(n_i = 48\\) tanks actually come in \\(n_j = 3\\) types: small (10 bois), medium (25), large (35) (Bonus: What if there are different numbers of tanks per type?)\n I need it to account for impact of tank size, then  pool info across tank sizes\n\n\n\n\nFrom McElreath (2020)",
+    "crumbs": [
+      "Week 4: {{< var w04.date-md >}}"
+    ]
+  },
+  {
+    "objectID": "w04/index.html#example-2-dissertation-nightmare",
+    "href": "w04/index.html#example-2-dissertation-nightmare",
+    "title": "Week 4: Clearing the Path from Cause to Effect",
+    "section": "Example 2: Dissertation Nightmare",
+    "text": "Example 2: Dissertation Nightmare\n\n\n\n\n\n\n\n\n\nAbove: Data from Soviet archives; Above Right: US Military archives; Below Right: NATO archives",
+    "crumbs": [
+      "Week 4: {{< var w04.date-md >}}"
+    ]
+  },
+  {
+    "objectID": "w04/index.html#nightmarish-without-a-modeling-language",
+    "href": "w04/index.html#nightmarish-without-a-modeling-language",
+    "title": "Week 4: Clearing the Path from Cause to Effect",
+    "section": "Nightmarish Without a Modeling Language!",
+    "text": "Nightmarish Without a Modeling Language!\n\nModeling language \\(\\Rightarrow\\) Unambiguously “encode” idiosyncratic domain knowledge\nDissertation: Cold War \\(\\times\\) “Third World” \\(\\leadsto\\) Cuban 🇨🇺 trans-continental operations1\nMain narrative (for estimation): 1975 (South Africa invades Angola, 14 Oct → 🇨🇺 intervention, 4 Nov) to 1979 (USSR requests 🇨🇺 troops to Ethiopia for Ogaden War)\n[Ontology] Fix 1979 geographic entities at National level (as modeling choice, like fixing 2000 USD to measure inflation): \\(\\textsf{Cuba}_{1979}\\), \\(\\textsf{Angola}_{1979}\\), \\(\\textsf{PDRY}_{1979}\\), \\(\\textsf{YAR}_{1979}\\)\nDifferent tokens (Think NLP: \"Congo\", \"DRC\", \"Republic of Congo\") can then be contextualized: can “track” and link data appropriately despite splits, merges, name changes\nSay we have data on “Number of Communist Militants in \\(X\\)” (Hoover Yearbook)…\n\n\n\n\nEntity\nData from 1947-1971 at...\nData from 1971-Present at...\n\n\n\n\n\\(\\textsf{Pakistan}_{1979}\\)\nNational Level:\n\\(\\frac{62}{62+70} \\times\\) “Pakistan”\nNational Level:\n“Pakistan”\n\n\nSubnational Level:\n“West Pakistan”\nSubnational Level:\n\\(\\sum_{i \\in \\text{Regions}}\\text{data}_i\\)\n\n\n\\(\\textsf{Bangladesh}_{1979}\\)\nNational Level:\n\\(\\frac{70}{62+70} \\times\\) “Pakistan”\nNational Level:\n“Bangladesh”\n\n\nSubnational Level:\n“East Pakistan”\nSubnational Level:\n\\(\\sum_{i \\in \\text{Regions}}\\text{data}_i\\)",
+    "crumbs": [
+      "Week 4: {{< var w04.date-md >}}"
+    ]
+  },
+  {
+    "objectID": "w04/index.html#the-fork-x-leftarrow-z-rightarrow-y",
+    "href": "w04/index.html#the-fork-x-leftarrow-z-rightarrow-y",
+    "title": "Week 4: Clearing the Path from Cause to Effect",
+    "section": "The Fork: \\(X \\leftarrow Z \\rightarrow Y\\)",
+    "text": "The Fork: \\(X \\leftarrow Z \\rightarrow Y\\)\n\n\n\n\nCode\nset.seed(5650)\nfork_df &lt;- tibble(\n    Z = rbern(n_d),\n    X = rbern(n_d, (1-Z)*0.1 + Z*0.9),\n    Y = rbern(n_d, (1-Z)*0.1 + Z*0.9),\n)\n\n\n\n\nCode\nplot_freqs &lt;- function(df, plot_title, y_lab=TRUE) {\n  df_cor &lt;- cor(df$X, df$Y)\n  df_label &lt;- paste0(\"Cor(X,Y) = \",round(df_cor,3))\n  freq_df &lt;- df |&gt;\n    group_by(X, Y) |&gt;\n    summarize(count=n())\n  freq_plot &lt;- freq_df |&gt;\n    ggplot(\n      aes(x=factor(X), y=factor(Y), fill=count)\n    ) +\n    geom_tile() +\n    coord_equal() +\n    scale_fill_distiller(\n      palette=\"Greens\", direction=1,\n      limits=c(0,5000)\n    ) +\n    geom_label(\n      aes(label=count),\n      fill=\"white\", color=\"black\", size=7\n    ) +\n    labs(\n      title = plot_title,\n      subtitle = df_label,\n      x=\"X\", y=\"Y\"\n    ) +\n    theme_dsan(base_size=24) +\n    theme(\n      plot.title = element_text(size=21),\n      plot.subtitle = element_text(size=18)\n    ) +\n    remove_legend()\n  if (!y_lab) {\n    freq_plot &lt;- freq_plot + theme(\n      axis.title.y = element_blank()\n    )\n  }\n  return(freq_plot)\n}\n# The full df\nfull_label &lt;- paste0(\"Raw Data (n = 10K)\")\nfull_plot &lt;- plot_freqs(fork_df, full_label)\n\n\n`summarise()` has grouped output by 'X'. You can override using the `.groups`\nargument.\n\n\nCode\n# Conditioning on Z = 0\nz0_df &lt;- fork_df |&gt; filter(Z == 0)\nz0_n &lt;- nrow(z0_df)\nz0_label &lt;- paste0(\"Z == 0 (\",z0_n,\" obs)\")\nz0_plot &lt;- plot_freqs(z0_df, z0_label, y_lab=FALSE)\n\n\n`summarise()` has grouped output by 'X'. You can override using the `.groups`\nargument.\n\n\nCode\n# Conditioning on Z = 1\nz1_df &lt;- fork_df |&gt; filter(Z == 1)\nz1_n &lt;- nrow(z1_df)\nz1_label &lt;- paste0(\"Z == 1 (\",z1_n,\" obs)\")\nz1_plot &lt;- plot_freqs(z1_df, z1_label, y_lab=FALSE)\n\n\n`summarise()` has grouped output by 'X'. You can override using the `.groups`\nargument.\n\n\nCode\nfull_plot | z0_plot | z1_plot\n\n\n\n\n\n\n\n\n\n\n\n\nCode\nset.seed(5650)\ncfork_df &lt;- tibble(\n    Z = rbern(n_c),\n    X = rnorm(n_c, 2 * Z - 1),\n    Y = rnorm(n_c, 2 * Z - 1)\n)\n\n\n\n\nCode\nlibrary(latex2exp)\noverall_lm &lt;- lm(Y ~ X, data=cfork_df)\noverall_slope &lt;- round(overall_lm$coef['X'], 3)\nz0_lm &lt;- lm(Y ~ X, data=cfork_df |&gt; filter(Z == 0))\nz0_slope &lt;- round(z0_lm$coef['X'], 2)\nz0_label &lt;- paste0(\"$Slope_{Z=0} = \",z0_slope,\"$\")\nz0_leg_label &lt;- TeX(paste0(\"0 $(m=\",z0_slope,\")$\"))\nz1_lm &lt;- lm(Y ~ X, data=cfork_df |&gt; filter(Z == 1))\nz1_slope &lt;- round(z1_lm$coef['X'], 2)\nz1_label &lt;- paste0(\"$Slope_{Z=1} = \",z1_slope,\"$\")\nz_texlabel &lt;- TeX(paste0(z0_label, \" | \", z1_label))\ncfork_xmin &lt;- min(cfork_df$X)\ncfork_xmax &lt;- max(cfork_df$X)\nggplot() +\n  # Points\n  geom_point(\n    data=cfork_df,\n    aes(x=X, y=Y, color=factor(Z)),\n    size=0.6*g_pointsize,\n    alpha=0.8\n  ) +\n  # Overall lm\n  geom_smooth(\n    data=cfork_df, aes(x=X, y=Y),\n    method = lm, se = FALSE,\n    linewidth = 2.5, color='black'\n  ) +\n  # Stratified lm\n  # (slightly larger black lines)\n  geom_smooth(\n    data=cfork_df,\n    aes(x=X, y=Y, group=factor(Z)),\n    method=lm, se=FALSE, fullrange=TRUE,\n    linewidth=2.75, color='black'\n  ) +\n  # (Colored lines)\n  geom_smooth(\n    data=cfork_df,\n    aes(x=X, y=Y, color=factor(Z)),\n    method=lm, se=FALSE, fullrange=TRUE,\n    linewidth=2\n  ) +\n  theme_dsan(base_size=24) +\n  theme(\n    plot.title = element_text(size=24),\n    plot.subtitle = element_text(size=20)\n  ) +\n  coord_equal() +\n  labs(\n    title = paste0(\n      \"Unstratified Slope = \",overall_slope\n    ),\n    subtitle=z_texlabel,\n    x = \"X\", y = \"Y\", color = \"Z\"\n  )\n\n\n`geom_smooth()` using formula = 'y ~ x'\n`geom_smooth()` using formula = 'y ~ x'\n`geom_smooth()` using formula = 'y ~ x'",
+    "crumbs": [
+      "Week 4: {{< var w04.date-md >}}"
+    ]
+  },
+  {
+    "objectID": "w04/index.html#the-pipe-x-rightarrow-z-rightarrow-y",
+    "href": "w04/index.html#the-pipe-x-rightarrow-z-rightarrow-y",
+    "title": "Week 4: Clearing the Path from Cause to Effect",
+    "section": "The Pipe: \\(X \\rightarrow Z \\rightarrow Y\\)",
+    "text": "The Pipe: \\(X \\rightarrow Z \\rightarrow Y\\)\n\n\n\n\nCode\nset.seed(5650)\npipe_df &lt;- tibble(\n    X = rbern(n_d),\n    Z = rbern(n_d, (1-X)*0.1 + X*0.9),\n    Y = rbern(n_d, (1-Z)*0.1 + Z*0.9),\n)\n\n\n\n\nCode\n# The full df\npipe_full_label &lt;- paste0(\"Raw Data (n = 10K)\")\npipe_full_plot &lt;- plot_freqs(pipe_df, pipe_full_label)\n\n\n`summarise()` has grouped output by 'X'. You can override using the `.groups`\nargument.\n\n\nCode\n# Conditioning on Z = 0\npipe_z0_df &lt;- pipe_df |&gt; filter(Z == 0)\npipe_z0_n &lt;- nrow(pipe_z0_df)\npipe_z0_label &lt;- paste0(\"Z == 0 (\",pipe_z0_n,\" obs)\")\npipe_z0_plot &lt;- plot_freqs(pipe_z0_df, pipe_z0_label, y_lab=FALSE)\n\n\n`summarise()` has grouped output by 'X'. You can override using the `.groups`\nargument.\n\n\nCode\n# Conditioning on Z = 1\npipe_z1_df &lt;- pipe_df |&gt; filter(Z == 1)\npipe_z1_n &lt;- nrow(pipe_z1_df)\npipe_z1_label &lt;- paste0(\"Z == 1 (\",pipe_z1_n,\" obs)\")\npipe_z1_plot &lt;- plot_freqs(pipe_z1_df, pipe_z1_label, y_lab=FALSE)\n\n\n`summarise()` has grouped output by 'X'. You can override using the `.groups`\nargument.\n\n\nCode\npipe_full_plot | pipe_z0_plot | pipe_z1_plot\n\n\n\n\n\n\n\n\n\n\n\n\n\nCode\nset.seed(5650)\ncpipe_df &lt;- tibble(\n    X = rnorm(n_c),\n    Z = rbern(n_c, plogis(X)),\n    Y = rnorm(n_c, 2 * Z - 1)\n)\n\n\n\n\nCode\ncpipe_lm &lt;- lm(Y ~ X, data=cpipe_df)\ncpipe_slope &lt;- round(cpipe_lm$coef['X'], 3)\ncpipe_z0_lm &lt;- lm(Y ~ X, data=cpipe_df |&gt; filter(Z == 0))\ncpipe_z0_slope &lt;- round(cpipe_z0_lm$coef['X'], 2)\ncpipe_z0_label &lt;- paste0(\"$Slope_{Z=0} = \",cpipe_z0_slope,\"$\")\ncpipe_z1_lm &lt;- lm(Y ~ X, data=cpipe_df |&gt; filter(Z == 1))\ncpipe_z1_slope &lt;- round(cpipe_z1_lm$coef['X'], 2)\ncpipe_z1_label &lt;- paste0(\"$Slope_{Z=1} = \",cpipe_z1_slope,\"$\")\ncpipe_z_texlabel &lt;- TeX(paste0(cpipe_z0_label, \" | \", cpipe_z1_label))\ncpipe_xmin &lt;- min(cpipe_df$X)\ncpipe_xmax &lt;- max(cpipe_df$X)\nggplot() +\n  # Points\n  geom_point(\n    data=cpipe_df |&gt; filter(Y &gt; -3),\n    aes(x=X, y=Y, color=factor(Z)),\n    size=0.6*g_pointsize,\n    alpha=0.8\n  ) +\n  # Overall lm\n  geom_smooth(\n    data=cpipe_df, aes(x=X, y=Y),\n    method = lm, se = FALSE,\n    linewidth = 2.5, color='black'\n  ) +\n  # Stratified lm\n  # (slightly larger black lines)\n  geom_smooth(\n    data=cpipe_df,\n    aes(x=X, y=Y, group=factor(Z)),\n    method=lm, se=FALSE, fullrange=TRUE,\n    linewidth=2.75, color='black'\n  ) +\n  # (Colored lines)\n  geom_smooth(\n    data=cpipe_df,\n    aes(x=X, y=Y, color=factor(Z)),\n    method=lm, se=FALSE, fullrange=TRUE,\n    linewidth=2\n  ) +\n  theme_dsan(base_size=24) +\n  theme(\n    plot.title = element_text(size=24),\n    plot.subtitle = element_text(size=20)\n  ) +\n  coord_equal() +\n  labs(\n    title = paste0(\n      \"Unstratified Slope = \",cpipe_slope\n    ),\n    subtitle=cpipe_z_texlabel,\n    x = \"X\", y = \"Y\", color = \"Z\"\n  )\n\n\n`geom_smooth()` using formula = 'y ~ x'\n`geom_smooth()` using formula = 'y ~ x'\n`geom_smooth()` using formula = 'y ~ x'",
+    "crumbs": [
+      "Week 4: {{< var w04.date-md >}}"
+    ]
+  },
+  {
+    "objectID": "w04/index.html#the-collider-x-rightarrow-z-leftarrow-y",
+    "href": "w04/index.html#the-collider-x-rightarrow-z-leftarrow-y",
+    "title": "Week 4: Clearing the Path from Cause to Effect",
+    "section": "⚠️The Collider⚠️: \\(X \\rightarrow Z \\leftarrow Y\\)",
+    "text": "⚠️The Collider⚠️: \\(X \\rightarrow Z \\leftarrow Y\\)\n\n\n\n\n\nCode\nset.seed(5650)\ncoll_df &lt;- tibble(\n    X = rbern(n_d),\n    Y = rbern(n_d),\n    Z = rbern(n_d, ifelse(X + Y &gt; 0, 0.9, 0.2)),\n)\n\n\n\n\nCode\n# The full df\ncoll_full_label &lt;- paste0(\"Raw Data (n = 10K)\")\ncoll_full_plot &lt;- plot_freqs(coll_df, coll_full_label)\n\n\n`summarise()` has grouped output by 'X'. You can override using the `.groups`\nargument.\n\n\nCode\n# Conditioning on Z = 0\ncoll_z0_df &lt;- coll_df |&gt; filter(Z == 0)\ncoll_z0_n &lt;- nrow(coll_z0_df)\ncoll_z0_label &lt;- paste0(\"Z == 0 (\",coll_z0_n,\" obs)\")\ncoll_z0_plot &lt;- plot_freqs(coll_z0_df, coll_z0_label, y_lab=FALSE)\n\n\n`summarise()` has grouped output by 'X'. You can override using the `.groups`\nargument.\n\n\nCode\n# Conditioning on Z = 1\ncoll_z1_df &lt;- coll_df |&gt; filter(Z == 1)\ncoll_z1_n &lt;- nrow(coll_z1_df)\ncoll_z1_label &lt;- paste0(\"Z == 1 (\",coll_z1_n,\" obs)\")\ncoll_z1_plot &lt;- plot_freqs(coll_z1_df, coll_z1_label, y_lab=FALSE)\n\n\n`summarise()` has grouped output by 'X'. You can override using the `.groups`\nargument.\n\n\nCode\ncoll_full_plot | coll_z0_plot | coll_z1_plot\n\n\n\n\n\n\n\n\n\n\nConditioning on colliders induces correlation where there previously was none ☠️\n\n\n\n\n\nCode\nset.seed(5650)\nccoll_df &lt;- tibble(\n    X = rnorm(n_c),\n    Y = rnorm(n_c),\n    Z = rbern(n_c, plogis(2 * (X + Y - 1)))\n)\n\n\n\n\nCode\nccoll_lm &lt;- lm(Y ~ X, data=ccoll_df)\nccoll_slope &lt;- round(ccoll_lm$coef['X'], 3)\nccoll_z0_lm &lt;- lm(Y ~ X, data=ccoll_df |&gt; filter(Z == 0))\nccoll_z0_slope &lt;- round(ccoll_z0_lm$coef['X'], 2)\nccoll_z0_label &lt;- paste0(\"$Slope_{Z=0} = \",ccoll_z0_slope,\"$\")\nccoll_z1_lm &lt;- lm(Y ~ X, data=ccoll_df |&gt; filter(Z == 1))\nccoll_z1_slope &lt;- round(ccoll_z1_lm$coef['X'], 2)\nccoll_z1_label &lt;- paste0(\"$Slope_{Z=1} = \",ccoll_z1_slope,\"$\")\nccoll_z_texlabel &lt;- TeX(paste0(ccoll_z0_label, \" | \", ccoll_z1_label))\nccoll_xmin &lt;- min(ccoll_df$X)\nccoll_xmax &lt;- max(ccoll_df$X)\nggplot() +\n  # Points\n  geom_point(\n    data=ccoll_df |&gt; filter(Y &gt; -3),\n    aes(x=X, y=Y, color=factor(Z)),\n    size=0.6*g_pointsize,\n    alpha=0.8\n  ) +\n  # Overall lm\n  geom_smooth(\n    data=ccoll_df, aes(x=X, y=Y),\n    method = lm, se = FALSE,\n    linewidth = 2.5, color='black'\n  ) +\n  # Stratified lm\n  # (slightly larger black lines)\n  geom_smooth(\n    data=ccoll_df,\n    aes(x=X, y=Y, group=factor(Z)),\n    method=lm, se=FALSE, fullrange=TRUE,\n    linewidth=2.75, color='black'\n  ) +\n  # (Colored lines)\n  geom_smooth(\n    data=ccoll_df,\n    aes(x=X, y=Y, color=factor(Z)),\n    method=lm, se=FALSE, fullrange=TRUE,\n    linewidth=2\n  ) +\n  theme_dsan(base_size=24) +\n  theme(\n    plot.title = element_text(size=24),\n    plot.subtitle = element_text(size=20)\n  ) +\n  coord_equal() +\n  labs(\n    title = paste0(\n      \"Unstratified Slope = \",ccoll_slope\n    ),\n    subtitle=ccoll_z_texlabel,\n    x = \"X\", y = \"Y\", color = \"Z\"\n  )\n\n\n`geom_smooth()` using formula = 'y ~ x'\n`geom_smooth()` using formula = 'y ~ x'\n`geom_smooth()` using formula = 'y ~ x'\n\n\n\n\n\n\n\n\n\n\n\n\n…This is why we have to think, rather than just “control for everything”! 😭",
+    "crumbs": [
+      "Week 4: {{< var w04.date-md >}}"
+    ]
+  },
+  {
+    "objectID": "w04/index.html#proxies-for-z",
+    "href": "w04/index.html#proxies-for-z",
+    "title": "Week 4: Clearing the Path from Cause to Effect",
+    "section": "Proxies for \\(Z\\)",
+    "text": "Proxies for \\(Z\\)\n\n\n\n\n\nCode\nset.seed(5650)\nprox_df &lt;- tibble(\n  X = rbern(n_d),\n  Z = rbern(n_d, (1-X)*0.1 + X*0.9),\n  Y = rbern(n_d, (1-Z)*0.1 + Z*0.9),\n  A = rbern(n_d, (1-Z)*0.1 + Z*0.9)\n)\n\n\n\n\nCode\n# The full df\nprox_full_label &lt;- paste0(\"Raw Data (n = 10K)\")\nprox_full_plot &lt;- plot_freqs(prox_df, prox_full_label)\n\n\n`summarise()` has grouped output by 'X'. You can override using the `.groups`\nargument.\n\n\nCode\n# Conditioning on A == 0\nprox_a0_df &lt;- prox_df |&gt; filter(A == 0)\nprox_a0_n &lt;- nrow(prox_a0_df)\nprox_a0_label &lt;- paste0(\"A == 0 (\",prox_a0_n,\" obs)\")\nprox_a0_plot &lt;- plot_freqs(prox_a0_df, prox_a0_label, y_lab=FALSE)\n\n\n`summarise()` has grouped output by 'X'. You can override using the `.groups`\nargument.\n\n\nCode\n# Conditioning on A == 1\nprox_a1_df &lt;- prox_df |&gt; filter(A == 1)\nprox_a1_n &lt;- nrow(prox_a1_df)\nprox_a1_label &lt;- paste0(\"A == 1 (\",prox_a1_n,\" obs)\")\nprox_a1_plot &lt;- plot_freqs(prox_a1_df, prox_a1_label, y_lab=FALSE)\n\n\n`summarise()` has grouped output by 'X'. You can override using the `.groups`\nargument.\n\n\nCode\nprox_full_plot | prox_a0_plot | prox_a1_plot\n\n\n\n\n\n\n\n\n\n\nWith just \\(X \\rightarrow Z \\rightarrow Y\\), we’d have a pipe\nObserving \\(A\\) gives us some (not all!) information about \\(Z\\)\n\n\n\n\n\n\n\n\n\n\nCode\nlibrary(tidyverse)\nlibrary(extraDistr)\nlibrary(latex2exp)\nset.seed(5650)\nn_c &lt;- 300\ncprox_df &lt;- tibble(\n    X = rnorm(n_c),\n    Z = rbern(n_c, plogis(X)),\n    Y = rnorm(n_c, 2 * Z - 1),\n    A = rbern(n_c, (1-Z)*0.86 + Z*0.14)\n)\ncprox_lm &lt;- lm(Y ~ X, data=cprox_df)\ncprox_slope &lt;- round(cprox_lm$coef['X'], 3)\ncprox_a0_lm &lt;- lm(Y ~ X, data=cprox_df |&gt; filter(A == 0))\ncprox_a0_slope &lt;- round(cprox_a0_lm$coef['X'], 2)\ncprox_a0_label &lt;- paste0(\"$Slope_{A=0} = \",cprox_a0_slope,\"$\")\n# A == 1 lm\ncprox_a1_lm &lt;- lm(Y ~ X, data=cprox_df |&gt; filter(A == 1))\ncprox_a1_slope &lt;- round(cprox_a1_lm$coef['X'], 2)\ncprox_a1_label &lt;- paste0(\"$Slope_{A=1} = \",cprox_a1_slope,\"$\")\ncprox_a_texlabel &lt;- TeX(paste0(cprox_a0_label, \" | \", cprox_a1_label))\ncprox_xmin &lt;- min(cprox_df$X)\ncprox_xmax &lt;- max(cprox_df$X)\nggplot() +\n  # Points\n  geom_point(\n    data=cprox_df |&gt; filter(Y &gt; -3),\n    aes(x=X, y=Y, color=factor(A)),\n    size=0.6*g_pointsize,\n    alpha=0.8\n  ) +\n  # Overall lm\n  geom_smooth(\n    data=cprox_df, aes(x=X, y=Y),\n    method = lm, se = FALSE,\n    linewidth = 2.5, color='black'\n  ) +\n  # Stratified lm\n  # (slightly larger black lines)\n  geom_smooth(\n    data=cprox_df,\n    aes(x=X, y=Y, group=factor(A)),\n    method=lm, se=FALSE, fullrange=TRUE,\n    linewidth=2.75, color='black'\n  ) +\n  # (Colored lines)\n  geom_smooth(\n    data=cprox_df,\n    aes(x=X, y=Y, color=factor(A)),\n    method=lm, se=FALSE, fullrange=TRUE,\n    linewidth=2\n  ) +\n  theme_dsan(base_size=22) +\n  theme(\n    plot.title = element_text(size=22),\n    plot.subtitle = element_text(size=18)\n  ) +\n  coord_equal() +\n  labs(\n    title = paste0(\n      \"Unstratified Slope = \",cprox_slope\n    ),\n    subtitle=cprox_a_texlabel,\n    x = \"X\", y = \"Y\", color = \"A\"\n  )\n\n\n`geom_smooth()` using formula = 'y ~ x'\n`geom_smooth()` using formula = 'y ~ x'\n`geom_smooth()` using formula = 'y ~ x'",
+    "crumbs": [
+      "Week 4: {{< var w04.date-md >}}"
+    ]
+  },
+  {
+    "objectID": "w04/index.html#references",
+    "href": "w04/index.html#references",
+    "title": "Week 4: Clearing the Path from Cause to Effect",
+    "section": "References",
+    "text": "References\n\n\nBezuidenhout, Dana, Sarah Forthal, Kara Rudolph, and Matthew R Lamb. 2024. “Single World Intervention Graphs (SWIGs): A Practical Guide.” American Journal of Epidemiology, September, kwae353. https://doi.org/10.1093/aje/kwae353.\n\n\nGleijeses, Piero. 2013. Visions of Freedom: Havana, Washington, Pretoria, and the Struggle for Southern Africa, 1976-1991. UNC Press Books.\n\n\nMcElreath, Richard. 2020. Statistical Rethinking: A Bayesian Course with Examples in R and STAN. CRC Press.",
+    "crumbs": [
+      "Week 4: {{< var w04.date-md >}}"
+    ]
+  },
+  {
+    "objectID": "w04/index.html#footnotes",
+    "href": "w04/index.html#footnotes",
+    "title": "Week 4: Clearing the Path from Cause to Effect",
+    "section": "Footnotes",
+    "text": "Footnotes\n\n\nHelpful metaphor (Gleijeses 2013): Cuba \\(\\approx\\) Forward-deployed “3rd World Outpost” for USSR (Soviet $ but Cuban training of PAIGC → MPLA), as Israel \\(\\approx\\) Forward-deployed “3rd World Outpost” for US (US $ but Israeli training of SAVAK → SADF)↩︎",
+    "crumbs": [
+      "Week 4: {{< var w04.date-md >}}"
+    ]
   },
   {
     "objectID": "w03/index.html",
@@ -526,177 +637,161 @@
     ]
   },
   {
-    "objectID": "w04/index.html",
-    "href": "w04/index.html",
-    "title": "Week 4: Clearing the Path from Cause to Effect",
+    "objectID": "w03/slides.html#so-whats-the-problem",
+    "href": "w03/slides.html#so-whats-the-problem",
+    "title": "Week 3: From PGMs to Causal Diagrams",
+    "section": "So What’s the Problem?",
+    "text": "So What’s the Problem?\n\nNon-probabilistic models: High potential for being garbage\n\ntldr: even if SUPER certain, using \\(\\Pr(\\mathcal{H}) = 1-\\varepsilon\\) with tiny \\(\\varepsilon\\) has literal life-saving advantages1 (Finetti 1972)\n\nProbabilistic models: Getting there, still looking at “surface”\n\nOf the \\(N = 100\\) times we observed event \\(X\\) occurring, event \\(Y\\) also occurred \\(90\\) of those times\n\\(\\implies \\Pr(Y \\mid X) = \\frac{\\#[X, Y]}{\\#[X]} = \\frac{90}{100} = 0.9\\)\n\nCausal models: Does \\(Y\\) happen because of \\(X\\) happening? For that, need to start modeling what’s happening under the surface making \\(X\\) and \\(Y\\) “pop up” together so often\n\nSee Appendix Slide"
+  },
+  {
+    "objectID": "w03/slides.html#the-fundamental-problem-of-causal-inference",
+    "href": "w03/slides.html#the-fundamental-problem-of-causal-inference",
+    "title": "Week 3: From PGMs to Causal Diagrams",
+    "section": "The Fundamental Problem of Causal Inference",
+    "text": "The Fundamental Problem of Causal Inference\nThe only workable definition of «\\(X\\) causes \\(Y\\)»:\n\n\n\n\n Defining Causality (Hume 1739, ruining everything as usual 😤)\n\n\n\\(X\\) causes \\(Y\\) if and only if:\n\n\\(X\\) temporally precedes \\(Y\\) and\n\nIn two worlds \\(W_0\\) and \\(W_1\\) where\neverything is exactly the same except that \\(X = 0\\) in \\(W_0\\) and \\(X = 1\\) in \\(W_1\\),\n\\(Y = 0\\) in \\(W_0\\) and \\(Y = 1\\) in \\(W_1\\)\n\n\n\n\n\n\n\nThe problem? We live in one world, not two identical worlds simultaneously 😭"
+  },
+  {
+    "objectID": "w03/slides.html#what-is-to-be-done",
+    "href": "w03/slides.html#what-is-to-be-done",
+    "title": "Week 3: From PGMs to Causal Diagrams",
+    "section": "What Is To Be Done?",
+    "text": "What Is To Be Done?"
+  },
+  {
+    "objectID": "w03/slides.html#probability",
+    "href": "w03/slides.html#probability",
+    "title": "Week 3: From PGMs to Causal Diagrams",
+    "section": "Probability++",
+    "text": "Probability++\n\nTools from prob/stats (RVs, CDFs, Conditional Probability) necessary but not sufficient for causal inference!\nExample: Say we use DSAN 5100 tools to discover:\n\nProbability that event \\(E_1\\) occurs is \\(\\Pr(E_1) = 0.5\\)\nProbability that \\(E_1\\) occurs conditional on another event \\(E_0\\) occurring is \\(\\Pr(E_1 \\mid E_0) = 0.75\\)\n\nUnfortunately, we still cannot infer that the occurrence of \\(E_0\\) causes an increase in the likelihood of \\(E_1\\) occurring."
+  },
+  {
+    "objectID": "w03/slides.html#beyond-conditional-probability",
+    "href": "w03/slides.html#beyond-conditional-probability",
+    "title": "Week 3: From PGMs to Causal Diagrams",
+    "section": "Beyond Conditional Probability",
+    "text": "Beyond Conditional Probability\n\nThis issue (that conditional probabilities could not be interpreted causally) at first represented a kind of dead end for scientists interested in employing probability theory to study causal relationships…\nRecent decades: researchers have built up an additional “layer” of modeling tools, augmenting existing machinery of probability to address causality head-on!\nPearl (2000): Formal proofs that (\\(\\Pr\\) axioms) \\(\\cup\\) (\\(\\textsf{do}\\) axioms) \\(\\Rightarrow\\) causal inference procedures successfully recover causal effects"
+  },
+  {
+    "objectID": "w03/slides.html#preview-do-calculus",
+    "href": "w03/slides.html#preview-do-calculus",
+    "title": "Week 3: From PGMs to Causal Diagrams",
+    "section": "Preview: do-Calculus",
+    "text": "Preview: do-Calculus\n\nExtends core of probability to incorporate causality, via \\(\\textsf{do}\\) operator\n\\(\\textsf{do}(X = 5)\\) is a “special” event, representing intervention in DGP to force \\(X \\leftarrow 5\\)… \\(\\textsf{do}(X = 5)\\) not the same event as \\(X = 5\\)!\n\n\n\n\n\n\n\n\n\n\\(X = 5\\)\n\\(\\neq\\)\n\\(\\textsf{do}(X = 5)\\)\n\n\n\n\nObserving that \\(X\\) took on value 5 (for some possibly-unknown reason)\n\\(\\neq\\)\nIntervening to force \\(X \\leftarrow 5\\), all else in DGP remaining the same (intervention then “flows” through rest of DGP)\n\n\n\n\nProbably the most difficult thing in 5650 to wrap head around\n“Special”: \\(\\Pr(\\textsf{do}(X = 5))\\) not well-defined, only \\(\\Pr(Y = 6 \\mid \\textsf{do}(X = 5))\\)\nTo emphasize special-ness, we may use notation like:\n\\[\n\\Pr(Y = 6 \\mid \\textsf{do}(X = 5)) \\equiv \\textstyle \\Pr_{\\textsf{do}(X = 5)}(Y = 6)\n\\]\nto avoid confusion with “normal” events"
+  },
+  {
+    "objectID": "w03/slides.html#causal-world-unlocked-with-great-power-comes-great-responsibility",
+    "href": "w03/slides.html#causal-world-unlocked-with-great-power-comes-great-responsibility",
+    "title": "Week 3: From PGMs to Causal Diagrams",
+    "section": "Causal World Unlocked 😎 (With Great Power Comes Great Responsibility…)",
+    "text": "Causal World Unlocked 😎 (With Great Power Comes Great Responsibility…)\n\nWith \\(\\textsf{do}(\\cdot)\\) in hand… (Alongside DGP satisfying axioms slightly more strict than core probability axioms)\nWe can make causal inferences from similar pair of facts! If:\n\nProbability that event \\(E_1\\) occurs is \\(\\Pr(E_1) = 0.5\\),\nThe probability that \\(E_1\\) occurs conditional on the event \\(\\textsf{do}(E_0)\\) occurring is \\(\\Pr(E_1 \\mid \\textsf{do}(E_0)) = 0.75\\),\n\nNow we can actually infer that the occurrence of \\(E_0\\) caused an increase in the likelihood of \\(E_1\\) occurring!"
+  },
+  {
+    "objectID": "w03/slides.html#importance-of-observed-vs.-latent-distinction",
+    "href": "w03/slides.html#importance-of-observed-vs.-latent-distinction",
+    "title": "Week 3: From PGMs to Causal Diagrams",
+    "section": "Importance of Observed vs. Latent Distinction!",
+    "text": "Importance of Observed vs. Latent Distinction!\n\nAcross many different fields, hidden stumbling-block in your project may be failure to model this distinction and pursue its implications!\n\n\n\n\n\n\n\n\n\nFigure 1: Your model failing to achieve its goal bc you haven’t yet distinguished observed vs. latent variables"
+  },
+  {
+    "objectID": "w03/slides.html#example-from-cognitive-neuroscience-visual-perception",
+    "href": "w03/slides.html#example-from-cognitive-neuroscience-visual-perception",
+    "title": "Week 3: From PGMs to Causal Diagrams",
+    "section": "Example from Cognitive Neuroscience: Visual Perception",
+    "text": "Example from Cognitive Neuroscience: Visual Perception\n\n\n\n\n\n\n\nWe “see” 3D objects like a basketballs, but our eyes are (curved) 2D surfaces!\n\\(\\Rightarrow\\) Our brains construct 3D environment by combining 2D info (observed photons-hitting-light-cones) with latent heuristic info:\n\nInstantaneous Binocular Disparity, fusing info from two slightly-offset eyes,\nShort-term Motion Parallax: How does object shift over short temporal “windows” of movement?\nLong-term mental models (orange-ish circle with this line pattern is usually a basketball, which is usually this big, etc.)\n\n\n\n\n\n\n\nImage source (a very cool article!)\n\n\n\n\n\n\nSimilar examples in many other fields \\(\\leadsto\\) science is a strange waltz of general models vs. field-specific details, but there’s one model that is infinitely helpful imo…"
+  },
+  {
+    "objectID": "w03/slides.html#hidden-markov-models-hmms-are-our-ur-pgms",
+    "href": "w03/slides.html#hidden-markov-models-hmms-are-our-ur-pgms",
+    "title": "Week 3: From PGMs to Causal Diagrams",
+    "section": "Hidden Markov Models (HMMs) Are Our Ur-PGMs!",
+    "text": "Hidden Markov Models (HMMs) Are Our Ur-PGMs!\n\nUsing “Ur” in the same sense as “America’s Ur-Choropleths”…\nHMMs are our “Ur-Models” for Computational Social Science specifically\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nLet’s consider an extremely currently-popular strand of CSS research, and step through why (a) it may be harder than it initially seems, but (b) we can use HMMs to “organize”/manage/visualize the complexity!\n\n\nAs in, how America’s Ur-Choropleths are two visualizations you can keep at hand before launching into a specific nation-wide choropleth about a specific issue!"
+  },
+  {
+    "objectID": "w03/slides.html#studying-fake-news",
+    "href": "w03/slides.html#studying-fake-news",
+    "title": "Week 3: From PGMs to Causal Diagrams",
+    "section": "Studying “Fake News”",
+    "text": "Studying “Fake News”\n\n\n\n\n\n\n\nStudying “fake news” with ML and/or Deep Learning and/or Big Data is very popular in Computational Social Science: let’s use HMMs to see why it might be more… difficult/complicated than it seems at first 🙈\n\n\n\n\n\nThe (implicit) model in studies like Iyengar and Kinder (2010) is something like:\n\n\n\n\n\n\n\n\n\n\n\n\n\nThus allowing results to be summarized in a table like:\n\n\n\n\n\n\n\n\n\n\n\nIyengar and Kinder (2010)"
+  },
+  {
+    "objectID": "w03/slides.html#the-devil-in-the-details-i",
+    "href": "w03/slides.html#the-devil-in-the-details-i",
+    "title": "Week 3: From PGMs to Causal Diagrams",
+    "section": "The Devil in the Details I",
+    "text": "The Devil in the Details I\n\nResidents of the New Haven, Connecticut area participated in one of two experiments, each of which spanned six consecutive days […] took place in November 1980, shortly after the presidential election\n\n\nWe measured problem importance with four questions that appeared in both the pretreatment and posttreatment questionnaires:\n\nPlease indicate how important you consider these problems to be.\nShould the federal government do more to develop solutions to these problems, even if it means raising taxes?\nHow much do you yourself care about these problems?\nThese days how much do you talk about these problems?"
+  },
+  {
+    "objectID": "w03/slides.html#the-devil-in-the-details-ii",
+    "href": "w03/slides.html#the-devil-in-the-details-ii",
+    "title": "Week 3: From PGMs to Causal Diagrams",
+    "section": "The Devil in the Details II",
+    "text": "The Devil in the Details II"
+  },
+  {
+    "objectID": "w03/slides.html#randomization-and-fine-tuned-treatment",
+    "href": "w03/slides.html#randomization-and-fine-tuned-treatment",
+    "title": "Week 3: From PGMs to Causal Diagrams",
+    "section": "Randomization and Fine-Tuned Treatment",
+    "text": "Randomization and Fine-Tuned Treatment\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n…These are the types of things we usually don’t have control over as data scientists (we’re just handed a .csv!)"
+  },
+  {
+    "objectID": "w03/slides.html#lets-model-it",
+    "href": "w03/slides.html#lets-model-it",
+    "title": "Week 3: From PGMs to Causal Diagrams",
+    "section": "Let’s Model It!",
+    "text": "Let’s Model It!"
+  },
+  {
+    "objectID": "w03/slides.html#the-final-piece-plate-notation",
+    "href": "w03/slides.html#the-final-piece-plate-notation",
+    "title": "Week 3: From PGMs to Causal Diagrams",
+    "section": "The Final Piece: Plate Notation",
+    "text": "The Final Piece: Plate Notation\n\nFor describing general distributions, there is often a “single node generating a bunch of nodes” structure:\n\n\n\n\n\n\n\nPGM notation has a built-in tool for this: plates!"
+  },
+  {
+    "objectID": "w03/slides.html#crucial-css-model-we-can-now-dive-into",
+    "href": "w03/slides.html#crucial-css-model-we-can-now-dive-into",
+    "title": "Week 3: From PGMs to Causal Diagrams",
+    "section": "Crucial CSS Model We Can Now Dive Into!",
+    "text": "Crucial CSS Model We Can Now Dive Into!\n\nImage source"
+  },
+  {
+    "objectID": "w03/slides.html#what-does-this-give-us",
+    "href": "w03/slides.html#what-does-this-give-us",
+    "title": "Week 3: From PGMs to Causal Diagrams",
+    "section": "What Does This Give Us?",
+    "text": "What Does This Give Us?"
+  },
+  {
+    "objectID": "w03/slides.html#before-we-branch-off-of-pgms",
+    "href": "w03/slides.html#before-we-branch-off-of-pgms",
+    "title": "Week 3: From PGMs to Causal Diagrams",
+    "section": "Before We Branch Off Of PGMs",
+    "text": "Before We Branch Off Of PGMs\n(Even in non-causal settings)\n\nImage source\nWe don’t exactly think “Shakespeare decided on a set of topics,”"
+  },
+  {
+    "objectID": "w03/slides.html#getting-shot-by-a-firing-squad",
+    "href": "w03/slides.html#getting-shot-by-a-firing-squad",
+    "title": "Week 3: From PGMs to Causal Diagrams",
+    "section": "Getting Shot By A Firing Squad",
+    "text": "Getting Shot By A Firing Squad\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\\(O\\)\n\\(C\\)\n\\(A\\)\n\\(B\\)\n\\(D\\)\n\n\n\n\n0\n0\n0\n0\n0\n\n\n1\n1\n1\n1\n1\n\n\n0\n0\n0\n0\n0\n\n\n0\n0\n0\n0\n0\n\n\n1\n1\n1\n1\n1\n\n\n\n\\[\n\\begin{align*}\n\\Pr(D) &= 0.4 \\\\\n\\Pr(D \\mid A) &= 1\n\\end{align*}\n\\]"
+  },
+  {
+    "objectID": "w03/slides.html#references",
+    "href": "w03/slides.html#references",
+    "title": "Week 3: From PGMs to Causal Diagrams",
+    "section": "References",
+    "text": "References\n\n\nFinetti, Bruno de. 1972. Probability, Induction and Statistics: The Art of Guessing. J. Wiley.\n\n\nHume, David. 1739. A Treatise of Human Nature: Being an Attempt to Introduce the Experimental Method of Reasoning Into Moral Subjects; and Dialogues Concerning Natural Religion. Longmans, Green.\n\n\nIyengar, Shanto, and Donald R. Kinder. 2010. News That Matters: Television & American Opinion. University of Chicago Press.\n\n\nPearl, Judea. 2000. Causality: Models, Reasoning, and Inference. Cambridge University Press. https://www.dropbox.com/scl/fi/4kfpro4gpx7tg55fwd7qt/Judea-Pearl-Causality_-Models-Reasoning-and-Inference.pdf?rlkey=f0abw0cgmsyiegx6xapq5z7j2&dl=1."
+  },
+  {
+    "objectID": "assignments.html",
+    "href": "assignments.html",
+    "title": "Assignment Point Distributions",
     "section": "",
-    "text": "Open slides in new window →",
+    "text": "Use the tabs below to view the point distributions for different assignments.\nThe distributions are imported from Google Sheets mainly for transparency: so that you can see exactly how totals are computed as a sum of the individual points allocated for each test!\n\nHW1\n\n\n\n\n\n\n\n\n\npart\nqid\npoints\nq_total\npart_total\n\n\n\n\n1\nQ1.1a\n4\n\n\n\n\n\nQ1.1b\n2\n6\n\n\n\n\nQ1.2\n8\n8\n\n\n\n\nQ1.3a\n3\n\n\n\n\n\nQ1.3b\n3\n\n\n\n\n\nQ1.3c\n3\n9\n\n\n\n\nQ1.4a\n3\n\n\n\n\n\nQ1.4b\n3\n6\n29\n\n\n2\nQ2.1\n4\n\n\n\n\n\nQ2.2\n4\n\n\n\n\n\nQ2.3\n4\n\n\n\n\n\nQ2.4\n4\n\n16\n\n\n3\nQ3.1\n4\n\n\n\n\n\nQ3.2\n4\n\n\n\n\n\nQ3.3\n4\n\n12\n\n\n4\nQ4.1\n3\n3\n\n\n\n\nQ4.2a\n4\n\n\n\n\n\nQ4.2b\n2\n6\n\n\n\n\nQ4.3a\n2\n\n\n\n\n\nQ4.3b\n2\n4\n\n\n\n\nQ4.4a\n2\n\n\n\n\n\nQ4.4b\n2\n4\n\n\n\n\nQ4.5a\n2\n\n\n\n\n\nQ4.5b\n2\n4\n\n\n\n\nQ4.6a\n2\n\n\n\n\n\nQ4.6b\n2\n4\n25\n\n\n5\nQ5.1\n4\n4\n\n\n\n\nQ5.2\n2\n2\n\n\n\n\nQ5.3\n2\n\n\n\n\n\nQ5.4a\n4\n\n\n\n\n\nQ5.4b\n3\n\n\n\n\n\nQ5.4c\n3\n10\n18\n\n\n\nTotal\n100",
     "crumbs": [
-      "Week 4: {{< var w04.date-md >}}"
+      "Assignments"
     ]
-  },
-  {
-    "objectID": "w04/index.html#why-take-the-time-to-learn-a-modeling-language-vs.-individual-models",
-    "href": "w04/index.html#why-take-the-time-to-learn-a-modeling-language-vs.-individual-models",
-    "title": "Week 4: Clearing the Path from Cause to Effect",
-    "section": "Why Take the Time to Learn a Modeling Language (vs. Individual Models)?",
-    "text": "Why Take the Time to Learn a Modeling Language (vs. Individual Models)?\n\nMy answer: allows you to adapt to specifics/idiosyncrasies of your problem!\nLanguage metaphor: Learning models vs. learning modeling language \\(\\Leftrightarrow\\) Learning phrases in a language vs. learning to speak the language\n“Hello, one hamburger please” is good, but what if you…\n Are allergic to ketchup and need to make sure it’s removed\n Want to replace sesame seed bun with poppy seed bun, if they have it\n Prefer spicy, but not too spicy, mustard  Bun only  Animal style  …\n\n\n\n\n\n\n\n\nLanguages give us a syntax…\n\n\n\nS\n\\(\\rightarrow\\)\nNP VP\n\n\nNP\n\\(\\rightarrow\\)\nDetP N | AdjP NP\n\n\nVP\n\\(\\rightarrow\\)\nV NP\n\n\nAdjP\n\\(\\rightarrow\\)\nAdj | Adv AdjP\n\n\nN\n\\(\\rightarrow\\)\nfrog | tadpole\n\n\nV\n\\(\\rightarrow\\)\nsees | likes\n\n\nAdj\n\\(\\rightarrow\\)\nbig | small\n\n\nAdv\n\\(\\rightarrow\\)\nvery\n\n\nDetP\n\\(\\rightarrow\\)\na | the\n\n\n\n\n\n\n\n…For expressing arbitrary (infinitely many!) sentences",
-    "crumbs": [
-      "Week 4: {{< var w04.date-md >}}"
-    ]
-  },
-  {
-    "objectID": "w04/index.html#example-1-multilevel-tadpoles-mcelreath-ch.-13",
-    "href": "w04/index.html#example-1-multilevel-tadpoles-mcelreath-ch.-13",
-    "title": "Week 4: Clearing the Path from Cause to Effect",
-    "section": "Example 1: Multilevel Tadpoles (McElreath, Ch. 13)",
-    "text": "Example 1: Multilevel Tadpoles (McElreath, Ch. 13)\nNeed a language that can communicate the following info to estimation algorithm:\n\n Unit of observation is tadpole, but unit of analysis is tank\n Ultimately, I care about \\(Y =\\) survival rate (dependent var), as function of \\(X =\\) tank properties (independent var)\n …But the \\(n_i = 48\\) tanks actually come in \\(n_j = 3\\) types: small (10 bois), medium (25), large (35) (Bonus: What if there are different numbers of tanks per type?)\n I need it to account for impact of tank size, then  pool info across tank sizes\n\n\n\n\nFrom McElreath (2020)",
-    "crumbs": [
-      "Week 4: {{< var w04.date-md >}}"
-    ]
-  },
-  {
-    "objectID": "w04/index.html#example-2-dissertation-nightmare",
-    "href": "w04/index.html#example-2-dissertation-nightmare",
-    "title": "Week 4: Clearing the Path from Cause to Effect",
-    "section": "Example 2: Dissertation Nightmare",
-    "text": "Example 2: Dissertation Nightmare\n\n\n\n\n\n\n\n\n\nAbove: Data from Soviet archives; Above Right: US Military archives; Below Right: NATO archives",
-    "crumbs": [
-      "Week 4: {{< var w04.date-md >}}"
-    ]
-  },
-  {
-    "objectID": "w04/index.html#nightmarish-without-a-modeling-language",
-    "href": "w04/index.html#nightmarish-without-a-modeling-language",
-    "title": "Week 4: Clearing the Path from Cause to Effect",
-    "section": "Nightmarish Without a Modeling Language!",
-    "text": "Nightmarish Without a Modeling Language!\n\nModeling language \\(\\Rightarrow\\) Unambiguously “encode” idiosyncratic domain knowledge\nDissertation: Cold War \\(\\times\\) “Third World” \\(\\leadsto\\) Cuban 🇨🇺 trans-continental operations1\nMain narrative (for estimation): 1975 (South Africa invades Angola, 14 Oct → 🇨🇺 intervention, 4 Nov) to 1979 (USSR requests 🇨🇺 troops to Ethiopia for Ogaden War)\n[Ontology] Fix 1979 geographic entities at National level (as modeling choice, like fixing 2000 USD to measure inflation): \\(\\textsf{Cuba}_{1979}\\), \\(\\textsf{Angola}_{1979}\\), \\(\\textsf{PDRY}_{1979}\\), \\(\\textsf{YAR}_{1979}\\)\nDifferent tokens (Think NLP: \"Congo\", \"DRC\", \"Republic of Congo\") can then be contextualized: can “track” and link data appropriately despite splits, merges, name changes\nSay we have data on “Number of Communist Militants in \\(X\\)” (Hoover Yearbook)…\n\n\n\n\nEntity\nData from 1947-1971 at...\nData from 1971-Present at...\n\n\n\n\n\\(\\textsf{Pakistan}_{1979}\\)\nNational Level:\n\\(\\frac{62}{62+70} \\times\\) “Pakistan”\nNational Level:\n“Pakistan”\n\n\nSubnational Level:\n“West Pakistan”\nSubnational Level:\n\\(\\sum_{i \\in \\text{Regions}}\\text{data}_i\\)\n\n\n\\(\\textsf{Bangladesh}_{1979}\\)\nNational Level:\n\\(\\frac{70}{62+70} \\times\\) “Pakistan”\nNational Level:\n“Bangladesh”\n\n\nSubnational Level:\n“East Pakistan”\nSubnational Level:\n\\(\\sum_{i \\in \\text{Regions}}\\text{data}_i\\)",
-    "crumbs": [
-      "Week 4: {{< var w04.date-md >}}"
-    ]
-  },
-  {
-    "objectID": "w04/index.html#the-fork-x-leftarrow-z-rightarrow-y",
-    "href": "w04/index.html#the-fork-x-leftarrow-z-rightarrow-y",
-    "title": "Week 4: Clearing the Path from Cause to Effect",
-    "section": "The Fork: \\(X \\leftarrow Z \\rightarrow Y\\)",
-    "text": "The Fork: \\(X \\leftarrow Z \\rightarrow Y\\)\n\n\n\n\nCode\nset.seed(5650)\nfork_df &lt;- tibble(\n    Z = rbern(n_d),\n    X = rbern(n_d, (1-Z)*0.1 + Z*0.9),\n    Y = rbern(n_d, (1-Z)*0.1 + Z*0.9),\n)\n\n\n\n\nCode\nplot_freqs &lt;- function(df, plot_title, y_lab=TRUE) {\n  df_cor &lt;- cor(df$X, df$Y)\n  df_label &lt;- paste0(\"Cor(X,Y) = \",round(df_cor,3))\n  freq_df &lt;- df |&gt;\n    group_by(X, Y) |&gt;\n    summarize(count=n())\n  freq_plot &lt;- freq_df |&gt;\n    ggplot(\n      aes(x=factor(X), y=factor(Y), fill=count)\n    ) +\n    geom_tile() +\n    coord_equal() +\n    scale_fill_distiller(\n      palette=\"Greens\", direction=1,\n      limits=c(0,5000)\n    ) +\n    geom_label(\n      aes(label=count),\n      fill=\"white\", color=\"black\", size=7\n    ) +\n    labs(\n      title = plot_title,\n      subtitle = df_label,\n      x=\"X\", y=\"Y\"\n    ) +\n    theme_dsan(base_size=24) +\n    theme(\n      plot.title = element_text(size=21),\n      plot.subtitle = element_text(size=18)\n    ) +\n    remove_legend()\n  if (!y_lab) {\n    freq_plot &lt;- freq_plot + theme(\n      axis.title.y = element_blank()\n    )\n  }\n  return(freq_plot)\n}\n# The full df\nfull_label &lt;- paste0(\"Raw Data (n = 10K)\")\nfull_plot &lt;- plot_freqs(fork_df, full_label)\n\n\n`summarise()` has grouped output by 'X'. You can override using the `.groups`\nargument.\n\n\nCode\n# Conditioning on Z = 0\nz0_df &lt;- fork_df |&gt; filter(Z == 0)\nz0_n &lt;- nrow(z0_df)\nz0_label &lt;- paste0(\"Z == 0 (\",z0_n,\" obs)\")\nz0_plot &lt;- plot_freqs(z0_df, z0_label, y_lab=FALSE)\n\n\n`summarise()` has grouped output by 'X'. You can override using the `.groups`\nargument.\n\n\nCode\n# Conditioning on Z = 1\nz1_df &lt;- fork_df |&gt; filter(Z == 1)\nz1_n &lt;- nrow(z1_df)\nz1_label &lt;- paste0(\"Z == 1 (\",z1_n,\" obs)\")\nz1_plot &lt;- plot_freqs(z1_df, z1_label, y_lab=FALSE)\n\n\n`summarise()` has grouped output by 'X'. You can override using the `.groups`\nargument.\n\n\nCode\nfull_plot | z0_plot | z1_plot\n\n\n\n\n\n\n\n\n\n\n\n\nCode\nset.seed(5650)\ncfork_df &lt;- tibble(\n    Z = rbern(n_c),\n    X = rnorm(n_c, 2 * Z - 1),\n    Y = rnorm(n_c, 2 * Z - 1)\n)\n\n\n\n\nCode\nlibrary(latex2exp)\noverall_lm &lt;- lm(Y ~ X, data=cfork_df)\noverall_slope &lt;- round(overall_lm$coef['X'], 3)\nz0_lm &lt;- lm(Y ~ X, data=cfork_df |&gt; filter(Z == 0))\nz0_slope &lt;- round(z0_lm$coef['X'], 2)\nz0_label &lt;- paste0(\"$Slope_{Z=0} = \",z0_slope,\"$\")\nz0_leg_label &lt;- TeX(paste0(\"0 $(m=\",z0_slope,\")$\"))\nz1_lm &lt;- lm(Y ~ X, data=cfork_df |&gt; filter(Z == 1))\nz1_slope &lt;- round(z1_lm$coef['X'], 2)\nz1_label &lt;- paste0(\"$Slope_{Z=1} = \",z1_slope,\"$\")\nz_texlabel &lt;- TeX(paste0(z0_label, \" | \", z1_label))\ncfork_xmin &lt;- min(cfork_df$X)\ncfork_xmax &lt;- max(cfork_df$X)\nggplot() +\n  # Points\n  geom_point(\n    data=cfork_df,\n    aes(x=X, y=Y, color=factor(Z)),\n    size=0.6*g_pointsize,\n    alpha=0.8\n  ) +\n  # Overall lm\n  geom_smooth(\n    data=cfork_df, aes(x=X, y=Y),\n    method = lm, se = FALSE,\n    linewidth = 2.5, color='black'\n  ) +\n  # Stratified lm\n  # (slightly larger black lines)\n  geom_smooth(\n    data=cfork_df,\n    aes(x=X, y=Y, group=factor(Z)),\n    method=lm, se=FALSE, fullrange=TRUE,\n    linewidth=2.75, color='black'\n  ) +\n  # (Colored lines)\n  geom_smooth(\n    data=cfork_df,\n    aes(x=X, y=Y, color=factor(Z)),\n    method=lm, se=FALSE, fullrange=TRUE,\n    linewidth=2\n  ) +\n  theme_dsan(base_size=24) +\n  theme(\n    plot.title = element_text(size=24),\n    plot.subtitle = element_text(size=20)\n  ) +\n  coord_equal() +\n  labs(\n    title = paste0(\n      \"Unstratified Slope = \",overall_slope\n    ),\n    subtitle=z_texlabel,\n    x = \"X\", y = \"Y\", color = \"Z\"\n  )\n\n\n`geom_smooth()` using formula = 'y ~ x'\n`geom_smooth()` using formula = 'y ~ x'\n`geom_smooth()` using formula = 'y ~ x'",
-    "crumbs": [
-      "Week 4: {{< var w04.date-md >}}"
-    ]
-  },
-  {
-    "objectID": "w04/index.html#the-pipe-x-rightarrow-z-rightarrow-y",
-    "href": "w04/index.html#the-pipe-x-rightarrow-z-rightarrow-y",
-    "title": "Week 4: Clearing the Path from Cause to Effect",
-    "section": "The Pipe: \\(X \\rightarrow Z \\rightarrow Y\\)",
-    "text": "The Pipe: \\(X \\rightarrow Z \\rightarrow Y\\)\n\n\n\n\nCode\nset.seed(5650)\npipe_df &lt;- tibble(\n    X = rbern(n_d),\n    Z = rbern(n_d, (1-X)*0.1 + X*0.9),\n    Y = rbern(n_d, (1-Z)*0.1 + Z*0.9),\n)\n\n\n\n\nCode\n# The full df\npipe_full_label &lt;- paste0(\"Raw Data (n = 10K)\")\npipe_full_plot &lt;- plot_freqs(pipe_df, pipe_full_label)\n\n\n`summarise()` has grouped output by 'X'. You can override using the `.groups`\nargument.\n\n\nCode\n# Conditioning on Z = 0\npipe_z0_df &lt;- pipe_df |&gt; filter(Z == 0)\npipe_z0_n &lt;- nrow(pipe_z0_df)\npipe_z0_label &lt;- paste0(\"Z == 0 (\",pipe_z0_n,\" obs)\")\npipe_z0_plot &lt;- plot_freqs(pipe_z0_df, pipe_z0_label, y_lab=FALSE)\n\n\n`summarise()` has grouped output by 'X'. You can override using the `.groups`\nargument.\n\n\nCode\n# Conditioning on Z = 1\npipe_z1_df &lt;- pipe_df |&gt; filter(Z == 1)\npipe_z1_n &lt;- nrow(pipe_z1_df)\npipe_z1_label &lt;- paste0(\"Z == 1 (\",pipe_z1_n,\" obs)\")\npipe_z1_plot &lt;- plot_freqs(pipe_z1_df, pipe_z1_label, y_lab=FALSE)\n\n\n`summarise()` has grouped output by 'X'. You can override using the `.groups`\nargument.\n\n\nCode\npipe_full_plot | pipe_z0_plot | pipe_z1_plot\n\n\n\n\n\n\n\n\n\n\n\n\n\nCode\nset.seed(5650)\ncpipe_df &lt;- tibble(\n    X = rnorm(n_c),\n    Z = rbern(n_c, plogis(X)),\n    Y = rnorm(n_c, 2 * Z - 1)\n)\n\n\n\n\nCode\ncpipe_lm &lt;- lm(Y ~ X, data=cpipe_df)\ncpipe_slope &lt;- round(cpipe_lm$coef['X'], 3)\ncpipe_z0_lm &lt;- lm(Y ~ X, data=cpipe_df |&gt; filter(Z == 0))\ncpipe_z0_slope &lt;- round(cpipe_z0_lm$coef['X'], 2)\ncpipe_z0_label &lt;- paste0(\"$Slope_{Z=0} = \",cpipe_z0_slope,\"$\")\ncpipe_z1_lm &lt;- lm(Y ~ X, data=cpipe_df |&gt; filter(Z == 1))\ncpipe_z1_slope &lt;- round(cpipe_z1_lm$coef['X'], 2)\ncpipe_z1_label &lt;- paste0(\"$Slope_{Z=1} = \",cpipe_z1_slope,\"$\")\ncpipe_z_texlabel &lt;- TeX(paste0(cpipe_z0_label, \" | \", cpipe_z1_label))\ncpipe_xmin &lt;- min(cpipe_df$X)\ncpipe_xmax &lt;- max(cpipe_df$X)\nggplot() +\n  # Points\n  geom_point(\n    data=cpipe_df |&gt; filter(Y &gt; -3),\n    aes(x=X, y=Y, color=factor(Z)),\n    size=0.6*g_pointsize,\n    alpha=0.8\n  ) +\n  # Overall lm\n  geom_smooth(\n    data=cpipe_df, aes(x=X, y=Y),\n    method = lm, se = FALSE,\n    linewidth = 2.5, color='black'\n  ) +\n  # Stratified lm\n  # (slightly larger black lines)\n  geom_smooth(\n    data=cpipe_df,\n    aes(x=X, y=Y, group=factor(Z)),\n    method=lm, se=FALSE, fullrange=TRUE,\n    linewidth=2.75, color='black'\n  ) +\n  # (Colored lines)\n  geom_smooth(\n    data=cpipe_df,\n    aes(x=X, y=Y, color=factor(Z)),\n    method=lm, se=FALSE, fullrange=TRUE,\n    linewidth=2\n  ) +\n  theme_dsan(base_size=24) +\n  theme(\n    plot.title = element_text(size=24),\n    plot.subtitle = element_text(size=20)\n  ) +\n  coord_equal() +\n  labs(\n    title = paste0(\n      \"Unstratified Slope = \",cpipe_slope\n    ),\n    subtitle=cpipe_z_texlabel,\n    x = \"X\", y = \"Y\", color = \"Z\"\n  )\n\n\n`geom_smooth()` using formula = 'y ~ x'\n`geom_smooth()` using formula = 'y ~ x'\n`geom_smooth()` using formula = 'y ~ x'",
-    "crumbs": [
-      "Week 4: {{< var w04.date-md >}}"
-    ]
-  },
-  {
-    "objectID": "w04/index.html#the-collider-x-rightarrow-z-leftarrow-y",
-    "href": "w04/index.html#the-collider-x-rightarrow-z-leftarrow-y",
-    "title": "Week 4: Clearing the Path from Cause to Effect",
-    "section": "⚠️The Collider⚠️: \\(X \\rightarrow Z \\leftarrow Y\\)",
-    "text": "⚠️The Collider⚠️: \\(X \\rightarrow Z \\leftarrow Y\\)\n\n\n\n\n\nCode\nset.seed(5650)\ncoll_df &lt;- tibble(\n    X = rbern(n_d),\n    Y = rbern(n_d),\n    Z = rbern(n_d, ifelse(X + Y &gt; 0, 0.9, 0.2)),\n)\n\n\n\n\nCode\n# The full df\ncoll_full_label &lt;- paste0(\"Raw Data (n = 10K)\")\ncoll_full_plot &lt;- plot_freqs(coll_df, coll_full_label)\n\n\n`summarise()` has grouped output by 'X'. You can override using the `.groups`\nargument.\n\n\nCode\n# Conditioning on Z = 0\ncoll_z0_df &lt;- coll_df |&gt; filter(Z == 0)\ncoll_z0_n &lt;- nrow(coll_z0_df)\ncoll_z0_label &lt;- paste0(\"Z == 0 (\",coll_z0_n,\" obs)\")\ncoll_z0_plot &lt;- plot_freqs(coll_z0_df, coll_z0_label, y_lab=FALSE)\n\n\n`summarise()` has grouped output by 'X'. You can override using the `.groups`\nargument.\n\n\nCode\n# Conditioning on Z = 1\ncoll_z1_df &lt;- coll_df |&gt; filter(Z == 1)\ncoll_z1_n &lt;- nrow(coll_z1_df)\ncoll_z1_label &lt;- paste0(\"Z == 1 (\",coll_z1_n,\" obs)\")\ncoll_z1_plot &lt;- plot_freqs(coll_z1_df, coll_z1_label, y_lab=FALSE)\n\n\n`summarise()` has grouped output by 'X'. You can override using the `.groups`\nargument.\n\n\nCode\ncoll_full_plot | coll_z0_plot | coll_z1_plot\n\n\n\n\n\n\n\n\n\n\nConditioning on colliders induces correlation where there previously was none ☠️\n\n\n\n\n\nCode\nset.seed(5650)\nccoll_df &lt;- tibble(\n    X = rnorm(n_c),\n    Y = rnorm(n_c),\n    Z = rbern(n_c, plogis(2 * (X + Y - 1)))\n)\n\n\n\n\nCode\nccoll_lm &lt;- lm(Y ~ X, data=ccoll_df)\nccoll_slope &lt;- round(ccoll_lm$coef['X'], 3)\nccoll_z0_lm &lt;- lm(Y ~ X, data=ccoll_df |&gt; filter(Z == 0))\nccoll_z0_slope &lt;- round(ccoll_z0_lm$coef['X'], 2)\nccoll_z0_label &lt;- paste0(\"$Slope_{Z=0} = \",ccoll_z0_slope,\"$\")\nccoll_z1_lm &lt;- lm(Y ~ X, data=ccoll_df |&gt; filter(Z == 1))\nccoll_z1_slope &lt;- round(ccoll_z1_lm$coef['X'], 2)\nccoll_z1_label &lt;- paste0(\"$Slope_{Z=1} = \",ccoll_z1_slope,\"$\")\nccoll_z_texlabel &lt;- TeX(paste0(ccoll_z0_label, \" | \", ccoll_z1_label))\nccoll_xmin &lt;- min(ccoll_df$X)\nccoll_xmax &lt;- max(ccoll_df$X)\nggplot() +\n  # Points\n  geom_point(\n    data=ccoll_df |&gt; filter(Y &gt; -3),\n    aes(x=X, y=Y, color=factor(Z)),\n    size=0.6*g_pointsize,\n    alpha=0.8\n  ) +\n  # Overall lm\n  geom_smooth(\n    data=ccoll_df, aes(x=X, y=Y),\n    method = lm, se = FALSE,\n    linewidth = 2.5, color='black'\n  ) +\n  # Stratified lm\n  # (slightly larger black lines)\n  geom_smooth(\n    data=ccoll_df,\n    aes(x=X, y=Y, group=factor(Z)),\n    method=lm, se=FALSE, fullrange=TRUE,\n    linewidth=2.75, color='black'\n  ) +\n  # (Colored lines)\n  geom_smooth(\n    data=ccoll_df,\n    aes(x=X, y=Y, color=factor(Z)),\n    method=lm, se=FALSE, fullrange=TRUE,\n    linewidth=2\n  ) +\n  theme_dsan(base_size=24) +\n  theme(\n    plot.title = element_text(size=24),\n    plot.subtitle = element_text(size=20)\n  ) +\n  coord_equal() +\n  labs(\n    title = paste0(\n      \"Unstratified Slope = \",ccoll_slope\n    ),\n    subtitle=ccoll_z_texlabel,\n    x = \"X\", y = \"Y\", color = \"Z\"\n  )\n\n\n`geom_smooth()` using formula = 'y ~ x'\n`geom_smooth()` using formula = 'y ~ x'\n`geom_smooth()` using formula = 'y ~ x'\n\n\n\n\n\n\n\n\n\n\n\n\n…This is why we have to think, rather than just “control for everything”! 😭",
-    "crumbs": [
-      "Week 4: {{< var w04.date-md >}}"
-    ]
-  },
-  {
-    "objectID": "w04/index.html#proxies-for-z",
-    "href": "w04/index.html#proxies-for-z",
-    "title": "Week 4: Clearing the Path from Cause to Effect",
-    "section": "Proxies for \\(Z\\)",
-    "text": "Proxies for \\(Z\\)\n\n\n\n\n\nCode\nset.seed(5650)\nprox_df &lt;- tibble(\n  X = rbern(n_d),\n  Z = rbern(n_d, (1-X)*0.1 + X*0.9),\n  Y = rbern(n_d, (1-Z)*0.1 + Z*0.9),\n  A = rbern(n_d, (1-Z)*0.1 + Z*0.9)\n)\n\n\n\n\nCode\n# The full df\nprox_full_label &lt;- paste0(\"Raw Data (n = 10K)\")\nprox_full_plot &lt;- plot_freqs(prox_df, prox_full_label)\n\n\n`summarise()` has grouped output by 'X'. You can override using the `.groups`\nargument.\n\n\nCode\n# Conditioning on A == 0\nprox_a0_df &lt;- prox_df |&gt; filter(A == 0)\nprox_a0_n &lt;- nrow(prox_a0_df)\nprox_a0_label &lt;- paste0(\"A == 0 (\",prox_a0_n,\" obs)\")\nprox_a0_plot &lt;- plot_freqs(prox_a0_df, prox_a0_label, y_lab=FALSE)\n\n\n`summarise()` has grouped output by 'X'. You can override using the `.groups`\nargument.\n\n\nCode\n# Conditioning on A == 1\nprox_a1_df &lt;- prox_df |&gt; filter(A == 1)\nprox_a1_n &lt;- nrow(prox_a1_df)\nprox_a1_label &lt;- paste0(\"A == 1 (\",prox_a1_n,\" obs)\")\nprox_a1_plot &lt;- plot_freqs(prox_a1_df, prox_a1_label, y_lab=FALSE)\n\n\n`summarise()` has grouped output by 'X'. You can override using the `.groups`\nargument.\n\n\nCode\nprox_full_plot | prox_a0_plot | prox_a1_plot\n\n\n\n\n\n\n\n\n\n\nWith just \\(X \\rightarrow Z \\rightarrow Y\\), we’d have a pipe\nObserving \\(A\\) gives us some (not all!) information about \\(Z\\)\n\n\n\n\n\n\n\n\n\n\nCode\nlibrary(tidyverse)\nlibrary(extraDistr)\nlibrary(latex2exp)\nset.seed(5650)\nn_c &lt;- 300\ncprox_df &lt;- tibble(\n    X = rnorm(n_c),\n    Z = rbern(n_c, plogis(X)),\n    Y = rnorm(n_c, 2 * Z - 1),\n    A = rbern(n_c, (1-Z)*0.86 + Z*0.14)\n)\ncprox_lm &lt;- lm(Y ~ X, data=cprox_df)\ncprox_slope &lt;- round(cprox_lm$coef['X'], 3)\ncprox_a0_lm &lt;- lm(Y ~ X, data=cprox_df |&gt; filter(A == 0))\ncprox_a0_slope &lt;- round(cprox_a0_lm$coef['X'], 2)\ncprox_a0_label &lt;- paste0(\"$Slope_{A=0} = \",cprox_a0_slope,\"$\")\n# A == 1 lm\ncprox_a1_lm &lt;- lm(Y ~ X, data=cprox_df |&gt; filter(A == 1))\ncprox_a1_slope &lt;- round(cprox_a1_lm$coef['X'], 2)\ncprox_a1_label &lt;- paste0(\"$Slope_{A=1} = \",cprox_a1_slope,\"$\")\ncprox_a_texlabel &lt;- TeX(paste0(cprox_a0_label, \" | \", cprox_a1_label))\ncprox_xmin &lt;- min(cprox_df$X)\ncprox_xmax &lt;- max(cprox_df$X)\nggplot() +\n  # Points\n  geom_point(\n    data=cprox_df |&gt; filter(Y &gt; -3),\n    aes(x=X, y=Y, color=factor(A)),\n    size=0.6*g_pointsize,\n    alpha=0.8\n  ) +\n  # Overall lm\n  geom_smooth(\n    data=cprox_df, aes(x=X, y=Y),\n    method = lm, se = FALSE,\n    linewidth = 2.5, color='black'\n  ) +\n  # Stratified lm\n  # (slightly larger black lines)\n  geom_smooth(\n    data=cprox_df,\n    aes(x=X, y=Y, group=factor(A)),\n    method=lm, se=FALSE, fullrange=TRUE,\n    linewidth=2.75, color='black'\n  ) +\n  # (Colored lines)\n  geom_smooth(\n    data=cprox_df,\n    aes(x=X, y=Y, color=factor(A)),\n    method=lm, se=FALSE, fullrange=TRUE,\n    linewidth=2\n  ) +\n  theme_dsan(base_size=22) +\n  theme(\n    plot.title = element_text(size=22),\n    plot.subtitle = element_text(size=18)\n  ) +\n  coord_equal() +\n  labs(\n    title = paste0(\n      \"Unstratified Slope = \",cprox_slope\n    ),\n    subtitle=cprox_a_texlabel,\n    x = \"X\", y = \"Y\", color = \"A\"\n  )\n\n\n`geom_smooth()` using formula = 'y ~ x'\n`geom_smooth()` using formula = 'y ~ x'\n`geom_smooth()` using formula = 'y ~ x'",
-    "crumbs": [
-      "Week 4: {{< var w04.date-md >}}"
-    ]
-  },
-  {
-    "objectID": "w04/index.html#references",
-    "href": "w04/index.html#references",
-    "title": "Week 4: Clearing the Path from Cause to Effect",
-    "section": "References",
-    "text": "References\n\n\nBezuidenhout, Dana, Sarah Forthal, Kara Rudolph, and Matthew R Lamb. 2024. “Single World Intervention Graphs (SWIGs): A Practical Guide.” American Journal of Epidemiology, September, kwae353. https://doi.org/10.1093/aje/kwae353.\n\n\nGleijeses, Piero. 2013. Visions of Freedom: Havana, Washington, Pretoria, and the Struggle for Southern Africa, 1976-1991. UNC Press Books.\n\n\nMcElreath, Richard. 2020. Statistical Rethinking: A Bayesian Course with Examples in R and STAN. CRC Press.",
-    "crumbs": [
-      "Week 4: {{< var w04.date-md >}}"
-    ]
-  },
-  {
-    "objectID": "w04/index.html#footnotes",
-    "href": "w04/index.html#footnotes",
-    "title": "Week 4: Clearing the Path from Cause to Effect",
-    "section": "Footnotes",
-    "text": "Footnotes\n\n\nHelpful metaphor (Gleijeses 2013): Cuba \\(\\approx\\) Forward-deployed “3rd World Outpost” for USSR (Soviet $ but Cuban training of PAIGC → MPLA), as Israel \\(\\approx\\) Forward-deployed “3rd World Outpost” for US (US $ but Israeli training of SAVAK → SADF)↩︎",
-    "crumbs": [
-      "Week 4: {{< var w04.date-md >}}"
-    ]
-  },
-  {
-    "objectID": "w04/slides.html#why-take-the-time-to-learn-a-modeling-language-vs.-individual-models",
-    "href": "w04/slides.html#why-take-the-time-to-learn-a-modeling-language-vs.-individual-models",
-    "title": "Week 4: Clearing the Path from Cause to Effect",
-    "section": "Why Take the Time to Learn a Modeling Language (vs. Individual Models)?",
-    "text": "Why Take the Time to Learn a Modeling Language (vs. Individual Models)?\n\nMy answer: allows you to adapt to specifics/idiosyncrasies of your problem!\nLanguage metaphor: Learning models vs. learning modeling language \\(\\Leftrightarrow\\) Learning phrases in a language vs. learning to speak the language\n“Hello, one hamburger please” is good, but what if you…\n Are allergic to ketchup and need to make sure it’s removed\n Want to replace sesame seed bun with poppy seed bun, if they have it\n Prefer spicy, but not too spicy, mustard  Bun only  Animal style  …\n\n\n\n\n\n\n\n\nLanguages give us a syntax…\n\n\n\nS\n\\(\\rightarrow\\)\nNP VP\n\n\nNP\n\\(\\rightarrow\\)\nDetP N | AdjP NP\n\n\nVP\n\\(\\rightarrow\\)\nV NP\n\n\nAdjP\n\\(\\rightarrow\\)\nAdj | Adv AdjP\n\n\nN\n\\(\\rightarrow\\)\nfrog | tadpole\n\n\nV\n\\(\\rightarrow\\)\nsees | likes\n\n\nAdj\n\\(\\rightarrow\\)\nbig | small\n\n\nAdv\n\\(\\rightarrow\\)\nvery\n\n\nDetP\n\\(\\rightarrow\\)\na | the\n\n\n\n\n\n\n\n…For expressing arbitrary (infinitely many!) sentences"
-  },
-  {
-    "objectID": "w04/slides.html#example-1-multilevel-tadpoles-mcelreath-ch.-13",
-    "href": "w04/slides.html#example-1-multilevel-tadpoles-mcelreath-ch.-13",
-    "title": "Week 4: Clearing the Path from Cause to Effect",
-    "section": "Example 1: Multilevel Tadpoles (McElreath, Ch. 13)",
-    "text": "Example 1: Multilevel Tadpoles (McElreath, Ch. 13)\nNeed a language that can communicate the following info to estimation algorithm:\n\n Unit of observation is tadpole, but unit of analysis is tank\n Ultimately, I care about \\(Y =\\) survival rate (dependent var), as function of \\(X =\\) tank properties (independent var)\n …But the \\(n_i = 48\\) tanks actually come in \\(n_j = 3\\) types: small (10 bois), medium (25), large (35) (Bonus: What if there are different numbers of tanks per type?)\n I need it to account for impact of tank size, then  pool info across tank sizes\n\n\nFrom McElreath (2020)"
-  },
-  {
-    "objectID": "w04/slides.html#example-2-dissertation-nightmare",
-    "href": "w04/slides.html#example-2-dissertation-nightmare",
-    "title": "Week 4: Clearing the Path from Cause to Effect",
-    "section": "Example 2: Dissertation Nightmare",
-    "text": "Example 2: Dissertation Nightmare\n\n\n\n\n\n\n\n\n\nAbove: Data from Soviet archives; Above Right: US Military archives; Below Right: NATO archives"
-  },
-  {
-    "objectID": "w04/slides.html#nightmarish-without-a-modeling-language",
-    "href": "w04/slides.html#nightmarish-without-a-modeling-language",
-    "title": "Week 4: Clearing the Path from Cause to Effect",
-    "section": "Nightmarish Without a Modeling Language!",
-    "text": "Nightmarish Without a Modeling Language!\n\nModeling language \\(\\Rightarrow\\) Unambiguously “encode” idiosyncratic domain knowledge\nDissertation: Cold War \\(\\times\\) “Third World” \\(\\leadsto\\) Cuban 🇨🇺 trans-continental operations1\nMain narrative (for estimation): 1975 (South Africa invades Angola, 14 Oct → 🇨🇺 intervention, 4 Nov) to 1979 (USSR requests 🇨🇺 troops to Ethiopia for Ogaden War)\n[Ontology] Fix 1979 geographic entities at National level (as modeling choice, like fixing 2000 USD to measure inflation): \\(\\textsf{Cuba}_{1979}\\), \\(\\textsf{Angola}_{1979}\\), \\(\\textsf{PDRY}_{1979}\\), \\(\\textsf{YAR}_{1979}\\)\nDifferent tokens (Think NLP: \"Congo\", \"DRC\", \"Republic of Congo\") can then be contextualized: can “track” and link data appropriately despite splits, merges, name changes\nSay we have data on “Number of Communist Militants in \\(X\\)” (Hoover Yearbook)…\n\n\n\n\nEntity\nData from 1947-1971 at...\nData from 1971-Present at...\n\n\n\n\n\\(\\textsf{Pakistan}_{1979}\\)\nNational Level:\n\\(\\frac{62}{62+70} \\times\\) “Pakistan”\nNational Level:\n“Pakistan”\n\n\nSubnational Level:\n“West Pakistan”\nSubnational Level:\n\\(\\sum_{i \\in \\text{Regions}}\\text{data}_i\\)\n\n\n\\(\\textsf{Bangladesh}_{1979}\\)\nNational Level:\n\\(\\frac{70}{62+70} \\times\\) “Pakistan”\nNational Level:\n“Bangladesh”\n\n\nSubnational Level:\n“East Pakistan”\nSubnational Level:\n\\(\\sum_{i \\in \\text{Regions}}\\text{data}_i\\)\n\n\n\nHelpful metaphor (Gleijeses 2013): Cuba \\(\\approx\\) Forward-deployed “3rd World Outpost” for USSR (Soviet $ but Cuban training of PAIGC → MPLA), as Israel \\(\\approx\\) Forward-deployed “3rd World Outpost” for US (US $ but Israeli training of SAVAK → SADF)"
-  },
-  {
-    "objectID": "w04/slides.html#the-fork-x-leftarrow-z-rightarrow-y",
-    "href": "w04/slides.html#the-fork-x-leftarrow-z-rightarrow-y",
-    "title": "Week 4: Clearing the Path from Cause to Effect",
-    "section": "The Fork: \\(X \\leftarrow Z \\rightarrow Y\\)",
-    "text": "The Fork: \\(X \\leftarrow Z \\rightarrow Y\\)\n\n\n\n\nCode\nset.seed(5650)\nfork_df &lt;- tibble(\n    Z = rbern(n_d),\n    X = rbern(n_d, (1-Z)*0.1 + Z*0.9),\n    Y = rbern(n_d, (1-Z)*0.1 + Z*0.9),\n)\n\n\n\n\nCode\nplot_freqs &lt;- function(df, plot_title, y_lab=TRUE) {\n  df_cor &lt;- cor(df$X, df$Y)\n  df_label &lt;- paste0(\"Cor(X,Y) = \",round(df_cor,3))\n  freq_df &lt;- df |&gt;\n    group_by(X, Y) |&gt;\n    summarize(count=n())\n  freq_plot &lt;- freq_df |&gt;\n    ggplot(\n      aes(x=factor(X), y=factor(Y), fill=count)\n    ) +\n    geom_tile() +\n    coord_equal() +\n    scale_fill_distiller(\n      palette=\"Greens\", direction=1,\n      limits=c(0,5000)\n    ) +\n    geom_label(\n      aes(label=count),\n      fill=\"white\", color=\"black\", size=7\n    ) +\n    labs(\n      title = plot_title,\n      subtitle = df_label,\n      x=\"X\", y=\"Y\"\n    ) +\n    theme_dsan(base_size=24) +\n    theme(\n      plot.title = element_text(size=21),\n      plot.subtitle = element_text(size=18)\n    ) +\n    remove_legend()\n  if (!y_lab) {\n    freq_plot &lt;- freq_plot + theme(\n      axis.title.y = element_blank()\n    )\n  }\n  return(freq_plot)\n}\n# The full df\nfull_label &lt;- paste0(\"Raw Data (n = 10K)\")\nfull_plot &lt;- plot_freqs(fork_df, full_label)\n# Conditioning on Z = 0\nz0_df &lt;- fork_df |&gt; filter(Z == 0)\nz0_n &lt;- nrow(z0_df)\nz0_label &lt;- paste0(\"Z == 0 (\",z0_n,\" obs)\")\nz0_plot &lt;- plot_freqs(z0_df, z0_label, y_lab=FALSE)\n# Conditioning on Z = 1\nz1_df &lt;- fork_df |&gt; filter(Z == 1)\nz1_n &lt;- nrow(z1_df)\nz1_label &lt;- paste0(\"Z == 1 (\",z1_n,\" obs)\")\nz1_plot &lt;- plot_freqs(z1_df, z1_label, y_lab=FALSE)\nfull_plot | z0_plot | z1_plot\n\n\n\n\n\n\n\n\n\n\n\n\nCode\nset.seed(5650)\ncfork_df &lt;- tibble(\n    Z = rbern(n_c),\n    X = rnorm(n_c, 2 * Z - 1),\n    Y = rnorm(n_c, 2 * Z - 1)\n)\n\n\n\n\nCode\nlibrary(latex2exp)\noverall_lm &lt;- lm(Y ~ X, data=cfork_df)\noverall_slope &lt;- round(overall_lm$coef['X'], 3)\nz0_lm &lt;- lm(Y ~ X, data=cfork_df |&gt; filter(Z == 0))\nz0_slope &lt;- round(z0_lm$coef['X'], 2)\nz0_label &lt;- paste0(\"$Slope_{Z=0} = \",z0_slope,\"$\")\nz0_leg_label &lt;- TeX(paste0(\"0 $(m=\",z0_slope,\")$\"))\nz1_lm &lt;- lm(Y ~ X, data=cfork_df |&gt; filter(Z == 1))\nz1_slope &lt;- round(z1_lm$coef['X'], 2)\nz1_label &lt;- paste0(\"$Slope_{Z=1} = \",z1_slope,\"$\")\nz_texlabel &lt;- TeX(paste0(z0_label, \" | \", z1_label))\ncfork_xmin &lt;- min(cfork_df$X)\ncfork_xmax &lt;- max(cfork_df$X)\nggplot() +\n  # Points\n  geom_point(\n    data=cfork_df,\n    aes(x=X, y=Y, color=factor(Z)),\n    size=0.6*g_pointsize,\n    alpha=0.8\n  ) +\n  # Overall lm\n  geom_smooth(\n    data=cfork_df, aes(x=X, y=Y),\n    method = lm, se = FALSE,\n    linewidth = 2.5, color='black'\n  ) +\n  # Stratified lm\n  # (slightly larger black lines)\n  geom_smooth(\n    data=cfork_df,\n    aes(x=X, y=Y, group=factor(Z)),\n    method=lm, se=FALSE, fullrange=TRUE,\n    linewidth=2.75, color='black'\n  ) +\n  # (Colored lines)\n  geom_smooth(\n    data=cfork_df,\n    aes(x=X, y=Y, color=factor(Z)),\n    method=lm, se=FALSE, fullrange=TRUE,\n    linewidth=2\n  ) +\n  theme_dsan(base_size=24) +\n  theme(\n    plot.title = element_text(size=24),\n    plot.subtitle = element_text(size=20)\n  ) +\n  coord_equal() +\n  labs(\n    title = paste0(\n      \"Unstratified Slope = \",overall_slope\n    ),\n    subtitle=z_texlabel,\n    x = \"X\", y = \"Y\", color = \"Z\"\n  )"
-  },
-  {
-    "objectID": "w04/slides.html#the-pipe-x-rightarrow-z-rightarrow-y",
-    "href": "w04/slides.html#the-pipe-x-rightarrow-z-rightarrow-y",
-    "title": "Week 4: Clearing the Path from Cause to Effect",
-    "section": "The Pipe: \\(X \\rightarrow Z \\rightarrow Y\\)",
-    "text": "The Pipe: \\(X \\rightarrow Z \\rightarrow Y\\)\n\n\n\n\nCode\nset.seed(5650)\npipe_df &lt;- tibble(\n    X = rbern(n_d),\n    Z = rbern(n_d, (1-X)*0.1 + X*0.9),\n    Y = rbern(n_d, (1-Z)*0.1 + Z*0.9),\n)\n\n\n\n\nCode\n# The full df\npipe_full_label &lt;- paste0(\"Raw Data (n = 10K)\")\npipe_full_plot &lt;- plot_freqs(pipe_df, pipe_full_label)\n# Conditioning on Z = 0\npipe_z0_df &lt;- pipe_df |&gt; filter(Z == 0)\npipe_z0_n &lt;- nrow(pipe_z0_df)\npipe_z0_label &lt;- paste0(\"Z == 0 (\",pipe_z0_n,\" obs)\")\npipe_z0_plot &lt;- plot_freqs(pipe_z0_df, pipe_z0_label, y_lab=FALSE)\n# Conditioning on Z = 1\npipe_z1_df &lt;- pipe_df |&gt; filter(Z == 1)\npipe_z1_n &lt;- nrow(pipe_z1_df)\npipe_z1_label &lt;- paste0(\"Z == 1 (\",pipe_z1_n,\" obs)\")\npipe_z1_plot &lt;- plot_freqs(pipe_z1_df, pipe_z1_label, y_lab=FALSE)\npipe_full_plot | pipe_z0_plot | pipe_z1_plot\n\n\n\n\n\n\n\n\n\n\n\n\n\nCode\nset.seed(5650)\ncpipe_df &lt;- tibble(\n    X = rnorm(n_c),\n    Z = rbern(n_c, plogis(X)),\n    Y = rnorm(n_c, 2 * Z - 1)\n)\n\n\n\n\nCode\ncpipe_lm &lt;- lm(Y ~ X, data=cpipe_df)\ncpipe_slope &lt;- round(cpipe_lm$coef['X'], 3)\ncpipe_z0_lm &lt;- lm(Y ~ X, data=cpipe_df |&gt; filter(Z == 0))\ncpipe_z0_slope &lt;- round(cpipe_z0_lm$coef['X'], 2)\ncpipe_z0_label &lt;- paste0(\"$Slope_{Z=0} = \",cpipe_z0_slope,\"$\")\ncpipe_z1_lm &lt;- lm(Y ~ X, data=cpipe_df |&gt; filter(Z == 1))\ncpipe_z1_slope &lt;- round(cpipe_z1_lm$coef['X'], 2)\ncpipe_z1_label &lt;- paste0(\"$Slope_{Z=1} = \",cpipe_z1_slope,\"$\")\ncpipe_z_texlabel &lt;- TeX(paste0(cpipe_z0_label, \" | \", cpipe_z1_label))\ncpipe_xmin &lt;- min(cpipe_df$X)\ncpipe_xmax &lt;- max(cpipe_df$X)\nggplot() +\n  # Points\n  geom_point(\n    data=cpipe_df |&gt; filter(Y &gt; -3),\n    aes(x=X, y=Y, color=factor(Z)),\n    size=0.6*g_pointsize,\n    alpha=0.8\n  ) +\n  # Overall lm\n  geom_smooth(\n    data=cpipe_df, aes(x=X, y=Y),\n    method = lm, se = FALSE,\n    linewidth = 2.5, color='black'\n  ) +\n  # Stratified lm\n  # (slightly larger black lines)\n  geom_smooth(\n    data=cpipe_df,\n    aes(x=X, y=Y, group=factor(Z)),\n    method=lm, se=FALSE, fullrange=TRUE,\n    linewidth=2.75, color='black'\n  ) +\n  # (Colored lines)\n  geom_smooth(\n    data=cpipe_df,\n    aes(x=X, y=Y, color=factor(Z)),\n    method=lm, se=FALSE, fullrange=TRUE,\n    linewidth=2\n  ) +\n  theme_dsan(base_size=24) +\n  theme(\n    plot.title = element_text(size=24),\n    plot.subtitle = element_text(size=20)\n  ) +\n  coord_equal() +\n  labs(\n    title = paste0(\n      \"Unstratified Slope = \",cpipe_slope\n    ),\n    subtitle=cpipe_z_texlabel,\n    x = \"X\", y = \"Y\", color = \"Z\"\n  )"
-  },
-  {
-    "objectID": "w04/slides.html#the-collider-x-rightarrow-z-leftarrow-y",
-    "href": "w04/slides.html#the-collider-x-rightarrow-z-leftarrow-y",
-    "title": "Week 4: Clearing the Path from Cause to Effect",
-    "section": "⚠️The Collider⚠️: \\(X \\rightarrow Z \\leftarrow Y\\)",
-    "text": "⚠️The Collider⚠️: \\(X \\rightarrow Z \\leftarrow Y\\)\n\n\n\n\n\nCode\nset.seed(5650)\ncoll_df &lt;- tibble(\n    X = rbern(n_d),\n    Y = rbern(n_d),\n    Z = rbern(n_d, ifelse(X + Y &gt; 0, 0.9, 0.2)),\n)\n\n\n\n\nCode\n# The full df\ncoll_full_label &lt;- paste0(\"Raw Data (n = 10K)\")\ncoll_full_plot &lt;- plot_freqs(coll_df, coll_full_label)\n# Conditioning on Z = 0\ncoll_z0_df &lt;- coll_df |&gt; filter(Z == 0)\ncoll_z0_n &lt;- nrow(coll_z0_df)\ncoll_z0_label &lt;- paste0(\"Z == 0 (\",coll_z0_n,\" obs)\")\ncoll_z0_plot &lt;- plot_freqs(coll_z0_df, coll_z0_label, y_lab=FALSE)\n# Conditioning on Z = 1\ncoll_z1_df &lt;- coll_df |&gt; filter(Z == 1)\ncoll_z1_n &lt;- nrow(coll_z1_df)\ncoll_z1_label &lt;- paste0(\"Z == 1 (\",coll_z1_n,\" obs)\")\ncoll_z1_plot &lt;- plot_freqs(coll_z1_df, coll_z1_label, y_lab=FALSE)\ncoll_full_plot | coll_z0_plot | coll_z1_plot\n\n\n\n\n\n\n\n\n\n\nConditioning on colliders induces correlation where there previously was none ☠️\n\n\n\n\n\nCode\nset.seed(5650)\nccoll_df &lt;- tibble(\n    X = rnorm(n_c),\n    Y = rnorm(n_c),\n    Z = rbern(n_c, plogis(2 * (X + Y - 1)))\n)\n\n\n\n\nCode\nccoll_lm &lt;- lm(Y ~ X, data=ccoll_df)\nccoll_slope &lt;- round(ccoll_lm$coef['X'], 3)\nccoll_z0_lm &lt;- lm(Y ~ X, data=ccoll_df |&gt; filter(Z == 0))\nccoll_z0_slope &lt;- round(ccoll_z0_lm$coef['X'], 2)\nccoll_z0_label &lt;- paste0(\"$Slope_{Z=0} = \",ccoll_z0_slope,\"$\")\nccoll_z1_lm &lt;- lm(Y ~ X, data=ccoll_df |&gt; filter(Z == 1))\nccoll_z1_slope &lt;- round(ccoll_z1_lm$coef['X'], 2)\nccoll_z1_label &lt;- paste0(\"$Slope_{Z=1} = \",ccoll_z1_slope,\"$\")\nccoll_z_texlabel &lt;- TeX(paste0(ccoll_z0_label, \" | \", ccoll_z1_label))\nccoll_xmin &lt;- min(ccoll_df$X)\nccoll_xmax &lt;- max(ccoll_df$X)\nggplot() +\n  # Points\n  geom_point(\n    data=ccoll_df |&gt; filter(Y &gt; -3),\n    aes(x=X, y=Y, color=factor(Z)),\n    size=0.6*g_pointsize,\n    alpha=0.8\n  ) +\n  # Overall lm\n  geom_smooth(\n    data=ccoll_df, aes(x=X, y=Y),\n    method = lm, se = FALSE,\n    linewidth = 2.5, color='black'\n  ) +\n  # Stratified lm\n  # (slightly larger black lines)\n  geom_smooth(\n    data=ccoll_df,\n    aes(x=X, y=Y, group=factor(Z)),\n    method=lm, se=FALSE, fullrange=TRUE,\n    linewidth=2.75, color='black'\n  ) +\n  # (Colored lines)\n  geom_smooth(\n    data=ccoll_df,\n    aes(x=X, y=Y, color=factor(Z)),\n    method=lm, se=FALSE, fullrange=TRUE,\n    linewidth=2\n  ) +\n  theme_dsan(base_size=24) +\n  theme(\n    plot.title = element_text(size=24),\n    plot.subtitle = element_text(size=20)\n  ) +\n  coord_equal() +\n  labs(\n    title = paste0(\n      \"Unstratified Slope = \",ccoll_slope\n    ),\n    subtitle=ccoll_z_texlabel,\n    x = \"X\", y = \"Y\", color = \"Z\"\n  )\n\n\n\n\n\n\n\n\n\n\n\n…This is why we have to think, rather than just “control for everything”! 😭"
-  },
-  {
-    "objectID": "w04/slides.html#proxies-for-z",
-    "href": "w04/slides.html#proxies-for-z",
-    "title": "Week 4: Clearing the Path from Cause to Effect",
-    "section": "Proxies for \\(Z\\)",
-    "text": "Proxies for \\(Z\\)\n\n\n\n\n\nCode\nset.seed(5650)\nprox_df &lt;- tibble(\n  X = rbern(n_d),\n  Z = rbern(n_d, (1-X)*0.1 + X*0.9),\n  Y = rbern(n_d, (1-Z)*0.1 + Z*0.9),\n  A = rbern(n_d, (1-Z)*0.1 + Z*0.9)\n)\n\n\n\n\nCode\n# The full df\nprox_full_label &lt;- paste0(\"Raw Data (n = 10K)\")\nprox_full_plot &lt;- plot_freqs(prox_df, prox_full_label)\n# Conditioning on A == 0\nprox_a0_df &lt;- prox_df |&gt; filter(A == 0)\nprox_a0_n &lt;- nrow(prox_a0_df)\nprox_a0_label &lt;- paste0(\"A == 0 (\",prox_a0_n,\" obs)\")\nprox_a0_plot &lt;- plot_freqs(prox_a0_df, prox_a0_label, y_lab=FALSE)\n# Conditioning on A == 1\nprox_a1_df &lt;- prox_df |&gt; filter(A == 1)\nprox_a1_n &lt;- nrow(prox_a1_df)\nprox_a1_label &lt;- paste0(\"A == 1 (\",prox_a1_n,\" obs)\")\nprox_a1_plot &lt;- plot_freqs(prox_a1_df, prox_a1_label, y_lab=FALSE)\nprox_full_plot | prox_a0_plot | prox_a1_plot\n\n\n\n\n\n\n\n\n\n\nWith just \\(X \\rightarrow Z \\rightarrow Y\\), we’d have a pipe\nObserving \\(A\\) gives us some (not all!) information about \\(Z\\)\n\n\n\n\n\n\n\n\n\n\nCode\nlibrary(tidyverse)\nlibrary(extraDistr)\nlibrary(latex2exp)\nset.seed(5650)\nn_c &lt;- 300\ncprox_df &lt;- tibble(\n    X = rnorm(n_c),\n    Z = rbern(n_c, plogis(X)),\n    Y = rnorm(n_c, 2 * Z - 1),\n    A = rbern(n_c, (1-Z)*0.86 + Z*0.14)\n)\ncprox_lm &lt;- lm(Y ~ X, data=cprox_df)\ncprox_slope &lt;- round(cprox_lm$coef['X'], 3)\ncprox_a0_lm &lt;- lm(Y ~ X, data=cprox_df |&gt; filter(A == 0))\ncprox_a0_slope &lt;- round(cprox_a0_lm$coef['X'], 2)\ncprox_a0_label &lt;- paste0(\"$Slope_{A=0} = \",cprox_a0_slope,\"$\")\n# A == 1 lm\ncprox_a1_lm &lt;- lm(Y ~ X, data=cprox_df |&gt; filter(A == 1))\ncprox_a1_slope &lt;- round(cprox_a1_lm$coef['X'], 2)\ncprox_a1_label &lt;- paste0(\"$Slope_{A=1} = \",cprox_a1_slope,\"$\")\ncprox_a_texlabel &lt;- TeX(paste0(cprox_a0_label, \" | \", cprox_a1_label))\ncprox_xmin &lt;- min(cprox_df$X)\ncprox_xmax &lt;- max(cprox_df$X)\nggplot() +\n  # Points\n  geom_point(\n    data=cprox_df |&gt; filter(Y &gt; -3),\n    aes(x=X, y=Y, color=factor(A)),\n    size=0.6*g_pointsize,\n    alpha=0.8\n  ) +\n  # Overall lm\n  geom_smooth(\n    data=cprox_df, aes(x=X, y=Y),\n    method = lm, se = FALSE,\n    linewidth = 2.5, color='black'\n  ) +\n  # Stratified lm\n  # (slightly larger black lines)\n  geom_smooth(\n    data=cprox_df,\n    aes(x=X, y=Y, group=factor(A)),\n    method=lm, se=FALSE, fullrange=TRUE,\n    linewidth=2.75, color='black'\n  ) +\n  # (Colored lines)\n  geom_smooth(\n    data=cprox_df,\n    aes(x=X, y=Y, color=factor(A)),\n    method=lm, se=FALSE, fullrange=TRUE,\n    linewidth=2\n  ) +\n  theme_dsan(base_size=22) +\n  theme(\n    plot.title = element_text(size=22),\n    plot.subtitle = element_text(size=18)\n  ) +\n  coord_equal() +\n  labs(\n    title = paste0(\n      \"Unstratified Slope = \",cprox_slope\n    ),\n    subtitle=cprox_a_texlabel,\n    x = \"X\", y = \"Y\", color = \"A\"\n  )"
-  },
-  {
-    "objectID": "w04/slides.html#references",
-    "href": "w04/slides.html#references",
-    "title": "Week 4: Clearing the Path from Cause to Effect",
-    "section": "References",
-    "text": "References\n\n\nBezuidenhout, Dana, Sarah Forthal, Kara Rudolph, and Matthew R Lamb. 2024. “Single World Intervention Graphs (SWIGs): A Practical Guide.” American Journal of Epidemiology, September, kwae353. https://doi.org/10.1093/aje/kwae353.\n\n\nGleijeses, Piero. 2013. Visions of Freedom: Havana, Washington, Pretoria, and the Struggle for Southern Africa, 1976-1991. UNC Press Books.\n\n\nMcElreath, Richard. 2020. Statistical Rethinking: A Bayesian Course with Examples in R and STAN. CRC Press."
   },
   {
     "objectID": "w02/index.html",
@@ -1695,7 +1790,7 @@
     "href": "syllabus.html#schedule",
     "title": "Syllabus",
     "section": "Schedule",
-    "text": "Schedule\nThe following is a rough map of what we will work through together throughout the semester; given that everyone learns at a different pace, my aim is to leave us with a good amount of flexibility in terms of how much time we spend on each topic: if I find that it takes me longer than a week to convey a certain topic in sufficient depth, for example, then I view it as a strength rather than a weakness of the course that we can then rearrange the calendar below by adding an extra week on that particular topic! Similarly, if it seems like I am spending too much time on a topic, to the point that students seem bored or impatient to move onto the next topic, we can move a topic intended for the next week to the current week!\n\n\n\nUnit\nWeek\nDate\nTopic\n\n\n\n\nUnit 1: The Language of Causal Modeling\n1\nMay 21\nFrom a Science of Particles to a Science of PeopleRelevant Supplementary Material:Santa Fe Institute online course: Introduction to Renormalization, up through Video 5, “Coarse Graining II: Entropy”2\n\n\n\n2\nMay 28\nProbabilistic Graphical Models (PGMs) as Data-Generating Processes (DGPs)Relevant Reading:Koller and Friedman (2009), Chapter 2: “Foundations”. Especially pp. 15-34, as a DSAN 5100 refresher!\n\n\nUnit 2: Doin Thangs\n3\nJun 4\nFrom PGMs to Causal Diagrams[Deliverable, 11:59pm EDT] HW1: Causal Modeling with DAGs and PGMs: Direct and Indirect Effects\n\n\n\n4\nJun 11\nClearing the Path from Cause to Effect\n\n\nUnit 3: Matching Apples to Apples\n5\nJun 18\nStatistical Matching (A Cautious First Dip into Computational Methods)\n\n\n\n6\nJun 25\nMidterm Review (feat. Example Problems)\n\n\nMidterm\n7\nJul 2\nIn-Class Midterm: Causal Models and Statistical Matching\n\n\nUnit 4: Machine Learning for Causal Inference\n8\nJul 9\nPropensity Score Matching\n\n\n\n9\nJul 16\nDouble-Debiased Machine Learning\n\n\n\n10\nJul 23\nCausal Forests for Heterogeneous Treatment Effects\n\n\n\n11\nJul 30\nFancier Causal Inference at the Fancy Computational Methods Frontier\n\n\nFinal Project Zone\n12\nAug 6\nFinal Project Presentations\n\n\n\n\nAug 8 (Friday), 5:59pm EDT\n[Deliverable] Final Project",
+    "text": "Schedule\nThe following is a rough map of what we will work through together throughout the semester; given that everyone learns at a different pace, my aim is to leave us with a good amount of flexibility in terms of how much time we spend on each topic: if I find that it takes me longer than a week to convey a certain topic in sufficient depth, for example, then I view it as a strength rather than a weakness of the course that we can then rearrange the calendar below by adding an extra week on that particular topic! Similarly, if it seems like I am spending too much time on a topic, to the point that students seem bored or impatient to move onto the next topic, we can move a topic intended for the next week to the current week!\n\n\n\nUnit\nWeek\nDate\nTopic\n\n\n\n\nUnit 1: The Language of Causal Modeling\n1\nMay 21\nFrom a Science of Particles to a Science of PeopleRelevant Supplementary Material:Santa Fe Institute online course: Introduction to Renormalization, up through Video 5, “Coarse Graining II: Entropy”2\n\n\n\n2\nMay 28\nProbabilistic Graphical Models (PGMs) as Data-Generating Processes (DGPs)Relevant Reading:Koller and Friedman (2009), Chapter 2: “Foundations”. Especially pp. 15-34, as a DSAN 5100 refresher!\n\n\nUnit 2: Doin Thangs\n3\nJun 4\nFrom PGMs to Causal Diagrams[Deliverable, 11:59pm EDT] HW1: Causal Modeling with DAGs and PGMs: Direct and Indirect Effects\n\n\n\n4\nJun 11\nClearing the Path from Cause to Effect\n\n\nUnit 3: Matching Apples to Apples\n5\nJun 18\nMultilevel Modeling, Closing Backdoor Paths\n\n\n\n6\nJun 25\nMidterm Review (feat. Example Problems)\n\n\nMidterm\n7\nJul 2\nIn-Class Midterm: Causal Models and Statistical Matching\n\n\nUnit 4: Machine Learning for Causal Inference\n8\nJul 9\nPropensity Score Matching\n\n\n\n9\nJul 16\nDouble-Debiased Machine Learning\n\n\n\n10\nJul 23\nCausal Forests for Heterogeneous Treatment Effects\n\n\n\n11\nJul 30\nFancier Causal Inference at the Fancy Computational Methods Frontier\n\n\nFinal Project Zone\n12\nAug 6\nFinal Project Presentations\n\n\n\n\nAug 8 (Friday), 5:59pm EDT\n[Deliverable] Final Project",
     "crumbs": [
       "Syllabus"
     ]

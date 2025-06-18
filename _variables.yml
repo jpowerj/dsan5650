@@ -23,8 +23,8 @@ w04:
   date-md: "Jun 11"
 w05:
   weeknum: 5
-  title: "Statistical Matching (A Cautious First Dip into Computational Methods)"
-  footer: "Statistical Matching"
+  title: "Multilevel Modeling, Closing Backdoor Paths"
+  footer: "MLM, Backdoor Paths"
   date-md: "Jun 18"
 w06:
   weeknum: 6
