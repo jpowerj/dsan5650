@@ -57,7 +57,7 @@ Today's Planned Schedule:
 
 | | Start | End | Topic |
 |:- |:- |:- |:- |
-| **Lecture** | 6:30pm | 7:20pm | [Multilevel Madness &rarr;](#roadmap) |
+| **Lecture** | 6:30pm | 7:20pm | [Multilevel Madness &rarr;](#multilevel-madness) |
 | | 7:20pm | 7:50pm | [Applying $\textsf{do}()$ &rarr;](#the-ladder-of-causal-inference) |
 | **Break!** | 7:50pm | 8:00pm | |
 | | 8:00pm | 9:00pm | [Closing Backdoor Paths &rarr;](#the-collider) |
@@ -75,59 +75,383 @@ source("../dsan-globals/_globals.r")
 
 :::
 
-# The Ladder of Causal Inference {.smaller .title-12 .not-title-slide .crunch-title data-name="Ladder"}
+# Multilevel Madness {.smaller data-name="Multilevel Madness"}
 
-```{=html}
-<table>
-<!-- <thead>
-<tr>
-  <th>a</th>
-  <th>b</th>
-</tr>
-</thead> -->
-<tbody>
-<tr>
-  <td style='width: 8%;'></td>
-  <td align="center" class='tdvc' style="width: 8%;"><span data-qmd="<i class='bi bi-arrow-90deg-right'></i>"></span></td>
-  <td class='tdvc' colspan="2"><span data-qmd="![](images/fanciest_pooh.jpeg)"></span></td>
-  <td colspan="2"><span data-qmd="**Counterfactuals**: What *would have* happened, if history was slightly different...<br>$\Pr(Y_{M=M_0} \mid \textsf{do}(X)) - \Pr(Y_{M=M_0} \mid \textsf{do}(\neg X))$"></span></td>
-</tr>
-<tr>
-  <td align="right" class='tdvc'><span data-qmd="<i class='bi bi-arrow-90deg-right'></i>"></span></td>
-  <td class='tdvc' colspan="2"><span data-qmd="![](images/fancy_pooh.jpeg)"></span></td>
-  <td colspan="3" class='tdvc'><span data-qmd="**Intervention**: What happens if I...<br>$\Pr(Y \mid \textsf{do}(X)) - \Pr(Y \mid \textsf{do}(\neg X))$"></span></td>
-</tr>
-<tr>
-  <td class='tdvc' colspan="2"><img src='images/bored_pooh.jpeg' /></td>
-  <td colspan="4" align="left" class='tdvc'><span data-qmd="**Association**: What happened?<br>$\Pr(Y \mid X) - \Pr(Y \mid \neg X)$"></span></td>
-</tr>
-</tbody>
-</table>
-```
+![](images/multilevel_eu.svg){fig-align="center"}
 
-* $\leadsto$ Stuff we add to probability theory in 5650 is to combat **confounding**: to **"fix"** whatever is making $\Pr(Y \mid X) \neq \Pr(Y \mid \textsf{do}(X))$!
+<center>
 
-# The Four Elemental Confounds {.smaller .crunch-title .crunch-quarto-figure .title-12 data-stack-name="Forks, Pipes, Colliders"}
+..."Lab" Time!
+
+</center>
+
+# Recap: The Four Elemental Confounds {.smaller .crunch-title .crunch-quarto-figure .title-12 .crunch-quarto-layout-panel data-stack-name="Backdoor Paths"}
 
 ![From Richard McElreath's [*Statistical Rethinking* Lectures](https://youtu.be/mBEA7PKDmiY?si=S0ciQ7W7wfL73kPR)](images/elemental-confounds.png){fig-align="center"}
 
 ```{r}
 #| label: r-libraries
 #| echo: true
-#| code-fold: show
+#| code-fold: true
 library(tidyverse) # For ggplot
 library(extraDistr) # For rbern()
 library(patchwork) # For side-by-side plotting
+library(ggtext) # For colors in titles
+library(rethinking)
+library(dagitty)
 n_d <- 10000 # For discrete RVs
 n_c <- 300 # For continuous RVs
 ```
 
-## Conditioning on a Fork: $X \leftarrow Z \rightarrow Y$ {.smaller .crunch-title .title-11 .crunch-quarto-figure}
+## Pipes $X \rightarrow Z \rightarrow Y$: Conditioning = *Blocking* {.smaller .crunch-title .title-11 .crunch-quarto-figure .crunch-quarto-layout-panel .crunch-img .crunch-figure .crunch-p}
+
+:::: {layout="[30,20,50]" layout-valign="center" layout-align="center"}
+::: {#pipe-open}
+
+![](images/flow-open.jpg){fig-align="center" width="200"}
+
+![](images/causal_pipe.svg){fig-align="center" width="250"}
+
+:::
+::: {#pipe-dag-img}
+
+```{r}
+#| label: pipe-dag
+#| fig-align: center
+#| results: hold
+library(rethinking)
+library(dagitty)
+library(ggdag)
+pipe_dag <-dagitty("dag{
+X[exposure]
+Y[outcome]
+X -> Y
+X -> Z
+Z -> Y
+}")
+coordinates(pipe_dag) <- list(
+    x=c(X=0, Z=0.5, Y=1),
+    y=c(X=1, Z=0.5, Y=1)
+)
+drawdag(pipe_dag, cex=4, lwd=5, radius=10)
+drawopenpaths(pipe_dag, lwd=5)
+adj_sets <- adjustmentSets(
+    pipe_dag, effect="direct"
+)
+writeLines("Adjustment sets (direct effect):")
+adj_sets
+```
+
+:::
+::: {#pipe-plot}
+
+```{r}
+#| label: pipe-continuous
+#| echo: true
+#| code-fold: true
+#| fig-width: 4.5
+#| fig-height: 3
+set.seed(5650)
+cpipe_df <- tibble(
+    X = rnorm(n_c),
+    Z = rbern(n_c, plogis(X)),
+    Y = rnorm(n_c, 2 * Z - 1)
+)
+cpipe_lm <- lm(Y ~ X, data=cpipe_df)
+cpipe_slope <- round(cpipe_lm$coef['X'], 3)
+cpipe_z0_lm <- lm(Y ~ X, data=cpipe_df |> filter(Z == 0))
+cpipe_z0_slope <- round(cpipe_z0_lm$coef['X'], 2)
+cpipe_z0_label <- paste0("<span style='color: #e69f00;'>Slope<sub>Z=0</sub> = ",cpipe_z0_slope,"</span>")
+cpipe_z1_lm <- lm(Y ~ X, data=cpipe_df |> filter(Z == 1))
+cpipe_z1_slope <- round(cpipe_z1_lm$coef['X'], 2)
+cpipe_z1_label <- paste0("<span style='color: #56b4e9;'>Slope<sub>Z=1</sub> = ",cpipe_z1_slope,"</span>")
+cpipe_z_texlabel <- paste0(cpipe_z0_label, " | ", cpipe_z1_label)
+cpipe_xmin <- min(cpipe_df$X)
+cpipe_xmax <- max(cpipe_df$X)
+ggplot() +
+  # Points
+  geom_point(
+    data=cpipe_df |> filter(Y > -3),
+    aes(x=X, y=Y, color=factor(Z)),
+    size=0.4*g_pointsize,
+    alpha=0.8
+  ) +
+  # Overall lm
+  geom_smooth(
+    data=cpipe_df, aes(x=X, y=Y),
+    method = lm, se = FALSE,
+    linewidth = 3, color='white'
+  ) +
+  geom_smooth(
+    data=cpipe_df, aes(x=X, y=Y),
+    method = lm, se = FALSE,
+    linewidth = 2.5, color='black'
+  ) +
+  theme_dsan(base_size=18) +
+  theme(
+    plot.title = element_text(size=18),
+    plot.subtitle = element_markdown(size=16)
+  ) +
+  coord_equal() +
+  labs(
+    title = paste0(
+      "Unstratified Slope = ",cpipe_slope
+    ),
+    x = "X", y = "Y", color = "Z"
+  )
+```
+
+:::
+::::
+
+<!-- Pipe Blocked -->
+
+:::: {layout="[30,20,50]" layout-valign="center" layout-align="center"}
+::: {#pipe-closed}
+
+![](images/flow-closed.jpg){fig-align="center" width="200"}
+
+![](images/causal_pipe_closed.svg){fig-align="center" width="250"}
+
+:::
+::: {#pipe-dag-closed-img}
+
+```{r}
+#| label: pipe-dag-closed
+#| fig-align: center
+#| results: hold
+library(rethinking)
+library(dagitty)
+library(ggdag)
+pipe_dag_closed <-dagitty("dag{
+X[exposure]
+Y[outcome]
+Z[adjustedNode]
+X -> Y
+X -> Z
+Z -> Y
+}")
+coordinates(pipe_dag_closed) <- list(
+    x=c(X=0, Z=0.5, Y=1),
+    y=c(X=1, Z=0.5, Y=1)
+)
+drawdag(pipe_dag_closed, cex=4, lwd=5, radius=10)
+drawopenpaths(pipe_dag_closed, Z="Z", lwd=5)
+adj_sets_closed <- adjustmentSets(
+    pipe_dag_closed
+)
+writeLines("Adjustment sets (direct effect):")
+adj_sets_closed
+```
+
+:::
+::: {#pipe-plot}
+
+```{r}
+#| label: pipe-continuous-closed
+#| echo: true
+#| code-fold: true
+#| fig-width: 4.5
+#| fig-height: 3
+set.seed(5650)
+cpipe_df <- tibble(
+    X = rnorm(n_c),
+    Z = rbern(n_c, plogis(X)),
+    Y = rnorm(n_c, 2 * Z - 1)
+)
+cpipe_lm <- lm(Y ~ X, data=cpipe_df)
+cpipe_slope <- round(cpipe_lm$coef['X'], 3)
+cpipe_z0_lm <- lm(Y ~ X, data=cpipe_df |> filter(Z == 0))
+cpipe_z0_slope <- round(cpipe_z0_lm$coef['X'], 2)
+cpipe_z0_label <- paste0("<span style='color: #e69f00;'>Slope<sub>Z=0</sub> = ",cpipe_z0_slope,"</span>")
+cpipe_z1_lm <- lm(Y ~ X, data=cpipe_df |> filter(Z == 1))
+cpipe_z1_slope <- round(cpipe_z1_lm$coef['X'], 2)
+cpipe_z1_label <- paste0("<span style='color: #56b4e9;'>Slope<sub>Z=1</sub> = ",cpipe_z1_slope,"</span>")
+cpipe_z_texlabel <- paste0(cpipe_z0_label, " | ", cpipe_z1_label)
+cpipe_xmin <- min(cpipe_df$X)
+cpipe_xmax <- max(cpipe_df$X)
+ggplot() +
+  # Points
+  geom_point(
+    data=cpipe_df |> filter(Y > -3),
+    aes(x=X, y=Y, color=factor(Z)),
+    size=0.6*g_pointsize,
+    alpha=0.8
+  ) +
+  # Stratified lm
+  # (slightly larger black lines)
+  geom_smooth(
+    data=cpipe_df,
+    aes(x=X, y=Y, group=factor(Z)),
+    method=lm, se=FALSE, fullrange=TRUE,
+    linewidth=2.75, color='black'
+  ) +
+  # (Colored lines)
+  geom_smooth(
+    data=cpipe_df,
+    aes(x=X, y=Y, color=factor(Z)),
+    method=lm, se=FALSE, fullrange=TRUE,
+    linewidth=2
+  ) +
+  theme_dsan(base_size=18) +
+  theme(
+    plot.title = element_markdown(size=18),
+    plot.subtitle = element_markdown(size=16)
+  ) +
+  coord_equal() +
+  labs(
+    title=cpipe_z_texlabel,
+    x = "X", y = "Y", color = "Z"
+  )
+```
+
+:::
+::::
+
+## Forks $X \leftarrow Z \rightarrow Y$: Conditioning = *Blocking* {.smaller .crunch-title .title-11 .crunch-quarto-figure .crunch-quarto-layout-panel .crunch-img .crunch-figure .crunch-p}
+
+:::: {layout="[30,20,50]" layout-valign="center" layout-align="center"}
+::: {#pipe-open}
+
+![](images/flow-open.jpg){fig-align="center" width="200"}
+
+![](images/causal_fork.svg){fig-align="center" width="250"}
+
+:::
+::: {#fork-dag-img}
+
+```{r}
+#| label: fork-dag-open
+#| fig-align: center
+#| results: hold
+library(rethinking)
+library(dagitty)
+library(ggdag)
+pipe_dag <-dagitty("dag{
+X[exposure]
+Y[outcome]
+X -> Y
+Z -> X
+Z -> Y
+}")
+coordinates(pipe_dag) <- list(
+    x=c(X=0, Z=0.5, Y=1),
+    y=c(X=1, Z=0.5, Y=1)
+)
+drawdag(pipe_dag, cex=4, lwd=5, radius=10)
+drawopenpaths(pipe_dag, lwd=5)
+adj_sets <- adjustmentSets(
+    pipe_dag, effect="direct"
+)
+writeLines("Adjustment sets (direct effect):")
+adj_sets
+```
+
+:::
+::: {#open-fork-plot}
+
+```{r}
+#| label: open-fork-continuous
+#| echo: true
+#| code-fold: true
+#| fig-width: 4.5
+#| fig-height: 3
+library(ggtext)
+set.seed(5650)
+cfork_df <- tibble(
+    Z = rbern(n_c),
+    X = rnorm(n_c, 2 * Z - 1),
+    Y = rnorm(n_c, 2 * Z - 1)
+)
+library(latex2exp)
+overall_lm <- lm(Y ~ X, data=cfork_df)
+overall_slope <- round(overall_lm$coef['X'], 3)
+z0_lm <- lm(Y ~ X, data=cfork_df |> filter(Z == 0))
+z0_slope <- round(z0_lm$coef['X'], 2)
+z0_label <- paste0("<span style='color: #e69f00;'>Slope<sub>Z=0</sub> = ",z0_slope,"</span>")
+z1_lm <- lm(Y ~ X, data=cfork_df |> filter(Z == 1))
+z1_slope <- round(z1_lm$coef['X'], 2)
+z1_label <- paste0("<span style='color: #56b4e9;'>Slope<sub>Z=1</sub> = ",z1_slope,"</span>")
+z_texlabel <- paste0(z0_label, " | ", z1_label)
+cfork_xmin <- min(cfork_df$X)
+cfork_xmax <- max(cfork_df$X)
+ggplot() +
+  # Points
+  geom_point(
+    data=cfork_df,
+    aes(x=X, y=Y, color=factor(Z)),
+    size=0.6*g_pointsize,
+    alpha=0.8
+  ) +
+  # Overall lm
+  geom_smooth(
+    data=cfork_df, aes(x=X, y=Y),
+    method = lm, se = FALSE,
+    linewidth = 2.5, color='black'
+  ) +
+  theme_dsan(base_size=18) +
+  theme(
+    plot.title = element_text(size=18),
+    plot.subtitle = element_markdown(size=16)
+  ) +
+  coord_equal() +
+  labs(
+    title = paste0(
+      "Unstratified Slope = ",overall_slope
+    ),
+    x = "X", y = "Y", color = "Z"
+  )
+```
+
+:::
+::::
+
+<!-- Fork Blocked -->
+
+:::: {layout="[30,20,50]" layout-valign="center" layout-align="center"}
+::: {#fork-closed}
+
+![](images/flow-closed.jpg){fig-align="center" width="200"}
+
+![](images/causal_fork_closed.svg){fig-align="center" width="250"}
+
+:::
+::: {#fork-dag-closed-img}
+
+```{r}
+#| label: fork-dag-closed
+#| fig-align: center
+#| results: hold
+library(rethinking)
+library(dagitty)
+library(ggdag)
+fork_dag_closed <-dagitty("dag{
+X[exposure]
+Y[outcome]
+Z[adjustedNode]
+X -> Y
+Z -> X
+Z -> Y
+}")
+coordinates(fork_dag_closed) <- list(
+    x=c(X=0, Z=0.5, Y=1),
+    y=c(X=1, Z=0.5, Y=1)
+)
+fork_dag_closed <- setVariableStatus(fork_dag_closed, "adjustedNode", "Z")
+drawdag(fork_dag_closed, cex=4, lwd=5, radius=10)
+drawopenpaths(fork_dag_closed, Z="Z", lwd=5)
+```
+
+:::
+::: {#fork-plot}
+
 
 ```{r}
 #| label: fork-continuous
 #| echo: true
 #| code-fold: true
+#| fig-width: 4.5
+#| fig-height: 3
 library(ggtext)
 set.seed(5650)
 cfork_df <- tibble(
@@ -176,10 +500,10 @@ ggplot() +
     method=lm, se=FALSE, fullrange=TRUE,
     linewidth=2
   ) +
-  theme_dsan(base_size=24) +
+  theme_dsan(base_size=18) +
   theme(
-    plot.title = element_text(size=24),
-    plot.subtitle = element_markdown(size=20)
+    plot.title = element_text(size=18),
+    plot.subtitle = element_markdown(size=16)
   ) +
   coord_equal() +
   labs(
@@ -191,147 +515,8 @@ ggplot() +
   )
 ```
 
-## Conditioning on a Pipe: $X \rightarrow Z \rightarrow Y$ {.smaller .crunch-title .title-11 .crunch-quarto-figure}
-
-<!-- Continuous Pipe plot -->
-
-```{r}
-#| label: pipe-continuous
-#| echo: true
-#| code-fold: true
-set.seed(5650)
-cpipe_df <- tibble(
-    X = rnorm(n_c),
-    Z = rbern(n_c, plogis(X)),
-    Y = rnorm(n_c, 2 * Z - 1)
-)
-cpipe_lm <- lm(Y ~ X, data=cpipe_df)
-cpipe_slope <- round(cpipe_lm$coef['X'], 3)
-cpipe_z0_lm <- lm(Y ~ X, data=cpipe_df |> filter(Z == 0))
-cpipe_z0_slope <- round(cpipe_z0_lm$coef['X'], 2)
-cpipe_z0_label <- paste0("<span style='color: #e69f00;'>Slope<sub>Z=0</sub> = ",cpipe_z0_slope,"</span>")
-cpipe_z1_lm <- lm(Y ~ X, data=cpipe_df |> filter(Z == 1))
-cpipe_z1_slope <- round(cpipe_z1_lm$coef['X'], 2)
-cpipe_z1_label <- paste0("<span style='color: #56b4e9;'>Slope<sub>Z=1</sub> = ",cpipe_z1_slope,"</span>")
-cpipe_z_texlabel <- paste0(cpipe_z0_label, " | ", cpipe_z1_label)
-cpipe_xmin <- min(cpipe_df$X)
-cpipe_xmax <- max(cpipe_df$X)
-ggplot() +
-  # Points
-  geom_point(
-    data=cpipe_df |> filter(Y > -3),
-    aes(x=X, y=Y, color=factor(Z)),
-    size=0.6*g_pointsize,
-    alpha=0.8
-  ) +
-  # Overall lm
-  geom_smooth(
-    data=cpipe_df, aes(x=X, y=Y),
-    method = lm, se = FALSE,
-    linewidth = 2.5, color='black'
-  ) +
-  # Stratified lm
-  # (slightly larger black lines)
-  geom_smooth(
-    data=cpipe_df,
-    aes(x=X, y=Y, group=factor(Z)),
-    method=lm, se=FALSE, fullrange=TRUE,
-    linewidth=2.75, color='black'
-  ) +
-  # (Colored lines)
-  geom_smooth(
-    data=cpipe_df,
-    aes(x=X, y=Y, color=factor(Z)),
-    method=lm, se=FALSE, fullrange=TRUE,
-    linewidth=2
-  ) +
-  theme_dsan(base_size=24) +
-  theme(
-    plot.title = element_text(size=24),
-    plot.subtitle = element_markdown(size=20)
-  ) +
-  coord_equal() +
-  labs(
-    title = paste0(
-      "Unstratified Slope = ",cpipe_slope
-    ),
-    subtitle=cpipe_z_texlabel,
-    x = "X", y = "Y", color = "Z"
-  )
-```
-
-## ⚠️Conditioning on a Collider⚠️: $X \rightarrow Z \leftarrow Y$ {.smaller .crunch-title .title-10 .crunch-quarto-figure .crunch-ul .crunch-li-5}
-
-* Conditioning on colliders **induces** correlation where there **previously was none** ☠️
-
-<!-- Continuous Collider Plot -->
-
-```{r}
-#| label: coll-continuous
-#| echo: true
-#| code-fold: true
-set.seed(5650)
-ccoll_df <- tibble(
-    X = rnorm(n_c),
-    Y = rnorm(n_c),
-    Z = rbern(n_c, plogis(2 * (X + Y - 1)))
-)
-ccoll_lm <- lm(Y ~ X, data=ccoll_df)
-ccoll_slope <- round(ccoll_lm$coef['X'], 3)
-ccoll_z0_lm <- lm(Y ~ X, data=ccoll_df |> filter(Z == 0))
-ccoll_z0_slope <- round(ccoll_z0_lm$coef['X'], 2)
-ccoll_z0_label <- paste0("<span style='color: #e69f00;'>Slope<sub>Z=0</sub> = ",ccoll_z0_slope,"</span>")
-ccoll_z1_lm <- lm(Y ~ X, data=ccoll_df |> filter(Z == 1))
-ccoll_z1_slope <- round(ccoll_z1_lm$coef['X'], 2)
-ccoll_z1_label <- paste0("<span style='color: #56b4e9;'>Slope<sub>Z=1</sub> = ",ccoll_z1_slope,"</span>")
-ccoll_z_texlabel <- paste0(ccoll_z0_label, " | ", ccoll_z1_label)
-ccoll_xmin <- min(ccoll_df$X)
-ccoll_xmax <- max(ccoll_df$X)
-ggplot() +
-  # Points
-  geom_point(
-    data=ccoll_df |> filter(Y > -3),
-    aes(x=X, y=Y, color=factor(Z)),
-    size=0.6*g_pointsize,
-    alpha=0.8
-  ) +
-  # Overall lm
-  geom_smooth(
-    data=ccoll_df, aes(x=X, y=Y),
-    method = lm, se = FALSE,
-    linewidth = 2.5, color='black'
-  ) +
-  # Stratified lm
-  # (slightly larger black lines)
-  geom_smooth(
-    data=ccoll_df,
-    aes(x=X, y=Y, group=factor(Z)),
-    method=lm, se=FALSE, fullrange=TRUE,
-    linewidth=2.75, color='black'
-  ) +
-  # (Colored lines)
-  geom_smooth(
-    data=ccoll_df,
-    aes(x=X, y=Y, color=factor(Z)),
-    method=lm, se=FALSE, fullrange=TRUE,
-    linewidth=2
-  ) +
-  theme_dsan(base_size=24) +
-  theme(
-    plot.title = element_text(size=24),
-    plot.subtitle = element_markdown(size=20)
-  ) +
-  coord_equal() +
-  labs(
-    title = paste0(
-      "Unstratified Slope = ",ccoll_slope
-    ),
-    subtitle=ccoll_z_texlabel,
-    x = "X", y = "Y", color = "Z"
-  )
-```
-
-* ...This is why we have to **think**, rather than just "control for everything"! 😭
+:::
+::::
 
 ## Conditioning on a Proxy for $Z$ {.smaller .crunch-title .title-11 .crunch-quarto-figure .crunch-ul .crunch-li-5 .crunch-quarto-layout-panel .crunch-img}
 
@@ -359,7 +544,6 @@ library(tidyverse)
 library(extraDistr)
 library(latex2exp)
 set.seed(5650)
-n_c <- 350
 cprox_df <- tibble(
     X = rnorm(n_c),
     Z = rbern(n_c, plogis(X)),
@@ -421,6 +605,380 @@ ggplot() +
     x = "X", y = "Y", color = "A"
   )
 ```
+
+## ⚠️Colliders⚠️ $X \rightarrow Z \leftarrow Y$: Conditioning = *Opening* {.smaller .crunch-title .title-09 .crunch-quarto-figure .crunch-ul .crunch-li-5 .crunch-p .crunch-img .crunch-quarto-layout-panel .crunch-figure}
+
+:::: {layout="[30,20,50]" layout-valign="center" layout-align="center"}
+::: {#collider-open}
+
+![](images/flow-closed.jpg){fig-align="center" width="200"}
+
+![](images/causal_collider.svg){fig-align="center" width="220"}
+
+:::
+::: {#collider-dag-img}
+
+```{r}
+#| label: collider-dag-unobs
+#| fig-align: center
+#| results: hold
+library(rethinking)
+library(dagitty)
+library(ggdag)
+coll_dag <-dagitty("dag{
+X[exposure]
+Y[outcome]
+X -> Y
+X -> Z
+Y -> Z
+}")
+coordinates(coll_dag) <- list(
+    x=c(X=0, Z=0.5, Y=1),
+    y=c(X=1, Z=0.5, Y=1)
+)
+drawdag(coll_dag, cex=4, lwd=5, radius=10)
+drawopenpaths(coll_dag, lwd=5)
+adj_sets_coll <- adjustmentSets(
+    coll_dag, effect="direct"
+)
+writeLines("Adjustment sets (direct effect):")
+adj_sets_coll
+```
+
+:::
+::: {#open-collider-plot}
+
+```{r}
+#| label: collider-unobs
+#| echo: true
+#| code-fold: true
+#| fig-width: 4.5
+#| fig-height: 3
+set.seed(5650)
+ccoll_df <- tibble(
+    X = rnorm(n_c),
+    Y = rnorm(n_c),
+    Z = rbern(n_c, plogis(2 * (X + Y - 1)))
+)
+ccoll_lm <- lm(Y ~ X, data=ccoll_df)
+ccoll_slope <- round(ccoll_lm$coef['X'], 3)
+ccoll_z0_lm <- lm(Y ~ X, data=ccoll_df |> filter(Z == 0))
+ccoll_z0_slope <- round(ccoll_z0_lm$coef['X'], 2)
+ccoll_z0_label <- paste0("<span style='color: #e69f00;'>Slope<sub>Z=0</sub> = ",ccoll_z0_slope,"</span>")
+ccoll_z1_lm <- lm(Y ~ X, data=ccoll_df |> filter(Z == 1))
+ccoll_z1_slope <- round(ccoll_z1_lm$coef['X'], 2)
+ccoll_z1_label <- paste0("<span style='color: #56b4e9;'>Slope<sub>Z=1</sub> = ",ccoll_z1_slope,"</span>")
+ccoll_z_texlabel <- paste0(ccoll_z0_label, " | ", ccoll_z1_label)
+ccoll_xmin <- min(ccoll_df$X)
+ccoll_xmax <- max(ccoll_df$X)
+ggplot() +
+  # Points
+  geom_point(
+    data=ccoll_df |> filter(Y > -3),
+    aes(x=X, y=Y, color=factor(Z)),
+    size=0.4*g_pointsize,
+    alpha=0.8
+  ) +
+  # Overall lm
+  geom_smooth(
+    data=ccoll_df, aes(x=X, y=Y),
+    method = lm, se = FALSE,
+    linewidth = 3, color='white'
+  ) +
+  geom_smooth(
+    data=ccoll_df, aes(x=X, y=Y),
+    method = lm, se = FALSE,
+    linewidth = 2.5, color='black'
+  ) +
+  theme_dsan(base_size=18) +
+  theme(
+    plot.title = element_markdown(size=18),
+    plot.subtitle = element_markdown(size=16)
+  ) +
+  coord_equal() +
+  labs(
+    title=ccoll_z_texlabel,
+    x = "X", y = "Y", color = "Z"
+  )
+```
+
+:::
+::::
+
+<!-- Collider Observed -->
+
+:::: {layout="[30,20,50]" layout-valign="center" layout-align="center"}
+::: {#fork-closed}
+
+![](images/flow-open.jpg){fig-align="center" width="200"}
+
+![](images/causal_collider_obs.svg){fig-align="center" width="220"}
+
+:::
+::: {#collider-dag-obs-img}
+
+```{r}
+#| label: collider-dag-obs
+#| fig-align: center
+#| results: hold
+library(rethinking)
+library(dagitty)
+library(ggdag)
+fork_dag_closed <-dagitty("dag{
+X[exposure]
+Y[outcome]
+Z[adjustedNode]
+X -> Y
+X -> Z
+Y -> Z
+}")
+coordinates(fork_dag_closed) <- list(
+    x=c(X=0, Z=0.5, Y=1),
+    y=c(X=1, Z=0.5, Y=1)
+)
+fork_dag_closed <- setVariableStatus(fork_dag_closed, "adjustedNode", "Z")
+drawdag(fork_dag_closed, cex=4, lwd=5, radius=10)
+drawopenpaths(fork_dag_closed, Z="Z", lwd=5)
+```
+
+![](images/blewit.jpg){width="180"}
+
+:::
+::: {#collider-obs-plot}
+
+```{r}
+#| label: collider-obs
+#| echo: true
+#| code-fold: true
+#| fig-width: 4.5
+#| fig-height: 3
+set.seed(5650)
+ccoll_df <- tibble(
+    X = rnorm(n_c),
+    Y = rnorm(n_c),
+    Z = rbern(n_c, plogis(2 * (X + Y - 1)))
+)
+ccoll_lm <- lm(Y ~ X, data=ccoll_df)
+ccoll_slope <- round(ccoll_lm$coef['X'], 3)
+ccoll_z0_lm <- lm(Y ~ X, data=ccoll_df |> filter(Z == 0))
+ccoll_z0_slope <- round(ccoll_z0_lm$coef['X'], 2)
+ccoll_z0_label <- paste0("<span style='color: #e69f00;'>Slope<sub>Z=0</sub> = ",ccoll_z0_slope,"</span>")
+ccoll_z1_lm <- lm(Y ~ X, data=ccoll_df |> filter(Z == 1))
+ccoll_z1_slope <- round(ccoll_z1_lm$coef['X'], 2)
+ccoll_z1_label <- paste0("<span style='color: #56b4e9;'>Slope<sub>Z=1</sub> = ",ccoll_z1_slope,"</span>")
+ccoll_z_texlabel <- paste0(ccoll_z0_label, " | ", ccoll_z1_label)
+ccoll_xmin <- min(ccoll_df$X)
+ccoll_xmax <- max(ccoll_df$X)
+ggplot() +
+  # Points
+  geom_point(
+    data=ccoll_df |> filter(Y > -3),
+    aes(x=X, y=Y, color=factor(Z)),
+    size=0.4*g_pointsize,
+    alpha=0.8
+  ) +
+  # Stratified lm
+  # (slightly larger black lines)
+  geom_smooth(
+    data=ccoll_df,
+    aes(x=X, y=Y, group=factor(Z)),
+    method=lm, se=FALSE, fullrange=TRUE,
+    linewidth=2.75, color='black'
+  ) +
+  # (Colored lines)
+  geom_smooth(
+    data=ccoll_df,
+    aes(x=X, y=Y, color=factor(Z)),
+    method=lm, se=FALSE, fullrange=TRUE,
+    linewidth=2
+  ) +
+  theme_dsan(base_size=18) +
+  theme(
+    plot.title = element_markdown(size=18),
+    plot.subtitle = element_markdown(size=16)
+  ) +
+  coord_equal() +
+  labs(
+    title=ccoll_z_texlabel,
+    x = "X", y = "Y", color = "Z"
+  )
+```
+
+:::
+::::
+
+## Is This Just a Corner Case? {.smaller .crunch-title .crunch-ul .crunch-quarto-figure .crunch-figure .crunch-img .crunch-p .crunch-li-5 .crunch-quarto-layout-panel}
+
+* Grant applications are regularly judged on two criteria: **novelty** and **rigor**
+* Judges grade proposal separately on the two criteria, grant is awarded to top $N$ applications based on combined scores...
+
+:::: {layout="[1,1]" layout-valign="center"}
+::: {#grants-unif}
+
+```{r}
+#| label: grant-apps-unif
+#| echo: true
+#| code-fold: true
+#| crop: false
+set.seed(5650)
+grant_df <- tibble(
+    newsworthy = runif(n_c, 0, 10),
+    rigorous = runif(n_c, 0, 10),
+    awarded = ifelse(newsworthy + rigorous > 10, 1, 0)
+)
+grant_lm <- lm(rigorous ~ newsworthy, data=grant_df)
+grant_slope <- round(grant_lm$coef['newsworthy'], 3)
+grant_z0_lm <- lm(rigorous ~ newsworthy, data=grant_df |> filter(awarded == 0))
+grant_z0_slope <- round(grant_z0_lm$coef['newsworthy'], 2)
+grant_z1_lm <- lm(rigorous ~ newsworthy, data=grant_df |> filter(awarded == 1))
+grant_z1_slope <- round(grant_z1_lm$coef['newsworthy'], 2)
+grant_z1_label <- paste0("<span style='color: #56b4e9;'>Slope<sub>+</sub> = ",grant_z1_slope,"</span>")
+grant_z_texlabel <- grant_z1_label
+grant_xmin <- min(grant_df$newsworthy)
+grant_xmax <- max(grant_df$newsworthy)
+ggplot() +
+  # Points
+  geom_point(
+    data=grant_df |> filter(rigorous > -3),
+    aes(x=newsworthy, y=rigorous, color=factor(awarded)),
+    size=0.4*g_pointsize,
+    alpha=0.8
+  ) +
+  # Stratified lm
+  # (slightly larger black lines)
+  geom_smooth(
+    data=grant_df |> filter(awarded == 1),
+    aes(x=newsworthy, y=rigorous, group=factor(awarded)),
+    method=lm, se=FALSE, fullrange=TRUE,
+    linewidth=2.75, color='black'
+  ) +
+  # (Colored lines)
+  geom_smooth(
+    data=grant_df |> filter(awarded == 1),
+    aes(x=newsworthy, y=rigorous, color=factor(awarded)),
+    method=lm, se=FALSE, fullrange=TRUE,
+    linewidth=2
+  ) +
+  theme_dsan(base_size=18) +
+  theme(
+    plot.title = element_markdown(size=18),
+    plot.subtitle = element_markdown(size=16)
+  ) +
+  coord_equal() +
+  labs(
+    title=grant_z_texlabel,
+    x = "Newsworthy?", y = "Rigorous?", color = "awarded"
+  )
+```
+
+:::
+::: {#grants-normal}
+
+```{r}
+#| label: grant-apps-normal
+#| echo: true
+#| code-fold: true
+#| fig-width: 5
+#| fig-height: 5.5
+#| crop: false
+set.seed(5650)
+grant_df <- tibble(
+    newsworthy = rnorm(n_c, 5, 1),
+    rigorous = rnorm(n_c, 5, 1),
+    awarded = ifelse(newsworthy + rigorous > 12, 1, 0)
+)
+grant_lm <- lm(rigorous ~ newsworthy, data=grant_df)
+grant_slope <- round(grant_lm$coef['newsworthy'], 3)
+grant_z0_lm <- lm(rigorous ~ newsworthy, data=grant_df |> filter(awarded == 0))
+grant_z0_slope <- round(grant_z0_lm$coef['newsworthy'], 2)
+grant_z1_lm <- lm(rigorous ~ newsworthy, data=grant_df |> filter(awarded == 1))
+grant_z1_slope <- round(grant_z1_lm$coef['newsworthy'], 2)
+grant_z1_label <- paste0("<span style='color: #56b4e9;'>Slope<sub>+</sub> = ",grant_z1_slope,"</span>")
+grant_z_texlabel <- grant_z1_label
+grant_xmin <- min(grant_df$newsworthy)
+grant_xmax <- max(grant_df$newsworthy)
+ggplot() +
+  # Points
+  geom_point(
+    data=grant_df |> filter(rigorous > -3),
+    aes(x=newsworthy, y=rigorous, color=factor(awarded)),
+    size=0.4*g_pointsize,
+    alpha=0.8
+  ) +
+  # Stratified lm
+  # (slightly larger black lines)
+  geom_smooth(
+    data=grant_df |> filter(awarded == 1),
+    aes(x=newsworthy, y=rigorous, group=factor(awarded)),
+    method=lm, se=FALSE, fullrange=TRUE,
+    linewidth=2.75, color='black'
+  ) +
+  # (Colored lines)
+  geom_smooth(
+    data=grant_df |> filter(awarded == 1),
+    aes(x=newsworthy, y=rigorous, color=factor(awarded)),
+    method=lm, se=FALSE, fullrange=TRUE,
+    linewidth=2
+  ) +
+  theme_dsan(base_size=18) +
+  theme(
+    plot.title = element_markdown(size=18),
+    plot.subtitle = element_markdown(size=16)
+  ) +
+  coord_equal() +
+  labs(
+    title=grant_z_texlabel,
+    x = "Newsworthy?", y = "Rigorous?", color = "awarded"
+  )
+```
+
+:::
+::::
+
+## Blocking Backdoor Paths {.smaller .crunch-title .inline-90}
+
+`dagitty`: R interface to [dagitty.net](https://www.dagitty.net/dags.html)
+
+```{r}
+#| label: rethinking-dag
+#| echo: true
+#| code-fold: show
+#| output-location: column
+rt_dag <- dagitty("dag{
+X [exposure]
+Y [outcome]
+U [unobserved]
+X -> Y
+X <- U <- A -> C -> Y
+U -> B <- C
+}")
+coordinates(rt_dag) <- list(
+    x=c(U=0, X=0, A=0.5, B=0.5, C=1, Y=1),
+    y=c(X=0.75, Y=0.75, B=0.5, U=0.25, C=0.25, A=0)
+)
+drawdag(rt_dag, cex=2, lwd=4, radius=6)
+```
+
+:::: {.columns}
+::: {.column width="50%"}
+
+Two backdoor paths!
+
+<i class='bi bi-1-circle'></i> $X \leftarrow \require{enclose}\enclose{circle}{U} \leftarrow A \rightarrow C \rightarrow Y$: Open or closed?
+
+<i class='bi bi-2-circle'></i> $X \leftarrow \require{enclose}\enclose{circle}{U} \rightarrow B \leftarrow C \rightarrow Y$: Open or closed?
+
+:::
+::: {.column width="50%"}
+
+```{r}
+#| label: backdoor-adj
+#| code-fold: show
+adjustmentSets(rt_dag)
+```
+
+:::
+::::
 
 ## References
 

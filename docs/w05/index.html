@@ -284,7 +284,7 @@ window.Quarto = {
     </ul>
     </div>
 <div class="quarto-sidebar-footer"><div class="sidebar-footer-item">
-<p><em>Updated 2025-06-18, 03:39:13 AM</em></p>
+<p><em>Updated 2025-06-18, 06:32:05 PM</em></p>
 </div></div></nav>
 <div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
@@ -294,13 +294,15 @@ window.Quarto = {
    
   <ul>
   <li><a href="#schedule" id="toc-schedule" class="nav-link active" data-scroll-target="#schedule">Schedule</a></li>
-  <li><a href="#the-ladder-of-causal-inference" id="toc-the-ladder-of-causal-inference" class="nav-link" data-scroll-target="#the-ladder-of-causal-inference">The Ladder of Causal Inference</a></li>
-  <li><a href="#the-four-elemental-confounds" id="toc-the-four-elemental-confounds" class="nav-link" data-scroll-target="#the-four-elemental-confounds">The Four Elemental Confounds</a>
+  <li><a href="#multilevel-madness" id="toc-multilevel-madness" class="nav-link" data-scroll-target="#multilevel-madness">Multilevel Madness</a></li>
+  <li><a href="#recap-the-four-elemental-confounds" id="toc-recap-the-four-elemental-confounds" class="nav-link" data-scroll-target="#recap-the-four-elemental-confounds">Recap: The Four Elemental Confounds</a>
   <ul class="collapse">
-  <li><a href="#conditioning-on-a-fork-x-leftarrow-z-rightarrow-y" id="toc-conditioning-on-a-fork-x-leftarrow-z-rightarrow-y" class="nav-link" data-scroll-target="#conditioning-on-a-fork-x-leftarrow-z-rightarrow-y">Conditioning on a Fork: <span class="math inline">\(X \leftarrow Z \rightarrow Y\)</span></a></li>
-  <li><a href="#conditioning-on-a-pipe-x-rightarrow-z-rightarrow-y" id="toc-conditioning-on-a-pipe-x-rightarrow-z-rightarrow-y" class="nav-link" data-scroll-target="#conditioning-on-a-pipe-x-rightarrow-z-rightarrow-y">Conditioning on a Pipe: <span class="math inline">\(X \rightarrow Z \rightarrow Y\)</span></a></li>
-  <li><a href="#conditioning-on-a-collider-x-rightarrow-z-leftarrow-y" id="toc-conditioning-on-a-collider-x-rightarrow-z-leftarrow-y" class="nav-link" data-scroll-target="#conditioning-on-a-collider-x-rightarrow-z-leftarrow-y">⚠️Conditioning on a Collider⚠️: <span class="math inline">\(X \rightarrow Z \leftarrow Y\)</span></a></li>
+  <li><a href="#pipes-x-rightarrow-z-rightarrow-y-conditioning-blocking" id="toc-pipes-x-rightarrow-z-rightarrow-y-conditioning-blocking" class="nav-link" data-scroll-target="#pipes-x-rightarrow-z-rightarrow-y-conditioning-blocking">Pipes <span class="math inline">\(X \rightarrow Z \rightarrow Y\)</span>: Conditioning = <em>Blocking</em></a></li>
+  <li><a href="#forks-x-leftarrow-z-rightarrow-y-conditioning-blocking" id="toc-forks-x-leftarrow-z-rightarrow-y-conditioning-blocking" class="nav-link" data-scroll-target="#forks-x-leftarrow-z-rightarrow-y-conditioning-blocking">Forks <span class="math inline">\(X \leftarrow Z \rightarrow Y\)</span>: Conditioning = <em>Blocking</em></a></li>
   <li><a href="#conditioning-on-a-proxy-for-z" id="toc-conditioning-on-a-proxy-for-z" class="nav-link" data-scroll-target="#conditioning-on-a-proxy-for-z">Conditioning on a Proxy for <span class="math inline">\(Z\)</span></a></li>
+  <li><a href="#colliders-x-rightarrow-z-leftarrow-y-conditioning-opening" id="toc-colliders-x-rightarrow-z-leftarrow-y-conditioning-opening" class="nav-link" data-scroll-target="#colliders-x-rightarrow-z-leftarrow-y-conditioning-opening">⚠️Colliders⚠️ <span class="math inline">\(X \rightarrow Z \leftarrow Y\)</span>: Conditioning = <em>Opening</em></a></li>
+  <li><a href="#is-this-just-a-corner-case" id="toc-is-this-just-a-corner-case" class="nav-link" data-scroll-target="#is-this-just-a-corner-case">Is This Just a Corner Case?</a></li>
+  <li><a href="#blocking-backdoor-paths" id="toc-blocking-backdoor-paths" class="nav-link" data-scroll-target="#blocking-backdoor-paths">Blocking Backdoor Paths</a></li>
   <li><a href="#references" id="toc-references" class="nav-link" data-scroll-target="#references">References</a></li>
   </ul></li>
   </ul>
@@ -377,7 +379,7 @@ window.Quarto = {
 <td style="text-align: left;"><strong>Lecture</strong></td>
 <td style="text-align: left;">6:30pm</td>
 <td style="text-align: left;">7:20pm</td>
-<td style="text-align: left;"><a href="#roadmap">Multilevel Madness →</a></td>
+<td style="text-align: left;"><a href="#multilevel-madness">Multilevel Madness →</a></td>
 </tr>
 <tr class="even">
 <td style="text-align: left;"></td>
@@ -446,33 +448,19 @@ window.Quarto = {
 </div>
 </div>
 </section>
-<section id="the-ladder-of-causal-inference" class="level1 smaller title-12 not-title-slide crunch-title" data-name="Ladder">
-<h1 class="smaller title-12 not-title-slide crunch-title" data-name="Ladder">The Ladder of Causal Inference</h1>
-<table class="caption-top table" data-quarto-postprocess="true">
-<tbody>
-<tr class="odd">
-<td style="width: 8%"></td>
-<td class="tdvc" style="text-align: center; width: 8%;"><i class="bi bi-arrow-90deg-right"></i></td>
-<td colspan="2" class="tdvc"><img src="images/fanciest_pooh.jpeg" class="img-fluid"></td>
-<td colspan="2"><strong>Counterfactuals</strong>: What <em>would have</em> happened, if history was slightly different…<br><span class="math inline">\(\Pr(Y_{M=M_0} \mid \textsf{do}(X)) - \Pr(Y_{M=M_0} \mid \textsf{do}(\neg X))\)</span></td>
-</tr>
-<tr class="even">
-<td class="tdvc" style="text-align: right;"><i class="bi bi-arrow-90deg-right"></i></td>
-<td colspan="2" class="tdvc" style="text-align: center;"><img src="images/fancy_pooh.jpeg" class="img-fluid"></td>
-<td colspan="3" class="tdvc"><strong>Intervention</strong>: What happens if I…<br><span class="math inline">\(\Pr(Y \mid \textsf{do}(X)) - \Pr(Y \mid \textsf{do}(\neg X))\)</span></td>
-</tr>
-<tr class="odd">
-<td colspan="2" class="tdvc"><img src="images/bored_pooh.jpeg" class="img-fluid"></td>
-<td colspan="4" class="tdvc" style="text-align: left;"><strong>Association</strong>: What happened?<br><span class="math inline">\(\Pr(Y \mid X) - \Pr(Y \mid \neg X)\)</span></td>
-</tr>
-</tbody>
-</table>
-<ul>
-<li><span class="math inline">\(\leadsto\)</span> Stuff we add to probability theory in 5650 is to combat <strong>confounding</strong>: to <strong>“fix”</strong> whatever is making <span class="math inline">\(\Pr(Y \mid X) \neq \Pr(Y \mid \textsf{do}(X))\)</span>!</li>
-</ul>
+<section id="multilevel-madness" class="level1 smaller" data-name="Multilevel Madness">
+<h1 class="smaller" data-name="Multilevel Madness">Multilevel Madness</h1>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/multilevel_eu.svg" class="img-fluid quarto-figure quarto-figure-center figure-img"></p>
+</figure>
+</div>
+<center>
+<p>…“Lab” Time!</p>
+</center>
 </section>
-<section id="the-four-elemental-confounds" class="level1 smaller crunch-title crunch-quarto-figure title-12" data-stack-name="Forks, Pipes, Colliders">
-<h1 class="smaller crunch-title crunch-quarto-figure title-12" data-stack-name="Forks, Pipes, Colliders">The Four Elemental Confounds</h1>
+<section id="recap-the-four-elemental-confounds" class="level1 smaller crunch-title crunch-quarto-figure title-12 crunch-quarto-layout-panel" data-stack-name="Backdoor Paths">
+<h1 class="smaller crunch-title crunch-quarto-figure title-12 crunch-quarto-layout-panel" data-stack-name="Backdoor Paths">Recap: The Four Elemental Confounds</h1>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><img src="images/elemental-confounds.png" class="img-fluid figure-img"></p>
@@ -480,7 +468,7 @@ window.Quarto = {
 </figure>
 </div>
 <div class="cell" data-layout-align="center">
-<details open="" class="code-fold">
+<details class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse) <span class="co"># For ggplot</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
@@ -495,7 +483,7 @@ window.Quarto = {
 ✖ dplyr::lag()    masks stats::lag()
 ℹ Use the conflicted package (&lt;http://conflicted.r-lib.org/&gt;) to force all conflicts to become errors</code></pre>
 </div>
-<details open="" class="code-fold">
+<details class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(extraDistr) <span class="co"># For rbern()</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
@@ -507,243 +495,538 @@ The following object is masked from 'package:purrr':
 
     rdunif</code></pre>
 </div>
-<details open="" class="code-fold">
+<details class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(patchwork) <span class="co"># For side-by-side plotting</span></span>
-<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>n_d <span class="ot">&lt;-</span> <span class="dv">10000</span> <span class="co"># For discrete RVs</span></span>
-<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>n_c <span class="ot">&lt;-</span> <span class="dv">300</span> <span class="co"># For continuous RVs</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
-</div>
-<section id="conditioning-on-a-fork-x-leftarrow-z-rightarrow-y" class="level2 smaller crunch-title title-11 crunch-quarto-figure">
-<h2 class="smaller crunch-title title-11 crunch-quarto-figure anchored" data-anchor-id="conditioning-on-a-fork-x-leftarrow-z-rightarrow-y">Conditioning on a Fork: <span class="math inline">\(X \leftarrow Z \rightarrow Y\)</span></h2>
-<div class="cell" data-layout-align="center">
-<details class="code-fold">
-<summary>Code</summary>
-<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggtext)</span>
-<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">5650</span>)</span>
-<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>cfork_df <span class="ot">&lt;-</span> <span class="fu">tibble</span>(</span>
-<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>    <span class="at">Z =</span> <span class="fu">rbern</span>(n_c),</span>
-<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a>    <span class="at">X =</span> <span class="fu">rnorm</span>(n_c, <span class="dv">2</span> <span class="sc">*</span> Z <span class="sc">-</span> <span class="dv">1</span>),</span>
-<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a>    <span class="at">Y =</span> <span class="fu">rnorm</span>(n_c, <span class="dv">2</span> <span class="sc">*</span> Z <span class="sc">-</span> <span class="dv">1</span>)</span>
-<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a>)</span>
-<span id="cb7-8"><a href="#cb7-8" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(latex2exp)</span>
-<span id="cb7-9"><a href="#cb7-9" aria-hidden="true" tabindex="-1"></a>overall_lm <span class="ot">&lt;-</span> <span class="fu">lm</span>(Y <span class="sc">~</span> X, <span class="at">data=</span>cfork_df)</span>
-<span id="cb7-10"><a href="#cb7-10" aria-hidden="true" tabindex="-1"></a>overall_slope <span class="ot">&lt;-</span> <span class="fu">round</span>(overall_lm<span class="sc">$</span>coef[<span class="st">'X'</span>], <span class="dv">3</span>)</span>
-<span id="cb7-11"><a href="#cb7-11" aria-hidden="true" tabindex="-1"></a>z0_lm <span class="ot">&lt;-</span> <span class="fu">lm</span>(Y <span class="sc">~</span> X, <span class="at">data=</span>cfork_df <span class="sc">|&gt;</span> <span class="fu">filter</span>(Z <span class="sc">==</span> <span class="dv">0</span>))</span>
-<span id="cb7-12"><a href="#cb7-12" aria-hidden="true" tabindex="-1"></a>z0_slope <span class="ot">&lt;-</span> <span class="fu">round</span>(z0_lm<span class="sc">$</span>coef[<span class="st">'X'</span>], <span class="dv">2</span>)</span>
-<span id="cb7-13"><a href="#cb7-13" aria-hidden="true" tabindex="-1"></a>z0_label <span class="ot">&lt;-</span> <span class="fu">paste0</span>(<span class="st">"&lt;span style='color: #e69f00;'&gt;Slope&lt;sub&gt;Z=0&lt;/sub&gt; = "</span>,z0_slope,<span class="st">"&lt;/span&gt;"</span>)</span>
-<span id="cb7-14"><a href="#cb7-14" aria-hidden="true" tabindex="-1"></a>z1_lm <span class="ot">&lt;-</span> <span class="fu">lm</span>(Y <span class="sc">~</span> X, <span class="at">data=</span>cfork_df <span class="sc">|&gt;</span> <span class="fu">filter</span>(Z <span class="sc">==</span> <span class="dv">1</span>))</span>
-<span id="cb7-15"><a href="#cb7-15" aria-hidden="true" tabindex="-1"></a>z1_slope <span class="ot">&lt;-</span> <span class="fu">round</span>(z1_lm<span class="sc">$</span>coef[<span class="st">'X'</span>], <span class="dv">2</span>)</span>
-<span id="cb7-16"><a href="#cb7-16" aria-hidden="true" tabindex="-1"></a>z1_label <span class="ot">&lt;-</span> <span class="fu">paste0</span>(<span class="st">"&lt;span style='color: #56b4e9;'&gt;Slope&lt;sub&gt;Z=1&lt;/sub&gt; = "</span>,z1_slope,<span class="st">"&lt;/span&gt;"</span>)</span>
-<span id="cb7-17"><a href="#cb7-17" aria-hidden="true" tabindex="-1"></a>z_texlabel <span class="ot">&lt;-</span> <span class="fu">paste0</span>(z0_label, <span class="st">" | "</span>, z1_label)</span>
-<span id="cb7-18"><a href="#cb7-18" aria-hidden="true" tabindex="-1"></a>cfork_xmin <span class="ot">&lt;-</span> <span class="fu">min</span>(cfork_df<span class="sc">$</span>X)</span>
-<span id="cb7-19"><a href="#cb7-19" aria-hidden="true" tabindex="-1"></a>cfork_xmax <span class="ot">&lt;-</span> <span class="fu">max</span>(cfork_df<span class="sc">$</span>X)</span>
-<span id="cb7-20"><a href="#cb7-20" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>() <span class="sc">+</span></span>
-<span id="cb7-21"><a href="#cb7-21" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Points</span></span>
-<span id="cb7-22"><a href="#cb7-22" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(</span>
-<span id="cb7-23"><a href="#cb7-23" aria-hidden="true" tabindex="-1"></a>    <span class="at">data=</span>cfork_df,</span>
-<span id="cb7-24"><a href="#cb7-24" aria-hidden="true" tabindex="-1"></a>    <span class="fu">aes</span>(<span class="at">x=</span>X, <span class="at">y=</span>Y, <span class="at">color=</span><span class="fu">factor</span>(Z)),</span>
-<span id="cb7-25"><a href="#cb7-25" aria-hidden="true" tabindex="-1"></a>    <span class="at">size=</span><span class="fl">0.6</span><span class="sc">*</span>g_pointsize,</span>
-<span id="cb7-26"><a href="#cb7-26" aria-hidden="true" tabindex="-1"></a>    <span class="at">alpha=</span><span class="fl">0.8</span></span>
-<span id="cb7-27"><a href="#cb7-27" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">+</span></span>
-<span id="cb7-28"><a href="#cb7-28" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Overall lm</span></span>
-<span id="cb7-29"><a href="#cb7-29" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_smooth</span>(</span>
-<span id="cb7-30"><a href="#cb7-30" aria-hidden="true" tabindex="-1"></a>    <span class="at">data=</span>cfork_df, <span class="fu">aes</span>(<span class="at">x=</span>X, <span class="at">y=</span>Y),</span>
-<span id="cb7-31"><a href="#cb7-31" aria-hidden="true" tabindex="-1"></a>    <span class="at">method =</span> lm, <span class="at">se =</span> <span class="cn">FALSE</span>,</span>
-<span id="cb7-32"><a href="#cb7-32" aria-hidden="true" tabindex="-1"></a>    <span class="at">linewidth =</span> <span class="fl">2.5</span>, <span class="at">color=</span><span class="st">'black'</span></span>
-<span id="cb7-33"><a href="#cb7-33" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">+</span></span>
-<span id="cb7-34"><a href="#cb7-34" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Stratified lm</span></span>
-<span id="cb7-35"><a href="#cb7-35" aria-hidden="true" tabindex="-1"></a>  <span class="co"># (slightly larger black lines)</span></span>
-<span id="cb7-36"><a href="#cb7-36" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_smooth</span>(</span>
-<span id="cb7-37"><a href="#cb7-37" aria-hidden="true" tabindex="-1"></a>    <span class="at">data=</span>cfork_df,</span>
-<span id="cb7-38"><a href="#cb7-38" aria-hidden="true" tabindex="-1"></a>    <span class="fu">aes</span>(<span class="at">x=</span>X, <span class="at">y=</span>Y, <span class="at">group=</span><span class="fu">factor</span>(Z)),</span>
-<span id="cb7-39"><a href="#cb7-39" aria-hidden="true" tabindex="-1"></a>    <span class="at">method=</span>lm, <span class="at">se=</span><span class="cn">FALSE</span>, <span class="at">fullrange=</span><span class="cn">TRUE</span>,</span>
-<span id="cb7-40"><a href="#cb7-40" aria-hidden="true" tabindex="-1"></a>    <span class="at">linewidth=</span><span class="fl">2.75</span>, <span class="at">color=</span><span class="st">'black'</span></span>
-<span id="cb7-41"><a href="#cb7-41" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">+</span></span>
-<span id="cb7-42"><a href="#cb7-42" aria-hidden="true" tabindex="-1"></a>  <span class="co"># (Colored lines)</span></span>
-<span id="cb7-43"><a href="#cb7-43" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_smooth</span>(</span>
-<span id="cb7-44"><a href="#cb7-44" aria-hidden="true" tabindex="-1"></a>    <span class="at">data=</span>cfork_df,</span>
-<span id="cb7-45"><a href="#cb7-45" aria-hidden="true" tabindex="-1"></a>    <span class="fu">aes</span>(<span class="at">x=</span>X, <span class="at">y=</span>Y, <span class="at">color=</span><span class="fu">factor</span>(Z)),</span>
-<span id="cb7-46"><a href="#cb7-46" aria-hidden="true" tabindex="-1"></a>    <span class="at">method=</span>lm, <span class="at">se=</span><span class="cn">FALSE</span>, <span class="at">fullrange=</span><span class="cn">TRUE</span>,</span>
-<span id="cb7-47"><a href="#cb7-47" aria-hidden="true" tabindex="-1"></a>    <span class="at">linewidth=</span><span class="dv">2</span></span>
-<span id="cb7-48"><a href="#cb7-48" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">+</span></span>
-<span id="cb7-49"><a href="#cb7-49" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_dsan</span>(<span class="at">base_size=</span><span class="dv">24</span>) <span class="sc">+</span></span>
-<span id="cb7-50"><a href="#cb7-50" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(</span>
-<span id="cb7-51"><a href="#cb7-51" aria-hidden="true" tabindex="-1"></a>    <span class="at">plot.title =</span> <span class="fu">element_text</span>(<span class="at">size=</span><span class="dv">24</span>),</span>
-<span id="cb7-52"><a href="#cb7-52" aria-hidden="true" tabindex="-1"></a>    <span class="at">plot.subtitle =</span> <span class="fu">element_markdown</span>(<span class="at">size=</span><span class="dv">20</span>)</span>
-<span id="cb7-53"><a href="#cb7-53" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">+</span></span>
-<span id="cb7-54"><a href="#cb7-54" aria-hidden="true" tabindex="-1"></a>  <span class="fu">coord_equal</span>() <span class="sc">+</span></span>
-<span id="cb7-55"><a href="#cb7-55" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(</span>
-<span id="cb7-56"><a href="#cb7-56" aria-hidden="true" tabindex="-1"></a>    <span class="at">title =</span> <span class="fu">paste0</span>(</span>
-<span id="cb7-57"><a href="#cb7-57" aria-hidden="true" tabindex="-1"></a>      <span class="st">"Unstratified Slope = "</span>,overall_slope</span>
-<span id="cb7-58"><a href="#cb7-58" aria-hidden="true" tabindex="-1"></a>    ),</span>
-<span id="cb7-59"><a href="#cb7-59" aria-hidden="true" tabindex="-1"></a>    <span class="at">subtitle=</span>z_texlabel,</span>
-<span id="cb7-60"><a href="#cb7-60" aria-hidden="true" tabindex="-1"></a>    <span class="at">x =</span> <span class="st">"X"</span>, <span class="at">y =</span> <span class="st">"Y"</span>, <span class="at">color =</span> <span class="st">"Z"</span></span>
-<span id="cb7-61"><a href="#cb7-61" aria-hidden="true" tabindex="-1"></a>  )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggtext) <span class="co"># For colors in titles</span></span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(rethinking)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-stderr">
-<pre><code>`geom_smooth()` using formula = 'y ~ x'
-`geom_smooth()` using formula = 'y ~ x'
-`geom_smooth()` using formula = 'y ~ x'</code></pre>
+<pre><code>Loading required package: cmdstanr</code></pre>
 </div>
-<div class="cell-output-display">
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="index_files/figure-html/fork-continuous-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" width="672"></p>
-</figure>
-</div>
-</div>
-</div>
-</section>
-<section id="conditioning-on-a-pipe-x-rightarrow-z-rightarrow-y" class="level2 smaller crunch-title title-11 crunch-quarto-figure">
-<h2 class="smaller crunch-title title-11 crunch-quarto-figure anchored" data-anchor-id="conditioning-on-a-pipe-x-rightarrow-z-rightarrow-y">Conditioning on a Pipe: <span class="math inline">\(X \rightarrow Z \rightarrow Y\)</span></h2>
-<!-- Continuous Pipe plot -->
-<div class="cell" data-layout-align="center">
-<details class="code-fold">
-<summary>Code</summary>
-<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">5650</span>)</span>
-<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>cpipe_df <span class="ot">&lt;-</span> <span class="fu">tibble</span>(</span>
-<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>    <span class="at">X =</span> <span class="fu">rnorm</span>(n_c),</span>
-<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a>    <span class="at">Z =</span> <span class="fu">rbern</span>(n_c, <span class="fu">plogis</span>(X)),</span>
-<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a>    <span class="at">Y =</span> <span class="fu">rnorm</span>(n_c, <span class="dv">2</span> <span class="sc">*</span> Z <span class="sc">-</span> <span class="dv">1</span>)</span>
-<span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a>)</span>
-<span id="cb9-7"><a href="#cb9-7" aria-hidden="true" tabindex="-1"></a>cpipe_lm <span class="ot">&lt;-</span> <span class="fu">lm</span>(Y <span class="sc">~</span> X, <span class="at">data=</span>cpipe_df)</span>
-<span id="cb9-8"><a href="#cb9-8" aria-hidden="true" tabindex="-1"></a>cpipe_slope <span class="ot">&lt;-</span> <span class="fu">round</span>(cpipe_lm<span class="sc">$</span>coef[<span class="st">'X'</span>], <span class="dv">3</span>)</span>
-<span id="cb9-9"><a href="#cb9-9" aria-hidden="true" tabindex="-1"></a>cpipe_z0_lm <span class="ot">&lt;-</span> <span class="fu">lm</span>(Y <span class="sc">~</span> X, <span class="at">data=</span>cpipe_df <span class="sc">|&gt;</span> <span class="fu">filter</span>(Z <span class="sc">==</span> <span class="dv">0</span>))</span>
-<span id="cb9-10"><a href="#cb9-10" aria-hidden="true" tabindex="-1"></a>cpipe_z0_slope <span class="ot">&lt;-</span> <span class="fu">round</span>(cpipe_z0_lm<span class="sc">$</span>coef[<span class="st">'X'</span>], <span class="dv">2</span>)</span>
-<span id="cb9-11"><a href="#cb9-11" aria-hidden="true" tabindex="-1"></a>cpipe_z0_label <span class="ot">&lt;-</span> <span class="fu">paste0</span>(<span class="st">"&lt;span style='color: #e69f00;'&gt;Slope&lt;sub&gt;Z=0&lt;/sub&gt; = "</span>,cpipe_z0_slope,<span class="st">"&lt;/span&gt;"</span>)</span>
-<span id="cb9-12"><a href="#cb9-12" aria-hidden="true" tabindex="-1"></a>cpipe_z1_lm <span class="ot">&lt;-</span> <span class="fu">lm</span>(Y <span class="sc">~</span> X, <span class="at">data=</span>cpipe_df <span class="sc">|&gt;</span> <span class="fu">filter</span>(Z <span class="sc">==</span> <span class="dv">1</span>))</span>
-<span id="cb9-13"><a href="#cb9-13" aria-hidden="true" tabindex="-1"></a>cpipe_z1_slope <span class="ot">&lt;-</span> <span class="fu">round</span>(cpipe_z1_lm<span class="sc">$</span>coef[<span class="st">'X'</span>], <span class="dv">2</span>)</span>
-<span id="cb9-14"><a href="#cb9-14" aria-hidden="true" tabindex="-1"></a>cpipe_z1_label <span class="ot">&lt;-</span> <span class="fu">paste0</span>(<span class="st">"&lt;span style='color: #56b4e9;'&gt;Slope&lt;sub&gt;Z=1&lt;/sub&gt; = "</span>,cpipe_z1_slope,<span class="st">"&lt;/span&gt;"</span>)</span>
-<span id="cb9-15"><a href="#cb9-15" aria-hidden="true" tabindex="-1"></a>cpipe_z_texlabel <span class="ot">&lt;-</span> <span class="fu">paste0</span>(cpipe_z0_label, <span class="st">" | "</span>, cpipe_z1_label)</span>
-<span id="cb9-16"><a href="#cb9-16" aria-hidden="true" tabindex="-1"></a>cpipe_xmin <span class="ot">&lt;-</span> <span class="fu">min</span>(cpipe_df<span class="sc">$</span>X)</span>
-<span id="cb9-17"><a href="#cb9-17" aria-hidden="true" tabindex="-1"></a>cpipe_xmax <span class="ot">&lt;-</span> <span class="fu">max</span>(cpipe_df<span class="sc">$</span>X)</span>
-<span id="cb9-18"><a href="#cb9-18" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>() <span class="sc">+</span></span>
-<span id="cb9-19"><a href="#cb9-19" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Points</span></span>
-<span id="cb9-20"><a href="#cb9-20" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(</span>
-<span id="cb9-21"><a href="#cb9-21" aria-hidden="true" tabindex="-1"></a>    <span class="at">data=</span>cpipe_df <span class="sc">|&gt;</span> <span class="fu">filter</span>(Y <span class="sc">&gt;</span> <span class="sc">-</span><span class="dv">3</span>),</span>
-<span id="cb9-22"><a href="#cb9-22" aria-hidden="true" tabindex="-1"></a>    <span class="fu">aes</span>(<span class="at">x=</span>X, <span class="at">y=</span>Y, <span class="at">color=</span><span class="fu">factor</span>(Z)),</span>
-<span id="cb9-23"><a href="#cb9-23" aria-hidden="true" tabindex="-1"></a>    <span class="at">size=</span><span class="fl">0.6</span><span class="sc">*</span>g_pointsize,</span>
-<span id="cb9-24"><a href="#cb9-24" aria-hidden="true" tabindex="-1"></a>    <span class="at">alpha=</span><span class="fl">0.8</span></span>
-<span id="cb9-25"><a href="#cb9-25" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">+</span></span>
-<span id="cb9-26"><a href="#cb9-26" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Overall lm</span></span>
-<span id="cb9-27"><a href="#cb9-27" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_smooth</span>(</span>
-<span id="cb9-28"><a href="#cb9-28" aria-hidden="true" tabindex="-1"></a>    <span class="at">data=</span>cpipe_df, <span class="fu">aes</span>(<span class="at">x=</span>X, <span class="at">y=</span>Y),</span>
-<span id="cb9-29"><a href="#cb9-29" aria-hidden="true" tabindex="-1"></a>    <span class="at">method =</span> lm, <span class="at">se =</span> <span class="cn">FALSE</span>,</span>
-<span id="cb9-30"><a href="#cb9-30" aria-hidden="true" tabindex="-1"></a>    <span class="at">linewidth =</span> <span class="fl">2.5</span>, <span class="at">color=</span><span class="st">'black'</span></span>
-<span id="cb9-31"><a href="#cb9-31" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">+</span></span>
-<span id="cb9-32"><a href="#cb9-32" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Stratified lm</span></span>
-<span id="cb9-33"><a href="#cb9-33" aria-hidden="true" tabindex="-1"></a>  <span class="co"># (slightly larger black lines)</span></span>
-<span id="cb9-34"><a href="#cb9-34" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_smooth</span>(</span>
-<span id="cb9-35"><a href="#cb9-35" aria-hidden="true" tabindex="-1"></a>    <span class="at">data=</span>cpipe_df,</span>
-<span id="cb9-36"><a href="#cb9-36" aria-hidden="true" tabindex="-1"></a>    <span class="fu">aes</span>(<span class="at">x=</span>X, <span class="at">y=</span>Y, <span class="at">group=</span><span class="fu">factor</span>(Z)),</span>
-<span id="cb9-37"><a href="#cb9-37" aria-hidden="true" tabindex="-1"></a>    <span class="at">method=</span>lm, <span class="at">se=</span><span class="cn">FALSE</span>, <span class="at">fullrange=</span><span class="cn">TRUE</span>,</span>
-<span id="cb9-38"><a href="#cb9-38" aria-hidden="true" tabindex="-1"></a>    <span class="at">linewidth=</span><span class="fl">2.75</span>, <span class="at">color=</span><span class="st">'black'</span></span>
-<span id="cb9-39"><a href="#cb9-39" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">+</span></span>
-<span id="cb9-40"><a href="#cb9-40" aria-hidden="true" tabindex="-1"></a>  <span class="co"># (Colored lines)</span></span>
-<span id="cb9-41"><a href="#cb9-41" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_smooth</span>(</span>
-<span id="cb9-42"><a href="#cb9-42" aria-hidden="true" tabindex="-1"></a>    <span class="at">data=</span>cpipe_df,</span>
-<span id="cb9-43"><a href="#cb9-43" aria-hidden="true" tabindex="-1"></a>    <span class="fu">aes</span>(<span class="at">x=</span>X, <span class="at">y=</span>Y, <span class="at">color=</span><span class="fu">factor</span>(Z)),</span>
-<span id="cb9-44"><a href="#cb9-44" aria-hidden="true" tabindex="-1"></a>    <span class="at">method=</span>lm, <span class="at">se=</span><span class="cn">FALSE</span>, <span class="at">fullrange=</span><span class="cn">TRUE</span>,</span>
-<span id="cb9-45"><a href="#cb9-45" aria-hidden="true" tabindex="-1"></a>    <span class="at">linewidth=</span><span class="dv">2</span></span>
-<span id="cb9-46"><a href="#cb9-46" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">+</span></span>
-<span id="cb9-47"><a href="#cb9-47" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_dsan</span>(<span class="at">base_size=</span><span class="dv">24</span>) <span class="sc">+</span></span>
-<span id="cb9-48"><a href="#cb9-48" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(</span>
-<span id="cb9-49"><a href="#cb9-49" aria-hidden="true" tabindex="-1"></a>    <span class="at">plot.title =</span> <span class="fu">element_text</span>(<span class="at">size=</span><span class="dv">24</span>),</span>
-<span id="cb9-50"><a href="#cb9-50" aria-hidden="true" tabindex="-1"></a>    <span class="at">plot.subtitle =</span> <span class="fu">element_markdown</span>(<span class="at">size=</span><span class="dv">20</span>)</span>
-<span id="cb9-51"><a href="#cb9-51" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">+</span></span>
-<span id="cb9-52"><a href="#cb9-52" aria-hidden="true" tabindex="-1"></a>  <span class="fu">coord_equal</span>() <span class="sc">+</span></span>
-<span id="cb9-53"><a href="#cb9-53" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(</span>
-<span id="cb9-54"><a href="#cb9-54" aria-hidden="true" tabindex="-1"></a>    <span class="at">title =</span> <span class="fu">paste0</span>(</span>
-<span id="cb9-55"><a href="#cb9-55" aria-hidden="true" tabindex="-1"></a>      <span class="st">"Unstratified Slope = "</span>,cpipe_slope</span>
-<span id="cb9-56"><a href="#cb9-56" aria-hidden="true" tabindex="-1"></a>    ),</span>
-<span id="cb9-57"><a href="#cb9-57" aria-hidden="true" tabindex="-1"></a>    <span class="at">subtitle=</span>cpipe_z_texlabel,</span>
-<span id="cb9-58"><a href="#cb9-58" aria-hidden="true" tabindex="-1"></a>    <span class="at">x =</span> <span class="st">"X"</span>, <span class="at">y =</span> <span class="st">"Y"</span>, <span class="at">color =</span> <span class="st">"Z"</span></span>
-<span id="cb9-59"><a href="#cb9-59" aria-hidden="true" tabindex="-1"></a>  )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
 <div class="cell-output cell-output-stderr">
-<pre><code>`geom_smooth()` using formula = 'y ~ x'
-`geom_smooth()` using formula = 'y ~ x'
-`geom_smooth()` using formula = 'y ~ x'</code></pre>
+<pre><code>Warning: package 'cmdstanr' was built under R version 4.4.3</code></pre>
 </div>
-<div class="cell-output-display">
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="index_files/figure-html/pipe-continuous-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" width="672"></p>
-</figure>
+<div class="cell-output cell-output-stderr">
+<pre><code>This is cmdstanr version 0.9.0
+- CmdStanR documentation and vignettes: mc-stan.org/cmdstanr
+- CmdStan path: /Users/jpj/.cmdstan/cmdstan-2.36.0
+- CmdStan version: 2.36.0
+Loading required package: posterior
+This is posterior version 1.6.1
+
+Attaching package: 'posterior'
+
+The following objects are masked from 'package:stats':
+
+    mad, sd, var
+
+The following objects are masked from 'package:base':
+
+    %in%, match
+
+Loading required package: parallel
+rethinking (Version 2.42)
+
+Attaching package: 'rethinking'
+
+The following objects are masked from 'package:extraDistr':
+
+    dbern, dlaplace, dpareto, rbern, rlaplace, rpareto
+
+The following object is masked from 'package:purrr':
+
+    map
+
+The following object is masked from 'package:stats':
+
+    rstudent</code></pre>
 </div>
-</div>
-</div>
-</section>
-<section id="conditioning-on-a-collider-x-rightarrow-z-leftarrow-y" class="level2 smaller crunch-title title-10 crunch-quarto-figure crunch-ul crunch-li-5">
-<h2 class="smaller crunch-title title-10 crunch-quarto-figure crunch-ul crunch-li-5 anchored" data-anchor-id="conditioning-on-a-collider-x-rightarrow-z-leftarrow-y">⚠️Conditioning on a Collider⚠️: <span class="math inline">\(X \rightarrow Z \leftarrow Y\)</span></h2>
-<ul>
-<li>Conditioning on colliders <strong>induces</strong> correlation where there <strong>previously was none</strong> ☠️</li>
-</ul>
-<!-- Continuous Collider Plot -->
-<div class="cell" data-layout-align="center">
 <details class="code-fold">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">5650</span>)</span>
-<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>ccoll_df <span class="ot">&lt;-</span> <span class="fu">tibble</span>(</span>
-<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a>    <span class="at">X =</span> <span class="fu">rnorm</span>(n_c),</span>
-<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a>    <span class="at">Y =</span> <span class="fu">rnorm</span>(n_c),</span>
-<span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a>    <span class="at">Z =</span> <span class="fu">rbern</span>(n_c, <span class="fu">plogis</span>(<span class="dv">2</span> <span class="sc">*</span> (X <span class="sc">+</span> Y <span class="sc">-</span> <span class="dv">1</span>)))</span>
-<span id="cb11-6"><a href="#cb11-6" aria-hidden="true" tabindex="-1"></a>)</span>
-<span id="cb11-7"><a href="#cb11-7" aria-hidden="true" tabindex="-1"></a>ccoll_lm <span class="ot">&lt;-</span> <span class="fu">lm</span>(Y <span class="sc">~</span> X, <span class="at">data=</span>ccoll_df)</span>
-<span id="cb11-8"><a href="#cb11-8" aria-hidden="true" tabindex="-1"></a>ccoll_slope <span class="ot">&lt;-</span> <span class="fu">round</span>(ccoll_lm<span class="sc">$</span>coef[<span class="st">'X'</span>], <span class="dv">3</span>)</span>
-<span id="cb11-9"><a href="#cb11-9" aria-hidden="true" tabindex="-1"></a>ccoll_z0_lm <span class="ot">&lt;-</span> <span class="fu">lm</span>(Y <span class="sc">~</span> X, <span class="at">data=</span>ccoll_df <span class="sc">|&gt;</span> <span class="fu">filter</span>(Z <span class="sc">==</span> <span class="dv">0</span>))</span>
-<span id="cb11-10"><a href="#cb11-10" aria-hidden="true" tabindex="-1"></a>ccoll_z0_slope <span class="ot">&lt;-</span> <span class="fu">round</span>(ccoll_z0_lm<span class="sc">$</span>coef[<span class="st">'X'</span>], <span class="dv">2</span>)</span>
-<span id="cb11-11"><a href="#cb11-11" aria-hidden="true" tabindex="-1"></a>ccoll_z0_label <span class="ot">&lt;-</span> <span class="fu">paste0</span>(<span class="st">"&lt;span style='color: #e69f00;'&gt;Slope&lt;sub&gt;Z=0&lt;/sub&gt; = "</span>,ccoll_z0_slope,<span class="st">"&lt;/span&gt;"</span>)</span>
-<span id="cb11-12"><a href="#cb11-12" aria-hidden="true" tabindex="-1"></a>ccoll_z1_lm <span class="ot">&lt;-</span> <span class="fu">lm</span>(Y <span class="sc">~</span> X, <span class="at">data=</span>ccoll_df <span class="sc">|&gt;</span> <span class="fu">filter</span>(Z <span class="sc">==</span> <span class="dv">1</span>))</span>
-<span id="cb11-13"><a href="#cb11-13" aria-hidden="true" tabindex="-1"></a>ccoll_z1_slope <span class="ot">&lt;-</span> <span class="fu">round</span>(ccoll_z1_lm<span class="sc">$</span>coef[<span class="st">'X'</span>], <span class="dv">2</span>)</span>
-<span id="cb11-14"><a href="#cb11-14" aria-hidden="true" tabindex="-1"></a>ccoll_z1_label <span class="ot">&lt;-</span> <span class="fu">paste0</span>(<span class="st">"&lt;span style='color: #56b4e9;'&gt;Slope&lt;sub&gt;Z=1&lt;/sub&gt; = "</span>,ccoll_z1_slope,<span class="st">"&lt;/span&gt;"</span>)</span>
-<span id="cb11-15"><a href="#cb11-15" aria-hidden="true" tabindex="-1"></a>ccoll_z_texlabel <span class="ot">&lt;-</span> <span class="fu">paste0</span>(ccoll_z0_label, <span class="st">" | "</span>, ccoll_z1_label)</span>
-<span id="cb11-16"><a href="#cb11-16" aria-hidden="true" tabindex="-1"></a>ccoll_xmin <span class="ot">&lt;-</span> <span class="fu">min</span>(ccoll_df<span class="sc">$</span>X)</span>
-<span id="cb11-17"><a href="#cb11-17" aria-hidden="true" tabindex="-1"></a>ccoll_xmax <span class="ot">&lt;-</span> <span class="fu">max</span>(ccoll_df<span class="sc">$</span>X)</span>
-<span id="cb11-18"><a href="#cb11-18" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>() <span class="sc">+</span></span>
-<span id="cb11-19"><a href="#cb11-19" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Points</span></span>
-<span id="cb11-20"><a href="#cb11-20" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(</span>
-<span id="cb11-21"><a href="#cb11-21" aria-hidden="true" tabindex="-1"></a>    <span class="at">data=</span>ccoll_df <span class="sc">|&gt;</span> <span class="fu">filter</span>(Y <span class="sc">&gt;</span> <span class="sc">-</span><span class="dv">3</span>),</span>
-<span id="cb11-22"><a href="#cb11-22" aria-hidden="true" tabindex="-1"></a>    <span class="fu">aes</span>(<span class="at">x=</span>X, <span class="at">y=</span>Y, <span class="at">color=</span><span class="fu">factor</span>(Z)),</span>
-<span id="cb11-23"><a href="#cb11-23" aria-hidden="true" tabindex="-1"></a>    <span class="at">size=</span><span class="fl">0.6</span><span class="sc">*</span>g_pointsize,</span>
-<span id="cb11-24"><a href="#cb11-24" aria-hidden="true" tabindex="-1"></a>    <span class="at">alpha=</span><span class="fl">0.8</span></span>
-<span id="cb11-25"><a href="#cb11-25" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">+</span></span>
-<span id="cb11-26"><a href="#cb11-26" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Overall lm</span></span>
-<span id="cb11-27"><a href="#cb11-27" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_smooth</span>(</span>
-<span id="cb11-28"><a href="#cb11-28" aria-hidden="true" tabindex="-1"></a>    <span class="at">data=</span>ccoll_df, <span class="fu">aes</span>(<span class="at">x=</span>X, <span class="at">y=</span>Y),</span>
-<span id="cb11-29"><a href="#cb11-29" aria-hidden="true" tabindex="-1"></a>    <span class="at">method =</span> lm, <span class="at">se =</span> <span class="cn">FALSE</span>,</span>
-<span id="cb11-30"><a href="#cb11-30" aria-hidden="true" tabindex="-1"></a>    <span class="at">linewidth =</span> <span class="fl">2.5</span>, <span class="at">color=</span><span class="st">'black'</span></span>
-<span id="cb11-31"><a href="#cb11-31" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">+</span></span>
-<span id="cb11-32"><a href="#cb11-32" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Stratified lm</span></span>
-<span id="cb11-33"><a href="#cb11-33" aria-hidden="true" tabindex="-1"></a>  <span class="co"># (slightly larger black lines)</span></span>
-<span id="cb11-34"><a href="#cb11-34" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_smooth</span>(</span>
-<span id="cb11-35"><a href="#cb11-35" aria-hidden="true" tabindex="-1"></a>    <span class="at">data=</span>ccoll_df,</span>
-<span id="cb11-36"><a href="#cb11-36" aria-hidden="true" tabindex="-1"></a>    <span class="fu">aes</span>(<span class="at">x=</span>X, <span class="at">y=</span>Y, <span class="at">group=</span><span class="fu">factor</span>(Z)),</span>
-<span id="cb11-37"><a href="#cb11-37" aria-hidden="true" tabindex="-1"></a>    <span class="at">method=</span>lm, <span class="at">se=</span><span class="cn">FALSE</span>, <span class="at">fullrange=</span><span class="cn">TRUE</span>,</span>
-<span id="cb11-38"><a href="#cb11-38" aria-hidden="true" tabindex="-1"></a>    <span class="at">linewidth=</span><span class="fl">2.75</span>, <span class="at">color=</span><span class="st">'black'</span></span>
-<span id="cb11-39"><a href="#cb11-39" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">+</span></span>
-<span id="cb11-40"><a href="#cb11-40" aria-hidden="true" tabindex="-1"></a>  <span class="co"># (Colored lines)</span></span>
-<span id="cb11-41"><a href="#cb11-41" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_smooth</span>(</span>
-<span id="cb11-42"><a href="#cb11-42" aria-hidden="true" tabindex="-1"></a>    <span class="at">data=</span>ccoll_df,</span>
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dagitty)</span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>n_d <span class="ot">&lt;-</span> <span class="dv">10000</span> <span class="co"># For discrete RVs</span></span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>n_c <span class="ot">&lt;-</span> <span class="dv">300</span> <span class="co"># For continuous RVs</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+</div>
+<section id="pipes-x-rightarrow-z-rightarrow-y-conditioning-blocking" class="level2 smaller crunch-title title-11 crunch-quarto-figure crunch-quarto-layout-panel crunch-img crunch-figure crunch-p">
+<h2 class="smaller crunch-title title-11 crunch-quarto-figure crunch-quarto-layout-panel crunch-img crunch-figure crunch-p anchored" data-anchor-id="pipes-x-rightarrow-z-rightarrow-y-conditioning-blocking">Pipes <span class="math inline">\(X \rightarrow Z \rightarrow Y\)</span>: Conditioning = <em>Blocking</em></h2>
+<details class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(rethinking)</span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dagitty)</span>
+<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggdag)</span>
+<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a>pipe_dag <span class="ot">&lt;-</span><span class="fu">dagitty</span>(<span class="st">"dag{</span></span>
+<span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a><span class="st">X[exposure]</span></span>
+<span id="cb11-6"><a href="#cb11-6" aria-hidden="true" tabindex="-1"></a><span class="st">Y[outcome]</span></span>
+<span id="cb11-7"><a href="#cb11-7" aria-hidden="true" tabindex="-1"></a><span class="st">X -&gt; Y</span></span>
+<span id="cb11-8"><a href="#cb11-8" aria-hidden="true" tabindex="-1"></a><span class="st">X -&gt; Z</span></span>
+<span id="cb11-9"><a href="#cb11-9" aria-hidden="true" tabindex="-1"></a><span class="st">Z -&gt; Y</span></span>
+<span id="cb11-10"><a href="#cb11-10" aria-hidden="true" tabindex="-1"></a><span class="st">}"</span>)</span>
+<span id="cb11-11"><a href="#cb11-11" aria-hidden="true" tabindex="-1"></a><span class="fu">coordinates</span>(pipe_dag) <span class="ot">&lt;-</span> <span class="fu">list</span>(</span>
+<span id="cb11-12"><a href="#cb11-12" aria-hidden="true" tabindex="-1"></a>    <span class="at">x=</span><span class="fu">c</span>(<span class="at">X=</span><span class="dv">0</span>, <span class="at">Z=</span><span class="fl">0.5</span>, <span class="at">Y=</span><span class="dv">1</span>),</span>
+<span id="cb11-13"><a href="#cb11-13" aria-hidden="true" tabindex="-1"></a>    <span class="at">y=</span><span class="fu">c</span>(<span class="at">X=</span><span class="dv">1</span>, <span class="at">Z=</span><span class="fl">0.5</span>, <span class="at">Y=</span><span class="dv">1</span>)</span>
+<span id="cb11-14"><a href="#cb11-14" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb11-15"><a href="#cb11-15" aria-hidden="true" tabindex="-1"></a><span class="fu">drawdag</span>(pipe_dag, <span class="at">cex=</span><span class="dv">4</span>, <span class="at">lwd=</span><span class="dv">5</span>, <span class="at">radius=</span><span class="dv">10</span>)</span>
+<span id="cb11-16"><a href="#cb11-16" aria-hidden="true" tabindex="-1"></a><span class="fu">drawopenpaths</span>(pipe_dag, <span class="at">lwd=</span><span class="dv">5</span>)</span>
+<span id="cb11-17"><a href="#cb11-17" aria-hidden="true" tabindex="-1"></a>adj_sets <span class="ot">&lt;-</span> <span class="fu">adjustmentSets</span>(</span>
+<span id="cb11-18"><a href="#cb11-18" aria-hidden="true" tabindex="-1"></a>    pipe_dag, <span class="at">effect=</span><span class="st">"direct"</span></span>
+<span id="cb11-19"><a href="#cb11-19" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb11-20"><a href="#cb11-20" aria-hidden="true" tabindex="-1"></a><span class="fu">writeLines</span>(<span class="st">"Adjustment sets (direct effect):"</span>)</span>
+<span id="cb11-21"><a href="#cb11-21" aria-hidden="true" tabindex="-1"></a>adj_sets</span>
+<span id="cb11-22"><a href="#cb11-22" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">5650</span>)</span>
+<span id="cb11-23"><a href="#cb11-23" aria-hidden="true" tabindex="-1"></a>cpipe_df <span class="ot">&lt;-</span> <span class="fu">tibble</span>(</span>
+<span id="cb11-24"><a href="#cb11-24" aria-hidden="true" tabindex="-1"></a>    <span class="at">X =</span> <span class="fu">rnorm</span>(n_c),</span>
+<span id="cb11-25"><a href="#cb11-25" aria-hidden="true" tabindex="-1"></a>    <span class="at">Z =</span> <span class="fu">rbern</span>(n_c, <span class="fu">plogis</span>(X)),</span>
+<span id="cb11-26"><a href="#cb11-26" aria-hidden="true" tabindex="-1"></a>    <span class="at">Y =</span> <span class="fu">rnorm</span>(n_c, <span class="dv">2</span> <span class="sc">*</span> Z <span class="sc">-</span> <span class="dv">1</span>)</span>
+<span id="cb11-27"><a href="#cb11-27" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb11-28"><a href="#cb11-28" aria-hidden="true" tabindex="-1"></a>cpipe_lm <span class="ot">&lt;-</span> <span class="fu">lm</span>(Y <span class="sc">~</span> X, <span class="at">data=</span>cpipe_df)</span>
+<span id="cb11-29"><a href="#cb11-29" aria-hidden="true" tabindex="-1"></a>cpipe_slope <span class="ot">&lt;-</span> <span class="fu">round</span>(cpipe_lm<span class="sc">$</span>coef[<span class="st">'X'</span>], <span class="dv">3</span>)</span>
+<span id="cb11-30"><a href="#cb11-30" aria-hidden="true" tabindex="-1"></a>cpipe_z0_lm <span class="ot">&lt;-</span> <span class="fu">lm</span>(Y <span class="sc">~</span> X, <span class="at">data=</span>cpipe_df <span class="sc">|&gt;</span> <span class="fu">filter</span>(Z <span class="sc">==</span> <span class="dv">0</span>))</span>
+<span id="cb11-31"><a href="#cb11-31" aria-hidden="true" tabindex="-1"></a>cpipe_z0_slope <span class="ot">&lt;-</span> <span class="fu">round</span>(cpipe_z0_lm<span class="sc">$</span>coef[<span class="st">'X'</span>], <span class="dv">2</span>)</span>
+<span id="cb11-32"><a href="#cb11-32" aria-hidden="true" tabindex="-1"></a>cpipe_z0_label <span class="ot">&lt;-</span> <span class="fu">paste0</span>(<span class="st">"&lt;span style='color: #e69f00;'&gt;Slope&lt;sub&gt;Z=0&lt;/sub&gt; = "</span>,cpipe_z0_slope,<span class="st">"&lt;/span&gt;"</span>)</span>
+<span id="cb11-33"><a href="#cb11-33" aria-hidden="true" tabindex="-1"></a>cpipe_z1_lm <span class="ot">&lt;-</span> <span class="fu">lm</span>(Y <span class="sc">~</span> X, <span class="at">data=</span>cpipe_df <span class="sc">|&gt;</span> <span class="fu">filter</span>(Z <span class="sc">==</span> <span class="dv">1</span>))</span>
+<span id="cb11-34"><a href="#cb11-34" aria-hidden="true" tabindex="-1"></a>cpipe_z1_slope <span class="ot">&lt;-</span> <span class="fu">round</span>(cpipe_z1_lm<span class="sc">$</span>coef[<span class="st">'X'</span>], <span class="dv">2</span>)</span>
+<span id="cb11-35"><a href="#cb11-35" aria-hidden="true" tabindex="-1"></a>cpipe_z1_label <span class="ot">&lt;-</span> <span class="fu">paste0</span>(<span class="st">"&lt;span style='color: #56b4e9;'&gt;Slope&lt;sub&gt;Z=1&lt;/sub&gt; = "</span>,cpipe_z1_slope,<span class="st">"&lt;/span&gt;"</span>)</span>
+<span id="cb11-36"><a href="#cb11-36" aria-hidden="true" tabindex="-1"></a>cpipe_z_texlabel <span class="ot">&lt;-</span> <span class="fu">paste0</span>(cpipe_z0_label, <span class="st">" | "</span>, cpipe_z1_label)</span>
+<span id="cb11-37"><a href="#cb11-37" aria-hidden="true" tabindex="-1"></a>cpipe_xmin <span class="ot">&lt;-</span> <span class="fu">min</span>(cpipe_df<span class="sc">$</span>X)</span>
+<span id="cb11-38"><a href="#cb11-38" aria-hidden="true" tabindex="-1"></a>cpipe_xmax <span class="ot">&lt;-</span> <span class="fu">max</span>(cpipe_df<span class="sc">$</span>X)</span>
+<span id="cb11-39"><a href="#cb11-39" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>() <span class="sc">+</span></span>
+<span id="cb11-40"><a href="#cb11-40" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Points</span></span>
+<span id="cb11-41"><a href="#cb11-41" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(</span>
+<span id="cb11-42"><a href="#cb11-42" aria-hidden="true" tabindex="-1"></a>    <span class="at">data=</span>cpipe_df <span class="sc">|&gt;</span> <span class="fu">filter</span>(Y <span class="sc">&gt;</span> <span class="sc">-</span><span class="dv">3</span>),</span>
 <span id="cb11-43"><a href="#cb11-43" aria-hidden="true" tabindex="-1"></a>    <span class="fu">aes</span>(<span class="at">x=</span>X, <span class="at">y=</span>Y, <span class="at">color=</span><span class="fu">factor</span>(Z)),</span>
-<span id="cb11-44"><a href="#cb11-44" aria-hidden="true" tabindex="-1"></a>    <span class="at">method=</span>lm, <span class="at">se=</span><span class="cn">FALSE</span>, <span class="at">fullrange=</span><span class="cn">TRUE</span>,</span>
-<span id="cb11-45"><a href="#cb11-45" aria-hidden="true" tabindex="-1"></a>    <span class="at">linewidth=</span><span class="dv">2</span></span>
+<span id="cb11-44"><a href="#cb11-44" aria-hidden="true" tabindex="-1"></a>    <span class="at">size=</span><span class="fl">0.4</span><span class="sc">*</span>g_pointsize,</span>
+<span id="cb11-45"><a href="#cb11-45" aria-hidden="true" tabindex="-1"></a>    <span class="at">alpha=</span><span class="fl">0.8</span></span>
 <span id="cb11-46"><a href="#cb11-46" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">+</span></span>
-<span id="cb11-47"><a href="#cb11-47" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_dsan</span>(<span class="at">base_size=</span><span class="dv">24</span>) <span class="sc">+</span></span>
-<span id="cb11-48"><a href="#cb11-48" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(</span>
-<span id="cb11-49"><a href="#cb11-49" aria-hidden="true" tabindex="-1"></a>    <span class="at">plot.title =</span> <span class="fu">element_text</span>(<span class="at">size=</span><span class="dv">24</span>),</span>
-<span id="cb11-50"><a href="#cb11-50" aria-hidden="true" tabindex="-1"></a>    <span class="at">plot.subtitle =</span> <span class="fu">element_markdown</span>(<span class="at">size=</span><span class="dv">20</span>)</span>
-<span id="cb11-51"><a href="#cb11-51" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">+</span></span>
-<span id="cb11-52"><a href="#cb11-52" aria-hidden="true" tabindex="-1"></a>  <span class="fu">coord_equal</span>() <span class="sc">+</span></span>
-<span id="cb11-53"><a href="#cb11-53" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(</span>
-<span id="cb11-54"><a href="#cb11-54" aria-hidden="true" tabindex="-1"></a>    <span class="at">title =</span> <span class="fu">paste0</span>(</span>
-<span id="cb11-55"><a href="#cb11-55" aria-hidden="true" tabindex="-1"></a>      <span class="st">"Unstratified Slope = "</span>,ccoll_slope</span>
-<span id="cb11-56"><a href="#cb11-56" aria-hidden="true" tabindex="-1"></a>    ),</span>
-<span id="cb11-57"><a href="#cb11-57" aria-hidden="true" tabindex="-1"></a>    <span class="at">subtitle=</span>ccoll_z_texlabel,</span>
-<span id="cb11-58"><a href="#cb11-58" aria-hidden="true" tabindex="-1"></a>    <span class="at">x =</span> <span class="st">"X"</span>, <span class="at">y =</span> <span class="st">"Y"</span>, <span class="at">color =</span> <span class="st">"Z"</span></span>
-<span id="cb11-59"><a href="#cb11-59" aria-hidden="true" tabindex="-1"></a>  )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb11-47"><a href="#cb11-47" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Overall lm</span></span>
+<span id="cb11-48"><a href="#cb11-48" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_smooth</span>(</span>
+<span id="cb11-49"><a href="#cb11-49" aria-hidden="true" tabindex="-1"></a>    <span class="at">data=</span>cpipe_df, <span class="fu">aes</span>(<span class="at">x=</span>X, <span class="at">y=</span>Y),</span>
+<span id="cb11-50"><a href="#cb11-50" aria-hidden="true" tabindex="-1"></a>    <span class="at">method =</span> lm, <span class="at">se =</span> <span class="cn">FALSE</span>,</span>
+<span id="cb11-51"><a href="#cb11-51" aria-hidden="true" tabindex="-1"></a>    <span class="at">linewidth =</span> <span class="dv">3</span>, <span class="at">color=</span><span class="st">'white'</span></span>
+<span id="cb11-52"><a href="#cb11-52" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">+</span></span>
+<span id="cb11-53"><a href="#cb11-53" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_smooth</span>(</span>
+<span id="cb11-54"><a href="#cb11-54" aria-hidden="true" tabindex="-1"></a>    <span class="at">data=</span>cpipe_df, <span class="fu">aes</span>(<span class="at">x=</span>X, <span class="at">y=</span>Y),</span>
+<span id="cb11-55"><a href="#cb11-55" aria-hidden="true" tabindex="-1"></a>    <span class="at">method =</span> lm, <span class="at">se =</span> <span class="cn">FALSE</span>,</span>
+<span id="cb11-56"><a href="#cb11-56" aria-hidden="true" tabindex="-1"></a>    <span class="at">linewidth =</span> <span class="fl">2.5</span>, <span class="at">color=</span><span class="st">'black'</span></span>
+<span id="cb11-57"><a href="#cb11-57" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">+</span></span>
+<span id="cb11-58"><a href="#cb11-58" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_dsan</span>(<span class="at">base_size=</span><span class="dv">18</span>) <span class="sc">+</span></span>
+<span id="cb11-59"><a href="#cb11-59" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(</span>
+<span id="cb11-60"><a href="#cb11-60" aria-hidden="true" tabindex="-1"></a>    <span class="at">plot.title =</span> <span class="fu">element_text</span>(<span class="at">size=</span><span class="dv">18</span>),</span>
+<span id="cb11-61"><a href="#cb11-61" aria-hidden="true" tabindex="-1"></a>    <span class="at">plot.subtitle =</span> <span class="fu">element_markdown</span>(<span class="at">size=</span><span class="dv">16</span>)</span>
+<span id="cb11-62"><a href="#cb11-62" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">+</span></span>
+<span id="cb11-63"><a href="#cb11-63" aria-hidden="true" tabindex="-1"></a>  <span class="fu">coord_equal</span>() <span class="sc">+</span></span>
+<span id="cb11-64"><a href="#cb11-64" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(</span>
+<span id="cb11-65"><a href="#cb11-65" aria-hidden="true" tabindex="-1"></a>    <span class="at">title =</span> <span class="fu">paste0</span>(</span>
+<span id="cb11-66"><a href="#cb11-66" aria-hidden="true" tabindex="-1"></a>      <span class="st">"Unstratified Slope = "</span>,cpipe_slope</span>
+<span id="cb11-67"><a href="#cb11-67" aria-hidden="true" tabindex="-1"></a>    ),</span>
+<span id="cb11-68"><a href="#cb11-68" aria-hidden="true" tabindex="-1"></a>    <span class="at">x =</span> <span class="st">"X"</span>, <span class="at">y =</span> <span class="st">"Y"</span>, <span class="at">color =</span> <span class="st">"Z"</span></span>
+<span id="cb11-69"><a href="#cb11-69" aria-hidden="true" tabindex="-1"></a>  )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
+<div class="quarto-layout-panel" data-layout="[30,20,50]" data-layout-align="center">
+<div class="quarto-layout-row quarto-layout-valign-center">
+<div id="pipe-open" class="quarto-layout-cell" style="flex-basis: 30.0%;justify-content: center;">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/flow-open.jpg" class="img-fluid quarto-figure quarto-figure-center figure-img" width="200"></p>
+</figure>
+</div>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/causal_pipe.svg" class="img-fluid quarto-figure quarto-figure-center figure-img" width="250"></p>
+</figure>
+</div>
+</div>
+<div id="pipe-dag-img" class="quarto-layout-cell" style="flex-basis: 20.0%;justify-content: center;">
+<div class="cell" data-layout-align="center">
+<div class="cell-output cell-output-stderr">
+<pre><code>
+Attaching package: 'ggdag'</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>The following object is masked from 'package:stats':
+
+    filter</code></pre>
+</div>
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="index_files/figure-html/pipe-dag-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Adjustment sets (direct effect):
+{ Z }</code></pre>
+</div>
+</div>
+</div>
+<div id="pipe-plot" class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
+<div class="cell" data-layout-align="center">
+<div class="cell-output cell-output-stderr">
+<pre><code>`geom_smooth()` using formula = 'y ~ x'
+`geom_smooth()` using formula = 'y ~ x'</code></pre>
+</div>
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="index_files/figure-html/pipe-continuous-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" width="432"></p>
+</figure>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Pipe Blocked -->
+<details class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(rethinking)</span>
+<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dagitty)</span>
+<span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggdag)</span>
+<span id="cb16-4"><a href="#cb16-4" aria-hidden="true" tabindex="-1"></a>pipe_dag_closed <span class="ot">&lt;-</span><span class="fu">dagitty</span>(<span class="st">"dag{</span></span>
+<span id="cb16-5"><a href="#cb16-5" aria-hidden="true" tabindex="-1"></a><span class="st">X[exposure]</span></span>
+<span id="cb16-6"><a href="#cb16-6" aria-hidden="true" tabindex="-1"></a><span class="st">Y[outcome]</span></span>
+<span id="cb16-7"><a href="#cb16-7" aria-hidden="true" tabindex="-1"></a><span class="st">Z[adjustedNode]</span></span>
+<span id="cb16-8"><a href="#cb16-8" aria-hidden="true" tabindex="-1"></a><span class="st">X -&gt; Y</span></span>
+<span id="cb16-9"><a href="#cb16-9" aria-hidden="true" tabindex="-1"></a><span class="st">X -&gt; Z</span></span>
+<span id="cb16-10"><a href="#cb16-10" aria-hidden="true" tabindex="-1"></a><span class="st">Z -&gt; Y</span></span>
+<span id="cb16-11"><a href="#cb16-11" aria-hidden="true" tabindex="-1"></a><span class="st">}"</span>)</span>
+<span id="cb16-12"><a href="#cb16-12" aria-hidden="true" tabindex="-1"></a><span class="fu">coordinates</span>(pipe_dag_closed) <span class="ot">&lt;-</span> <span class="fu">list</span>(</span>
+<span id="cb16-13"><a href="#cb16-13" aria-hidden="true" tabindex="-1"></a>    <span class="at">x=</span><span class="fu">c</span>(<span class="at">X=</span><span class="dv">0</span>, <span class="at">Z=</span><span class="fl">0.5</span>, <span class="at">Y=</span><span class="dv">1</span>),</span>
+<span id="cb16-14"><a href="#cb16-14" aria-hidden="true" tabindex="-1"></a>    <span class="at">y=</span><span class="fu">c</span>(<span class="at">X=</span><span class="dv">1</span>, <span class="at">Z=</span><span class="fl">0.5</span>, <span class="at">Y=</span><span class="dv">1</span>)</span>
+<span id="cb16-15"><a href="#cb16-15" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb16-16"><a href="#cb16-16" aria-hidden="true" tabindex="-1"></a><span class="fu">drawdag</span>(pipe_dag_closed, <span class="at">cex=</span><span class="dv">4</span>, <span class="at">lwd=</span><span class="dv">5</span>, <span class="at">radius=</span><span class="dv">10</span>)</span>
+<span id="cb16-17"><a href="#cb16-17" aria-hidden="true" tabindex="-1"></a><span class="fu">drawopenpaths</span>(pipe_dag_closed, <span class="at">Z=</span><span class="st">"Z"</span>, <span class="at">lwd=</span><span class="dv">5</span>)</span>
+<span id="cb16-18"><a href="#cb16-18" aria-hidden="true" tabindex="-1"></a>adj_sets_closed <span class="ot">&lt;-</span> <span class="fu">adjustmentSets</span>(</span>
+<span id="cb16-19"><a href="#cb16-19" aria-hidden="true" tabindex="-1"></a>    pipe_dag_closed</span>
+<span id="cb16-20"><a href="#cb16-20" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb16-21"><a href="#cb16-21" aria-hidden="true" tabindex="-1"></a><span class="fu">writeLines</span>(<span class="st">"Adjustment sets (direct effect):"</span>)</span>
+<span id="cb16-22"><a href="#cb16-22" aria-hidden="true" tabindex="-1"></a>adj_sets_closed</span>
+<span id="cb16-23"><a href="#cb16-23" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">5650</span>)</span>
+<span id="cb16-24"><a href="#cb16-24" aria-hidden="true" tabindex="-1"></a>cpipe_df <span class="ot">&lt;-</span> <span class="fu">tibble</span>(</span>
+<span id="cb16-25"><a href="#cb16-25" aria-hidden="true" tabindex="-1"></a>    <span class="at">X =</span> <span class="fu">rnorm</span>(n_c),</span>
+<span id="cb16-26"><a href="#cb16-26" aria-hidden="true" tabindex="-1"></a>    <span class="at">Z =</span> <span class="fu">rbern</span>(n_c, <span class="fu">plogis</span>(X)),</span>
+<span id="cb16-27"><a href="#cb16-27" aria-hidden="true" tabindex="-1"></a>    <span class="at">Y =</span> <span class="fu">rnorm</span>(n_c, <span class="dv">2</span> <span class="sc">*</span> Z <span class="sc">-</span> <span class="dv">1</span>)</span>
+<span id="cb16-28"><a href="#cb16-28" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb16-29"><a href="#cb16-29" aria-hidden="true" tabindex="-1"></a>cpipe_lm <span class="ot">&lt;-</span> <span class="fu">lm</span>(Y <span class="sc">~</span> X, <span class="at">data=</span>cpipe_df)</span>
+<span id="cb16-30"><a href="#cb16-30" aria-hidden="true" tabindex="-1"></a>cpipe_slope <span class="ot">&lt;-</span> <span class="fu">round</span>(cpipe_lm<span class="sc">$</span>coef[<span class="st">'X'</span>], <span class="dv">3</span>)</span>
+<span id="cb16-31"><a href="#cb16-31" aria-hidden="true" tabindex="-1"></a>cpipe_z0_lm <span class="ot">&lt;-</span> <span class="fu">lm</span>(Y <span class="sc">~</span> X, <span class="at">data=</span>cpipe_df <span class="sc">|&gt;</span> <span class="fu">filter</span>(Z <span class="sc">==</span> <span class="dv">0</span>))</span>
+<span id="cb16-32"><a href="#cb16-32" aria-hidden="true" tabindex="-1"></a>cpipe_z0_slope <span class="ot">&lt;-</span> <span class="fu">round</span>(cpipe_z0_lm<span class="sc">$</span>coef[<span class="st">'X'</span>], <span class="dv">2</span>)</span>
+<span id="cb16-33"><a href="#cb16-33" aria-hidden="true" tabindex="-1"></a>cpipe_z0_label <span class="ot">&lt;-</span> <span class="fu">paste0</span>(<span class="st">"&lt;span style='color: #e69f00;'&gt;Slope&lt;sub&gt;Z=0&lt;/sub&gt; = "</span>,cpipe_z0_slope,<span class="st">"&lt;/span&gt;"</span>)</span>
+<span id="cb16-34"><a href="#cb16-34" aria-hidden="true" tabindex="-1"></a>cpipe_z1_lm <span class="ot">&lt;-</span> <span class="fu">lm</span>(Y <span class="sc">~</span> X, <span class="at">data=</span>cpipe_df <span class="sc">|&gt;</span> <span class="fu">filter</span>(Z <span class="sc">==</span> <span class="dv">1</span>))</span>
+<span id="cb16-35"><a href="#cb16-35" aria-hidden="true" tabindex="-1"></a>cpipe_z1_slope <span class="ot">&lt;-</span> <span class="fu">round</span>(cpipe_z1_lm<span class="sc">$</span>coef[<span class="st">'X'</span>], <span class="dv">2</span>)</span>
+<span id="cb16-36"><a href="#cb16-36" aria-hidden="true" tabindex="-1"></a>cpipe_z1_label <span class="ot">&lt;-</span> <span class="fu">paste0</span>(<span class="st">"&lt;span style='color: #56b4e9;'&gt;Slope&lt;sub&gt;Z=1&lt;/sub&gt; = "</span>,cpipe_z1_slope,<span class="st">"&lt;/span&gt;"</span>)</span>
+<span id="cb16-37"><a href="#cb16-37" aria-hidden="true" tabindex="-1"></a>cpipe_z_texlabel <span class="ot">&lt;-</span> <span class="fu">paste0</span>(cpipe_z0_label, <span class="st">" | "</span>, cpipe_z1_label)</span>
+<span id="cb16-38"><a href="#cb16-38" aria-hidden="true" tabindex="-1"></a>cpipe_xmin <span class="ot">&lt;-</span> <span class="fu">min</span>(cpipe_df<span class="sc">$</span>X)</span>
+<span id="cb16-39"><a href="#cb16-39" aria-hidden="true" tabindex="-1"></a>cpipe_xmax <span class="ot">&lt;-</span> <span class="fu">max</span>(cpipe_df<span class="sc">$</span>X)</span>
+<span id="cb16-40"><a href="#cb16-40" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>() <span class="sc">+</span></span>
+<span id="cb16-41"><a href="#cb16-41" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Points</span></span>
+<span id="cb16-42"><a href="#cb16-42" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(</span>
+<span id="cb16-43"><a href="#cb16-43" aria-hidden="true" tabindex="-1"></a>    <span class="at">data=</span>cpipe_df <span class="sc">|&gt;</span> <span class="fu">filter</span>(Y <span class="sc">&gt;</span> <span class="sc">-</span><span class="dv">3</span>),</span>
+<span id="cb16-44"><a href="#cb16-44" aria-hidden="true" tabindex="-1"></a>    <span class="fu">aes</span>(<span class="at">x=</span>X, <span class="at">y=</span>Y, <span class="at">color=</span><span class="fu">factor</span>(Z)),</span>
+<span id="cb16-45"><a href="#cb16-45" aria-hidden="true" tabindex="-1"></a>    <span class="at">size=</span><span class="fl">0.6</span><span class="sc">*</span>g_pointsize,</span>
+<span id="cb16-46"><a href="#cb16-46" aria-hidden="true" tabindex="-1"></a>    <span class="at">alpha=</span><span class="fl">0.8</span></span>
+<span id="cb16-47"><a href="#cb16-47" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">+</span></span>
+<span id="cb16-48"><a href="#cb16-48" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Stratified lm</span></span>
+<span id="cb16-49"><a href="#cb16-49" aria-hidden="true" tabindex="-1"></a>  <span class="co"># (slightly larger black lines)</span></span>
+<span id="cb16-50"><a href="#cb16-50" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_smooth</span>(</span>
+<span id="cb16-51"><a href="#cb16-51" aria-hidden="true" tabindex="-1"></a>    <span class="at">data=</span>cpipe_df,</span>
+<span id="cb16-52"><a href="#cb16-52" aria-hidden="true" tabindex="-1"></a>    <span class="fu">aes</span>(<span class="at">x=</span>X, <span class="at">y=</span>Y, <span class="at">group=</span><span class="fu">factor</span>(Z)),</span>
+<span id="cb16-53"><a href="#cb16-53" aria-hidden="true" tabindex="-1"></a>    <span class="at">method=</span>lm, <span class="at">se=</span><span class="cn">FALSE</span>, <span class="at">fullrange=</span><span class="cn">TRUE</span>,</span>
+<span id="cb16-54"><a href="#cb16-54" aria-hidden="true" tabindex="-1"></a>    <span class="at">linewidth=</span><span class="fl">2.75</span>, <span class="at">color=</span><span class="st">'black'</span></span>
+<span id="cb16-55"><a href="#cb16-55" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">+</span></span>
+<span id="cb16-56"><a href="#cb16-56" aria-hidden="true" tabindex="-1"></a>  <span class="co"># (Colored lines)</span></span>
+<span id="cb16-57"><a href="#cb16-57" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_smooth</span>(</span>
+<span id="cb16-58"><a href="#cb16-58" aria-hidden="true" tabindex="-1"></a>    <span class="at">data=</span>cpipe_df,</span>
+<span id="cb16-59"><a href="#cb16-59" aria-hidden="true" tabindex="-1"></a>    <span class="fu">aes</span>(<span class="at">x=</span>X, <span class="at">y=</span>Y, <span class="at">color=</span><span class="fu">factor</span>(Z)),</span>
+<span id="cb16-60"><a href="#cb16-60" aria-hidden="true" tabindex="-1"></a>    <span class="at">method=</span>lm, <span class="at">se=</span><span class="cn">FALSE</span>, <span class="at">fullrange=</span><span class="cn">TRUE</span>,</span>
+<span id="cb16-61"><a href="#cb16-61" aria-hidden="true" tabindex="-1"></a>    <span class="at">linewidth=</span><span class="dv">2</span></span>
+<span id="cb16-62"><a href="#cb16-62" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">+</span></span>
+<span id="cb16-63"><a href="#cb16-63" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_dsan</span>(<span class="at">base_size=</span><span class="dv">18</span>) <span class="sc">+</span></span>
+<span id="cb16-64"><a href="#cb16-64" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(</span>
+<span id="cb16-65"><a href="#cb16-65" aria-hidden="true" tabindex="-1"></a>    <span class="at">plot.title =</span> <span class="fu">element_markdown</span>(<span class="at">size=</span><span class="dv">18</span>),</span>
+<span id="cb16-66"><a href="#cb16-66" aria-hidden="true" tabindex="-1"></a>    <span class="at">plot.subtitle =</span> <span class="fu">element_markdown</span>(<span class="at">size=</span><span class="dv">16</span>)</span>
+<span id="cb16-67"><a href="#cb16-67" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">+</span></span>
+<span id="cb16-68"><a href="#cb16-68" aria-hidden="true" tabindex="-1"></a>  <span class="fu">coord_equal</span>() <span class="sc">+</span></span>
+<span id="cb16-69"><a href="#cb16-69" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(</span>
+<span id="cb16-70"><a href="#cb16-70" aria-hidden="true" tabindex="-1"></a>    <span class="at">title=</span>cpipe_z_texlabel,</span>
+<span id="cb16-71"><a href="#cb16-71" aria-hidden="true" tabindex="-1"></a>    <span class="at">x =</span> <span class="st">"X"</span>, <span class="at">y =</span> <span class="st">"Y"</span>, <span class="at">color =</span> <span class="st">"Z"</span></span>
+<span id="cb16-72"><a href="#cb16-72" aria-hidden="true" tabindex="-1"></a>  )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="quarto-layout-panel" data-layout="[30,20,50]" data-layout-align="center">
+<div class="quarto-layout-row quarto-layout-valign-center">
+<div id="pipe-closed" class="quarto-layout-cell" style="flex-basis: 30.0%;justify-content: center;">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/flow-closed.jpg" class="img-fluid quarto-figure quarto-figure-center figure-img" width="200"></p>
+</figure>
+</div>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/causal_pipe_closed.svg" class="img-fluid quarto-figure quarto-figure-center figure-img" width="250"></p>
+</figure>
+</div>
+</div>
+<div id="pipe-dag-closed-img" class="quarto-layout-cell" style="flex-basis: 20.0%;justify-content: center;">
+<div class="cell" data-layout-align="center">
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="index_files/figure-html/pipe-dag-closed-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Adjustment sets (direct effect):
+ {}</code></pre>
+</div>
+</div>
+</div>
+<div id="pipe-plot" class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
+<div class="cell" data-layout-align="center">
+<div class="cell-output cell-output-stderr">
+<pre><code>`geom_smooth()` using formula = 'y ~ x'
+`geom_smooth()` using formula = 'y ~ x'</code></pre>
+</div>
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="index_files/figure-html/pipe-continuous-closed-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" width="432"></p>
+</figure>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id="forks-x-leftarrow-z-rightarrow-y-conditioning-blocking" class="level2 smaller crunch-title title-11 crunch-quarto-figure crunch-quarto-layout-panel crunch-img crunch-figure crunch-p">
+<h2 class="smaller crunch-title title-11 crunch-quarto-figure crunch-quarto-layout-panel crunch-img crunch-figure crunch-p anchored" data-anchor-id="forks-x-leftarrow-z-rightarrow-y-conditioning-blocking">Forks <span class="math inline">\(X \leftarrow Z \rightarrow Y\)</span>: Conditioning = <em>Blocking</em></h2>
+<details class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(rethinking)</span>
+<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dagitty)</span>
+<span id="cb19-3"><a href="#cb19-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggdag)</span>
+<span id="cb19-4"><a href="#cb19-4" aria-hidden="true" tabindex="-1"></a>pipe_dag <span class="ot">&lt;-</span><span class="fu">dagitty</span>(<span class="st">"dag{</span></span>
+<span id="cb19-5"><a href="#cb19-5" aria-hidden="true" tabindex="-1"></a><span class="st">X[exposure]</span></span>
+<span id="cb19-6"><a href="#cb19-6" aria-hidden="true" tabindex="-1"></a><span class="st">Y[outcome]</span></span>
+<span id="cb19-7"><a href="#cb19-7" aria-hidden="true" tabindex="-1"></a><span class="st">X -&gt; Y</span></span>
+<span id="cb19-8"><a href="#cb19-8" aria-hidden="true" tabindex="-1"></a><span class="st">Z -&gt; X</span></span>
+<span id="cb19-9"><a href="#cb19-9" aria-hidden="true" tabindex="-1"></a><span class="st">Z -&gt; Y</span></span>
+<span id="cb19-10"><a href="#cb19-10" aria-hidden="true" tabindex="-1"></a><span class="st">}"</span>)</span>
+<span id="cb19-11"><a href="#cb19-11" aria-hidden="true" tabindex="-1"></a><span class="fu">coordinates</span>(pipe_dag) <span class="ot">&lt;-</span> <span class="fu">list</span>(</span>
+<span id="cb19-12"><a href="#cb19-12" aria-hidden="true" tabindex="-1"></a>    <span class="at">x=</span><span class="fu">c</span>(<span class="at">X=</span><span class="dv">0</span>, <span class="at">Z=</span><span class="fl">0.5</span>, <span class="at">Y=</span><span class="dv">1</span>),</span>
+<span id="cb19-13"><a href="#cb19-13" aria-hidden="true" tabindex="-1"></a>    <span class="at">y=</span><span class="fu">c</span>(<span class="at">X=</span><span class="dv">1</span>, <span class="at">Z=</span><span class="fl">0.5</span>, <span class="at">Y=</span><span class="dv">1</span>)</span>
+<span id="cb19-14"><a href="#cb19-14" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb19-15"><a href="#cb19-15" aria-hidden="true" tabindex="-1"></a><span class="fu">drawdag</span>(pipe_dag, <span class="at">cex=</span><span class="dv">4</span>, <span class="at">lwd=</span><span class="dv">5</span>, <span class="at">radius=</span><span class="dv">10</span>)</span>
+<span id="cb19-16"><a href="#cb19-16" aria-hidden="true" tabindex="-1"></a><span class="fu">drawopenpaths</span>(pipe_dag, <span class="at">lwd=</span><span class="dv">5</span>)</span>
+<span id="cb19-17"><a href="#cb19-17" aria-hidden="true" tabindex="-1"></a>adj_sets <span class="ot">&lt;-</span> <span class="fu">adjustmentSets</span>(</span>
+<span id="cb19-18"><a href="#cb19-18" aria-hidden="true" tabindex="-1"></a>    pipe_dag, <span class="at">effect=</span><span class="st">"direct"</span></span>
+<span id="cb19-19"><a href="#cb19-19" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb19-20"><a href="#cb19-20" aria-hidden="true" tabindex="-1"></a><span class="fu">writeLines</span>(<span class="st">"Adjustment sets (direct effect):"</span>)</span>
+<span id="cb19-21"><a href="#cb19-21" aria-hidden="true" tabindex="-1"></a>adj_sets</span>
+<span id="cb19-22"><a href="#cb19-22" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggtext)</span>
+<span id="cb19-23"><a href="#cb19-23" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">5650</span>)</span>
+<span id="cb19-24"><a href="#cb19-24" aria-hidden="true" tabindex="-1"></a>cfork_df <span class="ot">&lt;-</span> <span class="fu">tibble</span>(</span>
+<span id="cb19-25"><a href="#cb19-25" aria-hidden="true" tabindex="-1"></a>    <span class="at">Z =</span> <span class="fu">rbern</span>(n_c),</span>
+<span id="cb19-26"><a href="#cb19-26" aria-hidden="true" tabindex="-1"></a>    <span class="at">X =</span> <span class="fu">rnorm</span>(n_c, <span class="dv">2</span> <span class="sc">*</span> Z <span class="sc">-</span> <span class="dv">1</span>),</span>
+<span id="cb19-27"><a href="#cb19-27" aria-hidden="true" tabindex="-1"></a>    <span class="at">Y =</span> <span class="fu">rnorm</span>(n_c, <span class="dv">2</span> <span class="sc">*</span> Z <span class="sc">-</span> <span class="dv">1</span>)</span>
+<span id="cb19-28"><a href="#cb19-28" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb19-29"><a href="#cb19-29" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(latex2exp)</span>
+<span id="cb19-30"><a href="#cb19-30" aria-hidden="true" tabindex="-1"></a>overall_lm <span class="ot">&lt;-</span> <span class="fu">lm</span>(Y <span class="sc">~</span> X, <span class="at">data=</span>cfork_df)</span>
+<span id="cb19-31"><a href="#cb19-31" aria-hidden="true" tabindex="-1"></a>overall_slope <span class="ot">&lt;-</span> <span class="fu">round</span>(overall_lm<span class="sc">$</span>coef[<span class="st">'X'</span>], <span class="dv">3</span>)</span>
+<span id="cb19-32"><a href="#cb19-32" aria-hidden="true" tabindex="-1"></a>z0_lm <span class="ot">&lt;-</span> <span class="fu">lm</span>(Y <span class="sc">~</span> X, <span class="at">data=</span>cfork_df <span class="sc">|&gt;</span> <span class="fu">filter</span>(Z <span class="sc">==</span> <span class="dv">0</span>))</span>
+<span id="cb19-33"><a href="#cb19-33" aria-hidden="true" tabindex="-1"></a>z0_slope <span class="ot">&lt;-</span> <span class="fu">round</span>(z0_lm<span class="sc">$</span>coef[<span class="st">'X'</span>], <span class="dv">2</span>)</span>
+<span id="cb19-34"><a href="#cb19-34" aria-hidden="true" tabindex="-1"></a>z0_label <span class="ot">&lt;-</span> <span class="fu">paste0</span>(<span class="st">"&lt;span style='color: #e69f00;'&gt;Slope&lt;sub&gt;Z=0&lt;/sub&gt; = "</span>,z0_slope,<span class="st">"&lt;/span&gt;"</span>)</span>
+<span id="cb19-35"><a href="#cb19-35" aria-hidden="true" tabindex="-1"></a>z1_lm <span class="ot">&lt;-</span> <span class="fu">lm</span>(Y <span class="sc">~</span> X, <span class="at">data=</span>cfork_df <span class="sc">|&gt;</span> <span class="fu">filter</span>(Z <span class="sc">==</span> <span class="dv">1</span>))</span>
+<span id="cb19-36"><a href="#cb19-36" aria-hidden="true" tabindex="-1"></a>z1_slope <span class="ot">&lt;-</span> <span class="fu">round</span>(z1_lm<span class="sc">$</span>coef[<span class="st">'X'</span>], <span class="dv">2</span>)</span>
+<span id="cb19-37"><a href="#cb19-37" aria-hidden="true" tabindex="-1"></a>z1_label <span class="ot">&lt;-</span> <span class="fu">paste0</span>(<span class="st">"&lt;span style='color: #56b4e9;'&gt;Slope&lt;sub&gt;Z=1&lt;/sub&gt; = "</span>,z1_slope,<span class="st">"&lt;/span&gt;"</span>)</span>
+<span id="cb19-38"><a href="#cb19-38" aria-hidden="true" tabindex="-1"></a>z_texlabel <span class="ot">&lt;-</span> <span class="fu">paste0</span>(z0_label, <span class="st">" | "</span>, z1_label)</span>
+<span id="cb19-39"><a href="#cb19-39" aria-hidden="true" tabindex="-1"></a>cfork_xmin <span class="ot">&lt;-</span> <span class="fu">min</span>(cfork_df<span class="sc">$</span>X)</span>
+<span id="cb19-40"><a href="#cb19-40" aria-hidden="true" tabindex="-1"></a>cfork_xmax <span class="ot">&lt;-</span> <span class="fu">max</span>(cfork_df<span class="sc">$</span>X)</span>
+<span id="cb19-41"><a href="#cb19-41" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>() <span class="sc">+</span></span>
+<span id="cb19-42"><a href="#cb19-42" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Points</span></span>
+<span id="cb19-43"><a href="#cb19-43" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(</span>
+<span id="cb19-44"><a href="#cb19-44" aria-hidden="true" tabindex="-1"></a>    <span class="at">data=</span>cfork_df,</span>
+<span id="cb19-45"><a href="#cb19-45" aria-hidden="true" tabindex="-1"></a>    <span class="fu">aes</span>(<span class="at">x=</span>X, <span class="at">y=</span>Y, <span class="at">color=</span><span class="fu">factor</span>(Z)),</span>
+<span id="cb19-46"><a href="#cb19-46" aria-hidden="true" tabindex="-1"></a>    <span class="at">size=</span><span class="fl">0.6</span><span class="sc">*</span>g_pointsize,</span>
+<span id="cb19-47"><a href="#cb19-47" aria-hidden="true" tabindex="-1"></a>    <span class="at">alpha=</span><span class="fl">0.8</span></span>
+<span id="cb19-48"><a href="#cb19-48" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">+</span></span>
+<span id="cb19-49"><a href="#cb19-49" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Overall lm</span></span>
+<span id="cb19-50"><a href="#cb19-50" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_smooth</span>(</span>
+<span id="cb19-51"><a href="#cb19-51" aria-hidden="true" tabindex="-1"></a>    <span class="at">data=</span>cfork_df, <span class="fu">aes</span>(<span class="at">x=</span>X, <span class="at">y=</span>Y),</span>
+<span id="cb19-52"><a href="#cb19-52" aria-hidden="true" tabindex="-1"></a>    <span class="at">method =</span> lm, <span class="at">se =</span> <span class="cn">FALSE</span>,</span>
+<span id="cb19-53"><a href="#cb19-53" aria-hidden="true" tabindex="-1"></a>    <span class="at">linewidth =</span> <span class="fl">2.5</span>, <span class="at">color=</span><span class="st">'black'</span></span>
+<span id="cb19-54"><a href="#cb19-54" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">+</span></span>
+<span id="cb19-55"><a href="#cb19-55" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_dsan</span>(<span class="at">base_size=</span><span class="dv">18</span>) <span class="sc">+</span></span>
+<span id="cb19-56"><a href="#cb19-56" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(</span>
+<span id="cb19-57"><a href="#cb19-57" aria-hidden="true" tabindex="-1"></a>    <span class="at">plot.title =</span> <span class="fu">element_text</span>(<span class="at">size=</span><span class="dv">18</span>),</span>
+<span id="cb19-58"><a href="#cb19-58" aria-hidden="true" tabindex="-1"></a>    <span class="at">plot.subtitle =</span> <span class="fu">element_markdown</span>(<span class="at">size=</span><span class="dv">16</span>)</span>
+<span id="cb19-59"><a href="#cb19-59" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">+</span></span>
+<span id="cb19-60"><a href="#cb19-60" aria-hidden="true" tabindex="-1"></a>  <span class="fu">coord_equal</span>() <span class="sc">+</span></span>
+<span id="cb19-61"><a href="#cb19-61" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(</span>
+<span id="cb19-62"><a href="#cb19-62" aria-hidden="true" tabindex="-1"></a>    <span class="at">title =</span> <span class="fu">paste0</span>(</span>
+<span id="cb19-63"><a href="#cb19-63" aria-hidden="true" tabindex="-1"></a>      <span class="st">"Unstratified Slope = "</span>,overall_slope</span>
+<span id="cb19-64"><a href="#cb19-64" aria-hidden="true" tabindex="-1"></a>    ),</span>
+<span id="cb19-65"><a href="#cb19-65" aria-hidden="true" tabindex="-1"></a>    <span class="at">x =</span> <span class="st">"X"</span>, <span class="at">y =</span> <span class="st">"Y"</span>, <span class="at">color =</span> <span class="st">"Z"</span></span>
+<span id="cb19-66"><a href="#cb19-66" aria-hidden="true" tabindex="-1"></a>  )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="quarto-layout-panel" data-layout="[30,20,50]" data-layout-align="center">
+<div class="quarto-layout-row quarto-layout-valign-center">
+<div id="pipe-open" class="quarto-layout-cell" style="flex-basis: 30.0%;justify-content: center;">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/flow-open.jpg" class="img-fluid quarto-figure quarto-figure-center figure-img" width="200"></p>
+</figure>
+</div>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/causal_fork.svg" class="img-fluid quarto-figure quarto-figure-center figure-img" width="250"></p>
+</figure>
+</div>
+</div>
+<div id="fork-dag-img" class="quarto-layout-cell" style="flex-basis: 20.0%;justify-content: center;">
+<div class="cell" data-layout-align="center">
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="index_files/figure-html/fork-dag-open-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Adjustment sets (direct effect):
+{ Z }</code></pre>
+</div>
+</div>
+</div>
+<div id="open-fork-plot" class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
+<div class="cell" data-layout-align="center">
+<div class="cell-output cell-output-stderr">
+<pre><code>`geom_smooth()` using formula = 'y ~ x'</code></pre>
+</div>
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="index_files/figure-html/open-fork-continuous-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" width="432"></p>
+</figure>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Fork Blocked -->
+<details class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(rethinking)</span>
+<span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dagitty)</span>
+<span id="cb22-3"><a href="#cb22-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggdag)</span>
+<span id="cb22-4"><a href="#cb22-4" aria-hidden="true" tabindex="-1"></a>fork_dag_closed <span class="ot">&lt;-</span><span class="fu">dagitty</span>(<span class="st">"dag{</span></span>
+<span id="cb22-5"><a href="#cb22-5" aria-hidden="true" tabindex="-1"></a><span class="st">X[exposure]</span></span>
+<span id="cb22-6"><a href="#cb22-6" aria-hidden="true" tabindex="-1"></a><span class="st">Y[outcome]</span></span>
+<span id="cb22-7"><a href="#cb22-7" aria-hidden="true" tabindex="-1"></a><span class="st">Z[adjustedNode]</span></span>
+<span id="cb22-8"><a href="#cb22-8" aria-hidden="true" tabindex="-1"></a><span class="st">X -&gt; Y</span></span>
+<span id="cb22-9"><a href="#cb22-9" aria-hidden="true" tabindex="-1"></a><span class="st">Z -&gt; X</span></span>
+<span id="cb22-10"><a href="#cb22-10" aria-hidden="true" tabindex="-1"></a><span class="st">Z -&gt; Y</span></span>
+<span id="cb22-11"><a href="#cb22-11" aria-hidden="true" tabindex="-1"></a><span class="st">}"</span>)</span>
+<span id="cb22-12"><a href="#cb22-12" aria-hidden="true" tabindex="-1"></a><span class="fu">coordinates</span>(fork_dag_closed) <span class="ot">&lt;-</span> <span class="fu">list</span>(</span>
+<span id="cb22-13"><a href="#cb22-13" aria-hidden="true" tabindex="-1"></a>    <span class="at">x=</span><span class="fu">c</span>(<span class="at">X=</span><span class="dv">0</span>, <span class="at">Z=</span><span class="fl">0.5</span>, <span class="at">Y=</span><span class="dv">1</span>),</span>
+<span id="cb22-14"><a href="#cb22-14" aria-hidden="true" tabindex="-1"></a>    <span class="at">y=</span><span class="fu">c</span>(<span class="at">X=</span><span class="dv">1</span>, <span class="at">Z=</span><span class="fl">0.5</span>, <span class="at">Y=</span><span class="dv">1</span>)</span>
+<span id="cb22-15"><a href="#cb22-15" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb22-16"><a href="#cb22-16" aria-hidden="true" tabindex="-1"></a>fork_dag_closed <span class="ot">&lt;-</span> <span class="fu">setVariableStatus</span>(fork_dag_closed, <span class="st">"adjustedNode"</span>, <span class="st">"Z"</span>)</span>
+<span id="cb22-17"><a href="#cb22-17" aria-hidden="true" tabindex="-1"></a><span class="fu">drawdag</span>(fork_dag_closed, <span class="at">cex=</span><span class="dv">4</span>, <span class="at">lwd=</span><span class="dv">5</span>, <span class="at">radius=</span><span class="dv">10</span>)</span>
+<span id="cb22-18"><a href="#cb22-18" aria-hidden="true" tabindex="-1"></a><span class="fu">drawopenpaths</span>(fork_dag_closed, <span class="at">Z=</span><span class="st">"Z"</span>, <span class="at">lwd=</span><span class="dv">5</span>)</span>
+<span id="cb22-19"><a href="#cb22-19" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggtext)</span>
+<span id="cb22-20"><a href="#cb22-20" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">5650</span>)</span>
+<span id="cb22-21"><a href="#cb22-21" aria-hidden="true" tabindex="-1"></a>cfork_df <span class="ot">&lt;-</span> <span class="fu">tibble</span>(</span>
+<span id="cb22-22"><a href="#cb22-22" aria-hidden="true" tabindex="-1"></a>    <span class="at">Z =</span> <span class="fu">rbern</span>(n_c),</span>
+<span id="cb22-23"><a href="#cb22-23" aria-hidden="true" tabindex="-1"></a>    <span class="at">X =</span> <span class="fu">rnorm</span>(n_c, <span class="dv">2</span> <span class="sc">*</span> Z <span class="sc">-</span> <span class="dv">1</span>),</span>
+<span id="cb22-24"><a href="#cb22-24" aria-hidden="true" tabindex="-1"></a>    <span class="at">Y =</span> <span class="fu">rnorm</span>(n_c, <span class="dv">2</span> <span class="sc">*</span> Z <span class="sc">-</span> <span class="dv">1</span>)</span>
+<span id="cb22-25"><a href="#cb22-25" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb22-26"><a href="#cb22-26" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(latex2exp)</span>
+<span id="cb22-27"><a href="#cb22-27" aria-hidden="true" tabindex="-1"></a>overall_lm <span class="ot">&lt;-</span> <span class="fu">lm</span>(Y <span class="sc">~</span> X, <span class="at">data=</span>cfork_df)</span>
+<span id="cb22-28"><a href="#cb22-28" aria-hidden="true" tabindex="-1"></a>overall_slope <span class="ot">&lt;-</span> <span class="fu">round</span>(overall_lm<span class="sc">$</span>coef[<span class="st">'X'</span>], <span class="dv">3</span>)</span>
+<span id="cb22-29"><a href="#cb22-29" aria-hidden="true" tabindex="-1"></a>z0_lm <span class="ot">&lt;-</span> <span class="fu">lm</span>(Y <span class="sc">~</span> X, <span class="at">data=</span>cfork_df <span class="sc">|&gt;</span> <span class="fu">filter</span>(Z <span class="sc">==</span> <span class="dv">0</span>))</span>
+<span id="cb22-30"><a href="#cb22-30" aria-hidden="true" tabindex="-1"></a>z0_slope <span class="ot">&lt;-</span> <span class="fu">round</span>(z0_lm<span class="sc">$</span>coef[<span class="st">'X'</span>], <span class="dv">2</span>)</span>
+<span id="cb22-31"><a href="#cb22-31" aria-hidden="true" tabindex="-1"></a>z0_label <span class="ot">&lt;-</span> <span class="fu">paste0</span>(<span class="st">"&lt;span style='color: #e69f00;'&gt;Slope&lt;sub&gt;Z=0&lt;/sub&gt; = "</span>,z0_slope,<span class="st">"&lt;/span&gt;"</span>)</span>
+<span id="cb22-32"><a href="#cb22-32" aria-hidden="true" tabindex="-1"></a>z1_lm <span class="ot">&lt;-</span> <span class="fu">lm</span>(Y <span class="sc">~</span> X, <span class="at">data=</span>cfork_df <span class="sc">|&gt;</span> <span class="fu">filter</span>(Z <span class="sc">==</span> <span class="dv">1</span>))</span>
+<span id="cb22-33"><a href="#cb22-33" aria-hidden="true" tabindex="-1"></a>z1_slope <span class="ot">&lt;-</span> <span class="fu">round</span>(z1_lm<span class="sc">$</span>coef[<span class="st">'X'</span>], <span class="dv">2</span>)</span>
+<span id="cb22-34"><a href="#cb22-34" aria-hidden="true" tabindex="-1"></a>z1_label <span class="ot">&lt;-</span> <span class="fu">paste0</span>(<span class="st">"&lt;span style='color: #56b4e9;'&gt;Slope&lt;sub&gt;Z=1&lt;/sub&gt; = "</span>,z1_slope,<span class="st">"&lt;/span&gt;"</span>)</span>
+<span id="cb22-35"><a href="#cb22-35" aria-hidden="true" tabindex="-1"></a>z_texlabel <span class="ot">&lt;-</span> <span class="fu">paste0</span>(z0_label, <span class="st">" | "</span>, z1_label)</span>
+<span id="cb22-36"><a href="#cb22-36" aria-hidden="true" tabindex="-1"></a>cfork_xmin <span class="ot">&lt;-</span> <span class="fu">min</span>(cfork_df<span class="sc">$</span>X)</span>
+<span id="cb22-37"><a href="#cb22-37" aria-hidden="true" tabindex="-1"></a>cfork_xmax <span class="ot">&lt;-</span> <span class="fu">max</span>(cfork_df<span class="sc">$</span>X)</span>
+<span id="cb22-38"><a href="#cb22-38" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>() <span class="sc">+</span></span>
+<span id="cb22-39"><a href="#cb22-39" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Points</span></span>
+<span id="cb22-40"><a href="#cb22-40" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(</span>
+<span id="cb22-41"><a href="#cb22-41" aria-hidden="true" tabindex="-1"></a>    <span class="at">data=</span>cfork_df,</span>
+<span id="cb22-42"><a href="#cb22-42" aria-hidden="true" tabindex="-1"></a>    <span class="fu">aes</span>(<span class="at">x=</span>X, <span class="at">y=</span>Y, <span class="at">color=</span><span class="fu">factor</span>(Z)),</span>
+<span id="cb22-43"><a href="#cb22-43" aria-hidden="true" tabindex="-1"></a>    <span class="at">size=</span><span class="fl">0.6</span><span class="sc">*</span>g_pointsize,</span>
+<span id="cb22-44"><a href="#cb22-44" aria-hidden="true" tabindex="-1"></a>    <span class="at">alpha=</span><span class="fl">0.8</span></span>
+<span id="cb22-45"><a href="#cb22-45" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">+</span></span>
+<span id="cb22-46"><a href="#cb22-46" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Overall lm</span></span>
+<span id="cb22-47"><a href="#cb22-47" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_smooth</span>(</span>
+<span id="cb22-48"><a href="#cb22-48" aria-hidden="true" tabindex="-1"></a>    <span class="at">data=</span>cfork_df, <span class="fu">aes</span>(<span class="at">x=</span>X, <span class="at">y=</span>Y),</span>
+<span id="cb22-49"><a href="#cb22-49" aria-hidden="true" tabindex="-1"></a>    <span class="at">method =</span> lm, <span class="at">se =</span> <span class="cn">FALSE</span>,</span>
+<span id="cb22-50"><a href="#cb22-50" aria-hidden="true" tabindex="-1"></a>    <span class="at">linewidth =</span> <span class="fl">2.5</span>, <span class="at">color=</span><span class="st">'black'</span></span>
+<span id="cb22-51"><a href="#cb22-51" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">+</span></span>
+<span id="cb22-52"><a href="#cb22-52" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Stratified lm</span></span>
+<span id="cb22-53"><a href="#cb22-53" aria-hidden="true" tabindex="-1"></a>  <span class="co"># (slightly larger black lines)</span></span>
+<span id="cb22-54"><a href="#cb22-54" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_smooth</span>(</span>
+<span id="cb22-55"><a href="#cb22-55" aria-hidden="true" tabindex="-1"></a>    <span class="at">data=</span>cfork_df,</span>
+<span id="cb22-56"><a href="#cb22-56" aria-hidden="true" tabindex="-1"></a>    <span class="fu">aes</span>(<span class="at">x=</span>X, <span class="at">y=</span>Y, <span class="at">group=</span><span class="fu">factor</span>(Z)),</span>
+<span id="cb22-57"><a href="#cb22-57" aria-hidden="true" tabindex="-1"></a>    <span class="at">method=</span>lm, <span class="at">se=</span><span class="cn">FALSE</span>, <span class="at">fullrange=</span><span class="cn">TRUE</span>,</span>
+<span id="cb22-58"><a href="#cb22-58" aria-hidden="true" tabindex="-1"></a>    <span class="at">linewidth=</span><span class="fl">2.75</span>, <span class="at">color=</span><span class="st">'black'</span></span>
+<span id="cb22-59"><a href="#cb22-59" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">+</span></span>
+<span id="cb22-60"><a href="#cb22-60" aria-hidden="true" tabindex="-1"></a>  <span class="co"># (Colored lines)</span></span>
+<span id="cb22-61"><a href="#cb22-61" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_smooth</span>(</span>
+<span id="cb22-62"><a href="#cb22-62" aria-hidden="true" tabindex="-1"></a>    <span class="at">data=</span>cfork_df,</span>
+<span id="cb22-63"><a href="#cb22-63" aria-hidden="true" tabindex="-1"></a>    <span class="fu">aes</span>(<span class="at">x=</span>X, <span class="at">y=</span>Y, <span class="at">color=</span><span class="fu">factor</span>(Z)),</span>
+<span id="cb22-64"><a href="#cb22-64" aria-hidden="true" tabindex="-1"></a>    <span class="at">method=</span>lm, <span class="at">se=</span><span class="cn">FALSE</span>, <span class="at">fullrange=</span><span class="cn">TRUE</span>,</span>
+<span id="cb22-65"><a href="#cb22-65" aria-hidden="true" tabindex="-1"></a>    <span class="at">linewidth=</span><span class="dv">2</span></span>
+<span id="cb22-66"><a href="#cb22-66" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">+</span></span>
+<span id="cb22-67"><a href="#cb22-67" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_dsan</span>(<span class="at">base_size=</span><span class="dv">18</span>) <span class="sc">+</span></span>
+<span id="cb22-68"><a href="#cb22-68" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(</span>
+<span id="cb22-69"><a href="#cb22-69" aria-hidden="true" tabindex="-1"></a>    <span class="at">plot.title =</span> <span class="fu">element_text</span>(<span class="at">size=</span><span class="dv">18</span>),</span>
+<span id="cb22-70"><a href="#cb22-70" aria-hidden="true" tabindex="-1"></a>    <span class="at">plot.subtitle =</span> <span class="fu">element_markdown</span>(<span class="at">size=</span><span class="dv">16</span>)</span>
+<span id="cb22-71"><a href="#cb22-71" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">+</span></span>
+<span id="cb22-72"><a href="#cb22-72" aria-hidden="true" tabindex="-1"></a>  <span class="fu">coord_equal</span>() <span class="sc">+</span></span>
+<span id="cb22-73"><a href="#cb22-73" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(</span>
+<span id="cb22-74"><a href="#cb22-74" aria-hidden="true" tabindex="-1"></a>    <span class="at">title =</span> <span class="fu">paste0</span>(</span>
+<span id="cb22-75"><a href="#cb22-75" aria-hidden="true" tabindex="-1"></a>      <span class="st">"Unstratified Slope = "</span>,overall_slope</span>
+<span id="cb22-76"><a href="#cb22-76" aria-hidden="true" tabindex="-1"></a>    ),</span>
+<span id="cb22-77"><a href="#cb22-77" aria-hidden="true" tabindex="-1"></a>    <span class="at">subtitle=</span>z_texlabel,</span>
+<span id="cb22-78"><a href="#cb22-78" aria-hidden="true" tabindex="-1"></a>    <span class="at">x =</span> <span class="st">"X"</span>, <span class="at">y =</span> <span class="st">"Y"</span>, <span class="at">color =</span> <span class="st">"Z"</span></span>
+<span id="cb22-79"><a href="#cb22-79" aria-hidden="true" tabindex="-1"></a>  )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="quarto-layout-panel" data-layout="[30,20,50]" data-layout-align="center">
+<div class="quarto-layout-row quarto-layout-valign-center">
+<div id="fork-closed" class="quarto-layout-cell" style="flex-basis: 30.0%;justify-content: center;">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/flow-closed.jpg" class="img-fluid quarto-figure quarto-figure-center figure-img" width="200"></p>
+</figure>
+</div>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/causal_fork_closed.svg" class="img-fluid quarto-figure quarto-figure-center figure-img" width="250"></p>
+</figure>
+</div>
+</div>
+<div id="fork-dag-closed-img" class="quarto-layout-cell" style="flex-basis: 20.0%;justify-content: center;">
+<div class="cell" data-layout-align="center">
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="index_files/figure-html/fork-dag-closed-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+</div>
+<div id="fork-plot" class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
+<div class="cell" data-layout-align="center">
 <div class="cell-output cell-output-stderr">
 <pre><code>`geom_smooth()` using formula = 'y ~ x'
 `geom_smooth()` using formula = 'y ~ x'
@@ -752,14 +1035,14 @@ The following object is masked from 'package:purrr':
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="index_files/figure-html/coll-continuous-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" width="672"></p>
+<p><img src="index_files/figure-html/fork-continuous-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" width="432"></p>
 </figure>
 </div>
 </div>
 </div>
-<ul>
-<li>…This is why we have to <strong>think</strong>, rather than just “control for everything”! 😭</li>
-</ul>
+</div>
+</div>
+</div>
 </section>
 <section id="conditioning-on-a-proxy-for-z" class="level2 smaller crunch-title title-11 crunch-quarto-figure crunch-ul crunch-li-5 crunch-quarto-layout-panel crunch-img">
 <h2 class="smaller crunch-title title-11 crunch-quarto-figure crunch-ul crunch-li-5 crunch-quarto-layout-panel crunch-img anchored" data-anchor-id="conditioning-on-a-proxy-for-z">Conditioning on a Proxy for <span class="math inline">\(Z\)</span></h2>
@@ -787,71 +1070,70 @@ The following object is masked from 'package:purrr':
 <div class="cell" data-layout-align="center">
 <details class="code-fold">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
-<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(extraDistr)</span>
-<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(latex2exp)</span>
-<span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">5650</span>)</span>
-<span id="cb13-5"><a href="#cb13-5" aria-hidden="true" tabindex="-1"></a>n_c <span class="ot">&lt;-</span> <span class="dv">350</span></span>
-<span id="cb13-6"><a href="#cb13-6" aria-hidden="true" tabindex="-1"></a>cprox_df <span class="ot">&lt;-</span> <span class="fu">tibble</span>(</span>
-<span id="cb13-7"><a href="#cb13-7" aria-hidden="true" tabindex="-1"></a>    <span class="at">X =</span> <span class="fu">rnorm</span>(n_c),</span>
-<span id="cb13-8"><a href="#cb13-8" aria-hidden="true" tabindex="-1"></a>    <span class="at">Z =</span> <span class="fu">rbern</span>(n_c, <span class="fu">plogis</span>(X)),</span>
-<span id="cb13-9"><a href="#cb13-9" aria-hidden="true" tabindex="-1"></a>    <span class="at">Y =</span> <span class="fu">rnorm</span>(n_c, <span class="dv">2</span> <span class="sc">*</span> Z <span class="sc">-</span> <span class="dv">1</span>),</span>
-<span id="cb13-10"><a href="#cb13-10" aria-hidden="true" tabindex="-1"></a>    <span class="at">A =</span> <span class="fu">rbern</span>(n_c, (<span class="dv">1</span><span class="sc">-</span>Z)<span class="sc">*</span><span class="fl">0.86</span> <span class="sc">+</span> Z<span class="sc">*</span><span class="fl">0.14</span>)</span>
-<span id="cb13-11"><a href="#cb13-11" aria-hidden="true" tabindex="-1"></a>)</span>
-<span id="cb13-12"><a href="#cb13-12" aria-hidden="true" tabindex="-1"></a>cprox_lm <span class="ot">&lt;-</span> <span class="fu">lm</span>(Y <span class="sc">~</span> X, <span class="at">data=</span>cprox_df)</span>
-<span id="cb13-13"><a href="#cb13-13" aria-hidden="true" tabindex="-1"></a>cprox_slope <span class="ot">&lt;-</span> <span class="fu">round</span>(cprox_lm<span class="sc">$</span>coef[<span class="st">'X'</span>], <span class="dv">3</span>)</span>
-<span id="cb13-14"><a href="#cb13-14" aria-hidden="true" tabindex="-1"></a>cprox_a0_lm <span class="ot">&lt;-</span> <span class="fu">lm</span>(Y <span class="sc">~</span> X, <span class="at">data=</span>cprox_df <span class="sc">|&gt;</span> <span class="fu">filter</span>(A <span class="sc">==</span> <span class="dv">0</span>))</span>
-<span id="cb13-15"><a href="#cb13-15" aria-hidden="true" tabindex="-1"></a>cprox_a0_slope <span class="ot">&lt;-</span> <span class="fu">round</span>(cprox_a0_lm<span class="sc">$</span>coef[<span class="st">'X'</span>], <span class="dv">2</span>)</span>
-<span id="cb13-16"><a href="#cb13-16" aria-hidden="true" tabindex="-1"></a>cprox_a0_label <span class="ot">&lt;-</span> <span class="fu">paste0</span>(<span class="st">"&lt;span style='color: #e69f00;'&gt;Slope&lt;sub&gt;Z=0&lt;/sub&gt; = "</span>,cprox_a0_slope,<span class="st">"&lt;/span&gt;"</span>)</span>
-<span id="cb13-17"><a href="#cb13-17" aria-hidden="true" tabindex="-1"></a><span class="co"># A == 1 lm</span></span>
-<span id="cb13-18"><a href="#cb13-18" aria-hidden="true" tabindex="-1"></a>cprox_a1_lm <span class="ot">&lt;-</span> <span class="fu">lm</span>(Y <span class="sc">~</span> X, <span class="at">data=</span>cprox_df <span class="sc">|&gt;</span> <span class="fu">filter</span>(A <span class="sc">==</span> <span class="dv">1</span>))</span>
-<span id="cb13-19"><a href="#cb13-19" aria-hidden="true" tabindex="-1"></a>cprox_a1_slope <span class="ot">&lt;-</span> <span class="fu">round</span>(cprox_a1_lm<span class="sc">$</span>coef[<span class="st">'X'</span>], <span class="dv">2</span>)</span>
-<span id="cb13-20"><a href="#cb13-20" aria-hidden="true" tabindex="-1"></a>cprox_a1_label <span class="ot">&lt;-</span> <span class="fu">paste0</span>(<span class="st">"&lt;span style='color: #56b4e9;'&gt;Slope&lt;sub&gt;Z=1&lt;/sub&gt; = "</span>,cprox_a1_slope,<span class="st">"&lt;/span&gt;"</span>)</span>
-<span id="cb13-21"><a href="#cb13-21" aria-hidden="true" tabindex="-1"></a>cprox_a_texlabel <span class="ot">&lt;-</span> <span class="fu">paste0</span>(cprox_a0_label, <span class="st">" | "</span>, cprox_a1_label)</span>
-<span id="cb13-22"><a href="#cb13-22" aria-hidden="true" tabindex="-1"></a>cprox_xmin <span class="ot">&lt;-</span> <span class="fu">min</span>(cprox_df<span class="sc">$</span>X)</span>
-<span id="cb13-23"><a href="#cb13-23" aria-hidden="true" tabindex="-1"></a>cprox_xmax <span class="ot">&lt;-</span> <span class="fu">max</span>(cprox_df<span class="sc">$</span>X)</span>
-<span id="cb13-24"><a href="#cb13-24" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>() <span class="sc">+</span></span>
-<span id="cb13-25"><a href="#cb13-25" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Points</span></span>
-<span id="cb13-26"><a href="#cb13-26" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(</span>
-<span id="cb13-27"><a href="#cb13-27" aria-hidden="true" tabindex="-1"></a>    <span class="at">data=</span>cprox_df <span class="sc">|&gt;</span> <span class="fu">filter</span>(Y <span class="sc">&gt;</span> <span class="sc">-</span><span class="dv">3</span>),</span>
-<span id="cb13-28"><a href="#cb13-28" aria-hidden="true" tabindex="-1"></a>    <span class="fu">aes</span>(<span class="at">x=</span>X, <span class="at">y=</span>Y, <span class="at">color=</span><span class="fu">factor</span>(A)),</span>
-<span id="cb13-29"><a href="#cb13-29" aria-hidden="true" tabindex="-1"></a>    <span class="at">size=</span><span class="fl">0.5</span><span class="sc">*</span>g_pointsize,</span>
-<span id="cb13-30"><a href="#cb13-30" aria-hidden="true" tabindex="-1"></a>    <span class="at">alpha=</span><span class="fl">0.8</span></span>
-<span id="cb13-31"><a href="#cb13-31" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">+</span></span>
-<span id="cb13-32"><a href="#cb13-32" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Overall lm</span></span>
-<span id="cb13-33"><a href="#cb13-33" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_smooth</span>(</span>
-<span id="cb13-34"><a href="#cb13-34" aria-hidden="true" tabindex="-1"></a>    <span class="at">data=</span>cprox_df, <span class="fu">aes</span>(<span class="at">x=</span>X, <span class="at">y=</span>Y),</span>
-<span id="cb13-35"><a href="#cb13-35" aria-hidden="true" tabindex="-1"></a>    <span class="at">method =</span> lm, <span class="at">se =</span> <span class="cn">FALSE</span>,</span>
-<span id="cb13-36"><a href="#cb13-36" aria-hidden="true" tabindex="-1"></a>    <span class="at">linewidth =</span> <span class="fl">2.5</span>, <span class="at">color=</span><span class="st">'black'</span></span>
-<span id="cb13-37"><a href="#cb13-37" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">+</span></span>
-<span id="cb13-38"><a href="#cb13-38" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Stratified lm</span></span>
-<span id="cb13-39"><a href="#cb13-39" aria-hidden="true" tabindex="-1"></a>  <span class="co"># (slightly larger black lines)</span></span>
-<span id="cb13-40"><a href="#cb13-40" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_smooth</span>(</span>
-<span id="cb13-41"><a href="#cb13-41" aria-hidden="true" tabindex="-1"></a>    <span class="at">data=</span>cprox_df,</span>
-<span id="cb13-42"><a href="#cb13-42" aria-hidden="true" tabindex="-1"></a>    <span class="fu">aes</span>(<span class="at">x=</span>X, <span class="at">y=</span>Y, <span class="at">group=</span><span class="fu">factor</span>(A)),</span>
-<span id="cb13-43"><a href="#cb13-43" aria-hidden="true" tabindex="-1"></a>    <span class="at">method=</span>lm, <span class="at">se=</span><span class="cn">FALSE</span>, <span class="at">fullrange=</span><span class="cn">TRUE</span>,</span>
-<span id="cb13-44"><a href="#cb13-44" aria-hidden="true" tabindex="-1"></a>    <span class="at">linewidth=</span><span class="fl">2.75</span>, <span class="at">color=</span><span class="st">'black'</span></span>
-<span id="cb13-45"><a href="#cb13-45" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">+</span></span>
-<span id="cb13-46"><a href="#cb13-46" aria-hidden="true" tabindex="-1"></a>  <span class="co"># (Colored lines)</span></span>
-<span id="cb13-47"><a href="#cb13-47" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_smooth</span>(</span>
-<span id="cb13-48"><a href="#cb13-48" aria-hidden="true" tabindex="-1"></a>    <span class="at">data=</span>cprox_df,</span>
-<span id="cb13-49"><a href="#cb13-49" aria-hidden="true" tabindex="-1"></a>    <span class="fu">aes</span>(<span class="at">x=</span>X, <span class="at">y=</span>Y, <span class="at">color=</span><span class="fu">factor</span>(A)),</span>
-<span id="cb13-50"><a href="#cb13-50" aria-hidden="true" tabindex="-1"></a>    <span class="at">method=</span>lm, <span class="at">se=</span><span class="cn">FALSE</span>, <span class="at">fullrange=</span><span class="cn">TRUE</span>,</span>
-<span id="cb13-51"><a href="#cb13-51" aria-hidden="true" tabindex="-1"></a>    <span class="at">linewidth=</span><span class="dv">2</span></span>
-<span id="cb13-52"><a href="#cb13-52" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">+</span></span>
-<span id="cb13-53"><a href="#cb13-53" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_dsan</span>(<span class="at">base_size=</span><span class="dv">22</span>) <span class="sc">+</span></span>
-<span id="cb13-54"><a href="#cb13-54" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(</span>
-<span id="cb13-55"><a href="#cb13-55" aria-hidden="true" tabindex="-1"></a>    <span class="at">plot.title =</span> <span class="fu">element_text</span>(<span class="at">size=</span><span class="dv">22</span>),</span>
-<span id="cb13-56"><a href="#cb13-56" aria-hidden="true" tabindex="-1"></a>    <span class="at">plot.subtitle =</span> <span class="fu">element_markdown</span>(<span class="at">size=</span><span class="dv">20</span>)</span>
-<span id="cb13-57"><a href="#cb13-57" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">+</span></span>
-<span id="cb13-58"><a href="#cb13-58" aria-hidden="true" tabindex="-1"></a>  <span class="fu">coord_equal</span>() <span class="sc">+</span></span>
-<span id="cb13-59"><a href="#cb13-59" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(</span>
-<span id="cb13-60"><a href="#cb13-60" aria-hidden="true" tabindex="-1"></a>    <span class="at">title =</span> <span class="fu">paste0</span>(</span>
-<span id="cb13-61"><a href="#cb13-61" aria-hidden="true" tabindex="-1"></a>      <span class="st">"Unstratified Slope = "</span>,cprox_slope</span>
-<span id="cb13-62"><a href="#cb13-62" aria-hidden="true" tabindex="-1"></a>    ),</span>
-<span id="cb13-63"><a href="#cb13-63" aria-hidden="true" tabindex="-1"></a>    <span class="at">subtitle=</span>cprox_a_texlabel,</span>
-<span id="cb13-64"><a href="#cb13-64" aria-hidden="true" tabindex="-1"></a>    <span class="at">x =</span> <span class="st">"X"</span>, <span class="at">y =</span> <span class="st">"Y"</span>, <span class="at">color =</span> <span class="st">"A"</span></span>
-<span id="cb13-65"><a href="#cb13-65" aria-hidden="true" tabindex="-1"></a>  )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(extraDistr)</span>
+<span id="cb24-3"><a href="#cb24-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(latex2exp)</span>
+<span id="cb24-4"><a href="#cb24-4" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">5650</span>)</span>
+<span id="cb24-5"><a href="#cb24-5" aria-hidden="true" tabindex="-1"></a>cprox_df <span class="ot">&lt;-</span> <span class="fu">tibble</span>(</span>
+<span id="cb24-6"><a href="#cb24-6" aria-hidden="true" tabindex="-1"></a>    <span class="at">X =</span> <span class="fu">rnorm</span>(n_c),</span>
+<span id="cb24-7"><a href="#cb24-7" aria-hidden="true" tabindex="-1"></a>    <span class="at">Z =</span> <span class="fu">rbern</span>(n_c, <span class="fu">plogis</span>(X)),</span>
+<span id="cb24-8"><a href="#cb24-8" aria-hidden="true" tabindex="-1"></a>    <span class="at">Y =</span> <span class="fu">rnorm</span>(n_c, <span class="dv">2</span> <span class="sc">*</span> Z <span class="sc">-</span> <span class="dv">1</span>),</span>
+<span id="cb24-9"><a href="#cb24-9" aria-hidden="true" tabindex="-1"></a>    <span class="at">A =</span> <span class="fu">rbern</span>(n_c, (<span class="dv">1</span><span class="sc">-</span>Z)<span class="sc">*</span><span class="fl">0.86</span> <span class="sc">+</span> Z<span class="sc">*</span><span class="fl">0.14</span>)</span>
+<span id="cb24-10"><a href="#cb24-10" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb24-11"><a href="#cb24-11" aria-hidden="true" tabindex="-1"></a>cprox_lm <span class="ot">&lt;-</span> <span class="fu">lm</span>(Y <span class="sc">~</span> X, <span class="at">data=</span>cprox_df)</span>
+<span id="cb24-12"><a href="#cb24-12" aria-hidden="true" tabindex="-1"></a>cprox_slope <span class="ot">&lt;-</span> <span class="fu">round</span>(cprox_lm<span class="sc">$</span>coef[<span class="st">'X'</span>], <span class="dv">3</span>)</span>
+<span id="cb24-13"><a href="#cb24-13" aria-hidden="true" tabindex="-1"></a>cprox_a0_lm <span class="ot">&lt;-</span> <span class="fu">lm</span>(Y <span class="sc">~</span> X, <span class="at">data=</span>cprox_df <span class="sc">|&gt;</span> <span class="fu">filter</span>(A <span class="sc">==</span> <span class="dv">0</span>))</span>
+<span id="cb24-14"><a href="#cb24-14" aria-hidden="true" tabindex="-1"></a>cprox_a0_slope <span class="ot">&lt;-</span> <span class="fu">round</span>(cprox_a0_lm<span class="sc">$</span>coef[<span class="st">'X'</span>], <span class="dv">2</span>)</span>
+<span id="cb24-15"><a href="#cb24-15" aria-hidden="true" tabindex="-1"></a>cprox_a0_label <span class="ot">&lt;-</span> <span class="fu">paste0</span>(<span class="st">"&lt;span style='color: #e69f00;'&gt;Slope&lt;sub&gt;Z=0&lt;/sub&gt; = "</span>,cprox_a0_slope,<span class="st">"&lt;/span&gt;"</span>)</span>
+<span id="cb24-16"><a href="#cb24-16" aria-hidden="true" tabindex="-1"></a><span class="co"># A == 1 lm</span></span>
+<span id="cb24-17"><a href="#cb24-17" aria-hidden="true" tabindex="-1"></a>cprox_a1_lm <span class="ot">&lt;-</span> <span class="fu">lm</span>(Y <span class="sc">~</span> X, <span class="at">data=</span>cprox_df <span class="sc">|&gt;</span> <span class="fu">filter</span>(A <span class="sc">==</span> <span class="dv">1</span>))</span>
+<span id="cb24-18"><a href="#cb24-18" aria-hidden="true" tabindex="-1"></a>cprox_a1_slope <span class="ot">&lt;-</span> <span class="fu">round</span>(cprox_a1_lm<span class="sc">$</span>coef[<span class="st">'X'</span>], <span class="dv">2</span>)</span>
+<span id="cb24-19"><a href="#cb24-19" aria-hidden="true" tabindex="-1"></a>cprox_a1_label <span class="ot">&lt;-</span> <span class="fu">paste0</span>(<span class="st">"&lt;span style='color: #56b4e9;'&gt;Slope&lt;sub&gt;Z=1&lt;/sub&gt; = "</span>,cprox_a1_slope,<span class="st">"&lt;/span&gt;"</span>)</span>
+<span id="cb24-20"><a href="#cb24-20" aria-hidden="true" tabindex="-1"></a>cprox_a_texlabel <span class="ot">&lt;-</span> <span class="fu">paste0</span>(cprox_a0_label, <span class="st">" | "</span>, cprox_a1_label)</span>
+<span id="cb24-21"><a href="#cb24-21" aria-hidden="true" tabindex="-1"></a>cprox_xmin <span class="ot">&lt;-</span> <span class="fu">min</span>(cprox_df<span class="sc">$</span>X)</span>
+<span id="cb24-22"><a href="#cb24-22" aria-hidden="true" tabindex="-1"></a>cprox_xmax <span class="ot">&lt;-</span> <span class="fu">max</span>(cprox_df<span class="sc">$</span>X)</span>
+<span id="cb24-23"><a href="#cb24-23" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>() <span class="sc">+</span></span>
+<span id="cb24-24"><a href="#cb24-24" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Points</span></span>
+<span id="cb24-25"><a href="#cb24-25" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(</span>
+<span id="cb24-26"><a href="#cb24-26" aria-hidden="true" tabindex="-1"></a>    <span class="at">data=</span>cprox_df <span class="sc">|&gt;</span> <span class="fu">filter</span>(Y <span class="sc">&gt;</span> <span class="sc">-</span><span class="dv">3</span>),</span>
+<span id="cb24-27"><a href="#cb24-27" aria-hidden="true" tabindex="-1"></a>    <span class="fu">aes</span>(<span class="at">x=</span>X, <span class="at">y=</span>Y, <span class="at">color=</span><span class="fu">factor</span>(A)),</span>
+<span id="cb24-28"><a href="#cb24-28" aria-hidden="true" tabindex="-1"></a>    <span class="at">size=</span><span class="fl">0.5</span><span class="sc">*</span>g_pointsize,</span>
+<span id="cb24-29"><a href="#cb24-29" aria-hidden="true" tabindex="-1"></a>    <span class="at">alpha=</span><span class="fl">0.8</span></span>
+<span id="cb24-30"><a href="#cb24-30" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">+</span></span>
+<span id="cb24-31"><a href="#cb24-31" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Overall lm</span></span>
+<span id="cb24-32"><a href="#cb24-32" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_smooth</span>(</span>
+<span id="cb24-33"><a href="#cb24-33" aria-hidden="true" tabindex="-1"></a>    <span class="at">data=</span>cprox_df, <span class="fu">aes</span>(<span class="at">x=</span>X, <span class="at">y=</span>Y),</span>
+<span id="cb24-34"><a href="#cb24-34" aria-hidden="true" tabindex="-1"></a>    <span class="at">method =</span> lm, <span class="at">se =</span> <span class="cn">FALSE</span>,</span>
+<span id="cb24-35"><a href="#cb24-35" aria-hidden="true" tabindex="-1"></a>    <span class="at">linewidth =</span> <span class="fl">2.5</span>, <span class="at">color=</span><span class="st">'black'</span></span>
+<span id="cb24-36"><a href="#cb24-36" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">+</span></span>
+<span id="cb24-37"><a href="#cb24-37" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Stratified lm</span></span>
+<span id="cb24-38"><a href="#cb24-38" aria-hidden="true" tabindex="-1"></a>  <span class="co"># (slightly larger black lines)</span></span>
+<span id="cb24-39"><a href="#cb24-39" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_smooth</span>(</span>
+<span id="cb24-40"><a href="#cb24-40" aria-hidden="true" tabindex="-1"></a>    <span class="at">data=</span>cprox_df,</span>
+<span id="cb24-41"><a href="#cb24-41" aria-hidden="true" tabindex="-1"></a>    <span class="fu">aes</span>(<span class="at">x=</span>X, <span class="at">y=</span>Y, <span class="at">group=</span><span class="fu">factor</span>(A)),</span>
+<span id="cb24-42"><a href="#cb24-42" aria-hidden="true" tabindex="-1"></a>    <span class="at">method=</span>lm, <span class="at">se=</span><span class="cn">FALSE</span>, <span class="at">fullrange=</span><span class="cn">TRUE</span>,</span>
+<span id="cb24-43"><a href="#cb24-43" aria-hidden="true" tabindex="-1"></a>    <span class="at">linewidth=</span><span class="fl">2.75</span>, <span class="at">color=</span><span class="st">'black'</span></span>
+<span id="cb24-44"><a href="#cb24-44" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">+</span></span>
+<span id="cb24-45"><a href="#cb24-45" aria-hidden="true" tabindex="-1"></a>  <span class="co"># (Colored lines)</span></span>
+<span id="cb24-46"><a href="#cb24-46" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_smooth</span>(</span>
+<span id="cb24-47"><a href="#cb24-47" aria-hidden="true" tabindex="-1"></a>    <span class="at">data=</span>cprox_df,</span>
+<span id="cb24-48"><a href="#cb24-48" aria-hidden="true" tabindex="-1"></a>    <span class="fu">aes</span>(<span class="at">x=</span>X, <span class="at">y=</span>Y, <span class="at">color=</span><span class="fu">factor</span>(A)),</span>
+<span id="cb24-49"><a href="#cb24-49" aria-hidden="true" tabindex="-1"></a>    <span class="at">method=</span>lm, <span class="at">se=</span><span class="cn">FALSE</span>, <span class="at">fullrange=</span><span class="cn">TRUE</span>,</span>
+<span id="cb24-50"><a href="#cb24-50" aria-hidden="true" tabindex="-1"></a>    <span class="at">linewidth=</span><span class="dv">2</span></span>
+<span id="cb24-51"><a href="#cb24-51" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">+</span></span>
+<span id="cb24-52"><a href="#cb24-52" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_dsan</span>(<span class="at">base_size=</span><span class="dv">22</span>) <span class="sc">+</span></span>
+<span id="cb24-53"><a href="#cb24-53" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(</span>
+<span id="cb24-54"><a href="#cb24-54" aria-hidden="true" tabindex="-1"></a>    <span class="at">plot.title =</span> <span class="fu">element_text</span>(<span class="at">size=</span><span class="dv">22</span>),</span>
+<span id="cb24-55"><a href="#cb24-55" aria-hidden="true" tabindex="-1"></a>    <span class="at">plot.subtitle =</span> <span class="fu">element_markdown</span>(<span class="at">size=</span><span class="dv">20</span>)</span>
+<span id="cb24-56"><a href="#cb24-56" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">+</span></span>
+<span id="cb24-57"><a href="#cb24-57" aria-hidden="true" tabindex="-1"></a>  <span class="fu">coord_equal</span>() <span class="sc">+</span></span>
+<span id="cb24-58"><a href="#cb24-58" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(</span>
+<span id="cb24-59"><a href="#cb24-59" aria-hidden="true" tabindex="-1"></a>    <span class="at">title =</span> <span class="fu">paste0</span>(</span>
+<span id="cb24-60"><a href="#cb24-60" aria-hidden="true" tabindex="-1"></a>      <span class="st">"Unstratified Slope = "</span>,cprox_slope</span>
+<span id="cb24-61"><a href="#cb24-61" aria-hidden="true" tabindex="-1"></a>    ),</span>
+<span id="cb24-62"><a href="#cb24-62" aria-hidden="true" tabindex="-1"></a>    <span class="at">subtitle=</span>cprox_a_texlabel,</span>
+<span id="cb24-63"><a href="#cb24-63" aria-hidden="true" tabindex="-1"></a>    <span class="at">x =</span> <span class="st">"X"</span>, <span class="at">y =</span> <span class="st">"Y"</span>, <span class="at">color =</span> <span class="st">"A"</span></span>
+<span id="cb24-64"><a href="#cb24-64" aria-hidden="true" tabindex="-1"></a>  )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-stderr">
 <pre><code>`geom_smooth()` using formula = 'y ~ x'
@@ -863,6 +1145,429 @@ The following object is masked from 'package:purrr':
 <figure class="figure">
 <p><img src="index_files/figure-html/prox-continuous-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" width="672"></p>
 </figure>
+</div>
+</div>
+</div>
+</section>
+<section id="colliders-x-rightarrow-z-leftarrow-y-conditioning-opening" class="level2 smaller crunch-title title-09 crunch-quarto-figure crunch-ul crunch-li-5 crunch-p crunch-img crunch-quarto-layout-panel crunch-figure">
+<h2 class="smaller crunch-title title-09 crunch-quarto-figure crunch-ul crunch-li-5 crunch-p crunch-img crunch-quarto-layout-panel crunch-figure anchored" data-anchor-id="colliders-x-rightarrow-z-leftarrow-y-conditioning-opening">⚠️Colliders⚠️ <span class="math inline">\(X \rightarrow Z \leftarrow Y\)</span>: Conditioning = <em>Opening</em></h2>
+<details class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb26"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(rethinking)</span>
+<span id="cb26-2"><a href="#cb26-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dagitty)</span>
+<span id="cb26-3"><a href="#cb26-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggdag)</span>
+<span id="cb26-4"><a href="#cb26-4" aria-hidden="true" tabindex="-1"></a>coll_dag <span class="ot">&lt;-</span><span class="fu">dagitty</span>(<span class="st">"dag{</span></span>
+<span id="cb26-5"><a href="#cb26-5" aria-hidden="true" tabindex="-1"></a><span class="st">X[exposure]</span></span>
+<span id="cb26-6"><a href="#cb26-6" aria-hidden="true" tabindex="-1"></a><span class="st">Y[outcome]</span></span>
+<span id="cb26-7"><a href="#cb26-7" aria-hidden="true" tabindex="-1"></a><span class="st">X -&gt; Y</span></span>
+<span id="cb26-8"><a href="#cb26-8" aria-hidden="true" tabindex="-1"></a><span class="st">X -&gt; Z</span></span>
+<span id="cb26-9"><a href="#cb26-9" aria-hidden="true" tabindex="-1"></a><span class="st">Y -&gt; Z</span></span>
+<span id="cb26-10"><a href="#cb26-10" aria-hidden="true" tabindex="-1"></a><span class="st">}"</span>)</span>
+<span id="cb26-11"><a href="#cb26-11" aria-hidden="true" tabindex="-1"></a><span class="fu">coordinates</span>(coll_dag) <span class="ot">&lt;-</span> <span class="fu">list</span>(</span>
+<span id="cb26-12"><a href="#cb26-12" aria-hidden="true" tabindex="-1"></a>    <span class="at">x=</span><span class="fu">c</span>(<span class="at">X=</span><span class="dv">0</span>, <span class="at">Z=</span><span class="fl">0.5</span>, <span class="at">Y=</span><span class="dv">1</span>),</span>
+<span id="cb26-13"><a href="#cb26-13" aria-hidden="true" tabindex="-1"></a>    <span class="at">y=</span><span class="fu">c</span>(<span class="at">X=</span><span class="dv">1</span>, <span class="at">Z=</span><span class="fl">0.5</span>, <span class="at">Y=</span><span class="dv">1</span>)</span>
+<span id="cb26-14"><a href="#cb26-14" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb26-15"><a href="#cb26-15" aria-hidden="true" tabindex="-1"></a><span class="fu">drawdag</span>(coll_dag, <span class="at">cex=</span><span class="dv">4</span>, <span class="at">lwd=</span><span class="dv">5</span>, <span class="at">radius=</span><span class="dv">10</span>)</span>
+<span id="cb26-16"><a href="#cb26-16" aria-hidden="true" tabindex="-1"></a><span class="fu">drawopenpaths</span>(coll_dag, <span class="at">lwd=</span><span class="dv">5</span>)</span>
+<span id="cb26-17"><a href="#cb26-17" aria-hidden="true" tabindex="-1"></a>adj_sets_coll <span class="ot">&lt;-</span> <span class="fu">adjustmentSets</span>(</span>
+<span id="cb26-18"><a href="#cb26-18" aria-hidden="true" tabindex="-1"></a>    coll_dag, <span class="at">effect=</span><span class="st">"direct"</span></span>
+<span id="cb26-19"><a href="#cb26-19" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb26-20"><a href="#cb26-20" aria-hidden="true" tabindex="-1"></a><span class="fu">writeLines</span>(<span class="st">"Adjustment sets (direct effect):"</span>)</span>
+<span id="cb26-21"><a href="#cb26-21" aria-hidden="true" tabindex="-1"></a>adj_sets_coll</span>
+<span id="cb26-22"><a href="#cb26-22" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">5650</span>)</span>
+<span id="cb26-23"><a href="#cb26-23" aria-hidden="true" tabindex="-1"></a>ccoll_df <span class="ot">&lt;-</span> <span class="fu">tibble</span>(</span>
+<span id="cb26-24"><a href="#cb26-24" aria-hidden="true" tabindex="-1"></a>    <span class="at">X =</span> <span class="fu">rnorm</span>(n_c),</span>
+<span id="cb26-25"><a href="#cb26-25" aria-hidden="true" tabindex="-1"></a>    <span class="at">Y =</span> <span class="fu">rnorm</span>(n_c),</span>
+<span id="cb26-26"><a href="#cb26-26" aria-hidden="true" tabindex="-1"></a>    <span class="at">Z =</span> <span class="fu">rbern</span>(n_c, <span class="fu">plogis</span>(<span class="dv">2</span> <span class="sc">*</span> (X <span class="sc">+</span> Y <span class="sc">-</span> <span class="dv">1</span>)))</span>
+<span id="cb26-27"><a href="#cb26-27" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb26-28"><a href="#cb26-28" aria-hidden="true" tabindex="-1"></a>ccoll_lm <span class="ot">&lt;-</span> <span class="fu">lm</span>(Y <span class="sc">~</span> X, <span class="at">data=</span>ccoll_df)</span>
+<span id="cb26-29"><a href="#cb26-29" aria-hidden="true" tabindex="-1"></a>ccoll_slope <span class="ot">&lt;-</span> <span class="fu">round</span>(ccoll_lm<span class="sc">$</span>coef[<span class="st">'X'</span>], <span class="dv">3</span>)</span>
+<span id="cb26-30"><a href="#cb26-30" aria-hidden="true" tabindex="-1"></a>ccoll_z0_lm <span class="ot">&lt;-</span> <span class="fu">lm</span>(Y <span class="sc">~</span> X, <span class="at">data=</span>ccoll_df <span class="sc">|&gt;</span> <span class="fu">filter</span>(Z <span class="sc">==</span> <span class="dv">0</span>))</span>
+<span id="cb26-31"><a href="#cb26-31" aria-hidden="true" tabindex="-1"></a>ccoll_z0_slope <span class="ot">&lt;-</span> <span class="fu">round</span>(ccoll_z0_lm<span class="sc">$</span>coef[<span class="st">'X'</span>], <span class="dv">2</span>)</span>
+<span id="cb26-32"><a href="#cb26-32" aria-hidden="true" tabindex="-1"></a>ccoll_z0_label <span class="ot">&lt;-</span> <span class="fu">paste0</span>(<span class="st">"&lt;span style='color: #e69f00;'&gt;Slope&lt;sub&gt;Z=0&lt;/sub&gt; = "</span>,ccoll_z0_slope,<span class="st">"&lt;/span&gt;"</span>)</span>
+<span id="cb26-33"><a href="#cb26-33" aria-hidden="true" tabindex="-1"></a>ccoll_z1_lm <span class="ot">&lt;-</span> <span class="fu">lm</span>(Y <span class="sc">~</span> X, <span class="at">data=</span>ccoll_df <span class="sc">|&gt;</span> <span class="fu">filter</span>(Z <span class="sc">==</span> <span class="dv">1</span>))</span>
+<span id="cb26-34"><a href="#cb26-34" aria-hidden="true" tabindex="-1"></a>ccoll_z1_slope <span class="ot">&lt;-</span> <span class="fu">round</span>(ccoll_z1_lm<span class="sc">$</span>coef[<span class="st">'X'</span>], <span class="dv">2</span>)</span>
+<span id="cb26-35"><a href="#cb26-35" aria-hidden="true" tabindex="-1"></a>ccoll_z1_label <span class="ot">&lt;-</span> <span class="fu">paste0</span>(<span class="st">"&lt;span style='color: #56b4e9;'&gt;Slope&lt;sub&gt;Z=1&lt;/sub&gt; = "</span>,ccoll_z1_slope,<span class="st">"&lt;/span&gt;"</span>)</span>
+<span id="cb26-36"><a href="#cb26-36" aria-hidden="true" tabindex="-1"></a>ccoll_z_texlabel <span class="ot">&lt;-</span> <span class="fu">paste0</span>(ccoll_z0_label, <span class="st">" | "</span>, ccoll_z1_label)</span>
+<span id="cb26-37"><a href="#cb26-37" aria-hidden="true" tabindex="-1"></a>ccoll_xmin <span class="ot">&lt;-</span> <span class="fu">min</span>(ccoll_df<span class="sc">$</span>X)</span>
+<span id="cb26-38"><a href="#cb26-38" aria-hidden="true" tabindex="-1"></a>ccoll_xmax <span class="ot">&lt;-</span> <span class="fu">max</span>(ccoll_df<span class="sc">$</span>X)</span>
+<span id="cb26-39"><a href="#cb26-39" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>() <span class="sc">+</span></span>
+<span id="cb26-40"><a href="#cb26-40" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Points</span></span>
+<span id="cb26-41"><a href="#cb26-41" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(</span>
+<span id="cb26-42"><a href="#cb26-42" aria-hidden="true" tabindex="-1"></a>    <span class="at">data=</span>ccoll_df <span class="sc">|&gt;</span> <span class="fu">filter</span>(Y <span class="sc">&gt;</span> <span class="sc">-</span><span class="dv">3</span>),</span>
+<span id="cb26-43"><a href="#cb26-43" aria-hidden="true" tabindex="-1"></a>    <span class="fu">aes</span>(<span class="at">x=</span>X, <span class="at">y=</span>Y, <span class="at">color=</span><span class="fu">factor</span>(Z)),</span>
+<span id="cb26-44"><a href="#cb26-44" aria-hidden="true" tabindex="-1"></a>    <span class="at">size=</span><span class="fl">0.4</span><span class="sc">*</span>g_pointsize,</span>
+<span id="cb26-45"><a href="#cb26-45" aria-hidden="true" tabindex="-1"></a>    <span class="at">alpha=</span><span class="fl">0.8</span></span>
+<span id="cb26-46"><a href="#cb26-46" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">+</span></span>
+<span id="cb26-47"><a href="#cb26-47" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Overall lm</span></span>
+<span id="cb26-48"><a href="#cb26-48" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_smooth</span>(</span>
+<span id="cb26-49"><a href="#cb26-49" aria-hidden="true" tabindex="-1"></a>    <span class="at">data=</span>ccoll_df, <span class="fu">aes</span>(<span class="at">x=</span>X, <span class="at">y=</span>Y),</span>
+<span id="cb26-50"><a href="#cb26-50" aria-hidden="true" tabindex="-1"></a>    <span class="at">method =</span> lm, <span class="at">se =</span> <span class="cn">FALSE</span>,</span>
+<span id="cb26-51"><a href="#cb26-51" aria-hidden="true" tabindex="-1"></a>    <span class="at">linewidth =</span> <span class="dv">3</span>, <span class="at">color=</span><span class="st">'white'</span></span>
+<span id="cb26-52"><a href="#cb26-52" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">+</span></span>
+<span id="cb26-53"><a href="#cb26-53" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_smooth</span>(</span>
+<span id="cb26-54"><a href="#cb26-54" aria-hidden="true" tabindex="-1"></a>    <span class="at">data=</span>ccoll_df, <span class="fu">aes</span>(<span class="at">x=</span>X, <span class="at">y=</span>Y),</span>
+<span id="cb26-55"><a href="#cb26-55" aria-hidden="true" tabindex="-1"></a>    <span class="at">method =</span> lm, <span class="at">se =</span> <span class="cn">FALSE</span>,</span>
+<span id="cb26-56"><a href="#cb26-56" aria-hidden="true" tabindex="-1"></a>    <span class="at">linewidth =</span> <span class="fl">2.5</span>, <span class="at">color=</span><span class="st">'black'</span></span>
+<span id="cb26-57"><a href="#cb26-57" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">+</span></span>
+<span id="cb26-58"><a href="#cb26-58" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_dsan</span>(<span class="at">base_size=</span><span class="dv">18</span>) <span class="sc">+</span></span>
+<span id="cb26-59"><a href="#cb26-59" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(</span>
+<span id="cb26-60"><a href="#cb26-60" aria-hidden="true" tabindex="-1"></a>    <span class="at">plot.title =</span> <span class="fu">element_markdown</span>(<span class="at">size=</span><span class="dv">18</span>),</span>
+<span id="cb26-61"><a href="#cb26-61" aria-hidden="true" tabindex="-1"></a>    <span class="at">plot.subtitle =</span> <span class="fu">element_markdown</span>(<span class="at">size=</span><span class="dv">16</span>)</span>
+<span id="cb26-62"><a href="#cb26-62" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">+</span></span>
+<span id="cb26-63"><a href="#cb26-63" aria-hidden="true" tabindex="-1"></a>  <span class="fu">coord_equal</span>() <span class="sc">+</span></span>
+<span id="cb26-64"><a href="#cb26-64" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(</span>
+<span id="cb26-65"><a href="#cb26-65" aria-hidden="true" tabindex="-1"></a>    <span class="at">title=</span>ccoll_z_texlabel,</span>
+<span id="cb26-66"><a href="#cb26-66" aria-hidden="true" tabindex="-1"></a>    <span class="at">x =</span> <span class="st">"X"</span>, <span class="at">y =</span> <span class="st">"Y"</span>, <span class="at">color =</span> <span class="st">"Z"</span></span>
+<span id="cb26-67"><a href="#cb26-67" aria-hidden="true" tabindex="-1"></a>  )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="quarto-layout-panel" data-layout="[30,20,50]" data-layout-align="center">
+<div class="quarto-layout-row quarto-layout-valign-center">
+<div id="collider-open" class="quarto-layout-cell" style="flex-basis: 30.0%;justify-content: center;">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/flow-closed.jpg" class="img-fluid quarto-figure quarto-figure-center figure-img" width="200"></p>
+</figure>
+</div>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/causal_collider.svg" class="img-fluid quarto-figure quarto-figure-center figure-img" width="220"></p>
+</figure>
+</div>
+</div>
+<div id="collider-dag-img" class="quarto-layout-cell" style="flex-basis: 20.0%;justify-content: center;">
+<div class="cell" data-layout-align="center">
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="index_files/figure-html/collider-dag-unobs-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Adjustment sets (direct effect):
+ {}</code></pre>
+</div>
+</div>
+</div>
+<div id="open-collider-plot" class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
+<div class="cell" data-layout-align="center">
+<div class="cell-output cell-output-stderr">
+<pre><code>`geom_smooth()` using formula = 'y ~ x'
+`geom_smooth()` using formula = 'y ~ x'</code></pre>
+</div>
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="index_files/figure-html/collider-unobs-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" width="432"></p>
+</figure>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Collider Observed -->
+<details class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb29"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(rethinking)</span>
+<span id="cb29-2"><a href="#cb29-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dagitty)</span>
+<span id="cb29-3"><a href="#cb29-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggdag)</span>
+<span id="cb29-4"><a href="#cb29-4" aria-hidden="true" tabindex="-1"></a>fork_dag_closed <span class="ot">&lt;-</span><span class="fu">dagitty</span>(<span class="st">"dag{</span></span>
+<span id="cb29-5"><a href="#cb29-5" aria-hidden="true" tabindex="-1"></a><span class="st">X[exposure]</span></span>
+<span id="cb29-6"><a href="#cb29-6" aria-hidden="true" tabindex="-1"></a><span class="st">Y[outcome]</span></span>
+<span id="cb29-7"><a href="#cb29-7" aria-hidden="true" tabindex="-1"></a><span class="st">Z[adjustedNode]</span></span>
+<span id="cb29-8"><a href="#cb29-8" aria-hidden="true" tabindex="-1"></a><span class="st">X -&gt; Y</span></span>
+<span id="cb29-9"><a href="#cb29-9" aria-hidden="true" tabindex="-1"></a><span class="st">X -&gt; Z</span></span>
+<span id="cb29-10"><a href="#cb29-10" aria-hidden="true" tabindex="-1"></a><span class="st">Y -&gt; Z</span></span>
+<span id="cb29-11"><a href="#cb29-11" aria-hidden="true" tabindex="-1"></a><span class="st">}"</span>)</span>
+<span id="cb29-12"><a href="#cb29-12" aria-hidden="true" tabindex="-1"></a><span class="fu">coordinates</span>(fork_dag_closed) <span class="ot">&lt;-</span> <span class="fu">list</span>(</span>
+<span id="cb29-13"><a href="#cb29-13" aria-hidden="true" tabindex="-1"></a>    <span class="at">x=</span><span class="fu">c</span>(<span class="at">X=</span><span class="dv">0</span>, <span class="at">Z=</span><span class="fl">0.5</span>, <span class="at">Y=</span><span class="dv">1</span>),</span>
+<span id="cb29-14"><a href="#cb29-14" aria-hidden="true" tabindex="-1"></a>    <span class="at">y=</span><span class="fu">c</span>(<span class="at">X=</span><span class="dv">1</span>, <span class="at">Z=</span><span class="fl">0.5</span>, <span class="at">Y=</span><span class="dv">1</span>)</span>
+<span id="cb29-15"><a href="#cb29-15" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb29-16"><a href="#cb29-16" aria-hidden="true" tabindex="-1"></a>fork_dag_closed <span class="ot">&lt;-</span> <span class="fu">setVariableStatus</span>(fork_dag_closed, <span class="st">"adjustedNode"</span>, <span class="st">"Z"</span>)</span>
+<span id="cb29-17"><a href="#cb29-17" aria-hidden="true" tabindex="-1"></a><span class="fu">drawdag</span>(fork_dag_closed, <span class="at">cex=</span><span class="dv">4</span>, <span class="at">lwd=</span><span class="dv">5</span>, <span class="at">radius=</span><span class="dv">10</span>)</span>
+<span id="cb29-18"><a href="#cb29-18" aria-hidden="true" tabindex="-1"></a><span class="fu">drawopenpaths</span>(fork_dag_closed, <span class="at">Z=</span><span class="st">"Z"</span>, <span class="at">lwd=</span><span class="dv">5</span>)</span>
+<span id="cb29-19"><a href="#cb29-19" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">5650</span>)</span>
+<span id="cb29-20"><a href="#cb29-20" aria-hidden="true" tabindex="-1"></a>ccoll_df <span class="ot">&lt;-</span> <span class="fu">tibble</span>(</span>
+<span id="cb29-21"><a href="#cb29-21" aria-hidden="true" tabindex="-1"></a>    <span class="at">X =</span> <span class="fu">rnorm</span>(n_c),</span>
+<span id="cb29-22"><a href="#cb29-22" aria-hidden="true" tabindex="-1"></a>    <span class="at">Y =</span> <span class="fu">rnorm</span>(n_c),</span>
+<span id="cb29-23"><a href="#cb29-23" aria-hidden="true" tabindex="-1"></a>    <span class="at">Z =</span> <span class="fu">rbern</span>(n_c, <span class="fu">plogis</span>(<span class="dv">2</span> <span class="sc">*</span> (X <span class="sc">+</span> Y <span class="sc">-</span> <span class="dv">1</span>)))</span>
+<span id="cb29-24"><a href="#cb29-24" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb29-25"><a href="#cb29-25" aria-hidden="true" tabindex="-1"></a>ccoll_lm <span class="ot">&lt;-</span> <span class="fu">lm</span>(Y <span class="sc">~</span> X, <span class="at">data=</span>ccoll_df)</span>
+<span id="cb29-26"><a href="#cb29-26" aria-hidden="true" tabindex="-1"></a>ccoll_slope <span class="ot">&lt;-</span> <span class="fu">round</span>(ccoll_lm<span class="sc">$</span>coef[<span class="st">'X'</span>], <span class="dv">3</span>)</span>
+<span id="cb29-27"><a href="#cb29-27" aria-hidden="true" tabindex="-1"></a>ccoll_z0_lm <span class="ot">&lt;-</span> <span class="fu">lm</span>(Y <span class="sc">~</span> X, <span class="at">data=</span>ccoll_df <span class="sc">|&gt;</span> <span class="fu">filter</span>(Z <span class="sc">==</span> <span class="dv">0</span>))</span>
+<span id="cb29-28"><a href="#cb29-28" aria-hidden="true" tabindex="-1"></a>ccoll_z0_slope <span class="ot">&lt;-</span> <span class="fu">round</span>(ccoll_z0_lm<span class="sc">$</span>coef[<span class="st">'X'</span>], <span class="dv">2</span>)</span>
+<span id="cb29-29"><a href="#cb29-29" aria-hidden="true" tabindex="-1"></a>ccoll_z0_label <span class="ot">&lt;-</span> <span class="fu">paste0</span>(<span class="st">"&lt;span style='color: #e69f00;'&gt;Slope&lt;sub&gt;Z=0&lt;/sub&gt; = "</span>,ccoll_z0_slope,<span class="st">"&lt;/span&gt;"</span>)</span>
+<span id="cb29-30"><a href="#cb29-30" aria-hidden="true" tabindex="-1"></a>ccoll_z1_lm <span class="ot">&lt;-</span> <span class="fu">lm</span>(Y <span class="sc">~</span> X, <span class="at">data=</span>ccoll_df <span class="sc">|&gt;</span> <span class="fu">filter</span>(Z <span class="sc">==</span> <span class="dv">1</span>))</span>
+<span id="cb29-31"><a href="#cb29-31" aria-hidden="true" tabindex="-1"></a>ccoll_z1_slope <span class="ot">&lt;-</span> <span class="fu">round</span>(ccoll_z1_lm<span class="sc">$</span>coef[<span class="st">'X'</span>], <span class="dv">2</span>)</span>
+<span id="cb29-32"><a href="#cb29-32" aria-hidden="true" tabindex="-1"></a>ccoll_z1_label <span class="ot">&lt;-</span> <span class="fu">paste0</span>(<span class="st">"&lt;span style='color: #56b4e9;'&gt;Slope&lt;sub&gt;Z=1&lt;/sub&gt; = "</span>,ccoll_z1_slope,<span class="st">"&lt;/span&gt;"</span>)</span>
+<span id="cb29-33"><a href="#cb29-33" aria-hidden="true" tabindex="-1"></a>ccoll_z_texlabel <span class="ot">&lt;-</span> <span class="fu">paste0</span>(ccoll_z0_label, <span class="st">" | "</span>, ccoll_z1_label)</span>
+<span id="cb29-34"><a href="#cb29-34" aria-hidden="true" tabindex="-1"></a>ccoll_xmin <span class="ot">&lt;-</span> <span class="fu">min</span>(ccoll_df<span class="sc">$</span>X)</span>
+<span id="cb29-35"><a href="#cb29-35" aria-hidden="true" tabindex="-1"></a>ccoll_xmax <span class="ot">&lt;-</span> <span class="fu">max</span>(ccoll_df<span class="sc">$</span>X)</span>
+<span id="cb29-36"><a href="#cb29-36" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>() <span class="sc">+</span></span>
+<span id="cb29-37"><a href="#cb29-37" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Points</span></span>
+<span id="cb29-38"><a href="#cb29-38" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(</span>
+<span id="cb29-39"><a href="#cb29-39" aria-hidden="true" tabindex="-1"></a>    <span class="at">data=</span>ccoll_df <span class="sc">|&gt;</span> <span class="fu">filter</span>(Y <span class="sc">&gt;</span> <span class="sc">-</span><span class="dv">3</span>),</span>
+<span id="cb29-40"><a href="#cb29-40" aria-hidden="true" tabindex="-1"></a>    <span class="fu">aes</span>(<span class="at">x=</span>X, <span class="at">y=</span>Y, <span class="at">color=</span><span class="fu">factor</span>(Z)),</span>
+<span id="cb29-41"><a href="#cb29-41" aria-hidden="true" tabindex="-1"></a>    <span class="at">size=</span><span class="fl">0.4</span><span class="sc">*</span>g_pointsize,</span>
+<span id="cb29-42"><a href="#cb29-42" aria-hidden="true" tabindex="-1"></a>    <span class="at">alpha=</span><span class="fl">0.8</span></span>
+<span id="cb29-43"><a href="#cb29-43" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">+</span></span>
+<span id="cb29-44"><a href="#cb29-44" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Stratified lm</span></span>
+<span id="cb29-45"><a href="#cb29-45" aria-hidden="true" tabindex="-1"></a>  <span class="co"># (slightly larger black lines)</span></span>
+<span id="cb29-46"><a href="#cb29-46" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_smooth</span>(</span>
+<span id="cb29-47"><a href="#cb29-47" aria-hidden="true" tabindex="-1"></a>    <span class="at">data=</span>ccoll_df,</span>
+<span id="cb29-48"><a href="#cb29-48" aria-hidden="true" tabindex="-1"></a>    <span class="fu">aes</span>(<span class="at">x=</span>X, <span class="at">y=</span>Y, <span class="at">group=</span><span class="fu">factor</span>(Z)),</span>
+<span id="cb29-49"><a href="#cb29-49" aria-hidden="true" tabindex="-1"></a>    <span class="at">method=</span>lm, <span class="at">se=</span><span class="cn">FALSE</span>, <span class="at">fullrange=</span><span class="cn">TRUE</span>,</span>
+<span id="cb29-50"><a href="#cb29-50" aria-hidden="true" tabindex="-1"></a>    <span class="at">linewidth=</span><span class="fl">2.75</span>, <span class="at">color=</span><span class="st">'black'</span></span>
+<span id="cb29-51"><a href="#cb29-51" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">+</span></span>
+<span id="cb29-52"><a href="#cb29-52" aria-hidden="true" tabindex="-1"></a>  <span class="co"># (Colored lines)</span></span>
+<span id="cb29-53"><a href="#cb29-53" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_smooth</span>(</span>
+<span id="cb29-54"><a href="#cb29-54" aria-hidden="true" tabindex="-1"></a>    <span class="at">data=</span>ccoll_df,</span>
+<span id="cb29-55"><a href="#cb29-55" aria-hidden="true" tabindex="-1"></a>    <span class="fu">aes</span>(<span class="at">x=</span>X, <span class="at">y=</span>Y, <span class="at">color=</span><span class="fu">factor</span>(Z)),</span>
+<span id="cb29-56"><a href="#cb29-56" aria-hidden="true" tabindex="-1"></a>    <span class="at">method=</span>lm, <span class="at">se=</span><span class="cn">FALSE</span>, <span class="at">fullrange=</span><span class="cn">TRUE</span>,</span>
+<span id="cb29-57"><a href="#cb29-57" aria-hidden="true" tabindex="-1"></a>    <span class="at">linewidth=</span><span class="dv">2</span></span>
+<span id="cb29-58"><a href="#cb29-58" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">+</span></span>
+<span id="cb29-59"><a href="#cb29-59" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_dsan</span>(<span class="at">base_size=</span><span class="dv">18</span>) <span class="sc">+</span></span>
+<span id="cb29-60"><a href="#cb29-60" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(</span>
+<span id="cb29-61"><a href="#cb29-61" aria-hidden="true" tabindex="-1"></a>    <span class="at">plot.title =</span> <span class="fu">element_markdown</span>(<span class="at">size=</span><span class="dv">18</span>),</span>
+<span id="cb29-62"><a href="#cb29-62" aria-hidden="true" tabindex="-1"></a>    <span class="at">plot.subtitle =</span> <span class="fu">element_markdown</span>(<span class="at">size=</span><span class="dv">16</span>)</span>
+<span id="cb29-63"><a href="#cb29-63" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">+</span></span>
+<span id="cb29-64"><a href="#cb29-64" aria-hidden="true" tabindex="-1"></a>  <span class="fu">coord_equal</span>() <span class="sc">+</span></span>
+<span id="cb29-65"><a href="#cb29-65" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(</span>
+<span id="cb29-66"><a href="#cb29-66" aria-hidden="true" tabindex="-1"></a>    <span class="at">title=</span>ccoll_z_texlabel,</span>
+<span id="cb29-67"><a href="#cb29-67" aria-hidden="true" tabindex="-1"></a>    <span class="at">x =</span> <span class="st">"X"</span>, <span class="at">y =</span> <span class="st">"Y"</span>, <span class="at">color =</span> <span class="st">"Z"</span></span>
+<span id="cb29-68"><a href="#cb29-68" aria-hidden="true" tabindex="-1"></a>  )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="quarto-layout-panel" data-layout="[30,20,50]" data-layout-align="center">
+<div class="quarto-layout-row quarto-layout-valign-center">
+<div id="fork-closed" class="quarto-layout-cell" style="flex-basis: 30.0%;justify-content: center;">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/flow-open.jpg" class="img-fluid quarto-figure quarto-figure-center figure-img" width="200"></p>
+</figure>
+</div>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/causal_collider_obs.svg" class="img-fluid quarto-figure quarto-figure-center figure-img" width="220"></p>
+</figure>
+</div>
+</div>
+<div id="collider-dag-obs-img" class="quarto-layout-cell" style="flex-basis: 20.0%;justify-content: center;">
+<div class="cell" data-layout-align="center">
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="index_files/figure-html/collider-dag-obs-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<p><img src="images/blewit.jpg" class="img-fluid" width="180"></p>
+</div>
+<div id="collider-obs-plot" class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
+<div class="cell" data-layout-align="center">
+<div class="cell-output cell-output-stderr">
+<pre><code>`geom_smooth()` using formula = 'y ~ x'
+`geom_smooth()` using formula = 'y ~ x'</code></pre>
+</div>
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="index_files/figure-html/collider-obs-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" width="432"></p>
+</figure>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id="is-this-just-a-corner-case" class="level2 smaller crunch-title crunch-ul crunch-quarto-figure crunch-figure crunch-img crunch-p crunch-li-5 crunch-quarto-layout-panel">
+<h2 class="smaller crunch-title crunch-ul crunch-quarto-figure crunch-figure crunch-img crunch-p crunch-li-5 crunch-quarto-layout-panel anchored" data-anchor-id="is-this-just-a-corner-case">Is This Just a Corner Case?</h2>
+<ul>
+<li>Grant applications are regularly judged on two criteria: <strong>novelty</strong> and <strong>rigor</strong></li>
+<li>Judges grade proposal separately on the two criteria, grant is awarded to top <span class="math inline">\(N\)</span> applications based on combined scores…</li>
+</ul>
+<details class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb31"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">5650</span>)</span>
+<span id="cb31-2"><a href="#cb31-2" aria-hidden="true" tabindex="-1"></a>grant_df <span class="ot">&lt;-</span> <span class="fu">tibble</span>(</span>
+<span id="cb31-3"><a href="#cb31-3" aria-hidden="true" tabindex="-1"></a>    <span class="at">newsworthy =</span> <span class="fu">runif</span>(n_c, <span class="dv">0</span>, <span class="dv">10</span>),</span>
+<span id="cb31-4"><a href="#cb31-4" aria-hidden="true" tabindex="-1"></a>    <span class="at">rigorous =</span> <span class="fu">runif</span>(n_c, <span class="dv">0</span>, <span class="dv">10</span>),</span>
+<span id="cb31-5"><a href="#cb31-5" aria-hidden="true" tabindex="-1"></a>    <span class="at">awarded =</span> <span class="fu">ifelse</span>(newsworthy <span class="sc">+</span> rigorous <span class="sc">&gt;</span> <span class="dv">10</span>, <span class="dv">1</span>, <span class="dv">0</span>)</span>
+<span id="cb31-6"><a href="#cb31-6" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb31-7"><a href="#cb31-7" aria-hidden="true" tabindex="-1"></a>grant_lm <span class="ot">&lt;-</span> <span class="fu">lm</span>(rigorous <span class="sc">~</span> newsworthy, <span class="at">data=</span>grant_df)</span>
+<span id="cb31-8"><a href="#cb31-8" aria-hidden="true" tabindex="-1"></a>grant_slope <span class="ot">&lt;-</span> <span class="fu">round</span>(grant_lm<span class="sc">$</span>coef[<span class="st">'newsworthy'</span>], <span class="dv">3</span>)</span>
+<span id="cb31-9"><a href="#cb31-9" aria-hidden="true" tabindex="-1"></a>grant_z0_lm <span class="ot">&lt;-</span> <span class="fu">lm</span>(rigorous <span class="sc">~</span> newsworthy, <span class="at">data=</span>grant_df <span class="sc">|&gt;</span> <span class="fu">filter</span>(awarded <span class="sc">==</span> <span class="dv">0</span>))</span>
+<span id="cb31-10"><a href="#cb31-10" aria-hidden="true" tabindex="-1"></a>grant_z0_slope <span class="ot">&lt;-</span> <span class="fu">round</span>(grant_z0_lm<span class="sc">$</span>coef[<span class="st">'newsworthy'</span>], <span class="dv">2</span>)</span>
+<span id="cb31-11"><a href="#cb31-11" aria-hidden="true" tabindex="-1"></a>grant_z1_lm <span class="ot">&lt;-</span> <span class="fu">lm</span>(rigorous <span class="sc">~</span> newsworthy, <span class="at">data=</span>grant_df <span class="sc">|&gt;</span> <span class="fu">filter</span>(awarded <span class="sc">==</span> <span class="dv">1</span>))</span>
+<span id="cb31-12"><a href="#cb31-12" aria-hidden="true" tabindex="-1"></a>grant_z1_slope <span class="ot">&lt;-</span> <span class="fu">round</span>(grant_z1_lm<span class="sc">$</span>coef[<span class="st">'newsworthy'</span>], <span class="dv">2</span>)</span>
+<span id="cb31-13"><a href="#cb31-13" aria-hidden="true" tabindex="-1"></a>grant_z1_label <span class="ot">&lt;-</span> <span class="fu">paste0</span>(<span class="st">"&lt;span style='color: #56b4e9;'&gt;Slope&lt;sub&gt;+&lt;/sub&gt; = "</span>,grant_z1_slope,<span class="st">"&lt;/span&gt;"</span>)</span>
+<span id="cb31-14"><a href="#cb31-14" aria-hidden="true" tabindex="-1"></a>grant_z_texlabel <span class="ot">&lt;-</span> grant_z1_label</span>
+<span id="cb31-15"><a href="#cb31-15" aria-hidden="true" tabindex="-1"></a>grant_xmin <span class="ot">&lt;-</span> <span class="fu">min</span>(grant_df<span class="sc">$</span>newsworthy)</span>
+<span id="cb31-16"><a href="#cb31-16" aria-hidden="true" tabindex="-1"></a>grant_xmax <span class="ot">&lt;-</span> <span class="fu">max</span>(grant_df<span class="sc">$</span>newsworthy)</span>
+<span id="cb31-17"><a href="#cb31-17" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>() <span class="sc">+</span></span>
+<span id="cb31-18"><a href="#cb31-18" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Points</span></span>
+<span id="cb31-19"><a href="#cb31-19" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(</span>
+<span id="cb31-20"><a href="#cb31-20" aria-hidden="true" tabindex="-1"></a>    <span class="at">data=</span>grant_df <span class="sc">|&gt;</span> <span class="fu">filter</span>(rigorous <span class="sc">&gt;</span> <span class="sc">-</span><span class="dv">3</span>),</span>
+<span id="cb31-21"><a href="#cb31-21" aria-hidden="true" tabindex="-1"></a>    <span class="fu">aes</span>(<span class="at">x=</span>newsworthy, <span class="at">y=</span>rigorous, <span class="at">color=</span><span class="fu">factor</span>(awarded)),</span>
+<span id="cb31-22"><a href="#cb31-22" aria-hidden="true" tabindex="-1"></a>    <span class="at">size=</span><span class="fl">0.4</span><span class="sc">*</span>g_pointsize,</span>
+<span id="cb31-23"><a href="#cb31-23" aria-hidden="true" tabindex="-1"></a>    <span class="at">alpha=</span><span class="fl">0.8</span></span>
+<span id="cb31-24"><a href="#cb31-24" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">+</span></span>
+<span id="cb31-25"><a href="#cb31-25" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Stratified lm</span></span>
+<span id="cb31-26"><a href="#cb31-26" aria-hidden="true" tabindex="-1"></a>  <span class="co"># (slightly larger black lines)</span></span>
+<span id="cb31-27"><a href="#cb31-27" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_smooth</span>(</span>
+<span id="cb31-28"><a href="#cb31-28" aria-hidden="true" tabindex="-1"></a>    <span class="at">data=</span>grant_df <span class="sc">|&gt;</span> <span class="fu">filter</span>(awarded <span class="sc">==</span> <span class="dv">1</span>),</span>
+<span id="cb31-29"><a href="#cb31-29" aria-hidden="true" tabindex="-1"></a>    <span class="fu">aes</span>(<span class="at">x=</span>newsworthy, <span class="at">y=</span>rigorous, <span class="at">group=</span><span class="fu">factor</span>(awarded)),</span>
+<span id="cb31-30"><a href="#cb31-30" aria-hidden="true" tabindex="-1"></a>    <span class="at">method=</span>lm, <span class="at">se=</span><span class="cn">FALSE</span>, <span class="at">fullrange=</span><span class="cn">TRUE</span>,</span>
+<span id="cb31-31"><a href="#cb31-31" aria-hidden="true" tabindex="-1"></a>    <span class="at">linewidth=</span><span class="fl">2.75</span>, <span class="at">color=</span><span class="st">'black'</span></span>
+<span id="cb31-32"><a href="#cb31-32" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">+</span></span>
+<span id="cb31-33"><a href="#cb31-33" aria-hidden="true" tabindex="-1"></a>  <span class="co"># (Colored lines)</span></span>
+<span id="cb31-34"><a href="#cb31-34" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_smooth</span>(</span>
+<span id="cb31-35"><a href="#cb31-35" aria-hidden="true" tabindex="-1"></a>    <span class="at">data=</span>grant_df <span class="sc">|&gt;</span> <span class="fu">filter</span>(awarded <span class="sc">==</span> <span class="dv">1</span>),</span>
+<span id="cb31-36"><a href="#cb31-36" aria-hidden="true" tabindex="-1"></a>    <span class="fu">aes</span>(<span class="at">x=</span>newsworthy, <span class="at">y=</span>rigorous, <span class="at">color=</span><span class="fu">factor</span>(awarded)),</span>
+<span id="cb31-37"><a href="#cb31-37" aria-hidden="true" tabindex="-1"></a>    <span class="at">method=</span>lm, <span class="at">se=</span><span class="cn">FALSE</span>, <span class="at">fullrange=</span><span class="cn">TRUE</span>,</span>
+<span id="cb31-38"><a href="#cb31-38" aria-hidden="true" tabindex="-1"></a>    <span class="at">linewidth=</span><span class="dv">2</span></span>
+<span id="cb31-39"><a href="#cb31-39" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">+</span></span>
+<span id="cb31-40"><a href="#cb31-40" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_dsan</span>(<span class="at">base_size=</span><span class="dv">18</span>) <span class="sc">+</span></span>
+<span id="cb31-41"><a href="#cb31-41" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(</span>
+<span id="cb31-42"><a href="#cb31-42" aria-hidden="true" tabindex="-1"></a>    <span class="at">plot.title =</span> <span class="fu">element_markdown</span>(<span class="at">size=</span><span class="dv">18</span>),</span>
+<span id="cb31-43"><a href="#cb31-43" aria-hidden="true" tabindex="-1"></a>    <span class="at">plot.subtitle =</span> <span class="fu">element_markdown</span>(<span class="at">size=</span><span class="dv">16</span>)</span>
+<span id="cb31-44"><a href="#cb31-44" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">+</span></span>
+<span id="cb31-45"><a href="#cb31-45" aria-hidden="true" tabindex="-1"></a>  <span class="fu">coord_equal</span>() <span class="sc">+</span></span>
+<span id="cb31-46"><a href="#cb31-46" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(</span>
+<span id="cb31-47"><a href="#cb31-47" aria-hidden="true" tabindex="-1"></a>    <span class="at">title=</span>grant_z_texlabel,</span>
+<span id="cb31-48"><a href="#cb31-48" aria-hidden="true" tabindex="-1"></a>    <span class="at">x =</span> <span class="st">"Newsworthy?"</span>, <span class="at">y =</span> <span class="st">"Rigorous?"</span>, <span class="at">color =</span> <span class="st">"awarded"</span></span>
+<span id="cb31-49"><a href="#cb31-49" aria-hidden="true" tabindex="-1"></a>  )</span>
+<span id="cb31-50"><a href="#cb31-50" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">5650</span>)</span>
+<span id="cb31-51"><a href="#cb31-51" aria-hidden="true" tabindex="-1"></a>grant_df <span class="ot">&lt;-</span> <span class="fu">tibble</span>(</span>
+<span id="cb31-52"><a href="#cb31-52" aria-hidden="true" tabindex="-1"></a>    <span class="at">newsworthy =</span> <span class="fu">rnorm</span>(n_c, <span class="dv">5</span>, <span class="dv">1</span>),</span>
+<span id="cb31-53"><a href="#cb31-53" aria-hidden="true" tabindex="-1"></a>    <span class="at">rigorous =</span> <span class="fu">rnorm</span>(n_c, <span class="dv">5</span>, <span class="dv">1</span>),</span>
+<span id="cb31-54"><a href="#cb31-54" aria-hidden="true" tabindex="-1"></a>    <span class="at">awarded =</span> <span class="fu">ifelse</span>(newsworthy <span class="sc">+</span> rigorous <span class="sc">&gt;</span> <span class="dv">12</span>, <span class="dv">1</span>, <span class="dv">0</span>)</span>
+<span id="cb31-55"><a href="#cb31-55" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb31-56"><a href="#cb31-56" aria-hidden="true" tabindex="-1"></a>grant_lm <span class="ot">&lt;-</span> <span class="fu">lm</span>(rigorous <span class="sc">~</span> newsworthy, <span class="at">data=</span>grant_df)</span>
+<span id="cb31-57"><a href="#cb31-57" aria-hidden="true" tabindex="-1"></a>grant_slope <span class="ot">&lt;-</span> <span class="fu">round</span>(grant_lm<span class="sc">$</span>coef[<span class="st">'newsworthy'</span>], <span class="dv">3</span>)</span>
+<span id="cb31-58"><a href="#cb31-58" aria-hidden="true" tabindex="-1"></a>grant_z0_lm <span class="ot">&lt;-</span> <span class="fu">lm</span>(rigorous <span class="sc">~</span> newsworthy, <span class="at">data=</span>grant_df <span class="sc">|&gt;</span> <span class="fu">filter</span>(awarded <span class="sc">==</span> <span class="dv">0</span>))</span>
+<span id="cb31-59"><a href="#cb31-59" aria-hidden="true" tabindex="-1"></a>grant_z0_slope <span class="ot">&lt;-</span> <span class="fu">round</span>(grant_z0_lm<span class="sc">$</span>coef[<span class="st">'newsworthy'</span>], <span class="dv">2</span>)</span>
+<span id="cb31-60"><a href="#cb31-60" aria-hidden="true" tabindex="-1"></a>grant_z1_lm <span class="ot">&lt;-</span> <span class="fu">lm</span>(rigorous <span class="sc">~</span> newsworthy, <span class="at">data=</span>grant_df <span class="sc">|&gt;</span> <span class="fu">filter</span>(awarded <span class="sc">==</span> <span class="dv">1</span>))</span>
+<span id="cb31-61"><a href="#cb31-61" aria-hidden="true" tabindex="-1"></a>grant_z1_slope <span class="ot">&lt;-</span> <span class="fu">round</span>(grant_z1_lm<span class="sc">$</span>coef[<span class="st">'newsworthy'</span>], <span class="dv">2</span>)</span>
+<span id="cb31-62"><a href="#cb31-62" aria-hidden="true" tabindex="-1"></a>grant_z1_label <span class="ot">&lt;-</span> <span class="fu">paste0</span>(<span class="st">"&lt;span style='color: #56b4e9;'&gt;Slope&lt;sub&gt;+&lt;/sub&gt; = "</span>,grant_z1_slope,<span class="st">"&lt;/span&gt;"</span>)</span>
+<span id="cb31-63"><a href="#cb31-63" aria-hidden="true" tabindex="-1"></a>grant_z_texlabel <span class="ot">&lt;-</span> grant_z1_label</span>
+<span id="cb31-64"><a href="#cb31-64" aria-hidden="true" tabindex="-1"></a>grant_xmin <span class="ot">&lt;-</span> <span class="fu">min</span>(grant_df<span class="sc">$</span>newsworthy)</span>
+<span id="cb31-65"><a href="#cb31-65" aria-hidden="true" tabindex="-1"></a>grant_xmax <span class="ot">&lt;-</span> <span class="fu">max</span>(grant_df<span class="sc">$</span>newsworthy)</span>
+<span id="cb31-66"><a href="#cb31-66" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>() <span class="sc">+</span></span>
+<span id="cb31-67"><a href="#cb31-67" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Points</span></span>
+<span id="cb31-68"><a href="#cb31-68" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(</span>
+<span id="cb31-69"><a href="#cb31-69" aria-hidden="true" tabindex="-1"></a>    <span class="at">data=</span>grant_df <span class="sc">|&gt;</span> <span class="fu">filter</span>(rigorous <span class="sc">&gt;</span> <span class="sc">-</span><span class="dv">3</span>),</span>
+<span id="cb31-70"><a href="#cb31-70" aria-hidden="true" tabindex="-1"></a>    <span class="fu">aes</span>(<span class="at">x=</span>newsworthy, <span class="at">y=</span>rigorous, <span class="at">color=</span><span class="fu">factor</span>(awarded)),</span>
+<span id="cb31-71"><a href="#cb31-71" aria-hidden="true" tabindex="-1"></a>    <span class="at">size=</span><span class="fl">0.4</span><span class="sc">*</span>g_pointsize,</span>
+<span id="cb31-72"><a href="#cb31-72" aria-hidden="true" tabindex="-1"></a>    <span class="at">alpha=</span><span class="fl">0.8</span></span>
+<span id="cb31-73"><a href="#cb31-73" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">+</span></span>
+<span id="cb31-74"><a href="#cb31-74" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Stratified lm</span></span>
+<span id="cb31-75"><a href="#cb31-75" aria-hidden="true" tabindex="-1"></a>  <span class="co"># (slightly larger black lines)</span></span>
+<span id="cb31-76"><a href="#cb31-76" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_smooth</span>(</span>
+<span id="cb31-77"><a href="#cb31-77" aria-hidden="true" tabindex="-1"></a>    <span class="at">data=</span>grant_df <span class="sc">|&gt;</span> <span class="fu">filter</span>(awarded <span class="sc">==</span> <span class="dv">1</span>),</span>
+<span id="cb31-78"><a href="#cb31-78" aria-hidden="true" tabindex="-1"></a>    <span class="fu">aes</span>(<span class="at">x=</span>newsworthy, <span class="at">y=</span>rigorous, <span class="at">group=</span><span class="fu">factor</span>(awarded)),</span>
+<span id="cb31-79"><a href="#cb31-79" aria-hidden="true" tabindex="-1"></a>    <span class="at">method=</span>lm, <span class="at">se=</span><span class="cn">FALSE</span>, <span class="at">fullrange=</span><span class="cn">TRUE</span>,</span>
+<span id="cb31-80"><a href="#cb31-80" aria-hidden="true" tabindex="-1"></a>    <span class="at">linewidth=</span><span class="fl">2.75</span>, <span class="at">color=</span><span class="st">'black'</span></span>
+<span id="cb31-81"><a href="#cb31-81" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">+</span></span>
+<span id="cb31-82"><a href="#cb31-82" aria-hidden="true" tabindex="-1"></a>  <span class="co"># (Colored lines)</span></span>
+<span id="cb31-83"><a href="#cb31-83" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_smooth</span>(</span>
+<span id="cb31-84"><a href="#cb31-84" aria-hidden="true" tabindex="-1"></a>    <span class="at">data=</span>grant_df <span class="sc">|&gt;</span> <span class="fu">filter</span>(awarded <span class="sc">==</span> <span class="dv">1</span>),</span>
+<span id="cb31-85"><a href="#cb31-85" aria-hidden="true" tabindex="-1"></a>    <span class="fu">aes</span>(<span class="at">x=</span>newsworthy, <span class="at">y=</span>rigorous, <span class="at">color=</span><span class="fu">factor</span>(awarded)),</span>
+<span id="cb31-86"><a href="#cb31-86" aria-hidden="true" tabindex="-1"></a>    <span class="at">method=</span>lm, <span class="at">se=</span><span class="cn">FALSE</span>, <span class="at">fullrange=</span><span class="cn">TRUE</span>,</span>
+<span id="cb31-87"><a href="#cb31-87" aria-hidden="true" tabindex="-1"></a>    <span class="at">linewidth=</span><span class="dv">2</span></span>
+<span id="cb31-88"><a href="#cb31-88" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">+</span></span>
+<span id="cb31-89"><a href="#cb31-89" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_dsan</span>(<span class="at">base_size=</span><span class="dv">18</span>) <span class="sc">+</span></span>
+<span id="cb31-90"><a href="#cb31-90" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(</span>
+<span id="cb31-91"><a href="#cb31-91" aria-hidden="true" tabindex="-1"></a>    <span class="at">plot.title =</span> <span class="fu">element_markdown</span>(<span class="at">size=</span><span class="dv">18</span>),</span>
+<span id="cb31-92"><a href="#cb31-92" aria-hidden="true" tabindex="-1"></a>    <span class="at">plot.subtitle =</span> <span class="fu">element_markdown</span>(<span class="at">size=</span><span class="dv">16</span>)</span>
+<span id="cb31-93"><a href="#cb31-93" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">+</span></span>
+<span id="cb31-94"><a href="#cb31-94" aria-hidden="true" tabindex="-1"></a>  <span class="fu">coord_equal</span>() <span class="sc">+</span></span>
+<span id="cb31-95"><a href="#cb31-95" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(</span>
+<span id="cb31-96"><a href="#cb31-96" aria-hidden="true" tabindex="-1"></a>    <span class="at">title=</span>grant_z_texlabel,</span>
+<span id="cb31-97"><a href="#cb31-97" aria-hidden="true" tabindex="-1"></a>    <span class="at">x =</span> <span class="st">"Newsworthy?"</span>, <span class="at">y =</span> <span class="st">"Rigorous?"</span>, <span class="at">color =</span> <span class="st">"awarded"</span></span>
+<span id="cb31-98"><a href="#cb31-98" aria-hidden="true" tabindex="-1"></a>  )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="quarto-layout-panel" data-layout="[1,1]">
+<div class="quarto-layout-row quarto-layout-valign-center">
+<div id="grants-unif" class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: flex-start;">
+<div class="cell" data-layout-align="center" data-crop="false">
+<div class="cell-output cell-output-stderr">
+<pre><code>`geom_smooth()` using formula = 'y ~ x'
+`geom_smooth()` using formula = 'y ~ x'</code></pre>
+</div>
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="index_files/figure-html/grant-apps-unif-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+</div>
+<div id="grants-normal" class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: flex-start;">
+<div class="cell" data-layout-align="center" data-crop="false">
+<div class="cell-output cell-output-stderr">
+<pre><code>`geom_smooth()` using formula = 'y ~ x'
+`geom_smooth()` using formula = 'y ~ x'</code></pre>
+</div>
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="index_files/figure-html/grant-apps-normal-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" width="480"></p>
+</figure>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id="blocking-backdoor-paths" class="level2 smaller crunch-title inline-90">
+<h2 class="smaller crunch-title inline-90 anchored" data-anchor-id="blocking-backdoor-paths">Blocking Backdoor Paths</h2>
+<p><code>dagitty</code>: R interface to <a href="https://www.dagitty.net/dags.html">dagitty.net</a></p>
+<div class="cell" data-layout-align="center" data-output-location="column">
+<details open="" class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb34"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb34-1"><a href="#cb34-1" aria-hidden="true" tabindex="-1"></a>rt_dag <span class="ot">&lt;-</span> <span class="fu">dagitty</span>(<span class="st">"dag{</span></span>
+<span id="cb34-2"><a href="#cb34-2" aria-hidden="true" tabindex="-1"></a><span class="st">X [exposure]</span></span>
+<span id="cb34-3"><a href="#cb34-3" aria-hidden="true" tabindex="-1"></a><span class="st">Y [outcome]</span></span>
+<span id="cb34-4"><a href="#cb34-4" aria-hidden="true" tabindex="-1"></a><span class="st">U [unobserved]</span></span>
+<span id="cb34-5"><a href="#cb34-5" aria-hidden="true" tabindex="-1"></a><span class="st">X -&gt; Y</span></span>
+<span id="cb34-6"><a href="#cb34-6" aria-hidden="true" tabindex="-1"></a><span class="st">X &lt;- U &lt;- A -&gt; C -&gt; Y</span></span>
+<span id="cb34-7"><a href="#cb34-7" aria-hidden="true" tabindex="-1"></a><span class="st">U -&gt; B &lt;- C</span></span>
+<span id="cb34-8"><a href="#cb34-8" aria-hidden="true" tabindex="-1"></a><span class="st">}"</span>)</span>
+<span id="cb34-9"><a href="#cb34-9" aria-hidden="true" tabindex="-1"></a><span class="fu">coordinates</span>(rt_dag) <span class="ot">&lt;-</span> <span class="fu">list</span>(</span>
+<span id="cb34-10"><a href="#cb34-10" aria-hidden="true" tabindex="-1"></a>    <span class="at">x=</span><span class="fu">c</span>(<span class="at">U=</span><span class="dv">0</span>, <span class="at">X=</span><span class="dv">0</span>, <span class="at">A=</span><span class="fl">0.5</span>, <span class="at">B=</span><span class="fl">0.5</span>, <span class="at">C=</span><span class="dv">1</span>, <span class="at">Y=</span><span class="dv">1</span>),</span>
+<span id="cb34-11"><a href="#cb34-11" aria-hidden="true" tabindex="-1"></a>    <span class="at">y=</span><span class="fu">c</span>(<span class="at">X=</span><span class="fl">0.75</span>, <span class="at">Y=</span><span class="fl">0.75</span>, <span class="at">B=</span><span class="fl">0.5</span>, <span class="at">U=</span><span class="fl">0.25</span>, <span class="at">C=</span><span class="fl">0.25</span>, <span class="at">A=</span><span class="dv">0</span>)</span>
+<span id="cb34-12"><a href="#cb34-12" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb34-13"><a href="#cb34-13" aria-hidden="true" tabindex="-1"></a><span class="fu">drawdag</span>(rt_dag, <span class="at">cex=</span><span class="dv">2</span>, <span class="at">lwd=</span><span class="dv">4</span>, <span class="at">radius=</span><span class="dv">6</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="index_files/figure-html/rethinking-dag-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<div class="columns">
+<div class="column" style="width:50%;">
+<p>Two backdoor paths!</p>
+<p><i class="bi bi-1-circle"></i> <span class="math inline">\(X \leftarrow \require{enclose}\enclose{circle}{U} \leftarrow A \rightarrow C \rightarrow Y\)</span>: Open or closed?</p>
+<p><i class="bi bi-2-circle"></i> <span class="math inline">\(X \leftarrow \require{enclose}\enclose{circle}{U} \rightarrow B \leftarrow C \rightarrow Y\)</span>: Open or closed?</p>
+</div><div class="column" style="width:50%;">
+<div class="cell" data-layout-align="center">
+<details open="" class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb35"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb35-1"><a href="#cb35-1" aria-hidden="true" tabindex="-1"></a><span class="fu">adjustmentSets</span>(rt_dag)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>{ C }
+{ A }</code></pre>
+</div>
 </div>
 </div>
 </div>
