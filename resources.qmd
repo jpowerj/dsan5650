@@ -6,8 +6,9 @@ csl: chicago-17-no-url.csl
 
 ::: {.callout-note title="PDF Links for Jeff's Off-Hand References"}
 
-| What Jeff calls it | Citation (click for PDF link) |
+| What Jeff calls it | Citation (hover and/or click for PDF link) |
 | - | - |
+| **"The Multilevel book"** | @gelman_data_2007 |
 | **"The Koller book"** | @koller_probabilistic_2009 |
 | **"The non-technical Pearl book"** | @pearl_book_2018 |
 | **"The technical Pearl book"** (containing, e.g., axioms and proofs) | @pearl_causality_2000 |
