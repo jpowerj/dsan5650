@@ -139,6 +139,20 @@
     "text": "Footnotes\n\n\nThe term “Graphical” in Probabilistic Graphical Model is not used in the same sense as the “graphical” we’re used to from vernacular English. Capital-G Graphical denotes that the Probabilistic Model is represented as a Graph, a well-defined mathematical object consisting of nodes and edges, which does not have to be represented graphically (though it could be, like in our example here with circles and arrows). In fact, when a computer program is estimating a PGM, it is by definition not in a graphical form—it’s in the form of 0s and 1s, stored in the computer’s memory.↩︎"
   },
   {
+    "objectID": "w05/slides.html#pooling-none-full-and-adaptive",
+    "href": "w05/slides.html#pooling-none-full-and-adaptive",
+    "title": "Week 5: Multilevel Madness, Closing Backdoor Paths",
+    "section": "Pooling: None, Full, and Adaptive",
+    "text": "Pooling: None, Full, and Adaptive\n\nFrom Gelman and Hill (2007)\\[\n\\hat{\\alpha}_j^{\\text {multilevel }} = \\frac{\\frac{n_j}{\\sigma_y^2} \\bar{y}_j+\\frac{1}{\\sigma_\\alpha^2} \\bar{y}_{\\text {all }}}{\\frac{n_j}{\\sigma_y^2}+\\frac{1}{\\sigma_\\alpha^2}}\n\\]"
+  },
+  {
+    "objectID": "w05/slides.html#why-adaptive-none-or-full",
+    "href": "w05/slides.html#why-adaptive-none-or-full",
+    "title": "Week 5: Multilevel Madness, Closing Backdoor Paths",
+    "section": "Why Adaptive >> None or Full?",
+    "text": "Why Adaptive &gt;&gt; None or Full?\n\n\\[\n\\alpha_j \\sim \\mathcal{N}(\\mu_\\alpha, \\sigma_\\alpha), \\text{ for }j = 1, \\ldots, J\n\\]\n\nIn the limit of \\(\\sigma_\\alpha \\rightarrow \\infty\\), the soft constraints do nothing, and there is no pooling;\nAs \\(\\sigma_\\alpha \\rightarrow 0\\), they pull the estimates all the way to zero, yielding the complete-pooling estimate"
+  },
+  {
     "objectID": "w05/slides.html#pipes-x-rightarrow-z-rightarrow-y-conditioning-blocking",
     "href": "w05/slides.html#pipes-x-rightarrow-z-rightarrow-y-conditioning-blocking",
     "title": "Week 5: Multilevel Madness, Closing Backdoor Paths",
@@ -185,7 +199,7 @@
     "href": "w05/slides.html#references",
     "title": "Week 5: Multilevel Madness, Closing Backdoor Paths",
     "section": "References",
-    "text": "References"
+    "text": "References\n\n\nGelman, Andrew, and Jennifer Hill. 2007. Data Analysis Using Regression and Multilevel/Hierarchical Models. Cambridge University Press. https://www.dropbox.com/scl/fi/asbumi3g0gqa4xl9va7wp/Andrew-Gelman-Jennifer-Hill-Data-Analysis-Using-Regression-and-Multilevel_Hierarchical-Models.pdf?rlkey=zf8icjhm7rswvxrpm7d10m65o&dl=1."
   },
   {
     "objectID": "w05/index.html",
@@ -193,6 +207,26 @@
     "title": "Week 5: Multilevel Madness, Closing Backdoor Paths",
     "section": "",
     "text": "Open slides in new window →",
+    "crumbs": [
+      "Week 5: {{< var w05.date-md >}}"
+    ]
+  },
+  {
+    "objectID": "w05/index.html#pooling-none-full-and-adaptive",
+    "href": "w05/index.html#pooling-none-full-and-adaptive",
+    "title": "Week 5: Multilevel Madness, Closing Backdoor Paths",
+    "section": "Pooling: None, Full, and Adaptive",
+    "text": "Pooling: None, Full, and Adaptive\n\n\n\nFrom Gelman and Hill (2007)\n\n\n\\[\n\\hat{\\alpha}_j^{\\text {multilevel }} = \\frac{\\frac{n_j}{\\sigma_y^2} \\bar{y}_j+\\frac{1}{\\sigma_\\alpha^2} \\bar{y}_{\\text {all }}}{\\frac{n_j}{\\sigma_y^2}+\\frac{1}{\\sigma_\\alpha^2}}\n\\]",
+    "crumbs": [
+      "Week 5: {{< var w05.date-md >}}"
+    ]
+  },
+  {
+    "objectID": "w05/index.html#why-adaptive-none-or-full",
+    "href": "w05/index.html#why-adaptive-none-or-full",
+    "title": "Week 5: Multilevel Madness, Closing Backdoor Paths",
+    "section": "Why Adaptive >> None or Full?",
+    "text": "Why Adaptive &gt;&gt; None or Full?\n\n\n\n\n\n\\[\n\\alpha_j \\sim \\mathcal{N}(\\mu_\\alpha, \\sigma_\\alpha), \\text{ for }j = 1, \\ldots, J\n\\]\n\nIn the limit of \\(\\sigma_\\alpha \\rightarrow \\infty\\), the soft constraints do nothing, and there is no pooling;\nAs \\(\\sigma_\\alpha \\rightarrow 0\\), they pull the estimates all the way to zero, yielding the complete-pooling estimate",
     "crumbs": [
       "Week 5: {{< var w05.date-md >}}"
     ]
@@ -262,7 +296,7 @@
     "href": "w05/index.html#references",
     "title": "Week 5: Multilevel Madness, Closing Backdoor Paths",
     "section": "References",
-    "text": "References",
+    "text": "References\n\n\nGelman, Andrew, and Jennifer Hill. 2007. Data Analysis Using Regression and Multilevel/Hierarchical Models. Cambridge University Press. https://www.dropbox.com/scl/fi/asbumi3g0gqa4xl9va7wp/Andrew-Gelman-Jennifer-Hill-Data-Analysis-Using-Regression-and-Multilevel_Hierarchical-Models.pdf?rlkey=zf8icjhm7rswvxrpm7d10m65o&dl=1.",
     "crumbs": [
       "Week 5: {{< var w05.date-md >}}"
     ]

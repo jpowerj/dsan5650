@@ -59,6 +59,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 div.csl-bib-body { }
 div.csl-entry {
   clear: both;
+  margin-bottom: 0em;
 }
 .hanging-indent div.csl-entry {
   margin-left:2em;
@@ -284,7 +285,7 @@ window.Quarto = {
     </ul>
     </div>
 <div class="quarto-sidebar-footer"><div class="sidebar-footer-item">
-<p><em>Updated 2025-06-18, 06:32:05 PM</em></p>
+<p><em>Updated 2025-06-18, 08:13:08 PM</em></p>
 </div></div></nav>
 <div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
@@ -294,7 +295,11 @@ window.Quarto = {
    
   <ul>
   <li><a href="#schedule" id="toc-schedule" class="nav-link active" data-scroll-target="#schedule">Schedule</a></li>
-  <li><a href="#multilevel-madness" id="toc-multilevel-madness" class="nav-link" data-scroll-target="#multilevel-madness">Multilevel Madness</a></li>
+  <li><a href="#multilevel-madness" id="toc-multilevel-madness" class="nav-link" data-scroll-target="#multilevel-madness">Multilevel Madness</a>
+  <ul class="collapse">
+  <li><a href="#pooling-none-full-and-adaptive" id="toc-pooling-none-full-and-adaptive" class="nav-link" data-scroll-target="#pooling-none-full-and-adaptive">Pooling: None, Full, and Adaptive</a></li>
+  <li><a href="#why-adaptive-none-or-full" id="toc-why-adaptive-none-or-full" class="nav-link" data-scroll-target="#why-adaptive-none-or-full">Why Adaptive &gt;&gt; None or Full?</a></li>
+  </ul></li>
   <li><a href="#recap-the-four-elemental-confounds" id="toc-recap-the-four-elemental-confounds" class="nav-link" data-scroll-target="#recap-the-four-elemental-confounds">Recap: The Four Elemental Confounds</a>
   <ul class="collapse">
   <li><a href="#pipes-x-rightarrow-z-rightarrow-y-conditioning-blocking" id="toc-pipes-x-rightarrow-z-rightarrow-y-conditioning-blocking" class="nav-link" data-scroll-target="#pipes-x-rightarrow-z-rightarrow-y-conditioning-blocking">Pipes <span class="math inline">\(X \rightarrow Z \rightarrow Y\)</span>: Conditioning = <em>Blocking</em></a></li>
@@ -458,6 +463,33 @@ window.Quarto = {
 <center>
 <p>…“Lab” Time!</p>
 </center>
+<section id="pooling-none-full-and-adaptive" class="level2 smaller crunch-title">
+<h2 class="smaller crunch-title anchored" data-anchor-id="pooling-none-full-and-adaptive">Pooling: None, Full, and Adaptive</h2>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/pooling.jpg" class="img-fluid figure-img"></p>
+<figcaption>From <span class="citation" data-cites="gelman_data_2007">Gelman and Hill (<a href="#ref-gelman_data_2007" role="doc-biblioref">2007</a>)</span></figcaption>
+</figure>
+</div>
+<p><span class="math display">\[
+\hat{\alpha}_j^{\text {multilevel }} = \frac{\frac{n_j}{\sigma_y^2} \bar{y}_j+\frac{1}{\sigma_\alpha^2} \bar{y}_{\text {all }}}{\frac{n_j}{\sigma_y^2}+\frac{1}{\sigma_\alpha^2}}
+\]</span></p>
+</section>
+<section id="why-adaptive-none-or-full" class="level2 smaller crunch-title">
+<h2 class="smaller crunch-title anchored" data-anchor-id="why-adaptive-none-or-full">Why Adaptive &gt;&gt; None or Full?</h2>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/pooling-adaptive.jpg" class="img-fluid quarto-figure quarto-figure-center figure-img"></p>
+</figure>
+</div>
+<p><span class="math display">\[
+\alpha_j \sim \mathcal{N}(\mu_\alpha, \sigma_\alpha), \text{ for }j = 1, \ldots, J
+\]</span></p>
+<ul>
+<li>In the limit of <span class="math inline">\(\sigma_\alpha \rightarrow \infty\)</span>, the soft constraints do nothing, and there is no pooling;</li>
+<li>As <span class="math inline">\(\sigma_\alpha \rightarrow 0\)</span>, they pull the estimates all the way to zero, yielding the complete-pooling estimate</li>
+</ul>
+</section>
 </section>
 <section id="recap-the-four-elemental-confounds" class="level1 smaller crunch-title crunch-quarto-figure title-12 crunch-quarto-layout-panel" data-stack-name="Backdoor Paths">
 <h1 class="smaller crunch-title crunch-quarto-figure title-12 crunch-quarto-layout-panel" data-stack-name="Backdoor Paths">Recap: The Four Elemental Confounds</h1>
@@ -1574,8 +1606,10 @@ Attaching package: 'ggdag'</code></pre>
 </section>
 <section id="references" class="level2">
 <h2 class="anchored" data-anchor-id="references">References</h2>
-<div id="refs" role="list">
-
+<div id="refs" class="references csl-bib-body hanging-indent" data-entry-spacing="0" role="list">
+<div id="ref-gelman_data_2007" class="csl-entry" role="listitem">
+Gelman, Andrew, and Jennifer Hill. 2007. <em>Data <span>Analysis Using Regression</span> and <span>Multilevel</span>/<span>Hierarchical Models</span></em>. Cambridge University Press. <a href="https://www.dropbox.com/scl/fi/asbumi3g0gqa4xl9va7wp/Andrew-Gelman-Jennifer-Hill-Data-Analysis-Using-Regression-and-Multilevel_Hierarchical-Models.pdf?rlkey=zf8icjhm7rswvxrpm7d10m65o&amp;dl=1">https://www.dropbox.com/scl/fi/asbumi3g0gqa4xl9va7wp/Andrew-Gelman-Jennifer-Hill-Data-Analysis-Using-Regression-and-Multilevel_Hierarchical-Models.pdf?rlkey=zf8icjhm7rswvxrpm7d10m65o&amp;dl=1</a>.
+</div>
 </div>
 
 

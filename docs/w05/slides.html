@@ -98,6 +98,7 @@
     div.csl-bib-body { }
     div.csl-entry {
       clear: both;
+      margin-bottom: 0em;
     }
     .hanging-indent div.csl-entry {
       margin-left:2em;
@@ -324,6 +325,7 @@ Jeff Jacobs
 </div>
 </section>
 
+<section>
 <section id="multilevel-madness" class="title-slide slide level1 smaller center" data-name="Multilevel Madness">
 <h1>Multilevel Madness</h1>
 
@@ -331,7 +333,24 @@ Jeff Jacobs
 <p>…“Lab” Time!</p>
 </center>
 </section>
+<section id="pooling-none-full-and-adaptive" class="slide level2 smaller crunch-title">
+<h2>Pooling: None, Full, and Adaptive</h2>
 
+<img data-src="images/pooling.jpg" class="r-stretch quarto-figure-center"><p class="caption">From <span class="citation" data-cites="gelman_data_2007">Gelman and Hill (<a href="#/references" role="doc-biblioref" onclick="">2007</a>)</span></p><p><span class="math display">\[
+\hat{\alpha}_j^{\text {multilevel }} = \frac{\frac{n_j}{\sigma_y^2} \bar{y}_j+\frac{1}{\sigma_\alpha^2} \bar{y}_{\text {all }}}{\frac{n_j}{\sigma_y^2}+\frac{1}{\sigma_\alpha^2}}
+\]</span></p>
+</section>
+<section id="why-adaptive-none-or-full" class="slide level2 smaller crunch-title">
+<h2>Why Adaptive &gt;&gt; None or Full?</h2>
+
+<img data-src="images/pooling-adaptive.jpg" class="quarto-figure quarto-figure-center r-stretch"><p><span class="math display">\[
+\alpha_j \sim \mathcal{N}(\mu_\alpha, \sigma_\alpha), \text{ for }j = 1, \ldots, J
+\]</span></p>
+<ul>
+<li>In the limit of <span class="math inline">\(\sigma_\alpha \rightarrow \infty\)</span>, the soft constraints do nothing, and there is no pooling;</li>
+<li>As <span class="math inline">\(\sigma_\alpha \rightarrow 0\)</span>, they pull the estimates all the way to zero, yielding the complete-pooling estimate</li>
+</ul>
+</section></section>
 <section>
 <section id="recap-the-four-elemental-confounds" class="title-slide slide level1 smaller crunch-title crunch-quarto-figure title-12 crunch-quarto-layout-panel center" data-stack-name="Backdoor Paths">
 <h1>Recap: The Four Elemental Confounds</h1>
@@ -1330,8 +1349,10 @@ Jeff Jacobs
 </section>
 <section id="references" class="slide level2 smaller scrollable">
 <h2>References</h2>
-<div id="refs" role="list">
-
+<div id="refs" class="references csl-bib-body hanging-indent" data-entry-spacing="0" role="list">
+<div id="ref-gelman_data_2007" class="csl-entry" role="listitem">
+Gelman, Andrew, and Jennifer Hill. 2007. <em>Data <span>Analysis Using Regression</span> and <span>Multilevel</span>/<span>Hierarchical Models</span></em>. Cambridge University Press. <a href="https://www.dropbox.com/scl/fi/asbumi3g0gqa4xl9va7wp/Andrew-Gelman-Jennifer-Hill-Data-Analysis-Using-Regression-and-Multilevel_Hierarchical-Models.pdf?rlkey=zf8icjhm7rswvxrpm7d10m65o&amp;dl=1">https://www.dropbox.com/scl/fi/asbumi3g0gqa4xl9va7wp/Andrew-Gelman-Jennifer-Hill-Data-Analysis-Using-Regression-and-Multilevel_Hierarchical-Models.pdf?rlkey=zf8icjhm7rswvxrpm7d10m65o&amp;dl=1</a>.
+</div>
 </div>
 
 

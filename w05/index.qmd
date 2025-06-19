@@ -85,6 +85,25 @@ source("../dsan-globals/_globals.r")
 
 </center>
 
+## Pooling: None, Full, and Adaptive {.smaller .crunch-title}
+
+![From @gelman_data_2007](images/pooling.jpg){fig-align="center"}
+
+$$
+\hat{\alpha}_j^{\text {multilevel }} = \frac{\frac{n_j}{\sigma_y^2} \bar{y}_j+\frac{1}{\sigma_\alpha^2} \bar{y}_{\text {all }}}{\frac{n_j}{\sigma_y^2}+\frac{1}{\sigma_\alpha^2}}
+$$
+
+## Why Adaptive >> None or Full? {.smaller .crunch-title}
+
+![](images/pooling-adaptive.jpg){fig-align="center"}
+
+$$
+\alpha_j \sim \mathcal{N}(\mu_\alpha, \sigma_\alpha), \text{ for }j = 1, \ldots, J
+$$
+
+* In the limit of $\sigma_\alpha \rightarrow \infty$, the soft constraints do nothing, and there is no pooling;
+* As $\sigma_\alpha \rightarrow 0$, they pull the estimates all the way to zero, yielding the complete-pooling estimate
+
 # Recap: The Four Elemental Confounds {.smaller .crunch-title .crunch-quarto-figure .title-12 .crunch-quarto-layout-panel data-stack-name="Backdoor Paths"}
 
 ![From Richard McElreath's [*Statistical Rethinking* Lectures](https://youtu.be/mBEA7PKDmiY?si=S0ciQ7W7wfL73kPR)](images/elemental-confounds.png){fig-align="center"}
