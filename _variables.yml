@@ -28,18 +28,18 @@ w05:
   date-md: "Jun 18"
 w06:
   weeknum: 6
-  title: "Midterm Review (feat. Example Problems)"
-  footer: "Midterm Review"
+  title: "Propensity Score Matching, Midterm Review 1"
+  footer: "Propensity Score Matching"
   date-md: "Jun 25"
 w07:
   weeknum: 7
-  title: "In-Class Midterm: Causal Models and Statistical Matching"
-  footer: "In-Class Midterm"
+  title: "Midterm Review 2: Electric Boogaloo (feat. Example Problems)"
+  footer: "Midterm Review"
   date-md: "Jul 2"
 w08:
   weeknum: 8
-  title: "Propensity Score Matching"
-  footer: "Propensity Score Matching"
+  title: "ATEs, ATTs, HTEs, and OBAs (Other Beautiful Acronyms)"
+  footer: "Treatment Effects"
   date-md: "Jul 9"
 w09:
   weeknum: 9
@@ -67,19 +67,19 @@ hw1:
   date-full: "Monday, **June 9**"
   url: "#"
 hw2:
-  title: "Traversing the Sea of Causality with the do-Harpoon in Hand: Chains, Forks, and Colliders"
-  date-md: "Jun 13 (Friday), 5:59pm EDT"
-  date-full: "Friday, **June 13**"
-  url: "#"
-hw3:
-  title: "Statistical Matching: Apples to Apples and Oranges to Oranges"
-  date-md: "Jun 27 (Friday), 5:59pm EDT"
-  date-full: "Friday, **June 27**"
+  title: "Using Our Modeling Languages"
+  date-md: "Jul 1 (Tuesday), 11:59pm EDT"
+  date-full: "Tuesday, **July 1**"
   url: "#"
 midterm:
   title: "In-Class Midterm"
   date-md: "Jul 2"
   date-full: "Wednesday, **July 2**"
+hw3:
+  title: "Statistical Matching: Apples to Apples and Oranges to Oranges"
+  date-md: "Jun 27 (Friday), 5:59pm EDT"
+  date-full: "Friday, **June 27**"
+  url: "#"
 hw4:
   title: "Basic Computational Causal Methods"
   date-md: "Jul 11 (Friday), 5:59pm EDT"

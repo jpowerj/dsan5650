@@ -110,7 +110,7 @@ The following is a rough map of what we will work through together throughout th
     <td><span data-qmd="**Unit 2**: Doin Thangs"></span></td>
     <td>3</td>
     <td><span data-qmd="{{< var w03.date-md >}}"></span></td>
-    <td><span data-qmd="[{{< var w03.title >}}](./w03/)<br>*[Deliverable, 11:59pm EDT] [HW1: {{< var hw1.title >}}]({{< var hw1.url >}})*"></span></td>
+    <td><span data-qmd="[{{< var w03.title >}}](./w03/)<br>*[Deliverable, 11:59pm EDT] HW1: {{< var hw1.title >}}*"></span></td>
 </tr>
 <tr>
     <td></td>
@@ -126,6 +126,12 @@ The following is a rough map of what we will work through together throughout th
 </tr>
 <tr>
     <td></td>
+    <td></td>
+    <td><span data-qmd="*Jun 22 (Sunday)*"></span></td>
+    <td><span data-qmd="*HW2 Released on JupyterHub*"></span></td>
+</tr>
+<tr>
+    <td></td>
     <td>6</td>
     <td><span data-qmd="{{< var w06.date-md >}}"></span></td>
     <td><span data-qmd="[{{<var w06.title >}}](./w06/)"></span></td>
@@ -137,10 +143,22 @@ The following is a rough map of what we will work through together throughout th
     <td><span data-qmd="*[Deliverable] <a href='{{< var hw2.url >}}' target='_blank'>HW2: {{< var hw2.title >}}</a>*"></span></td>
 </tr> -->
 <tr class='new-unit'>
-    <td><span data-qmd="**Midterm**"></span></td>
+    <td><span data-qmd="**Midterm Week**"></span></td>
     <td>7</td>
+    <td><span data-qmd="*Jul 1 (Tuesday)*"></span></td>
+    <td><span data-qmd="*[Deliverable, 11:59pm EDT] HW2: {{< var hw2.title >}}*"></span></td>
+</tr>
+<tr>
+    <td></td>
+    <td></td>
     <td><span data-qmd="{{< var w07.date-md >}}"></span></td>
-    <td><span data-qmd="[{{< var w07.title >}}](./w07/)"></span></td>
+    <td><span data-qmd="[{{< var w07.title >}}](./w07/)<br>*27-Hour Take-Home Midterm released, 9:00pm EDT*"></span></td>
+</tr>
+<tr>
+    <td></td>
+    <td></td>
+    <td><span data-qmd="*Jul 3 (Thursday)*"></span></td>
+    <td><span data-qmd="*[Deliverable, 11:59pm EDT] 27-Hour Take-Home Midterm*"></span></td>
 </tr>
 <tr class='new-unit'>
     <td><span data-qmd="**Unit 4:** Machine Learning for Causal Inference"></span></td>
