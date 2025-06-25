@@ -1,0 +1,194 @@
+```{r}
+#| label: random-walk-16
+#| code-fold: true
+#| fig-height: 8
+#| fig-width: 4
+library(tibble)
+library(ggplot2)
+library(ggExtra)
+library(dplyr)
+library(tidyr)
+library(R6)
+WalkData <- R6Class("WalkData", list(
+  long_df = NULL,
+  end_df = NULL,
+  num_people = NA,
+  num_steps = NA,
+  initialize = function(
+    long_df, end_df, num_people, num_steps
+  ) {
+    self$long_df <- long_df
+    self$end_df <- end_df
+    self$num_people <- num_people
+    self$num_steps <- num_steps
+  }
+  # add = function(x = 1) {
+  #   self$sum <- self$sum + x 
+  #   invisible(self)
+  # })
+))
+# From McElreath!
+gen_walk_data <- function(num_people, num_steps) {
+  support <- c(-1, 1)
+  # Unique id for each person
+  pid_df <- tibble(pid=seq(1, num_people))
+  pos_df <- tibble()
+  all_steps <- t(
+    replicate(
+      num_people,
+      sample(
+        support, num_steps, replace = TRUE, prob = c(0.5, 0.5)
+      )
+    )
+  )
+  csums <- t(apply(all_steps, 1, cumsum))
+  csums <- cbind(0, csums)
+  # Last col is the ending positions
+  ending_pos <- csums[, dim(csums)[2]]
+  end_df <- tibble(
+    pid = seq(1, num_people),
+    endpos = ending_pos,
+    x = num_steps
+  )
+  # Now csums as tibble
+  csum_df <- as_tibble(csums, name_repair = "none")
+  merged_df <- bind_cols(pid_df, csum_df)
+  long_df <- merged_df |> pivot_longer(!pid)
+  # Convert name -> step_num
+  long_df <- long_df |> mutate(step_num = strtoi(gsub("V", "", name)) - 1)
+  walk_data <- WalkData$new(
+    long_df, end_df, num_people, num_steps
+  )
+  return(walk_data)
+}
+gen_walk_plot <- function(walk_data, opacity=0.15) {
+  # print(end_df)
+  grid_color <- rgb(0, 0, 0, 0.1)
+  # And plot!
+  walkplot <- walk_data$long_df |> ggplot(
+    aes(
+      x = step_num,
+      y = value,
+      group = pid,
+      # color=factor(label)
+    )
+  ) +
+  geom_line(
+    linewidth = g_linesize,
+    alpha = opacity,
+    color = cb_palette[1]
+  ) +
+  geom_point(
+    data = walk_data$end_df,
+    aes(x = x, y = endpos),
+    alpha = 0
+  ) +
+  scale_x_continuous(
+    breaks = seq(
+      0,
+      walk_data$num_steps,
+      walk_data$num_steps / 4
+    )
+  ) +
+  scale_y_continuous(breaks = seq(-20, 20, 10)) +
+  theme_dsan("quarter") +
+  theme(
+    legend.position = "none",
+    title = element_text(size = 16)
+  ) +
+  theme(
+    panel.grid.major.y = element_line(
+      color = grid_color,
+      linewidth = 1,
+      linetype = 1
+    )
+  ) +
+  labs(
+    title = paste0(
+      walk_data$num_people, " Random Walks, ",
+      walk_data$num_steps, " Steps"
+    ),
+    x = "Number of Steps",
+    y = "Position"
+  )
+  return(walkplot)
+}
+# 16 steps
+# wp1 <- gen_walkplot(500, 16, 0.05)
+# ggMarginal(wp1, margins = "y", type = "histogram", yparams = list(binwidth = 1))
+library(ggExtra)
+walk_data <- gen_walk_data(5000, 64)
+wp2 <- gen_walk_plot(walk_data, 0.008) +
+  ylim(-30,30)
+ggMarginal(
+  wp2,
+  margins = "x",
+  type = "histogram",
+  yparams = list(binwidth = 1)
+)
+```
+
+---
+
+My attempt at vertical version :/
+
+```{r}
+#| label: walk-data-plot
+#| fig-height: 8
+#| fig-width: 4
+gen_walk_plot <- function(walk_data, opacity=0.15) {
+  # print(end_df)
+  grid_color <- rgb(0, 0, 0, 0.1)
+  # And plot!
+  walkplot <- ggplot() +
+    geom_line(
+      data = walk_data$long_df,
+      aes(y = t, x = pos, group = pid),
+      # linewidth = g_linesize,
+      alpha = opacity,
+      color = cb_palette[1]
+    ) +
+    geom_point(
+      data = walk_data$end_df,
+      aes(y = t, x = endpos),
+      alpha = 0
+    ) +
+    scale_y_continuous(
+      breaks = seq(
+        0,
+        walk_data$num_steps,
+        walk_data$num_steps / 4
+      )
+    ) +
+    scale_x_continuous(breaks = seq(-20, 20, 10)) +
+    theme_dsan() +
+    theme(
+      legend.position = "none",
+      title = element_text(size = 16)
+    ) +
+    theme(
+      panel.grid.major.y = element_line(
+        color = grid_color,
+        linewidth = 1,
+        linetype = 1
+      )
+    ) +
+    labs(
+      title = paste0(
+        walk_data$num_people, " Random Walks, ",
+        walk_data$num_steps, " Steps"
+      ),
+      y = "Number of Steps",
+      x = "Position"
+    )
+}
+# 16 steps
+# wp1 <- gen_walkplot(500, 16, 0.05)
+# ggMarginal(wp1, margins = "y", type = "histogram", yparams = list(binwidth = 1))
+wp <- gen_walk_plot(walk_data, 0.008) + xlim(-30,30)
+ggMarginal(
+  wp, margins = "x",
+  type = "histogram",
+  yparams = list(binwidth = 1)
+)
+```

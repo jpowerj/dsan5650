@@ -1,19 +1,20 @@
 [
   {
+    "listing": "/writeups/index.html",
+    "items": [
+      "/writeups/blockmodels/index.html",
+      "/writeups/pgm-intro/index.html"
+    ]
+  },
+  {
     "listing": "/index.html",
     "items": [
       "/w01/index.html",
       "/w02/index.html",
       "/w03/index.html",
       "/w04/index.html",
-      "/w05/index.html"
-    ]
-  },
-  {
-    "listing": "/writeups/index.html",
-    "items": [
-      "/writeups/blockmodels/index.html",
-      "/writeups/pgm-intro/index.html"
+      "/w05/index.html",
+      "/w06/index.html"
     ]
   }
 ]

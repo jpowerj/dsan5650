@@ -1,0 +1,270 @@
+---
+title: "Week 6: Bayesian Workflow, Propensity Scores, Midterm Pre-Review"
+subtitle: "*DSAN 5650: Causal Inference for Computational Social Science*<br><span class='subsubtitle'>Summer 2025, Georgetown University</span>"
+author: "Jeff Jacobs"
+institute: "[`jj1088@georgetown.edu`](mailto:jj1088@georgetown.edu)"
+bibliography: "../_DSAN5650.bib"
+date: 2025-06-25
+date-format: full
+lecnum: 6
+categories:
+  - "Class Sessions"
+format:
+  revealjs:
+    df-print: kable
+    footer: "DSAN 5650 Week 6: {{< var w06.footer >}}"
+    output-file: "slides.html"
+    html-math-method: mathjax
+    scrollable: true
+    link-external-icon: true
+    link-external-newwindow: true
+    echo: true
+    code-fold: true
+    theme: [default, "../dsan-globals/jjquarto.scss"]
+    include-in-header:
+      text: "<link rel='stylesheet' href='https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css'><link rel='stylesheet' type='text/css' href='https://cdn.jsdelivr.net/gh/dreampulse/computer-modern-web-font@master/fonts.css'>"
+    slide-number: true
+    simplemenu:
+      flat: true
+      barhtml:
+        header: "<div class='menubar'><span style='position: absolute; left: 8; padding-left: 8px;'><a href='./index.html'>&larr; Return to Notes</a></span><ul class='menu'></ul></div>"
+      scale: 0.5
+    revealjs-plugins:
+      - simplemenu
+  html:
+    df-print: kable
+    output-file: "index.html"
+    html-math-method: mathjax
+    link-external-icon: true
+    link-external-newwindow: true
+    echo: true
+    code-fold: true
+    include-in-header:
+      text: "<link rel='stylesheet' href='https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css'><link rel='stylesheet' type='text/css' href='https://cdn.jsdelivr.net/gh/dreampulse/computer-modern-web-font@master/fonts.css'>"
+---
+
+::: {.content-visible unless-format="revealjs"}
+
+<center>
+<a class="h2" href="./slides.html" target="_blank">Open slides in new window &rarr;</a>
+</center>
+
+:::
+
+# Schedule {.smaller .crunch-title .crunch-callout .code-90 data-name="Schedule"}
+
+Today's Planned Schedule:
+
+| | Start | End | Topic |
+|:- |:- |:- |:- |
+| **Lecture** | 6:30pm | 7:20pm | [Multilevel Madness &rarr;](#multilevel-madness) |
+| | 7:20pm | 7:50pm | [Applying $\textsf{do}()$ &rarr;](#the-ladder-of-causal-inference) |
+| **Break!** | 7:50pm | 8:00pm | |
+| | 8:00pm | 9:00pm | [Closing Backdoor Paths &rarr;](#the-collider) |
+
+: {tbl-colwidths="[12,12,12,64]"}
+
+{{< include ../dsan-globals/_globals-tex.qmd >}}
+
+::: {.hidden}
+
+```{r}
+#| label: r-source-globals
+source("../dsan-globals/_globals.r")
+```
+
+:::
+
+# Logistics / Table-Setting {.title-11}
+
+* Midterm will be **27-Hour Take-Home Exam**
+* A "Midterm" folder will magically appear on [guhub.io](https://guhub.io) at **9pm EDT** on **Wednesday, July 2** (immediately after lecture ends), due **11:59pm EDT** on **Thursday, July 3**
+* $\leadsto$ Lecture recording will be a **video resource** for you, providing all the necessary background for midterm questions (like the intro-to-Afrobarometer last week!)
+
+## From HWs to Midterm
+
+* HWs: More focus on **social science** / more "in the weeds" (checking details, manipulating prior parameters, debugging, etc.)
+* Midterm: More focus on **causality**, bc, in 2 hours I can test you on concepts and things like "What are the backdoor paths here? How would you close them?" more easily than on loading datasets, cleaning, fitting models, etc.
+
+## Looking Forwards (Post-Midterm)
+
+* More text analysis!
+* Making the connection between **modeling** and **predicting**
+
+# Bayesian Workflow {data-stack-name="HW2"}
+
+*(There are a lot of words in HW2 that I haven't had the chance to explain yet!)*
+
+* Prior
+* Prior Predictive
+* Posterior
+* Posterior Predictive
+
+## Seeing Forests *and* Trees {.smaller .crunch-title .title-11 .crunch-ul .crunch-li-6 .crunch-img .crunch-p .crunch-quarto-figure}
+
+* Your **model**, if it's **generative** (which... nearly all in 5650 are), relates **observed** data $\mathbf{D}$ to a set of underlying **parameters** $\boldsymbol{\theta}$ that are hypothesized as "giving rise" to $\mathbf{D}$
+* When you specify *how* exactly this "giving rise" works, you're specifying a **DGP**!
+* **PGMs**: human-brain-friendly (bc *graphical*) **language for writing DGPs**; then move to PyAgrum $\rightarrow$ Stan $\rightarrow$ PyMC to "encode" PGMs (in `0100101`) so computer can...
+
+```{=html}
+<table>
+<thead>
+<tr>
+  <th style="border: 0px; width: 50%" align="center"><span data-qmd="<i class='bi bi-1-circle'></i> **Super-charge your EDA/modeling**"></span></th>
+  <th style="border: 0px; width: 50%" align="center"><span data-qmd="<i class='bi bi-2-circle'></i> **Estimate $\boldsymbol{\theta}$ from data**"></span></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+  <td align="center"><span data-qmd="$\leadsto$ **Prior** distributions"></span></td>
+  <td align="center"><span data-qmd="$\leadsto$ **Posterior** distributions"></span></td>
+</tr>
+</tbody>
+</table>
+```
+
+```{r}
+#| label: walk-plot
+#| fig-width: 16
+#| fig-height: 6
+#| crop: false
+#| eval: false
+library(tidyverse)
+library(ggExtra)
+gen_walk_plot <- function(walk_data, a=0.0075) {
+  # print(end_df)
+  grid_color <- rgb(0, 0, 0, 0.1)
+  # And plot!
+  walkplot <- ggplot() +
+    geom_line(
+      data = walk_data$long_df,
+      aes(x = t, y = pos, group = pid),
+      linewidth = g_linewidth,
+      alpha = a,
+      #color = cb_palette[2]
+      #color = "#cf8f00"
+      color = "black"
+    ) +
+    geom_point(
+      data = walk_data$end_df,
+      aes(x = t, y = endpos),
+      alpha = 0
+    ) +
+    scale_x_continuous(
+      breaks = seq(
+        0,
+        walk_data$num_steps,
+        walk_data$num_steps / 4
+      )
+    ) +
+    scale_y_continuous(
+      breaks = seq(-20, 20, 10)
+    ) +
+    theme_dsan(base_size=24) +
+    theme(
+      legend.position = "none",
+      # title = element_text(size = 16)
+    ) +
+    theme(
+      panel.grid.major.y = element_line(
+        color = grid_color,
+        linewidth = 1,
+        linetype = 1
+      )
+    ) +
+    labs(
+      title = paste0(
+        walk_data$num_people, " Random Walks, ",
+        walk_data$num_steps, " Steps"
+      ),
+      x = "Number of Steps",
+      y = "Position"
+    )
+}
+walk_data <- readRDS("assets/walk_data.rds")
+# 16 steps
+# wp1 <- gen_walkplot(500, 16, 0.05)
+# ggMarginal(wp1, margins = "y", type = "histogram", yparams = list(binwidth = 1))
+wp <- gen_walk_plot(walk_data) + ylim(-30,30)
+ggMarginal(
+  wp, margins = "y",
+  type = "histogram",
+  yparams = list(binwidth = 1)
+)
+```
+
+![](images/walk-plot-1.png){fig-align="center"}
+
+## Prior "Stage" Distributions {.title-09 .smaller .crunch-title .crunch-ul .crunch-quarto-figure .crunch-p .crunch-li-8 .text-60}
+
+* RVs $\boldsymbol\theta$ = params of your model, RVs $\mathbf{X}$ = data $\leadsto$ **Generative** model $\pedge{\boldsymbol\theta}{\mathbf{X}}$
+* Enter **Prior World** (**Before** observing any data): Since we have **priors** over $\boldsymbol\theta$ $\leadsto$ we can **sample** values of $\boldsymbol\theta$, then **generate synthetic data** on the basis of these values
+
+<!-- * Looking at this connection, we could **
+*  you have (like, in a .csv), and $\ -->
+
+:::: {.columns}
+::: {.column width="50%"}
+
+<center>
+
+<i class='bi bi-1-circle'></i> **Prior Distribution:** $\Pr(\boldsymbol{\theta}^{❓})$
+
+</center>
+
+*What can I guess about values of my parameters from background knowledge of the world?* e.g.:
+
+* Human heights can't be negative
+* Data collected at a bar $\Rightarrow$ Age $\geq$ 18, $\Pr(\text{Age} = x)$ decreases as $x$ goes above 50
+
+![](images/Foucault.png){fig-align="center" width="280"}
+
+:::
+::: {.column width="50%"}
+
+<center>
+
+<i class='bi bi-2-circle'></i> **Prior Predictive Distribution: ** $\Pr(\mathbf{X}^{❓} \mid \boldsymbol{\theta}^{❓})$
+
+</center>
+
+*What could the outcomes look like if I ran my guesses through the **DGP**?*
+
+![](images/zoomer_haircut.jpg){width="75" style="float: right;"}
+
+100 simulated heights, none are negative
+
+1K sim bar-goers; 80% have this haircut $\rightarrow$
+
+![](images/Foucault2.png){fig-align="center" width="340" style="padding-top: 50px;"}
+
+:::
+::::
+
+## Posterior "Stage" Distributions {.title-09 .smaller .crunch-title .crunch-ul .crunch-quarto-figure .crunch-p .crunch-li-8 .text-60}
+
+:::: {.columns}
+::: {.column width="50%"}
+
+<center>
+
+**Posterior**
+
+</center>
+
+:::
+::: {.column width="50%"}
+
+<center>
+
+**Posterior predictive**
+
+</center>
+
+:::
+::::
+
+## References
+
+::: {#refs}
+:::

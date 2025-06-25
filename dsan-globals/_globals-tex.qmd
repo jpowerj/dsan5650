@@ -27,7 +27,9 @@ $$
 \newcommand{\param}[1]{{\color{purple} #1}}
 \newcommand{\pgsamplespace}{\{\green{1},\green{2},\green{3},\purp{4},\purp{5},\purp{6}\}}
 \newcommand{\pedge}[2]{\require{enclose}\enclose{circle}{~{#1}~} \rightarrow \; \enclose{circle}{\kern.01em {#2}~\kern.01em}}
-\newcommand{\pnode}[1]{\require{enclose}\enclose{circle}{~{#1}~}}
+\newcommand{\pnode}[1]{\require{enclose}\enclose{circle}{\kern.1em {#1} \kern.1em}}
+\newcommand{\ponode}[1]{\require{enclose}\enclose{box}[background=lightgray]{{#1}}}
+\newcommand{\pnodesp}[1]{\require{enclose}\enclose{circle}{~{#1}~}}
 \newcommand{\purp}[1]{\color{purple}{#1}}
 \newcommand{\sign}{\text{Sign}}
 \newcommand{\spacecap}{\; \cap \;}

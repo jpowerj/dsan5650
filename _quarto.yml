@@ -2,6 +2,8 @@ project:
   type: website
   output-dir: docs
   pre-render: _pre-set-updated.py
+  preview:
+    port: 4321
 
 website:
   title: "DSAN 5650"
