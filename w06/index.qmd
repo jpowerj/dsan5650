@@ -51,18 +51,7 @@ format:
 
 :::
 
-# Schedule {.smaller .crunch-title .crunch-callout .code-90 data-name="Schedule"}
-
-Today's Planned Schedule:
-
-| | Start | End | Topic |
-|:- |:- |:- |:- |
-| **Lecture** | 6:30pm | 7:20pm | [Multilevel Madness &rarr;](#multilevel-madness) |
-| | 7:20pm | 7:50pm | [Applying $\textsf{do}()$ &rarr;](#the-ladder-of-causal-inference) |
-| **Break!** | 7:50pm | 8:00pm | |
-| | 8:00pm | 9:00pm | [Closing Backdoor Paths &rarr;](#the-collider) |
-
-: {tbl-colwidths="[12,12,12,64]"}
+# Logistics / Table-Setting {.title-11 data-stack-name="Logistics"}
 
 {{< include ../dsan-globals/_globals-tex.qmd >}}
 
@@ -74,8 +63,6 @@ source("../dsan-globals/_globals.r")
 ```
 
 :::
-
-# Logistics / Table-Setting {.title-11}
 
 * Midterm will be **27-Hour Take-Home Exam**
 * A "Midterm" folder will magically appear on [guhub.io](https://guhub.io) at **9pm EDT** on **Wednesday, July 2** (immediately after lecture ends), due **11:59pm EDT** on **Thursday, July 3**
@@ -100,7 +87,7 @@ source("../dsan-globals/_globals.r")
 * Posterior
 * Posterior Predictive
 
-## Seeing Forests *and* Trees {.smaller .crunch-title .title-11 .crunch-ul .crunch-li-6 .crunch-img .crunch-p .crunch-quarto-figure}
+## Modeling How Trees Become Forests {.smaller .crunch-title .title-11 .crunch-ul .crunch-li-6 .crunch-img .crunch-p .crunch-quarto-figure}
 
 * Your **model**, if it's **generative** (which... nearly all in 5650 are), relates **observed** data $\mathbf{D}$ to a set of underlying **parameters** $\boldsymbol{\theta}$ that are hypothesized as "giving rise" to $\mathbf{D}$
 * When you specify *how* exactly this "giving rise" works, you're specifying a **DGP**!
@@ -195,7 +182,7 @@ ggMarginal(
 
 ![](images/walk-plot-1.png){fig-align="center"}
 
-## Prior "Stage" Distributions {.title-09 .smaller .crunch-title .crunch-ul .crunch-quarto-figure .crunch-p .crunch-li-8 .text-60}
+## Prior "Stage" Distributions {.title-10 .smaller .crunch-title .crunch-ul .crunch-quarto-figure .crunch-p .crunch-li-8 .text-60}
 
 * RVs $\boldsymbol\theta$ = params of your model, RVs $\mathbf{X}$ = data $\leadsto$ **Generative** model $\pedge{\boldsymbol\theta}{\mathbf{X}}$
 * Enter **Prior World** (**Before** observing any data): Since we have **priors** over $\boldsymbol\theta$ $\leadsto$ we can **sample** values of $\boldsymbol\theta$, then **generate synthetic data** on the basis of these values
@@ -215,7 +202,7 @@ ggMarginal(
 *What can I guess about values of my parameters from background knowledge of the world?* e.g.:
 
 * Human heights can't be negative
-* Data collected at a bar $\Rightarrow$ Age $\geq$ 18, $\Pr(\text{Age} = x)$ decreases as $x$ goes above 50
+* Data collected at a bar $\Rightarrow$ Age $\geq$ 18, $\Pr(\text{Age} = x)$ decreases as $x$ goes above 30
 
 ![](images/Foucault.png){fig-align="center" width="280"}
 
@@ -241,28 +228,232 @@ ggMarginal(
 :::
 ::::
 
-## Posterior "Stage" Distributions {.title-09 .smaller .crunch-title .crunch-ul .crunch-quarto-figure .crunch-p .crunch-li-8 .text-60}
+## Posterior "Stage" Distributions {.title-10 .smaller .crunch-title .crunch-ul .crunch-quarto-figure .crunch-p .crunch-li-8 .text-60 .inline-90}
+
+* RVs $\boldsymbol\theta$ = params of your model, RVs $\mathbf{X}$ = data $\leadsto$ **Generative** model $\pedge{\boldsymbol\theta}{\mathbf{X}}$
 
 :::: {.columns}
 ::: {.column width="50%"}
 
-<center>
+<center style="margin-top: 5px;">
 
-**Posterior**
+<i class='bi bi-3-circle'></i> **Posterior Distribution:** $\Pr\left(\boldsymbol{\theta} \; \middle| \; \mathbf{X} = \ponode{\mathbf{X}}\right)$
 
 </center>
+
+*Now we **observe** data: $\pnode{\mathbf{X}} \leadsto \ponode{\mathbf{X}}$, which means we can use **Bayes' Rule** to infer distribution over $\boldsymbol{\theta}$: **what values are most likely to produce $\ponode{\mathbf{X}}$**?*
+
+* 60% of observed bar-goers have that haircut $\Rightarrow$ $\boldsymbol{\theta}_{\text{post}} \approx \frac{0.6 + 0.8}{2} = 0.7$
+* Coin = $\textsf{H}$ 4/5 times $\Rightarrow$ $\boldsymbol{\theta} = p = \frac{0.5 + 0.8}{2} = 0.65$
+* Coin = $\textsf{H}$ 5/5 times $\Rightarrow$ $\boldsymbol{\theta} = p = \frac{0.5 + 1.0}{2} = 0.75$
+
+![](images/doin-science2-crop.jpg){fig-align="center" width="350"}
 
 :::
 ::: {.column width="50%"}
 
-<center>
+<center style="margin-top: 5px;">
 
-**Posterior predictive**
+<i class='bi bi-4-circle'></i> **Posterior Predictive Distribution:** $\Pr(\mathbf{X} \mid \boldsymbol{\theta})$
 
 </center>
 
+*Now that we've fit $\Pr(\boldsymbol{\theta})$ to data, can generate as much new data as we want, e.g. to evaluate **how well model predicts outcomes for test data***
+
+![From [PyMC documentation](https://www.pymc.io/projects/docs/en/stable/learn/core_notebooks/posterior_predictive.html)](images/logistic-post-pc.webp){fig-align="center"}
+
 :::
 ::::
+
+## Why Do We Need "Subjective" Priors? {.smaller .title-12 .crunch-title .crunch-ul .crunch-quarto-figure}
+
+* Under frequentism... (tldr) literally no method for dealing with shades of uncertainty
+* Frequentist assumption: For a given coin, $\Pr(\textsf{Heads})$ is **not a Random Variable!** It's some number, like 0.5 or 0.8. It's the **asymptote** of $\frac{\#[\textsf{Heads}]}{\#[\textsf{Heads}] + \#[\textsf{Tails}]}$ as $n \rightarrow \infty$
+* So, if we flip coin 1 time, and get $\textsf{Heads}$, **no basis for inferring** $\Pr(\textsf{Coin is Fair})$ vs. $\Pr(\textsf{Coin is Biased})$: Both are **undefined**. We've... "discovered" that $\Pr(\textsf{Heads}) = 1$
+* By using **Bayesian inference**, we can bring **prior knowledge** into our studies, which we'll need to do **especially** for complex emergent systems: societies, economies, etc.!
+* In fact, as a guy named **Laplace** discovered in the nineteenth century, frequentism = Bayesian inference with **"flat priors"**...
+
+## Flat vs. Informative Priors {.smaller .crunch-title .crunch-quarto-layout-panel .crunch-quarto-figure .crunch-img .crunch-p}
+
+:::: {layout="[30,5,30,5,30]" layout-valign="center"}
+::: {#flat-prior}
+
+```{r}
+#| label: flat-priors
+#| fig-width: 5.5
+#| fig-height: 5.5
+library(tidyverse)
+flat_df <- tibble(x=seq(0, 1, 0.1), y=0)
+flat_df |> ggplot(aes(x=x, y=y)) +
+  geom_line(
+    color=cb_palette[1],
+    linewidth=g_linewidth
+  ) +
+  ylim(0, 1) +
+  labs(title="Flat Prior on Pr(Heads)") +
+  theme_dsan(base_size=28)
+```
+
+:::
+::: {#flat-times}
+
+$$
+\otimes
+$$
+
+:::
+::: {#flat-data}
+
+```{r}
+#| label: data-plot
+#| fig-width: 5.5
+#| fig-height: 5.5
+library(tidyverse)
+data_df <- tibble(x=1, y=1)
+data_df |> ggplot(aes(x=x, y=y)) +
+  geom_point(size=5) +
+  geom_segment(
+    x=1, y=0, yend=1, linewidth=g_linewidth
+  ) +
+  xlim(0, 1) +
+  ylim(0, 1) +
+  labs(title="Observed Data") +
+  theme_dsan(base_size=28)
+```
+
+:::
+::: {#flat-eq}
+
+$$
+\leadsto
+$$
+
+:::
+::: {#flat-post}
+
+```{r}
+#| label: flat-posterior
+#| fig-width: 5.5
+#| fig-height: 5.5
+library(tidyverse)
+data_df <- tibble(x=1, y=1)
+data_df |> ggplot(aes(x=x, y=y)) +
+  geom_segment(
+    x=1, y=0, yend=1, linewidth=g_linewidth,
+    color=cb_palette[1], arrow=arrow()
+  ) +
+  geom_segment(
+    x=0, y=0, xend=1, linewidth=g_linewidth,
+    color=cb_palette[1]
+  ) +
+  xlim(0, 1) +
+  ylim(0, 1) +
+  labs(title="Posterior of Pr(Heads)") +
+  theme_dsan(base_size=28)
+```
+
+:::
+::::
+
+:::: {layout="[30,5,30,5,30]" layout-valign="center"}
+::: {#unif-prior}
+
+```{r}
+#| label: unif-priors
+#| fig-width: 5.5
+#| fig-height: 5.5
+library(tidyverse)
+unif_df <- tibble(x=seq(0, 1, 0.1), y=1)
+unif_df |> ggplot(aes(x=x, y=y)) +
+  geom_line(
+    color="#e69f00", linewidth=g_linewidth
+  ) +
+  annotate('rect', xmin=0, xmax=1, ymin=0, ymax=1, fill='#e69f00', alpha=0.3) +
+  xlim(0, 1) + ylim(0, 1) +
+  labs(title="Uniform Prior on Pr(Heads)") +
+  theme_dsan(base_size=28) +
+  theme(title=element_text(size=20))
+```
+
+:::
+::: {#unif-times}
+
+$$
+\otimes
+$$
+
+:::
+::: {#unif-data}
+
+```{r}
+#| label: data-plot-unif
+#| fig-width: 5.5
+#| fig-height: 5.5
+library(tidyverse)
+data_df <- tibble(x=1, y=1)
+data_df |> ggplot(aes(x=x, y=y)) +
+  geom_point(size=5) +
+  geom_segment(
+    x=1, y=0, yend=1, linewidth=g_linewidth
+  ) +
+  xlim(0, 1) +
+  ylim(0, 1) +
+  labs(title="Observed Data") +
+  theme_dsan(base_size=28)
+```
+
+:::
+::: {#unif-eq}
+
+$$
+\leadsto
+$$
+
+:::
+::: {#unif-post}
+
+```{r}
+#| label: unif-posterior
+#| fig-width: 5.5
+#| fig-height: 5.5
+library(tidyverse)
+data_df <- tibble(x=1, y=1)
+x_vals <- seq(0, 1, 0.01)
+my_exp <- function(x) exp(1-1/(x^2))
+y_vals <- sapply(x_vals, my_exp)
+data_df <- tibble(x=x_vals, y=y_vals)
+rib_df <- tibble(x=x_vals, ymax=y_vals, ymin=0)
+ggplot() +
+  # stat_function(fun=my_exp, linewidth=g_linewidth, color=cb_palette[1]) +
+  geom_line(
+    data=data_df,
+    aes(x=x, y=y),
+    linewidth=g_linewidth, color=cb_palette[1]
+  ) +
+  geom_ribbon(
+    data=rib_df,
+    aes(x=x, ymin=ymin, ymax=ymax),
+    fill=cb_palette[1], alpha=0.3
+  ) +
+  # geom_segment(
+  #   x=1, y=0, yend=1, linewidth=g_linewidth,
+  #   color=cb_palette[1], arrow=arrow()
+  # ) +
+  # geom_segment(
+  #   x=0, y=0, xend=1, linewidth=g_linewidth,
+  #   color=cb_palette[1]
+  # ) +
+  xlim(0, 1) +
+  ylim(0, 1) +
+  labs(title="Posterior of Pr(Heads)") +
+  theme_dsan(base_size=28) +
+  theme(title=element_text(size=20))
+```
+
+:::
+::::
+
+# Lab Time! {data-stack-name="Bayesian Inference Lab"}
 
 ## References
 

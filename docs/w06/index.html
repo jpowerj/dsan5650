@@ -170,17 +170,21 @@ window.Quarto = {
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#schedule" id="toc-schedule" class="nav-link active" data-scroll-target="#schedule">Schedule</a></li>
-  <li><a href="#logistics-table-setting" id="toc-logistics-table-setting" class="nav-link" data-scroll-target="#logistics-table-setting">Logistics / Table-Setting</a>
+  <li><a href="#logistics-table-setting" id="toc-logistics-table-setting" class="nav-link active" data-scroll-target="#logistics-table-setting">Logistics / Table-Setting</a>
   <ul class="collapse">
   <li><a href="#from-hws-to-midterm" id="toc-from-hws-to-midterm" class="nav-link" data-scroll-target="#from-hws-to-midterm">From HWs to Midterm</a></li>
   <li><a href="#looking-forwards-post-midterm" id="toc-looking-forwards-post-midterm" class="nav-link" data-scroll-target="#looking-forwards-post-midterm">Looking Forwards (Post-Midterm)</a></li>
   </ul></li>
   <li><a href="#bayesian-workflow" id="toc-bayesian-workflow" class="nav-link" data-scroll-target="#bayesian-workflow">Bayesian Workflow</a>
   <ul class="collapse">
-  <li><a href="#seeing-forests-and-trees" id="toc-seeing-forests-and-trees" class="nav-link" data-scroll-target="#seeing-forests-and-trees">Seeing Forests <em>and</em> Trees</a></li>
+  <li><a href="#modeling-how-trees-become-forests" id="toc-modeling-how-trees-become-forests" class="nav-link" data-scroll-target="#modeling-how-trees-become-forests">Modeling How Trees Become Forests</a></li>
   <li><a href="#prior-stage-distributions" id="toc-prior-stage-distributions" class="nav-link" data-scroll-target="#prior-stage-distributions">Prior “Stage” Distributions</a></li>
   <li><a href="#posterior-stage-distributions" id="toc-posterior-stage-distributions" class="nav-link" data-scroll-target="#posterior-stage-distributions">Posterior “Stage” Distributions</a></li>
+  <li><a href="#why-do-we-need-subjective-priors" id="toc-why-do-we-need-subjective-priors" class="nav-link" data-scroll-target="#why-do-we-need-subjective-priors">Why Do We Need “Subjective” Priors?</a></li>
+  <li><a href="#flat-vs.-informative-priors" id="toc-flat-vs.-informative-priors" class="nav-link" data-scroll-target="#flat-vs.-informative-priors">Flat vs.&nbsp;Informative Priors</a></li>
+  </ul></li>
+  <li><a href="#lab-time" id="toc-lab-time" class="nav-link" data-scroll-target="#lab-time">Lab Time!</a>
+  <ul class="collapse">
   <li><a href="#references" id="toc-references" class="nav-link" data-scroll-target="#references">References</a></li>
   </ul></li>
   </ul>
@@ -234,51 +238,8 @@ window.Quarto = {
 <center>
 <a class="h2" href="./slides.html" target="_blank">Open slides in new window →</a>
 </center>
-<section id="schedule" class="level1 smaller crunch-title crunch-callout code-90" data-name="Schedule">
-<h1 class="smaller crunch-title crunch-callout code-90" data-name="Schedule">Schedule</h1>
-<p>Today’s Planned Schedule:</p>
-<table class="caption-top table">
-<colgroup>
-<col style="width: 12%">
-<col style="width: 12%">
-<col style="width: 12%">
-<col style="width: 64%">
-</colgroup>
-<thead>
-<tr class="header">
-<th style="text-align: left;"></th>
-<th style="text-align: left;">Start</th>
-<th style="text-align: left;">End</th>
-<th style="text-align: left;">Topic</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td style="text-align: left;"><strong>Lecture</strong></td>
-<td style="text-align: left;">6:30pm</td>
-<td style="text-align: left;">7:20pm</td>
-<td style="text-align: left;"><a href="#multilevel-madness">Multilevel Madness →</a></td>
-</tr>
-<tr class="even">
-<td style="text-align: left;"></td>
-<td style="text-align: left;">7:20pm</td>
-<td style="text-align: left;">7:50pm</td>
-<td style="text-align: left;"><a href="#the-ladder-of-causal-inference">Applying <span class="math inline">\(\textsf{do}()\)</span> →</a></td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;"><strong>Break!</strong></td>
-<td style="text-align: left;">7:50pm</td>
-<td style="text-align: left;">8:00pm</td>
-<td style="text-align: left;"></td>
-</tr>
-<tr class="even">
-<td style="text-align: left;"></td>
-<td style="text-align: left;">8:00pm</td>
-<td style="text-align: left;">9:00pm</td>
-<td style="text-align: left;"><a href="#the-collider">Closing Backdoor Paths →</a></td>
-</tr>
-</tbody>
-</table>
+<section id="logistics-table-setting" class="level1 title-11" data-stack-name="Logistics">
+<h1 class="title-11" data-stack-name="Logistics">Logistics / Table-Setting</h1>
 <div class="hidden">
 <p><span class="math display">\[
 \DeclareMathOperator*{\argmax}{argmax}
@@ -327,9 +288,6 @@ window.Quarto = {
 </details>
 </div>
 </div>
-</section>
-<section id="logistics-table-setting" class="level1 title-11">
-<h1 class="title-11">Logistics / Table-Setting</h1>
 <ul>
 <li>Midterm will be <strong>27-Hour Take-Home Exam</strong></li>
 <li>A “Midterm” folder will magically appear on <a href="https://guhub.io">guhub.io</a> at <strong>9pm EDT</strong> on <strong>Wednesday, July 2</strong> (immediately after lecture ends), due <strong>11:59pm EDT</strong> on <strong>Thursday, July 3</strong></li>
@@ -359,8 +317,8 @@ window.Quarto = {
 <li>Posterior</li>
 <li>Posterior Predictive</li>
 </ul>
-<section id="seeing-forests-and-trees" class="level2 smaller crunch-title title-11 crunch-ul crunch-li-6 crunch-img crunch-p crunch-quarto-figure">
-<h2 class="smaller crunch-title title-11 crunch-ul crunch-li-6 crunch-img crunch-p crunch-quarto-figure anchored" data-anchor-id="seeing-forests-and-trees">Seeing Forests <em>and</em> Trees</h2>
+<section id="modeling-how-trees-become-forests" class="level2 smaller crunch-title title-11 crunch-ul crunch-li-6 crunch-img crunch-p crunch-quarto-figure">
+<h2 class="smaller crunch-title title-11 crunch-ul crunch-li-6 crunch-img crunch-p crunch-quarto-figure anchored" data-anchor-id="modeling-how-trees-become-forests">Modeling How Trees Become Forests</h2>
 <ul>
 <li>Your <strong>model</strong>, if it’s <strong>generative</strong> (which… nearly all in 5650 are), relates <strong>observed</strong> data <span class="math inline">\(\mathbf{D}\)</span> to a set of underlying <strong>parameters</strong> <span class="math inline">\(\boldsymbol{\theta}\)</span> that are hypothesized as “giving rise” to <span class="math inline">\(\mathbf{D}\)</span></li>
 <li>When you specify <em>how</em> exactly this “giving rise” works, you’re specifying a <strong>DGP</strong>!</li>
@@ -453,8 +411,8 @@ window.Quarto = {
 </figure>
 </div>
 </section>
-<section id="prior-stage-distributions" class="level2 title-09 smaller crunch-title crunch-ul crunch-quarto-figure crunch-p crunch-li-8 text-60">
-<h2 class="title-09 smaller crunch-title crunch-ul crunch-quarto-figure crunch-p crunch-li-8 text-60 anchored" data-anchor-id="prior-stage-distributions">Prior “Stage” Distributions</h2>
+<section id="prior-stage-distributions" class="level2 title-10 smaller crunch-title crunch-ul crunch-quarto-figure crunch-p crunch-li-8 text-60">
+<h2 class="title-10 smaller crunch-title crunch-ul crunch-quarto-figure crunch-p crunch-li-8 text-60 anchored" data-anchor-id="prior-stage-distributions">Prior “Stage” Distributions</h2>
 <ul>
 <li>RVs <span class="math inline">\(\boldsymbol\theta\)</span> = params of your model, RVs <span class="math inline">\(\mathbf{X}\)</span> = data <span class="math inline">\(\leadsto\)</span> <strong>Generative</strong> model <span class="math inline">\(\pedge{\boldsymbol\theta}{\mathbf{X}}\)</span></li>
 <li>Enter <strong>Prior World</strong> (<strong>Before</strong> observing any data): Since we have <strong>priors</strong> over <span class="math inline">\(\boldsymbol\theta\)</span> <span class="math inline">\(\leadsto\)</span> we can <strong>sample</strong> values of <span class="math inline">\(\boldsymbol\theta\)</span>, then <strong>generate synthetic data</strong> on the basis of these values</li>
@@ -469,7 +427,7 @@ window.Quarto = {
 <p><em>What can I guess about values of my parameters from background knowledge of the world?</em> e.g.:</p>
 <ul>
 <li>Human heights can’t be negative</li>
-<li>Data collected at a bar <span class="math inline">\(\Rightarrow\)</span> Age <span class="math inline">\(\geq\)</span> 18, <span class="math inline">\(\Pr(\text{Age} = x)\)</span> decreases as <span class="math inline">\(x\)</span> goes above 50</li>
+<li>Data collected at a bar <span class="math inline">\(\Rightarrow\)</span> Age <span class="math inline">\(\geq\)</span> 18, <span class="math inline">\(\Pr(\text{Age} = x)\)</span> decreases as <span class="math inline">\(x\)</span> goes above 30</li>
 </ul>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
@@ -492,20 +450,258 @@ window.Quarto = {
 </div>
 </div>
 </section>
-<section id="posterior-stage-distributions" class="level2 title-09 smaller crunch-title crunch-ul crunch-quarto-figure crunch-p crunch-li-8 text-60">
-<h2 class="title-09 smaller crunch-title crunch-ul crunch-quarto-figure crunch-p crunch-li-8 text-60 anchored" data-anchor-id="posterior-stage-distributions">Posterior “Stage” Distributions</h2>
+<section id="posterior-stage-distributions" class="level2 title-10 smaller crunch-title crunch-ul crunch-quarto-figure crunch-p crunch-li-8 text-60 inline-90">
+<h2 class="title-10 smaller crunch-title crunch-ul crunch-quarto-figure crunch-p crunch-li-8 text-60 inline-90 anchored" data-anchor-id="posterior-stage-distributions">Posterior “Stage” Distributions</h2>
+<ul>
+<li>RVs <span class="math inline">\(\boldsymbol\theta\)</span> = params of your model, RVs <span class="math inline">\(\mathbf{X}\)</span> = data <span class="math inline">\(\leadsto\)</span> <strong>Generative</strong> model <span class="math inline">\(\pedge{\boldsymbol\theta}{\mathbf{X}}\)</span></li>
+</ul>
 <div class="columns">
 <div class="column" style="width:50%;">
-<center>
-<p><strong>Posterior</strong></p>
+<center style="margin-top: 5px;">
+<p><i class="bi bi-3-circle"></i> <strong>Posterior Distribution:</strong> <span class="math inline">\(\Pr\left(\boldsymbol{\theta} \; \middle| \; \mathbf{X} = \ponode{\mathbf{X}}\right)\)</span></p>
 </center>
+<p><em>Now we <strong>observe</strong> data: <span class="math inline">\(\pnode{\mathbf{X}} \leadsto \ponode{\mathbf{X}}\)</span>, which means we can use <strong>Bayes’ Rule</strong> to infer distribution over <span class="math inline">\(\boldsymbol{\theta}\)</span>: <strong>what values are most likely to produce <span class="math inline">\(\ponode{\mathbf{X}}\)</span></strong>?</em></p>
+<ul>
+<li>60% of observed bar-goers have that haircut <span class="math inline">\(\Rightarrow\)</span> <span class="math inline">\(\boldsymbol{\theta}_{\text{post}} \approx \frac{0.6 + 0.8}{2} = 0.7\)</span></li>
+<li>Coin = <span class="math inline">\(\textsf{H}\)</span> 4/5 times <span class="math inline">\(\Rightarrow\)</span> <span class="math inline">\(\boldsymbol{\theta} = p = \frac{0.5 + 0.8}{2} = 0.65\)</span></li>
+<li>Coin = <span class="math inline">\(\textsf{H}\)</span> 5/5 times <span class="math inline">\(\Rightarrow\)</span> <span class="math inline">\(\boldsymbol{\theta} = p = \frac{0.5 + 1.0}{2} = 0.75\)</span></li>
+</ul>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/doin-science2-crop.jpg" class="img-fluid quarto-figure quarto-figure-center figure-img" width="350"></p>
+</figure>
+</div>
 </div><div class="column" style="width:50%;">
-<center>
-<p><strong>Posterior predictive</strong></p>
+<center style="margin-top: 5px;">
+<p><i class="bi bi-4-circle"></i> <strong>Posterior Predictive Distribution:</strong> <span class="math inline">\(\Pr(\mathbf{X} \mid \boldsymbol{\theta})\)</span></p>
 </center>
+<p><em>Now that we’ve fit <span class="math inline">\(\Pr(\boldsymbol{\theta})\)</span> to data, can generate as much new data as we want, e.g.&nbsp;to evaluate <strong>how well model predicts outcomes for test data</strong></em></p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/logistic-post-pc.webp" class="img-fluid figure-img"></p>
+<figcaption>From <a href="https://www.pymc.io/projects/docs/en/stable/learn/core_notebooks/posterior_predictive.html">PyMC documentation</a></figcaption>
+</figure>
+</div>
 </div>
 </div>
 </section>
+<section id="why-do-we-need-subjective-priors" class="level2 smaller title-12 crunch-title crunch-ul crunch-quarto-figure">
+<h2 class="smaller title-12 crunch-title crunch-ul crunch-quarto-figure anchored" data-anchor-id="why-do-we-need-subjective-priors">Why Do We Need “Subjective” Priors?</h2>
+<ul>
+<li>Under frequentism… (tldr) literally no method for dealing with shades of uncertainty</li>
+<li>Frequentist assumption: For a given coin, <span class="math inline">\(\Pr(\textsf{Heads})\)</span> is <strong>not a Random Variable!</strong> It’s some number, like 0.5 or 0.8. It’s the <strong>asymptote</strong> of <span class="math inline">\(\frac{\#[\textsf{Heads}]}{\#[\textsf{Heads}] + \#[\textsf{Tails}]}\)</span> as <span class="math inline">\(n \rightarrow \infty\)</span></li>
+<li>So, if we flip coin 1 time, and get <span class="math inline">\(\textsf{Heads}\)</span>, <strong>no basis for inferring</strong> <span class="math inline">\(\Pr(\textsf{Coin is Fair})\)</span> vs.&nbsp;<span class="math inline">\(\Pr(\textsf{Coin is Biased})\)</span>: Both are <strong>undefined</strong>. We’ve… “discovered” that <span class="math inline">\(\Pr(\textsf{Heads}) = 1\)</span></li>
+<li>By using <strong>Bayesian inference</strong>, we can bring <strong>prior knowledge</strong> into our studies, which we’ll need to do <strong>especially</strong> for complex emergent systems: societies, economies, etc.!</li>
+<li>In fact, as a guy named <strong>Laplace</strong> discovered in the nineteenth century, frequentism = Bayesian inference with <strong>“flat priors”</strong>…</li>
+</ul>
+</section>
+<section id="flat-vs.-informative-priors" class="level2 smaller crunch-title crunch-quarto-layout-panel crunch-quarto-figure crunch-img crunch-p">
+<h2 class="smaller crunch-title crunch-quarto-layout-panel crunch-quarto-figure crunch-img crunch-p anchored" data-anchor-id="flat-vs.-informative-priors">Flat vs.&nbsp;Informative Priors</h2>
+<details class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>flat_df <span class="ot">&lt;-</span> <span class="fu">tibble</span>(<span class="at">x=</span><span class="fu">seq</span>(<span class="dv">0</span>, <span class="dv">1</span>, <span class="fl">0.1</span>), <span class="at">y=</span><span class="dv">0</span>)</span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>flat_df <span class="sc">|&gt;</span> <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x=</span>x, <span class="at">y=</span>y)) <span class="sc">+</span></span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_line</span>(</span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>    <span class="at">color=</span>cb_palette[<span class="dv">1</span>],</span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>    <span class="at">linewidth=</span>g_linewidth</span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">+</span></span>
+<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ylim</span>(<span class="dv">0</span>, <span class="dv">1</span>) <span class="sc">+</span></span>
+<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title=</span><span class="st">"Flat Prior on Pr(Heads)"</span>) <span class="sc">+</span></span>
+<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_dsan</span>(<span class="at">base_size=</span><span class="dv">28</span>)</span>
+<span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb3-12"><a href="#cb3-12" aria-hidden="true" tabindex="-1"></a>data_df <span class="ot">&lt;-</span> <span class="fu">tibble</span>(<span class="at">x=</span><span class="dv">1</span>, <span class="at">y=</span><span class="dv">1</span>)</span>
+<span id="cb3-13"><a href="#cb3-13" aria-hidden="true" tabindex="-1"></a>data_df <span class="sc">|&gt;</span> <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x=</span>x, <span class="at">y=</span>y)) <span class="sc">+</span></span>
+<span id="cb3-14"><a href="#cb3-14" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">size=</span><span class="dv">5</span>) <span class="sc">+</span></span>
+<span id="cb3-15"><a href="#cb3-15" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_segment</span>(</span>
+<span id="cb3-16"><a href="#cb3-16" aria-hidden="true" tabindex="-1"></a>    <span class="at">x=</span><span class="dv">1</span>, <span class="at">y=</span><span class="dv">0</span>, <span class="at">yend=</span><span class="dv">1</span>, <span class="at">linewidth=</span>g_linewidth</span>
+<span id="cb3-17"><a href="#cb3-17" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">+</span></span>
+<span id="cb3-18"><a href="#cb3-18" aria-hidden="true" tabindex="-1"></a>  <span class="fu">xlim</span>(<span class="dv">0</span>, <span class="dv">1</span>) <span class="sc">+</span></span>
+<span id="cb3-19"><a href="#cb3-19" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ylim</span>(<span class="dv">0</span>, <span class="dv">1</span>) <span class="sc">+</span></span>
+<span id="cb3-20"><a href="#cb3-20" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title=</span><span class="st">"Observed Data"</span>) <span class="sc">+</span></span>
+<span id="cb3-21"><a href="#cb3-21" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_dsan</span>(<span class="at">base_size=</span><span class="dv">28</span>)</span>
+<span id="cb3-22"><a href="#cb3-22" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb3-23"><a href="#cb3-23" aria-hidden="true" tabindex="-1"></a>data_df <span class="ot">&lt;-</span> <span class="fu">tibble</span>(<span class="at">x=</span><span class="dv">1</span>, <span class="at">y=</span><span class="dv">1</span>)</span>
+<span id="cb3-24"><a href="#cb3-24" aria-hidden="true" tabindex="-1"></a>data_df <span class="sc">|&gt;</span> <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x=</span>x, <span class="at">y=</span>y)) <span class="sc">+</span></span>
+<span id="cb3-25"><a href="#cb3-25" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_segment</span>(</span>
+<span id="cb3-26"><a href="#cb3-26" aria-hidden="true" tabindex="-1"></a>    <span class="at">x=</span><span class="dv">1</span>, <span class="at">y=</span><span class="dv">0</span>, <span class="at">yend=</span><span class="dv">1</span>, <span class="at">linewidth=</span>g_linewidth,</span>
+<span id="cb3-27"><a href="#cb3-27" aria-hidden="true" tabindex="-1"></a>    <span class="at">color=</span>cb_palette[<span class="dv">1</span>], <span class="at">arrow=</span><span class="fu">arrow</span>()</span>
+<span id="cb3-28"><a href="#cb3-28" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">+</span></span>
+<span id="cb3-29"><a href="#cb3-29" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_segment</span>(</span>
+<span id="cb3-30"><a href="#cb3-30" aria-hidden="true" tabindex="-1"></a>    <span class="at">x=</span><span class="dv">0</span>, <span class="at">y=</span><span class="dv">0</span>, <span class="at">xend=</span><span class="dv">1</span>, <span class="at">linewidth=</span>g_linewidth,</span>
+<span id="cb3-31"><a href="#cb3-31" aria-hidden="true" tabindex="-1"></a>    <span class="at">color=</span>cb_palette[<span class="dv">1</span>]</span>
+<span id="cb3-32"><a href="#cb3-32" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">+</span></span>
+<span id="cb3-33"><a href="#cb3-33" aria-hidden="true" tabindex="-1"></a>  <span class="fu">xlim</span>(<span class="dv">0</span>, <span class="dv">1</span>) <span class="sc">+</span></span>
+<span id="cb3-34"><a href="#cb3-34" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ylim</span>(<span class="dv">0</span>, <span class="dv">1</span>) <span class="sc">+</span></span>
+<span id="cb3-35"><a href="#cb3-35" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title=</span><span class="st">"Posterior of Pr(Heads)"</span>) <span class="sc">+</span></span>
+<span id="cb3-36"><a href="#cb3-36" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_dsan</span>(<span class="at">base_size=</span><span class="dv">28</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="quarto-layout-panel" data-layout="[30,5,30,5,30]">
+<div class="quarto-layout-row quarto-layout-valign-center">
+<div id="flat-prior" class="quarto-layout-cell" style="flex-basis: 30.0%;justify-content: flex-start;">
+<div class="cell" data-layout-align="center">
+<div class="cell-output cell-output-stderr">
+<pre><code>── Attaching core tidyverse packages ──────────────────────── tidyverse 2.0.0 ──
+✔ dplyr     1.1.4     ✔ readr     2.1.5
+✔ forcats   1.0.0     ✔ stringr   1.5.1
+✔ lubridate 1.9.4     ✔ tibble    3.3.0
+✔ purrr     1.0.4     ✔ tidyr     1.3.1
+── Conflicts ────────────────────────────────────────── tidyverse_conflicts() ──
+✖ dplyr::filter() masks stats::filter()
+✖ dplyr::lag()    masks stats::lag()
+ℹ Use the conflicted package (&lt;http://conflicted.r-lib.org/&gt;) to force all conflicts to become errors</code></pre>
+</div>
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="index_files/figure-html/flat-priors-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" width="528"></p>
+</figure>
+</div>
+</div>
+</div>
+</div>
+<div id="flat-times" class="quarto-layout-cell" style="flex-basis: 5.0%;justify-content: flex-start;">
+<p><span class="math display">\[
+\otimes
+\]</span></p>
+</div>
+<div id="flat-data" class="quarto-layout-cell" style="flex-basis: 30.0%;justify-content: flex-start;">
+<div class="cell" data-layout-align="center">
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="index_files/figure-html/data-plot-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" width="528"></p>
+</figure>
+</div>
+</div>
+</div>
+</div>
+<div id="flat-eq" class="quarto-layout-cell" style="flex-basis: 5.0%;justify-content: flex-start;">
+<p><span class="math display">\[
+\leadsto
+\]</span></p>
+</div>
+<div id="flat-post" class="quarto-layout-cell" style="flex-basis: 30.0%;justify-content: flex-start;">
+<div class="cell" data-layout-align="center">
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="index_files/figure-html/flat-posterior-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" width="528"></p>
+</figure>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<details class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>unif_df <span class="ot">&lt;-</span> <span class="fu">tibble</span>(<span class="at">x=</span><span class="fu">seq</span>(<span class="dv">0</span>, <span class="dv">1</span>, <span class="fl">0.1</span>), <span class="at">y=</span><span class="dv">1</span>)</span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>unif_df <span class="sc">|&gt;</span> <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x=</span>x, <span class="at">y=</span>y)) <span class="sc">+</span></span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_line</span>(</span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>    <span class="at">color=</span><span class="st">"#e69f00"</span>, <span class="at">linewidth=</span>g_linewidth</span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">+</span></span>
+<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">annotate</span>(<span class="st">'rect'</span>, <span class="at">xmin=</span><span class="dv">0</span>, <span class="at">xmax=</span><span class="dv">1</span>, <span class="at">ymin=</span><span class="dv">0</span>, <span class="at">ymax=</span><span class="dv">1</span>, <span class="at">fill=</span><span class="st">'#e69f00'</span>, <span class="at">alpha=</span><span class="fl">0.3</span>) <span class="sc">+</span></span>
+<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">xlim</span>(<span class="dv">0</span>, <span class="dv">1</span>) <span class="sc">+</span> <span class="fu">ylim</span>(<span class="dv">0</span>, <span class="dv">1</span>) <span class="sc">+</span></span>
+<span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title=</span><span class="st">"Uniform Prior on Pr(Heads)"</span>) <span class="sc">+</span></span>
+<span id="cb5-10"><a href="#cb5-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_dsan</span>(<span class="at">base_size=</span><span class="dv">28</span>) <span class="sc">+</span></span>
+<span id="cb5-11"><a href="#cb5-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">title=</span><span class="fu">element_text</span>(<span class="at">size=</span><span class="dv">20</span>))</span>
+<span id="cb5-12"><a href="#cb5-12" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb5-13"><a href="#cb5-13" aria-hidden="true" tabindex="-1"></a>data_df <span class="ot">&lt;-</span> <span class="fu">tibble</span>(<span class="at">x=</span><span class="dv">1</span>, <span class="at">y=</span><span class="dv">1</span>)</span>
+<span id="cb5-14"><a href="#cb5-14" aria-hidden="true" tabindex="-1"></a>data_df <span class="sc">|&gt;</span> <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x=</span>x, <span class="at">y=</span>y)) <span class="sc">+</span></span>
+<span id="cb5-15"><a href="#cb5-15" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">size=</span><span class="dv">5</span>) <span class="sc">+</span></span>
+<span id="cb5-16"><a href="#cb5-16" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_segment</span>(</span>
+<span id="cb5-17"><a href="#cb5-17" aria-hidden="true" tabindex="-1"></a>    <span class="at">x=</span><span class="dv">1</span>, <span class="at">y=</span><span class="dv">0</span>, <span class="at">yend=</span><span class="dv">1</span>, <span class="at">linewidth=</span>g_linewidth</span>
+<span id="cb5-18"><a href="#cb5-18" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">+</span></span>
+<span id="cb5-19"><a href="#cb5-19" aria-hidden="true" tabindex="-1"></a>  <span class="fu">xlim</span>(<span class="dv">0</span>, <span class="dv">1</span>) <span class="sc">+</span></span>
+<span id="cb5-20"><a href="#cb5-20" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ylim</span>(<span class="dv">0</span>, <span class="dv">1</span>) <span class="sc">+</span></span>
+<span id="cb5-21"><a href="#cb5-21" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title=</span><span class="st">"Observed Data"</span>) <span class="sc">+</span></span>
+<span id="cb5-22"><a href="#cb5-22" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_dsan</span>(<span class="at">base_size=</span><span class="dv">28</span>)</span>
+<span id="cb5-23"><a href="#cb5-23" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb5-24"><a href="#cb5-24" aria-hidden="true" tabindex="-1"></a>data_df <span class="ot">&lt;-</span> <span class="fu">tibble</span>(<span class="at">x=</span><span class="dv">1</span>, <span class="at">y=</span><span class="dv">1</span>)</span>
+<span id="cb5-25"><a href="#cb5-25" aria-hidden="true" tabindex="-1"></a>x_vals <span class="ot">&lt;-</span> <span class="fu">seq</span>(<span class="dv">0</span>, <span class="dv">1</span>, <span class="fl">0.01</span>)</span>
+<span id="cb5-26"><a href="#cb5-26" aria-hidden="true" tabindex="-1"></a>my_exp <span class="ot">&lt;-</span> <span class="cf">function</span>(x) <span class="fu">exp</span>(<span class="dv">1-1</span><span class="sc">/</span>(x<span class="sc">^</span><span class="dv">2</span>))</span>
+<span id="cb5-27"><a href="#cb5-27" aria-hidden="true" tabindex="-1"></a>y_vals <span class="ot">&lt;-</span> <span class="fu">sapply</span>(x_vals, my_exp)</span>
+<span id="cb5-28"><a href="#cb5-28" aria-hidden="true" tabindex="-1"></a>data_df <span class="ot">&lt;-</span> <span class="fu">tibble</span>(<span class="at">x=</span>x_vals, <span class="at">y=</span>y_vals)</span>
+<span id="cb5-29"><a href="#cb5-29" aria-hidden="true" tabindex="-1"></a>rib_df <span class="ot">&lt;-</span> <span class="fu">tibble</span>(<span class="at">x=</span>x_vals, <span class="at">ymax=</span>y_vals, <span class="at">ymin=</span><span class="dv">0</span>)</span>
+<span id="cb5-30"><a href="#cb5-30" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>() <span class="sc">+</span></span>
+<span id="cb5-31"><a href="#cb5-31" aria-hidden="true" tabindex="-1"></a>  <span class="co"># stat_function(fun=my_exp, linewidth=g_linewidth, color=cb_palette[1]) +</span></span>
+<span id="cb5-32"><a href="#cb5-32" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_line</span>(</span>
+<span id="cb5-33"><a href="#cb5-33" aria-hidden="true" tabindex="-1"></a>    <span class="at">data=</span>data_df,</span>
+<span id="cb5-34"><a href="#cb5-34" aria-hidden="true" tabindex="-1"></a>    <span class="fu">aes</span>(<span class="at">x=</span>x, <span class="at">y=</span>y),</span>
+<span id="cb5-35"><a href="#cb5-35" aria-hidden="true" tabindex="-1"></a>    <span class="at">linewidth=</span>g_linewidth, <span class="at">color=</span>cb_palette[<span class="dv">1</span>]</span>
+<span id="cb5-36"><a href="#cb5-36" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">+</span></span>
+<span id="cb5-37"><a href="#cb5-37" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_ribbon</span>(</span>
+<span id="cb5-38"><a href="#cb5-38" aria-hidden="true" tabindex="-1"></a>    <span class="at">data=</span>rib_df,</span>
+<span id="cb5-39"><a href="#cb5-39" aria-hidden="true" tabindex="-1"></a>    <span class="fu">aes</span>(<span class="at">x=</span>x, <span class="at">ymin=</span>ymin, <span class="at">ymax=</span>ymax),</span>
+<span id="cb5-40"><a href="#cb5-40" aria-hidden="true" tabindex="-1"></a>    <span class="at">fill=</span>cb_palette[<span class="dv">1</span>], <span class="at">alpha=</span><span class="fl">0.3</span></span>
+<span id="cb5-41"><a href="#cb5-41" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">+</span></span>
+<span id="cb5-42"><a href="#cb5-42" aria-hidden="true" tabindex="-1"></a>  <span class="co"># geom_segment(</span></span>
+<span id="cb5-43"><a href="#cb5-43" aria-hidden="true" tabindex="-1"></a>  <span class="co">#   x=1, y=0, yend=1, linewidth=g_linewidth,</span></span>
+<span id="cb5-44"><a href="#cb5-44" aria-hidden="true" tabindex="-1"></a>  <span class="co">#   color=cb_palette[1], arrow=arrow()</span></span>
+<span id="cb5-45"><a href="#cb5-45" aria-hidden="true" tabindex="-1"></a>  <span class="co"># ) +</span></span>
+<span id="cb5-46"><a href="#cb5-46" aria-hidden="true" tabindex="-1"></a>  <span class="co"># geom_segment(</span></span>
+<span id="cb5-47"><a href="#cb5-47" aria-hidden="true" tabindex="-1"></a>  <span class="co">#   x=0, y=0, xend=1, linewidth=g_linewidth,</span></span>
+<span id="cb5-48"><a href="#cb5-48" aria-hidden="true" tabindex="-1"></a>  <span class="co">#   color=cb_palette[1]</span></span>
+<span id="cb5-49"><a href="#cb5-49" aria-hidden="true" tabindex="-1"></a>  <span class="co"># ) +</span></span>
+<span id="cb5-50"><a href="#cb5-50" aria-hidden="true" tabindex="-1"></a>  <span class="fu">xlim</span>(<span class="dv">0</span>, <span class="dv">1</span>) <span class="sc">+</span></span>
+<span id="cb5-51"><a href="#cb5-51" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ylim</span>(<span class="dv">0</span>, <span class="dv">1</span>) <span class="sc">+</span></span>
+<span id="cb5-52"><a href="#cb5-52" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title=</span><span class="st">"Posterior of Pr(Heads)"</span>) <span class="sc">+</span></span>
+<span id="cb5-53"><a href="#cb5-53" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_dsan</span>(<span class="at">base_size=</span><span class="dv">28</span>) <span class="sc">+</span></span>
+<span id="cb5-54"><a href="#cb5-54" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">title=</span><span class="fu">element_text</span>(<span class="at">size=</span><span class="dv">20</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="quarto-layout-panel" data-layout="[30,5,30,5,30]">
+<div class="quarto-layout-row quarto-layout-valign-center">
+<div id="unif-prior" class="quarto-layout-cell" style="flex-basis: 30.0%;justify-content: flex-start;">
+<div class="cell" data-layout-align="center">
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="index_files/figure-html/unif-priors-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" width="528"></p>
+</figure>
+</div>
+</div>
+</div>
+</div>
+<div id="unif-times" class="quarto-layout-cell" style="flex-basis: 5.0%;justify-content: flex-start;">
+<p><span class="math display">\[
+\otimes
+\]</span></p>
+</div>
+<div id="unif-data" class="quarto-layout-cell" style="flex-basis: 30.0%;justify-content: flex-start;">
+<div class="cell" data-layout-align="center">
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="index_files/figure-html/data-plot-unif-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" width="528"></p>
+</figure>
+</div>
+</div>
+</div>
+</div>
+<div id="unif-eq" class="quarto-layout-cell" style="flex-basis: 5.0%;justify-content: flex-start;">
+<p><span class="math display">\[
+\leadsto
+\]</span></p>
+</div>
+<div id="unif-post" class="quarto-layout-cell" style="flex-basis: 30.0%;justify-content: flex-start;">
+<div class="cell" data-layout-align="center">
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="index_files/figure-html/unif-posterior-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" width="528"></p>
+</figure>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+</section>
+<section id="lab-time" class="level1" data-stack-name="Bayesian Inference Lab">
+<h1 data-stack-name="Bayesian Inference Lab">Lab Time!</h1>
 <section id="references" class="level2">
 <h2 class="anchored" data-anchor-id="references">References</h2>
 <div id="refs" role="list">

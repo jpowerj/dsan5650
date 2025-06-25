@@ -489,7 +489,7 @@ Jeff Jacobs
 <div>
 
 </div>
-<div class="quarto-layout-panel" data-layout-align="center" data-layout="[45,55]">
+<div class="quarto-layout-panel" data-layout="[45,55]" data-layout-align="center">
 <div class="quarto-layout-row quarto-layout-valign-center">
 <div id="multilevel-left" class="quarto-layout-cell" style="flex-basis: 45.0%;justify-content: center;">
 <div class="quarto-figure quarto-figure-center">
@@ -592,7 +592,7 @@ Jeff Jacobs
 <section id="the-four-elemental-confounds" class="title-slide slide level1 smaller crunch-title crunch-quarto-figure title-12 center" data-stack-name="Forks, Pipes, Colliders">
 <h1>The Four Elemental Confounds</h1>
 
-<img data-src="images/elemental-confounds.png" class="r-stretch quarto-figure-center"><p class="caption">From Richard McElreath’s <a href="https://youtu.be/mBEA7PKDmiY?si=S0ciQ7W7wfL73kPR"><em>Statistical Rethinking</em> Lectures</a></p><div class="cell" data-layout-align="center">
+<img data-src="images/elemental-confounds.png" class="r-stretch quarto-figure-center"><p class="caption">From Richard McElreath’s <a href="https://youtu.be/mBEA7PKDmiY?si=S0ciQ7W7wfL73kPR"><em>Statistical Rethinking</em> Lectures</a></p><div class="cell">
 <details open="" class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a></a><span class="fu">library</span>(tidyverse) <span class="co"># For ggplot</span></span>
@@ -607,7 +607,7 @@ Jeff Jacobs
 <h2>The Fork: <span class="math inline">\(X \leftarrow Z \rightarrow Y\)</span></h2>
 <div class="columns">
 <div class="column" style="width:60%;">
-<div class="cell" data-layout-align="center">
+<div class="cell">
 <details open="" class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a></a><span class="fu">set.seed</span>(<span class="dv">5650</span>)</span>
@@ -618,7 +618,7 @@ Jeff Jacobs
 <span id="cb3-6"><a></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
-<div class="cell" data-layout-align="center" data-crop="false">
+<div class="cell" data-crop="false">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb4"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a></a>plot_freqs <span class="ot">&lt;-</span> <span class="cf">function</span>(df, plot_title, <span class="at">y_lab=</span><span class="cn">TRUE</span>) {</span>
@@ -675,15 +675,15 @@ Jeff Jacobs
 <span id="cb4-52"><a></a>full_plot <span class="sc">|</span> z0_plot <span class="sc">|</span> z1_plot</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output-display">
-<div class="quarto-figure quarto-figure-center">
+<div>
 <figure>
-<p><img data-src="index_files/figure-revealjs/fork-matrix-1.png" class="quarto-figure quarto-figure-center" width="960"></p>
+<p><img data-src="index_files/figure-revealjs/fork-matrix-1.png" width="960"></p>
 </figure>
 </div>
 </div>
 </div>
 </div><div class="column" style="width:40%;">
-<div class="cell" data-layout-align="center">
+<div class="cell">
 <details open="" class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb5"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a></a><span class="fu">set.seed</span>(<span class="dv">5650</span>)</span>
@@ -694,7 +694,7 @@ Jeff Jacobs
 <span id="cb5-6"><a></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
-<div class="cell" data-layout-align="center" data-crop="false">
+<div class="cell" data-crop="false">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb6"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a></a><span class="fu">library</span>(latex2exp)</span>
@@ -754,9 +754,9 @@ Jeff Jacobs
 <span id="cb6-55"><a></a>  )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output-display">
-<div class="quarto-figure quarto-figure-center">
+<div>
 <figure>
-<p><img data-src="index_files/figure-revealjs/cfork-plot-1.png" class="quarto-figure quarto-figure-center" width="960"></p>
+<p><img data-src="index_files/figure-revealjs/cfork-plot-1.png" width="960"></p>
 </figure>
 </div>
 </div>
@@ -767,7 +767,7 @@ Jeff Jacobs
 <h2>The Pipe: <span class="math inline">\(X \rightarrow Z \rightarrow Y\)</span></h2>
 <div class="columns">
 <div class="column" style="width:60%;">
-<div class="cell" data-layout-align="center">
+<div class="cell">
 <details open="" class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb7"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a></a><span class="fu">set.seed</span>(<span class="dv">5650</span>)</span>
@@ -778,7 +778,7 @@ Jeff Jacobs
 <span id="cb7-6"><a></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
-<div class="cell" data-layout-align="center" data-crop="false">
+<div class="cell" data-crop="false">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb8"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a></a><span class="co"># The full df</span></span>
@@ -797,16 +797,16 @@ Jeff Jacobs
 <span id="cb8-14"><a></a>pipe_full_plot <span class="sc">|</span> pipe_z0_plot <span class="sc">|</span> pipe_z1_plot</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output-display">
-<div class="quarto-figure quarto-figure-center">
+<div>
 <figure>
-<p><img data-src="index_files/figure-revealjs/pipe-matrix-1.png" class="quarto-figure quarto-figure-center" width="960"></p>
+<p><img data-src="index_files/figure-revealjs/pipe-matrix-1.png" width="960"></p>
 </figure>
 </div>
 </div>
 </div>
 </div><div class="column" style="width:40%;">
 <!-- Continuous Pipe plot -->
-<div class="cell" data-layout-align="center">
+<div class="cell">
 <details open="" class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb9"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a></a><span class="fu">set.seed</span>(<span class="dv">5650</span>)</span>
@@ -817,7 +817,7 @@ Jeff Jacobs
 <span id="cb9-6"><a></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
-<div class="cell" data-layout-align="center" data-crop="false">
+<div class="cell" data-crop="false">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb10"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a></a>cpipe_lm <span class="ot">&lt;-</span> <span class="fu">lm</span>(Y <span class="sc">~</span> X, <span class="at">data=</span>cpipe_df)</span>
@@ -875,9 +875,9 @@ Jeff Jacobs
 <span id="cb10-53"><a></a>  )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output-display">
-<div class="quarto-figure quarto-figure-center">
+<div>
 <figure>
-<p><img data-src="index_files/figure-revealjs/cpipe-plot-1.png" class="quarto-figure quarto-figure-center" width="960"></p>
+<p><img data-src="index_files/figure-revealjs/cpipe-plot-1.png" width="960"></p>
 </figure>
 </div>
 </div>
@@ -889,7 +889,7 @@ Jeff Jacobs
 <div class="columns">
 <div class="column" style="width:60%;">
 <!-- Discrete Collider Plots -->
-<div class="cell" data-layout-align="center">
+<div class="cell">
 <details open="" class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb11"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a></a><span class="fu">set.seed</span>(<span class="dv">5650</span>)</span>
@@ -900,7 +900,7 @@ Jeff Jacobs
 <span id="cb11-6"><a></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
-<div class="cell" data-layout-align="center" data-crop="false">
+<div class="cell" data-crop="false">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb12"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a></a><span class="co"># The full df</span></span>
@@ -919,9 +919,9 @@ Jeff Jacobs
 <span id="cb12-14"><a></a>coll_full_plot <span class="sc">|</span> coll_z0_plot <span class="sc">|</span> coll_z1_plot</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output-display">
-<div class="quarto-figure quarto-figure-center">
+<div>
 <figure>
-<p><img data-src="index_files/figure-revealjs/coll-matrix-1.png" class="quarto-figure quarto-figure-center" width="960"></p>
+<p><img data-src="index_files/figure-revealjs/coll-matrix-1.png" width="960"></p>
 </figure>
 </div>
 </div>
@@ -931,7 +931,7 @@ Jeff Jacobs
 </ul>
 </div><div class="column" style="width:40%;">
 <!-- Continuous Collider Plot -->
-<div class="cell" data-layout-align="center">
+<div class="cell">
 <details open="" class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb13"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a></a><span class="fu">set.seed</span>(<span class="dv">5650</span>)</span>
@@ -942,7 +942,7 @@ Jeff Jacobs
 <span id="cb13-6"><a></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
-<div class="cell" data-layout-align="center" data-crop="false">
+<div class="cell" data-crop="false">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb14"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a></a>ccoll_lm <span class="ot">&lt;-</span> <span class="fu">lm</span>(Y <span class="sc">~</span> X, <span class="at">data=</span>ccoll_df)</span>
@@ -1000,9 +1000,9 @@ Jeff Jacobs
 <span id="cb14-53"><a></a>  )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output-display">
-<div class="quarto-figure quarto-figure-center">
+<div>
 <figure>
-<p><img data-src="index_files/figure-revealjs/ccoll-plot-1.png" class="quarto-figure quarto-figure-center" width="960"></p>
+<p><img data-src="index_files/figure-revealjs/ccoll-plot-1.png" width="960"></p>
 </figure>
 </div>
 </div>
@@ -1017,7 +1017,7 @@ Jeff Jacobs
 <div class="columns">
 <div class="column" style="width:60%;">
 <!-- Discrete Proxy Plots -->
-<div class="cell" data-layout-align="center">
+<div class="cell">
 <details open="" class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb15"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a></a><span class="fu">set.seed</span>(<span class="dv">5650</span>)</span>
@@ -1029,7 +1029,7 @@ Jeff Jacobs
 <span id="cb15-7"><a></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
-<div class="cell" data-layout-align="center" data-crop="false">
+<div class="cell" data-crop="false">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb16"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a></a><span class="co"># The full df</span></span>
@@ -1048,9 +1048,9 @@ Jeff Jacobs
 <span id="cb16-14"><a></a>prox_full_plot <span class="sc">|</span> prox_a0_plot <span class="sc">|</span> prox_a1_plot</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output-display">
-<div class="quarto-figure quarto-figure-center">
+<div>
 <figure>
-<p><img data-src="index_files/figure-revealjs/prox-matrices-1.png" class="quarto-figure quarto-figure-center" width="960"></p>
+<p><img data-src="index_files/figure-revealjs/prox-matrices-1.png" width="960"></p>
 </figure>
 </div>
 </div>
@@ -1066,7 +1066,7 @@ Jeff Jacobs
 <p><img data-src="images/causal_proxy.svg" class="quarto-figure quarto-figure-center" width="250"></p>
 </figure>
 </div>
-<div class="cell" data-layout-align="center" data-crop="false">
+<div class="cell" data-crop="false">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb17"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a></a><span class="fu">library</span>(tidyverse)</span>
@@ -1136,9 +1136,9 @@ Jeff Jacobs
 <span id="cb17-65"><a></a>  )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output-display">
-<div class="quarto-figure quarto-figure-center">
+<div>
 <figure>
-<p><img data-src="index_files/figure-revealjs/prox-continuous-1.png" class="quarto-figure quarto-figure-center" width="960"></p>
+<p><img data-src="index_files/figure-revealjs/prox-continuous-1.png" width="960"></p>
 </figure>
 </div>
 </div>
