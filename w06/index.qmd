@@ -1,5 +1,5 @@
 ---
-title: "Week 6: Bayesian Workflow, Propensity Scores, Midterm Pre-Review"
+title: "Week 6: Bayesian Workflow, Midterm Pre-Review"
 subtitle: "*DSAN 5650: Causal Inference for Computational Social Science*<br><span class='subsubtitle'>Summer 2025, Georgetown University</span>"
 author: "Jeff Jacobs"
 institute: "[`jj1088@georgetown.edu`](mailto:jj1088@georgetown.edu)"
@@ -273,7 +273,7 @@ ggMarginal(
 * By using **Bayesian inference**, we can bring **prior knowledge** into our studies, which we'll need to do **especially** for complex emergent systems: societies, economies, etc.!
 * In fact, as a guy named **Laplace** discovered in the nineteenth century, frequentism = Bayesian inference with **"flat priors"**...
 
-## Flat vs. Informative Priors {.smaller .crunch-title .crunch-quarto-layout-panel .crunch-quarto-figure .crunch-img .crunch-p}
+## Flat vs. Informative Priors {.smaller .title-10 .crunch-title .crunch-quarto-layout-panel .crunch-quarto-figure .crunch-img .crunch-p}
 
 :::: {layout="[30,5,30,5,30]" layout-valign="center"}
 ::: {#flat-prior}
@@ -290,8 +290,12 @@ flat_df |> ggplot(aes(x=x, y=y)) +
     linewidth=g_linewidth
   ) +
   ylim(0, 1) +
-  labs(title="Flat Prior on Pr(Heads)") +
-  theme_dsan(base_size=28)
+  labs(
+    title="Flat Prior on Pr(Heads)",
+    y="Density"
+  ) +
+  theme_dsan(base_size=28) +
+  theme(title=element_text(size=20))
 ```
 
 :::
@@ -317,8 +321,12 @@ data_df |> ggplot(aes(x=x, y=y)) +
   ) +
   xlim(0, 1) +
   ylim(0, 1) +
-  labs(title="Observed Data") +
-  theme_dsan(base_size=28)
+  labs(
+    title="Observed Data",
+    y="Density"
+  ) +
+  theme_dsan(base_size=28) +
+  theme(title=element_text(size=20))
 ```
 
 :::
@@ -336,6 +344,9 @@ $$
 #| fig-width: 5.5
 #| fig-height: 5.5
 library(tidyverse)
+library(latex2exp)
+w_label <- TeX("Width = $1/n$")
+h_label <- TeX("Height = $n$")
 data_df <- tibble(x=1, y=1)
 data_df |> ggplot(aes(x=x, y=y)) +
   geom_segment(
@@ -348,8 +359,20 @@ data_df |> ggplot(aes(x=x, y=y)) +
   ) +
   xlim(0, 1) +
   ylim(0, 1) +
-  labs(title="Posterior of Pr(Heads)") +
-  theme_dsan(base_size=28)
+  labs(
+    title="Posterior of Pr(Heads)",
+    y = "Density"
+  ) +
+  theme_dsan(base_size=28) +
+  theme(title=element_text(size=20)) +
+  annotate(
+    geom = "text", x = 0.5, y = 0.8, 
+    label = w_label, hjust = 0, vjust = 1, size = 8
+  ) +
+  annotate(
+    geom = "text", x = 0.5, y = 0.7, 
+    label = h_label, hjust = 0, vjust = 1, size = 8
+  )
 ```
 
 :::
@@ -399,7 +422,8 @@ data_df |> ggplot(aes(x=x, y=y)) +
   xlim(0, 1) +
   ylim(0, 1) +
   labs(title="Observed Data") +
-  theme_dsan(base_size=28)
+  theme_dsan(base_size=28) +
+  theme(title=element_text(size=20))
 ```
 
 :::
