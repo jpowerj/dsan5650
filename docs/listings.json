@@ -1,7 +1,9 @@
 [
   {
     "listing": "/writeups/index.html",
-    "items": []
+    "items": [
+      "/writeups/bayesian-workflow/Bayesian_Workflow.html"
+    ]
   },
   {
     "listing": "/index.html",
