@@ -9,7 +9,7 @@ csl: chicago-17-no-url.csl
 | What Jeff calls it | Citation (hover and/or click for PDF link) |
 | - | - |
 | **"The Multilevel book"** | @gelman_data_2007 |
-| **"The Koller book"** | @koller_probabilistic_2009 |
+| **"The Koller PGM book"** | @koller_probabilistic_2009 |
 | **"The non-technical Pearl book"** | @pearl_book_2018 |
 | **"The technical Pearl book"** (containing, e.g., axioms and proofs) | @pearl_causality_2000 |
 | **"The French Revolution paper"** | @barron_individuals_2018 |
@@ -84,6 +84,8 @@ Chapter 2, with an overview of probability theory and graph theory, is included 
 
 In contrast to the books in the ["Core Textbooks" section](#core-textbooks), these books are *not* "the" textbooks for the class! These are here instead as reference books, to keep on hand (a) for when the lectures or the above books are unclear on some topic, and/or (b) for deeper dives into certain topics (where the latter may become a more relevant mission for you as we move towards the final project 😉)
 
+### Causality
+
 <i class='bi bi-1-circle'></i> **@pearl_causality_2000, *Causality: Models, Reasoning, and Inference***
 
 As mentioned during [Week 2](./w02/index.qmd), this is the book containing the fully-developed "unified theory" of causality, starting from a set of axioms and deriving the possibilities of causal inference as formal theorems.
@@ -94,7 +96,13 @@ Within "pure" mathematics, if you kept digging into the foundations of things li
 
 This book serves as the philosophical "jumping off point" for causality: you can think of it like, there's a nice progress-narrative of the human study of causality, that starts with the uncomfortable questions raised in @hume_enquiry_1748 about the possibility (or impossibility!) of **inferring** knowledge of causality via inductive reasoning, and culminates in @pearl_causality_2000.
 
-<i class='bi bi-3-circle'></i> **@sperber_explaining_1996, *Explaining Culture: A Naturalistic Approach***
+### Computational Social Science
+
+<i class='bi bi-3-circle'></i>**@gelman_bayesian_2013, *Bayesian Data Analysis (Third Edition)**
+
+Contains info on Bayesian Workflow throughout, plus important chapters on **Multilevel Modeling** (Ch 5) and **Bayesian Decision Analysis** (Ch 9) -- the latter was referenced in the [writeup on Bayesian Workflow]()
+
+<i class='bi bi-4-circle'></i> **@sperber_explaining_1996, *Explaining Culture: A Naturalistic Approach***
 
 Mentioned in a footnote in [Week 1](./w01/index.qmd), this is a surprisingly-old book that made waves in certain communities (like, e.g., among people like me who geek about studying culture quantitatively), by essentially proposing a "research program" for the rigorous quantitative/empirical study of culture. In Jeff's perfect world, this book would spark a progress-narrative in the same way that @hume_enquiry_1748
 

@@ -22,8 +22,8 @@ website:
         href: syllabus.qmd
       - text: "Resources"
         href: resources.qmd
-      # - text: "Writeups"
-      #   href: writeups/index.qmd
+      - text: "Writeups"
+        href: writeups/index.qmd
       - text: "Assignments"
         href: assignments.qmd
       # - text: "Midterm"

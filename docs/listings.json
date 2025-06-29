@@ -1,10 +1,7 @@
 [
   {
     "listing": "/writeups/index.html",
-    "items": [
-      "/writeups/blockmodels/index.html",
-      "/writeups/pgm-intro/index.html"
-    ]
+    "items": []
   },
   {
     "listing": "/index.html",
