@@ -7,11 +7,10 @@ listing:
   categories: true
   include:
     categories: "{Labs,Extra Writeups,Clarifications}"
-  fields: [title,date,relevance,categories]
+  fields: [title,date,categories]
   field-display-names: 
     title: "Title"
     date: "Last Updated"
-    relevance: "Relevant To"
     categories: "Category"
   sort: "date desc"
   table-hover: true
