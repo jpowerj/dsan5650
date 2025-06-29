@@ -283,7 +283,7 @@ window.Quarto = {
     </ul>
     </div>
 <div class="quarto-sidebar-footer"><div class="sidebar-footer-item">
-<p><em>Updated 2025-06-29, 04:50:05 AM</em></p>
+<p><em>Updated 2025-06-29, 05:28:23 AM</em></p>
 </div></div></nav>
 <div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
@@ -2521,25 +2521,9 @@ CompoundStep
 <pre><code>Sampling 4 chains for 1_000 tune and 1_000 draw iterations (4_000 + 4_000 draws total) took 2 seconds.</code></pre>
 </div>
 </div>
-<div id="6e436c2f-4a7b-4c75-bf3a-8ae6b48e1eb2" class="cell" data-execution="{&quot;iopub.execute_input&quot;:&quot;2025-06-29T08:13:16.246520Z&quot;,&quot;iopub.status.busy&quot;:&quot;2025-06-29T08:13:16.246247Z&quot;,&quot;iopub.status.idle&quot;:&quot;2025-06-29T08:13:16.364922Z&quot;,&quot;shell.execute_reply&quot;:&quot;2025-06-29T08:13:16.363721Z&quot;,&quot;shell.execute_reply.started&quot;:&quot;2025-06-29T08:13:16.246499Z&quot;}" data-execution_count="61">
-<div class="sourceCode cell-code" id="cb72"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb72-1"><a href="#cb72-1" aria-hidden="true" tabindex="-1"></a>ax <span class="op">=</span> pw.Brick(figsize<span class="op">=</span>(<span class="fl">3.5</span>, <span class="fl">2.25</span>))</span>
-<span id="cb72-2"><a href="#cb72-2" aria-hidden="true" tabindex="-1"></a>sns.kdeplot(</span>
-<span id="cb72-3"><a href="#cb72-3" aria-hidden="true" tabindex="-1"></a>    x<span class="op">=</span><span class="st">"num_heads"</span>, data<span class="op">=</span>s2_post_idata.observed_data.to_dataframe(),</span>
-<span id="cb72-4"><a href="#cb72-4" aria-hidden="true" tabindex="-1"></a>    ax<span class="op">=</span>ax, fill<span class="op">=</span><span class="va">True</span>,</span>
-<span id="cb72-5"><a href="#cb72-5" aria-hidden="true" tabindex="-1"></a>)<span class="op">;</span></span>
-<span id="cb72-6"><a href="#cb72-6" aria-hidden="true" tabindex="-1"></a>ax.axvline(x<span class="op">=</span><span class="fl">6.5</span>, ls<span class="op">=</span><span class="st">'dashed'</span>, color<span class="op">=</span><span class="st">'black'</span>, lw<span class="op">=</span><span class="dv">1</span>)<span class="op">;</span></span>
-<span id="cb72-7"><a href="#cb72-7" aria-hidden="true" tabindex="-1"></a>ax.savefig()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="61">
-<div>
-<figure class="figure">
-<p><img src="Bayesian_Workflow_files/figure-html/cell-61-output-1.png" class="img-fluid figure-img"></p>
-</figure>
-</div>
-</div>
-</div>
 <div id="d00800e3-c5ed-465d-a000-91f11afb8c77" class="cell" data-execution="{&quot;iopub.execute_input&quot;:&quot;2025-06-29T08:13:16.365802Z&quot;,&quot;iopub.status.busy&quot;:&quot;2025-06-29T08:13:16.365515Z&quot;,&quot;iopub.status.idle&quot;:&quot;2025-06-29T08:13:16.433899Z&quot;,&quot;shell.execute_reply&quot;:&quot;2025-06-29T08:13:16.432904Z&quot;,&quot;shell.execute_reply.started&quot;:&quot;2025-06-29T08:13:16.365783Z&quot;}" data-execution_count="62">
-<div class="sourceCode cell-code" id="cb73"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb73-1"><a href="#cb73-1" aria-hidden="true" tabindex="-1"></a>s2_post_df <span class="op">=</span> s2_post_idata.posterior.to_dataframe().reset_index()</span>
-<span id="cb73-2"><a href="#cb73-2" aria-hidden="true" tabindex="-1"></a>s2_post_df</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb72"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb72-1"><a href="#cb72-1" aria-hidden="true" tabindex="-1"></a>s2_post_df <span class="op">=</span> s2_post_idata.posterior.to_dataframe().reset_index()</span>
+<span id="cb72-2"><a href="#cb72-2" aria-hidden="true" tabindex="-1"></a>s2_post_df</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="62">
 <div>
 
@@ -2712,8 +2696,8 @@ CompoundStep
 </div>
 </div>
 <div id="0d389f75-8c67-40f9-8ca0-ccf12dbcc563" class="cell" data-execution="{&quot;iopub.execute_input&quot;:&quot;2025-06-29T08:13:16.435102Z&quot;,&quot;iopub.status.busy&quot;:&quot;2025-06-29T08:13:16.434876Z&quot;,&quot;iopub.status.idle&quot;:&quot;2025-06-29T08:13:16.445817Z&quot;,&quot;shell.execute_reply&quot;:&quot;2025-06-29T08:13:16.445181Z&quot;,&quot;shell.execute_reply.started&quot;:&quot;2025-06-29T08:13:16.435084Z&quot;}" data-execution_count="63">
-<div class="sourceCode cell-code" id="cb74"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb74-1"><a href="#cb74-1" aria-hidden="true" tabindex="-1"></a>s2_post_end_df <span class="op">=</span> s2_post_df[s2_post_df[<span class="st">'t'</span>] <span class="op">==</span> S2Game.rounds_per_match].copy()</span>
-<span id="cb74-2"><a href="#cb74-2" aria-hidden="true" tabindex="-1"></a>s2_post_end_df</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb73"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb73-1"><a href="#cb73-1" aria-hidden="true" tabindex="-1"></a>s2_post_end_df <span class="op">=</span> s2_post_df[s2_post_df[<span class="st">'t'</span>] <span class="op">==</span> S2Game.rounds_per_match].copy()</span>
+<span id="cb73-2"><a href="#cb73-2" aria-hidden="true" tabindex="-1"></a>s2_post_end_df</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="63">
 <div>
 
@@ -2886,13 +2870,28 @@ CompoundStep
 </div>
 </div>
 <div id="dd519c83-0a6c-470b-b2a4-939de3770ae8" class="cell" data-execution="{&quot;iopub.execute_input&quot;:&quot;2025-06-29T08:13:16.447009Z&quot;,&quot;iopub.status.busy&quot;:&quot;2025-06-29T08:13:16.446822Z&quot;,&quot;iopub.status.idle&quot;:&quot;2025-06-29T08:13:16.582002Z&quot;,&quot;shell.execute_reply&quot;:&quot;2025-06-29T08:13:16.581329Z&quot;,&quot;shell.execute_reply.started&quot;:&quot;2025-06-29T08:13:16.446992Z&quot;}" data-execution_count="64">
+<div class="sourceCode cell-code" id="cb74"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb74-1"><a href="#cb74-1" aria-hidden="true" tabindex="-1"></a>ax <span class="op">=</span> pw.Brick(figsize<span class="op">=</span>(<span class="fl">3.5</span>, <span class="fl">2.25</span>))<span class="op">;</span></span>
+<span id="cb74-2"><a href="#cb74-2" aria-hidden="true" tabindex="-1"></a>sns.histplot(</span>
+<span id="cb74-3"><a href="#cb74-3" aria-hidden="true" tabindex="-1"></a>    x<span class="op">=</span><span class="st">"p_sheisty"</span>, data<span class="op">=</span>s2_post_end_df, ax<span class="op">=</span>ax</span>
+<span id="cb74-4"><a href="#cb74-4" aria-hidden="true" tabindex="-1"></a>)<span class="op">;</span></span>
+<span id="cb74-5"><a href="#cb74-5" aria-hidden="true" tabindex="-1"></a>ax.set_title(<span class="st">"Posterior Distribution of p_sheisty"</span>)<span class="op">;</span></span>
+<span id="cb74-6"><a href="#cb74-6" aria-hidden="true" tabindex="-1"></a>ax.savefig()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="64">
+<div>
+<figure class="figure">
+<p><img src="Bayesian_Workflow_files/figure-html/cell-63-output-1.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
+</div>
+</div>
+<div id="ea28f52c-3b3e-4ed5-8610-737ba72d68df" class="cell" data-execution="{&quot;iopub.execute_input&quot;:&quot;2025-06-29T08:13:16.582973Z&quot;,&quot;iopub.status.busy&quot;:&quot;2025-06-29T08:13:16.582767Z&quot;,&quot;iopub.status.idle&quot;:&quot;2025-06-29T08:13:16.706230Z&quot;,&quot;shell.execute_reply&quot;:&quot;2025-06-29T08:13:16.705680Z&quot;,&quot;shell.execute_reply.started&quot;:&quot;2025-06-29T08:13:16.582956Z&quot;}" data-execution_count="65">
 <div class="sourceCode cell-code" id="cb75"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb75-1"><a href="#cb75-1" aria-hidden="true" tabindex="-1"></a>ax <span class="op">=</span> pw.Brick(figsize<span class="op">=</span>(<span class="fl">3.5</span>, <span class="fl">2.25</span>))<span class="op">;</span></span>
 <span id="cb75-2"><a href="#cb75-2" aria-hidden="true" tabindex="-1"></a>sns.histplot(</span>
-<span id="cb75-3"><a href="#cb75-3" aria-hidden="true" tabindex="-1"></a>    x<span class="op">=</span><span class="st">"p_sheisty"</span>, data<span class="op">=</span>s2_post_end_df, ax<span class="op">=</span>ax</span>
+<span id="cb75-3"><a href="#cb75-3" aria-hidden="true" tabindex="-1"></a>    x<span class="op">=</span><span class="st">"is_sheisty"</span>, data<span class="op">=</span>s2_post_end_df, ax<span class="op">=</span>ax</span>
 <span id="cb75-4"><a href="#cb75-4" aria-hidden="true" tabindex="-1"></a>)<span class="op">;</span></span>
-<span id="cb75-5"><a href="#cb75-5" aria-hidden="true" tabindex="-1"></a>ax.set_title(<span class="st">"Posterior Distribution of p_sheisty"</span>)<span class="op">;</span></span>
+<span id="cb75-5"><a href="#cb75-5" aria-hidden="true" tabindex="-1"></a>ax.set_title(<span class="st">"Posterior Distribution of is_sheisty"</span>)<span class="op">;</span></span>
 <span id="cb75-6"><a href="#cb75-6" aria-hidden="true" tabindex="-1"></a>ax.savefig()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="64">
+<div class="cell-output cell-output-display" data-execution_count="65">
 <div>
 <figure class="figure">
 <p><img src="Bayesian_Workflow_files/figure-html/cell-64-output-1.png" class="img-fluid figure-img"></p>
@@ -2900,32 +2899,17 @@ CompoundStep
 </div>
 </div>
 </div>
-<div id="ea28f52c-3b3e-4ed5-8610-737ba72d68df" class="cell" data-execution="{&quot;iopub.execute_input&quot;:&quot;2025-06-29T08:13:16.582973Z&quot;,&quot;iopub.status.busy&quot;:&quot;2025-06-29T08:13:16.582767Z&quot;,&quot;iopub.status.idle&quot;:&quot;2025-06-29T08:13:16.706230Z&quot;,&quot;shell.execute_reply&quot;:&quot;2025-06-29T08:13:16.705680Z&quot;,&quot;shell.execute_reply.started&quot;:&quot;2025-06-29T08:13:16.582956Z&quot;}" data-execution_count="65">
+<div id="68d8e4b3-572b-4597-b61f-089f8c467c62" class="cell" data-execution="{&quot;iopub.execute_input&quot;:&quot;2025-06-29T08:13:16.712777Z&quot;,&quot;iopub.status.busy&quot;:&quot;2025-06-29T08:13:16.712590Z&quot;,&quot;iopub.status.idle&quot;:&quot;2025-06-29T08:13:16.850945Z&quot;,&quot;shell.execute_reply&quot;:&quot;2025-06-29T08:13:16.850292Z&quot;,&quot;shell.execute_reply.started&quot;:&quot;2025-06-29T08:13:16.712761Z&quot;}" data-execution_count="66">
 <div class="sourceCode cell-code" id="cb76"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb76-1"><a href="#cb76-1" aria-hidden="true" tabindex="-1"></a>ax <span class="op">=</span> pw.Brick(figsize<span class="op">=</span>(<span class="fl">3.5</span>, <span class="fl">2.25</span>))<span class="op">;</span></span>
 <span id="cb76-2"><a href="#cb76-2" aria-hidden="true" tabindex="-1"></a>sns.histplot(</span>
-<span id="cb76-3"><a href="#cb76-3" aria-hidden="true" tabindex="-1"></a>    x<span class="op">=</span><span class="st">"is_sheisty"</span>, data<span class="op">=</span>s2_post_end_df, ax<span class="op">=</span>ax</span>
+<span id="cb76-3"><a href="#cb76-3" aria-hidden="true" tabindex="-1"></a>    x<span class="op">=</span><span class="st">"p_heads"</span>, data<span class="op">=</span>s2_post_end_df, ax<span class="op">=</span>ax</span>
 <span id="cb76-4"><a href="#cb76-4" aria-hidden="true" tabindex="-1"></a>)<span class="op">;</span></span>
-<span id="cb76-5"><a href="#cb76-5" aria-hidden="true" tabindex="-1"></a>ax.set_title(<span class="st">"Posterior Distribution of is_sheisty"</span>)<span class="op">;</span></span>
+<span id="cb76-5"><a href="#cb76-5" aria-hidden="true" tabindex="-1"></a>ax.set_title(<span class="st">"Posterior Distribution of p_heads"</span>)<span class="op">;</span></span>
 <span id="cb76-6"><a href="#cb76-6" aria-hidden="true" tabindex="-1"></a>ax.savefig()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="65">
-<div>
-<figure class="figure">
-<p><img src="Bayesian_Workflow_files/figure-html/cell-65-output-1.png" class="img-fluid figure-img"></p>
-</figure>
-</div>
-</div>
-</div>
-<div id="68d8e4b3-572b-4597-b61f-089f8c467c62" class="cell" data-execution="{&quot;iopub.execute_input&quot;:&quot;2025-06-29T08:13:16.712777Z&quot;,&quot;iopub.status.busy&quot;:&quot;2025-06-29T08:13:16.712590Z&quot;,&quot;iopub.status.idle&quot;:&quot;2025-06-29T08:13:16.850945Z&quot;,&quot;shell.execute_reply&quot;:&quot;2025-06-29T08:13:16.850292Z&quot;,&quot;shell.execute_reply.started&quot;:&quot;2025-06-29T08:13:16.712761Z&quot;}" data-execution_count="66">
-<div class="sourceCode cell-code" id="cb77"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb77-1"><a href="#cb77-1" aria-hidden="true" tabindex="-1"></a>ax <span class="op">=</span> pw.Brick(figsize<span class="op">=</span>(<span class="fl">3.5</span>, <span class="fl">2.25</span>))<span class="op">;</span></span>
-<span id="cb77-2"><a href="#cb77-2" aria-hidden="true" tabindex="-1"></a>sns.histplot(</span>
-<span id="cb77-3"><a href="#cb77-3" aria-hidden="true" tabindex="-1"></a>    x<span class="op">=</span><span class="st">"p_heads"</span>, data<span class="op">=</span>s2_post_end_df, ax<span class="op">=</span>ax</span>
-<span id="cb77-4"><a href="#cb77-4" aria-hidden="true" tabindex="-1"></a>)<span class="op">;</span></span>
-<span id="cb77-5"><a href="#cb77-5" aria-hidden="true" tabindex="-1"></a>ax.set_title(<span class="st">"Posterior Distribution of p_heads"</span>)<span class="op">;</span></span>
-<span id="cb77-6"><a href="#cb77-6" aria-hidden="true" tabindex="-1"></a>ax.savefig()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="66">
 <div>
 <figure class="figure">
-<p><img src="Bayesian_Workflow_files/figure-html/cell-66-output-1.png" class="img-fluid figure-img"></p>
+<p><img src="Bayesian_Workflow_files/figure-html/cell-65-output-1.png" class="img-fluid figure-img"></p>
 </figure>
 </div>
 </div>
@@ -2934,8 +2918,8 @@ CompoundStep
 <section id="part-4.4-sample-from-posterior-predictive-distribution" class="level3">
 <h3 class="anchored" data-anchor-id="part-4.4-sample-from-posterior-predictive-distribution">[Part 4.4] Sample from Posterior <em>Predictive</em> Distribution</h3>
 <div id="dec3385f-c033-4dbf-8d67-57565eb62e32" class="cell" data-execution="{&quot;iopub.execute_input&quot;:&quot;2025-06-29T08:13:16.851625Z&quot;,&quot;iopub.status.busy&quot;:&quot;2025-06-29T08:13:16.851446Z&quot;,&quot;iopub.status.idle&quot;:&quot;2025-06-29T08:13:17.171943Z&quot;,&quot;shell.execute_reply&quot;:&quot;2025-06-29T08:13:17.171236Z&quot;,&quot;shell.execute_reply.started&quot;:&quot;2025-06-29T08:13:16.851608Z&quot;}" data-execution_count="67">
-<div class="sourceCode cell-code" id="cb78"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb78-1"><a href="#cb78-1" aria-hidden="true" tabindex="-1"></a><span class="cf">with</span> s2_model_obs:</span>
-<span id="cb78-2"><a href="#cb78-2" aria-hidden="true" tabindex="-1"></a>    s2_post_pred_idata <span class="op">=</span> pm.sample_posterior_predictive(s2_post_idata, random_seed<span class="op">=</span><span class="dv">5650</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb77"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb77-1"><a href="#cb77-1" aria-hidden="true" tabindex="-1"></a><span class="cf">with</span> s2_model_obs:</span>
+<span id="cb77-2"><a href="#cb77-2" aria-hidden="true" tabindex="-1"></a>    s2_post_pred_idata <span class="op">=</span> pm.sample_posterior_predictive(s2_post_idata, random_seed<span class="op">=</span><span class="dv">5650</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stderr">
 <pre><code>Sampling: [num_heads]</code></pre>
 </div>
@@ -2949,9 +2933,9 @@ CompoundStep
 </div>
 </div>
 <div id="4669e840-844b-4153-bc6f-c112f5bad26d" class="cell" data-execution="{&quot;iopub.execute_input&quot;:&quot;2025-06-29T08:13:17.173533Z&quot;,&quot;iopub.status.busy&quot;:&quot;2025-06-29T08:13:17.173315Z&quot;,&quot;iopub.status.idle&quot;:&quot;2025-06-29T08:13:17.226008Z&quot;,&quot;shell.execute_reply&quot;:&quot;2025-06-29T08:13:17.225319Z&quot;,&quot;shell.execute_reply.started&quot;:&quot;2025-06-29T08:13:17.173516Z&quot;}" data-execution_count="68">
-<div class="sourceCode cell-code" id="cb80"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb80-1"><a href="#cb80-1" aria-hidden="true" tabindex="-1"></a>s2_post_pred_df <span class="op">=</span> s2_post_pred_idata.posterior_predictive.to_dataframe().reset_index()</span>
-<span id="cb80-2"><a href="#cb80-2" aria-hidden="true" tabindex="-1"></a>s2_post_pred_df[<span class="st">'source'</span>] <span class="op">=</span> <span class="st">"Posterior Predictive"</span></span>
-<span id="cb80-3"><a href="#cb80-3" aria-hidden="true" tabindex="-1"></a>s2_post_pred_df</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb79"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb79-1"><a href="#cb79-1" aria-hidden="true" tabindex="-1"></a>s2_post_pred_df <span class="op">=</span> s2_post_pred_idata.posterior_predictive.to_dataframe().reset_index()</span>
+<span id="cb79-2"><a href="#cb79-2" aria-hidden="true" tabindex="-1"></a>s2_post_pred_df[<span class="st">'source'</span>] <span class="op">=</span> <span class="st">"Posterior Predictive"</span></span>
+<span id="cb79-3"><a href="#cb79-3" aria-hidden="true" tabindex="-1"></a>s2_post_pred_df</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="68">
 <div>
 
@@ -3100,14 +3084,14 @@ CompoundStep
 </div>
 </div>
 <div id="7ae951da-6485-48e1-a8a1-7ccc91150559" class="cell" data-execution="{&quot;iopub.execute_input&quot;:&quot;2025-06-29T08:13:17.227029Z&quot;,&quot;iopub.status.busy&quot;:&quot;2025-06-29T08:13:17.226829Z&quot;,&quot;iopub.status.idle&quot;:&quot;2025-06-29T08:13:18.733622Z&quot;,&quot;shell.execute_reply&quot;:&quot;2025-06-29T08:13:18.732827Z&quot;,&quot;shell.execute_reply.started&quot;:&quot;2025-06-29T08:13:17.227013Z&quot;}" data-execution_count="69">
-<div class="sourceCode cell-code" id="cb81"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb81-1"><a href="#cb81-1" aria-hidden="true" tabindex="-1"></a>plot_predictive_trajectories(</span>
-<span id="cb81-2"><a href="#cb81-2" aria-hidden="true" tabindex="-1"></a>    s2_post_pred_df,</span>
-<span id="cb81-3"><a href="#cb81-3" aria-hidden="true" tabindex="-1"></a>    suptitle<span class="op">=</span><span class="st">"Posterior Predictive Distributions"</span></span>
-<span id="cb81-4"><a href="#cb81-4" aria-hidden="true" tabindex="-1"></a>)<span class="op">;</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb80"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb80-1"><a href="#cb80-1" aria-hidden="true" tabindex="-1"></a>plot_predictive_trajectories(</span>
+<span id="cb80-2"><a href="#cb80-2" aria-hidden="true" tabindex="-1"></a>    s2_post_pred_df,</span>
+<span id="cb80-3"><a href="#cb80-3" aria-hidden="true" tabindex="-1"></a>    suptitle<span class="op">=</span><span class="st">"Posterior Predictive Distributions"</span></span>
+<span id="cb80-4"><a href="#cb80-4" aria-hidden="true" tabindex="-1"></a>)<span class="op">;</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="Bayesian_Workflow_files/figure-html/cell-69-output-1.png" class="img-fluid figure-img"></p>
+<p><img src="Bayesian_Workflow_files/figure-html/cell-68-output-1.png" class="img-fluid figure-img"></p>
 </figure>
 </div>
 </div>
