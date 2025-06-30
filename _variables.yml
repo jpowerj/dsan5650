@@ -28,13 +28,13 @@ w05:
   date-md: "Jun 18"
 w06:
   weeknum: 6
-  title: "Propensity Score Matching, Midterm Review 1"
+  title: "Midterm Pre-Review"
   footer: "Bayesian Workflow"
   date-md: "Jun 25"
 w07:
   weeknum: 7
-  title: "Midterm Review 2: Electric Boogaloo (feat. Example Problems)"
-  footer: "Midterm Review"
+  title: "Midterm Introduction"
+  footer: "Midterm Intro"
   date-md: "Jul 2"
 w08:
   weeknum: 8

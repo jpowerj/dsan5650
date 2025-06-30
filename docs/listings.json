@@ -1,12 +1,5 @@
 [
   {
-    "listing": "/writeups/index.html",
-    "items": [
-      "/writeups/bayesian-workflow/Bayesian_Workflow_v0.html",
-      "/writeups/bayesian-workflow/Bayesian_Workflow.html"
-    ]
-  },
-  {
     "listing": "/index.html",
     "items": [
       "/w01/index.html",
@@ -14,7 +7,14 @@
       "/w03/index.html",
       "/w04/index.html",
       "/w05/index.html",
-      "/w06/index.html"
+      "/w06/index.html",
+      "/w07/index.html"
+    ]
+  },
+  {
+    "listing": "/writeups/index.html",
+    "items": [
+      "/writeups/bayesian-workflow/Bayesian_Workflow.html"
     ]
   }
 ]
