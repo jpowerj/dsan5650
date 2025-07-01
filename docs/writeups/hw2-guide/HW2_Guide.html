@@ -1,0 +1,1952 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.6.40">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>DSAN 5650 HW2 Guide – DSAN 5650</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+</style>
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js" integrity="sha512-bLT0Qm9VnAYZDflyKcBaQ2gg0hSYNQrJ8RilYldYQ1FxQYoCLtUjuuRuZo+fjqhx/qtq/1itJ0C2ejDxltZVFg==" crossorigin="anonymous"></script><script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../">
+<link href="../../favicon.png" rel="icon" type="image/png">
+<script src="../../site_libs/quarto-html/quarto.js"></script>
+<script src="../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-549806ee2085284f45b00abea8c6df48.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-dark-8ea72dc5fed832574809a9c94082fbbb.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../site_libs/bootstrap/bootstrap-79108a0fc1995748cbd19a5b0e3e3e7c.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="../../site_libs/bootstrap/bootstrap-dark-b2511bcbb01c2159fd96a78deb42ffd9.min.css" rel="prefetch" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<script id="quarto-search-options" type="application/json">{
+  "location": "sidebar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "start",
+  "type": "textbox",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.6/require.min.js" integrity="sha512-c3Nl8+7g4LMSTdrm621y7kf9v3SDPnhxLNhcjFJbKECVnmZHTdo+IRO05sNLTH/D3vA6u1X32ehoLC7WFVdheg==" crossorigin="anonymous"></script>
+
+<script type="application/javascript">define('jquery', [],function() {return window.jQuery;})</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js" integrity="sha512-v2CJ7UaYy4JwqLDIrZUI/4hqeoQieOmAZNXBeQyjo21dadnwR+8ZaIJVT8EE2iyI61OV8e6M8PP2/4hpQINQ/g==" crossorigin="anonymous" referrerpolicy="no-referrer"></script><link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/gh/dreampulse/computer-modern-web-font@master/fonts.css"><script src="../../sidebar.js"></script>
+
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN") {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
+
+<link rel="stylesheet" href="../../dsan-globals/jjstyles.css">
+</head>
+
+<body class="nav-sidebar floating">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+  <nav class="quarto-secondary-nav">
+    <div class="container-fluid d-flex">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+        <i class="bi bi-layout-text-sidebar-reverse"></i>
+      </button>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item">
+      DSAN 5650: Causal Inference for Computational Social Science
+      </li></ol></nav>
+        <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        </a>
+      <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
+        <i class="bi bi-search"></i>
+      </button>
+    </div>
+  </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
+    <div class="pt-lg-2 mt-2 text-left sidebar-header">
+    <div class="sidebar-title mb-0 py-0">
+      <a href="../../">DSAN 5650: Causal Inference for Computational Social Science</a> 
+        <div class="sidebar-tools-main">
+  <a href="" class="quarto-color-scheme-toggle quarto-navigation-tool  px-1" onclick="window.quartoToggleColorScheme(); return false;" title="Toggle dark mode"><i class="bi"></i></a>
+</div>
+    </div>
+      </div>
+        <div class="mt-2 flex-shrink-0 align-items-center">
+        <div class="sidebar-search">
+        <div id="quarto-search" class="" title="Search"></div>
+        </div>
+        </div>
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><i class="bi bi-house pe-1"></i> Home</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../syllabus.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Syllabus</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../resources.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Resources</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../writeups/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Writeups</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../assignments.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Assignments</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="https://georgetown.zoom.us/j/94493188667?pwd=s4Q8TbTwZTNyK0G0VJsVe1Lefrd3AY.1" class="sidebar-item-text sidebar-link" target="_blank">
+ <span class="menu-text">Zoom Link <i class="bi bi-box-arrow-up-right ps-1"></i></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="https://georgetown.hosted.panopto.com/Panopto/Pages/Sessions/List.aspx?folderID=413d999a-16d1-4b36-93b6-b2de013af117" class="sidebar-item-text sidebar-link" target="_blank">
+ <span class="menu-text">Recordings <i class="bi bi-box-arrow-up-right ps-1"></i></span></a>
+  </div>
+</li>
+        <li class="px-0"><hr class="sidebar-divider hi "></li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../w01/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Week 1: May 21</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../w02/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Week 2: May 28</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../w03/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Week 3: Jun 4</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../w04/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Week 4: Jun 11</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../w05/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Week 5: Jun 18</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../w06/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Week 6: Jun 25</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../w07/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Week 7: Jul 2</span></a>
+  </div>
+</li>
+        <li class="px-0"><hr class="sidebar-divider hi "></li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="https://guhub.io" class="sidebar-item-text sidebar-link" target="_blank">
+ <span class="menu-text">JupyterHub <i class="bi bi-box-arrow-up-right ps-1"></i></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="https://jjacobs.me/meet" class="sidebar-item-text sidebar-link" target="_blank">
+ <span class="menu-text">Office Hours <i class="bi bi-box-arrow-up-right ps-1"></i></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="https://forms.gle/PoyySPdVeBN37oBb8" class="sidebar-item-text sidebar-link" target="_blank">
+ <span class="menu-text">Anonymous Feedback <i class="bi bi-box-arrow-up-right ps-1"></i></span></a>
+  </div>
+</li>
+    </ul>
+    </div>
+<div class="quarto-sidebar-footer"><div class="sidebar-footer-item">
+<p><em>Updated 2025-07-01, 01:30:07 PM</em></p>
+</div></div></nav>
+<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#part-4-a-non-regression-example" id="toc-part-4-a-non-regression-example" class="nav-link active" data-scroll-target="#part-4-a-non-regression-example">[Part 4] A Non-Regression Example</a>
+  <ul class="collapse">
+  <li><a href="#why-all-the-different-models-with-different-priors-in-the-beginning" id="toc-why-all-the-different-models-with-different-priors-in-the-beginning" class="nav-link" data-scroll-target="#why-all-the-different-models-with-different-priors-in-the-beginning">Why All the Different Models With Different Priors in the Beginning?</a></li>
+  <li><a href="#a-simpler-prior-focused-workflow" id="toc-a-simpler-prior-focused-workflow" class="nav-link" data-scroll-target="#a-simpler-prior-focused-workflow">A Simpler Prior-Focused Workflow</a></li>
+  </ul></li>
+  <li><a href="#part-5-firing-squad" id="toc-part-5-firing-squad" class="nav-link" data-scroll-target="#part-5-firing-squad">[Part 5] Firing Squad</a>
+  <ul class="collapse">
+  <li><a href="#working-through-a-solution" id="toc-working-through-a-solution" class="nav-link" data-scroll-target="#working-through-a-solution">Working Through a Solution</a></li>
+  <li><a href="#probabilities-without-textsfdo" id="toc-probabilities-without-textsfdo" class="nav-link" data-scroll-target="#probabilities-without-textsfdo">Probabilities Without <span class="math inline">\(\textsf{do}()\)</span></a></li>
+  <li><a href="#applying-the-textsfdo-operator" id="toc-applying-the-textsfdo-operator" class="nav-link" data-scroll-target="#applying-the-textsfdo-operator">Applying the <span class="math inline">\(\textsf{do}()\)</span> Operator</a></li>
+  <li><a href="#textsfdo-vs.-conditional-probability-in-this-model" id="toc-textsfdo-vs.-conditional-probability-in-this-model" class="nav-link" data-scroll-target="#textsfdo-vs.-conditional-probability-in-this-model"><span class="math inline">\(\textsf{do}()\)</span> vs.&nbsp;Conditional Probability in this Model</a></li>
+  <li><a href="#the-relation-to-backdoor-paths" id="toc-the-relation-to-backdoor-paths" class="nav-link" data-scroll-target="#the-relation-to-backdoor-paths">The Relation to Backdoor Paths</a></li>
+  </ul></li>
+  </ul>
+<div class="toc-actions"><ul><li><a href="https://github.com/jpowerj/dsan5650/blob/main/writeups/hw2-guide/HW2_Guide.ipynb" target="_blank" class="toc-action"><i class="bi bi-github"></i>View source</a></li></ul></div></nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">DSAN 5650 HW2 Guide</h1>
+  <div class="quarto-categories">
+    <div class="quarto-category">Extra Writeups</div>
+  </div>
+  </div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<div id="affc2f5f-9551-4696-b501-b4c40c493f9d" class="cell" data-execution="{&quot;iopub.execute_input&quot;:&quot;2025-07-01T14:33:28.848672Z&quot;,&quot;iopub.status.busy&quot;:&quot;2025-07-01T14:33:28.848507Z&quot;,&quot;iopub.status.idle&quot;:&quot;2025-07-01T14:33:28.989006Z&quot;,&quot;shell.execute_reply&quot;:&quot;2025-07-01T14:33:28.988610Z&quot;,&quot;shell.execute_reply.started&quot;:&quot;2025-07-01T14:33:28.848656Z&quot;}" data-execution_count="1">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="op">%</span>run jupyter_fixes.ipynb</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap');
+.jp-RenderedHTMLCommon {
+    font-family: "Roboto", sans-serif;
+}
+</style>
+</div>
+</div>
+<div id="22e3f6f9-7776-4a6b-8c60-d91fe43285dc" class="cell" data-execution="{&quot;iopub.execute_input&quot;:&quot;2025-07-01T15:22:08.520012Z&quot;,&quot;iopub.status.busy&quot;:&quot;2025-07-01T15:22:08.519257Z&quot;,&quot;iopub.status.idle&quot;:&quot;2025-07-01T15:22:08.721975Z&quot;,&quot;shell.execute_reply&quot;:&quot;2025-07-01T15:22:08.721480Z&quot;,&quot;shell.execute_reply.started&quot;:&quot;2025-07-01T15:22:08.519991Z&quot;}" data-execution_count="20">
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> patchworklib <span class="im">as</span> pw</span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> seaborn <span class="im">as</span> sns</span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pymc <span class="im">as</span> pm</span>
+<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> arviz <span class="im">as</span> az</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<pre><code>&lt;Figure size 100x100 with 0 Axes&gt;</code></pre>
+</div>
+</div>
+<section id="part-4-a-non-regression-example" class="level2">
+<h2 class="anchored" data-anchor-id="part-4-a-non-regression-example">[Part 4] A Non-Regression Example</h2>
+<section id="why-all-the-different-models-with-different-priors-in-the-beginning" class="level3">
+<h3 class="anchored" data-anchor-id="why-all-the-different-models-with-different-priors-in-the-beginning">Why All the Different Models With Different Priors in the Beginning?</h3>
+<p>This part was intended to basically combine two key Bayesian Workflow “lessons” into one problem, but was maybe over-complicated because of this 😨. The two lessons are:</p>
+<ol type="1">
+<li>The fact that the regressions you implemented in HW2A and HW2B are <strong>far from the only models</strong> that you can implement using PyMC, and then</li>
+<li>How you can <strong>customize</strong> your model, using <strong>prior predictive checks</strong>, to develop a parameterization that better captures the <strong>range of possible data</strong>, <strong>before</strong> the second step of then going and <strong>estimating the specific values</strong> of these parameters.</li>
+</ol>
+<p>The importance of these prior predictive checks, that Part 4 is trying to drive home, is also captured in the following excerpts from <a href="https://academic.oup.com/jrsssa/article/182/2/389/7070184">Gabry et al.&nbsp;(2019)</a>:</p>
+<blockquote class="blockquote">
+<p><em>If we specify proper priors for all parameters in the model, a Bayesian model yields a joint prior distribution on parameters and data, and hence a <strong>prior marginal distribution</strong> [a <strong>prior predictive distribution</strong>] for the data, i.e.&nbsp;Bayesian models with proper priors are generative models.</em></p>
+</blockquote>
+<p>which means that</p>
+<blockquote class="blockquote">
+<p>we can visualize <strong>simulations from the prior marginal distribution</strong> of the data to assess the consistency of the chosen priors with <strong>domain knowledge</strong>.</p>
+</blockquote>
+<p>The implication here is that prior predictive model modeling is in fact <strong>crucial to the scientific method!</strong> However, rather than subjecting you to a full-on deep-dive into how different priors can represent different “states” of knowledge about scientific hypotheses, for now you can just focus on the goal of developing <strong>weakly informative</strong> priors, defined as follows (in the same paper):</p>
+<blockquote class="blockquote">
+<p>A prior leads to a <strong>weakly informative</strong> joint prior data-generating process if draws from the prior data-generating distribution <span class="math inline">\(p(y)\)</span> [the <strong>prior predictive distribution</strong>] could represent <strong>any data set that could plausibly be observed</strong>.</p>
+</blockquote>
+</section>
+<section id="a-simpler-prior-focused-workflow" class="level3">
+<h3 class="anchored" data-anchor-id="a-simpler-prior-focused-workflow">A Simpler Prior-Focused Workflow</h3>
+<p>It may have been a bad idea to jump directly to <strong>count</strong> data here, since that’s usually the third kind of model that you learn in e.g.&nbsp;a Statistical Learning course (like DSAN 5300)… So, here let’s step back to the <em>second</em> kind of model that you usually learn: <strong>logistic regression</strong> for <strong>binary</strong> outcome data (the first kind of model you usually learn is basic linear regression for <strong>continuous</strong> outcome data, which is covered in HW2A and HW2B).</p>
+<p>The goal of <strong>weakly informative</strong> priors would be, as mentioned above, to cover different <strong>plausible datasets</strong> that could be observed out in the world for the phenomenon you’re trying to model.</p>
+<p>So, here as a simple case let’s try to develop a weakly informative prior for <strong>NBA team outcomes</strong>:</p>
+<ul>
+<li>The worst team in NBA history, by win percentage, was the 2011-2012 Charlotte Bobcats<sup>[1]</sup>, who won <strong>7 games</strong> out of a total of 66 that season (there are usually 82, but there was a labor dispute that year which cut the season short), for a win probability of <strong>0.106</strong>. Extrapolating to a standard 82-game season, this means they were on pace to win <strong>9 games</strong> (rounded to the nearest integer)</li>
+<li>The best team in NBA history, by win percentage, was the 2015-2016 Golden State Warriors, who won <strong>73 games</strong> out of a total of 82, for a win probability of <strong>0.890</strong></li>
+<li>The Orlando Magic, this past season (2024-2025), achieved the most-average possible record, winning <strong>41 games</strong> out of a total of 82, for a win probability of exactly <strong>0.500</strong>.</li>
+</ul>
+<p>So, if we were trying to model the different win probabilities for a given team across a given season, a <strong>weakly informative</strong> prior should at least be able to capture this range of possibilities, from 9 to 73 games<sup>[2]</sup>.</p>
+<hr>
+<p><small></small></p><small>
+<ol type="1">
+<li>For those who don’t know this, Jeff for some reason really likes sports and is able to remember a bunch of random statistics from a bunch of random players/teams across different US professional sports. So… these are from memory, sorry if they’re wrong.</li>
+<li>Don’t worry – as we’ll see below, part of the whole modeling process is constructing a model that can satisfy <strong>different people’s opinions about what is “plausible”</strong>. So, we’ll get to the fact that it’s possible for teams to be <strong>worse</strong> than the 2011-2012 Bobcats or <strong>better</strong> than the 2015-2016 Warriors!</li>
+</ol>
+</small><p><small></small></p>
+<div id="fd974a80-4706-499c-b396-6f36dba03e4b" class="cell" data-execution="{&quot;iopub.execute_input&quot;:&quot;2025-07-01T17:00:46.513329Z&quot;,&quot;iopub.status.busy&quot;:&quot;2025-07-01T17:00:46.513097Z&quot;,&quot;iopub.status.idle&quot;:&quot;2025-07-01T17:00:46.558648Z&quot;,&quot;shell.execute_reply&quot;:&quot;2025-07-01T17:00:46.558122Z&quot;,&quot;shell.execute_reply.started&quot;:&quot;2025-07-01T17:00:46.513313Z&quot;}" data-execution_count="77">
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>indices <span class="op">=</span> {<span class="st">'game_num'</span>: <span class="bu">list</span>(<span class="bu">range</span>(<span class="dv">1</span>, <span class="dv">82</span><span class="op">+</span><span class="dv">1</span>))}</span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="cf">with</span> pm.Model(coords<span class="op">=</span>indices) <span class="im">as</span> nba_model:</span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>    p_win <span class="op">=</span> pm.Uniform(<span class="st">"p_win"</span>, <span class="dv">0</span>, <span class="dv">1</span>)</span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>    win <span class="op">=</span> pm.Bernoulli(<span class="st">"win"</span>, p<span class="op">=</span>p_win, dims<span class="op">=</span><span class="st">"game_num"</span>)</span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>    num_wins <span class="op">=</span> pm.Deterministic(<span class="st">"num_wins"</span>, pm.math.<span class="bu">sum</span>(win))</span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a>pm.model_to_graphviz(nba_model)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="77">
+<div>
+<figure class="figure">
+<p><img src="HW2_Guide_files/figure-html/cell-4-output-1.svg" class="img-fluid figure-img"></p>
+</figure>
+</div>
+</div>
+</div>
+<div id="5ee010a3-33d1-49d8-8dd9-0eccb19840ad" class="cell" data-execution="{&quot;iopub.execute_input&quot;:&quot;2025-07-01T17:00:47.100454Z&quot;,&quot;iopub.status.busy&quot;:&quot;2025-07-01T17:00:47.100142Z&quot;,&quot;iopub.status.idle&quot;:&quot;2025-07-01T17:00:47.165162Z&quot;,&quot;shell.execute_reply&quot;:&quot;2025-07-01T17:00:47.164647Z&quot;,&quot;shell.execute_reply.started&quot;:&quot;2025-07-01T17:00:47.100402Z&quot;}" data-execution_count="78">
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="cf">with</span> nba_model:</span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>    nba_prior_idata <span class="op">=</span> pm.sample_prior_predictive(random_seed<span class="op">=</span><span class="dv">5650</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Sampling: [p_win, win]</code></pre>
+</div>
+</div>
+<div id="dbe7e5ff-10c3-4311-ab41-b9bf14f398f9" class="cell" data-execution="{&quot;iopub.execute_input&quot;:&quot;2025-07-01T17:00:47.256724Z&quot;,&quot;iopub.status.busy&quot;:&quot;2025-07-01T17:00:47.256389Z&quot;,&quot;iopub.status.idle&quot;:&quot;2025-07-01T17:00:47.397383Z&quot;,&quot;shell.execute_reply&quot;:&quot;2025-07-01T17:00:47.396856Z&quot;,&quot;shell.execute_reply.started&quot;:&quot;2025-07-01T17:00:47.256705Z&quot;}" data-execution_count="79">
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>az.summary(nba_prior_idata)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>arviz - WARNING - Shape validation failed: input_shape: (1, 500), minimum_shape: (chains=2, draws=4)</code></pre>
+</div>
+<div class="cell-output cell-output-display" data-execution_count="79">
+<div>
+
+
+<table class="dataframe caption-top table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th">mean</th>
+<th data-quarto-table-cell-role="th">sd</th>
+<th data-quarto-table-cell-role="th">hdi_3%</th>
+<th data-quarto-table-cell-role="th">hdi_97%</th>
+<th data-quarto-table-cell-role="th">mcse_mean</th>
+<th data-quarto-table-cell-role="th">mcse_sd</th>
+<th data-quarto-table-cell-role="th">ess_bulk</th>
+<th data-quarto-table-cell-role="th">ess_tail</th>
+<th data-quarto-table-cell-role="th">r_hat</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">num_wins</td>
+<td>42.246</td>
+<td>24.658</td>
+<td>4.000</td>
+<td>81.000</td>
+<td>1.105</td>
+<td>0.495</td>
+<td>470.0</td>
+<td>436.0</td>
+<td>NaN</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">win[1]</td>
+<td>0.480</td>
+<td>0.500</td>
+<td>0.000</td>
+<td>1.000</td>
+<td>0.022</td>
+<td>0.001</td>
+<td>507.0</td>
+<td>500.0</td>
+<td>NaN</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">win[2]</td>
+<td>0.534</td>
+<td>0.499</td>
+<td>0.000</td>
+<td>1.000</td>
+<td>0.022</td>
+<td>0.002</td>
+<td>503.0</td>
+<td>500.0</td>
+<td>NaN</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">win[3]</td>
+<td>0.518</td>
+<td>0.500</td>
+<td>0.000</td>
+<td>1.000</td>
+<td>0.021</td>
+<td>0.001</td>
+<td>545.0</td>
+<td>500.0</td>
+<td>NaN</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">win[4]</td>
+<td>0.524</td>
+<td>0.500</td>
+<td>0.000</td>
+<td>1.000</td>
+<td>0.023</td>
+<td>0.001</td>
+<td>471.0</td>
+<td>471.0</td>
+<td>NaN</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">win[79]</td>
+<td>0.528</td>
+<td>0.500</td>
+<td>0.000</td>
+<td>1.000</td>
+<td>0.023</td>
+<td>0.001</td>
+<td>474.0</td>
+<td>474.0</td>
+<td>NaN</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">win[80]</td>
+<td>0.530</td>
+<td>0.500</td>
+<td>0.000</td>
+<td>1.000</td>
+<td>0.022</td>
+<td>0.001</td>
+<td>500.0</td>
+<td>500.0</td>
+<td>NaN</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">win[81]</td>
+<td>0.498</td>
+<td>0.500</td>
+<td>0.000</td>
+<td>1.000</td>
+<td>0.022</td>
+<td>0.000</td>
+<td>537.0</td>
+<td>500.0</td>
+<td>NaN</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">win[82]</td>
+<td>0.564</td>
+<td>0.496</td>
+<td>0.000</td>
+<td>1.000</td>
+<td>0.023</td>
+<td>0.003</td>
+<td>461.0</td>
+<td>461.0</td>
+<td>NaN</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">p_win</td>
+<td>0.516</td>
+<td>0.294</td>
+<td>0.041</td>
+<td>0.969</td>
+<td>0.013</td>
+<td>0.006</td>
+<td>472.0</td>
+<td>444.0</td>
+<td>NaN</td>
+</tr>
+</tbody>
+</table>
+
+<p>84 rows × 9 columns</p>
+</div>
+</div>
+</div>
+<div id="39529a12-cb11-4ac8-b6b9-0a5d0e8de9b8" class="cell" data-execution="{&quot;iopub.execute_input&quot;:&quot;2025-07-01T17:00:47.398300Z&quot;,&quot;iopub.status.busy&quot;:&quot;2025-07-01T17:00:47.398138Z&quot;,&quot;iopub.status.idle&quot;:&quot;2025-07-01T17:00:47.536859Z&quot;,&quot;shell.execute_reply&quot;:&quot;2025-07-01T17:00:47.536332Z&quot;,&quot;shell.execute_reply.started&quot;:&quot;2025-07-01T17:00:47.398285Z&quot;}" data-execution_count="80">
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>nba_prior_df <span class="op">=</span> nba_prior_idata.prior.to_dataframe().reset_index().drop(columns<span class="op">=</span><span class="st">"chain"</span>)</span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>ax <span class="op">=</span> pw.Brick(figsize<span class="op">=</span>(<span class="fl">3.5</span>, <span class="fl">2.25</span>))<span class="op">;</span></span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>sns.histplot(</span>
+<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a>    x<span class="op">=</span><span class="st">"num_wins"</span>, data<span class="op">=</span>nba_prior_df, ax<span class="op">=</span>ax,</span>
+<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a>)<span class="op">;</span></span>
+<span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a>ax.axvline(x <span class="op">=</span> <span class="dv">9</span>, ls<span class="op">=</span><span class="st">'dashed'</span>, color<span class="op">=</span><span class="st">'black'</span>, alpha<span class="op">=</span><span class="fl">0.9</span>)<span class="op">;</span></span>
+<span id="cb9-7"><a href="#cb9-7" aria-hidden="true" tabindex="-1"></a>ax.axvline(x <span class="op">=</span> <span class="dv">73</span>, ls<span class="op">=</span><span class="st">'dashed'</span>, color<span class="op">=</span><span class="st">'black'</span>, alpha<span class="op">=</span><span class="fl">0.9</span>)<span class="op">;</span></span>
+<span id="cb9-8"><a href="#cb9-8" aria-hidden="true" tabindex="-1"></a>ax.savefig()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="80">
+<div>
+<figure class="figure">
+<p><img src="HW2_Guide_files/figure-html/cell-7-output-1.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>And indeed, from this plot we can see that we have a <strong>weakly informative</strong> prior with respect to our above criteria: the prior predictive distribution assigns a positive probability mass to all values between 9 and 73.</p>
+<p>In fact, now we can address the footnote above: here, even someone who believes that <strong>any</strong> number of wins between 0 and 82 inclusive is plausible would find this satisfactory as a <strong>weakly informative</strong> prior, since it actually assigns a positive probability mass to all values between 0 and 82.</p>
+<p>This need not be the case, however – meaning, there are priors which the “9 to 73 is plausible” person would call “weakly informative” while the “0 to 82 is plausible” person would not.</p>
+<p>Here’s an example, using the <strong>Truncated</strong> operator that PyMC provides, which allows us to do the following:</p>
+<ol type="1">
+<li>Define a <strong>Binomial</strong> distribution to represent a number of games between 0 and 82, but then</li>
+<li><strong>Truncate</strong> the pmf of the “true” 0-to-82 distribution down to a 9-to-73 distribution, by “chopping off” the values outside of <span class="math inline">\(\{9, 10, \ldots, 73\}\)</span> and re-normalizing the probability masses to sum to 1.</li>
+</ol>
+<p>It’s a bit silly, as you’ll see from the visualization, and we’re modeling the season as a whole rather than individual games like in the above model, but yeah it’s here to show you an example prior which can violate the “weakly informative” criteria!</p>
+<div id="8fe636cf-cdbe-44d1-a91e-17843280ba17" class="cell" data-execution="{&quot;iopub.execute_input&quot;:&quot;2025-07-01T17:27:27.690501Z&quot;,&quot;iopub.status.busy&quot;:&quot;2025-07-01T17:27:27.690250Z&quot;,&quot;iopub.status.idle&quot;:&quot;2025-07-01T17:27:27.736376Z&quot;,&quot;shell.execute_reply&quot;:&quot;2025-07-01T17:27:27.735927Z&quot;,&quot;shell.execute_reply.started&quot;:&quot;2025-07-01T17:27:27.690484Z&quot;}" data-execution_count="148">
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="cf">with</span> pm.Model() <span class="im">as</span> trunc_model:</span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>    num_wins_raw <span class="op">=</span> pm.TruncatedNormal(<span class="st">"num_wins_raw"</span>, mu<span class="op">=</span><span class="dv">41</span>, sigma<span class="op">=</span><span class="dv">20</span>, lower<span class="op">=</span><span class="fl">8.51</span>, upper<span class="op">=</span><span class="fl">73.49</span>)</span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>    num_wins <span class="op">=</span> pm.Deterministic(<span class="st">"num_wins"</span>, pm.math.<span class="bu">round</span>(num_wins_raw))</span>
+<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a>pm.model_to_graphviz(trunc_model)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="148">
+<div>
+<figure class="figure">
+<p><img src="HW2_Guide_files/figure-html/cell-8-output-1.svg" class="img-fluid figure-img"></p>
+</figure>
+</div>
+</div>
+</div>
+<div id="228ae49a-1e2f-4831-ad5d-1d3d4e313a84" class="cell" data-execution="{&quot;iopub.execute_input&quot;:&quot;2025-07-01T17:27:35.472222Z&quot;,&quot;iopub.status.busy&quot;:&quot;2025-07-01T17:27:35.472015Z&quot;,&quot;iopub.status.idle&quot;:&quot;2025-07-01T17:27:36.142286Z&quot;,&quot;shell.execute_reply&quot;:&quot;2025-07-01T17:27:36.141800Z&quot;,&quot;shell.execute_reply.started&quot;:&quot;2025-07-01T17:27:35.472206Z&quot;}" data-execution_count="153">
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="cf">with</span> trunc_model:</span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>    trunc_prior_idata <span class="op">=</span> pm.sample_prior_predictive(draws<span class="op">=</span><span class="dv">5000</span>, random_seed<span class="op">=</span><span class="dv">5650</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Sampling: [num_wins_raw]</code></pre>
+</div>
+</div>
+<div id="ac54f4f1-ca07-401c-ae3f-f70c38ab115d" class="cell" data-execution="{&quot;iopub.execute_input&quot;:&quot;2025-07-01T17:27:36.143310Z&quot;,&quot;iopub.status.busy&quot;:&quot;2025-07-01T17:27:36.143154Z&quot;,&quot;iopub.status.idle&quot;:&quot;2025-07-01T17:27:36.165761Z&quot;,&quot;shell.execute_reply&quot;:&quot;2025-07-01T17:27:36.165277Z&quot;,&quot;shell.execute_reply.started&quot;:&quot;2025-07-01T17:27:36.143296Z&quot;}" data-execution_count="154">
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>az.summary(trunc_prior_idata)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>arviz - WARNING - Shape validation failed: input_shape: (1, 5000), minimum_shape: (chains=2, draws=4)</code></pre>
+</div>
+<div class="cell-output cell-output-display" data-execution_count="154">
+<div>
+
+
+<table class="dataframe caption-top table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th">mean</th>
+<th data-quarto-table-cell-role="th">sd</th>
+<th data-quarto-table-cell-role="th">hdi_3%</th>
+<th data-quarto-table-cell-role="th">hdi_97%</th>
+<th data-quarto-table-cell-role="th">mcse_mean</th>
+<th data-quarto-table-cell-role="th">mcse_sd</th>
+<th data-quarto-table-cell-role="th">ess_bulk</th>
+<th data-quarto-table-cell-role="th">ess_tail</th>
+<th data-quarto-table-cell-role="th">r_hat</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">num_wins_raw</td>
+<td>41.135</td>
+<td>15.854</td>
+<td>14.794</td>
+<td>71.13</td>
+<td>0.229</td>
+<td>0.12</td>
+<td>4808.0</td>
+<td>4653.0</td>
+<td>NaN</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">num_wins</td>
+<td>41.134</td>
+<td>15.852</td>
+<td>12.000</td>
+<td>68.00</td>
+<td>0.229</td>
+<td>0.12</td>
+<td>4823.0</td>
+<td>4600.0</td>
+<td>NaN</td>
+</tr>
+</tbody>
+</table>
+
+</div>
+</div>
+</div>
+<div id="858403b9-9669-4ac9-b893-87f2d33fce10" class="cell" data-execution="{&quot;iopub.execute_input&quot;:&quot;2025-07-01T17:27:36.166352Z&quot;,&quot;iopub.status.busy&quot;:&quot;2025-07-01T17:27:36.166203Z&quot;,&quot;iopub.status.idle&quot;:&quot;2025-07-01T17:27:36.275676Z&quot;,&quot;shell.execute_reply&quot;:&quot;2025-07-01T17:27:36.275212Z&quot;,&quot;shell.execute_reply.started&quot;:&quot;2025-07-01T17:27:36.166338Z&quot;}" data-execution_count="155">
+<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>trunc_prior_df <span class="op">=</span> trunc_prior_idata.prior.to_dataframe().reset_index().drop(columns<span class="op">=</span><span class="st">"chain"</span>)</span>
+<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>ax <span class="op">=</span> pw.Brick(figsize<span class="op">=</span>(<span class="fl">3.5</span>, <span class="fl">2.25</span>))<span class="op">;</span></span>
+<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a>sns.histplot(</span>
+<span id="cb15-4"><a href="#cb15-4" aria-hidden="true" tabindex="-1"></a>    x<span class="op">=</span><span class="st">"num_wins"</span>, data<span class="op">=</span>trunc_prior_df, ax<span class="op">=</span>ax,</span>
+<span id="cb15-5"><a href="#cb15-5" aria-hidden="true" tabindex="-1"></a>)<span class="op">;</span></span>
+<span id="cb15-6"><a href="#cb15-6" aria-hidden="true" tabindex="-1"></a>ax.axvline(x <span class="op">=</span> <span class="dv">9</span>, ls<span class="op">=</span><span class="st">'dashed'</span>, color<span class="op">=</span><span class="st">'black'</span>, alpha<span class="op">=</span><span class="fl">0.9</span>)<span class="op">;</span></span>
+<span id="cb15-7"><a href="#cb15-7" aria-hidden="true" tabindex="-1"></a>ax.axvline(x <span class="op">=</span> <span class="dv">73</span>, ls<span class="op">=</span><span class="st">'dashed'</span>, color<span class="op">=</span><span class="st">'black'</span>, alpha<span class="op">=</span><span class="fl">0.9</span>)<span class="op">;</span></span>
+<span id="cb15-8"><a href="#cb15-8" aria-hidden="true" tabindex="-1"></a>ax.savefig()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="155">
+<div>
+<figure class="figure">
+<p><img src="HW2_Guide_files/figure-html/cell-11-output-1.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>The visualization shows, if you look really closely, that we indeed have a weakly-informative prior relative to the first (“Only 9 to 73 is plausible”) person’s criteria, but it’s not weakly-informative relative to the second (“0 to 82 is plausible”) person’s. We could also directly verify this by converting the data from the 10,000 draws into a proper probability distribution and checking that it in fact assigns positive probability mass to each value from 9 to 73:</p>
+<div id="b6b309cd-279d-4a0e-87a6-5f93735cc595" class="cell" data-execution="{&quot;iopub.execute_input&quot;:&quot;2025-07-01T17:28:17.681118Z&quot;,&quot;iopub.status.busy&quot;:&quot;2025-07-01T17:28:17.680893Z&quot;,&quot;iopub.status.idle&quot;:&quot;2025-07-01T17:28:17.689982Z&quot;,&quot;shell.execute_reply&quot;:&quot;2025-07-01T17:28:17.689506Z&quot;,&quot;shell.execute_reply.started&quot;:&quot;2025-07-01T17:28:17.681102Z&quot;}" data-execution_count="157">
+<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a>trunc_prior_df[<span class="st">'num_wins'</span>] <span class="op">=</span> trunc_prior_df[<span class="st">'num_wins'</span>].astype(<span class="bu">int</span>)</span>
+<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a>win_counts_df <span class="op">=</span> trunc_prior_df[<span class="st">'num_wins'</span>].value_counts().to_frame().reset_index().sort_values(by<span class="op">=</span><span class="st">'num_wins'</span>)</span>
+<span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a>win_counts_df[<span class="st">'prob'</span>] <span class="op">=</span> win_counts_df[<span class="st">'count'</span>] <span class="op">/</span> win_counts_df[<span class="st">'count'</span>].<span class="bu">sum</span>()</span>
+<span id="cb16-4"><a href="#cb16-4" aria-hidden="true" tabindex="-1"></a>win_counts_df</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="157">
+<div>
+
+
+<table class="dataframe caption-top table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th">num_wins</th>
+<th data-quarto-table-cell-role="th">count</th>
+<th data-quarto-table-cell-role="th">prob</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">64</td>
+<td>9</td>
+<td>24</td>
+<td>0.0048</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">60</td>
+<td>10</td>
+<td>36</td>
+<td>0.0072</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">62</td>
+<td>11</td>
+<td>31</td>
+<td>0.0062</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">55</td>
+<td>12</td>
+<td>44</td>
+<td>0.0088</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">59</td>
+<td>13</td>
+<td>38</td>
+<td>0.0076</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">51</td>
+<td>69</td>
+<td>51</td>
+<td>0.0102</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">57</td>
+<td>70</td>
+<td>42</td>
+<td>0.0084</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">56</td>
+<td>71</td>
+<td>43</td>
+<td>0.0086</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">61</td>
+<td>72</td>
+<td>33</td>
+<td>0.0066</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">63</td>
+<td>73</td>
+<td>30</td>
+<td>0.0060</td>
+</tr>
+</tbody>
+</table>
+
+<p>65 rows × 3 columns</p>
+</div>
+</div>
+</div>
+<p>And we see, indeed, a low-but-positive probability mass on each number of wins from 9 to 73!</p>
+</section>
+</section>
+<section id="part-5-firing-squad" class="level2">
+<h2 class="anchored" data-anchor-id="part-5-firing-squad">[Part 5] Firing Squad</h2>
+<p>It’s a bit hard to come up with starter code for this question but, let’s try! Note how the Firing Squad example boils down to just a bunch of <strong>dyadic</strong> (two-node) relationships like:</p>
+<ul>
+<li>If the Court Orders come in, then the Captain announces the order</li>
+<li>If the Captain announces the order, Soldier <span class="math inline">\(A\)</span> shoots</li>
+<li>If the Captain announces the order, Soldier <span class="math inline">\(B\)</span> shoots</li>
+<li>If Soldier <span class="math inline">\(A\)</span> shoots, the Prisoner dies</li>
+<li>If Soldier <span class="math inline">\(B\)</span> shoots, the Prisoner dies</li>
+</ul>
+<p>So, maybe the starter code can just be one “link” in this chain of causality. Let’s model a dog named Selena who has been trained to <strong>dance</strong> (<span class="math inline">\(D\)</span>) when the command <a href="https://translate.google.com/?sl=es&amp;tl=en&amp;text=%22%C2%A1Baila%20conmigo!%22&amp;op=translate"><strong>“¡Baila conmigo!”</strong></a> (<span class="math inline">\(BC\)</span>) is spoken. We’ll model a single <em>hangout session</em> with the dog as follows:</p>
+<ul>
+<li>In a given hangout session, the dog trainer issues the <strong>“¡Baila conmigo!”</strong> (<span class="math inline">\(BC\)</span>) command with probability <span class="math inline">\(0.8\)</span></li>
+<li>If the command is issued, Selena <strong>dances</strong> (<span class="math inline">\(D\)</span>) with 100% certainty. Otherwise, she doesn’t dance.</li>
+</ul>
+<section id="working-through-a-solution" class="level3">
+<h3 class="anchored" data-anchor-id="working-through-a-solution">Working Through a Solution</h3>
+<p>Let’s start by interpreting the facts in the problem as explicit probabilities, to make sure we’re on the same page:</p>
+<ul>
+<li>In a given hangout session, the dog trainer issues the <strong>“¡Baila conmigo!”</strong> (<span class="math inline">\(BC\)</span>) command with probability <span class="math inline">\(0.8\)</span>: <span class="math inline">\(\Pr(BC) = 0.8\)</span></li>
+<li>If the command is issued, Selena <strong>dances</strong> (<span class="math inline">\(D\)</span>) with 100% certainty: <span class="math inline">\(\Pr(D \mid BC) = 1.0\)</span></li>
+</ul>
+<p>Let’s say we start by just trying to model the command <span class="math inline">\(BC\)</span> as happening with probability <span class="math inline">\(0.8\)</span>, and the dance <span class="math inline">\(D\)</span> happening with probability <span class="math inline">\(1\)</span>, without linking the two together. We’d get something like the following:</p>
+<div id="ec258d51-d832-43c8-baad-b58cf70f7038" class="cell" data-execution="{&quot;iopub.execute_input&quot;:&quot;2025-07-01T15:22:10.096112Z&quot;,&quot;iopub.status.busy&quot;:&quot;2025-07-01T15:22:10.095668Z&quot;,&quot;iopub.status.idle&quot;:&quot;2025-07-01T15:22:10.132093Z&quot;,&quot;shell.execute_reply&quot;:&quot;2025-07-01T15:22:10.131632Z&quot;,&quot;shell.execute_reply.started&quot;:&quot;2025-07-01T15:22:10.096092Z&quot;}" data-execution_count="21">
+<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="cf">with</span> pm.Model() <span class="im">as</span> bad_dance_model:</span>
+<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a>    BC <span class="op">=</span> pm.Bernoulli(<span class="st">"BC"</span>, p<span class="op">=</span><span class="fl">0.8</span>)</span>
+<span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a>    D <span class="op">=</span> pm.Bernoulli(<span class="st">"D"</span>, p<span class="op">=</span><span class="fl">1.0</span>)</span>
+<span id="cb17-4"><a href="#cb17-4" aria-hidden="true" tabindex="-1"></a>pm.model_to_graphviz(bad_dance_model)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="21">
+<div>
+<figure class="figure">
+<p><img src="HW2_Guide_files/figure-html/cell-13-output-1.svg" class="img-fluid figure-img"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>And by displaying the PGM like this, we can see that something has gone wrong with our modeling, since the command <span class="math inline">\(BC\)</span> is supposed to have an effect on dancing <span class="math inline">\(D\)</span>: there’s supposed to be an arrow from <span class="math inline">\(BC\)</span> to <span class="math inline">\(D\)</span>!</p>
+<p>So, this points us towards the fact that the parameter <code>p</code>, the probability of the <code>pm.Bernoulli()</code> Random Variable <code>D</code>, should depend on <code>BC</code>. In this case, we can use <code>pm.math.switch()</code> as basically an <code>if</code> statement which determines the final value of <code>p</code>:</p>
+<div id="1695abc6-140a-48d9-8bf1-79c3426b0acc" class="cell" data-execution="{&quot;iopub.execute_input&quot;:&quot;2025-07-01T15:22:10.675907Z&quot;,&quot;iopub.status.busy&quot;:&quot;2025-07-01T15:22:10.675693Z&quot;,&quot;iopub.status.idle&quot;:&quot;2025-07-01T15:22:10.709850Z&quot;,&quot;shell.execute_reply&quot;:&quot;2025-07-01T15:22:10.709355Z&quot;,&quot;shell.execute_reply.started&quot;:&quot;2025-07-01T15:22:10.675892Z&quot;}" data-execution_count="22">
+<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="cf">with</span> pm.Model() <span class="im">as</span> dance_model:</span>
+<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a>    BC <span class="op">=</span> pm.Bernoulli(<span class="st">"BC"</span>, p<span class="op">=</span><span class="fl">0.8</span>)</span>
+<span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a>    D <span class="op">=</span> pm.Bernoulli(<span class="st">"D"</span>, p<span class="op">=</span>pm.math.switch(BC, <span class="fl">1.0</span>, <span class="fl">0.0</span>))</span>
+<span id="cb18-4"><a href="#cb18-4" aria-hidden="true" tabindex="-1"></a>pm.model_to_graphviz(dance_model)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="22">
+<div>
+<figure class="figure">
+<p><img src="HW2_Guide_files/figure-html/cell-14-output-1.svg" class="img-fluid figure-img"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>And now the PGM looks as expected.</p>
+</section>
+<section id="probabilities-without-textsfdo" class="level3">
+<h3 class="anchored" data-anchor-id="probabilities-without-textsfdo">Probabilities Without <span class="math inline">\(\textsf{do}()\)</span></h3>
+<p>Off rip, let’s “extract” some general probabilistic facts about this stochastic system we’ve now set up, before we apply <span class="math inline">\(\textsf{do}()\)</span> or observe data or anything like that.</p>
+<p>To achieve this, we use the first of <strong>three different ways</strong> you can derive information from a <code>pm.Model()</code> object: PyMC’s <code>sample_prior_predictive()</code> function<sup>[1]</sup>. The way I think of this function is that it tells us what we can say about the different variables without having any additional information besides the model itself: any information, that is, besides the probability distributions of the RVs and how they’re linked together.</p>
+<p>Sampling from the prior distribution looks as follows:</p>
+<hr>
+<p><small></small></p><small>
+<ol type="1">
+<li>The names of the functions in PyMC are extremely confusing imo (though they do update them all the time given user feedback!): the two types of <strong>posterior</strong> distributions have separate sampling functions, <code>sample()</code> for the posterior and <code>sample_posterior_predictive()</code> for the posterior predictive distribution. However, for reasons I don’t entirely understand, we use <code>sample_prior_predictive()</code> to obtain <strong>both</strong> the prior <strong>and</strong> prior predictive distributions.</li>
+</ol>
+</small><p><small></small></p>
+<div id="fd89f818-7afb-4c4a-aaac-d793722a05b4" class="cell" data-execution="{&quot;iopub.execute_input&quot;:&quot;2025-07-01T15:22:12.587235Z&quot;,&quot;iopub.status.busy&quot;:&quot;2025-07-01T15:22:12.586964Z&quot;,&quot;iopub.status.idle&quot;:&quot;2025-07-01T15:22:12.655145Z&quot;,&quot;shell.execute_reply&quot;:&quot;2025-07-01T15:22:12.654655Z&quot;,&quot;shell.execute_reply.started&quot;:&quot;2025-07-01T15:22:12.587214Z&quot;}" data-execution_count="23">
+<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="cf">with</span> dance_model:</span>
+<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a>    dance_prior_idata <span class="op">=</span> pm.sample_prior_predictive(random_seed<span class="op">=</span><span class="dv">5650</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Sampling: [BC, D]</code></pre>
+</div>
+</div>
+<p>Printing out the information in <code>dance_prior_idata</code> on its own isn’t that helpful, unless you already know how the <a href="https://docs.xarray.dev/en/stable/"><code>xarray</code> library</a> works (which is good to know!), but there are two other ways to display the results that are a bit more helpful.</p>
+<p>First, there is a <a href="https://www.arviz.org/en/latest/">library called <code>arviz</code></a> – which actually used to be part of PyMC until it was split off as an independent Bayesian inference visualization library – that you can use to display <strong>summary statistics</strong> of the sampling:</p>
+<div id="e0a4cace-517a-48c3-9f74-ec473a3c6239" class="cell" data-execution="{&quot;iopub.execute_input&quot;:&quot;2025-07-01T15:22:13.100199Z&quot;,&quot;iopub.status.busy&quot;:&quot;2025-07-01T15:22:13.099971Z&quot;,&quot;iopub.status.idle&quot;:&quot;2025-07-01T15:22:13.120582Z&quot;,&quot;shell.execute_reply&quot;:&quot;2025-07-01T15:22:13.120096Z&quot;,&quot;shell.execute_reply.started&quot;:&quot;2025-07-01T15:22:13.100181Z&quot;}" data-execution_count="24">
+<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a>az.summary(dance_prior_idata.prior)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>arviz - WARNING - Shape validation failed: input_shape: (1, 500), minimum_shape: (chains=2, draws=4)</code></pre>
+</div>
+<div class="cell-output cell-output-display" data-execution_count="24">
+<div>
+
+
+<table class="dataframe caption-top table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th">mean</th>
+<th data-quarto-table-cell-role="th">sd</th>
+<th data-quarto-table-cell-role="th">hdi_3%</th>
+<th data-quarto-table-cell-role="th">hdi_97%</th>
+<th data-quarto-table-cell-role="th">mcse_mean</th>
+<th data-quarto-table-cell-role="th">mcse_sd</th>
+<th data-quarto-table-cell-role="th">ess_bulk</th>
+<th data-quarto-table-cell-role="th">ess_tail</th>
+<th data-quarto-table-cell-role="th">r_hat</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">D</td>
+<td>0.762</td>
+<td>0.426</td>
+<td>0.0</td>
+<td>1.0</td>
+<td>0.021</td>
+<td>0.013</td>
+<td>412.0</td>
+<td>412.0</td>
+<td>NaN</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">BC</td>
+<td>0.762</td>
+<td>0.426</td>
+<td>0.0</td>
+<td>1.0</td>
+<td>0.021</td>
+<td>0.013</td>
+<td>412.0</td>
+<td>412.0</td>
+<td>NaN</td>
+</tr>
+</tbody>
+</table>
+
+</div>
+</div>
+</div>
+<p>Second, to use the full results of the sampling, you can just convert the <code>idata</code> object into a Pandas <code>DataFrame</code> by using the <code>.to_dataframe()</code> function:</p>
+<div id="1135d673-ea3d-4270-9904-1f561e2453de" class="cell" data-execution="{&quot;iopub.execute_input&quot;:&quot;2025-07-01T15:22:14.161371Z&quot;,&quot;iopub.status.busy&quot;:&quot;2025-07-01T15:22:14.161117Z&quot;,&quot;iopub.status.idle&quot;:&quot;2025-07-01T15:22:14.169959Z&quot;,&quot;shell.execute_reply&quot;:&quot;2025-07-01T15:22:14.169503Z&quot;,&quot;shell.execute_reply.started&quot;:&quot;2025-07-01T15:22:14.161353Z&quot;}" data-execution_count="25">
+<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a>dance_prior_df <span class="op">=</span> dance_prior_idata.prior.to_dataframe()</span>
+<span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a>dance_prior_df</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="25">
+<div>
+
+
+<table class="dataframe caption-top table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th">D</th>
+<th data-quarto-table-cell-role="th">BC</th>
+</tr>
+<tr class="even">
+<th data-quarto-table-cell-role="th">chain</th>
+<th data-quarto-table-cell-role="th">draw</th>
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th"></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td rowspan="11" data-quarto-table-cell-role="th" data-valign="top">0</td>
+<td data-quarto-table-cell-role="th">0</td>
+<td>0</td>
+<td>0</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">1</td>
+<td>1</td>
+<td>1</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">2</td>
+<td>1</td>
+<td>1</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">3</td>
+<td>0</td>
+<td>0</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">4</td>
+<td>0</td>
+<td>0</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">...</td>
+<td>...</td>
+<td>...</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">495</td>
+<td>0</td>
+<td>0</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">496</td>
+<td>1</td>
+<td>1</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">497</td>
+<td>1</td>
+<td>1</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">498</td>
+<td>1</td>
+<td>1</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">499</td>
+<td>1</td>
+<td>1</td>
+</tr>
+</tbody>
+</table>
+
+<p>500 rows × 2 columns</p>
+</div>
+</div>
+</div>
+<p>If we use this on its own, you’ll notice that it produces a fancy <code>DataFrame</code> with a dual index: first indexed by <code>chain</code> and then by <code>draw</code>. This can be helpful in general, but to me it makes it complicated (since for example <code>chain</code> is useless here while <code>draw</code> can’t be treated like a normal column since it’s an index), so I like to use <code>.reset_index()</code> to transform these from indices into regular columns, and then I usually drop <code>chain</code> (this only becomes useful when you start doing fancy Markov Chain Monte Carlo estimation where you use multiple chains so that you can basically throw away non-convergent estimations):</p>
+<div id="a1c1ef46-4a6d-47a5-a36c-dc4ed12e02c9" class="cell" data-execution="{&quot;iopub.execute_input&quot;:&quot;2025-07-01T15:22:14.868511Z&quot;,&quot;iopub.status.busy&quot;:&quot;2025-07-01T15:22:14.868208Z&quot;,&quot;iopub.status.idle&quot;:&quot;2025-07-01T15:22:14.877471Z&quot;,&quot;shell.execute_reply&quot;:&quot;2025-07-01T15:22:14.876990Z&quot;,&quot;shell.execute_reply.started&quot;:&quot;2025-07-01T15:22:14.868491Z&quot;}" data-execution_count="26">
+<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a>dance_prior_df <span class="op">=</span> dance_prior_idata.prior.to_dataframe().reset_index().drop(columns<span class="op">=</span><span class="st">"chain"</span>)</span>
+<span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a>dance_prior_df</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="26">
+<div>
+
+
+<table class="dataframe caption-top table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th">draw</th>
+<th data-quarto-table-cell-role="th">D</th>
+<th data-quarto-table-cell-role="th">BC</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">1</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">2</td>
+<td>2</td>
+<td>1</td>
+<td>1</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">3</td>
+<td>3</td>
+<td>0</td>
+<td>0</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">4</td>
+<td>4</td>
+<td>0</td>
+<td>0</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">495</td>
+<td>495</td>
+<td>0</td>
+<td>0</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">496</td>
+<td>496</td>
+<td>1</td>
+<td>1</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">497</td>
+<td>497</td>
+<td>1</td>
+<td>1</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">498</td>
+<td>498</td>
+<td>1</td>
+<td>1</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">499</td>
+<td>499</td>
+<td>1</td>
+<td>1</td>
+</tr>
+</tbody>
+</table>
+
+<p>500 rows × 3 columns</p>
+</div>
+</div>
+</div>
+<p>And now that we have the samples in this form, we can plot them using e.g.&nbsp;<code>seaborn</code> like any other data in a Pandas <code>DataFrame</code>! As a “wrapper” around <code>seaborn</code> that makes it easier to arrange multiple plots in a grid, I use a library called <code>patchworklib</code>, which is what the <code>pw.Brick()</code> and the <code>ax.savefig()</code> lines are for here. For example, I can create plots of the distributions for both <span class="math inline">\(BC\)</span> and <span class="math inline">\(D\)</span> here and then place them side-by-side using <code>|</code>:</p>
+<div id="fee53dd3-aab7-41ce-a75e-3ad536b7fb39" class="cell" data-execution="{&quot;iopub.execute_input&quot;:&quot;2025-07-01T15:25:31.372622Z&quot;,&quot;iopub.status.busy&quot;:&quot;2025-07-01T15:25:31.372336Z&quot;,&quot;iopub.status.idle&quot;:&quot;2025-07-01T15:25:31.702038Z&quot;,&quot;shell.execute_reply&quot;:&quot;2025-07-01T15:25:31.701571Z&quot;,&quot;shell.execute_reply.started&quot;:&quot;2025-07-01T15:25:31.372605Z&quot;}" data-execution_count="35">
+<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a>ax_bc <span class="op">=</span> pw.Brick(figsize<span class="op">=</span>(<span class="fl">3.5</span>, <span class="fl">2.25</span>))<span class="op">;</span></span>
+<span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a>sns.histplot(</span>
+<span id="cb25-3"><a href="#cb25-3" aria-hidden="true" tabindex="-1"></a>    x<span class="op">=</span><span class="st">"BC"</span>, data<span class="op">=</span>dance_prior_df, ax<span class="op">=</span>ax_bc, discrete<span class="op">=</span><span class="va">True</span>, shrink<span class="op">=</span><span class="fl">0.2</span></span>
+<span id="cb25-4"><a href="#cb25-4" aria-hidden="true" tabindex="-1"></a>)<span class="op">;</span></span>
+<span id="cb25-5"><a href="#cb25-5" aria-hidden="true" tabindex="-1"></a>ax_d <span class="op">=</span> pw.Brick(figsize<span class="op">=</span>(<span class="fl">3.5</span>, <span class="fl">2.25</span>))<span class="op">;</span></span>
+<span id="cb25-6"><a href="#cb25-6" aria-hidden="true" tabindex="-1"></a>sns.histplot(</span>
+<span id="cb25-7"><a href="#cb25-7" aria-hidden="true" tabindex="-1"></a>    x<span class="op">=</span><span class="st">"D"</span>, data<span class="op">=</span>dance_prior_df, ax<span class="op">=</span>ax_d, discrete<span class="op">=</span><span class="va">True</span>, shrink<span class="op">=</span><span class="fl">0.2</span></span>
+<span id="cb25-8"><a href="#cb25-8" aria-hidden="true" tabindex="-1"></a>)<span class="op">;</span></span>
+<span id="cb25-9"><a href="#cb25-9" aria-hidden="true" tabindex="-1"></a>ax_prior <span class="op">=</span> ax_bc <span class="op">|</span> ax_d<span class="op">;</span></span>
+<span id="cb25-10"><a href="#cb25-10" aria-hidden="true" tabindex="-1"></a>ax_prior.savefig()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="35">
+<div>
+<figure class="figure">
+<p><img src="HW2_Guide_files/figure-html/cell-19-output-1.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
+</div>
+</div>
+</section>
+<section id="applying-the-textsfdo-operator" class="level3">
+<h3 class="anchored" data-anchor-id="applying-the-textsfdo-operator">Applying the <span class="math inline">\(\textsf{do}()\)</span> Operator</h3>
+<p>The above plots represent properties of the <em>stochastic system</em> we’ve defined, at the first – <strong>associational</strong> – level of the Ladder of Causal Inference. But, as we’ve discussed ad nauseam in class, to learn about the second – <strong>causal</strong> – level of this ladder, we’d like to see what happens when we <strong>intervene</strong> to <strong>force</strong> our model to represent the world where the command <span class="math inline">\(BC\)</span> is issued: how does this affect the “downstream” dance variable <span class="math inline">\(D\)</span>?</p>
+<p>By intervening to force <span class="math inline">\(BC \leftarrow 0\)</span>, and then separately to force <span class="math inline">\(BC \leftarrow 1\)</span>, and looking at the resulting values of <span class="math inline">\(D\)</span>, we can infer precisely the <strong>causal impact</strong> of <span class="math inline">\(BC\)</span> on <span class="math inline">\(D\)</span>, rather than just the co-occurrence-based conditional probability <span class="math inline">\(\Pr(D \mid BC)\)</span>.</p>
+<div id="8042f5cd-06a2-4213-be5f-f2823a11523d" class="cell" data-execution="{&quot;iopub.execute_input&quot;:&quot;2025-07-01T15:44:45.553979Z&quot;,&quot;iopub.status.busy&quot;:&quot;2025-07-01T15:44:45.553717Z&quot;,&quot;iopub.status.idle&quot;:&quot;2025-07-01T15:44:45.588376Z&quot;,&quot;shell.execute_reply&quot;:&quot;2025-07-01T15:44:45.587942Z&quot;,&quot;shell.execute_reply.started&quot;:&quot;2025-07-01T15:44:45.553959Z&quot;}" data-execution_count="36">
+<div class="sourceCode cell-code" id="cb26"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> pymc.model.transform.conditioning <span class="im">import</span> do</span>
+<span id="cb26-2"><a href="#cb26-2" aria-hidden="true" tabindex="-1"></a>do_BC1_model <span class="op">=</span> do(dance_model, {<span class="st">'BC'</span>: <span class="dv">1</span>})</span>
+<span id="cb26-3"><a href="#cb26-3" aria-hidden="true" tabindex="-1"></a>pm.model_to_graphviz(do_BC1_model)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="36">
+<div>
+<figure class="figure">
+<p><img src="HW2_Guide_files/figure-html/cell-20-output-1.svg" class="img-fluid figure-img"></p>
+</figure>
+</div>
+</div>
+</div>
+<div id="721285b0-c0c2-4c92-ac47-257cecfedc14" class="cell" data-execution="{&quot;iopub.execute_input&quot;:&quot;2025-07-01T15:45:45.490080Z&quot;,&quot;iopub.status.busy&quot;:&quot;2025-07-01T15:45:45.489837Z&quot;,&quot;iopub.status.idle&quot;:&quot;2025-07-01T15:45:45.532355Z&quot;,&quot;shell.execute_reply&quot;:&quot;2025-07-01T15:45:45.531857Z&quot;,&quot;shell.execute_reply.started&quot;:&quot;2025-07-01T15:45:45.490063Z&quot;}" data-execution_count="37">
+<div class="sourceCode cell-code" id="cb27"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a><span class="cf">with</span> do_BC1_model:</span>
+<span id="cb27-2"><a href="#cb27-2" aria-hidden="true" tabindex="-1"></a>    BC1_idata <span class="op">=</span> pm.sample_prior_predictive(random_seed<span class="op">=</span><span class="dv">5650</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Sampling: [D]</code></pre>
+</div>
+</div>
+<div id="36949378-cf5d-4710-aff2-45674409ceae" class="cell" data-execution="{&quot;iopub.execute_input&quot;:&quot;2025-07-01T15:46:27.349177Z&quot;,&quot;iopub.status.busy&quot;:&quot;2025-07-01T15:46:27.348907Z&quot;,&quot;iopub.status.idle&quot;:&quot;2025-07-01T15:46:27.357545Z&quot;,&quot;shell.execute_reply&quot;:&quot;2025-07-01T15:46:27.357053Z&quot;,&quot;shell.execute_reply.started&quot;:&quot;2025-07-01T15:46:27.349160Z&quot;}" data-execution_count="40">
+<div class="sourceCode cell-code" id="cb29"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a>BC1_idata_df <span class="op">=</span> BC1_idata.prior.to_dataframe()</span>
+<span id="cb29-2"><a href="#cb29-2" aria-hidden="true" tabindex="-1"></a>BC1_idata_df</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="40">
+<div>
+
+
+<table class="dataframe caption-top table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th">D</th>
+</tr>
+<tr class="even">
+<th data-quarto-table-cell-role="th">chain</th>
+<th data-quarto-table-cell-role="th">draw</th>
+<th data-quarto-table-cell-role="th"></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td rowspan="11" data-quarto-table-cell-role="th" data-valign="top">0</td>
+<td data-quarto-table-cell-role="th">0</td>
+<td>1</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">1</td>
+<td>1</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">2</td>
+<td>1</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">3</td>
+<td>1</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">4</td>
+<td>1</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">...</td>
+<td>...</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">495</td>
+<td>1</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">496</td>
+<td>1</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">497</td>
+<td>1</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">498</td>
+<td>1</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">499</td>
+<td>1</td>
+</tr>
+</tbody>
+</table>
+
+<p>500 rows × 1 columns</p>
+</div>
+</div>
+</div>
+<div id="bbaa4c5e-e017-4e3a-b300-e2b92452813f" class="cell" data-execution="{&quot;iopub.execute_input&quot;:&quot;2025-07-01T15:46:56.033222Z&quot;,&quot;iopub.status.busy&quot;:&quot;2025-07-01T15:46:56.032902Z&quot;,&quot;iopub.status.idle&quot;:&quot;2025-07-01T15:46:56.037479Z&quot;,&quot;shell.execute_reply&quot;:&quot;2025-07-01T15:46:56.036943Z&quot;,&quot;shell.execute_reply.started&quot;:&quot;2025-07-01T15:46:56.033199Z&quot;}" data-execution_count="41">
+<div class="sourceCode cell-code" id="cb30"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a>BC1_idata_df[<span class="st">'D'</span>].mean()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="41">
+<pre><code>1.0</code></pre>
+</div>
+</div>
+<div id="633988d7-e823-4976-8f18-a04143cbf601" class="cell" data-execution="{&quot;iopub.execute_input&quot;:&quot;2025-07-01T15:47:10.496347Z&quot;,&quot;iopub.status.busy&quot;:&quot;2025-07-01T15:47:10.496097Z&quot;,&quot;iopub.status.idle&quot;:&quot;2025-07-01T15:47:10.531459Z&quot;,&quot;shell.execute_reply&quot;:&quot;2025-07-01T15:47:10.530918Z&quot;,&quot;shell.execute_reply.started&quot;:&quot;2025-07-01T15:47:10.496330Z&quot;}" data-execution_count="42">
+<div class="sourceCode cell-code" id="cb32"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> pymc.model.transform.conditioning <span class="im">import</span> do</span>
+<span id="cb32-2"><a href="#cb32-2" aria-hidden="true" tabindex="-1"></a>do_BC0_model <span class="op">=</span> do(dance_model, {<span class="st">'BC'</span>: <span class="dv">0</span>})</span>
+<span id="cb32-3"><a href="#cb32-3" aria-hidden="true" tabindex="-1"></a>pm.model_to_graphviz(do_BC0_model)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="42">
+<div>
+<figure class="figure">
+<p><img src="HW2_Guide_files/figure-html/cell-24-output-1.svg" class="img-fluid figure-img"></p>
+</figure>
+</div>
+</div>
+</div>
+<div id="841b2989-156a-4f3b-975f-1e865ecd5d40" class="cell" data-execution="{&quot;iopub.execute_input&quot;:&quot;2025-07-01T15:47:40.114903Z&quot;,&quot;iopub.status.busy&quot;:&quot;2025-07-01T15:47:40.114622Z&quot;,&quot;iopub.status.idle&quot;:&quot;2025-07-01T15:47:40.162392Z&quot;,&quot;shell.execute_reply&quot;:&quot;2025-07-01T15:47:40.161922Z&quot;,&quot;shell.execute_reply.started&quot;:&quot;2025-07-01T15:47:40.114884Z&quot;}" data-execution_count="43">
+<div class="sourceCode cell-code" id="cb33"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a><span class="cf">with</span> do_BC0_model:</span>
+<span id="cb33-2"><a href="#cb33-2" aria-hidden="true" tabindex="-1"></a>    BC0_idata <span class="op">=</span> pm.sample_prior_predictive(random_seed<span class="op">=</span><span class="dv">5650</span>)</span>
+<span id="cb33-3"><a href="#cb33-3" aria-hidden="true" tabindex="-1"></a>BC0_idata_df <span class="op">=</span> BC0_idata.prior.to_dataframe()</span>
+<span id="cb33-4"><a href="#cb33-4" aria-hidden="true" tabindex="-1"></a>BC0_idata_df</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Sampling: [D]</code></pre>
+</div>
+<div class="cell-output cell-output-display" data-execution_count="43">
+<div>
+
+
+<table class="dataframe caption-top table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th">D</th>
+</tr>
+<tr class="even">
+<th data-quarto-table-cell-role="th">chain</th>
+<th data-quarto-table-cell-role="th">draw</th>
+<th data-quarto-table-cell-role="th"></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td rowspan="11" data-quarto-table-cell-role="th" data-valign="top">0</td>
+<td data-quarto-table-cell-role="th">0</td>
+<td>0</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">1</td>
+<td>0</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">2</td>
+<td>0</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">3</td>
+<td>0</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">4</td>
+<td>0</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">...</td>
+<td>...</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">495</td>
+<td>0</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">496</td>
+<td>0</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">497</td>
+<td>0</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">498</td>
+<td>0</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">499</td>
+<td>0</td>
+</tr>
+</tbody>
+</table>
+
+<p>500 rows × 1 columns</p>
+</div>
+</div>
+</div>
+<div id="806736cb-04bd-401c-a692-ea1432295b1c" class="cell" data-execution="{&quot;iopub.execute_input&quot;:&quot;2025-07-01T15:47:53.929287Z&quot;,&quot;iopub.status.busy&quot;:&quot;2025-07-01T15:47:53.929029Z&quot;,&quot;iopub.status.idle&quot;:&quot;2025-07-01T15:47:53.933546Z&quot;,&quot;shell.execute_reply&quot;:&quot;2025-07-01T15:47:53.933053Z&quot;,&quot;shell.execute_reply.started&quot;:&quot;2025-07-01T15:47:53.929271Z&quot;}" data-execution_count="44">
+<div class="sourceCode cell-code" id="cb35"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb35-1"><a href="#cb35-1" aria-hidden="true" tabindex="-1"></a>BC0_idata_df[<span class="st">'D'</span>].mean()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="44">
+<pre><code>0.0</code></pre>
+</div>
+</div>
+<p>And so we get our causal effect:</p>
+<p><span class="math display">\[
+\mathbb{E}[D \mid \textsf{do}(BC \leftarrow 1)] - \mathbb{E}[D \mid \textsf{do}(BC \leftarrow 0)] = 1 - 0 = 1
+\]</span></p>
+</section>
+<section id="textsfdo-vs.-conditional-probability-in-this-model" class="level3">
+<h3 class="anchored" data-anchor-id="textsfdo-vs.-conditional-probability-in-this-model"><span class="math inline">\(\textsf{do}()\)</span> vs.&nbsp;Conditional Probability in this Model</h3>
+<p>Now, what would the <strong>conditional probability</strong> <span class="math inline">\(\Pr(D \mid BC)\)</span> give us here? Let’s check using the <code>dance_prior_df</code> <code>DataFrame</code> we created earlier, but just subsetting it to check co-occurrences rather than using the fancy <code>do()</code> function in PyMC:</p>
+<div id="b3ffe8ab-689b-4928-82c3-44651657d017" class="cell" data-execution="{&quot;iopub.execute_input&quot;:&quot;2025-07-01T15:50:24.532911Z&quot;,&quot;iopub.status.busy&quot;:&quot;2025-07-01T15:50:24.532676Z&quot;,&quot;iopub.status.idle&quot;:&quot;2025-07-01T15:50:24.537733Z&quot;,&quot;shell.execute_reply&quot;:&quot;2025-07-01T15:50:24.537238Z&quot;,&quot;shell.execute_reply.started&quot;:&quot;2025-07-01T15:50:24.532894Z&quot;}" data-execution_count="46">
+<div class="sourceCode cell-code" id="cb37"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb37-1"><a href="#cb37-1" aria-hidden="true" tabindex="-1"></a>BC1_df <span class="op">=</span> dance_prior_df[dance_prior_df[<span class="st">'BC'</span>] <span class="op">==</span> <span class="dv">1</span>].copy()</span>
+<span id="cb37-2"><a href="#cb37-2" aria-hidden="true" tabindex="-1"></a>BC1_df[<span class="st">'D'</span>].mean()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="46">
+<pre><code>1.0</code></pre>
+</div>
+</div>
+<div id="ae605b64-5550-4917-b64b-f84108d67a1f" class="cell" data-execution="{&quot;iopub.execute_input&quot;:&quot;2025-07-01T15:50:43.595246Z&quot;,&quot;iopub.status.busy&quot;:&quot;2025-07-01T15:50:43.594980Z&quot;,&quot;iopub.status.idle&quot;:&quot;2025-07-01T15:50:43.600195Z&quot;,&quot;shell.execute_reply&quot;:&quot;2025-07-01T15:50:43.599726Z&quot;,&quot;shell.execute_reply.started&quot;:&quot;2025-07-01T15:50:43.595229Z&quot;}" data-execution_count="48">
+<div class="sourceCode cell-code" id="cb39"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb39-1"><a href="#cb39-1" aria-hidden="true" tabindex="-1"></a>BC0_df <span class="op">=</span> dance_prior_df[dance_prior_df[<span class="st">'BC'</span>] <span class="op">==</span> <span class="dv">0</span>].copy()</span>
+<span id="cb39-2"><a href="#cb39-2" aria-hidden="true" tabindex="-1"></a>BC0_df[<span class="st">'D'</span>].mean()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="48">
+<pre><code>0.0</code></pre>
+</div>
+</div>
+<p>And so we have, in this case, that</p>
+<p><span class="math display">\[
+\mathbb{E}[D \mid BC = 1] - \mathbb{E}[D \mid BC = 0] = 1 - 0 = 1,
+\]</span></p>
+<p>meaning that the causal effect is <strong>equal to</strong> the conditional effect:</p>
+<p><span class="math display">\[
+\mathbb{E}[D \mid \textsf{do}(BC \leftarrow 1)] - \mathbb{E}[D \mid \textsf{do}(BC \leftarrow 0)] = \mathbb{E}[D \mid BC = 1] - \mathbb{E}[D \mid BC = 0]
+\]</span></p>
+<p>Why did we get this result in this case? If we tried to generalize from this (which lots of early scientists do), we might think it means that <span class="math inline">\(\textsf{do}()\)</span> is unnecessary overkill – it looks like we can just use the conditional operator <span class="math inline">\(|\)</span>… But, in fact, the above equality only holds because <strong>the model was so simple</strong> that there were <strong>no backdoor paths</strong> which could <strong>bias</strong> the conditional probabilities <strong>away from</strong> the direct causal effect.</p>
+</section>
+<section id="the-relation-to-backdoor-paths" class="level3">
+<h3 class="anchored" data-anchor-id="the-relation-to-backdoor-paths">The Relation to Backdoor Paths</h3>
+<p>The Firing Squad example, however, is <strong>not so simple</strong>: on top of the direct path <span class="math inline">\(A \rightarrow D\)</span>, there is a <strong>backdoor path</strong> <span class="math inline">\(A \leftarrow C \rightarrow B \rightarrow D\)</span>, which has exactly the effect of making the <span class="math inline">\(\textsf{do}()\)</span>-based difference</p>
+<p><span class="math display">\[
+\mathbb{E}[D = 1 \mid \textsf{do}(A \leftarrow 1)] - \mathbb{E}[D = 1 \mid \textsf{do}(A \leftarrow 0)]
+\]</span></p>
+<p><strong>not equal to</strong> the conditional difference</p>
+<p><span class="math display">\[
+\mathbb{E}[D = 1 \mid A = 1] - \mathbb{E}[D = 1 \mid A = 0].
+\]</span></p>
+<p>If we had enough data on <span class="math inline">\(D\)</span> with respect to the behavior of <span class="math inline">\(A\)</span> (for example, data on <span class="math inline">\(A\)</span> shooting and not-shooting in different Firing Squads) and <span class="math inline">\(C\)</span> (for example, cases where <span class="math inline">\(C\)</span> decided not to follow the court orders, and refused to order the shooting), then we know from class that we could in fact <strong>infer the causal <span class="math inline">\(\textsf{do}()\)</span>-based effect from this observational data</strong> by <strong>closing the backdoor path</strong>:</p>
+<p>Since <span class="math inline">\(C\)</span> is a <strong>fork</strong> in the triple <span class="math inline">\(A \leftarrow C \rightarrow B\)</span>, the first triple in the backdoor path here, we know that we could compute <span class="math inline">\(\mathbb{E}[D = 1 \mid A = 1] - \mathbb{E}[D = 1 \mid A = 0]\)</span> separately for the two different values of <span class="math inline">\(C\)</span> (<span class="math inline">\(C = 1\)</span> and <span class="math inline">\(C = 0\)</span>), and if our causal model was indeed the truth about the world then we would successfully obtain the <span class="math inline">\(\textsf{do}()\)</span>-based effect <strong>without actually having to intervene in the system</strong>!</p>
+
+
+</section>
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const disableStylesheet = (stylesheets) => {
+    for (let i=0; i < stylesheets.length; i++) {
+      const stylesheet = stylesheets[i];
+      stylesheet.rel = 'prefetch';
+    }
+  }
+  const enableStylesheet = (stylesheets) => {
+    for (let i=0; i < stylesheets.length; i++) {
+      const stylesheet = stylesheets[i];
+      stylesheet.rel = 'stylesheet';
+    }
+  }
+  const manageTransitions = (selector, allowTransitions) => {
+    const els = window.document.querySelectorAll(selector);
+    for (let i=0; i < els.length; i++) {
+      const el = els[i];
+      if (allowTransitions) {
+        el.classList.remove('notransition');
+      } else {
+        el.classList.add('notransition');
+      }
+    }
+  }
+  const toggleGiscusIfUsed = (isAlternate, darkModeDefault) => {
+    const baseTheme = document.querySelector('#giscus-base-theme')?.value ?? 'light';
+    const alternateTheme = document.querySelector('#giscus-alt-theme')?.value ?? 'dark';
+    let newTheme = '';
+    if(darkModeDefault) {
+      newTheme = isAlternate ? baseTheme : alternateTheme;
+    } else {
+      newTheme = isAlternate ? alternateTheme : baseTheme;
+    }
+    const changeGiscusTheme = () => {
+      // From: https://github.com/giscus/giscus/issues/336
+      const sendMessage = (message) => {
+        const iframe = document.querySelector('iframe.giscus-frame');
+        if (!iframe) return;
+        iframe.contentWindow.postMessage({ giscus: message }, 'https://giscus.app');
+      }
+      sendMessage({
+        setConfig: {
+          theme: newTheme
+        }
+      });
+    }
+    const isGiscussLoaded = window.document.querySelector('iframe.giscus-frame') !== null;
+    if (isGiscussLoaded) {
+      changeGiscusTheme();
+    }
+  }
+  const toggleColorMode = (alternate) => {
+    // Switch the stylesheets
+    const alternateStylesheets = window.document.querySelectorAll('link.quarto-color-scheme.quarto-color-alternate');
+    manageTransitions('#quarto-margin-sidebar .nav-link', false);
+    if (alternate) {
+      enableStylesheet(alternateStylesheets);
+      for (const sheetNode of alternateStylesheets) {
+        if (sheetNode.id === "quarto-bootstrap") {
+          toggleBodyColorMode(sheetNode);
+        }
+      }
+    } else {
+      disableStylesheet(alternateStylesheets);
+      toggleBodyColorPrimary();
+    }
+    manageTransitions('#quarto-margin-sidebar .nav-link', true);
+    // Switch the toggles
+    const toggles = window.document.querySelectorAll('.quarto-color-scheme-toggle');
+    for (let i=0; i < toggles.length; i++) {
+      const toggle = toggles[i];
+      if (toggle) {
+        if (alternate) {
+          toggle.classList.add("alternate");     
+        } else {
+          toggle.classList.remove("alternate");
+        }
+      }
+    }
+    // Hack to workaround the fact that safari doesn't
+    // properly recolor the scrollbar when toggling (#1455)
+    if (navigator.userAgent.indexOf('Safari') > 0 && navigator.userAgent.indexOf('Chrome') == -1) {
+      manageTransitions("body", false);
+      window.scrollTo(0, 1);
+      setTimeout(() => {
+        window.scrollTo(0, 0);
+        manageTransitions("body", true);
+      }, 40);  
+    }
+  }
+  const isFileUrl = () => { 
+    return window.location.protocol === 'file:';
+  }
+  const hasAlternateSentinel = () => {  
+    let styleSentinel = getColorSchemeSentinel();
+    if (styleSentinel !== null) {
+      return styleSentinel === "alternate";
+    } else {
+      return false;
+    }
+  }
+  const setStyleSentinel = (alternate) => {
+    const value = alternate ? "alternate" : "default";
+    if (!isFileUrl()) {
+      window.localStorage.setItem("quarto-color-scheme", value);
+    } else {
+      localAlternateSentinel = value;
+    }
+  }
+  const getColorSchemeSentinel = () => {
+    if (!isFileUrl()) {
+      const storageValue = window.localStorage.getItem("quarto-color-scheme");
+      return storageValue != null ? storageValue : localAlternateSentinel;
+    } else {
+      return localAlternateSentinel;
+    }
+  }
+  const darkModeDefault = false;
+  let localAlternateSentinel = darkModeDefault ? 'alternate' : 'default';
+  // Dark / light mode switch
+  window.quartoToggleColorScheme = () => {
+    // Read the current dark / light value 
+    let toAlternate = !hasAlternateSentinel();
+    toggleColorMode(toAlternate);
+    setStyleSentinel(toAlternate);
+    toggleGiscusIfUsed(toAlternate, darkModeDefault);
+  };
+  // Ensure there is a toggle, if there isn't float one in the top right
+  if (window.document.querySelector('.quarto-color-scheme-toggle') === null) {
+    const a = window.document.createElement('a');
+    a.classList.add('top-right');
+    a.classList.add('quarto-color-scheme-toggle');
+    a.href = "";
+    a.onclick = function() { try { window.quartoToggleColorScheme(); } catch {} return false; };
+    const i = window.document.createElement("i");
+    i.classList.add('bi');
+    a.appendChild(i);
+    window.document.body.appendChild(a);
+  }
+  // Switch to dark mode if need be
+  if (hasAlternateSentinel()) {
+    toggleColorMode(true);
+  } else {
+    toggleColorMode(false);
+  }
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
+  const onCopySuccess = function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  }
+  const getTextToCopy = function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+    text: getTextToCopy
+  });
+  clipboard.on('success', onCopySuccess);
+  if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+    const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+      text: getTextToCopy,
+      container: window.document.getElementById('quarto-embedded-source-code-modal')
+    });
+    clipboardModal.on('success', onCopySuccess);
+  }
+    var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+    var mailtoRegex = new RegExp(/^mailto:/);
+      var filterRegex = new RegExp('/' + window.location.host + '/');
+    var isInternal = (href) => {
+        return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+    }
+    // Inspect non-navigation links and adorn them if external
+ 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+    for (var i=0; i<links.length; i++) {
+      const link = links[i];
+      if (!isInternal(link.href)) {
+        // undo the damage that might have been done by quarto-nav.js in the case of
+        // links that we want to consider external
+        if (link.dataset.originalHref !== undefined) {
+          link.href = link.dataset.originalHref;
+        }
+          // target, if specified
+          link.setAttribute("target", "_blank");
+          if (link.getAttribute("rel") === null) {
+            link.setAttribute("rel", "noopener");
+          }
+          // default icon
+          link.classList.add("external");
+      }
+    }
+  function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+    const config = {
+      allowHTML: true,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start',
+    };
+    if (contentFn) {
+      config.content = contentFn;
+    }
+    if (onTriggerFn) {
+      config.onTrigger = onTriggerFn;
+    }
+    if (onUntriggerFn) {
+      config.onUntrigger = onUntriggerFn;
+    }
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      if (note) {
+        return note.innerHTML;
+      } else {
+        return "";
+      }
+    });
+  }
+  const xrefs = window.document.querySelectorAll('a.quarto-xref');
+  const processXRef = (id, note) => {
+    // Strip column container classes
+    const stripColumnClz = (el) => {
+      el.classList.remove("page-full", "page-columns");
+      if (el.children) {
+        for (const child of el.children) {
+          stripColumnClz(child);
+        }
+      }
+    }
+    stripColumnClz(note)
+    if (id === null || id.startsWith('sec-')) {
+      // Special case sections, only their first couple elements
+      const container = document.createElement("div");
+      if (note.children && note.children.length > 2) {
+        container.appendChild(note.children[0].cloneNode(true));
+        for (let i = 1; i < note.children.length; i++) {
+          const child = note.children[i];
+          if (child.tagName === "P" && child.innerText === "") {
+            continue;
+          } else {
+            container.appendChild(child.cloneNode(true));
+            break;
+          }
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(container);
+        }
+        return container.innerHTML
+      } else {
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        return note.innerHTML;
+      }
+    } else {
+      // Remove any anchor links if they are present
+      const anchorLink = note.querySelector('a.anchorjs-link');
+      if (anchorLink) {
+        anchorLink.remove();
+      }
+      if (window.Quarto?.typesetMath) {
+        window.Quarto.typesetMath(note);
+      }
+      if (note.classList.contains("callout")) {
+        return note.outerHTML;
+      } else {
+        return note.innerHTML;
+      }
+    }
+  }
+  for (var i=0; i<xrefs.length; i++) {
+    const xref = xrefs[i];
+    tippyHover(xref, undefined, function(instance) {
+      instance.disable();
+      let url = xref.getAttribute('href');
+      let hash = undefined; 
+      if (url.startsWith('#')) {
+        hash = url;
+      } else {
+        try { hash = new URL(url).hash; } catch {}
+      }
+      if (hash) {
+        const id = hash.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note !== null) {
+          try {
+            const html = processXRef(id, note.cloneNode(true));
+            instance.setContent(html);
+          } finally {
+            instance.enable();
+            instance.show();
+          }
+        } else {
+          // See if we can fetch this
+          fetch(url.split('#')[0])
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.getElementById(id);
+            if (note !== null) {
+              const html = processXRef(id, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      } else {
+        // See if we can fetch a full url (with no hash to target)
+        // This is a special case and we should probably do some content thinning / targeting
+        fetch(url)
+        .then(res => res.text())
+        .then(html => {
+          const parser = new DOMParser();
+          const htmlDoc = parser.parseFromString(html, "text/html");
+          const note = htmlDoc.querySelector('main.content');
+          if (note !== null) {
+            // This should only happen for chapter cross references
+            // (since there is no id in the URL)
+            // remove the first header
+            if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+              note.children[0].remove();
+            }
+            const html = processXRef(null, note);
+            instance.setContent(html);
+          } 
+        }).finally(() => {
+          instance.enable();
+          instance.show();
+        });
+      }
+    }, function(instance) {
+    });
+  }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            div.style.left = 0;
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+        // Handle positioning of the toggle
+    window.addEventListener(
+      "resize",
+      throttle(() => {
+        elRect = undefined;
+        if (selectedAnnoteEl) {
+          selectCodeLines(selectedAnnoteEl);
+        }
+      }, 10)
+    );
+    function throttle(fn, ms) {
+    let throttle = false;
+    let timer;
+      return (...args) => {
+        if(!throttle) { // first call gets through
+            fn.apply(this, args);
+            throttle = true;
+        } else { // all the others get throttled
+            if(timer) clearTimeout(timer); // cancel #2
+            timer = setTimeout(() => {
+              fn.apply(this, args);
+              timer = throttle = false;
+            }, ms);
+        }
+      };
+    }
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+</div> <!-- /content -->
+
+
+
+
+<footer class="footer"><div class="nav-footer"><div class="nav-footer-center"><div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/jpowerj/dsan5650/blob/main/writeups/hw2-guide/HW2_Guide.ipynb" target="_blank" class="toc-action"><i class="bi bi-github"></i>View source</a></li></ul></div></div></div></footer></body></html>
