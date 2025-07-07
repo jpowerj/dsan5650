@@ -38,8 +38,9 @@ w07:
   date-md: "Jul 2"
 w08:
   weeknum: 8
-  title: "ATEs, ATTs, HTEs, and OBAs (Other Beautiful Acronyms)"
-  footer: "Treatment Effects"
+  # title: "ATEs, ATTs, HTEs, and OBAs (Other Beautiful Acronyms)"
+  title: "Propensity Score Weighting"
+  footer: "Propensity Score Weighting"
   date-md: "Jul 9"
 w09:
   weeknum: 9

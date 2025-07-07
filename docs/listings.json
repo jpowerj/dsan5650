@@ -1,5 +1,12 @@
 [
   {
+    "listing": "/writeups/index.html",
+    "items": [
+      "/writeups/hw2-guide/HW2_Guide.html",
+      "/writeups/bayesian-workflow/Bayesian_Workflow.html"
+    ]
+  },
+  {
     "listing": "/index.html",
     "items": [
       "/w01/index.html",
@@ -8,14 +15,8 @@
       "/w04/index.html",
       "/w05/index.html",
       "/w06/index.html",
-      "/w07/index.html"
-    ]
-  },
-  {
-    "listing": "/writeups/index.html",
-    "items": [
-      "/writeups/hw2-guide/HW2_Guide.html",
-      "/writeups/bayesian-workflow/Bayesian_Workflow.html"
+      "/w07/index.html",
+      "/w08/index.html"
     ]
   }
 ]

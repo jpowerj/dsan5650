@@ -1,0 +1,110 @@
+---
+title: "Week 8: Propensity Score Weighting"
+subtitle: "*DSAN 5650: Causal Inference for Computational Social Science*<br><span class='subsubtitle'>Summer 2025, Georgetown University</span>"
+author: "Jeff Jacobs"
+institute: "[`jj1088@georgetown.edu`](mailto:jj1088@georgetown.edu)"
+bibliography: "../_DSAN5650.bib"
+date: 2025-07-09
+date-format: full
+lecnum: 8
+categories:
+  - "Class Sessions"
+format:
+  revealjs:
+    df-print: kable
+    footer: "DSAN 5650 Week 8: {{< var w08.footer >}}"
+    output-file: "slides.html"
+    html-math-method: mathjax
+    scrollable: true
+    link-external-icon: true
+    link-external-newwindow: true
+    echo: true
+    code-fold: true
+    theme: [default, "../dsan-globals/jjquarto.scss"]
+    include-in-header:
+      text: "<link rel='stylesheet' href='https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css'><link rel='stylesheet' type='text/css' href='https://cdn.jsdelivr.net/gh/dreampulse/computer-modern-web-font@master/fonts.css'>"
+    slide-number: true
+    simplemenu:
+      flat: true
+      barhtml:
+        header: "<div class='menubar'><span style='position: absolute; left: 8; padding-left: 8px;'><a href='./index.html'>&larr; Return to Notes</a></span><ul class='menu'></ul></div>"
+      scale: 0.5
+    revealjs-plugins:
+      - simplemenu
+  html:
+    df-print: kable
+    output-file: "index.html"
+    html-math-method: mathjax
+    link-external-icon: true
+    link-external-newwindow: true
+    echo: true
+    code-fold: true
+    include-in-header:
+      text: "<link rel='stylesheet' href='https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css'><link rel='stylesheet' type='text/css' href='https://cdn.jsdelivr.net/gh/dreampulse/computer-modern-web-font@master/fonts.css'>"
+---
+
+::: {.content-visible unless-format="revealjs"}
+
+<center>
+<a class="h2" href="./slides.html" target="_blank">Open slides in new window &rarr;</a>
+</center>
+
+:::
+
+# Schedule {.smaller .crunch-title .crunch-callout .code-90 data-stack-name="Schedule"}
+
+Today's Planned Schedule:
+
+| | Start | End | Topic |
+|:- |:- |:- |:- |
+| **Lecture** | 6:30pm | 7:20pm | [Controlling For Things vs. Matching Things &rarr;](#propensity-score-weighting) |
+| | 7:20pm | 7:50pm | [Applying $\textsf{do}()$ &rarr;](#the-ladder-of-causal-inference) |
+| **Break!** | 7:50pm | 8:00pm | |
+| | 8:00pm | 9:00pm | [Closing Backdoor Paths &rarr;](#the-collider) |
+
+: {tbl-colwidths="[12,12,12,64]"}
+
+{{< include ../dsan-globals/_globals-tex.qmd >}}
+
+::: {.hidden}
+
+```{r}
+#| label: r-source-globals
+source("../dsan-globals/_globals.r")
+```
+
+:::
+
+## Roadmap for Part 2 {.title-11}
+
+* (Should hopefully start to feel more like other DSAN classes!)
+
+# Propensity Score Weighting {.title-11 .crunch-title .crunch-ul .crunch-quarto-layout-panel .crunch-img .text-75 .crunch-li-8 data-stack-name="Propensity Scores"}
+
+:::: {layout="[60,40]" layout-valign="center"}
+::: {#propensity-text}
+
+* HW1 matching: similarity either **1** (applied to same schools) or **0** (didn't apply to same schools)
+* Propensity scores: model ***quality* of match**
+* $\Rightarrow$ Opens up (literally) infinite possibilities **between** 0 and 1!
+* $\Rightarrow$ Use your **unsupervised learning** skills (matching via **clustering**)
+* $\Rightarrow$ Use your **supervised learning** skills (propensity scores = **logistic regression** coefficients!)
+
+:::
+::: {#propensity-img}
+
+![Should this be matched with an **apple**? Or an **orange**? Porque no los dos! \[[Image source](https://media.istockphoto.com/id/133494438/photo/gmo-appleorange.jpg?s=612x612&w=0&k=20&c=TuzlxYnpwuz6h0tozH3xEFn5ji3Z1JgRZoYdRzG_g-M=)\]](images/apple-orange.jpg){#fig-apple-orange fig-align="center"}
+
+:::
+::::
+
+* $\Rightarrow$ Use your **diagnostic** skills: e.g., methods for **evaluating clusters** / preventing **overfitting**
+
+## Working Example: Growth Mindset(!)
+
+* @athey_estimating_2019
+
+## References
+
+::: {#refs}
+:::
