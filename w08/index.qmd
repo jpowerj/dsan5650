@@ -57,11 +57,10 @@ Today's Planned Schedule:
 
 | | Start | End | Topic |
 |:- |:- |:- |:- |
-| | 6:30pm | 7:00pm | [Final Project Pep Talk](#final-projects)
-| **Lecture** | 7:00pm | 7:50pm | [Controlling For Things vs. Matching Things &rarr;](#propensity-score-weighting) |
-| | 7:20pm | 7:50pm | [Applying $\textsf{do}()$ &rarr;](#the-ladder-of-causal-inference) |
+| **Lecture** | 6:30pm | 7:00pm | [Final Project Pep Talk &rarr;](#final-projects)
+| | 7:00pm | 7:50pm | [Controlling For Things vs. Matching/Weighting &rarr;](#propensity-score-weighting) |
 | **Break!** | 7:50pm | 8:00pm | |
-| | 8:00pm | 9:00pm | [Closing Backdoor Paths &rarr;](#the-collider) |
+| | 8:00pm | 9:00pm | [Propensity Score Lab &rarr;](#what-if-we-have-many-covariates) |
 
 : {tbl-colwidths="[12,12,12,64]"}
 
@@ -80,9 +79,17 @@ source("../dsan-globals/_globals.r")
 
 ## Roadmap for Part 2 {.title-11}
 
+* $\downarrow$ Focus on abstract concepts / terminology
+* $\uparrow$ Focus on **data analysis**
 * (Should hopefully start to feel more like other DSAN classes!)
+* ($\Rightarrow$ Need you to take specific examples I pick and **analogize them** to your field(s) of interest)
 
-# Final Projects
+# Final Projects {data-stack-name="Final Projects"}
+
+* Notion! Then, choose a path (rough draft of paths):
+  * <i class='bi bi-1-circle'></i> Modeling a social phenomenon with PGMs
+  * <i class='bi bi-2-circle'></i> Taking an existing project/interest (e.g., from 5300) and **pushing towards the causality asymptote**
+* Choose a path by **Tuesday, July 15, 6:30pm EDT** 
 
 # Propensity Score Weighting {.title-11 .crunch-title .crunch-ul .crunch-quarto-layout-panel .crunch-img .text-75 .crunch-li-8 data-stack-name="Propensity Scores"}
 
@@ -105,7 +112,7 @@ source("../dsan-globals/_globals.r")
 
 * $\Rightarrow$ Use your **diagnostic** skills: e.g., methods for **evaluating clusters** / preventing **overfitting**
 
-## Working Example: Growth Mindset(!) {.smaller .title-09 .crunch-title .crunch-ul}
+## Working Example: Growth Mindset(!) {.smaller .title-09 .crunch-title .crunch-ul .table-90 .crunch-img .crunch-quarto-figure}
 
 :::: {.columns}
 ::: {.column width="50%"}
@@ -119,19 +126,21 @@ $$
 \mathbb{E}[Y \mid T = 1] - \mathbb{E}[Y \mid T = 0]
 $$
 
-![](images/pgm_propensity_nocovar.svg){fig-align="center" width="400"}
+![](images/01_pgm_propensity_nocovar.svg){fig-align="center" width="400"}
 
 :::
 ::: {.column width="50%"}
 
 ```{r}
 #| label: growth-data
-#| fig-width: 4.5
-#| fig-height: 4
+#| fig-width: 3.5
+#| fig-height: 3
 library(tidyverse)
+library(broom)
 student_df <- read_csv("assets/learning_mindset.csv")
 (mean_df <- student_df |> group_by(intervention) |> summarize(mean_score=mean(achievement_score)))
-# stud_mean_df <- tibble(x=c(0,1), y=c(ey0, ey1))
+student_naive_lm <- lm(achievement_score ~ intervention, data=student_df)
+student_naive_lm |> broom::tidy() |> select(term, estimate)
 student_df |>
   ggplot(aes(x=intervention, y=achievement_score)) +
   geom_boxplot(
@@ -241,7 +250,7 @@ student_df |>
 :::
 ::::
 
-## How Exactly Do We *Adjust For* $\hat{\mathtt{e}}(\mathbf{X})$? {.smaller .title-12}
+## How Exactly Do We *Adjust For* $\hat{\mathtt{e}}(\mathbf{X})$? {.smaller .title-12 .crunch-quarto-figure .crunch-img .crunch-p}
 
 ::: {style="width: 100%"}
 
@@ -253,7 +262,7 @@ student_df |>
 ::: {.column width="40%"}
 
 ```{r}
-#| label: naive-smoking-plot
+#| label: naive-smoking-model
 library(tidyverse)
 library(Rlab)
 set.seed(5650)
@@ -280,7 +289,15 @@ smoke_df <- tibble(
 naive_smoke_lm <- lm(ncigs ~ enroll, data=smoke_df)
 summary(naive_smoke_lm) |> broom::tidy() |>
   select(term, estimate)
-# stud_mean_df <- tibble(x=c(0,1), y=c(ey0, ey1))
+```
+
+:::
+::: {.column width="60%"}
+
+![](images/pgm_smoking.svg){fig-align="center" width="70%"}
+
+```{r}
+#| label: smoke-naive-plot
 smoke_df |> ggplot(aes(x=enroll, y=ncigs)) +
   geom_boxplot(
     aes(group=enroll),
@@ -300,70 +317,32 @@ smoke_df |> ggplot(aes(x=enroll, y=ncigs)) +
 ```
 
 :::
-::: {.column width="60%"}
-
-```{r}
-#| label: motive-ncigs-plot
-smoke_df |> mutate(enroll=factor(enroll)) |>
-  ggplot(aes(x=motiv, y=ncigs, color=enroll)) +
-  geom_point() +
-  theme_dsan(base_size=24)
-```
-
-:::
 ::::
+
+## Inverse Probability-of-Treatment Weighting {.smaller .crunch-title .title-11 .crunch-img .crunch-quarto-figure .crunch-p}
 
 :::: {.columns}
 ::: {.column width="50%"}
 
-Propensity to enroll:
-
 ```{r}
-#| label: enroll-propensity
+#| label: motive-ncigs-plot
 eprop_model <- glm(enroll ~ motiv, family='binomial', data=smoke_df)
 eprop_preds <- predict(eprop_model, type="response")
 smoke_df <- smoke_df |> mutate(pred=eprop_preds)
-smoke_df |>
-  ggplot(aes(x=motiv)) +
-  # Predictions
-  geom_point(
-    aes(y=enroll)
-  ) +
-  # Values
-  geom_point(
-    aes(y=pred)
-  ) +
-  theme_dsan(base_size=24)
-```
-
-:::
-::: {.column width="50%"}
-
-Inverse propensity weight:
-
-```{r}
-#| label: enroll-ipw
+# Use the preds to compute IPW
 smoke_df <- smoke_df |> rowwise() |> mutate(
   ipw=ifelse(enroll, 1/pred, 1/(1-pred))
 ) |> arrange(pred)
 #smoke_df
 smoke_df |> mutate(enroll=factor(enroll)) |>
-  ggplot(aes(x=motiv)) +
-  # Predictions
-  geom_point(
-    aes(y=as.numeric(enroll))
-  ) +
-  # Values
-  geom_point(
-    aes(y=ipw, color=enroll)
-  ) +
-  theme_dsan(base_size=24)
+  ggplot(aes(x=motiv, y=ncigs, color=enroll)) +
+  geom_point() +
+  theme_dsan(base_size=24) +
+  labs(title="Before Weighting")
 ```
 
 :::
-::::
-
-## The Final Result!
+::: {.column width="50%"}
 
 ```{r}
 #| label: ipw-plot
@@ -374,13 +353,127 @@ smoke_df |> mutate(enroll=factor(enroll)) |>
   )) +
   geom_point() +
   guides(alpha="none") +
-  theme_dsan(base_size=24)
+  theme_dsan(base_size=24) +
+  labs(title="After Weighting")
 ```
+
+:::
+::::
+
+:::: {layout="[48,4,48]" layout-valign="center"}
+::: {#iptw-bottom-left}
+
+<center>
+
+&darr;
+
+</center>
+
+```{r}
+#| label: enroll-propensity
+smoke_df |>
+  ggplot(aes(x=motiv)) +
+  # Predictions
+  geom_point(
+    aes(y=enroll, color=factor(enroll))
+  ) +
+  # Values
+  geom_point(
+    aes(y=pred, color=factor(enroll))
+  ) +
+  labs(color="enroll") +
+  theme_dsan(base_size=24) +
+  labs(title="Propensity to Enroll")
+```
+
+:::
+::: {#iptw-bottom-middle}
+
+<center>
+
+&rarr;
+
+</center>
+
+:::
+::: {#iptw-bottom-right}
+
+<center>
+
+&uarr;
+
+</center>
+
+```{r}
+#| label: enroll-ipw
+ipw_min <- min(smoke_df$ipw)
+ipw_max <- max(smoke_df$ipw)
+smoke_df <- smoke_df |> mutate(
+  ipw_scaled = (ipw - ipw_min) / (ipw_max - ipw_min)
+)
+smoke_df |>
+  ggplot(aes(x=motiv)) +
+  # Predictions
+  geom_point(
+    aes(y=enroll, color=factor(enroll))
+  ) +
+  # Values
+  geom_point(
+    aes(y=ipw_scaled, color=factor(enroll))
+  ) +
+  theme_dsan(base_size=24) +
+  labs(
+    title="Inverse Probability-of-Treatment Weights (IPTW)",
+    color="enroll"
+  )
+```
+
+:::
+::::
+
+## The Final Result! {.smaller .crunch-title .crunch-p}
 
 ```{r}
 #| label: ipw-reg
-lm(ncigs ~ enroll, data=smoke_df, weights=smoke_df$ipw)
+#| output-location: column
+#| code-fold: show
+lm_with_weights <- lm(ncigs ~ enroll,
+  data=smoke_df, weights=smoke_df$ipw
+)
+summary(lm_with_weights) |> broom::tidy() |>
+  select(term, estimate, std.error)
 ```
+
+```{r}
+#| label: ipw-library
+#| code-fold: show
+#| output-location: column
+library(WeightIt)
+W <- weightit(
+  enroll ~ motiv, data = smoke_df, ps="pred"
+)
+smoke_weighted_lm <- lm_weightit(
+  ncigs ~ enroll, data = smoke_df, weightit = W
+)
+summary(smoke_weighted_lm, ci = FALSE)
+```
+
+```{r}
+#| label: ipw2
+#| code-fold: show
+#| output-location: column
+W_default <- weightit(enroll ~ motiv, data = smoke_df)
+smoke_default_lm <- lm_weightit(
+  ncigs ~ enroll, data = smoke_df,
+  weightit = W_default
+)
+summary(smoke_default_lm, ci = FALSE)
+```
+
+# ...What If We Have *Many* Covariates? {data-stack-name="Many Covariates"}
+
+* Curse of dimensionality...
+* Lab Time!
 
 ## References
 

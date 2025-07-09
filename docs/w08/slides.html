@@ -253,34 +253,28 @@ Jeff Jacobs
 </thead>
 <tbody>
 <tr class="odd">
-<td style="text-align: left;"></td>
+<td style="text-align: left;"><strong>Lecture</strong></td>
 <td style="text-align: left;">6:30pm</td>
 <td style="text-align: left;">7:00pm</td>
-<td style="text-align: left;"><a href="#/final-projects">Final Project Pep Talk</a></td>
+<td style="text-align: left;"><a href="#/final-projects">Final Project Pep Talk →</a></td>
 </tr>
 <tr class="even">
-<td style="text-align: left;"><strong>Lecture</strong></td>
+<td style="text-align: left;"></td>
 <td style="text-align: left;">7:00pm</td>
 <td style="text-align: left;">7:50pm</td>
-<td style="text-align: left;"><a href="#/propensity-score-weighting">Controlling For Things vs.&nbsp;Matching Things →</a></td>
+<td style="text-align: left;"><a href="#/propensity-score-weighting">Controlling For Things vs.&nbsp;Matching/Weighting →</a></td>
 </tr>
 <tr class="odd">
-<td style="text-align: left;"></td>
-<td style="text-align: left;">7:20pm</td>
-<td style="text-align: left;">7:50pm</td>
-<td style="text-align: left;"><a href="#/the-ladder-of-causal-inference">Applying <span class="math inline">\(\textsf{do}()\)</span> →</a></td>
-</tr>
-<tr class="even">
 <td style="text-align: left;"><strong>Break!</strong></td>
 <td style="text-align: left;">7:50pm</td>
 <td style="text-align: left;">8:00pm</td>
 <td style="text-align: left;"></td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td style="text-align: left;"></td>
 <td style="text-align: left;">8:00pm</td>
 <td style="text-align: left;">9:00pm</td>
-<td style="text-align: left;"><a href="#/the-collider">Closing Backdoor Paths →</a></td>
+<td style="text-align: left;"><a href="#/what-if-we-have-many-covariates">Propensity Score Lab →</a></td>
 </tr>
 </tbody>
 </table>
@@ -338,12 +332,22 @@ Jeff Jacobs
 <section id="roadmap-for-part-2" class="slide level2 title-11">
 <h2>Roadmap for Part 2</h2>
 <ul>
+<li><span class="math inline">\(\downarrow\)</span> Focus on abstract concepts / terminology</li>
+<li><span class="math inline">\(\uparrow\)</span> Focus on <strong>data analysis</strong></li>
 <li>(Should hopefully start to feel more like other DSAN classes!)</li>
+<li>(<span class="math inline">\(\Rightarrow\)</span> Need you to take specific examples I pick and <strong>analogize them</strong> to your field(s) of interest)</li>
 </ul>
 </section></section>
-<section id="final-projects" class="title-slide slide level1 center">
+<section id="final-projects" class="title-slide slide level1 center" data-stack-name="Final Projects">
 <h1>Final Projects</h1>
-
+<ul>
+<li>Notion! Then, choose a path (rough draft of paths):
+<ul>
+<li><i class="bi bi-1-circle"></i> Modeling a social phenomenon with PGMs</li>
+<li><i class="bi bi-2-circle"></i> Taking an existing project/interest (e.g., from 5300) and <strong>pushing towards the causality asymptote</strong></li>
+</ul></li>
+<li>Choose a path by <strong>Tuesday, July 15, 6:30pm EDT</strong></li>
+</ul>
 </section>
 
 <section>
@@ -381,7 +385,7 @@ Figure&nbsp;1: Should this be matched with an <strong>apple</strong>? Or an <str
 <li><span class="math inline">\(\Rightarrow\)</span> Use your <strong>diagnostic</strong> skills: e.g., methods for <strong>evaluating clusters</strong> / preventing <strong>overfitting</strong></li>
 </ul>
 </section>
-<section id="working-example-growth-mindset" class="slide level2 smaller title-09 crunch-title crunch-ul">
+<section id="working-example-growth-mindset" class="slide level2 smaller title-09 crunch-title crunch-ul table-90 crunch-img crunch-quarto-figure">
 <h2>Working Example: Growth Mindset(!)</h2>
 <div class="columns">
 <div class="column" style="width:50%;">
@@ -396,7 +400,7 @@ Figure&nbsp;1: Should this be matched with an <strong>apple</strong>? Or an <str
 \]</span></p>
 <div class="quarto-figure quarto-figure-center">
 <figure>
-<p><img data-src="images/pgm_propensity_nocovar.svg" class="quarto-figure quarto-figure-center" width="400"></p>
+<p><img data-src="images/01_pgm_propensity_nocovar.svg" class="quarto-figure quarto-figure-center" width="400"></p>
 </figure>
 </div>
 </div><div class="column" style="width:50%;">
@@ -404,8 +408,9 @@ Figure&nbsp;1: Should this be matched with an <strong>apple</strong>? Or an <str
 <details class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a></a><span class="fu">library</span>(tidyverse)</span>
-<span id="cb2-2"><a></a>student_df <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">"assets/learning_mindset.csv"</span>)</span>
-<span id="cb2-3"><a></a>(mean_df <span class="ot">&lt;-</span> student_df <span class="sc">|&gt;</span> <span class="fu">group_by</span>(intervention) <span class="sc">|&gt;</span> <span class="fu">summarize</span>(<span class="at">mean_score=</span><span class="fu">mean</span>(achievement_score)))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb2-2"><a></a><span class="fu">library</span>(broom)</span>
+<span id="cb2-3"><a></a>student_df <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">"assets/learning_mindset.csv"</span>)</span>
+<span id="cb2-4"><a></a>(mean_df <span class="ot">&lt;-</span> student_df <span class="sc">|&gt;</span> <span class="fu">group_by</span>(intervention) <span class="sc">|&gt;</span> <span class="fu">summarize</span>(<span class="at">mean_score=</span><span class="fu">mean</span>(achievement_score)))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output-display">
 <div class="kable-table">
@@ -431,29 +436,55 @@ Figure&nbsp;1: Should this be matched with an <strong>apple</strong>? Or an <str
 </div>
 <details class="code-fold">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a></a><span class="co"># stud_mean_df &lt;- tibble(x=c(0,1), y=c(ey0, ey1))</span></span>
-<span id="cb3-2"><a></a>student_df <span class="sc">|&gt;</span></span>
-<span id="cb3-3"><a></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x=</span>intervention, <span class="at">y=</span>achievement_score)) <span class="sc">+</span></span>
-<span id="cb3-4"><a></a>  <span class="fu">geom_boxplot</span>(</span>
-<span id="cb3-5"><a></a>    <span class="fu">aes</span>(<span class="at">group=</span>intervention),</span>
-<span id="cb3-6"><a></a>    <span class="at">width=</span><span class="fl">0.5</span></span>
-<span id="cb3-7"><a></a>  ) <span class="sc">+</span></span>
-<span id="cb3-8"><a></a>  <span class="fu">geom_smooth</span>(</span>
-<span id="cb3-9"><a></a>    <span class="at">method=</span><span class="st">'lm'</span>,</span>
-<span id="cb3-10"><a></a>    <span class="at">formula=</span><span class="st">'y ~ x'</span>,</span>
-<span id="cb3-11"><a></a>    <span class="at">se=</span><span class="cn">TRUE</span></span>
-<span id="cb3-12"><a></a>  ) <span class="sc">+</span></span>
-<span id="cb3-13"><a></a>  <span class="fu">geom_point</span>(</span>
-<span id="cb3-14"><a></a>    <span class="at">data=</span>mean_df,</span>
-<span id="cb3-15"><a></a>    <span class="fu">aes</span>(<span class="at">x=</span>intervention, <span class="at">y=</span>mean_score),</span>
-<span id="cb3-16"><a></a>    <span class="at">size=</span><span class="dv">3</span></span>
-<span id="cb3-17"><a></a>  ) <span class="sc">+</span></span>
-<span id="cb3-18"><a></a>  <span class="fu">theme_dsan</span>(<span class="at">base_size=</span><span class="dv">16</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a></a>student_naive_lm <span class="ot">&lt;-</span> <span class="fu">lm</span>(achievement_score <span class="sc">~</span> intervention, <span class="at">data=</span>student_df)</span>
+<span id="cb3-2"><a></a>student_naive_lm <span class="sc">|&gt;</span> broom<span class="sc">::</span><span class="fu">tidy</span>() <span class="sc">|&gt;</span> <span class="fu">select</span>(term, estimate)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output-display">
+<div class="kable-table">
+<table class="caption-top">
+<thead>
+<tr class="header">
+<th style="text-align: left;">term</th>
+<th style="text-align: right;">estimate</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">(Intercept)</td>
+<td style="text-align: right;">-0.1538030</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">intervention</td>
+<td style="text-align: right;">0.4722717</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<details class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a></a>student_df <span class="sc">|&gt;</span></span>
+<span id="cb4-2"><a></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x=</span>intervention, <span class="at">y=</span>achievement_score)) <span class="sc">+</span></span>
+<span id="cb4-3"><a></a>  <span class="fu">geom_boxplot</span>(</span>
+<span id="cb4-4"><a></a>    <span class="fu">aes</span>(<span class="at">group=</span>intervention),</span>
+<span id="cb4-5"><a></a>    <span class="at">width=</span><span class="fl">0.5</span></span>
+<span id="cb4-6"><a></a>  ) <span class="sc">+</span></span>
+<span id="cb4-7"><a></a>  <span class="fu">geom_smooth</span>(</span>
+<span id="cb4-8"><a></a>    <span class="at">method=</span><span class="st">'lm'</span>,</span>
+<span id="cb4-9"><a></a>    <span class="at">formula=</span><span class="st">'y ~ x'</span>,</span>
+<span id="cb4-10"><a></a>    <span class="at">se=</span><span class="cn">TRUE</span></span>
+<span id="cb4-11"><a></a>  ) <span class="sc">+</span></span>
+<span id="cb4-12"><a></a>  <span class="fu">geom_point</span>(</span>
+<span id="cb4-13"><a></a>    <span class="at">data=</span>mean_df,</span>
+<span id="cb4-14"><a></a>    <span class="fu">aes</span>(<span class="at">x=</span>intervention, <span class="at">y=</span>mean_score),</span>
+<span id="cb4-15"><a></a>    <span class="at">size=</span><span class="dv">3</span></span>
+<span id="cb4-16"><a></a>  ) <span class="sc">+</span></span>
+<span id="cb4-17"><a></a>  <span class="fu">theme_dsan</span>(<span class="at">base_size=</span><span class="dv">16</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure>
-<p><img data-src="index_files/figure-revealjs/growth-data-1.png" class="quarto-figure quarto-figure-center" width="432"></p>
+<p><img data-src="index_files/figure-revealjs/growth-data-1.png" class="quarto-figure quarto-figure-center" width="336"></p>
 </figure>
 </div>
 </div>
@@ -579,7 +610,7 @@ Figure&nbsp;1: Should this be matched with an <strong>apple</strong>? Or an <str
 </div>
 </div></div>
 </section>
-<section id="how-exactly-do-we-adjust-for-hatmathttemathbfx" class="slide level2 smaller title-12">
+<section id="how-exactly-do-we-adjust-for-hatmathttemathbfx" class="slide level2 smaller title-12 crunch-quarto-figure crunch-img crunch-p">
 <h2>How Exactly Do We <em>Adjust For</em> <span class="math inline">\(\hat{\mathtt{e}}(\mathbf{X})\)</span>?</h2>
 <div style="width: 100%">
 <ul>
@@ -591,29 +622,29 @@ Figure&nbsp;1: Should this be matched with an <strong>apple</strong>? Or an <str
 <div class="cell" data-layout-align="center">
 <details class="code-fold">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a></a><span class="fu">library</span>(tidyverse)</span>
-<span id="cb4-2"><a></a><span class="fu">library</span>(Rlab)</span>
-<span id="cb4-3"><a></a><span class="fu">set.seed</span>(<span class="dv">5650</span>)</span>
-<span id="cb4-4"><a></a>n <span class="ot">&lt;-</span> <span class="dv">250</span></span>
-<span id="cb4-5"><a></a>motiv_vals <span class="ot">&lt;-</span> <span class="fu">runif</span>(n, <span class="dv">0</span>, <span class="dv">1</span>)</span>
-<span id="cb4-6"><a></a>enroll_vals <span class="ot">&lt;-</span> <span class="fu">ifelse</span>(</span>
-<span id="cb4-7"><a></a>  motiv_vals <span class="sc">&lt;</span> <span class="fl">0.25</span>,</span>
-<span id="cb4-8"><a></a>  <span class="dv">0</span>,</span>
-<span id="cb4-9"><a></a>  <span class="co"># We know motiv &gt; 0.25</span></span>
-<span id="cb4-10"><a></a>  <span class="fu">ifelse</span>(</span>
-<span id="cb4-11"><a></a>    motiv_vals <span class="sc">&gt;</span> <span class="fl">0.75</span>,</span>
-<span id="cb4-12"><a></a>    <span class="dv">1</span>,</span>
-<span id="cb4-13"><a></a>    <span class="co"># We know 0.25 &lt; motiv &lt; 0.75</span></span>
-<span id="cb4-14"><a></a>    <span class="fu">rbern</span>(n, <span class="at">prob=</span>(motiv_vals <span class="sc">-</span> <span class="fl">0.125</span>)<span class="sc">*</span><span class="fl">1.5</span>)</span>
-<span id="cb4-15"><a></a>  )</span>
-<span id="cb4-16"><a></a>)</span>
-<span id="cb4-17"><a></a>ncigs_vals <span class="ot">&lt;-</span> <span class="fu">rbinom</span>(n, <span class="at">size=</span><span class="dv">30</span>, <span class="at">prob=</span><span class="fl">0.6-0.2</span><span class="sc">*</span>enroll_vals)</span>
-<span id="cb4-18"><a></a>smoke_df <span class="ot">&lt;-</span> <span class="fu">tibble</span>(</span>
-<span id="cb4-19"><a></a>  <span class="at">motiv=</span>motiv_vals,</span>
-<span id="cb4-20"><a></a>  <span class="at">enroll=</span>enroll_vals,</span>
-<span id="cb4-21"><a></a>  <span class="at">ncigs=</span>ncigs_vals</span>
-<span id="cb4-22"><a></a>)</span>
-<span id="cb4-23"><a></a>(smoke_mean_df <span class="ot">&lt;-</span> smoke_df <span class="sc">|&gt;</span> <span class="fu">group_by</span>(enroll) <span class="sc">|&gt;</span> <span class="fu">summarize</span>(<span class="at">mean_ncigs=</span><span class="fu">mean</span>(ncigs)))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb5-2"><a></a><span class="fu">library</span>(Rlab)</span>
+<span id="cb5-3"><a></a><span class="fu">set.seed</span>(<span class="dv">5650</span>)</span>
+<span id="cb5-4"><a></a>n <span class="ot">&lt;-</span> <span class="dv">250</span></span>
+<span id="cb5-5"><a></a>motiv_vals <span class="ot">&lt;-</span> <span class="fu">runif</span>(n, <span class="dv">0</span>, <span class="dv">1</span>)</span>
+<span id="cb5-6"><a></a>enroll_vals <span class="ot">&lt;-</span> <span class="fu">ifelse</span>(</span>
+<span id="cb5-7"><a></a>  motiv_vals <span class="sc">&lt;</span> <span class="fl">0.25</span>,</span>
+<span id="cb5-8"><a></a>  <span class="dv">0</span>,</span>
+<span id="cb5-9"><a></a>  <span class="co"># We know motiv &gt; 0.25</span></span>
+<span id="cb5-10"><a></a>  <span class="fu">ifelse</span>(</span>
+<span id="cb5-11"><a></a>    motiv_vals <span class="sc">&gt;</span> <span class="fl">0.75</span>,</span>
+<span id="cb5-12"><a></a>    <span class="dv">1</span>,</span>
+<span id="cb5-13"><a></a>    <span class="co"># We know 0.25 &lt; motiv &lt; 0.75</span></span>
+<span id="cb5-14"><a></a>    <span class="fu">rbern</span>(n, <span class="at">prob=</span>(motiv_vals <span class="sc">-</span> <span class="fl">0.125</span>)<span class="sc">*</span><span class="fl">1.5</span>)</span>
+<span id="cb5-15"><a></a>  )</span>
+<span id="cb5-16"><a></a>)</span>
+<span id="cb5-17"><a></a>ncigs_vals <span class="ot">&lt;-</span> <span class="fu">rbinom</span>(n, <span class="at">size=</span><span class="dv">30</span>, <span class="at">prob=</span><span class="fl">0.6-0.2</span><span class="sc">*</span>enroll_vals)</span>
+<span id="cb5-18"><a></a>smoke_df <span class="ot">&lt;-</span> <span class="fu">tibble</span>(</span>
+<span id="cb5-19"><a></a>  <span class="at">motiv=</span>motiv_vals,</span>
+<span id="cb5-20"><a></a>  <span class="at">enroll=</span>enroll_vals,</span>
+<span id="cb5-21"><a></a>  <span class="at">ncigs=</span>ncigs_vals</span>
+<span id="cb5-22"><a></a>)</span>
+<span id="cb5-23"><a></a>(smoke_mean_df <span class="ot">&lt;-</span> smoke_df <span class="sc">|&gt;</span> <span class="fu">group_by</span>(enroll) <span class="sc">|&gt;</span> <span class="fu">summarize</span>(<span class="at">mean_ncigs=</span><span class="fu">mean</span>(ncigs)))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output-display">
 <div class="kable-table">
@@ -639,9 +670,9 @@ Figure&nbsp;1: Should this be matched with an <strong>apple</strong>? Or an <str
 </div>
 <details class="code-fold">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a></a>naive_smoke_lm <span class="ot">&lt;-</span> <span class="fu">lm</span>(ncigs <span class="sc">~</span> enroll, <span class="at">data=</span>smoke_df)</span>
-<span id="cb5-2"><a></a><span class="fu">summary</span>(naive_smoke_lm) <span class="sc">|&gt;</span> broom<span class="sc">::</span><span class="fu">tidy</span>() <span class="sc">|&gt;</span></span>
-<span id="cb5-3"><a></a>  <span class="fu">select</span>(term, estimate)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a></a>naive_smoke_lm <span class="ot">&lt;-</span> <span class="fu">lm</span>(ncigs <span class="sc">~</span> enroll, <span class="at">data=</span>smoke_df)</span>
+<span id="cb6-2"><a></a><span class="fu">summary</span>(naive_smoke_lm) <span class="sc">|&gt;</span> broom<span class="sc">::</span><span class="fu">tidy</span>() <span class="sc">|&gt;</span></span>
+<span id="cb6-3"><a></a>  <span class="fu">select</span>(term, estimate)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output-display">
 <div class="kable-table">
@@ -665,42 +696,63 @@ Figure&nbsp;1: Should this be matched with an <strong>apple</strong>? Or an <str
 </table>
 </div>
 </div>
+</div>
+</div><div class="column" style="width:60%;">
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="images/pgm_smoking.svg" class="quarto-figure quarto-figure-center" style="width:70.0%"></p>
+</figure>
+</div>
+<div class="cell" data-layout-align="center">
 <details class="code-fold">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a></a><span class="co"># stud_mean_df &lt;- tibble(x=c(0,1), y=c(ey0, ey1))</span></span>
-<span id="cb6-2"><a></a>smoke_df <span class="sc">|&gt;</span> <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x=</span>enroll, <span class="at">y=</span>ncigs)) <span class="sc">+</span></span>
-<span id="cb6-3"><a></a>  <span class="fu">geom_boxplot</span>(</span>
-<span id="cb6-4"><a></a>    <span class="fu">aes</span>(<span class="at">group=</span>enroll),</span>
-<span id="cb6-5"><a></a>    <span class="at">width=</span><span class="fl">0.5</span></span>
-<span id="cb6-6"><a></a>  ) <span class="sc">+</span></span>
-<span id="cb6-7"><a></a>  <span class="fu">geom_smooth</span>(</span>
-<span id="cb6-8"><a></a>    <span class="at">method=</span><span class="st">'lm'</span>,</span>
-<span id="cb6-9"><a></a>    <span class="at">formula=</span><span class="st">'y ~ x'</span>,</span>
-<span id="cb6-10"><a></a>    <span class="at">se=</span><span class="cn">TRUE</span></span>
-<span id="cb6-11"><a></a>  ) <span class="sc">+</span></span>
-<span id="cb6-12"><a></a>  <span class="fu">geom_point</span>(</span>
-<span id="cb6-13"><a></a>    <span class="at">data=</span>smoke_mean_df,</span>
-<span id="cb6-14"><a></a>    <span class="fu">aes</span>(<span class="at">x=</span>enroll, <span class="at">y=</span>mean_ncigs),</span>
-<span id="cb6-15"><a></a>    <span class="at">size=</span><span class="dv">3</span></span>
-<span id="cb6-16"><a></a>  ) <span class="sc">+</span></span>
-<span id="cb6-17"><a></a>  <span class="fu">theme_dsan</span>(<span class="at">base_size=</span><span class="dv">24</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a></a>smoke_df <span class="sc">|&gt;</span> <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x=</span>enroll, <span class="at">y=</span>ncigs)) <span class="sc">+</span></span>
+<span id="cb7-2"><a></a>  <span class="fu">geom_boxplot</span>(</span>
+<span id="cb7-3"><a></a>    <span class="fu">aes</span>(<span class="at">group=</span>enroll),</span>
+<span id="cb7-4"><a></a>    <span class="at">width=</span><span class="fl">0.5</span></span>
+<span id="cb7-5"><a></a>  ) <span class="sc">+</span></span>
+<span id="cb7-6"><a></a>  <span class="fu">geom_smooth</span>(</span>
+<span id="cb7-7"><a></a>    <span class="at">method=</span><span class="st">'lm'</span>,</span>
+<span id="cb7-8"><a></a>    <span class="at">formula=</span><span class="st">'y ~ x'</span>,</span>
+<span id="cb7-9"><a></a>    <span class="at">se=</span><span class="cn">TRUE</span></span>
+<span id="cb7-10"><a></a>  ) <span class="sc">+</span></span>
+<span id="cb7-11"><a></a>  <span class="fu">geom_point</span>(</span>
+<span id="cb7-12"><a></a>    <span class="at">data=</span>smoke_mean_df,</span>
+<span id="cb7-13"><a></a>    <span class="fu">aes</span>(<span class="at">x=</span>enroll, <span class="at">y=</span>mean_ncigs),</span>
+<span id="cb7-14"><a></a>    <span class="at">size=</span><span class="dv">3</span></span>
+<span id="cb7-15"><a></a>  ) <span class="sc">+</span></span>
+<span id="cb7-16"><a></a>  <span class="fu">theme_dsan</span>(<span class="at">base_size=</span><span class="dv">24</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure>
-<p><img data-src="index_files/figure-revealjs/naive-smoking-plot-1.png" class="quarto-figure quarto-figure-center" width="960"></p>
+<p><img data-src="index_files/figure-revealjs/smoke-naive-plot-1.png" class="quarto-figure quarto-figure-center" width="960"></p>
 </figure>
 </div>
 </div>
 </div>
-</div><div class="column" style="width:60%;">
+</div></div>
+</section>
+<section id="inverse-probability-of-treatment-weighting" class="slide level2 smaller crunch-title title-11 crunch-img crunch-quarto-figure crunch-p">
+<h2>Inverse Probability-of-Treatment Weighting</h2>
+<div class="columns">
+<div class="column" style="width:50%;">
 <div class="cell" data-layout-align="center">
 <details class="code-fold">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a></a>smoke_df <span class="sc">|&gt;</span> <span class="fu">mutate</span>(<span class="at">enroll=</span><span class="fu">factor</span>(enroll)) <span class="sc">|&gt;</span></span>
-<span id="cb7-2"><a></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x=</span>motiv, <span class="at">y=</span>ncigs, <span class="at">color=</span>enroll)) <span class="sc">+</span></span>
-<span id="cb7-3"><a></a>  <span class="fu">geom_point</span>() <span class="sc">+</span></span>
-<span id="cb7-4"><a></a>  <span class="fu">theme_dsan</span>(<span class="at">base_size=</span><span class="dv">24</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a></a>eprop_model <span class="ot">&lt;-</span> <span class="fu">glm</span>(enroll <span class="sc">~</span> motiv, <span class="at">family=</span><span class="st">'binomial'</span>, <span class="at">data=</span>smoke_df)</span>
+<span id="cb8-2"><a></a>eprop_preds <span class="ot">&lt;-</span> <span class="fu">predict</span>(eprop_model, <span class="at">type=</span><span class="st">"response"</span>)</span>
+<span id="cb8-3"><a></a>smoke_df <span class="ot">&lt;-</span> smoke_df <span class="sc">|&gt;</span> <span class="fu">mutate</span>(<span class="at">pred=</span>eprop_preds)</span>
+<span id="cb8-4"><a></a><span class="co"># Use the preds to compute IPW</span></span>
+<span id="cb8-5"><a></a>smoke_df <span class="ot">&lt;-</span> smoke_df <span class="sc">|&gt;</span> <span class="fu">rowwise</span>() <span class="sc">|&gt;</span> <span class="fu">mutate</span>(</span>
+<span id="cb8-6"><a></a>  <span class="at">ipw=</span><span class="fu">ifelse</span>(enroll, <span class="dv">1</span><span class="sc">/</span>pred, <span class="dv">1</span><span class="sc">/</span>(<span class="dv">1</span><span class="sc">-</span>pred))</span>
+<span id="cb8-7"><a></a>) <span class="sc">|&gt;</span> <span class="fu">arrange</span>(pred)</span>
+<span id="cb8-8"><a></a><span class="co">#smoke_df</span></span>
+<span id="cb8-9"><a></a>smoke_df <span class="sc">|&gt;</span> <span class="fu">mutate</span>(<span class="at">enroll=</span><span class="fu">factor</span>(enroll)) <span class="sc">|&gt;</span></span>
+<span id="cb8-10"><a></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x=</span>motiv, <span class="at">y=</span>ncigs, <span class="at">color=</span>enroll)) <span class="sc">+</span></span>
+<span id="cb8-11"><a></a>  <span class="fu">geom_point</span>() <span class="sc">+</span></span>
+<span id="cb8-12"><a></a>  <span class="fu">theme_dsan</span>(<span class="at">base_size=</span><span class="dv">24</span>) <span class="sc">+</span></span>
+<span id="cb8-13"><a></a>  <span class="fu">labs</span>(<span class="at">title=</span><span class="st">"Before Weighting"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
@@ -710,28 +762,72 @@ Figure&nbsp;1: Should this be matched with an <strong>apple</strong>? Or an <str
 </div>
 </div>
 </div>
-</div></div>
-<div class="columns">
-<div class="column" style="width:50%;">
-<p>Propensity to enroll:</p>
+</div><div class="column" style="width:50%;">
 <div class="cell" data-layout-align="center">
 <details class="code-fold">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a></a>eprop_model <span class="ot">&lt;-</span> <span class="fu">glm</span>(enroll <span class="sc">~</span> motiv, <span class="at">family=</span><span class="st">'binomial'</span>, <span class="at">data=</span>smoke_df)</span>
-<span id="cb8-2"><a></a>eprop_preds <span class="ot">&lt;-</span> <span class="fu">predict</span>(eprop_model, <span class="at">type=</span><span class="st">"response"</span>)</span>
-<span id="cb8-3"><a></a>smoke_df <span class="ot">&lt;-</span> smoke_df <span class="sc">|&gt;</span> <span class="fu">mutate</span>(<span class="at">pred=</span>eprop_preds)</span>
-<span id="cb8-4"><a></a>smoke_df <span class="sc">|&gt;</span></span>
-<span id="cb8-5"><a></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x=</span>motiv)) <span class="sc">+</span></span>
-<span id="cb8-6"><a></a>  <span class="co"># Predictions</span></span>
-<span id="cb8-7"><a></a>  <span class="fu">geom_point</span>(</span>
-<span id="cb8-8"><a></a>    <span class="fu">aes</span>(<span class="at">y=</span>enroll)</span>
-<span id="cb8-9"><a></a>  ) <span class="sc">+</span></span>
-<span id="cb8-10"><a></a>  <span class="co"># Values</span></span>
-<span id="cb8-11"><a></a>  <span class="fu">geom_point</span>(</span>
-<span id="cb8-12"><a></a>    <span class="fu">aes</span>(<span class="at">y=</span>pred)</span>
-<span id="cb8-13"><a></a>  ) <span class="sc">+</span></span>
-<span id="cb8-14"><a></a>  <span class="fu">theme_dsan</span>(<span class="at">base_size=</span><span class="dv">24</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a></a>smoke_df <span class="sc">|&gt;</span> <span class="fu">mutate</span>(<span class="at">enroll=</span><span class="fu">factor</span>(enroll)) <span class="sc">|&gt;</span></span>
+<span id="cb9-2"><a></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(</span>
+<span id="cb9-3"><a></a>    <span class="at">x=</span>motiv, <span class="at">y=</span>ncigs, <span class="at">color=</span>enroll, <span class="at">size=</span>ipw,</span>
+<span id="cb9-4"><a></a>    <span class="at">alpha=</span><span class="fu">log</span>(ipw<span class="dv">-1</span>)</span>
+<span id="cb9-5"><a></a>  )) <span class="sc">+</span></span>
+<span id="cb9-6"><a></a>  <span class="fu">geom_point</span>() <span class="sc">+</span></span>
+<span id="cb9-7"><a></a>  <span class="fu">guides</span>(<span class="at">alpha=</span><span class="st">"none"</span>) <span class="sc">+</span></span>
+<span id="cb9-8"><a></a>  <span class="fu">theme_dsan</span>(<span class="at">base_size=</span><span class="dv">24</span>) <span class="sc">+</span></span>
+<span id="cb9-9"><a></a>  <span class="fu">labs</span>(<span class="at">title=</span><span class="st">"After Weighting"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="index_files/figure-revealjs/ipw-plot-1.png" class="quarto-figure quarto-figure-center" width="960"></p>
+</figure>
+</div>
+</div>
+</div>
+</div></div>
+<details class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a></a>smoke_df <span class="sc">|&gt;</span></span>
+<span id="cb10-2"><a></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x=</span>motiv)) <span class="sc">+</span></span>
+<span id="cb10-3"><a></a>  <span class="co"># Predictions</span></span>
+<span id="cb10-4"><a></a>  <span class="fu">geom_point</span>(</span>
+<span id="cb10-5"><a></a>    <span class="fu">aes</span>(<span class="at">y=</span>enroll, <span class="at">color=</span><span class="fu">factor</span>(enroll))</span>
+<span id="cb10-6"><a></a>  ) <span class="sc">+</span></span>
+<span id="cb10-7"><a></a>  <span class="co"># Values</span></span>
+<span id="cb10-8"><a></a>  <span class="fu">geom_point</span>(</span>
+<span id="cb10-9"><a></a>    <span class="fu">aes</span>(<span class="at">y=</span>pred, <span class="at">color=</span><span class="fu">factor</span>(enroll))</span>
+<span id="cb10-10"><a></a>  ) <span class="sc">+</span></span>
+<span id="cb10-11"><a></a>  <span class="fu">labs</span>(<span class="at">color=</span><span class="st">"enroll"</span>) <span class="sc">+</span></span>
+<span id="cb10-12"><a></a>  <span class="fu">theme_dsan</span>(<span class="at">base_size=</span><span class="dv">24</span>) <span class="sc">+</span></span>
+<span id="cb10-13"><a></a>  <span class="fu">labs</span>(<span class="at">title=</span><span class="st">"Propensity to Enroll"</span>)</span>
+<span id="cb10-14"><a></a>ipw_min <span class="ot">&lt;-</span> <span class="fu">min</span>(smoke_df<span class="sc">$</span>ipw)</span>
+<span id="cb10-15"><a></a>ipw_max <span class="ot">&lt;-</span> <span class="fu">max</span>(smoke_df<span class="sc">$</span>ipw)</span>
+<span id="cb10-16"><a></a>smoke_df <span class="ot">&lt;-</span> smoke_df <span class="sc">|&gt;</span> <span class="fu">mutate</span>(</span>
+<span id="cb10-17"><a></a>  <span class="at">ipw_scaled =</span> (ipw <span class="sc">-</span> ipw_min) <span class="sc">/</span> (ipw_max <span class="sc">-</span> ipw_min)</span>
+<span id="cb10-18"><a></a>)</span>
+<span id="cb10-19"><a></a>smoke_df <span class="sc">|&gt;</span></span>
+<span id="cb10-20"><a></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x=</span>motiv)) <span class="sc">+</span></span>
+<span id="cb10-21"><a></a>  <span class="co"># Predictions</span></span>
+<span id="cb10-22"><a></a>  <span class="fu">geom_point</span>(</span>
+<span id="cb10-23"><a></a>    <span class="fu">aes</span>(<span class="at">y=</span>enroll, <span class="at">color=</span><span class="fu">factor</span>(enroll))</span>
+<span id="cb10-24"><a></a>  ) <span class="sc">+</span></span>
+<span id="cb10-25"><a></a>  <span class="co"># Values</span></span>
+<span id="cb10-26"><a></a>  <span class="fu">geom_point</span>(</span>
+<span id="cb10-27"><a></a>    <span class="fu">aes</span>(<span class="at">y=</span>ipw_scaled, <span class="at">color=</span><span class="fu">factor</span>(enroll))</span>
+<span id="cb10-28"><a></a>  ) <span class="sc">+</span></span>
+<span id="cb10-29"><a></a>  <span class="fu">theme_dsan</span>(<span class="at">base_size=</span><span class="dv">24</span>) <span class="sc">+</span></span>
+<span id="cb10-30"><a></a>  <span class="fu">labs</span>(</span>
+<span id="cb10-31"><a></a>    <span class="at">title=</span><span class="st">"Inverse Probability-of-Treatment Weights (IPTW)"</span>,</span>
+<span id="cb10-32"><a></a>    <span class="at">color=</span><span class="st">"enroll"</span></span>
+<span id="cb10-33"><a></a>  )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="quarto-layout-panel" data-layout="[48,4,48]">
+<div class="quarto-layout-row quarto-layout-valign-center">
+<div id="iptw-bottom-left" class="quarto-layout-cell" style="flex-basis: 48.0%;justify-content: flex-start;">
+<center>
+<p>↓</p>
+</center>
+<div class="cell" data-layout-align="center">
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure>
@@ -740,27 +836,17 @@ Figure&nbsp;1: Should this be matched with an <strong>apple</strong>? Or an <str
 </div>
 </div>
 </div>
-</div><div class="column" style="width:50%;">
-<p>Inverse propensity weight:</p>
+</div>
+<div id="iptw-bottom-middle" class="quarto-layout-cell" style="flex-basis: 4.0%;justify-content: flex-start;">
+<center>
+<p>→</p>
+</center>
+</div>
+<div id="iptw-bottom-right" class="quarto-layout-cell" style="flex-basis: 48.0%;justify-content: flex-start;">
+<center>
+<p>↑</p>
+</center>
 <div class="cell" data-layout-align="center">
-<details class="code-fold">
-<summary>Code</summary>
-<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a></a>smoke_df <span class="ot">&lt;-</span> smoke_df <span class="sc">|&gt;</span> <span class="fu">rowwise</span>() <span class="sc">|&gt;</span> <span class="fu">mutate</span>(</span>
-<span id="cb9-2"><a></a>  <span class="at">ipw=</span><span class="fu">ifelse</span>(enroll, <span class="dv">1</span><span class="sc">/</span>pred, <span class="dv">1</span><span class="sc">/</span>(<span class="dv">1</span><span class="sc">-</span>pred))</span>
-<span id="cb9-3"><a></a>) <span class="sc">|&gt;</span> <span class="fu">arrange</span>(pred)</span>
-<span id="cb9-4"><a></a><span class="co">#smoke_df</span></span>
-<span id="cb9-5"><a></a>smoke_df <span class="sc">|&gt;</span> <span class="fu">mutate</span>(<span class="at">enroll=</span><span class="fu">factor</span>(enroll)) <span class="sc">|&gt;</span></span>
-<span id="cb9-6"><a></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x=</span>motiv)) <span class="sc">+</span></span>
-<span id="cb9-7"><a></a>  <span class="co"># Predictions</span></span>
-<span id="cb9-8"><a></a>  <span class="fu">geom_point</span>(</span>
-<span id="cb9-9"><a></a>    <span class="fu">aes</span>(<span class="at">y=</span><span class="fu">as.numeric</span>(enroll))</span>
-<span id="cb9-10"><a></a>  ) <span class="sc">+</span></span>
-<span id="cb9-11"><a></a>  <span class="co"># Values</span></span>
-<span id="cb9-12"><a></a>  <span class="fu">geom_point</span>(</span>
-<span id="cb9-13"><a></a>    <span class="fu">aes</span>(<span class="at">y=</span>ipw, <span class="at">color=</span>enroll)</span>
-<span id="cb9-14"><a></a>  ) <span class="sc">+</span></span>
-<span id="cb9-15"><a></a>  <span class="fu">theme_dsan</span>(<span class="at">base_size=</span><span class="dv">24</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure>
@@ -769,39 +855,107 @@ Figure&nbsp;1: Should this be matched with an <strong>apple</strong>? Or an <str
 </div>
 </div>
 </div>
-</div></div>
-</section>
-<section id="the-final-result" class="slide level2">
-<h2>The Final Result!</h2>
-<div class="cell" data-layout-align="center">
-<details class="code-fold">
-<summary>Code</summary>
-<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a></a>smoke_df <span class="sc">|&gt;</span> <span class="fu">mutate</span>(<span class="at">enroll=</span><span class="fu">factor</span>(enroll)) <span class="sc">|&gt;</span></span>
-<span id="cb10-2"><a></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(</span>
-<span id="cb10-3"><a></a>    <span class="at">x=</span>motiv, <span class="at">y=</span>ncigs, <span class="at">color=</span>enroll, <span class="at">size=</span>ipw,</span>
-<span id="cb10-4"><a></a>    <span class="at">alpha=</span><span class="fu">log</span>(ipw<span class="dv">-1</span>)</span>
-<span id="cb10-5"><a></a>  )) <span class="sc">+</span></span>
-<span id="cb10-6"><a></a>  <span class="fu">geom_point</span>() <span class="sc">+</span></span>
-<span id="cb10-7"><a></a>  <span class="fu">guides</span>(<span class="at">alpha=</span><span class="st">"none"</span>) <span class="sc">+</span></span>
-<span id="cb10-8"><a></a>  <span class="fu">theme_dsan</span>(<span class="at">base_size=</span><span class="dv">24</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
-
 </div>
-<img data-src="index_files/figure-revealjs/ipw-plot-1.png" class="quarto-figure quarto-figure-center r-stretch" width="960"><div class="cell" data-layout-align="center">
-<details class="code-fold">
+</div>
+</div>
+</section>
+<section id="the-final-result" class="slide level2 smaller crunch-title crunch-p">
+<h2>The Final Result!</h2>
+<div class="cell columns column-output-location" data-layout-align="center">
+<div class="column">
+<details open="" class="code-fold">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a></a><span class="fu">lm</span>(ncigs <span class="sc">~</span> enroll, <span class="at">data=</span>smoke_df, <span class="at">weights=</span>smoke_df<span class="sc">$</span>ipw)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a></a>lm_with_weights <span class="ot">&lt;-</span> <span class="fu">lm</span>(ncigs <span class="sc">~</span> enroll,</span>
+<span id="cb11-2"><a></a>  <span class="at">data=</span>smoke_df, <span class="at">weights=</span>smoke_df<span class="sc">$</span>ipw</span>
+<span id="cb11-3"><a></a>)</span>
+<span id="cb11-4"><a></a><span class="fu">summary</span>(lm_with_weights) <span class="sc">|&gt;</span> broom<span class="sc">::</span><span class="fu">tidy</span>() <span class="sc">|&gt;</span></span>
+<span id="cb11-5"><a></a>  <span class="fu">select</span>(term, estimate, std.error)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
+</div><div class="column">
+<div class="cell-output-display">
+<div class="kable-table">
+<table class="caption-top">
+<thead>
+<tr class="header">
+<th style="text-align: left;">term</th>
+<th style="text-align: right;">estimate</th>
+<th style="text-align: right;">std.error</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">(Intercept)</td>
+<td style="text-align: right;">18.10133</td>
+<td style="text-align: right;">0.2466712</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">enroll</td>
+<td style="text-align: right;">-5.66453</td>
+<td style="text-align: right;">0.3571696</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div></div>
+<div class="cell columns column-output-location" data-layout-align="center">
+<div class="column">
+<details open="" class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a></a><span class="fu">library</span>(WeightIt)</span>
+<span id="cb12-2"><a></a>W <span class="ot">&lt;-</span> <span class="fu">weightit</span>(</span>
+<span id="cb12-3"><a></a>  enroll <span class="sc">~</span> motiv, <span class="at">data =</span> smoke_df, <span class="at">ps=</span><span class="st">"pred"</span></span>
+<span id="cb12-4"><a></a>)</span>
+<span id="cb12-5"><a></a>smoke_weighted_lm <span class="ot">&lt;-</span> <span class="fu">lm_weightit</span>(</span>
+<span id="cb12-6"><a></a>  ncigs <span class="sc">~</span> enroll, <span class="at">data =</span> smoke_df, <span class="at">weightit =</span> W</span>
+<span id="cb12-7"><a></a>)</span>
+<span id="cb12-8"><a></a><span class="fu">summary</span>(smoke_weighted_lm, <span class="at">ci =</span> <span class="cn">FALSE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+</div><div class="column">
 <div class="cell-output cell-output-stdout">
 <pre><code>
 Call:
-lm(formula = ncigs ~ enroll, data = smoke_df, weights = smoke_df$ipw)
+lm_weightit(formula = ncigs ~ enroll, data = smoke_df, weightit = W)
 
 Coefficients:
-(Intercept)       enroll  
-     18.101       -5.665  </code></pre>
+            Estimate Std. Error z value Pr(&gt;|z|)    
+(Intercept)  18.1013     0.2479   73.02   &lt;1e-06 ***
+enroll       -5.6645     0.5463  -10.37   &lt;1e-06 ***
+Standard error: HC0 robust</code></pre>
 </div>
+</div></div>
+<div class="cell columns column-output-location" data-layout-align="center">
+<div class="column">
+<details open="" class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a></a>W_default <span class="ot">&lt;-</span> <span class="fu">weightit</span>(enroll <span class="sc">~</span> motiv, <span class="at">data =</span> smoke_df)</span>
+<span id="cb14-2"><a></a>smoke_default_lm <span class="ot">&lt;-</span> <span class="fu">lm_weightit</span>(</span>
+<span id="cb14-3"><a></a>  ncigs <span class="sc">~</span> enroll, <span class="at">data =</span> smoke_df,</span>
+<span id="cb14-4"><a></a>  <span class="at">weightit =</span> W_default</span>
+<span id="cb14-5"><a></a>)</span>
+<span id="cb14-6"><a></a><span class="fu">summary</span>(smoke_default_lm, <span class="at">ci =</span> <span class="cn">FALSE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+</div><div class="column">
+<div class="cell-output cell-output-stdout">
+<pre><code>
+Call:
+lm_weightit(formula = ncigs ~ enroll, data = smoke_df, weightit = W_default)
+
+Coefficients:
+            Estimate Std. Error z value Pr(&gt;|z|)    
+(Intercept)  18.1013     0.2441   74.16   &lt;1e-06 ***
+enroll       -5.6645     0.5444  -10.41   &lt;1e-06 ***
+Standard error: HC0 robust (adjusted for estimation of weights)</code></pre>
 </div>
+</div></div>
+</section></section>
+<section>
+<section id="what-if-we-have-many-covariates" class="title-slide slide level1 center" data-stack-name="Many Covariates">
+<h1>…What If We Have <em>Many</em> Covariates?</h1>
+<ul>
+<li>Curse of dimensionality…</li>
+<li>Lab Time!</li>
+</ul>
 </section>
 <section id="references" class="slide level2 smaller scrollable">
 <h2>References</h2>

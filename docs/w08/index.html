@@ -309,7 +309,7 @@ window.Quarto = {
     </ul>
     </div>
 <div class="quarto-sidebar-footer"><div class="sidebar-footer-item">
-<p><em>Updated 2025-07-09, 03:11:42 AM</em></p>
+<p><em>Updated 2025-07-09, 06:24:56 PM</em></p>
 </div></div></nav>
 <div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
@@ -332,7 +332,11 @@ window.Quarto = {
   <li><a href="#closing-backdoors-via-propensity-score-estimation" id="toc-closing-backdoors-via-propensity-score-estimation" class="nav-link" data-scroll-target="#closing-backdoors-via-propensity-score-estimation">Closing Backdoors via <em>Propensity Score Estimation</em></a></li>
   <li><a href="#sometimes-helpful-thought-experiment" id="toc-sometimes-helpful-thought-experiment" class="nav-link" data-scroll-target="#sometimes-helpful-thought-experiment">Sometimes-Helpful Thought Experiment</a></li>
   <li><a href="#how-exactly-do-we-adjust-for-hatmathttemathbfx" id="toc-how-exactly-do-we-adjust-for-hatmathttemathbfx" class="nav-link" data-scroll-target="#how-exactly-do-we-adjust-for-hatmathttemathbfx">How Exactly Do We <em>Adjust For</em> <span class="math inline">\(\hat{\mathtt{e}}(\mathbf{X})\)</span>?</a></li>
+  <li><a href="#inverse-probability-of-treatment-weighting" id="toc-inverse-probability-of-treatment-weighting" class="nav-link" data-scroll-target="#inverse-probability-of-treatment-weighting">Inverse Probability-of-Treatment Weighting</a></li>
   <li><a href="#the-final-result" id="toc-the-final-result" class="nav-link" data-scroll-target="#the-final-result">The Final Result!</a></li>
+  </ul></li>
+  <li><a href="#what-if-we-have-many-covariates" id="toc-what-if-we-have-many-covariates" class="nav-link" data-scroll-target="#what-if-we-have-many-covariates">…What If We Have <em>Many</em> Covariates?</a>
+  <ul class="collapse">
   <li><a href="#references" id="toc-references" class="nav-link" data-scroll-target="#references">References</a></li>
   </ul></li>
   </ul>
@@ -406,34 +410,28 @@ window.Quarto = {
 </thead>
 <tbody>
 <tr class="odd">
-<td style="text-align: left;"></td>
+<td style="text-align: left;"><strong>Lecture</strong></td>
 <td style="text-align: left;">6:30pm</td>
 <td style="text-align: left;">7:00pm</td>
-<td style="text-align: left;"><a href="#final-projects">Final Project Pep Talk</a></td>
+<td style="text-align: left;"><a href="#final-projects">Final Project Pep Talk →</a></td>
 </tr>
 <tr class="even">
-<td style="text-align: left;"><strong>Lecture</strong></td>
+<td style="text-align: left;"></td>
 <td style="text-align: left;">7:00pm</td>
 <td style="text-align: left;">7:50pm</td>
-<td style="text-align: left;"><a href="#propensity-score-weighting">Controlling For Things vs.&nbsp;Matching Things →</a></td>
+<td style="text-align: left;"><a href="#propensity-score-weighting">Controlling For Things vs.&nbsp;Matching/Weighting →</a></td>
 </tr>
 <tr class="odd">
-<td style="text-align: left;"></td>
-<td style="text-align: left;">7:20pm</td>
-<td style="text-align: left;">7:50pm</td>
-<td style="text-align: left;"><a href="#the-ladder-of-causal-inference">Applying <span class="math inline">\(\textsf{do}()\)</span> →</a></td>
-</tr>
-<tr class="even">
 <td style="text-align: left;"><strong>Break!</strong></td>
 <td style="text-align: left;">7:50pm</td>
 <td style="text-align: left;">8:00pm</td>
 <td style="text-align: left;"></td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td style="text-align: left;"></td>
 <td style="text-align: left;">8:00pm</td>
 <td style="text-align: left;">9:00pm</td>
-<td style="text-align: left;"><a href="#the-collider">Closing Backdoor Paths →</a></td>
+<td style="text-align: left;"><a href="#what-if-we-have-many-covariates">Propensity Score Lab →</a></td>
 </tr>
 </tbody>
 </table>
@@ -505,12 +503,23 @@ window.Quarto = {
 <section id="roadmap-for-part-2" class="level2 title-11">
 <h2 class="title-11 anchored" data-anchor-id="roadmap-for-part-2">Roadmap for Part 2</h2>
 <ul>
+<li><span class="math inline">\(\downarrow\)</span> Focus on abstract concepts / terminology</li>
+<li><span class="math inline">\(\uparrow\)</span> Focus on <strong>data analysis</strong></li>
 <li>(Should hopefully start to feel more like other DSAN classes!)</li>
+<li>(<span class="math inline">\(\Rightarrow\)</span> Need you to take specific examples I pick and <strong>analogize them</strong> to your field(s) of interest)</li>
 </ul>
 </section>
 </section>
-<section id="final-projects" class="level1">
-<h1>Final Projects</h1>
+<section id="final-projects" class="level1" data-stack-name="Final Projects">
+<h1 data-stack-name="Final Projects">Final Projects</h1>
+<ul>
+<li>Notion! Then, choose a path (rough draft of paths):
+<ul>
+<li><i class="bi bi-1-circle"></i> Modeling a social phenomenon with PGMs</li>
+<li><i class="bi bi-2-circle"></i> Taking an existing project/interest (e.g., from 5300) and <strong>pushing towards the causality asymptote</strong></li>
+</ul></li>
+<li>Choose a path by <strong>Tuesday, July 15, 6:30pm EDT</strong></li>
+</ul>
 </section>
 <section id="propensity-score-weighting" class="level1 title-11 crunch-title crunch-ul crunch-quarto-layout-panel crunch-img text-75 crunch-li-8" data-stack-name="Propensity Scores">
 <h1 class="title-11 crunch-title crunch-ul crunch-quarto-layout-panel crunch-img text-75 crunch-li-8" data-stack-name="Propensity Scores">Propensity Score Weighting</h1>
@@ -545,8 +554,8 @@ Figure&nbsp;1: Should this be matched with an <strong>apple</strong>? Or an <str
 <ul>
 <li><span class="math inline">\(\Rightarrow\)</span> Use your <strong>diagnostic</strong> skills: e.g., methods for <strong>evaluating clusters</strong> / preventing <strong>overfitting</strong></li>
 </ul>
-<section id="working-example-growth-mindset" class="level2 smaller title-09 crunch-title crunch-ul">
-<h2 class="smaller title-09 crunch-title crunch-ul anchored" data-anchor-id="working-example-growth-mindset">Working Example: Growth Mindset(!)</h2>
+<section id="working-example-growth-mindset" class="level2 smaller title-09 crunch-title crunch-ul table-90 crunch-img crunch-quarto-figure">
+<h2 class="smaller title-09 crunch-title crunch-ul table-90 crunch-img crunch-quarto-figure anchored" data-anchor-id="working-example-growth-mindset">Working Example: Growth Mindset(!)</h2>
 <div class="columns">
 <div class="column" style="width:50%;">
 <ul>
@@ -560,7 +569,7 @@ Figure&nbsp;1: Should this be matched with an <strong>apple</strong>? Or an <str
 \]</span></p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="images/pgm_propensity_nocovar.svg" class="img-fluid quarto-figure quarto-figure-center figure-img" width="400"></p>
+<p><img src="images/01_pgm_propensity_nocovar.svg" class="img-fluid quarto-figure quarto-figure-center figure-img" width="400"></p>
 </figure>
 </div>
 </div><div class="column" style="width:50%;">
@@ -568,7 +577,8 @@ Figure&nbsp;1: Should this be matched with an <strong>apple</strong>? Or an <str
 <details class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
-<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>student_df <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">"assets/learning_mindset.csv"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(broom)</span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>student_df <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">"assets/learning_mindset.csv"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-stderr">
 <pre><code>Rows: 10391 Columns: 13
@@ -607,29 +617,55 @@ dbl (13): schoolid, intervention, achievement_score, success_expect, ethnici...
 </div>
 <details class="code-fold">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="co"># stud_mean_df &lt;- tibble(x=c(0,1), y=c(ey0, ey1))</span></span>
-<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>student_df <span class="sc">|&gt;</span></span>
-<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x=</span>intervention, <span class="at">y=</span>achievement_score)) <span class="sc">+</span></span>
-<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_boxplot</span>(</span>
-<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a>    <span class="fu">aes</span>(<span class="at">group=</span>intervention),</span>
-<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a>    <span class="at">width=</span><span class="fl">0.5</span></span>
-<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">+</span></span>
-<span id="cb7-8"><a href="#cb7-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_smooth</span>(</span>
-<span id="cb7-9"><a href="#cb7-9" aria-hidden="true" tabindex="-1"></a>    <span class="at">method=</span><span class="st">'lm'</span>,</span>
-<span id="cb7-10"><a href="#cb7-10" aria-hidden="true" tabindex="-1"></a>    <span class="at">formula=</span><span class="st">'y ~ x'</span>,</span>
-<span id="cb7-11"><a href="#cb7-11" aria-hidden="true" tabindex="-1"></a>    <span class="at">se=</span><span class="cn">TRUE</span></span>
-<span id="cb7-12"><a href="#cb7-12" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">+</span></span>
-<span id="cb7-13"><a href="#cb7-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(</span>
-<span id="cb7-14"><a href="#cb7-14" aria-hidden="true" tabindex="-1"></a>    <span class="at">data=</span>mean_df,</span>
-<span id="cb7-15"><a href="#cb7-15" aria-hidden="true" tabindex="-1"></a>    <span class="fu">aes</span>(<span class="at">x=</span>intervention, <span class="at">y=</span>mean_score),</span>
-<span id="cb7-16"><a href="#cb7-16" aria-hidden="true" tabindex="-1"></a>    <span class="at">size=</span><span class="dv">3</span></span>
-<span id="cb7-17"><a href="#cb7-17" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">+</span></span>
-<span id="cb7-18"><a href="#cb7-18" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_dsan</span>(<span class="at">base_size=</span><span class="dv">16</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>student_naive_lm <span class="ot">&lt;-</span> <span class="fu">lm</span>(achievement_score <span class="sc">~</span> intervention, <span class="at">data=</span>student_df)</span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>student_naive_lm <span class="sc">|&gt;</span> broom<span class="sc">::</span><span class="fu">tidy</span>() <span class="sc">|&gt;</span> <span class="fu">select</span>(term, estimate)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output-display">
+<div class="kable-table">
+<table class="caption-top table table-sm table-striped small">
+<thead>
+<tr class="header">
+<th style="text-align: left;">term</th>
+<th style="text-align: right;">estimate</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">(Intercept)</td>
+<td style="text-align: right;">-0.1538030</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">intervention</td>
+<td style="text-align: right;">0.4722717</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<details class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>student_df <span class="sc">|&gt;</span></span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x=</span>intervention, <span class="at">y=</span>achievement_score)) <span class="sc">+</span></span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_boxplot</span>(</span>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">aes</span>(<span class="at">group=</span>intervention),</span>
+<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a>    <span class="at">width=</span><span class="fl">0.5</span></span>
+<span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">+</span></span>
+<span id="cb8-7"><a href="#cb8-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_smooth</span>(</span>
+<span id="cb8-8"><a href="#cb8-8" aria-hidden="true" tabindex="-1"></a>    <span class="at">method=</span><span class="st">'lm'</span>,</span>
+<span id="cb8-9"><a href="#cb8-9" aria-hidden="true" tabindex="-1"></a>    <span class="at">formula=</span><span class="st">'y ~ x'</span>,</span>
+<span id="cb8-10"><a href="#cb8-10" aria-hidden="true" tabindex="-1"></a>    <span class="at">se=</span><span class="cn">TRUE</span></span>
+<span id="cb8-11"><a href="#cb8-11" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">+</span></span>
+<span id="cb8-12"><a href="#cb8-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(</span>
+<span id="cb8-13"><a href="#cb8-13" aria-hidden="true" tabindex="-1"></a>    <span class="at">data=</span>mean_df,</span>
+<span id="cb8-14"><a href="#cb8-14" aria-hidden="true" tabindex="-1"></a>    <span class="fu">aes</span>(<span class="at">x=</span>intervention, <span class="at">y=</span>mean_score),</span>
+<span id="cb8-15"><a href="#cb8-15" aria-hidden="true" tabindex="-1"></a>    <span class="at">size=</span><span class="dv">3</span></span>
+<span id="cb8-16"><a href="#cb8-16" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">+</span></span>
+<span id="cb8-17"><a href="#cb8-17" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_dsan</span>(<span class="at">base_size=</span><span class="dv">16</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="index_files/figure-html/growth-data-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" width="432"></p>
+<p><img src="index_files/figure-html/growth-data-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" width="336"></p>
 </figure>
 </div>
 </div>
@@ -762,8 +798,8 @@ dbl (13): schoolid, intervention, achievement_score, success_expect, ethnici...
 </div>
 </div>
 </section>
-<section id="how-exactly-do-we-adjust-for-hatmathttemathbfx" class="level2 smaller title-12">
-<h2 class="smaller title-12 anchored" data-anchor-id="how-exactly-do-we-adjust-for-hatmathttemathbfx">How Exactly Do We <em>Adjust For</em> <span class="math inline">\(\hat{\mathtt{e}}(\mathbf{X})\)</span>?</h2>
+<section id="how-exactly-do-we-adjust-for-hatmathttemathbfx" class="level2 smaller title-12 crunch-quarto-figure crunch-img crunch-p">
+<h2 class="smaller title-12 crunch-quarto-figure crunch-img crunch-p anchored" data-anchor-id="how-exactly-do-we-adjust-for-hatmathttemathbfx">How Exactly Do We <em>Adjust For</em> <span class="math inline">\(\hat{\mathtt{e}}(\mathbf{X})\)</span>?</h2>
 <div style="width: 100%">
 <ul>
 <li>Simulation example: smoking reduction</li>
@@ -774,8 +810,8 @@ dbl (13): schoolid, intervention, achievement_score, success_expect, ethnici...
 <div class="cell" data-layout-align="center">
 <details class="code-fold">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
-<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(Rlab)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(Rlab)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-stderr">
 <pre><code>Rlab 4.0 attached.</code></pre>
@@ -807,33 +843,33 @@ Attaching package: 'Rlab'</code></pre>
 </div>
 <details class="code-fold">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">5650</span>)</span>
-<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>n <span class="ot">&lt;-</span> <span class="dv">250</span></span>
-<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a>motiv_vals <span class="ot">&lt;-</span> <span class="fu">runif</span>(n, <span class="dv">0</span>, <span class="dv">1</span>)</span>
-<span id="cb15-4"><a href="#cb15-4" aria-hidden="true" tabindex="-1"></a>enroll_vals <span class="ot">&lt;-</span> <span class="fu">ifelse</span>(</span>
-<span id="cb15-5"><a href="#cb15-5" aria-hidden="true" tabindex="-1"></a>  motiv_vals <span class="sc">&lt;</span> <span class="fl">0.25</span>,</span>
-<span id="cb15-6"><a href="#cb15-6" aria-hidden="true" tabindex="-1"></a>  <span class="dv">0</span>,</span>
-<span id="cb15-7"><a href="#cb15-7" aria-hidden="true" tabindex="-1"></a>  <span class="co"># We know motiv &gt; 0.25</span></span>
-<span id="cb15-8"><a href="#cb15-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ifelse</span>(</span>
-<span id="cb15-9"><a href="#cb15-9" aria-hidden="true" tabindex="-1"></a>    motiv_vals <span class="sc">&gt;</span> <span class="fl">0.75</span>,</span>
-<span id="cb15-10"><a href="#cb15-10" aria-hidden="true" tabindex="-1"></a>    <span class="dv">1</span>,</span>
-<span id="cb15-11"><a href="#cb15-11" aria-hidden="true" tabindex="-1"></a>    <span class="co"># We know 0.25 &lt; motiv &lt; 0.75</span></span>
-<span id="cb15-12"><a href="#cb15-12" aria-hidden="true" tabindex="-1"></a>    <span class="fu">rbern</span>(n, <span class="at">prob=</span>(motiv_vals <span class="sc">-</span> <span class="fl">0.125</span>)<span class="sc">*</span><span class="fl">1.5</span>)</span>
-<span id="cb15-13"><a href="#cb15-13" aria-hidden="true" tabindex="-1"></a>  )</span>
-<span id="cb15-14"><a href="#cb15-14" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">5650</span>)</span>
+<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a>n <span class="ot">&lt;-</span> <span class="dv">250</span></span>
+<span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a>motiv_vals <span class="ot">&lt;-</span> <span class="fu">runif</span>(n, <span class="dv">0</span>, <span class="dv">1</span>)</span>
+<span id="cb16-4"><a href="#cb16-4" aria-hidden="true" tabindex="-1"></a>enroll_vals <span class="ot">&lt;-</span> <span class="fu">ifelse</span>(</span>
+<span id="cb16-5"><a href="#cb16-5" aria-hidden="true" tabindex="-1"></a>  motiv_vals <span class="sc">&lt;</span> <span class="fl">0.25</span>,</span>
+<span id="cb16-6"><a href="#cb16-6" aria-hidden="true" tabindex="-1"></a>  <span class="dv">0</span>,</span>
+<span id="cb16-7"><a href="#cb16-7" aria-hidden="true" tabindex="-1"></a>  <span class="co"># We know motiv &gt; 0.25</span></span>
+<span id="cb16-8"><a href="#cb16-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ifelse</span>(</span>
+<span id="cb16-9"><a href="#cb16-9" aria-hidden="true" tabindex="-1"></a>    motiv_vals <span class="sc">&gt;</span> <span class="fl">0.75</span>,</span>
+<span id="cb16-10"><a href="#cb16-10" aria-hidden="true" tabindex="-1"></a>    <span class="dv">1</span>,</span>
+<span id="cb16-11"><a href="#cb16-11" aria-hidden="true" tabindex="-1"></a>    <span class="co"># We know 0.25 &lt; motiv &lt; 0.75</span></span>
+<span id="cb16-12"><a href="#cb16-12" aria-hidden="true" tabindex="-1"></a>    <span class="fu">rbern</span>(n, <span class="at">prob=</span>(motiv_vals <span class="sc">-</span> <span class="fl">0.125</span>)<span class="sc">*</span><span class="fl">1.5</span>)</span>
+<span id="cb16-13"><a href="#cb16-13" aria-hidden="true" tabindex="-1"></a>  )</span>
+<span id="cb16-14"><a href="#cb16-14" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-stderr">
 <pre><code>Warning in rbinom(n, size = 1, prob = prob): NAs produced</code></pre>
 </div>
 <details class="code-fold">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a>ncigs_vals <span class="ot">&lt;-</span> <span class="fu">rbinom</span>(n, <span class="at">size=</span><span class="dv">30</span>, <span class="at">prob=</span><span class="fl">0.6-0.2</span><span class="sc">*</span>enroll_vals)</span>
-<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a>smoke_df <span class="ot">&lt;-</span> <span class="fu">tibble</span>(</span>
-<span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">motiv=</span>motiv_vals,</span>
-<span id="cb17-4"><a href="#cb17-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">enroll=</span>enroll_vals,</span>
-<span id="cb17-5"><a href="#cb17-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">ncigs=</span>ncigs_vals</span>
-<span id="cb17-6"><a href="#cb17-6" aria-hidden="true" tabindex="-1"></a>)</span>
-<span id="cb17-7"><a href="#cb17-7" aria-hidden="true" tabindex="-1"></a>(smoke_mean_df <span class="ot">&lt;-</span> smoke_df <span class="sc">|&gt;</span> <span class="fu">group_by</span>(enroll) <span class="sc">|&gt;</span> <span class="fu">summarize</span>(<span class="at">mean_ncigs=</span><span class="fu">mean</span>(ncigs)))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a>ncigs_vals <span class="ot">&lt;-</span> <span class="fu">rbinom</span>(n, <span class="at">size=</span><span class="dv">30</span>, <span class="at">prob=</span><span class="fl">0.6-0.2</span><span class="sc">*</span>enroll_vals)</span>
+<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a>smoke_df <span class="ot">&lt;-</span> <span class="fu">tibble</span>(</span>
+<span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">motiv=</span>motiv_vals,</span>
+<span id="cb18-4"><a href="#cb18-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">enroll=</span>enroll_vals,</span>
+<span id="cb18-5"><a href="#cb18-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">ncigs=</span>ncigs_vals</span>
+<span id="cb18-6"><a href="#cb18-6" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb18-7"><a href="#cb18-7" aria-hidden="true" tabindex="-1"></a>(smoke_mean_df <span class="ot">&lt;-</span> smoke_df <span class="sc">|&gt;</span> <span class="fu">group_by</span>(enroll) <span class="sc">|&gt;</span> <span class="fu">summarize</span>(<span class="at">mean_ncigs=</span><span class="fu">mean</span>(ncigs)))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output-display">
 <div class="kable-table">
@@ -859,9 +895,9 @@ Attaching package: 'Rlab'</code></pre>
 </div>
 <details class="code-fold">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a>naive_smoke_lm <span class="ot">&lt;-</span> <span class="fu">lm</span>(ncigs <span class="sc">~</span> enroll, <span class="at">data=</span>smoke_df)</span>
-<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(naive_smoke_lm) <span class="sc">|&gt;</span> broom<span class="sc">::</span><span class="fu">tidy</span>() <span class="sc">|&gt;</span></span>
-<span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(term, estimate)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a>naive_smoke_lm <span class="ot">&lt;-</span> <span class="fu">lm</span>(ncigs <span class="sc">~</span> enroll, <span class="at">data=</span>smoke_df)</span>
+<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(naive_smoke_lm) <span class="sc">|&gt;</span> broom<span class="sc">::</span><span class="fu">tidy</span>() <span class="sc">|&gt;</span></span>
+<span id="cb19-3"><a href="#cb19-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(term, estimate)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output-display">
 <div class="kable-table">
@@ -885,42 +921,64 @@ Attaching package: 'Rlab'</code></pre>
 </table>
 </div>
 </div>
+</div>
+</div><div class="column" style="width:60%;">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/pgm_smoking.svg" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:70.0%"></p>
+</figure>
+</div>
+<div class="cell" data-layout-align="center">
 <details class="code-fold">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="co"># stud_mean_df &lt;- tibble(x=c(0,1), y=c(ey0, ey1))</span></span>
-<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a>smoke_df <span class="sc">|&gt;</span> <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x=</span>enroll, <span class="at">y=</span>ncigs)) <span class="sc">+</span></span>
-<span id="cb19-3"><a href="#cb19-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_boxplot</span>(</span>
-<span id="cb19-4"><a href="#cb19-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">aes</span>(<span class="at">group=</span>enroll),</span>
-<span id="cb19-5"><a href="#cb19-5" aria-hidden="true" tabindex="-1"></a>    <span class="at">width=</span><span class="fl">0.5</span></span>
-<span id="cb19-6"><a href="#cb19-6" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">+</span></span>
-<span id="cb19-7"><a href="#cb19-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_smooth</span>(</span>
-<span id="cb19-8"><a href="#cb19-8" aria-hidden="true" tabindex="-1"></a>    <span class="at">method=</span><span class="st">'lm'</span>,</span>
-<span id="cb19-9"><a href="#cb19-9" aria-hidden="true" tabindex="-1"></a>    <span class="at">formula=</span><span class="st">'y ~ x'</span>,</span>
-<span id="cb19-10"><a href="#cb19-10" aria-hidden="true" tabindex="-1"></a>    <span class="at">se=</span><span class="cn">TRUE</span></span>
-<span id="cb19-11"><a href="#cb19-11" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">+</span></span>
-<span id="cb19-12"><a href="#cb19-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(</span>
-<span id="cb19-13"><a href="#cb19-13" aria-hidden="true" tabindex="-1"></a>    <span class="at">data=</span>smoke_mean_df,</span>
-<span id="cb19-14"><a href="#cb19-14" aria-hidden="true" tabindex="-1"></a>    <span class="fu">aes</span>(<span class="at">x=</span>enroll, <span class="at">y=</span>mean_ncigs),</span>
-<span id="cb19-15"><a href="#cb19-15" aria-hidden="true" tabindex="-1"></a>    <span class="at">size=</span><span class="dv">3</span></span>
-<span id="cb19-16"><a href="#cb19-16" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">+</span></span>
-<span id="cb19-17"><a href="#cb19-17" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_dsan</span>(<span class="at">base_size=</span><span class="dv">24</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a>smoke_df <span class="sc">|&gt;</span> <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x=</span>enroll, <span class="at">y=</span>ncigs)) <span class="sc">+</span></span>
+<span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_boxplot</span>(</span>
+<span id="cb20-3"><a href="#cb20-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">aes</span>(<span class="at">group=</span>enroll),</span>
+<span id="cb20-4"><a href="#cb20-4" aria-hidden="true" tabindex="-1"></a>    <span class="at">width=</span><span class="fl">0.5</span></span>
+<span id="cb20-5"><a href="#cb20-5" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">+</span></span>
+<span id="cb20-6"><a href="#cb20-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_smooth</span>(</span>
+<span id="cb20-7"><a href="#cb20-7" aria-hidden="true" tabindex="-1"></a>    <span class="at">method=</span><span class="st">'lm'</span>,</span>
+<span id="cb20-8"><a href="#cb20-8" aria-hidden="true" tabindex="-1"></a>    <span class="at">formula=</span><span class="st">'y ~ x'</span>,</span>
+<span id="cb20-9"><a href="#cb20-9" aria-hidden="true" tabindex="-1"></a>    <span class="at">se=</span><span class="cn">TRUE</span></span>
+<span id="cb20-10"><a href="#cb20-10" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">+</span></span>
+<span id="cb20-11"><a href="#cb20-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(</span>
+<span id="cb20-12"><a href="#cb20-12" aria-hidden="true" tabindex="-1"></a>    <span class="at">data=</span>smoke_mean_df,</span>
+<span id="cb20-13"><a href="#cb20-13" aria-hidden="true" tabindex="-1"></a>    <span class="fu">aes</span>(<span class="at">x=</span>enroll, <span class="at">y=</span>mean_ncigs),</span>
+<span id="cb20-14"><a href="#cb20-14" aria-hidden="true" tabindex="-1"></a>    <span class="at">size=</span><span class="dv">3</span></span>
+<span id="cb20-15"><a href="#cb20-15" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">+</span></span>
+<span id="cb20-16"><a href="#cb20-16" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_dsan</span>(<span class="at">base_size=</span><span class="dv">24</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="index_files/figure-html/naive-smoking-plot-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" width="672"></p>
+<p><img src="index_files/figure-html/smoke-naive-plot-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" width="672"></p>
 </figure>
 </div>
 </div>
 </div>
-</div><div class="column" style="width:60%;">
+</div>
+</div>
+</section>
+<section id="inverse-probability-of-treatment-weighting" class="level2 smaller crunch-title title-11 crunch-img crunch-quarto-figure crunch-p">
+<h2 class="smaller crunch-title title-11 crunch-img crunch-quarto-figure crunch-p anchored" data-anchor-id="inverse-probability-of-treatment-weighting">Inverse Probability-of-Treatment Weighting</h2>
+<div class="columns">
+<div class="column" style="width:50%;">
 <div class="cell" data-layout-align="center">
 <details class="code-fold">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a>smoke_df <span class="sc">|&gt;</span> <span class="fu">mutate</span>(<span class="at">enroll=</span><span class="fu">factor</span>(enroll)) <span class="sc">|&gt;</span></span>
-<span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x=</span>motiv, <span class="at">y=</span>ncigs, <span class="at">color=</span>enroll)) <span class="sc">+</span></span>
-<span id="cb20-3"><a href="#cb20-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span></span>
-<span id="cb20-4"><a href="#cb20-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_dsan</span>(<span class="at">base_size=</span><span class="dv">24</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a>eprop_model <span class="ot">&lt;-</span> <span class="fu">glm</span>(enroll <span class="sc">~</span> motiv, <span class="at">family=</span><span class="st">'binomial'</span>, <span class="at">data=</span>smoke_df)</span>
+<span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a>eprop_preds <span class="ot">&lt;-</span> <span class="fu">predict</span>(eprop_model, <span class="at">type=</span><span class="st">"response"</span>)</span>
+<span id="cb21-3"><a href="#cb21-3" aria-hidden="true" tabindex="-1"></a>smoke_df <span class="ot">&lt;-</span> smoke_df <span class="sc">|&gt;</span> <span class="fu">mutate</span>(<span class="at">pred=</span>eprop_preds)</span>
+<span id="cb21-4"><a href="#cb21-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Use the preds to compute IPW</span></span>
+<span id="cb21-5"><a href="#cb21-5" aria-hidden="true" tabindex="-1"></a>smoke_df <span class="ot">&lt;-</span> smoke_df <span class="sc">|&gt;</span> <span class="fu">rowwise</span>() <span class="sc">|&gt;</span> <span class="fu">mutate</span>(</span>
+<span id="cb21-6"><a href="#cb21-6" aria-hidden="true" tabindex="-1"></a>  <span class="at">ipw=</span><span class="fu">ifelse</span>(enroll, <span class="dv">1</span><span class="sc">/</span>pred, <span class="dv">1</span><span class="sc">/</span>(<span class="dv">1</span><span class="sc">-</span>pred))</span>
+<span id="cb21-7"><a href="#cb21-7" aria-hidden="true" tabindex="-1"></a>) <span class="sc">|&gt;</span> <span class="fu">arrange</span>(pred)</span>
+<span id="cb21-8"><a href="#cb21-8" aria-hidden="true" tabindex="-1"></a><span class="co">#smoke_df</span></span>
+<span id="cb21-9"><a href="#cb21-9" aria-hidden="true" tabindex="-1"></a>smoke_df <span class="sc">|&gt;</span> <span class="fu">mutate</span>(<span class="at">enroll=</span><span class="fu">factor</span>(enroll)) <span class="sc">|&gt;</span></span>
+<span id="cb21-10"><a href="#cb21-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x=</span>motiv, <span class="at">y=</span>ncigs, <span class="at">color=</span>enroll)) <span class="sc">+</span></span>
+<span id="cb21-11"><a href="#cb21-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span></span>
+<span id="cb21-12"><a href="#cb21-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_dsan</span>(<span class="at">base_size=</span><span class="dv">24</span>) <span class="sc">+</span></span>
+<span id="cb21-13"><a href="#cb21-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title=</span><span class="st">"Before Weighting"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
@@ -930,29 +988,73 @@ Attaching package: 'Rlab'</code></pre>
 </div>
 </div>
 </div>
-</div>
-</div>
-<div class="columns">
-<div class="column" style="width:50%;">
-<p>Propensity to enroll:</p>
+</div><div class="column" style="width:50%;">
 <div class="cell" data-layout-align="center">
 <details class="code-fold">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a>eprop_model <span class="ot">&lt;-</span> <span class="fu">glm</span>(enroll <span class="sc">~</span> motiv, <span class="at">family=</span><span class="st">'binomial'</span>, <span class="at">data=</span>smoke_df)</span>
-<span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a>eprop_preds <span class="ot">&lt;-</span> <span class="fu">predict</span>(eprop_model, <span class="at">type=</span><span class="st">"response"</span>)</span>
-<span id="cb21-3"><a href="#cb21-3" aria-hidden="true" tabindex="-1"></a>smoke_df <span class="ot">&lt;-</span> smoke_df <span class="sc">|&gt;</span> <span class="fu">mutate</span>(<span class="at">pred=</span>eprop_preds)</span>
-<span id="cb21-4"><a href="#cb21-4" aria-hidden="true" tabindex="-1"></a>smoke_df <span class="sc">|&gt;</span></span>
-<span id="cb21-5"><a href="#cb21-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x=</span>motiv)) <span class="sc">+</span></span>
-<span id="cb21-6"><a href="#cb21-6" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Predictions</span></span>
-<span id="cb21-7"><a href="#cb21-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(</span>
-<span id="cb21-8"><a href="#cb21-8" aria-hidden="true" tabindex="-1"></a>    <span class="fu">aes</span>(<span class="at">y=</span>enroll)</span>
-<span id="cb21-9"><a href="#cb21-9" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">+</span></span>
-<span id="cb21-10"><a href="#cb21-10" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Values</span></span>
-<span id="cb21-11"><a href="#cb21-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(</span>
-<span id="cb21-12"><a href="#cb21-12" aria-hidden="true" tabindex="-1"></a>    <span class="fu">aes</span>(<span class="at">y=</span>pred)</span>
-<span id="cb21-13"><a href="#cb21-13" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">+</span></span>
-<span id="cb21-14"><a href="#cb21-14" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_dsan</span>(<span class="at">base_size=</span><span class="dv">24</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a>smoke_df <span class="sc">|&gt;</span> <span class="fu">mutate</span>(<span class="at">enroll=</span><span class="fu">factor</span>(enroll)) <span class="sc">|&gt;</span></span>
+<span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(</span>
+<span id="cb22-3"><a href="#cb22-3" aria-hidden="true" tabindex="-1"></a>    <span class="at">x=</span>motiv, <span class="at">y=</span>ncigs, <span class="at">color=</span>enroll, <span class="at">size=</span>ipw,</span>
+<span id="cb22-4"><a href="#cb22-4" aria-hidden="true" tabindex="-1"></a>    <span class="at">alpha=</span><span class="fu">log</span>(ipw<span class="dv">-1</span>)</span>
+<span id="cb22-5"><a href="#cb22-5" aria-hidden="true" tabindex="-1"></a>  )) <span class="sc">+</span></span>
+<span id="cb22-6"><a href="#cb22-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span></span>
+<span id="cb22-7"><a href="#cb22-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">guides</span>(<span class="at">alpha=</span><span class="st">"none"</span>) <span class="sc">+</span></span>
+<span id="cb22-8"><a href="#cb22-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_dsan</span>(<span class="at">base_size=</span><span class="dv">24</span>) <span class="sc">+</span></span>
+<span id="cb22-9"><a href="#cb22-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title=</span><span class="st">"After Weighting"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="index_files/figure-html/ipw-plot-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+</div>
+</div>
+<details class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a>smoke_df <span class="sc">|&gt;</span></span>
+<span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x=</span>motiv)) <span class="sc">+</span></span>
+<span id="cb23-3"><a href="#cb23-3" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Predictions</span></span>
+<span id="cb23-4"><a href="#cb23-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(</span>
+<span id="cb23-5"><a href="#cb23-5" aria-hidden="true" tabindex="-1"></a>    <span class="fu">aes</span>(<span class="at">y=</span>enroll, <span class="at">color=</span><span class="fu">factor</span>(enroll))</span>
+<span id="cb23-6"><a href="#cb23-6" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">+</span></span>
+<span id="cb23-7"><a href="#cb23-7" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Values</span></span>
+<span id="cb23-8"><a href="#cb23-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(</span>
+<span id="cb23-9"><a href="#cb23-9" aria-hidden="true" tabindex="-1"></a>    <span class="fu">aes</span>(<span class="at">y=</span>pred, <span class="at">color=</span><span class="fu">factor</span>(enroll))</span>
+<span id="cb23-10"><a href="#cb23-10" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">+</span></span>
+<span id="cb23-11"><a href="#cb23-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">color=</span><span class="st">"enroll"</span>) <span class="sc">+</span></span>
+<span id="cb23-12"><a href="#cb23-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_dsan</span>(<span class="at">base_size=</span><span class="dv">24</span>) <span class="sc">+</span></span>
+<span id="cb23-13"><a href="#cb23-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title=</span><span class="st">"Propensity to Enroll"</span>)</span>
+<span id="cb23-14"><a href="#cb23-14" aria-hidden="true" tabindex="-1"></a>ipw_min <span class="ot">&lt;-</span> <span class="fu">min</span>(smoke_df<span class="sc">$</span>ipw)</span>
+<span id="cb23-15"><a href="#cb23-15" aria-hidden="true" tabindex="-1"></a>ipw_max <span class="ot">&lt;-</span> <span class="fu">max</span>(smoke_df<span class="sc">$</span>ipw)</span>
+<span id="cb23-16"><a href="#cb23-16" aria-hidden="true" tabindex="-1"></a>smoke_df <span class="ot">&lt;-</span> smoke_df <span class="sc">|&gt;</span> <span class="fu">mutate</span>(</span>
+<span id="cb23-17"><a href="#cb23-17" aria-hidden="true" tabindex="-1"></a>  <span class="at">ipw_scaled =</span> (ipw <span class="sc">-</span> ipw_min) <span class="sc">/</span> (ipw_max <span class="sc">-</span> ipw_min)</span>
+<span id="cb23-18"><a href="#cb23-18" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb23-19"><a href="#cb23-19" aria-hidden="true" tabindex="-1"></a>smoke_df <span class="sc">|&gt;</span></span>
+<span id="cb23-20"><a href="#cb23-20" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x=</span>motiv)) <span class="sc">+</span></span>
+<span id="cb23-21"><a href="#cb23-21" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Predictions</span></span>
+<span id="cb23-22"><a href="#cb23-22" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(</span>
+<span id="cb23-23"><a href="#cb23-23" aria-hidden="true" tabindex="-1"></a>    <span class="fu">aes</span>(<span class="at">y=</span>enroll, <span class="at">color=</span><span class="fu">factor</span>(enroll))</span>
+<span id="cb23-24"><a href="#cb23-24" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">+</span></span>
+<span id="cb23-25"><a href="#cb23-25" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Values</span></span>
+<span id="cb23-26"><a href="#cb23-26" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(</span>
+<span id="cb23-27"><a href="#cb23-27" aria-hidden="true" tabindex="-1"></a>    <span class="fu">aes</span>(<span class="at">y=</span>ipw_scaled, <span class="at">color=</span><span class="fu">factor</span>(enroll))</span>
+<span id="cb23-28"><a href="#cb23-28" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">+</span></span>
+<span id="cb23-29"><a href="#cb23-29" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_dsan</span>(<span class="at">base_size=</span><span class="dv">24</span>) <span class="sc">+</span></span>
+<span id="cb23-30"><a href="#cb23-30" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(</span>
+<span id="cb23-31"><a href="#cb23-31" aria-hidden="true" tabindex="-1"></a>    <span class="at">title=</span><span class="st">"Inverse Probability-of-Treatment Weights (IPTW)"</span>,</span>
+<span id="cb23-32"><a href="#cb23-32" aria-hidden="true" tabindex="-1"></a>    <span class="at">color=</span><span class="st">"enroll"</span></span>
+<span id="cb23-33"><a href="#cb23-33" aria-hidden="true" tabindex="-1"></a>  )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="quarto-layout-panel" data-layout="[48,4,48]">
+<div class="quarto-layout-row quarto-layout-valign-center">
+<div id="iptw-bottom-left" class="quarto-layout-cell" style="flex-basis: 48.0%;justify-content: flex-start;">
+<center>
+<p>↓</p>
+</center>
+<div class="cell" data-layout-align="center">
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
@@ -961,27 +1063,17 @@ Attaching package: 'Rlab'</code></pre>
 </div>
 </div>
 </div>
-</div><div class="column" style="width:50%;">
-<p>Inverse propensity weight:</p>
+</div>
+<div id="iptw-bottom-middle" class="quarto-layout-cell" style="flex-basis: 4.0%;justify-content: flex-start;">
+<center>
+<p>→</p>
+</center>
+</div>
+<div id="iptw-bottom-right" class="quarto-layout-cell" style="flex-basis: 48.0%;justify-content: flex-start;">
+<center>
+<p>↑</p>
+</center>
 <div class="cell" data-layout-align="center">
-<details class="code-fold">
-<summary>Code</summary>
-<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a>smoke_df <span class="ot">&lt;-</span> smoke_df <span class="sc">|&gt;</span> <span class="fu">rowwise</span>() <span class="sc">|&gt;</span> <span class="fu">mutate</span>(</span>
-<span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">ipw=</span><span class="fu">ifelse</span>(enroll, <span class="dv">1</span><span class="sc">/</span>pred, <span class="dv">1</span><span class="sc">/</span>(<span class="dv">1</span><span class="sc">-</span>pred))</span>
-<span id="cb22-3"><a href="#cb22-3" aria-hidden="true" tabindex="-1"></a>) <span class="sc">|&gt;</span> <span class="fu">arrange</span>(pred)</span>
-<span id="cb22-4"><a href="#cb22-4" aria-hidden="true" tabindex="-1"></a><span class="co">#smoke_df</span></span>
-<span id="cb22-5"><a href="#cb22-5" aria-hidden="true" tabindex="-1"></a>smoke_df <span class="sc">|&gt;</span> <span class="fu">mutate</span>(<span class="at">enroll=</span><span class="fu">factor</span>(enroll)) <span class="sc">|&gt;</span></span>
-<span id="cb22-6"><a href="#cb22-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x=</span>motiv)) <span class="sc">+</span></span>
-<span id="cb22-7"><a href="#cb22-7" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Predictions</span></span>
-<span id="cb22-8"><a href="#cb22-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(</span>
-<span id="cb22-9"><a href="#cb22-9" aria-hidden="true" tabindex="-1"></a>    <span class="fu">aes</span>(<span class="at">y=</span><span class="fu">as.numeric</span>(enroll))</span>
-<span id="cb22-10"><a href="#cb22-10" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">+</span></span>
-<span id="cb22-11"><a href="#cb22-11" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Values</span></span>
-<span id="cb22-12"><a href="#cb22-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(</span>
-<span id="cb22-13"><a href="#cb22-13" aria-hidden="true" tabindex="-1"></a>    <span class="fu">aes</span>(<span class="at">y=</span>ipw, <span class="at">color=</span>enroll)</span>
-<span id="cb22-14"><a href="#cb22-14" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">+</span></span>
-<span id="cb22-15"><a href="#cb22-15" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_dsan</span>(<span class="at">base_size=</span><span class="dv">24</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
@@ -992,45 +1084,99 @@ Attaching package: 'Rlab'</code></pre>
 </div>
 </div>
 </div>
+</div>
 </section>
-<section id="the-final-result" class="level2">
-<h2 class="anchored" data-anchor-id="the-final-result">The Final Result!</h2>
-<div class="cell" data-layout-align="center">
-<details class="code-fold">
+<section id="the-final-result" class="level2 smaller crunch-title crunch-p">
+<h2 class="smaller crunch-title crunch-p anchored" data-anchor-id="the-final-result">The Final Result!</h2>
+<div class="cell" data-layout-align="center" data-output-location="column">
+<details open="" class="code-fold">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a>smoke_df <span class="sc">|&gt;</span> <span class="fu">mutate</span>(<span class="at">enroll=</span><span class="fu">factor</span>(enroll)) <span class="sc">|&gt;</span></span>
-<span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(</span>
-<span id="cb23-3"><a href="#cb23-3" aria-hidden="true" tabindex="-1"></a>    <span class="at">x=</span>motiv, <span class="at">y=</span>ncigs, <span class="at">color=</span>enroll, <span class="at">size=</span>ipw,</span>
-<span id="cb23-4"><a href="#cb23-4" aria-hidden="true" tabindex="-1"></a>    <span class="at">alpha=</span><span class="fu">log</span>(ipw<span class="dv">-1</span>)</span>
-<span id="cb23-5"><a href="#cb23-5" aria-hidden="true" tabindex="-1"></a>  )) <span class="sc">+</span></span>
-<span id="cb23-6"><a href="#cb23-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span></span>
-<span id="cb23-7"><a href="#cb23-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">guides</span>(<span class="at">alpha=</span><span class="st">"none"</span>) <span class="sc">+</span></span>
-<span id="cb23-8"><a href="#cb23-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_dsan</span>(<span class="at">base_size=</span><span class="dv">24</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a>lm_with_weights <span class="ot">&lt;-</span> <span class="fu">lm</span>(ncigs <span class="sc">~</span> enroll,</span>
+<span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">data=</span>smoke_df, <span class="at">weights=</span>smoke_df<span class="sc">$</span>ipw</span>
+<span id="cb24-3"><a href="#cb24-3" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb24-4"><a href="#cb24-4" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(lm_with_weights) <span class="sc">|&gt;</span> broom<span class="sc">::</span><span class="fu">tidy</span>() <span class="sc">|&gt;</span></span>
+<span id="cb24-5"><a href="#cb24-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(term, estimate, std.error)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output-display">
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="index_files/figure-html/ipw-plot-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" width="672"></p>
-</figure>
+<div class="kable-table">
+<table class="caption-top table table-sm table-striped small">
+<thead>
+<tr class="header">
+<th style="text-align: left;">term</th>
+<th style="text-align: right;">estimate</th>
+<th style="text-align: right;">std.error</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">(Intercept)</td>
+<td style="text-align: right;">18.10133</td>
+<td style="text-align: right;">0.2466712</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">enroll</td>
+<td style="text-align: right;">-5.66453</td>
+<td style="text-align: right;">0.3571696</td>
+</tr>
+</tbody>
+</table>
 </div>
 </div>
 </div>
-<div class="cell" data-layout-align="center">
-<details class="code-fold">
+<div class="cell" data-layout-align="center" data-output-location="column">
+<details open="" class="code-fold">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="fu">lm</span>(ncigs <span class="sc">~</span> enroll, <span class="at">data=</span>smoke_df, <span class="at">weights=</span>smoke_df<span class="sc">$</span>ipw)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(WeightIt)</span>
+<span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a>W <span class="ot">&lt;-</span> <span class="fu">weightit</span>(</span>
+<span id="cb25-3"><a href="#cb25-3" aria-hidden="true" tabindex="-1"></a>  enroll <span class="sc">~</span> motiv, <span class="at">data =</span> smoke_df, <span class="at">ps=</span><span class="st">"pred"</span></span>
+<span id="cb25-4"><a href="#cb25-4" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb25-5"><a href="#cb25-5" aria-hidden="true" tabindex="-1"></a>smoke_weighted_lm <span class="ot">&lt;-</span> <span class="fu">lm_weightit</span>(</span>
+<span id="cb25-6"><a href="#cb25-6" aria-hidden="true" tabindex="-1"></a>  ncigs <span class="sc">~</span> enroll, <span class="at">data =</span> smoke_df, <span class="at">weightit =</span> W</span>
+<span id="cb25-7"><a href="#cb25-7" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb25-8"><a href="#cb25-8" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(smoke_weighted_lm, <span class="at">ci =</span> <span class="cn">FALSE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-stdout">
 <pre><code>
 Call:
-lm(formula = ncigs ~ enroll, data = smoke_df, weights = smoke_df$ipw)
+lm_weightit(formula = ncigs ~ enroll, data = smoke_df, weightit = W)
 
 Coefficients:
-(Intercept)       enroll  
-     18.101       -5.665  </code></pre>
+            Estimate Std. Error z value Pr(&gt;|z|)    
+(Intercept)  18.1013     0.2479   73.02   &lt;1e-06 ***
+enroll       -5.6645     0.5463  -10.37   &lt;1e-06 ***
+Standard error: HC0 robust</code></pre>
+</div>
+</div>
+<div class="cell" data-layout-align="center" data-output-location="column">
+<details open="" class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb27"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a>W_default <span class="ot">&lt;-</span> <span class="fu">weightit</span>(enroll <span class="sc">~</span> motiv, <span class="at">data =</span> smoke_df)</span>
+<span id="cb27-2"><a href="#cb27-2" aria-hidden="true" tabindex="-1"></a>smoke_default_lm <span class="ot">&lt;-</span> <span class="fu">lm_weightit</span>(</span>
+<span id="cb27-3"><a href="#cb27-3" aria-hidden="true" tabindex="-1"></a>  ncigs <span class="sc">~</span> enroll, <span class="at">data =</span> smoke_df,</span>
+<span id="cb27-4"><a href="#cb27-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">weightit =</span> W_default</span>
+<span id="cb27-5"><a href="#cb27-5" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb27-6"><a href="#cb27-6" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(smoke_default_lm, <span class="at">ci =</span> <span class="cn">FALSE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+Call:
+lm_weightit(formula = ncigs ~ enroll, data = smoke_df, weightit = W_default)
+
+Coefficients:
+            Estimate Std. Error z value Pr(&gt;|z|)    
+(Intercept)  18.1013     0.2441   74.16   &lt;1e-06 ***
+enroll       -5.6645     0.5444  -10.41   &lt;1e-06 ***
+Standard error: HC0 robust (adjusted for estimation of weights)</code></pre>
 </div>
 </div>
 </section>
+</section>
+<section id="what-if-we-have-many-covariates" class="level1" data-stack-name="Many Covariates">
+<h1 data-stack-name="Many Covariates">…What If We Have <em>Many</em> Covariates?</h1>
+<ul>
+<li>Curse of dimensionality…</li>
+<li>Lab Time!</li>
+</ul>
 <section id="references" class="level2">
 <h2 class="anchored" data-anchor-id="references">References</h2>
 <div id="refs" class="references csl-bib-body hanging-indent" data-entry-spacing="0" role="list">

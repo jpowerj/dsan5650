@@ -1,0 +1,15 @@
+```{python}
+#| label: py-causal
+import pandas as pd
+from causalinference import CausalModel
+smoke_df = pd.read_csv("assets/smoke_df.csv")
+cm = CausalModel(
+    Y=smoke_df["ncigs"].values, 
+    D=smoke_df["enroll"].values, 
+    X=smoke_df[["pred"]].values
+)
+# cm.est_via_matching(matches=1, bias_adj=True)
+cm.est_via_weighting()
+
+print(cm.estimates)
+```
