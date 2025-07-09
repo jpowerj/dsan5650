@@ -1964,11 +1964,101 @@
     ]
   },
   {
+    "objectID": "w08/index.html#working-example-growth-mindset",
+    "href": "w08/index.html#working-example-growth-mindset",
+    "title": "Week 8: Propensity Score Weighting",
+    "section": "Working Example: Growth Mindset(!)",
+    "text": "Working Example: Growth Mindset(!)\n\n\n\nFrom Athey and Wager (2019)\nTreatment \\(T\\), called intervention in the dataset: a seminar on growth mindset for high school students\nOutcome \\(Y\\), called achievement_score in the dataset: performance on state’s standardized test\nIn a perfect world, we could just compute\n\n\\[\n\\mathbb{E}[Y \\mid T = 1] - \\mathbb{E}[Y \\mid T = 0]\n\\]\n\n\n\n\n\n\n\n\nCode\nlibrary(tidyverse)\nstudent_df &lt;- read_csv(\"assets/learning_mindset.csv\")\n\n\nRows: 10391 Columns: 13\n── Column specification ────────────────────────────────────────────────────────\nDelimiter: \",\"\ndbl (13): schoolid, intervention, achievement_score, success_expect, ethnici...\n\nℹ Use `spec()` to retrieve the full column specification for this data.\nℹ Specify the column types or set `show_col_types = FALSE` to quiet this message.\n\n\nCode\n(mean_df &lt;- student_df |&gt; group_by(intervention) |&gt; summarize(mean_score=mean(achievement_score)))\n\n\n\n\n\n\nintervention\nmean_score\n\n\n\n\n0\n-0.1538030\n\n\n1\n0.3184686\n\n\n\n\n\n\nCode\n# stud_mean_df &lt;- tibble(x=c(0,1), y=c(ey0, ey1))\nstudent_df |&gt;\n  ggplot(aes(x=intervention, y=achievement_score)) +\n  geom_boxplot(\n    aes(group=intervention),\n    width=0.5\n  ) +\n  geom_smooth(\n    method='lm',\n    formula='y ~ x',\n    se=TRUE\n  ) +\n  geom_point(\n    data=mean_df,\n    aes(x=intervention, y=mean_score),\n    size=3\n  ) +\n  theme_dsan(base_size=16)",
+    "crumbs": [
+      "Week 8: {{< var w08.date-md >}}"
+    ]
+  },
+  {
+    "objectID": "w08/index.html#the-problem-pesky-covariates",
+    "href": "w08/index.html#the-problem-pesky-covariates",
+    "title": "Week 8: Propensity Score Weighting",
+    "section": "The Problem: Pesky Covariates",
+    "text": "The Problem: Pesky Covariates\n\nHere the “blob” \\(\\mathbf{X}\\) forms a fork, as drawn…\nBut in reality the work of modeling is flying into the cloud and modeling the \\(\\mathbf{X}\\)-\\(T\\) and \\(\\mathbf{X}\\)-\\(Y\\) relationships (especially: figuring out which covariates \\(X_j \\in \\mathbf{X}\\) are colliders), so you can close the backdoors:\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nThis can be really difficult, for a bunch of reasons… What if there was an easier way?",
+    "crumbs": [
+      "Week 8: {{< var w08.date-md >}}"
+    ]
+  },
+  {
+    "objectID": "w08/index.html#if-we-had-control-over-everything-experiments-vs.-observational-data-analysis",
+    "href": "w08/index.html#if-we-had-control-over-everything-experiments-vs.-observational-data-analysis",
+    "title": "Week 8: Propensity Score Weighting",
+    "section": "If We Had Control Over Everything (Experiments vs. Observational Data Analysis)",
+    "text": "If We Had Control Over Everything (Experiments vs. Observational Data Analysis)\n\nIf we could intervene in the DGP, we could assign treatment randomly, thus removing the impact of Covariates on \\(T\\)!\n\n\n\n\n\n\n\nAlas, we are data scientists, not (necessarily) experiment-conductors, plus there are often ethical reasons to not perform experiments!\n…There’s still another approach!",
+    "crumbs": [
+      "Week 8: {{< var w08.date-md >}}"
+    ]
+  },
+  {
+    "objectID": "w08/index.html#closing-backdoors-the-too-good-to-be-true-way",
+    "href": "w08/index.html#closing-backdoors-the-too-good-to-be-true-way",
+    "title": "Week 8: Propensity Score Weighting",
+    "section": "Closing Backdoors the Too-Good-To-Be-True Way",
+    "text": "Closing Backdoors the Too-Good-To-Be-True Way\n\nKey insight from causal thinking: Transformation of the problem from “control for all covariates” to “close all backdoor paths”…\nFor the goal of just closing these paths, we have an alternative1:\n\n\n\n\nRosenbaum and Rubin (1983): there exists a statistic \\(\\mathtt{e}(\\mathbf{X}) = \\Pr(T \\mid \\mathbf{X})\\), the propensity score, which “captures” info in \\(\\textbf{X}\\) relevant to \\(T\\) such that\nConditioning on \\(\\mathtt{e}(\\mathbf{X})\\) closes \\(\\mathbf{X} \\Rightarrow \\mathtt{e}(\\mathbf{X}) \\rightarrow T\\) (\\(\\mathtt{e}(\\mathbf{X})\\) is a pipe)\n\n\n\n\n\n\n\n\n\n\nThis would close backdoor path \\(T \\leftarrow \\mathtt{e}(\\mathbf{X}) \\Leftarrow \\mathbf{X} \\rightarrow Y\\), leaving only direct effect \\(T \\rightarrow Y\\)! There’s one remaining complication…",
+    "crumbs": [
+      "Week 8: {{< var w08.date-md >}}"
+    ]
+  },
+  {
+    "objectID": "w08/index.html#closing-backdoors-via-propensity-score-estimation",
+    "href": "w08/index.html#closing-backdoors-via-propensity-score-estimation",
+    "title": "Week 8: Propensity Score Weighting",
+    "section": "Closing Backdoors via Propensity Score Estimation",
+    "text": "Closing Backdoors via Propensity Score Estimation\n\nSadly we don’t observe true probability of being treated for all possible values of \\(\\mathbf{X}\\)\nBut, we can derive an estimate \\(\\hat{\\mathtt{e}}(\\mathbf{X})\\) using our machine learning skills 😎\nWe now have that \\(\\hat{\\mathtt{e}}(\\mathbf{X})\\), as a proxy relative to the pipe \\(\\mathbf{X} \\Rightarrow \\mathtt{e}(\\mathbf{X}) \\rightarrow T\\), blocks the pipe to the extent that it captures the true probability \\(\\mathtt{e}(\\mathbf{X}) = \\Pr(T \\mid \\mathbf{X})\\)\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nBackdoor Path: \\(T \\leftarrow \\mathtt{e}(\\mathbf{X}) \\Leftarrow \\mathbf{X} \\rightarrow Y\\)\nClosed in proportion to \\(\\left[ \\text{Cor}(\\hat{\\mathtt{e}}(\\mathbf{X}), \\mathtt{e}(\\mathbf{X})) \\right]^2 = ❓\\)",
+    "crumbs": [
+      "Week 8: {{< var w08.date-md >}}"
+    ]
+  },
+  {
+    "objectID": "w08/index.html#sometimes-helpful-thought-experiment",
+    "href": "w08/index.html#sometimes-helpful-thought-experiment",
+    "title": "Week 8: Propensity Score Weighting",
+    "section": "Sometimes-Helpful Thought Experiment",
+    "text": "Sometimes-Helpful Thought Experiment\n\n\n\nBack in our basic confounding scenario:\nIf there was only one covariate (\\(\\mathbf{X} = X\\)), and it was a constant (\\(\\Pr(X = c) = 1\\)), then all the variation in \\(Y\\) would be due to variation in \\(T\\)\nLess extreme: if person \\(i\\) has covariates \\(\\mathbf{X}_i\\) and person \\(j\\) has covariates \\(\\mathbf{X}_j\\), but \\(\\mathbf{X}_i = \\mathbf{X}_j\\), then variation in their outcomes is due solely to \\(T\\)\n\n\n\n\n\n\n\n\nPart of the logic of propensity score is that, if person \\(i\\) has covariates \\(\\mathbf{X}_i\\) and person \\(j\\) has covariates \\(\\mathbf{X}_j\\), but \\(\\mathtt{e}(\\mathbf{X}_i) = \\mathtt{e}(\\mathbf{X}_j)\\), then \\(i\\) and \\(j\\) are perfectly matched\n\\(\\Rightarrow\\) (by fun math proof) variation in their outcomes is due solely to \\(T\\)",
+    "crumbs": [
+      "Week 8: {{< var w08.date-md >}}"
+    ]
+  },
+  {
+    "objectID": "w08/index.html#how-exactly-do-we-adjust-for-hatmathttemathbfx",
+    "href": "w08/index.html#how-exactly-do-we-adjust-for-hatmathttemathbfx",
+    "title": "Week 8: Propensity Score Weighting",
+    "section": "How Exactly Do We Adjust For \\(\\hat{\\mathtt{e}}(\\mathbf{X})\\)?",
+    "text": "How Exactly Do We Adjust For \\(\\hat{\\mathtt{e}}(\\mathbf{X})\\)?\n\n\nSimulation example: smoking reduction\n\n\n\n\n\n\nCode\nlibrary(tidyverse)\nlibrary(Rlab)\n\n\nRlab 4.0 attached.\n\n\n\nAttaching package: 'Rlab'\n\n\nThe following object is masked from 'package:dplyr':\n\n    count\n\n\nThe following object is masked from 'package:tibble':\n\n    view\n\n\nThe following objects are masked from 'package:stats':\n\n    dexp, dgamma, dweibull, pexp, pgamma, pweibull, qexp, qgamma,\n    qweibull, rexp, rgamma, rweibull\n\n\nThe following object is masked from 'package:datasets':\n\n    precip\n\n\nCode\nset.seed(5650)\nn &lt;- 250\nmotiv_vals &lt;- runif(n, 0, 1)\nenroll_vals &lt;- ifelse(\n  motiv_vals &lt; 0.25,\n  0,\n  # We know motiv &gt; 0.25\n  ifelse(\n    motiv_vals &gt; 0.75,\n    1,\n    # We know 0.25 &lt; motiv &lt; 0.75\n    rbern(n, prob=(motiv_vals - 0.125)*1.5)\n  )\n)\n\n\nWarning in rbinom(n, size = 1, prob = prob): NAs produced\n\n\nCode\nncigs_vals &lt;- rbinom(n, size=30, prob=0.6-0.2*enroll_vals)\nsmoke_df &lt;- tibble(\n  motiv=motiv_vals,\n  enroll=enroll_vals,\n  ncigs=ncigs_vals\n)\n(smoke_mean_df &lt;- smoke_df |&gt; group_by(enroll) |&gt; summarize(mean_ncigs=mean(ncigs)))\n\n\n\n\n\n\nenroll\nmean_ncigs\n\n\n\n\n0\n17.88060\n\n\n1\n12.26724\n\n\n\n\n\n\nCode\nnaive_smoke_lm &lt;- lm(ncigs ~ enroll, data=smoke_df)\nsummary(naive_smoke_lm) |&gt; broom::tidy() |&gt;\n  select(term, estimate)\n\n\n\n\n\n\nterm\nestimate\n\n\n\n\n(Intercept)\n17.880597\n\n\nenroll\n-5.613356\n\n\n\n\n\n\nCode\n# stud_mean_df &lt;- tibble(x=c(0,1), y=c(ey0, ey1))\nsmoke_df |&gt; ggplot(aes(x=enroll, y=ncigs)) +\n  geom_boxplot(\n    aes(group=enroll),\n    width=0.5\n  ) +\n  geom_smooth(\n    method='lm',\n    formula='y ~ x',\n    se=TRUE\n  ) +\n  geom_point(\n    data=smoke_mean_df,\n    aes(x=enroll, y=mean_ncigs),\n    size=3\n  ) +\n  theme_dsan(base_size=24)\n\n\n\n\n\n\n\n\n\n\n\n\nCode\nsmoke_df |&gt; mutate(enroll=factor(enroll)) |&gt;\n  ggplot(aes(x=motiv, y=ncigs, color=enroll)) +\n  geom_point() +\n  theme_dsan(base_size=24)\n\n\n\n\n\n\n\n\n\n\n\n\n\nPropensity to enroll:\n\n\nCode\neprop_model &lt;- glm(enroll ~ motiv, family='binomial', data=smoke_df)\neprop_preds &lt;- predict(eprop_model, type=\"response\")\nsmoke_df &lt;- smoke_df |&gt; mutate(pred=eprop_preds)\nsmoke_df |&gt;\n  ggplot(aes(x=motiv)) +\n  # Predictions\n  geom_point(\n    aes(y=enroll)\n  ) +\n  # Values\n  geom_point(\n    aes(y=pred)\n  ) +\n  theme_dsan(base_size=24)\n\n\n\n\n\n\n\n\n\n\nInverse propensity weight:\n\n\nCode\nsmoke_df &lt;- smoke_df |&gt; rowwise() |&gt; mutate(\n  ipw=ifelse(enroll, 1/pred, 1/(1-pred))\n) |&gt; arrange(pred)\n#smoke_df\nsmoke_df |&gt; mutate(enroll=factor(enroll)) |&gt;\n  ggplot(aes(x=motiv)) +\n  # Predictions\n  geom_point(\n    aes(y=as.numeric(enroll))\n  ) +\n  # Values\n  geom_point(\n    aes(y=ipw, color=enroll)\n  ) +\n  theme_dsan(base_size=24)",
+    "crumbs": [
+      "Week 8: {{< var w08.date-md >}}"
+    ]
+  },
+  {
+    "objectID": "w08/index.html#the-final-result",
+    "href": "w08/index.html#the-final-result",
+    "title": "Week 8: Propensity Score Weighting",
+    "section": "The Final Result!",
+    "text": "The Final Result!\n\n\nCode\nsmoke_df |&gt; mutate(enroll=factor(enroll)) |&gt;\n  ggplot(aes(\n    x=motiv, y=ncigs, color=enroll, size=ipw,\n    alpha=log(ipw-1)\n  )) +\n  geom_point() +\n  guides(alpha=\"none\") +\n  theme_dsan(base_size=24)\n\n\n\n\n\n\n\n\n\n\n\nCode\nlm(ncigs ~ enroll, data=smoke_df, weights=smoke_df$ipw)\n\n\n\nCall:\nlm(formula = ncigs ~ enroll, data = smoke_df, weights = smoke_df$ipw)\n\nCoefficients:\n(Intercept)       enroll  \n     18.101       -5.665",
+    "crumbs": [
+      "Week 8: {{< var w08.date-md >}}"
+    ]
+  },
+  {
     "objectID": "w08/index.html#references",
     "href": "w08/index.html#references",
     "title": "Week 8: Propensity Score Weighting",
     "section": "References",
-    "text": "References",
+    "text": "References\n\n\nAthey, Susan, and Stefan Wager. 2019. “Estimating Treatment Effects with Causal Forests: An Application.” arXiv. https://doi.org/10.48550/arXiv.1902.07409.\n\n\nRosenbaum, Paul R., and Donald B. Rubin. 1983. “The Central Role of the Propensity Score in Observational Studies for Causal Effects.” Biometrika 70 (1): 41–55. https://doi.org/10.2307/2335942.",
+    "crumbs": [
+      "Week 8: {{< var w08.date-md >}}"
+    ]
+  },
+  {
+    "objectID": "w08/index.html#footnotes",
+    "href": "w08/index.html#footnotes",
+    "title": "Week 8: Propensity Score Weighting",
+    "section": "Footnotes",
+    "text": "Footnotes\n\n\nFor reasons we’ll see later (double-robustness), you should ultimately try to achieve both goals!↩︎",
     "crumbs": [
       "Week 8: {{< var w08.date-md >}}"
     ]
@@ -1981,11 +2071,67 @@
     "text": "Roadmap for Part 2\n\n(Should hopefully start to feel more like other DSAN classes!)"
   },
   {
+    "objectID": "w08/slides.html#working-example-growth-mindset",
+    "href": "w08/slides.html#working-example-growth-mindset",
+    "title": "Week 8: Propensity Score Weighting",
+    "section": "Working Example: Growth Mindset(!)",
+    "text": "Working Example: Growth Mindset(!)\n\n\n\nFrom Athey and Wager (2019)\nTreatment \\(T\\), called intervention in the dataset: a seminar on growth mindset for high school students\nOutcome \\(Y\\), called achievement_score in the dataset: performance on state’s standardized test\nIn a perfect world, we could just compute\n\n\\[\n\\mathbb{E}[Y \\mid T = 1] - \\mathbb{E}[Y \\mid T = 0]\n\\]\n\n\n\n\n\n\n\n\nCode\nlibrary(tidyverse)\nstudent_df &lt;- read_csv(\"assets/learning_mindset.csv\")\n(mean_df &lt;- student_df |&gt; group_by(intervention) |&gt; summarize(mean_score=mean(achievement_score)))\n\n\n\n\n\n\nintervention\nmean_score\n\n\n\n\n0\n-0.1538030\n\n\n1\n0.3184686\n\n\n\n\n\n\nCode\n# stud_mean_df &lt;- tibble(x=c(0,1), y=c(ey0, ey1))\nstudent_df |&gt;\n  ggplot(aes(x=intervention, y=achievement_score)) +\n  geom_boxplot(\n    aes(group=intervention),\n    width=0.5\n  ) +\n  geom_smooth(\n    method='lm',\n    formula='y ~ x',\n    se=TRUE\n  ) +\n  geom_point(\n    data=mean_df,\n    aes(x=intervention, y=mean_score),\n    size=3\n  ) +\n  theme_dsan(base_size=16)"
+  },
+  {
+    "objectID": "w08/slides.html#the-problem-pesky-covariates",
+    "href": "w08/slides.html#the-problem-pesky-covariates",
+    "title": "Week 8: Propensity Score Weighting",
+    "section": "The Problem: Pesky Covariates",
+    "text": "The Problem: Pesky Covariates\n\nHere the “blob” \\(\\mathbf{X}\\) forms a fork, as drawn…\nBut in reality the work of modeling is flying into the cloud and modeling the \\(\\mathbf{X}\\)-\\(T\\) and \\(\\mathbf{X}\\)-\\(Y\\) relationships (especially: figuring out which covariates \\(X_j \\in \\mathbf{X}\\) are colliders), so you can close the backdoors:\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nThis can be really difficult, for a bunch of reasons… What if there was an easier way?"
+  },
+  {
+    "objectID": "w08/slides.html#if-we-had-control-over-everything-experiments-vs.-observational-data-analysis",
+    "href": "w08/slides.html#if-we-had-control-over-everything-experiments-vs.-observational-data-analysis",
+    "title": "Week 8: Propensity Score Weighting",
+    "section": "If We Had Control Over Everything (Experiments vs. Observational Data Analysis)",
+    "text": "If We Had Control Over Everything (Experiments vs. Observational Data Analysis)\n\nIf we could intervene in the DGP, we could assign treatment randomly, thus removing the impact of Covariates on \\(T\\)!\n\n\n\nAlas, we are data scientists, not (necessarily) experiment-conductors, plus there are often ethical reasons to not perform experiments!\n…There’s still another approach!"
+  },
+  {
+    "objectID": "w08/slides.html#closing-backdoors-the-too-good-to-be-true-way",
+    "href": "w08/slides.html#closing-backdoors-the-too-good-to-be-true-way",
+    "title": "Week 8: Propensity Score Weighting",
+    "section": "Closing Backdoors the Too-Good-To-Be-True Way",
+    "text": "Closing Backdoors the Too-Good-To-Be-True Way\n\nKey insight from causal thinking: Transformation of the problem from “control for all covariates” to “close all backdoor paths”…\nFor the goal of just closing these paths, we have an alternative1:\n\n\n\n\nRosenbaum and Rubin (1983): there exists a statistic \\(\\mathtt{e}(\\mathbf{X}) = \\Pr(T \\mid \\mathbf{X})\\), the propensity score, which “captures” info in \\(\\textbf{X}\\) relevant to \\(T\\) such that\nConditioning on \\(\\mathtt{e}(\\mathbf{X})\\) closes \\(\\mathbf{X} \\Rightarrow \\mathtt{e}(\\mathbf{X}) \\rightarrow T\\) (\\(\\mathtt{e}(\\mathbf{X})\\) is a pipe)\n\n\n\n\n\n\n\n\n\nThis would close backdoor path \\(T \\leftarrow \\mathtt{e}(\\mathbf{X}) \\Leftarrow \\mathbf{X} \\rightarrow Y\\), leaving only direct effect \\(T \\rightarrow Y\\)! There’s one remaining complication…\n\nFor reasons we’ll see later (double-robustness), you should ultimately try to achieve both goals!"
+  },
+  {
+    "objectID": "w08/slides.html#closing-backdoors-via-propensity-score-estimation",
+    "href": "w08/slides.html#closing-backdoors-via-propensity-score-estimation",
+    "title": "Week 8: Propensity Score Weighting",
+    "section": "Closing Backdoors via Propensity Score Estimation",
+    "text": "Closing Backdoors via Propensity Score Estimation\n\nSadly we don’t observe true probability of being treated for all possible values of \\(\\mathbf{X}\\)\nBut, we can derive an estimate \\(\\hat{\\mathtt{e}}(\\mathbf{X})\\) using our machine learning skills 😎\nWe now have that \\(\\hat{\\mathtt{e}}(\\mathbf{X})\\), as a proxy relative to the pipe \\(\\mathbf{X} \\Rightarrow \\mathtt{e}(\\mathbf{X}) \\rightarrow T\\), blocks the pipe to the extent that it captures the true probability \\(\\mathtt{e}(\\mathbf{X}) = \\Pr(T \\mid \\mathbf{X})\\)\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nBackdoor Path: \\(T \\leftarrow \\mathtt{e}(\\mathbf{X}) \\Leftarrow \\mathbf{X} \\rightarrow Y\\)\nClosed in proportion to \\(\\left[ \\text{Cor}(\\hat{\\mathtt{e}}(\\mathbf{X}), \\mathtt{e}(\\mathbf{X})) \\right]^2 = ❓\\)"
+  },
+  {
+    "objectID": "w08/slides.html#sometimes-helpful-thought-experiment",
+    "href": "w08/slides.html#sometimes-helpful-thought-experiment",
+    "title": "Week 8: Propensity Score Weighting",
+    "section": "Sometimes-Helpful Thought Experiment",
+    "text": "Sometimes-Helpful Thought Experiment\n\n\n\nBack in our basic confounding scenario:\nIf there was only one covariate (\\(\\mathbf{X} = X\\)), and it was a constant (\\(\\Pr(X = c) = 1\\)), then all the variation in \\(Y\\) would be due to variation in \\(T\\)\nLess extreme: if person \\(i\\) has covariates \\(\\mathbf{X}_i\\) and person \\(j\\) has covariates \\(\\mathbf{X}_j\\), but \\(\\mathbf{X}_i = \\mathbf{X}_j\\), then variation in their outcomes is due solely to \\(T\\)\n\n\n\n\n\n\n\n\nPart of the logic of propensity score is that, if person \\(i\\) has covariates \\(\\mathbf{X}_i\\) and person \\(j\\) has covariates \\(\\mathbf{X}_j\\), but \\(\\mathtt{e}(\\mathbf{X}_i) = \\mathtt{e}(\\mathbf{X}_j)\\), then \\(i\\) and \\(j\\) are perfectly matched\n\\(\\Rightarrow\\) (by fun math proof) variation in their outcomes is due solely to \\(T\\)"
+  },
+  {
+    "objectID": "w08/slides.html#how-exactly-do-we-adjust-for-hatmathttemathbfx",
+    "href": "w08/slides.html#how-exactly-do-we-adjust-for-hatmathttemathbfx",
+    "title": "Week 8: Propensity Score Weighting",
+    "section": "How Exactly Do We Adjust For \\(\\hat{\\mathtt{e}}(\\mathbf{X})\\)?",
+    "text": "How Exactly Do We Adjust For \\(\\hat{\\mathtt{e}}(\\mathbf{X})\\)?\n\n\nSimulation example: smoking reduction\n\n\n\n\n\n\nCode\nlibrary(tidyverse)\nlibrary(Rlab)\nset.seed(5650)\nn &lt;- 250\nmotiv_vals &lt;- runif(n, 0, 1)\nenroll_vals &lt;- ifelse(\n  motiv_vals &lt; 0.25,\n  0,\n  # We know motiv &gt; 0.25\n  ifelse(\n    motiv_vals &gt; 0.75,\n    1,\n    # We know 0.25 &lt; motiv &lt; 0.75\n    rbern(n, prob=(motiv_vals - 0.125)*1.5)\n  )\n)\nncigs_vals &lt;- rbinom(n, size=30, prob=0.6-0.2*enroll_vals)\nsmoke_df &lt;- tibble(\n  motiv=motiv_vals,\n  enroll=enroll_vals,\n  ncigs=ncigs_vals\n)\n(smoke_mean_df &lt;- smoke_df |&gt; group_by(enroll) |&gt; summarize(mean_ncigs=mean(ncigs)))\n\n\n\n\n\n\nenroll\nmean_ncigs\n\n\n\n\n0\n17.88060\n\n\n1\n12.26724\n\n\n\n\n\n\nCode\nnaive_smoke_lm &lt;- lm(ncigs ~ enroll, data=smoke_df)\nsummary(naive_smoke_lm) |&gt; broom::tidy() |&gt;\n  select(term, estimate)\n\n\n\n\n\n\nterm\nestimate\n\n\n\n\n(Intercept)\n17.880597\n\n\nenroll\n-5.613356\n\n\n\n\n\n\nCode\n# stud_mean_df &lt;- tibble(x=c(0,1), y=c(ey0, ey1))\nsmoke_df |&gt; ggplot(aes(x=enroll, y=ncigs)) +\n  geom_boxplot(\n    aes(group=enroll),\n    width=0.5\n  ) +\n  geom_smooth(\n    method='lm',\n    formula='y ~ x',\n    se=TRUE\n  ) +\n  geom_point(\n    data=smoke_mean_df,\n    aes(x=enroll, y=mean_ncigs),\n    size=3\n  ) +\n  theme_dsan(base_size=24)\n\n\n\n\n\n\n\n\n\n\n\n\nCode\nsmoke_df |&gt; mutate(enroll=factor(enroll)) |&gt;\n  ggplot(aes(x=motiv, y=ncigs, color=enroll)) +\n  geom_point() +\n  theme_dsan(base_size=24)\n\n\n\n\n\n\n\n\n\n\n\n\nPropensity to enroll:\n\n\nCode\neprop_model &lt;- glm(enroll ~ motiv, family='binomial', data=smoke_df)\neprop_preds &lt;- predict(eprop_model, type=\"response\")\nsmoke_df &lt;- smoke_df |&gt; mutate(pred=eprop_preds)\nsmoke_df |&gt;\n  ggplot(aes(x=motiv)) +\n  # Predictions\n  geom_point(\n    aes(y=enroll)\n  ) +\n  # Values\n  geom_point(\n    aes(y=pred)\n  ) +\n  theme_dsan(base_size=24)\n\n\n\n\n\n\n\n\n\n\nInverse propensity weight:\n\n\nCode\nsmoke_df &lt;- smoke_df |&gt; rowwise() |&gt; mutate(\n  ipw=ifelse(enroll, 1/pred, 1/(1-pred))\n) |&gt; arrange(pred)\n#smoke_df\nsmoke_df |&gt; mutate(enroll=factor(enroll)) |&gt;\n  ggplot(aes(x=motiv)) +\n  # Predictions\n  geom_point(\n    aes(y=as.numeric(enroll))\n  ) +\n  # Values\n  geom_point(\n    aes(y=ipw, color=enroll)\n  ) +\n  theme_dsan(base_size=24)"
+  },
+  {
+    "objectID": "w08/slides.html#the-final-result",
+    "href": "w08/slides.html#the-final-result",
+    "title": "Week 8: Propensity Score Weighting",
+    "section": "The Final Result!",
+    "text": "The Final Result!\n\n\nCode\nsmoke_df |&gt; mutate(enroll=factor(enroll)) |&gt;\n  ggplot(aes(\n    x=motiv, y=ncigs, color=enroll, size=ipw,\n    alpha=log(ipw-1)\n  )) +\n  geom_point() +\n  guides(alpha=\"none\") +\n  theme_dsan(base_size=24)\n\n\n\n\n\nCode\nlm(ncigs ~ enroll, data=smoke_df, weights=smoke_df$ipw)\n\n\n\nCall:\nlm(formula = ncigs ~ enroll, data = smoke_df, weights = smoke_df$ipw)\n\nCoefficients:\n(Intercept)       enroll  \n     18.101       -5.665"
+  },
+  {
     "objectID": "w08/slides.html#references",
     "href": "w08/slides.html#references",
     "title": "Week 8: Propensity Score Weighting",
     "section": "References",
-    "text": "References"
+    "text": "References\n\n\nAthey, Susan, and Stefan Wager. 2019. “Estimating Treatment Effects with Causal Forests: An Application.” arXiv. https://doi.org/10.48550/arXiv.1902.07409.\n\n\nRosenbaum, Paul R., and Donald B. Rubin. 1983. “The Central Role of the Propensity Score in Observational Studies for Causal Effects.” Biometrika 70 (1): 41–55. https://doi.org/10.2307/2335942."
   },
   {
     "objectID": "w06/index.html",

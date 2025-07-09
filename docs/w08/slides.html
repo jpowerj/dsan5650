@@ -98,6 +98,7 @@
     div.csl-bib-body { }
     div.csl-entry {
       clear: both;
+      margin-bottom: 0em;
     }
     .hanging-indent div.csl-entry {
       margin-left:2em;
@@ -252,24 +253,30 @@ Jeff Jacobs
 </thead>
 <tbody>
 <tr class="odd">
-<td style="text-align: left;"><strong>Lecture</strong></td>
+<td style="text-align: left;"></td>
 <td style="text-align: left;">6:30pm</td>
-<td style="text-align: left;">7:20pm</td>
-<td style="text-align: left;"><a href="#/propensity-score-weighting">Controlling For Things vs.&nbsp;Matching Things →</a></td>
+<td style="text-align: left;">7:00pm</td>
+<td style="text-align: left;"><a href="#/final-projects">Final Project Pep Talk</a></td>
 </tr>
 <tr class="even">
+<td style="text-align: left;"><strong>Lecture</strong></td>
+<td style="text-align: left;">7:00pm</td>
+<td style="text-align: left;">7:50pm</td>
+<td style="text-align: left;"><a href="#/propensity-score-weighting">Controlling For Things vs.&nbsp;Matching Things →</a></td>
+</tr>
+<tr class="odd">
 <td style="text-align: left;"></td>
 <td style="text-align: left;">7:20pm</td>
 <td style="text-align: left;">7:50pm</td>
 <td style="text-align: left;"><a href="#/the-ladder-of-causal-inference">Applying <span class="math inline">\(\textsf{do}()\)</span> →</a></td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td style="text-align: left;"><strong>Break!</strong></td>
 <td style="text-align: left;">7:50pm</td>
 <td style="text-align: left;">8:00pm</td>
 <td style="text-align: left;"></td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td style="text-align: left;"></td>
 <td style="text-align: left;">8:00pm</td>
 <td style="text-align: left;">9:00pm</td>
@@ -321,7 +328,9 @@ Jeff Jacobs
 <div class="cell">
 <details class="code-fold">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a></a><span class="fu">source</span>(<span class="st">"../dsan-globals/_globals.r"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb1-2"><a></a><span class="fu">source</span>(<span class="st">"../dsan-globals/stat_binscatter.r"</span>)</span>
+<span id="cb1-3"><a></a><span class="fu">source</span>(<span class="st">"../dsan-globals/_globals.r"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
 </div>
@@ -332,6 +341,11 @@ Jeff Jacobs
 <li>(Should hopefully start to feel more like other DSAN classes!)</li>
 </ul>
 </section></section>
+<section id="final-projects" class="title-slide slide level1 center">
+<h1>Final Projects</h1>
+
+</section>
+
 <section>
 <section id="propensity-score-weighting" class="title-slide slide level1 title-11 crunch-title crunch-ul crunch-quarto-layout-panel crunch-img text-75 crunch-li-8 center" data-stack-name="Propensity Scores">
 <h1>Propensity Score Weighting</h1>
@@ -367,14 +381,442 @@ Figure&nbsp;1: Should this be matched with an <strong>apple</strong>? Or an <str
 <li><span class="math inline">\(\Rightarrow\)</span> Use your <strong>diagnostic</strong> skills: e.g., methods for <strong>evaluating clusters</strong> / preventing <strong>overfitting</strong></li>
 </ul>
 </section>
+<section id="working-example-growth-mindset" class="slide level2 smaller title-09 crunch-title crunch-ul">
+<h2>Working Example: Growth Mindset(!)</h2>
+<div class="columns">
+<div class="column" style="width:50%;">
+<ul>
+<li>From <span class="citation" data-cites="athey_estimating_2019">Athey and Wager (<a href="#/references" role="doc-biblioref" onclick="">2019</a>)</span></li>
+<li><strong>Treatment <span class="math inline">\(T\)</span></strong>, called <code>intervention</code> in the dataset: a seminar on <strong>growth mindset</strong> for high school students</li>
+<li><strong>Outcome <span class="math inline">\(Y\)</span></strong>, called <code>achievement_score</code> in the dataset: performance on state’s standardized test</li>
+<li>In a perfect world, we could just compute</li>
+</ul>
+<p><span class="math display">\[
+\mathbb{E}[Y \mid T = 1] - \mathbb{E}[Y \mid T = 0]
+\]</span></p>
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="images/pgm_propensity_nocovar.svg" class="quarto-figure quarto-figure-center" width="400"></p>
+</figure>
+</div>
+</div><div class="column" style="width:50%;">
+<div class="cell" data-layout-align="center">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb2-2"><a></a>student_df <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">"assets/learning_mindset.csv"</span>)</span>
+<span id="cb2-3"><a></a>(mean_df <span class="ot">&lt;-</span> student_df <span class="sc">|&gt;</span> <span class="fu">group_by</span>(intervention) <span class="sc">|&gt;</span> <span class="fu">summarize</span>(<span class="at">mean_score=</span><span class="fu">mean</span>(achievement_score)))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output-display">
+<div class="kable-table">
+<table class="caption-top">
+<thead>
+<tr class="header">
+<th style="text-align: right;">intervention</th>
+<th style="text-align: right;">mean_score</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">-0.1538030</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">0.3184686</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<details class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a></a><span class="co"># stud_mean_df &lt;- tibble(x=c(0,1), y=c(ey0, ey1))</span></span>
+<span id="cb3-2"><a></a>student_df <span class="sc">|&gt;</span></span>
+<span id="cb3-3"><a></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x=</span>intervention, <span class="at">y=</span>achievement_score)) <span class="sc">+</span></span>
+<span id="cb3-4"><a></a>  <span class="fu">geom_boxplot</span>(</span>
+<span id="cb3-5"><a></a>    <span class="fu">aes</span>(<span class="at">group=</span>intervention),</span>
+<span id="cb3-6"><a></a>    <span class="at">width=</span><span class="fl">0.5</span></span>
+<span id="cb3-7"><a></a>  ) <span class="sc">+</span></span>
+<span id="cb3-8"><a></a>  <span class="fu">geom_smooth</span>(</span>
+<span id="cb3-9"><a></a>    <span class="at">method=</span><span class="st">'lm'</span>,</span>
+<span id="cb3-10"><a></a>    <span class="at">formula=</span><span class="st">'y ~ x'</span>,</span>
+<span id="cb3-11"><a></a>    <span class="at">se=</span><span class="cn">TRUE</span></span>
+<span id="cb3-12"><a></a>  ) <span class="sc">+</span></span>
+<span id="cb3-13"><a></a>  <span class="fu">geom_point</span>(</span>
+<span id="cb3-14"><a></a>    <span class="at">data=</span>mean_df,</span>
+<span id="cb3-15"><a></a>    <span class="fu">aes</span>(<span class="at">x=</span>intervention, <span class="at">y=</span>mean_score),</span>
+<span id="cb3-16"><a></a>    <span class="at">size=</span><span class="dv">3</span></span>
+<span id="cb3-17"><a></a>  ) <span class="sc">+</span></span>
+<span id="cb3-18"><a></a>  <span class="fu">theme_dsan</span>(<span class="at">base_size=</span><span class="dv">16</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="index_files/figure-revealjs/growth-data-1.png" class="quarto-figure quarto-figure-center" width="432"></p>
+</figure>
+</div>
+</div>
+</div>
+</div></div>
+</section>
+<section id="the-problem-pesky-covariates" class="slide level2">
+<h2>The Problem: Pesky Covariates</h2>
+<ul>
+<li>Here the “blob” <span class="math inline">\(\mathbf{X}\)</span> forms a <strong>fork</strong>, as drawn…</li>
+<li>But in reality the work of modeling is <strong>flying into the cloud</strong> and modeling the <span class="math inline">\(\mathbf{X}\)</span>-<span class="math inline">\(T\)</span> and <span class="math inline">\(\mathbf{X}\)</span>-<span class="math inline">\(Y\)</span> relationships (especially: figuring out which covariates <span class="math inline">\(X_j \in \mathbf{X}\)</span> are <strong>colliders</strong>), so you can <strong>close the backdoors</strong>:</li>
+</ul>
+<div>
+
+</div>
+<div class="quarto-layout-panel" data-layout="[1,1]">
+<div class="quarto-layout-row quarto-layout-valign-center">
+<div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="images/02_pgm_propensity_covar.svg" class="quarto-figure quarto-figure-center" width="400"></p>
+</figure>
+</div>
+</div>
+<div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="images/03_pgm_propensity_obscovar.svg" class="quarto-figure quarto-figure-center" width="400"></p>
+</figure>
+</div>
+</div>
+</div>
+</div>
+<ul>
+<li>This can be really difficult, for a bunch of reasons… What if there was an easier way?</li>
+</ul>
+</section>
+<section id="if-we-had-control-over-everything-experiments-vs.-observational-data-analysis" class="slide level2 smaller title-09">
+<h2>If We Had Control Over Everything (Experiments vs.&nbsp;Observational Data Analysis)</h2>
+<ul>
+<li>If we could <strong>intervene in the DGP</strong>, we could <strong>assign treatment randomly</strong>, thus <strong><em>removing</em></strong> the impact of Covariates on <span class="math inline">\(T\)</span>!</li>
+</ul>
+
+<img data-src="images/04_pgm_propensity_random.svg" class="quarto-figure quarto-figure-center r-stretch" width="360"><ul>
+<li>Alas, we are <strong>data scientists</strong>, not (necessarily) experiment-conductors, plus there are often <strong>ethical reasons</strong> to <strong>not</strong> perform experiments!</li>
+<li>…There’s still another approach!</li>
+</ul>
+</section>
+<section id="closing-backdoors-the-too-good-to-be-true-way" class="slide level2 crunch-title title-07 text-90 crunch-p crunch-img crunch-quarto-layout-panel crunch-quarto-figure crunch-ul crunch-li-7 footnotes-0 scrollable">
+<h2>Closing Backdoors the Too-Good-To-Be-True Way</h2>
+<ul>
+<li>Key insight from causal thinking: <em>Transformation</em> of the problem from “control for all covariates” to “close all backdoor paths”…</li>
+<li>For the goal of just closing these paths, we have an alternative<sup>1</sup>:</li>
+</ul>
+<div class="columns">
+<div class="column" style="width:60%;">
+<ul>
+<li><span class="citation" data-cites="rosenbaum_central_1983">Rosenbaum and Rubin (<a href="#/references" role="doc-biblioref" onclick="">1983</a>)</span>: there exists a <strong>statistic</strong> <span class="math inline">\(\mathtt{e}(\mathbf{X}) = \Pr(T \mid \mathbf{X})\)</span>, the <strong>propensity score</strong>, which “captures” info in <span class="math inline">\(\textbf{X}\)</span> relevant to <span class="math inline">\(T\)</span> such that</li>
+<li><strong>Conditioning on <span class="math inline">\(\mathtt{e}(\mathbf{X})\)</span> closes <span class="math inline">\(\mathbf{X} \Rightarrow \mathtt{e}(\mathbf{X}) \rightarrow T\)</span></strong> (<span class="math inline">\(\mathtt{e}(\mathbf{X})\)</span> is a <strong>pipe</strong>)</li>
+</ul>
+</div><div class="column" style="width:40%;">
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="images/05_pgm_propensity_prt.svg" class="quarto-figure quarto-figure-center" width="400"></p>
+</figure>
+</div>
+</div></div>
+<ul>
+<li>This would close backdoor path <span class="math inline">\(T \leftarrow \mathtt{e}(\mathbf{X}) \Leftarrow \mathbf{X} \rightarrow Y\)</span>, leaving only direct effect <span class="math inline">\(T \rightarrow Y\)</span>! There’s one remaining complication…</li>
+</ul>
+<aside><ol class="aside-footnotes"><li id="fn1"><p>For reasons we’ll see later (double-robustness), you should ultimately try to achieve <strong>both goals!</strong></p></li></ol></aside></section>
+<section id="closing-backdoors-via-propensity-score-estimation" class="slide level2 smaller title-09 crunch-title">
+<h2>Closing Backdoors via <em>Propensity Score Estimation</em></h2>
+<ul>
+<li>Sadly we don’t <strong>observe</strong> <em>true</em> probability of being treated for all possible values of <span class="math inline">\(\mathbf{X}\)</span></li>
+<li>But, we can derive an <strong>estimate</strong> <span class="math inline">\(\hat{\mathtt{e}}(\mathbf{X})\)</span> using our <strong>machine learning skills</strong> 😎</li>
+<li>We now have that <span class="math inline">\(\hat{\mathtt{e}}(\mathbf{X})\)</span>, as a <strong>proxy</strong> relative to the <strong>pipe</strong> <span class="math inline">\(\mathbf{X} \Rightarrow \mathtt{e}(\mathbf{X}) \rightarrow T\)</span>, <strong>blocks</strong> the pipe <strong>to the extent that it captures the true probability <span class="math inline">\(\mathtt{e}(\mathbf{X}) = \Pr(T \mid \mathbf{X})\)</span></strong></li>
+</ul>
+<div>
+
+</div>
+<div class="quarto-layout-panel" data-layout="[60,40]">
+<div class="quarto-layout-row quarto-layout-valign-center">
+<div id="propensity-est-left" class="quarto-layout-cell" style="flex-basis: 60.0%;justify-content: center;">
+<div class="quarto-figure quarto-figure-right">
+<figure>
+<p><img data-src="images/06_pgm_propensity_ex.svg" class="quarto-figure quarto-figure-right" width="520"></p>
+</figure>
+</div>
+</div>
+<div id="propensity-est-right" class="quarto-layout-cell" style="flex-basis: 40.0%;justify-content: flex-start;">
+<ul>
+<li>Backdoor Path: <span class="math inline">\(T \leftarrow \mathtt{e}(\mathbf{X}) \Leftarrow \mathbf{X} \rightarrow Y\)</span></li>
+<li>Closed <strong>in proportion to</strong> <span class="math inline">\(\left[ \text{Cor}(\hat{\mathtt{e}}(\mathbf{X}), \mathtt{e}(\mathbf{X})) \right]^2 = ❓\)</span></li>
+</ul>
+</div>
+</div>
+</div>
+</section>
+<section id="sometimes-helpful-thought-experiment" class="slide level2 smaller title-11 crunch-title crunch-ul crunch-quarto-layout-panel crunch-quarto-figure crunch-img crunch-li-8">
+<h2>Sometimes-Helpful Thought Experiment</h2>
+<div class="columns">
+<div class="column" style="width:50%;">
+<ul>
+<li>Back in our basic <strong>confounding</strong> scenario:</li>
+<li>If there was only one covariate (<span class="math inline">\(\mathbf{X} = X\)</span>), and it was a <strong>constant</strong> (<span class="math inline">\(\Pr(X = c) = 1\)</span>), then <strong>all the variation in <span class="math inline">\(Y\)</span> would be due to variation in <span class="math inline">\(T\)</span></strong></li>
+<li>Less extreme: if person <span class="math inline">\(i\)</span> has covariates <span class="math inline">\(\mathbf{X}_i\)</span> and person <span class="math inline">\(j\)</span> has covariates <span class="math inline">\(\mathbf{X}_j\)</span>, but <span class="math inline">\(\mathbf{X}_i = \mathbf{X}_j\)</span>, then <strong>variation in their outcomes</strong> is <strong>due solely to <span class="math inline">\(T\)</span></strong></li>
+</ul>
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="images/02_pgm_propensity_covar.svg" class="quarto-figure quarto-figure-center" style="width:80.0%"></p>
+</figure>
+</div>
+</div><div class="column" style="width:50%;">
+<ul>
+<li>Part of the logic of <strong>propensity score</strong> is that, if person <span class="math inline">\(i\)</span> has covariates <span class="math inline">\(\mathbf{X}_i\)</span> and person <span class="math inline">\(j\)</span> has covariates <span class="math inline">\(\mathbf{X}_j\)</span>, but <span class="math inline">\(\mathtt{e}(\mathbf{X}_i) = \mathtt{e}(\mathbf{X}_j)\)</span>, then <span class="math inline">\(i\)</span> and <span class="math inline">\(j\)</span> are <strong>perfectly matched</strong></li>
+<li><span class="math inline">\(\Rightarrow\)</span> (by fun math proof) <strong>variation in their outcomes</strong> is <strong>due solely to <span class="math inline">\(T\)</span></strong></li>
+</ul>
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="images/05_pgm_propensity_prt.svg" class="quarto-figure quarto-figure-center" style="width:80.0%"></p>
+</figure>
+</div>
+</div></div>
+</section>
+<section id="how-exactly-do-we-adjust-for-hatmathttemathbfx" class="slide level2 smaller title-12">
+<h2>How Exactly Do We <em>Adjust For</em> <span class="math inline">\(\hat{\mathtt{e}}(\mathbf{X})\)</span>?</h2>
+<div style="width: 100%">
+<ul>
+<li>Simulation example: smoking reduction</li>
+</ul>
+</div>
+<div class="columns">
+<div class="column" style="width:40%;">
+<div class="cell" data-layout-align="center">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb4-2"><a></a><span class="fu">library</span>(Rlab)</span>
+<span id="cb4-3"><a></a><span class="fu">set.seed</span>(<span class="dv">5650</span>)</span>
+<span id="cb4-4"><a></a>n <span class="ot">&lt;-</span> <span class="dv">250</span></span>
+<span id="cb4-5"><a></a>motiv_vals <span class="ot">&lt;-</span> <span class="fu">runif</span>(n, <span class="dv">0</span>, <span class="dv">1</span>)</span>
+<span id="cb4-6"><a></a>enroll_vals <span class="ot">&lt;-</span> <span class="fu">ifelse</span>(</span>
+<span id="cb4-7"><a></a>  motiv_vals <span class="sc">&lt;</span> <span class="fl">0.25</span>,</span>
+<span id="cb4-8"><a></a>  <span class="dv">0</span>,</span>
+<span id="cb4-9"><a></a>  <span class="co"># We know motiv &gt; 0.25</span></span>
+<span id="cb4-10"><a></a>  <span class="fu">ifelse</span>(</span>
+<span id="cb4-11"><a></a>    motiv_vals <span class="sc">&gt;</span> <span class="fl">0.75</span>,</span>
+<span id="cb4-12"><a></a>    <span class="dv">1</span>,</span>
+<span id="cb4-13"><a></a>    <span class="co"># We know 0.25 &lt; motiv &lt; 0.75</span></span>
+<span id="cb4-14"><a></a>    <span class="fu">rbern</span>(n, <span class="at">prob=</span>(motiv_vals <span class="sc">-</span> <span class="fl">0.125</span>)<span class="sc">*</span><span class="fl">1.5</span>)</span>
+<span id="cb4-15"><a></a>  )</span>
+<span id="cb4-16"><a></a>)</span>
+<span id="cb4-17"><a></a>ncigs_vals <span class="ot">&lt;-</span> <span class="fu">rbinom</span>(n, <span class="at">size=</span><span class="dv">30</span>, <span class="at">prob=</span><span class="fl">0.6-0.2</span><span class="sc">*</span>enroll_vals)</span>
+<span id="cb4-18"><a></a>smoke_df <span class="ot">&lt;-</span> <span class="fu">tibble</span>(</span>
+<span id="cb4-19"><a></a>  <span class="at">motiv=</span>motiv_vals,</span>
+<span id="cb4-20"><a></a>  <span class="at">enroll=</span>enroll_vals,</span>
+<span id="cb4-21"><a></a>  <span class="at">ncigs=</span>ncigs_vals</span>
+<span id="cb4-22"><a></a>)</span>
+<span id="cb4-23"><a></a>(smoke_mean_df <span class="ot">&lt;-</span> smoke_df <span class="sc">|&gt;</span> <span class="fu">group_by</span>(enroll) <span class="sc">|&gt;</span> <span class="fu">summarize</span>(<span class="at">mean_ncigs=</span><span class="fu">mean</span>(ncigs)))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output-display">
+<div class="kable-table">
+<table class="caption-top">
+<thead>
+<tr class="header">
+<th style="text-align: right;">enroll</th>
+<th style="text-align: right;">mean_ncigs</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">17.88060</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">12.26724</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<details class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a></a>naive_smoke_lm <span class="ot">&lt;-</span> <span class="fu">lm</span>(ncigs <span class="sc">~</span> enroll, <span class="at">data=</span>smoke_df)</span>
+<span id="cb5-2"><a></a><span class="fu">summary</span>(naive_smoke_lm) <span class="sc">|&gt;</span> broom<span class="sc">::</span><span class="fu">tidy</span>() <span class="sc">|&gt;</span></span>
+<span id="cb5-3"><a></a>  <span class="fu">select</span>(term, estimate)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output-display">
+<div class="kable-table">
+<table class="caption-top">
+<thead>
+<tr class="header">
+<th style="text-align: left;">term</th>
+<th style="text-align: right;">estimate</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">(Intercept)</td>
+<td style="text-align: right;">17.880597</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">enroll</td>
+<td style="text-align: right;">-5.613356</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<details class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a></a><span class="co"># stud_mean_df &lt;- tibble(x=c(0,1), y=c(ey0, ey1))</span></span>
+<span id="cb6-2"><a></a>smoke_df <span class="sc">|&gt;</span> <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x=</span>enroll, <span class="at">y=</span>ncigs)) <span class="sc">+</span></span>
+<span id="cb6-3"><a></a>  <span class="fu">geom_boxplot</span>(</span>
+<span id="cb6-4"><a></a>    <span class="fu">aes</span>(<span class="at">group=</span>enroll),</span>
+<span id="cb6-5"><a></a>    <span class="at">width=</span><span class="fl">0.5</span></span>
+<span id="cb6-6"><a></a>  ) <span class="sc">+</span></span>
+<span id="cb6-7"><a></a>  <span class="fu">geom_smooth</span>(</span>
+<span id="cb6-8"><a></a>    <span class="at">method=</span><span class="st">'lm'</span>,</span>
+<span id="cb6-9"><a></a>    <span class="at">formula=</span><span class="st">'y ~ x'</span>,</span>
+<span id="cb6-10"><a></a>    <span class="at">se=</span><span class="cn">TRUE</span></span>
+<span id="cb6-11"><a></a>  ) <span class="sc">+</span></span>
+<span id="cb6-12"><a></a>  <span class="fu">geom_point</span>(</span>
+<span id="cb6-13"><a></a>    <span class="at">data=</span>smoke_mean_df,</span>
+<span id="cb6-14"><a></a>    <span class="fu">aes</span>(<span class="at">x=</span>enroll, <span class="at">y=</span>mean_ncigs),</span>
+<span id="cb6-15"><a></a>    <span class="at">size=</span><span class="dv">3</span></span>
+<span id="cb6-16"><a></a>  ) <span class="sc">+</span></span>
+<span id="cb6-17"><a></a>  <span class="fu">theme_dsan</span>(<span class="at">base_size=</span><span class="dv">24</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="index_files/figure-revealjs/naive-smoking-plot-1.png" class="quarto-figure quarto-figure-center" width="960"></p>
+</figure>
+</div>
+</div>
+</div>
+</div><div class="column" style="width:60%;">
+<div class="cell" data-layout-align="center">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a></a>smoke_df <span class="sc">|&gt;</span> <span class="fu">mutate</span>(<span class="at">enroll=</span><span class="fu">factor</span>(enroll)) <span class="sc">|&gt;</span></span>
+<span id="cb7-2"><a></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x=</span>motiv, <span class="at">y=</span>ncigs, <span class="at">color=</span>enroll)) <span class="sc">+</span></span>
+<span id="cb7-3"><a></a>  <span class="fu">geom_point</span>() <span class="sc">+</span></span>
+<span id="cb7-4"><a></a>  <span class="fu">theme_dsan</span>(<span class="at">base_size=</span><span class="dv">24</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="index_files/figure-revealjs/motive-ncigs-plot-1.png" class="quarto-figure quarto-figure-center" width="960"></p>
+</figure>
+</div>
+</div>
+</div>
+</div></div>
+<div class="columns">
+<div class="column" style="width:50%;">
+<p>Propensity to enroll:</p>
+<div class="cell" data-layout-align="center">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a></a>eprop_model <span class="ot">&lt;-</span> <span class="fu">glm</span>(enroll <span class="sc">~</span> motiv, <span class="at">family=</span><span class="st">'binomial'</span>, <span class="at">data=</span>smoke_df)</span>
+<span id="cb8-2"><a></a>eprop_preds <span class="ot">&lt;-</span> <span class="fu">predict</span>(eprop_model, <span class="at">type=</span><span class="st">"response"</span>)</span>
+<span id="cb8-3"><a></a>smoke_df <span class="ot">&lt;-</span> smoke_df <span class="sc">|&gt;</span> <span class="fu">mutate</span>(<span class="at">pred=</span>eprop_preds)</span>
+<span id="cb8-4"><a></a>smoke_df <span class="sc">|&gt;</span></span>
+<span id="cb8-5"><a></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x=</span>motiv)) <span class="sc">+</span></span>
+<span id="cb8-6"><a></a>  <span class="co"># Predictions</span></span>
+<span id="cb8-7"><a></a>  <span class="fu">geom_point</span>(</span>
+<span id="cb8-8"><a></a>    <span class="fu">aes</span>(<span class="at">y=</span>enroll)</span>
+<span id="cb8-9"><a></a>  ) <span class="sc">+</span></span>
+<span id="cb8-10"><a></a>  <span class="co"># Values</span></span>
+<span id="cb8-11"><a></a>  <span class="fu">geom_point</span>(</span>
+<span id="cb8-12"><a></a>    <span class="fu">aes</span>(<span class="at">y=</span>pred)</span>
+<span id="cb8-13"><a></a>  ) <span class="sc">+</span></span>
+<span id="cb8-14"><a></a>  <span class="fu">theme_dsan</span>(<span class="at">base_size=</span><span class="dv">24</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="index_files/figure-revealjs/enroll-propensity-1.png" class="quarto-figure quarto-figure-center" width="960"></p>
+</figure>
+</div>
+</div>
+</div>
+</div><div class="column" style="width:50%;">
+<p>Inverse propensity weight:</p>
+<div class="cell" data-layout-align="center">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a></a>smoke_df <span class="ot">&lt;-</span> smoke_df <span class="sc">|&gt;</span> <span class="fu">rowwise</span>() <span class="sc">|&gt;</span> <span class="fu">mutate</span>(</span>
+<span id="cb9-2"><a></a>  <span class="at">ipw=</span><span class="fu">ifelse</span>(enroll, <span class="dv">1</span><span class="sc">/</span>pred, <span class="dv">1</span><span class="sc">/</span>(<span class="dv">1</span><span class="sc">-</span>pred))</span>
+<span id="cb9-3"><a></a>) <span class="sc">|&gt;</span> <span class="fu">arrange</span>(pred)</span>
+<span id="cb9-4"><a></a><span class="co">#smoke_df</span></span>
+<span id="cb9-5"><a></a>smoke_df <span class="sc">|&gt;</span> <span class="fu">mutate</span>(<span class="at">enroll=</span><span class="fu">factor</span>(enroll)) <span class="sc">|&gt;</span></span>
+<span id="cb9-6"><a></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x=</span>motiv)) <span class="sc">+</span></span>
+<span id="cb9-7"><a></a>  <span class="co"># Predictions</span></span>
+<span id="cb9-8"><a></a>  <span class="fu">geom_point</span>(</span>
+<span id="cb9-9"><a></a>    <span class="fu">aes</span>(<span class="at">y=</span><span class="fu">as.numeric</span>(enroll))</span>
+<span id="cb9-10"><a></a>  ) <span class="sc">+</span></span>
+<span id="cb9-11"><a></a>  <span class="co"># Values</span></span>
+<span id="cb9-12"><a></a>  <span class="fu">geom_point</span>(</span>
+<span id="cb9-13"><a></a>    <span class="fu">aes</span>(<span class="at">y=</span>ipw, <span class="at">color=</span>enroll)</span>
+<span id="cb9-14"><a></a>  ) <span class="sc">+</span></span>
+<span id="cb9-15"><a></a>  <span class="fu">theme_dsan</span>(<span class="at">base_size=</span><span class="dv">24</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="index_files/figure-revealjs/enroll-ipw-1.png" class="quarto-figure quarto-figure-center" width="960"></p>
+</figure>
+</div>
+</div>
+</div>
+</div></div>
+</section>
+<section id="the-final-result" class="slide level2">
+<h2>The Final Result!</h2>
+<div class="cell" data-layout-align="center">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a></a>smoke_df <span class="sc">|&gt;</span> <span class="fu">mutate</span>(<span class="at">enroll=</span><span class="fu">factor</span>(enroll)) <span class="sc">|&gt;</span></span>
+<span id="cb10-2"><a></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(</span>
+<span id="cb10-3"><a></a>    <span class="at">x=</span>motiv, <span class="at">y=</span>ncigs, <span class="at">color=</span>enroll, <span class="at">size=</span>ipw,</span>
+<span id="cb10-4"><a></a>    <span class="at">alpha=</span><span class="fu">log</span>(ipw<span class="dv">-1</span>)</span>
+<span id="cb10-5"><a></a>  )) <span class="sc">+</span></span>
+<span id="cb10-6"><a></a>  <span class="fu">geom_point</span>() <span class="sc">+</span></span>
+<span id="cb10-7"><a></a>  <span class="fu">guides</span>(<span class="at">alpha=</span><span class="st">"none"</span>) <span class="sc">+</span></span>
+<span id="cb10-8"><a></a>  <span class="fu">theme_dsan</span>(<span class="at">base_size=</span><span class="dv">24</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+
+</div>
+<img data-src="index_files/figure-revealjs/ipw-plot-1.png" class="quarto-figure quarto-figure-center r-stretch" width="960"><div class="cell" data-layout-align="center">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a></a><span class="fu">lm</span>(ncigs <span class="sc">~</span> enroll, <span class="at">data=</span>smoke_df, <span class="at">weights=</span>smoke_df<span class="sc">$</span>ipw)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+Call:
+lm(formula = ncigs ~ enroll, data = smoke_df, weights = smoke_df$ipw)
+
+Coefficients:
+(Intercept)       enroll  
+     18.101       -5.665  </code></pre>
+</div>
+</div>
+</section>
 <section id="references" class="slide level2 smaller scrollable">
 <h2>References</h2>
-<div id="refs" role="list">
-
+<div id="refs" class="references csl-bib-body hanging-indent" data-entry-spacing="0" role="list">
+<div id="ref-athey_estimating_2019" class="csl-entry" role="listitem">
+Athey, Susan, and Stefan Wager. 2019. <span>“Estimating <span>Treatment Effects</span> with <span>Causal Forests</span>: <span>An Application</span>.”</span> arXiv. <a href="https://doi.org/10.48550/arXiv.1902.07409">https://doi.org/10.48550/arXiv.1902.07409</a>.
+</div>
+<div id="ref-rosenbaum_central_1983" class="csl-entry" role="listitem">
+Rosenbaum, Paul R., and Donald B. Rubin. 1983. <span>“The <span>Central Role</span> of the <span>Propensity Score</span> in <span>Observational Studies</span> for <span>Causal Effects</span>.”</span> <em>Biometrika</em> 70 (1): 41–55. <a href="https://doi.org/10.2307/2335942">https://doi.org/10.2307/2335942</a>.
+</div>
 </div>
 
 
 </section></section>
+
     </div>
   <div class="quarto-auto-generated-content" style="display: none;">
 <div class="footer footer-default">
