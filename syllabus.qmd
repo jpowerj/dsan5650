@@ -9,6 +9,7 @@ term: "Summer 2025, Georgetown University"
 # latex-auto-install: false
 bibliography: "_DSAN5650.bib"
 csl: chicago-17-no-url.csl
+date: last-modified
 format:
   html:
     link-external-icon: true

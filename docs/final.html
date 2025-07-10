@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 <meta name="author" content="DSAN 5650 Course Staff">
-<meta name="dcterms.date" content="2025-05-20">
+<meta name="dcterms.date" content="2025-07-09">
 
 <title>Final Project Specifications – DSAN 5650</title>
 <style>
@@ -92,16 +92,216 @@ div.csl-indent {
 }</script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js" integrity="sha512-v2CJ7UaYy4JwqLDIrZUI/4hqeoQieOmAZNXBeQyjo21dadnwR+8ZaIJVT8EE2iyI61OV8e6M8PP2/4hpQINQ/g==" crossorigin="anonymous" referrerpolicy="no-referrer"></script><link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/gh/dreampulse/computer-modern-web-font@master/fonts.css"><script src="./sidebar.js"></script>
 
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN") {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
 
 <link rel="stylesheet" href="./dsan-globals/jjstyles.css">
 </head>
 
-<body>
+<body class="nav-sidebar floating">
 
 <div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+  <nav class="quarto-secondary-nav">
+    <div class="container-fluid d-flex">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+        <i class="bi bi-layout-text-sidebar-reverse"></i>
+      </button>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./final.html">Final Project</a></li></ol></nav>
+        <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        </a>
+      <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
+        <i class="bi bi-search"></i>
+      </button>
+    </div>
+  </nav>
+</header>
 <!-- content -->
 <div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
 <!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
+    <div class="pt-lg-2 mt-2 text-left sidebar-header">
+    <div class="sidebar-title mb-0 py-0">
+      <a href="./">DSAN 5650: Causal Inference for Computational Social Science</a> 
+        <div class="sidebar-tools-main">
+  <a href="" class="quarto-color-scheme-toggle quarto-navigation-tool  px-1" onclick="window.quartoToggleColorScheme(); return false;" title="Toggle dark mode"><i class="bi"></i></a>
+</div>
+    </div>
+      </div>
+        <div class="mt-2 flex-shrink-0 align-items-center">
+        <div class="sidebar-search">
+        <div id="quarto-search" class="" title="Search"></div>
+        </div>
+        </div>
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><i class="bi bi-house pe-1"></i> Home</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./syllabus.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Syllabus</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./resources.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Resources</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./writeups/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Writeups</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./assignments.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Assignments</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./final.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text">Final Project</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="https://georgetown.zoom.us/j/94493188667?pwd=s4Q8TbTwZTNyK0G0VJsVe1Lefrd3AY.1" class="sidebar-item-text sidebar-link" target="_blank">
+ <span class="menu-text">Zoom Link <i class="bi bi-box-arrow-up-right ps-1"></i></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="https://georgetown.hosted.panopto.com/Panopto/Pages/Sessions/List.aspx?folderID=413d999a-16d1-4b36-93b6-b2de013af117" class="sidebar-item-text sidebar-link" target="_blank">
+ <span class="menu-text">Recordings <i class="bi bi-box-arrow-up-right ps-1"></i></span></a>
+  </div>
+</li>
+        <li class="px-0"><hr class="sidebar-divider hi "></li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./w01/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Week 1: May 21</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./w02/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Week 2: May 28</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./w03/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Week 3: Jun 4</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./w04/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Week 4: Jun 11</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./w05/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Week 5: Jun 18</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./w06/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Week 6: Jun 25</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./w07/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Week 7: Jul 2</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./w08/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Week 8: Jul 9</span></a>
+  </div>
+</li>
+        <li class="px-0"><hr class="sidebar-divider hi "></li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="https://guhub.io" class="sidebar-item-text sidebar-link" target="_blank">
+ <span class="menu-text">JupyterHub <i class="bi bi-box-arrow-up-right ps-1"></i></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="https://georgetown.instructure.com/courses/210936" class="sidebar-item-text sidebar-link" target="_blank">
+ <span class="menu-text">Canvas <i class="bi bi-box-arrow-up-right ps-1"></i></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="https://chat.google.com/room/AAQAIJ1yZso?cls=7" class="sidebar-item-text sidebar-link" target="_blank">
+ <span class="menu-text">Google Space <i class="bi bi-box-arrow-up-right ps-1"></i></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="https://jjacobs.me/meet" class="sidebar-item-text sidebar-link" target="_blank">
+ <span class="menu-text">Office Hours <i class="bi bi-box-arrow-up-right ps-1"></i></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="https://groups.google.com/a/georgetown.edu/g/dsan5650" class="sidebar-item-text sidebar-link" target="_blank">
+ <span class="menu-text">Email Archive <i class="bi bi-box-arrow-up-right ps-1"></i></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="https://forms.gle/PoyySPdVeBN37oBb8" class="sidebar-item-text sidebar-link" target="_blank">
+ <span class="menu-text">Anonymous Feedback <i class="bi bi-box-arrow-up-right ps-1"></i></span></a>
+  </div>
+</li>
+    </ul>
+    </div>
+<div class="quarto-sidebar-footer"><div class="sidebar-footer-item">
+<p><em>Updated 2025-07-09, 11:28:58 PM</em></p>
+</div></div></nav>
+<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
         <nav id="TOC" role="doc-toc" class="toc-active">
@@ -109,6 +309,10 @@ div.csl-indent {
    
   <ul>
   <li><a href="#overview" id="toc-overview" class="nav-link active" data-scroll-target="#overview">Overview</a></li>
+  <li><a href="#concrete-requirements" id="toc-concrete-requirements" class="nav-link" data-scroll-target="#concrete-requirements">Concrete Requirements</a></li>
+  <li><a href="#individual-vs.-group-projects" id="toc-individual-vs.-group-projects" class="nav-link" data-scroll-target="#individual-vs.-group-projects">Individual vs.&nbsp;Group Projects</a></li>
+  <li><a href="#timeline" id="toc-timeline" class="nav-link" data-scroll-target="#timeline">Timeline</a></li>
+  <li><a href="#submission-format" id="toc-submission-format" class="nav-link" data-scroll-target="#submission-format">Submission Format</a></li>
   <li><a href="#references" id="toc-references" class="nav-link" data-scroll-target="#references">References</a></li>
   </ul>
 <div class="toc-actions"><ul><li><a href="https://github.com/jpowerj/dsan5650/blob/main/final.qmd" target="_blank" class="toc-action"><i class="bi bi-github"></i>View source</a></li></ul></div></nav>
@@ -136,7 +340,7 @@ div.csl-indent {
     <div>
     <div class="quarto-title-meta-heading">Published</div>
     <div class="quarto-title-meta-contents">
-      <p class="date">May 20, 2025</p>
+      <p class="date">July 9, 2025</p>
     </div>
   </div>
   
@@ -151,6 +355,133 @@ div.csl-indent {
 <section id="overview" class="level2">
 <h2 class="anchored" data-anchor-id="overview">Overview</h2>
 <p>Our goal is to make the final project as open-ended as possible, to give you the space to explore any particular topic that may have piqued your interest throughout the semester! At the same time, we hope to provide you with guidance and mentorship so that you don’t feel lost as to how to start, how to proceed, and/or what to submit for the final deliverable!<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a></p>
+<p>For each lecture (especially from Week 8 onwards), our hope is that there are some <strong>next step(s)</strong> that come to mind, that you feel like you can follow to move from <strong>learning</strong> the concepts covered in class to <strong>applying</strong> them towards some <strong>social phenomenon</strong> of interest to you! Though exceptions are always welcome (see previous paragraph), here we outline <strong>two general paths</strong> you can take, with examples under each heading that you can use as inspiration:</p>
+<style>
+div.callout-note > .callout-header {
+  background-color: #f8f8f8 !important;
+}
+/* div.callout-note.callout {
+  border-left-color: #f8f8f8 !important;
+} */
+.callout.callout-style-default {
+  border: 1px solid #dee2e6 !important;
+}
+</style>
+<div class="callout callout-style-default callout-note no-icon callout-titled" title="Option 1: Modeling Social Phenomena with PGMs">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Option 1: Modeling Social Phenomena with PGMs
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p><strong>Moving from <em>vaguely-thinking-about</em> to <em>formally modeling</em></strong></p>
+<ul>
+<li>Example 1.1: Writeup on Modeling <b><i>Cahiers de Doléances</i></b> <i>(Coming soon!)</i>
+</li>
+</ul>
+</div>
+</div>
+<div class="callout callout-style-default callout-note no-icon callout-titled" title="Option 2: Pushing Towards the Asymptote of Causality">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Option 2: Pushing Towards the Asymptote of Causality
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p><strong>Taking an existing <em>associational</em> analysis and tackling confounders</strong></p>
+<ul>
+<li><strong>Example 2.1</strong>: Writeup on improving estimates of <strong>labor market monopsony</strong> <em>(Coming soon!)</em></li>
+</ul>
+</div>
+</div>
+</section>
+<section id="concrete-requirements" class="level2">
+<h2 class="anchored" data-anchor-id="concrete-requirements">Concrete Requirements</h2>
+<p>For the two options described above, the following info boxes describe the structure of the deliverable(s) you’re responsible for:</p>
+<div class="callout callout-style-default callout-note no-icon callout-titled" title="Option 1: Modeling Social Phenomena with PGMs">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-3-contents" aria-controls="callout-3" aria-expanded="true" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Option 1: Modeling Social Phenomena with PGMs
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-3" class="callout-3-contents callout-collapse collapse show">
+<div class="callout-body-container callout-body">
+<p><strong>Moving from <em>vaguely-thinking-about</em> to <em>formally modeling</em></strong></p>
+<p><em>(Coming soon!)</em></p>
+</div>
+</div>
+</div>
+<div class="callout callout-style-default callout-note no-icon callout-titled" title="Option 2: Associational $\leadsto$ Causal Analysis">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-4-contents" aria-controls="callout-4" aria-expanded="true" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Option 2: Associational <span class="math inline">\(\leadsto\)</span> Causal Analysis
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-4" class="callout-4-contents callout-collapse collapse show">
+<div class="callout-body-container callout-body">
+<p><strong>Figuring out how to address some existing <i>drawback</i> of the algorithm/data structure</strong></p>
+<p>The structure of your deliverable should be as follows:</p>
+<ol type="1">
+<li>To begin, you should <strong>summarize existing literature</strong> that you’re building upon: this could be, e.g., a summary of a past project you’ve done, or of a published paper or series of published papers that you think fail to address causal concerns as-is</li>
+<li>Then, you should <strong>explain exactly what the “missing pieces” are</strong>, in terms of <strong>bridging the gap</strong> between associational and causal analysis: what covariates have not been properly accounted for, for example?</li>
+<li>You should then <strong>explicitly state a course topic</strong> which can be used to address this shortcoming, and <strong>justify its use</strong>: for example, can a propensity score-based analysis be used to balance the treatment and control groups?
+<ol type="i">
+<li>For example, recall the point from Week 8 that <em>propensity scores can only be used when there is sufficient <strong>common support</strong></em> between the treatment and control groups in a dataset! In that week’s simulated smoking-cessation example, the DGP for the relationship between <code>motivation</code> and <code>enrollment</code> gave rise to a scenario where we did <strong>not</strong> have common support for the <strong>lowest and highest 25%</strong> of people with respect to <code>motivation</code> score (since <em>nobody</em> from the lowest 25% enrolled, while <em>everybody</em> from the highest 25% enrolled). We <strong>did</strong>, however, have common support for the middle 50%, since this middle 50% had a mixture of enrollers and non-enrollers. For your project, then, if you choose to pursue a propensity score-based analysis, you’ll need to be explicit about the specific <strong>subset(s)</strong> of your <strong>population</strong> for which the propensity-weighted estimate(s) are valid.</li>
+</ol></li>
+</ol>
+<p><em>(Remainder coming soon!)</em></p>
+</div>
+</div>
+</div>
+</section>
+<section id="individual-vs.-group-projects" class="level2">
+<h2 class="anchored" data-anchor-id="individual-vs.-group-projects">Individual vs.&nbsp;Group Projects</h2>
+<p>It is totally up to you whether you’d like to do the project individually or in a group with other students. However, if you are pursuing the project as a group, please choose <strong>one member</strong> of the group to serve as the <strong>“project lead”</strong>, and include this detail in an email to your mentor.</p>
+<p>The mentor for the <strong>group</strong> project will then be whoever was assigned as the <strong>individual</strong> mentor for the project leader (this choice doesn’t have to be related to the actual work on the project, it is just for us to be able to allocate mentees fairly between the course staff!).</p>
+<p>Expectations for group projects will <strong>scale</strong> based on the number of members in the group: for example, a group with two members will be expected to carry out a more substantive project, such that it requires approximately two times the amount of work that would be expected for individual projects<a href="#fn2" class="footnote-ref" id="fnref2" role="doc-noteref"><sup>2</sup></a></p>
+</section>
+<section id="timeline" class="level2">
+<h2 class="anchored" data-anchor-id="timeline">Timeline</h2>
+<ul>
+<li><strong>Proposal (Abstract on Notion)</strong>:
+<ul>
+<li><strong><em>Submitted</em></strong> to instructors by Tuesday, July 15th, 6:30pm EDT</li>
+<li><strong><em>Approved</em></strong> by an instructor by Tuesday, July 22nd, 6:30pm EDT</li>
+</ul></li>
+<li><strong>Final Draft</strong>:
+<ul>
+<li><strong><em>Submitted</em></strong> to instructors for review by TBD</li>
+<li><strong><em>Approved</em></strong> by an instructor by TBD</li>
+</ul></li>
+<li><strong>Final Submission</strong>:
+<ul>
+<li><strong><em>Submitted</em></strong> via Canvas by TBD</li>
+</ul></li>
+</ul>
+</section>
+<section id="submission-format" class="level2">
+<h2 class="anchored" data-anchor-id="submission-format">Submission Format</h2>
+<p>The course’s <a href="https://georgetown.instructure.com/courses/210936">Canvas page</a> now has a “Final Project” assignment, where you will upload your final submission for grading. The following is a rough sketch of what we’re looking for in terms of the structure of your submission:</p>
+<ul>
+<li>HTML format, as a rendered <a href="https://quarto.org/docs/manuscripts/" target="_blank">Quarto manuscript</a>, would be optimal, but can be PDF if preferred—for example, if you choose Option 4 (involving mathematical proofs), you might instead want to use LaTeX rendered to PDF.</li>
+<li>A requirement in terms of <strong>number of pages</strong> is difficult, but a reasonable range for the <strong>PDF format</strong> would be 3-10 pages double-spaced. Therefore, for a <strong>Quarto</strong> document or <strong>Jupyter</strong> notebook, the length can be the equivalent of this (for example, you can print-preview the Quarto doc to see how many pages it would produce if printed)</li>
+<li>It should have an <strong>abstract</strong>, a 250-500 word paragraph at the very top of the manuscript, summarizing what you did (this can be copied from your Notion abstract, or updated as needed!)</li>
+<li><strong>Citations</strong> should be set up so that they’re handled automatically. By <a href="https://quarto.org/docs/authoring/footnotes-and-citations.html" target="_blank">Quarto’s citation manager</a> for example, or by <a href="https://www.overleaf.com/learn/latex/Bibliography_management_with_bibtex" target="_blank">Bibtex/Biber</a> if you’re using LaTeX.</li>
+</ul>
 </section>
 <section id="references" class="level2">
 <h2 class="anchored" data-anchor-id="references">References</h2>
@@ -166,6 +497,7 @@ div.csl-indent {
 
 <ol>
 <li id="fn1"><p>If you can’t tell, my whole educational philosophy here is just the <a href="https://en.wikipedia.org/wiki/Montessori_education" target="_blank">Montessori system</a>—this approach was originally developed for younger (primary school) children, but lots and lots of <a href="https://www.penguinrandomhouse.com/books/579922/how-we-learn-by-stanislas-dehaene/" target="_blank">recent educational research</a> indicates that it’s an actually an extremely effective way to learn, and to motivate self-learning, for people of any age 😎<a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn2"><p>This detail is not something we’re trying to explicitly measure or be harsh about, but is included here since otherwise (if the expectations for individual and group projects were the exact same) the work would scale the other way: that each person in a two-person project would be doing half the amount of work that a person doing an individual project is doing… Hopefully that makes sense from a fairness perspective!.<a href="#fnref2" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
 </ol>
 </section></div></main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">

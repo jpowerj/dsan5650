@@ -608,28 +608,80 @@
     "href": "final.html",
     "title": "Final Project Specifications",
     "section": "",
-    "text": "Our goal is to make the final project as open-ended as possible, to give you the space to explore any particular topic that may have piqued your interest throughout the semester! At the same time, we hope to provide you with guidance and mentorship so that you don’t feel lost as to how to start, how to proceed, and/or what to submit for the final deliverable!1"
+    "text": "Our goal is to make the final project as open-ended as possible, to give you the space to explore any particular topic that may have piqued your interest throughout the semester! At the same time, we hope to provide you with guidance and mentorship so that you don’t feel lost as to how to start, how to proceed, and/or what to submit for the final deliverable!1\nFor each lecture (especially from Week 8 onwards), our hope is that there are some next step(s) that come to mind, that you feel like you can follow to move from learning the concepts covered in class to applying them towards some social phenomenon of interest to you! Though exceptions are always welcome (see previous paragraph), here we outline two general paths you can take, with examples under each heading that you can use as inspiration:\n\n\n\n\n\n\n\nOption 1: Modeling Social Phenomena with PGMs\n\n\n\nMoving from vaguely-thinking-about to formally modeling\n\nExample 1.1: Writeup on Modeling Cahiers de Doléances (Coming soon!)\n\n\n\n\n\n\n\n\n\n\nOption 2: Pushing Towards the Asymptote of Causality\n\n\n\nTaking an existing associational analysis and tackling confounders\n\nExample 2.1: Writeup on improving estimates of labor market monopsony (Coming soon!)",
+    "crumbs": [
+      "Final Project"
+    ]
   },
   {
     "objectID": "final.html#overview",
     "href": "final.html#overview",
     "title": "Final Project Specifications",
     "section": "",
-    "text": "Our goal is to make the final project as open-ended as possible, to give you the space to explore any particular topic that may have piqued your interest throughout the semester! At the same time, we hope to provide you with guidance and mentorship so that you don’t feel lost as to how to start, how to proceed, and/or what to submit for the final deliverable!1"
+    "text": "Our goal is to make the final project as open-ended as possible, to give you the space to explore any particular topic that may have piqued your interest throughout the semester! At the same time, we hope to provide you with guidance and mentorship so that you don’t feel lost as to how to start, how to proceed, and/or what to submit for the final deliverable!1\nFor each lecture (especially from Week 8 onwards), our hope is that there are some next step(s) that come to mind, that you feel like you can follow to move from learning the concepts covered in class to applying them towards some social phenomenon of interest to you! Though exceptions are always welcome (see previous paragraph), here we outline two general paths you can take, with examples under each heading that you can use as inspiration:\n\n\n\n\n\n\n\nOption 1: Modeling Social Phenomena with PGMs\n\n\n\nMoving from vaguely-thinking-about to formally modeling\n\nExample 1.1: Writeup on Modeling Cahiers de Doléances (Coming soon!)\n\n\n\n\n\n\n\n\n\n\nOption 2: Pushing Towards the Asymptote of Causality\n\n\n\nTaking an existing associational analysis and tackling confounders\n\nExample 2.1: Writeup on improving estimates of labor market monopsony (Coming soon!)",
+    "crumbs": [
+      "Final Project"
+    ]
+  },
+  {
+    "objectID": "final.html#concrete-requirements",
+    "href": "final.html#concrete-requirements",
+    "title": "Final Project Specifications",
+    "section": "Concrete Requirements",
+    "text": "Concrete Requirements\nFor the two options described above, the following info boxes describe the structure of the deliverable(s) you’re responsible for:\n\n\n\n\n\n\nOption 1: Modeling Social Phenomena with PGMs\n\n\n\n\n\nMoving from vaguely-thinking-about to formally modeling\n(Coming soon!)\n\n\n\n\n\n\n\n\n\nOption 2: Associational \\(\\leadsto\\) Causal Analysis\n\n\n\n\n\nFiguring out how to address some existing drawback of the algorithm/data structure\nThe structure of your deliverable should be as follows:\n\nTo begin, you should summarize existing literature that you’re building upon: this could be, e.g., a summary of a past project you’ve done, or of a published paper or series of published papers that you think fail to address causal concerns as-is\nThen, you should explain exactly what the “missing pieces” are, in terms of bridging the gap between associational and causal analysis: what covariates have not been properly accounted for, for example?\nYou should then explicitly state a course topic which can be used to address this shortcoming, and justify its use: for example, can a propensity score-based analysis be used to balance the treatment and control groups?\n\nFor example, recall the point from Week 8 that propensity scores can only be used when there is sufficient common support between the treatment and control groups in a dataset! In that week’s simulated smoking-cessation example, the DGP for the relationship between motivation and enrollment gave rise to a scenario where we did not have common support for the lowest and highest 25% of people with respect to motivation score (since nobody from the lowest 25% enrolled, while everybody from the highest 25% enrolled). We did, however, have common support for the middle 50%, since this middle 50% had a mixture of enrollers and non-enrollers. For your project, then, if you choose to pursue a propensity score-based analysis, you’ll need to be explicit about the specific subset(s) of your population for which the propensity-weighted estimate(s) are valid.\n\n\n(Remainder coming soon!)",
+    "crumbs": [
+      "Final Project"
+    ]
+  },
+  {
+    "objectID": "final.html#individual-vs.-group-projects",
+    "href": "final.html#individual-vs.-group-projects",
+    "title": "Final Project Specifications",
+    "section": "Individual vs. Group Projects",
+    "text": "Individual vs. Group Projects\nIt is totally up to you whether you’d like to do the project individually or in a group with other students. However, if you are pursuing the project as a group, please choose one member of the group to serve as the “project lead”, and include this detail in an email to your mentor.\nThe mentor for the group project will then be whoever was assigned as the individual mentor for the project leader (this choice doesn’t have to be related to the actual work on the project, it is just for us to be able to allocate mentees fairly between the course staff!).\nExpectations for group projects will scale based on the number of members in the group: for example, a group with two members will be expected to carry out a more substantive project, such that it requires approximately two times the amount of work that would be expected for individual projects2",
+    "crumbs": [
+      "Final Project"
+    ]
+  },
+  {
+    "objectID": "final.html#timeline",
+    "href": "final.html#timeline",
+    "title": "Final Project Specifications",
+    "section": "Timeline",
+    "text": "Timeline\n\nProposal (Abstract on Notion):\n\nSubmitted to instructors by Tuesday, July 15th, 6:30pm EDT\nApproved by an instructor by Tuesday, July 22nd, 6:30pm EDT\n\nFinal Draft:\n\nSubmitted to instructors for review by TBD\nApproved by an instructor by TBD\n\nFinal Submission:\n\nSubmitted via Canvas by TBD",
+    "crumbs": [
+      "Final Project"
+    ]
+  },
+  {
+    "objectID": "final.html#submission-format",
+    "href": "final.html#submission-format",
+    "title": "Final Project Specifications",
+    "section": "Submission Format",
+    "text": "Submission Format\nThe course’s Canvas page now has a “Final Project” assignment, where you will upload your final submission for grading. The following is a rough sketch of what we’re looking for in terms of the structure of your submission:\n\nHTML format, as a rendered Quarto manuscript, would be optimal, but can be PDF if preferred—for example, if you choose Option 4 (involving mathematical proofs), you might instead want to use LaTeX rendered to PDF.\nA requirement in terms of number of pages is difficult, but a reasonable range for the PDF format would be 3-10 pages double-spaced. Therefore, for a Quarto document or Jupyter notebook, the length can be the equivalent of this (for example, you can print-preview the Quarto doc to see how many pages it would produce if printed)\nIt should have an abstract, a 250-500 word paragraph at the very top of the manuscript, summarizing what you did (this can be copied from your Notion abstract, or updated as needed!)\nCitations should be set up so that they’re handled automatically. By Quarto’s citation manager for example, or by Bibtex/Biber if you’re using LaTeX.",
+    "crumbs": [
+      "Final Project"
+    ]
   },
   {
     "objectID": "final.html#references",
     "href": "final.html#references",
     "title": "Final Project Specifications",
     "section": "References",
-    "text": "References"
+    "text": "References",
+    "crumbs": [
+      "Final Project"
+    ]
   },
   {
     "objectID": "final.html#footnotes",
     "href": "final.html#footnotes",
     "title": "Final Project Specifications",
     "section": "Footnotes",
-    "text": "Footnotes\n\n\nIf you can’t tell, my whole educational philosophy here is just the Montessori system—this approach was originally developed for younger (primary school) children, but lots and lots of recent educational research indicates that it’s an actually an extremely effective way to learn, and to motivate self-learning, for people of any age 😎↩︎"
+    "text": "Footnotes\n\n\nIf you can’t tell, my whole educational philosophy here is just the Montessori system—this approach was originally developed for younger (primary school) children, but lots and lots of recent educational research indicates that it’s an actually an extremely effective way to learn, and to motivate self-learning, for people of any age 😎↩︎\nThis detail is not something we’re trying to explicitly measure or be harsh about, but is included here since otherwise (if the expectations for individual and group projects were the exact same) the work would scale the other way: that each person in a two-person project would be doing half the amount of work that a person doing an individual project is doing… Hopefully that makes sense from a fairness perspective!.↩︎",
+    "crumbs": [
+      "Final Project"
+    ]
   },
   {
     "objectID": "writeups/hw2-guide/HW2_Guide.html",

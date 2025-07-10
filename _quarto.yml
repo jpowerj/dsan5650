@@ -26,10 +26,8 @@ website:
         href: writeups/index.qmd
       - text: "Assignments"
         href: assignments.qmd
-      # - text: "Midterm"
-      #   href: midterm.qmd
-      # - text: "Final Project"
-      #   href: final.qmd
+      - text: "Final Project"
+        href: final.qmd
       - text: "Zoom Link <i class='bi bi-box-arrow-up-right ps-1'></i>"
         href: "https://georgetown.zoom.us/j/94493188667?pwd=s4Q8TbTwZTNyK0G0VJsVe1Lefrd3AY.1"
         target: "_blank"
@@ -65,11 +63,17 @@ website:
       - text: "JupyterHub <i class='bi bi-box-arrow-up-right ps-1'></i>"
         href: "https://guhub.io"
         target: "_blank"
-      # - text: "Google Classroom <i class='bi bi-box-arrow-up-right ps-1'></i>"
-      #   href: "https://classroom.google.com/c/NzQzMjkyMzg4NjIw?cjc=ilkwdqn"
-      #   target: "_blank"
+      - text: "Canvas <i class='bi bi-box-arrow-up-right ps-1'></i>"
+        href: "https://georgetown.instructure.com/courses/210936"
+        target: "_blank"
+      - text: "Google Space <i class='bi bi-box-arrow-up-right ps-1'></i>"
+        href: "https://chat.google.com/room/AAQAIJ1yZso?cls=7"
+        target: "_blank"
       - text: "Office Hours <i class='bi bi-box-arrow-up-right ps-1'></i>"
         href: "https://jjacobs.me/meet"
+        target: "_blank"
+      - text: "Email Archive <i class='bi bi-box-arrow-up-right ps-1'></i>"
+        href: "https://groups.google.com/a/georgetown.edu/g/dsan5650"
         target: "_blank"
       - text: "Anonymous Feedback <i class='bi bi-box-arrow-up-right ps-1'></i>"
         href: "https://forms.gle/PoyySPdVeBN37oBb8"
