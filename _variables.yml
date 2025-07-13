@@ -80,18 +80,18 @@ midterm:
   date-md: "Jul 2"
   date-full: "Wednesday, **July 2**"
 hw3:
-  title: "Statistical Matching: Apples to Apples and Oranges to Oranges"
-  date-md: "Jun 27 (Friday), 5:59pm EDT"
-  date-full: "Friday, **June 27**"
-  url: "#"
-hw4:
-  title: "Basic Computational Causal Methods"
+  title: "Social Science: PGMs and the Asymptote of Causality"
   date-md: "Jul 11 (Friday), 5:59pm EDT"
   date-full: "Friday, **July 11**"
   url: "#"
+hw4:
+  title: "Computational Causal Methods"
+  date-md: "Jul 25 (Friday), 5:59pm EDT"
+  date-full: "Friday, **July 25**"
+  url: "#"
 hw5:
   title: "Fancy Computational Causal Methods"
-  date-md: "Jul 25 (Friday), 5:59pm EDT"
+  date-md: "Aug 1 (Friday), 5:59pm EDT"
   date-full: "Friday, **July 25**"
   url: "#"
 final:

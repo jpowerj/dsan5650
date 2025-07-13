@@ -6,40 +6,56 @@ date: 2025-07-09
 bibliography: "_DSAN5650.bib"
 ---
 
+```{=html}
+<style>
+div.callout-note > .callout-header {
+  background-color: #f8f8f8 !important;
+}
+.callout.callout-style-default {
+  border: 1px solid #dee2e6 !important;
+}
+div.callout-tip > .callout-header {
+  background-color: rgba(230, 159, 0, 0.2) !important;
+}
+/* .callout.callout-tip {
+  border: 1px solid rgba(230, 159, 0, 0.2)  !important;
+} */
+div.callout-important > .callout-header {
+  background-color: rgba(86, 180, 233, 0.2) !important;
+}
+/* div.callout-note.callout {
+  border-left-color: #f8f8f8 !important;
+} */
+</style>
+```
+
+::: {.callout-note title="Changelog"}
+
+* *[Sunday, July 12, 11pm]* Updated examples box for each option to reflect that **HW3A** and **HW3B** will walk you through examples of these two approaches, respectively.
+
+:::
+
 ## Overview
 
 Our goal is to make the final project as open-ended as possible, to give you the space to explore any particular topic that may have piqued your interest throughout the semester! At the same time, we hope to provide you with guidance and mentorship so that you don't feel lost as to how to start, how to proceed, and/or what to submit for the final deliverable![^montessori]
 
 For each lecture (especially from Week 8 onwards), our hope is that there are some **next step(s)** that come to mind, that you feel like you can follow to move from **learning** the concepts covered in class to **applying** them towards some **social phenomenon** of interest to you! Though exceptions are always welcome (see previous paragraph), here we outline **two general paths** you can take, with examples under each heading that you can use as inspiration:
 
-
-```{=html}
-<style>
-div.callout-note > .callout-header {
-  background-color: #f8f8f8 !important;
-}
-/* div.callout-note.callout {
-  border-left-color: #f8f8f8 !important;
-} */
-.callout.callout-style-default {
-  border: 1px solid #dee2e6 !important;
-}
-</style>
-```
-
-::: {.callout-note title="Option 1: Modeling Social Phenomena with PGMs" icon="false"}
+::: {.callout-tip title="Option 1: Modeling Social Phenomena with PGMs" icon="false"}
 
 **Moving from *vaguely-thinking-about* to *formally modeling***
 
-* Example 1.1</b>: Writeup on Modeling <b><i>Cahiers de Doléances</i></b> <i>(Coming soon!)</i></li>
+* **Example 1.1**: **HW3A** walks you through how PGMs can be used to "link" survey-based and experimental studies of the same social phenomenon (employer discrimination on the basis of criminal record and race)
+* <b>Example 1.2</b>: Writeup on Modeling <b><i>Cahiers de Doléances</i></b> <i>(Coming soon!)</i></li>
 
 :::
 
-::: {.callout-note title="Option 2: Pushing Towards the Asymptote of Causality" icon="false"}
+::: {.callout-important title="Option 2: Pushing Towards the Asymptote of Causality" icon="false"}
 
 **Taking an existing *associational* analysis and tackling confounders**
 
-* **Example 2.1**: Writeup on improving estimates of **labor market monopsony** *(Coming soon!)*
+* **Example 2.1**: **HW3B** walks you through how propensity score weighting can be used to enhance an existing associational analysis, by taking a "first step" towards removing **confounders** 
+* **Example 2.2**: Writeup on improving estimates of **labor market monopsony** *(Coming soon!)*
 
 :::
 
@@ -47,7 +63,7 @@ div.callout-note > .callout-header {
 
 For the two options described above, the following info boxes describe the structure of the deliverable(s) you're responsible for:
 
-::: {.callout-note title="Option 1: Modeling Social Phenomena with PGMs" collapse="false" icon="false"}
+::: {.callout-tip title="Option 1: Modeling Social Phenomena with PGMs" collapse="false" icon="false"}
 
 **Moving from *vaguely-thinking-about* to *formally modeling***
 
@@ -55,7 +71,7 @@ For the two options described above, the following info boxes describe the struc
 
 :::
 
-::: {.callout-note title="Option 2: Associational $\leadsto$ Causal Analysis" collapse="false" icon="false"}
+::: {.callout-important title="Option 2: Associational $\leadsto$ Causal Analysis" collapse="false" icon="false"}
 
 **Figuring out how to address some existing <i>drawback</i> of the algorithm/data structure**
 
