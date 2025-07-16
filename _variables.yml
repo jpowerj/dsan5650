@@ -47,18 +47,18 @@ w08:
   date-md: "Jul 9"
 w09:
   weeknum: 9
-  title: "Double-Debiased Machine Learning"
-  footer: "DoubleML"
+  title: "Doubly-Robust Estimation, Instrumental Variables"
+  footer: "Instrumental Variables"
   date-md: "Jul 16"
 w10:
   weeknum: 10
-  title: "Causal Forests for Heterogeneous Treatment Effects"
-  footer: "Causal Forests"
+  title: "Double-Debiased Machine Learning"
+  footer: "Double-Debiased Machine Learning"
   date-md: "Jul 23"
 w11:
   weeknum: 11
-  title: "Fancier Causal Inference at the Fancy Computational Methods Frontier"
-  footer: "Fancier Causal Inference"
+  title: "Causal Forests for Heterogeneous Treatment Effects"
+  footer: "Causal Forests"
   date-md: "Jul 30"
 w12:
   weeknum: 12

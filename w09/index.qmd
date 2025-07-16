@@ -1,0 +1,293 @@
+---
+title: "Week 9: Instrumental Variable (IV) Estimation"
+subtitle: "*DSAN 5650: Causal Inference for Computational Social Science*<br><span class='subsubtitle'>Summer 2025, Georgetown University</span>"
+author: "Jeff Jacobs"
+institute: "[`jj1088@georgetown.edu`](mailto:jj1088@georgetown.edu)"
+bibliography: "../_DSAN5650.bib"
+date: 2025-07-16
+date-format: full
+lecnum: 9
+categories:
+  - "Class Sessions"
+format:
+  revealjs:
+    df-print: kable
+    footer: "DSAN 5650 Week 9: {{< var w09.footer >}}"
+    output-file: "slides.html"
+    html-math-method: mathjax
+    scrollable: true
+    link-external-icon: true
+    link-external-newwindow: true
+    echo: true
+    code-fold: true
+    theme: [default, "../dsan-globals/jjquarto.scss"]
+    include-in-header:
+      text: "<link rel='stylesheet' href='https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css'><link rel='stylesheet' type='text/css' href='https://cdn.jsdelivr.net/gh/dreampulse/computer-modern-web-font@master/fonts.css'>"
+    slide-number: true
+    simplemenu:
+      flat: true
+      barhtml:
+        header: "<div class='menubar'><span style='position: absolute; left: 8; padding-left: 8px;'><a href='./index.html'>&larr; Return to Notes</a></span><ul class='menu'></ul></div>"
+      scale: 0.5
+    revealjs-plugins:
+      - simplemenu
+  html:
+    df-print: kable
+    output-file: "index.html"
+    html-math-method: mathjax
+    link-external-icon: true
+    link-external-newwindow: true
+    echo: true
+    code-fold: true
+    include-in-header:
+      text: "<link rel='stylesheet' href='https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css'><link rel='stylesheet' type='text/css' href='https://cdn.jsdelivr.net/gh/dreampulse/computer-modern-web-font@master/fonts.css'>"
+---
+
+::: {.content-visible unless-format="revealjs"}
+
+<center>
+<a class="h2" href="./slides.html" target="_blank">Open slides in new window &rarr;</a>
+</center>
+
+:::
+
+# Schedule {.smaller .crunch-title .crunch-callout .code-90 data-stack-name="Schedule"}
+
+Today's Planned Schedule:
+
+| | Start | End | Topic |
+|:- |:- |:- |:- |
+| **Lecture** | 6:30pm | 6:45pm | [Final Project Tings &rarr;](#final-project-tings) |
+| | 6:45pm | 7:20pm | [Double Robustness &rarr;](#double-robustness)
+| | 7:20pm | 8:00pm | [When Conditioning Won't Cut It: IVs &rarr;](#hard-mode-when-conditioning-cant-fix-things) |
+| **Break!** | 8:00pm | 8:10pm | |
+| | 8:10pm | 9:00pm | [Drawing Causal Inferences from Text Data &rarr;](#lab-causal-inference-with-text) |
+
+: {tbl-colwidths="[12,12,12,64]"}
+
+{{< include ../dsan-globals/_globals-tex.qmd >}}
+
+# Final Project Tings {data-name="Final Projects"}
+
+* MVP vs. non-MVP
+
+# Double Robustness {data-stack-name="Double Robustness" .smaller}
+
+* Propensity Score Weighting seems so much easier than all the hard work of modeling... why can't we just propensity score all the things and be done with it!?
+* By using **doubly-robust** estimation methods, you can:
+  * <i class='bi bi-1-circle'></i> Carefully develop a **covariate adjustment strategy** (then use e.g. regression),
+  * <i class='bi bi-2-circle'></i> Carefully develop a **propensity score strategy**, and then
+  * <i class='bi bi-3-circle'></i> Be only as wrong as the least-wrong of <i class='bi bi-1-circle'></i> and <i class='bi bi-2-circle'></i>!!
+
+![*With doubly-robust estimation, as long as the answer is either True or False you're good!*](images/false-true.png){fig-align="center"}
+
+## Doubly-Robust Estimation {.smaller .crunch-title .crunch-quarto-layout-panel .crunch-quarto-figure}
+
+:::: {layout="[1,1]" layout-valign="center"}
+::: {#blog-dgp}
+
+![Super cool example courtesy of [Matteo Courthoud](https://matteocourthoud.github.io/post/aipw/)!](images/darkmode.svg){fig-align="center" width="300"}
+
+:::
+::: {#blog-table}
+
+![](images/modes.png){fig-align="center"}
+
+```{python}
+import pandas as pd
+import numpy as np
+import matplotlib.pyplot as plt
+import seaborn as sns
+import patchworklib as pw
+
+import statsmodels.formula.api as smf
+from causalml.match import create_table_one
+from joblib import Parallel, delayed
+from sklearn.linear_model import LogisticRegression
+
+def generate_data(N=300, seed=1):
+  np.random.seed(seed)
+  
+  # Control variables
+  male = np.random.binomial(1, 0.45, N)
+  age = np.rint(18 + np.random.beta(2, 2, N)*50)
+  hours = np.minimum(np.round(np.random.lognormal(5, 1.3, N), 1), 2000)
+  
+  # Treatment
+  pr = np.maximum(0, np.minimum(1, 0.8 + 0.3*male - np.sqrt(age-18)/10))
+  dark_mode = np.random.binomial(1, pr, N)==1
+  
+  # Outcome
+  read_time = np.round(np.random.normal(10 - 4*male + 2*np.log(hours) + 2*dark_mode, 4, N), 1)
+
+  # Generate the dataframe
+  df = pd.DataFrame({'read_time': read_time, 'dark_mode': dark_mode, 'male': male, 'age': age, 'hours': hours})
+
+  return df
+
+user_df = generate_data(N=300)
+user_df.head()
+ols_model = smf.ols("read_time ~ dark_mode", data=user_df).fit()
+ols_summary = ols_model.summary()
+results_as_html = ols_summary.tables[1].as_html()
+ols_summary_df = pd.read_html(results_as_html, header=0, index_col=0)[0]
+ols_summary_df[['coef','std err']]
+#type(ols_summary.tables[1])[['coef','std err']]
+# .tables[1]
+# ols_df[['coef','std err']]
+```
+
+:::
+::::
+
+* ...So, is this a causal effect? Does dark theme **cause** users to spend less time reading?
+
+## Balance
+
+```{python}
+#| df-print: kable
+from IPython.display import display, HTML
+X = ['male', 'age', 'hours']
+table1 = create_table_one(user_df, 'dark_mode', X)
+HTML(table1.to_html())
+```
+
+## Model 1: Propensity Score {.smaller .crunch-title .crunch-img .crunch-quarto-figure}
+
+```{python}
+#| fig-align: center
+def estimate_e(df, X, D, model_e):
+    e = model_e.fit(df[X], df[D]).predict_proba(df[X])[:,1]
+    return e
+user_df['e'] = estimate_e(user_df, X, "dark_mode", LogisticRegression())
+ax = pw.Brick(figsize=(7, 2.75));
+sns.kdeplot(
+  x='e', hue='dark_mode', data=user_df,
+  # bins=30,
+  #stat='density',
+  common_norm=False,
+  fill=True,
+  ax=ax
+);
+ax.set_xlabel("$e(X)$");
+ax.savefig()
+```
+
+```{python}
+w = 1 / (user_df['e'] * user_df["dark_mode"] + (1-user_df['e']) * (1-user_df["dark_mode"]))
+smf.wls("read_time ~ dark_mode", weights=w, data=user_df).fit().summary().tables[1]
+```
+
+## Model 2: Regression with Controls {.smaller}
+
+```{python}
+def estimate_mu(df, X, D, y, model_mu):
+    mu = model_mu.fit(df[X + [D]], df[y])
+    mu0 = mu.predict(df[X + [D]].assign(dark_mode=0))
+    mu1 = mu.predict(df[X + [D]].assign(dark_mode=1))
+    return mu0, mu1
+from sklearn.linear_model import LinearRegression
+
+mu0, mu1 = estimate_mu(user_df, X, "dark_mode", "read_time", LinearRegression())
+print(np.mean(mu1-mu0))
+```
+
+* Enter [`EconML`](https://econml.azurewebsites.net/index.html), Microsoft's "Official" ML-based econometrics library 😎
+
+```{python}
+from econml.dr import LinearDRLearner
+
+model = LinearDRLearner(
+  model_propensity=LogisticRegression(),
+  model_regression=LinearRegression(),
+  random_state=5650
+)
+model.fit(Y=user_df["read_time"], T=user_df["dark_mode"], X=user_df[X]);
+model.ate_inference(X=user_df[X].values, T0=0, T1=1).summary().tables[0]
+```
+
+## Double-Robustness to the Rescue! {.smaller}
+
+:::: {.columns}
+::: {.column width="50%"}
+
+Wrong **regression** model:
+
+```{python}
+#| fig-align: center
+def compare_estimators(X_e, X_mu, D, y, seed):
+    df = generate_data(seed=seed)
+    e = estimate_e(df, X_e, D, LogisticRegression())
+    mu0, mu1 = estimate_mu(df, X_mu, D, y, LinearRegression())
+    slearn = mu1 - mu0
+    ipw = (df[D] / e - (1-df[D]) / (1-e)) * df[y]
+    aipw = slearn + df[D] / e * (df[y] - mu1) - (1-df[D]) / (1-e) * (df[y] - mu0)
+    return np.mean((slearn, ipw, aipw), axis=1)
+
+def simulate_estimators(X_e, X_mu, D, y):
+    r = Parallel(n_jobs=8)(delayed(compare_estimators)(X_e, X_mu, D, y, i) for i in range(100))
+    df_tau = pd.DataFrame(r, columns=['S-learn', 'IPW', 'AIPW'])
+    return df_tau
+# The actual plots
+ax = pw.Brick(figsize=(4, 3.5))
+wrong_reg_df = simulate_estimators(
+  X_e=['male', 'age'], X_mu=['hours'], D="dark_mode", y="read_time"
+)
+wrong_reg_plot = sns.boxplot(
+  data=pd.melt(wrong_reg_df), x='variable', y='value', hue='variable',
+  ax=ax,
+  linewidth=2
+);
+wrong_reg_plot.set(
+  title="Distribution of $\hat τ$", xlabel='', ylabel=''
+);
+ax.axhline(2, c='r', ls=':');
+ax.savefig()
+```
+
+:::
+::: {.column width="50%"}
+
+Wrong **propensity score** model:
+
+```{python}
+#| fig-align: center
+ax = pw.Brick(figsize=(4, 3.5))
+wrong_ps_df = simulate_estimators(
+  ['age'], ['male', 'hours'], D="dark_mode", y="read_time"
+)
+wrong_ps_plot = sns.boxplot(
+  data=pd.melt(wrong_ps_df), x='variable', y='value', hue='variable',
+  ax=ax,
+  linewidth=2
+);
+ax.set_title("Distribution of $\hat τ$");
+ax.axhline(2, c='r', ls=':');
+ax.savefig()
+```
+
+:::
+::::
+
+# Hard Mode: When Conditioning Isn't an Option / Can't Fix Things {.title-09 .crunch-title .text-90 data-stack-name="Instrumental Variables"}
+
+* Approaches we've discussed thus far depend on the ability to **adjust for** (e.g., by conditioning-on and/or purposefully-not-conditioning-on) **confounders themselves** (e.g., in regression), or on **propensity scores**
+* Enter **Instrumental Variables!** (this week), **Specification of Mechanisms / Front-Door Pathways** (next week)
+* $\leadsto$ Find **"natural experiments"**, randomizations or pseudo-randomizations in society that allow us to replicate the "holy grail" of random assignment
+
+::: {.notes}
+
+I... always ask economists why it isn't explained like this, and they always say "it's more complicated than that", and then they explain the complications and I think I understand them but still think that this is a good way to describe the gist!
+
+:::
+
+## Instrumental Variable Estimation
+
+# Lab: Causal Inference with Text {data-stack-name="Text-as-Data"}
+
+* Lab Time!
+
+## References
+
+::: {#refs}
+:::

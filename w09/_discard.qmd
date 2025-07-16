@@ -1,0 +1,156 @@
+::: {.hidden}
+
+```{r}
+#| label: r-source-globals
+library(tidyverse)
+source("../dsan-globals/_globals.r")
+```
+
+:::
+
+---
+
+```{r}
+library(tidyverse)
+library(glmnetUtils)
+
+set.seed(42)
+
+
+gen_df <- function(N) {
+  df <- tibble(X1 = rnorm(N),
+               X2 = rnorm(N),
+               X3 = rnorm(N),
+               A = rbernoulli(N, pnorm(X1 + X2 + 0.4 * X1 * X2) ) %>% as.integer,
+               Y = A * 1 + X2 + X3 + rnorm(N))
+  return(df)
+}
+
+# aipw estimator
+aipw <- function(a, y, ps, ey1, ey0) {
+  mean( ( (a*y)/ps - (1-a)*y/(1-ps) ) - (a-ps)/(ps*(1-ps)) * ( (1-ps)*ey1 + ps*ey0 ) )
+}
+
+aipw2 <- function(a, y, ps, ey) {
+  mean( y*a/ps - (a-ps)/ps *  ey)
+}
+
+# ipw estimator
+ipw <- function(a, y, ps) {
+  mean(a*y/ps - (1-a)*y/(1-ps))
+}
+
+
+calc_ate <- function(N, psc = TRUE, outc = TRUE) {
+  dat <- gen_df(N)
+  # calculate propsensity score
+  if(psc) {
+    ps <- predict(glm(A ~ X1 + X2, family = "binomial", data = dat), type = "response") %>% as.numeric
+  }
+  else {
+    ps <- predict(glm(A ~ X1, family = "binomial", data = dat), type = "response") %>% as.numeric
+  }
+  
+  # calc Ey
+  if(outc) {
+    m <- glm(Y ~ A + X2 + X3, family = "gaussian", data = dat)
+  }
+  else {
+    m <- glm(Y ~ A + X3, family = "gaussian", data = dat)
+  }
+  
+  # calc ey1
+  ey1 <- predict(m, newdata = dat %>% mutate(A=1), type = "response") %>% as.numeric
+  # calc ey0
+  ey0 <- predict(m, newdata = dat %>% mutate(A=0), type = "response") %>% as.numeric
+  
+  # regression estimate
+  reg <- mean(ey1 - ey0)
+  
+  return(c(aipw(a = dat$A, ps = ps, y = dat$Y, ey1 = ey1, ey0 = ey0), ipw(a = dat$A, y = dat$Y, ps = ps), reg  ))
+}
+
+bb <- replicate(1000, calc_ate(N = 300, psc = T, outc = F)) %>% t
+
+set.seed(42)
+
+ps.T.outc.T.300 <- replicate(1000, calc_ate(N = 300, psc = T, outc = T)) %>% t
+ps.T.outc.F.300 <- replicate(1000, calc_ate(N = 300, psc = T, outc = F)) %>% t
+ps.F.outc.T.300 <- replicate(1000, calc_ate(N = 300, psc = F, outc = T)) %>% t
+
+ps.T.outc.T.5000 <- replicate(1000, calc_ate(N = 5000, psc = T, outc = T)) %>% t
+ps.T.outc.F.5000 <- replicate(1000, calc_ate(N = 5000, psc = T, outc = F)) %>% t
+ps.F.outc.T.5000 <- replicate(1000, calc_ate(N = 5000, psc = F, outc = T)) %>% t
+
+
+plot_df <- tibble(ATE = c(ps.T.outc.T.300[,1], ps.T.outc.T.300[,2], ps.T.outc.T.300[,3],
+                           ps.T.outc.F.300[,1], ps.T.outc.F.300[,2], ps.T.outc.F.300[,3],
+                           ps.F.outc.T.300[,1], ps.F.outc.T.300[,2], ps.F.outc.T.300[,3],
+                           ps.T.outc.T.5000[,1], ps.T.outc.T.5000[,2], ps.T.outc.T.5000[,3],
+                           ps.T.outc.F.5000[,1], ps.T.outc.F.5000[,2], ps.T.outc.F.5000[,3],
+                           ps.F.outc.T.5000[,1], ps.F.outc.T.5000[,2], ps.F.outc.T.5000[,3]),
+                  method = rep(rep(c(rep("AIPW", 1000), rep("IPW", 1000), rep("RSM", 1000)), 3), 2) ,
+                  spec = rep(c(rep("prop. score = correct, resp. surface = correct", 3000),
+                               rep("prop. score = correct, resp. surface = incorrect", 3000),
+                               rep("prop. score = incorrect, resp. surface = correct", 3000)), 2),
+                  sample.size = c(rep("N = 300", 9000), rep("N = 5000", 9000)) )
+
+
+ggplot(plot_df, aes(y = ATE, x = method, fill = method)) + geom_boxplot() + facet_wrap(~spec+sample.size, ncol = 2) +
+  geom_hline(yintercept = 1.0, colour="#BB0000", linetype="dashed") + 
+  annotate("text", label = "true effect", x = 3.15, y = 0.83, colour="#BB0000") + theme_bw() + coord_cartesian(ylim = quantile(plot_df$ATE, c(0.03, 0.97))) +
+  scale_fill_manual(values=c("#999999", "#E69F00", "#56B4E9")) + theme(legend.position="none")
+```
+
+---
+
+
+```{r}
+#| echo: false
+# display NaN cells in DT::datatable()
+options(htmlwidgets.TOJSON_ARGS = list(na = 'string')) # https://stackoverflow.com/a/48694410/6105259
+
+print_as_dt <- function(x){
+  DT::datatable(x,
+                rownames = FALSE,
+                options = list(
+                  dom = 'ltipr', # to remove search box; https://stackoverflow.com/a/61952067/6105259
+                  autoWidth = TRUE,
+                  columnDefs = list(
+                    list(className = 'dt-left', targets = "_all"),
+                    list(width = '200px', targets = "_all")
+                    )
+                  )
+                )
+}
+```
+
+```{r}
+#| echo: false
+print_as_dt(py$table1)
+```
+
+---
+
+
+```{mermaid}
+flowchart TB
+classDef included fill:#DCDCDC,stroke:#000000,stroke-width:2px;
+classDef excluded fill:#ffffff,stroke:#000000,stroke-width:2px;
+classDef unobserved fill:#ffffff,stroke:#000000,stroke-width:2px,stroke-dasharray: 5 5;
+
+X1((gender))
+X2((age))
+X3((hours))
+D((dark mode))
+Y((read time))
+
+D --> Y
+X1 --> Y
+X1 --> D
+X2 --> D
+X3 --> Y
+
+class D,Y included;
+class X1,X2,X3 excluded;
+```
