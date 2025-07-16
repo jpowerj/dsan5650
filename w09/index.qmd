@@ -98,7 +98,7 @@ import pandas as pd
 import numpy as np
 import matplotlib.pyplot as plt
 import seaborn as sns
-import patchworklib as pw
+import patchworklib as pw;
 
 import statsmodels.formula.api as smf
 from causalml.match import create_table_one
@@ -142,15 +142,51 @@ ols_summary_df[['coef','std err']]
 
 * ...So, is this a causal effect? Does dark theme **cause** users to spend less time reading?
 
-## Balance
+## Balance {.smaller .crunch-title .table-90}
+
+:::: {.columns}
+::: {.column width="50%"}
+
+Enter **Uber**'s causal inference library: [`causalml`](https://causalml.readthedocs.io/en/latest/about.html)
 
 ```{python}
 #| df-print: kable
 from IPython.display import display, HTML
 X = ['male', 'age', 'hours']
 table1 = create_table_one(user_df, 'dark_mode', X)
+user_df.to_csv("assets/user_df.csv")
+table1.to_csv("assets/table1.csv")
 HTML(table1.to_html())
 ```
+
+:::
+::: {.column width="50%"}
+
+And then `WeightIt` to generate a "love plot":
+
+![](images/loveplot.png){fig-align="center"}
+
+:::
+::::
+
+## *Augmented* Inverse Propensity Weighting (AIPW) {.smaller .crunch-title .title-09 .math-90}
+
+$$
+\begin{align*}
+\hat \tau_{AIPW} &= \frac{1}{n} \sum_{i=1}^{n} \left( \text{RegEst}(X_i) + \text{PropensityAdj}(X_i, Y_i) \right) \\
+\text{RegEst}(X_i) &= \hat \mu^{(1)}(X_i) - \hat \mu^{(0)}(X_i) \\
+\text{PropensityAdj}(X_i, Y_i) &= \frac{D_i}{\hat{\mathtt{e}}(X_i)} \left( Y_i - \hat \mu^{(1)}(X_i) \right) - \frac{(1-D_i) }{1-\hat{\mathtt{e}}(X_i)} \left( Y_i - \hat \mu^{(0)}(X_i) \right)
+\end{align*}
+$$
+
+where $\mu^{(d)}(x)$ is the **response function**, i.e. the expected value of the outcome, conditional on observable characteristics $x$ and treatment status $d$, and $e(X)$ is the **propensity score**.
+
+$$
+\begin{align*}
+\mu^{(d)}(x) &= \mathbb E \left[ Y_i \ \big | \ X_i = x, D_i = d \right] \\
+\mathtt{e}(x) &= \mathbb E \left[ D_i = 1 \ \big | \ X_i = x \right]
+\end{align*}
+$$
 
 ## Model 1: Propensity Score {.smaller .crunch-title .crunch-img .crunch-quarto-figure}
 
@@ -180,6 +216,8 @@ smf.wls("read_time ~ dark_mode", weights=w, data=user_df).fit().summary().tables
 
 ## Model 2: Regression with Controls {.smaller}
 
+* First, with `scikit-learn`:
+
 ```{python}
 def estimate_mu(df, X, D, y, model_mu):
     mu = model_mu.fit(df[X + [D]], df[y])
@@ -189,6 +227,7 @@ def estimate_mu(df, X, D, y, model_mu):
 from sklearn.linear_model import LinearRegression
 
 mu0, mu1 = estimate_mu(user_df, X, "dark_mode", "read_time", LinearRegression())
+print(np.mean(mu0), np.mean(mu1))
 print(np.mean(mu1-mu0))
 ```
 
