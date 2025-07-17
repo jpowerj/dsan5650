@@ -341,7 +341,7 @@ window.Quarto = {
     </ul>
     </div>
 <div class="quarto-sidebar-footer"><div class="sidebar-footer-item">
-<p><em>Updated 2025-07-16, 06:33:40 PM</em></p>
+<p><em>Updated 2025-07-16, 08:18:17 PM</em></p>
 </div></div></nav>
 <div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
@@ -355,6 +355,8 @@ window.Quarto = {
   <li><a href="#double-robustness" id="toc-double-robustness" class="nav-link" data-scroll-target="#double-robustness">Double Robustness</a>
   <ul class="collapse">
   <li><a href="#doubly-robust-estimation" id="toc-doubly-robust-estimation" class="nav-link" data-scroll-target="#doubly-robust-estimation">Doubly-Robust Estimation</a></li>
+  <li><a href="#unit-of-observation-article-reader" id="toc-unit-of-observation-article-reader" class="nav-link" data-scroll-target="#unit-of-observation-article-reader">Unit of Observation: (Article, Reader)</a></li>
+  <li><a href="#what-does-the-data-look-like" id="toc-what-does-the-data-look-like" class="nav-link" data-scroll-target="#what-does-the-data-look-like">What Does the Data Look Like?</a></li>
   <li><a href="#balance" id="toc-balance" class="nav-link" data-scroll-target="#balance">Balance</a></li>
   <li><a href="#augmented-inverse-propensity-weighting-aipw" id="toc-augmented-inverse-propensity-weighting-aipw" class="nav-link" data-scroll-target="#augmented-inverse-propensity-weighting-aipw"><em>Augmented</em> Inverse Propensity Weighting (AIPW)</a></li>
   <li><a href="#model-1-propensity-score" id="toc-model-1-propensity-score" class="nav-link" data-scroll-target="#model-1-propensity-score">Model 1: Propensity Score</a></li>
@@ -571,15 +573,14 @@ window.Quarto = {
 <span id="cb1-30"><a href="#cb1-30" aria-hidden="true" tabindex="-1"></a>  <span class="cf">return</span> df</span>
 <span id="cb1-31"><a href="#cb1-31" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb1-32"><a href="#cb1-32" aria-hidden="true" tabindex="-1"></a>user_df <span class="op">=</span> generate_data(N<span class="op">=</span><span class="dv">300</span>)</span>
-<span id="cb1-33"><a href="#cb1-33" aria-hidden="true" tabindex="-1"></a>user_df.head()</span>
-<span id="cb1-34"><a href="#cb1-34" aria-hidden="true" tabindex="-1"></a>ols_model <span class="op">=</span> smf.ols(<span class="st">"read_time ~ dark_mode"</span>, data<span class="op">=</span>user_df).fit()</span>
-<span id="cb1-35"><a href="#cb1-35" aria-hidden="true" tabindex="-1"></a>ols_summary <span class="op">=</span> ols_model.summary()</span>
-<span id="cb1-36"><a href="#cb1-36" aria-hidden="true" tabindex="-1"></a>results_as_html <span class="op">=</span> ols_summary.tables[<span class="dv">1</span>].as_html()</span>
-<span id="cb1-37"><a href="#cb1-37" aria-hidden="true" tabindex="-1"></a>ols_summary_df <span class="op">=</span> pd.read_html(results_as_html, header<span class="op">=</span><span class="dv">0</span>, index_col<span class="op">=</span><span class="dv">0</span>)[<span class="dv">0</span>]</span>
-<span id="cb1-38"><a href="#cb1-38" aria-hidden="true" tabindex="-1"></a>ols_summary_df[[<span class="st">'coef'</span>,<span class="st">'std err'</span>]]</span>
-<span id="cb1-39"><a href="#cb1-39" aria-hidden="true" tabindex="-1"></a><span class="co">#type(ols_summary.tables[1])[['coef','std err']]</span></span>
-<span id="cb1-40"><a href="#cb1-40" aria-hidden="true" tabindex="-1"></a><span class="co"># .tables[1]</span></span>
-<span id="cb1-41"><a href="#cb1-41" aria-hidden="true" tabindex="-1"></a><span class="co"># ols_df[['coef','std err']]</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb1-33"><a href="#cb1-33" aria-hidden="true" tabindex="-1"></a>ols_model <span class="op">=</span> smf.ols(<span class="st">"read_time ~ dark_mode"</span>, data<span class="op">=</span>user_df).fit()</span>
+<span id="cb1-34"><a href="#cb1-34" aria-hidden="true" tabindex="-1"></a>ols_summary <span class="op">=</span> ols_model.summary()</span>
+<span id="cb1-35"><a href="#cb1-35" aria-hidden="true" tabindex="-1"></a>results_as_html <span class="op">=</span> ols_summary.tables[<span class="dv">1</span>].as_html()</span>
+<span id="cb1-36"><a href="#cb1-36" aria-hidden="true" tabindex="-1"></a>ols_summary_df <span class="op">=</span> pd.read_html(results_as_html, header<span class="op">=</span><span class="dv">0</span>, index_col<span class="op">=</span><span class="dv">0</span>)[<span class="dv">0</span>]</span>
+<span id="cb1-37"><a href="#cb1-37" aria-hidden="true" tabindex="-1"></a>ols_summary_df[[<span class="st">'coef'</span>,<span class="st">'std err'</span>]]</span>
+<span id="cb1-38"><a href="#cb1-38" aria-hidden="true" tabindex="-1"></a><span class="co">#type(ols_summary.tables[1])[['coef','std err']]</span></span>
+<span id="cb1-39"><a href="#cb1-39" aria-hidden="true" tabindex="-1"></a><span class="co"># .tables[1]</span></span>
+<span id="cb1-40"><a href="#cb1-40" aria-hidden="true" tabindex="-1"></a><span class="co"># ols_df[['coef','std err']]</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="quarto-layout-panel" data-layout="[1,1]">
 <div class="quarto-layout-row quarto-layout-valign-center">
@@ -597,7 +598,7 @@ window.Quarto = {
 <p><img src="images/modes.png" class="img-fluid quarto-figure quarto-figure-center figure-img"></p>
 </figure>
 </div>
-<div id="83a71d7c" class="cell" data-execution_count="1">
+<div id="5ee0c4dd" class="cell" data-execution_count="1">
 <div class="cell-output cell-output-display" data-execution_count="1">
 <div>
 
@@ -637,22 +638,112 @@ window.Quarto = {
 <li>…So, is this a causal effect? Does dark theme <strong>cause</strong> users to spend less time reading?</li>
 </ul>
 </section>
+<section id="unit-of-observation-article-reader" class="level2 title-10 smaller crunch-title">
+<h2 class="title-10 smaller crunch-title anchored" data-anchor-id="unit-of-observation-article-reader">Unit of Observation: (Article, Reader)</h2>
+<p><em>(…since I couldn’t figure out how to fit it on the last slide)</em></p>
+<div id="cell-page-read-data" class="cell" data-execution_count="2">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>user_df.head()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div id="page-read-data" class="cell-output cell-output-display" data-execution_count="2">
+<div>
+
+
+<table class="dataframe caption-top table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th">read_time</th>
+<th data-quarto-table-cell-role="th">dark_mode</th>
+<th data-quarto-table-cell-role="th">male</th>
+<th data-quarto-table-cell-role="th">age</th>
+<th data-quarto-table-cell-role="th">hours</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">0</td>
+<td>14.4</td>
+<td>False</td>
+<td>0</td>
+<td>43.0</td>
+<td>65.6</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">1</td>
+<td>15.4</td>
+<td>False</td>
+<td>1</td>
+<td>55.0</td>
+<td>125.4</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">2</td>
+<td>20.9</td>
+<td>True</td>
+<td>0</td>
+<td>23.0</td>
+<td>642.6</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">3</td>
+<td>20.0</td>
+<td>False</td>
+<td>0</td>
+<td>41.0</td>
+<td>129.1</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">4</td>
+<td>21.5</td>
+<td>True</td>
+<td>0</td>
+<td>29.0</td>
+<td>190.2</td>
+</tr>
+</tbody>
+</table>
+
+</div>
+</div>
+</div>
+</section>
+<section id="what-does-the-data-look-like" class="level2">
+<h2 class="anchored" data-anchor-id="what-does-the-data-look-like">What Does the Data Look Like?</h2>
+<div id="a5488c75" class="cell" data-execution_count="3">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="co">#ax = pw.Brick(figsize=(8,5))</span></span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>sns.pairplot(</span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>  data<span class="op">=</span>user_df, aspect<span class="op">=</span><span class="fl">0.8</span></span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="index_files/figure-html/cell-4-output-1.png" class="quarto-figure quarto-figure-center figure-img" width="943" height="1178"></p>
+</figure>
+</div>
+</div>
+</div>
+</section>
 <section id="balance" class="level2 smaller crunch-title table-90">
 <h2 class="smaller crunch-title table-90 anchored" data-anchor-id="balance">Balance</h2>
 <div class="columns">
 <div class="column" style="width:50%;">
 <p>Enter <strong>Uber</strong>’s causal inference library: <a href="https://causalml.readthedocs.io/en/latest/about.html"><code>causalml</code></a></p>
-<div id="1046bf95" class="cell" data-df-print="kable" data-execution_count="2">
+<div id="f0b1ff66" class="cell" data-df-print="kable" data-execution_count="4">
 <details class="code-fold">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> IPython.display <span class="im">import</span> display, HTML</span>
-<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>X <span class="op">=</span> [<span class="st">'male'</span>, <span class="st">'age'</span>, <span class="st">'hours'</span>]</span>
-<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>table1 <span class="op">=</span> create_table_one(user_df, <span class="st">'dark_mode'</span>, X)</span>
-<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>user_df.to_csv(<span class="st">"assets/user_df.csv"</span>)</span>
-<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>table1.to_csv(<span class="st">"assets/table1.csv"</span>)</span>
-<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>HTML(table1.to_html())</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> IPython.display <span class="im">import</span> display, HTML</span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>X <span class="op">=</span> [<span class="st">'male'</span>, <span class="st">'age'</span>, <span class="st">'hours'</span>]</span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>table1 <span class="op">=</span> create_table_one(user_df, <span class="st">'dark_mode'</span>, X)</span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>user_df.to_csv(<span class="st">"assets/user_df.csv"</span>)</span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>table1.to_csv(<span class="st">"assets/table1.csv"</span>)</span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a>HTML(table1.to_html())</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
-<div class="cell-output cell-output-display" data-execution_count="2">
+<div class="cell-output cell-output-display" data-execution_count="4">
 <table class="dataframe caption-top table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
 <thead>
 <tr class="header">
@@ -726,40 +817,40 @@ window.Quarto = {
 </section>
 <section id="model-1-propensity-score" class="level2 smaller crunch-title crunch-img crunch-quarto-figure">
 <h2 class="smaller crunch-title crunch-img crunch-quarto-figure anchored" data-anchor-id="model-1-propensity-score">Model 1: Propensity Score</h2>
-<div id="4d9e3c01" class="cell" data-execution_count="3">
+<div id="c893a973" class="cell" data-execution_count="5">
 <details class="code-fold">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> estimate_e(df, X, D, model_e):</span>
-<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>    e <span class="op">=</span> model_e.fit(df[X], df[D]).predict_proba(df[X])[:,<span class="dv">1</span>]</span>
-<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> e</span>
-<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>user_df[<span class="st">'e'</span>] <span class="op">=</span> estimate_e(user_df, X, <span class="st">"dark_mode"</span>, LogisticRegression())</span>
-<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>ax <span class="op">=</span> pw.Brick(figsize<span class="op">=</span>(<span class="dv">7</span>, <span class="fl">2.75</span>))<span class="op">;</span></span>
-<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a>sns.kdeplot(</span>
-<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a>  x<span class="op">=</span><span class="st">'e'</span>, hue<span class="op">=</span><span class="st">'dark_mode'</span>, data<span class="op">=</span>user_df,</span>
-<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a>  <span class="co"># bins=30,</span></span>
-<span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a>  <span class="co">#stat='density',</span></span>
-<span id="cb4-10"><a href="#cb4-10" aria-hidden="true" tabindex="-1"></a>  common_norm<span class="op">=</span><span class="va">False</span>,</span>
-<span id="cb4-11"><a href="#cb4-11" aria-hidden="true" tabindex="-1"></a>  fill<span class="op">=</span><span class="va">True</span>,</span>
-<span id="cb4-12"><a href="#cb4-12" aria-hidden="true" tabindex="-1"></a>  ax<span class="op">=</span>ax</span>
-<span id="cb4-13"><a href="#cb4-13" aria-hidden="true" tabindex="-1"></a>)<span class="op">;</span></span>
-<span id="cb4-14"><a href="#cb4-14" aria-hidden="true" tabindex="-1"></a>ax.set_xlabel(<span class="st">"$e(X)$"</span>)<span class="op">;</span></span>
-<span id="cb4-15"><a href="#cb4-15" aria-hidden="true" tabindex="-1"></a>ax.savefig()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> estimate_e(df, X, D, model_e):</span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>    e <span class="op">=</span> model_e.fit(df[X], df[D]).predict_proba(df[X])[:,<span class="dv">1</span>]</span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> e</span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>user_df[<span class="st">'e'</span>] <span class="op">=</span> estimate_e(user_df, X, <span class="st">"dark_mode"</span>, LogisticRegression())</span>
+<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a>ax <span class="op">=</span> pw.Brick(figsize<span class="op">=</span>(<span class="dv">7</span>, <span class="fl">2.75</span>))<span class="op">;</span></span>
+<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a>sns.kdeplot(</span>
+<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a>  x<span class="op">=</span><span class="st">'e'</span>, hue<span class="op">=</span><span class="st">'dark_mode'</span>, data<span class="op">=</span>user_df,</span>
+<span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a>  <span class="co"># bins=30,</span></span>
+<span id="cb6-9"><a href="#cb6-9" aria-hidden="true" tabindex="-1"></a>  <span class="co">#stat='density',</span></span>
+<span id="cb6-10"><a href="#cb6-10" aria-hidden="true" tabindex="-1"></a>  common_norm<span class="op">=</span><span class="va">False</span>,</span>
+<span id="cb6-11"><a href="#cb6-11" aria-hidden="true" tabindex="-1"></a>  fill<span class="op">=</span><span class="va">True</span>,</span>
+<span id="cb6-12"><a href="#cb6-12" aria-hidden="true" tabindex="-1"></a>  ax<span class="op">=</span>ax</span>
+<span id="cb6-13"><a href="#cb6-13" aria-hidden="true" tabindex="-1"></a>)<span class="op">;</span></span>
+<span id="cb6-14"><a href="#cb6-14" aria-hidden="true" tabindex="-1"></a>ax.set_xlabel(<span class="st">"$e(X)$"</span>)<span class="op">;</span></span>
+<span id="cb6-15"><a href="#cb6-15" aria-hidden="true" tabindex="-1"></a>ax.savefig()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
-<div class="cell-output cell-output-display" data-execution_count="3">
+<div class="cell-output cell-output-display" data-execution_count="5">
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="index_files/figure-html/cell-4-output-1.png" class="quarto-figure quarto-figure-center figure-img" width="764" height="336"></p>
+<p><img src="index_files/figure-html/cell-6-output-1.png" class="quarto-figure quarto-figure-center figure-img" width="764" height="336"></p>
 </figure>
 </div>
 </div>
 </div>
-<div id="b7cfc7e3" class="cell" data-execution_count="4">
+<div id="9de38add" class="cell" data-execution_count="6">
 <details class="code-fold">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>w <span class="op">=</span> <span class="dv">1</span> <span class="op">/</span> (user_df[<span class="st">'e'</span>] <span class="op">*</span> user_df[<span class="st">"dark_mode"</span>] <span class="op">+</span> (<span class="dv">1</span><span class="op">-</span>user_df[<span class="st">'e'</span>]) <span class="op">*</span> (<span class="dv">1</span><span class="op">-</span>user_df[<span class="st">"dark_mode"</span>]))</span>
-<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>smf.wls(<span class="st">"read_time ~ dark_mode"</span>, weights<span class="op">=</span>w, data<span class="op">=</span>user_df).fit().summary().tables[<span class="dv">1</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>w <span class="op">=</span> <span class="dv">1</span> <span class="op">/</span> (user_df[<span class="st">'e'</span>] <span class="op">*</span> user_df[<span class="st">"dark_mode"</span>] <span class="op">+</span> (<span class="dv">1</span><span class="op">-</span>user_df[<span class="st">'e'</span>]) <span class="op">*</span> (<span class="dv">1</span><span class="op">-</span>user_df[<span class="st">"dark_mode"</span>]))</span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>smf.wls(<span class="st">"read_time ~ dark_mode"</span>, weights<span class="op">=</span>w, data<span class="op">=</span>user_df).fit().summary().tables[<span class="dv">1</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
-<div class="cell-output cell-output-display" data-execution_count="4">
+<div class="cell-output cell-output-display" data-execution_count="6">
 <table class="simpletable caption-top table table-sm table-striped small" data-quarto-postprocess="true">
 <tbody>
 <tr class="odd">
@@ -799,19 +890,19 @@ window.Quarto = {
 <ul>
 <li>First, with <code>scikit-learn</code>:</li>
 </ul>
-<div id="a694354f" class="cell" data-execution_count="5">
+<div id="7cf09984" class="cell" data-execution_count="7">
 <details class="code-fold">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> estimate_mu(df, X, D, y, model_mu):</span>
-<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>    mu <span class="op">=</span> model_mu.fit(df[X <span class="op">+</span> [D]], df[y])</span>
-<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>    mu0 <span class="op">=</span> mu.predict(df[X <span class="op">+</span> [D]].assign(dark_mode<span class="op">=</span><span class="dv">0</span>))</span>
-<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>    mu1 <span class="op">=</span> mu.predict(df[X <span class="op">+</span> [D]].assign(dark_mode<span class="op">=</span><span class="dv">1</span>))</span>
-<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> mu0, mu1</span>
-<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.linear_model <span class="im">import</span> LinearRegression</span>
-<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a>mu0, mu1 <span class="op">=</span> estimate_mu(user_df, X, <span class="st">"dark_mode"</span>, <span class="st">"read_time"</span>, LinearRegression())</span>
-<span id="cb6-9"><a href="#cb6-9" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(np.mean(mu0), np.mean(mu1))</span>
-<span id="cb6-10"><a href="#cb6-10" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(np.mean(mu1<span class="op">-</span>mu0))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> estimate_mu(df, X, D, y, model_mu):</span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>    mu <span class="op">=</span> model_mu.fit(df[X <span class="op">+</span> [D]], df[y])</span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>    mu0 <span class="op">=</span> mu.predict(df[X <span class="op">+</span> [D]].assign(dark_mode<span class="op">=</span><span class="dv">0</span>))</span>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a>    mu1 <span class="op">=</span> mu.predict(df[X <span class="op">+</span> [D]].assign(dark_mode<span class="op">=</span><span class="dv">1</span>))</span>
+<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> mu0, mu1</span>
+<span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.linear_model <span class="im">import</span> LinearRegression</span>
+<span id="cb8-7"><a href="#cb8-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-8"><a href="#cb8-8" aria-hidden="true" tabindex="-1"></a>mu0, mu1 <span class="op">=</span> estimate_mu(user_df, X, <span class="st">"dark_mode"</span>, <span class="st">"read_time"</span>, LinearRegression())</span>
+<span id="cb8-9"><a href="#cb8-9" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(np.mean(mu0), np.mean(mu1))</span>
+<span id="cb8-10"><a href="#cb8-10" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(np.mean(mu1<span class="op">-</span>mu0))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-stdout">
 <pre><code>18.265714409803312 19.651524322951012
@@ -821,20 +912,20 @@ window.Quarto = {
 <ul>
 <li>Enter <a href="https://econml.azurewebsites.net/index.html"><code>EconML</code></a>, Microsoft’s “Official” ML-based econometrics library 😎</li>
 </ul>
-<div id="66283989" class="cell" data-execution_count="6">
+<div id="9d61411f" class="cell" data-execution_count="8">
 <details class="code-fold">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> econml.dr <span class="im">import</span> LinearDRLearner</span>
-<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>model <span class="op">=</span> LinearDRLearner(</span>
-<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a>  model_propensity<span class="op">=</span>LogisticRegression(),</span>
-<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a>  model_regression<span class="op">=</span>LinearRegression(),</span>
-<span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a>  random_state<span class="op">=</span><span class="dv">5650</span></span>
-<span id="cb8-7"><a href="#cb8-7" aria-hidden="true" tabindex="-1"></a>)</span>
-<span id="cb8-8"><a href="#cb8-8" aria-hidden="true" tabindex="-1"></a>model.fit(Y<span class="op">=</span>user_df[<span class="st">"read_time"</span>], T<span class="op">=</span>user_df[<span class="st">"dark_mode"</span>], X<span class="op">=</span>user_df[X])<span class="op">;</span></span>
-<span id="cb8-9"><a href="#cb8-9" aria-hidden="true" tabindex="-1"></a>model.ate_inference(X<span class="op">=</span>user_df[X].values, T0<span class="op">=</span><span class="dv">0</span>, T1<span class="op">=</span><span class="dv">1</span>).summary().tables[<span class="dv">0</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> econml.dr <span class="im">import</span> LinearDRLearner</span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>model <span class="op">=</span> LinearDRLearner(</span>
+<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a>  model_propensity<span class="op">=</span>LogisticRegression(),</span>
+<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a>  model_regression<span class="op">=</span>LinearRegression(),</span>
+<span id="cb10-6"><a href="#cb10-6" aria-hidden="true" tabindex="-1"></a>  random_state<span class="op">=</span><span class="dv">5650</span></span>
+<span id="cb10-7"><a href="#cb10-7" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb10-8"><a href="#cb10-8" aria-hidden="true" tabindex="-1"></a>model.fit(Y<span class="op">=</span>user_df[<span class="st">"read_time"</span>], T<span class="op">=</span>user_df[<span class="st">"dark_mode"</span>], X<span class="op">=</span>user_df[X])<span class="op">;</span></span>
+<span id="cb10-9"><a href="#cb10-9" aria-hidden="true" tabindex="-1"></a>model.ate_inference(X<span class="op">=</span>user_df[X].values, T0<span class="op">=</span><span class="dv">0</span>, T1<span class="op">=</span><span class="dv">1</span>).summary().tables[<span class="dv">0</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
-<div class="cell-output cell-output-display" data-execution_count="6">
+<div class="cell-output cell-output-display" data-execution_count="8">
 <table class="simpletable caption-top table table-sm table-striped small" data-quarto-postprocess="true">
 <caption>Uncertainty of Mean Point Estimate</caption>
 <tbody>
@@ -864,68 +955,68 @@ window.Quarto = {
 <div class="columns">
 <div class="column" style="width:50%;">
 <p>Wrong <strong>regression</strong> model:</p>
-<div id="e8b268cd" class="cell" data-execution_count="7">
+<div id="792674fe" class="cell" data-execution_count="9">
 <details class="code-fold">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> compare_estimators(X_e, X_mu, D, y, seed):</span>
-<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>    df <span class="op">=</span> generate_data(seed<span class="op">=</span>seed)</span>
-<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>    e <span class="op">=</span> estimate_e(df, X_e, D, LogisticRegression())</span>
-<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a>    mu0, mu1 <span class="op">=</span> estimate_mu(df, X_mu, D, y, LinearRegression())</span>
-<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a>    slearn <span class="op">=</span> mu1 <span class="op">-</span> mu0</span>
-<span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a>    ipw <span class="op">=</span> (df[D] <span class="op">/</span> e <span class="op">-</span> (<span class="dv">1</span><span class="op">-</span>df[D]) <span class="op">/</span> (<span class="dv">1</span><span class="op">-</span>e)) <span class="op">*</span> df[y]</span>
-<span id="cb9-7"><a href="#cb9-7" aria-hidden="true" tabindex="-1"></a>    aipw <span class="op">=</span> slearn <span class="op">+</span> df[D] <span class="op">/</span> e <span class="op">*</span> (df[y] <span class="op">-</span> mu1) <span class="op">-</span> (<span class="dv">1</span><span class="op">-</span>df[D]) <span class="op">/</span> (<span class="dv">1</span><span class="op">-</span>e) <span class="op">*</span> (df[y] <span class="op">-</span> mu0)</span>
-<span id="cb9-8"><a href="#cb9-8" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> np.mean((slearn, ipw, aipw), axis<span class="op">=</span><span class="dv">1</span>)</span>
-<span id="cb9-9"><a href="#cb9-9" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb9-10"><a href="#cb9-10" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> simulate_estimators(X_e, X_mu, D, y):</span>
-<span id="cb9-11"><a href="#cb9-11" aria-hidden="true" tabindex="-1"></a>    r <span class="op">=</span> Parallel(n_jobs<span class="op">=</span><span class="dv">8</span>)(delayed(compare_estimators)(X_e, X_mu, D, y, i) <span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">100</span>))</span>
-<span id="cb9-12"><a href="#cb9-12" aria-hidden="true" tabindex="-1"></a>    df_tau <span class="op">=</span> pd.DataFrame(r, columns<span class="op">=</span>[<span class="st">'S-learn'</span>, <span class="st">'IPW'</span>, <span class="st">'AIPW'</span>])</span>
-<span id="cb9-13"><a href="#cb9-13" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> df_tau</span>
-<span id="cb9-14"><a href="#cb9-14" aria-hidden="true" tabindex="-1"></a><span class="co"># The actual plots</span></span>
-<span id="cb9-15"><a href="#cb9-15" aria-hidden="true" tabindex="-1"></a>ax <span class="op">=</span> pw.Brick(figsize<span class="op">=</span>(<span class="dv">4</span>, <span class="fl">3.5</span>))</span>
-<span id="cb9-16"><a href="#cb9-16" aria-hidden="true" tabindex="-1"></a>wrong_reg_df <span class="op">=</span> simulate_estimators(</span>
-<span id="cb9-17"><a href="#cb9-17" aria-hidden="true" tabindex="-1"></a>  X_e<span class="op">=</span>[<span class="st">'male'</span>, <span class="st">'age'</span>], X_mu<span class="op">=</span>[<span class="st">'hours'</span>], D<span class="op">=</span><span class="st">"dark_mode"</span>, y<span class="op">=</span><span class="st">"read_time"</span></span>
-<span id="cb9-18"><a href="#cb9-18" aria-hidden="true" tabindex="-1"></a>)</span>
-<span id="cb9-19"><a href="#cb9-19" aria-hidden="true" tabindex="-1"></a>wrong_reg_plot <span class="op">=</span> sns.boxplot(</span>
-<span id="cb9-20"><a href="#cb9-20" aria-hidden="true" tabindex="-1"></a>  data<span class="op">=</span>pd.melt(wrong_reg_df), x<span class="op">=</span><span class="st">'variable'</span>, y<span class="op">=</span><span class="st">'value'</span>, hue<span class="op">=</span><span class="st">'variable'</span>,</span>
-<span id="cb9-21"><a href="#cb9-21" aria-hidden="true" tabindex="-1"></a>  ax<span class="op">=</span>ax,</span>
-<span id="cb9-22"><a href="#cb9-22" aria-hidden="true" tabindex="-1"></a>  linewidth<span class="op">=</span><span class="dv">2</span></span>
-<span id="cb9-23"><a href="#cb9-23" aria-hidden="true" tabindex="-1"></a>)<span class="op">;</span></span>
-<span id="cb9-24"><a href="#cb9-24" aria-hidden="true" tabindex="-1"></a>wrong_reg_plot.<span class="bu">set</span>(</span>
-<span id="cb9-25"><a href="#cb9-25" aria-hidden="true" tabindex="-1"></a>  title<span class="op">=</span><span class="st">"Distribution of $\hat τ$"</span>, xlabel<span class="op">=</span><span class="st">''</span>, ylabel<span class="op">=</span><span class="st">''</span></span>
-<span id="cb9-26"><a href="#cb9-26" aria-hidden="true" tabindex="-1"></a>)<span class="op">;</span></span>
-<span id="cb9-27"><a href="#cb9-27" aria-hidden="true" tabindex="-1"></a>ax.axhline(<span class="dv">2</span>, c<span class="op">=</span><span class="st">'r'</span>, ls<span class="op">=</span><span class="st">':'</span>)<span class="op">;</span></span>
-<span id="cb9-28"><a href="#cb9-28" aria-hidden="true" tabindex="-1"></a>ax.savefig()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> compare_estimators(X_e, X_mu, D, y, seed):</span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>    df <span class="op">=</span> generate_data(seed<span class="op">=</span>seed)</span>
+<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a>    e <span class="op">=</span> estimate_e(df, X_e, D, LogisticRegression())</span>
+<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a>    mu0, mu1 <span class="op">=</span> estimate_mu(df, X_mu, D, y, LinearRegression())</span>
+<span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a>    slearn <span class="op">=</span> mu1 <span class="op">-</span> mu0</span>
+<span id="cb11-6"><a href="#cb11-6" aria-hidden="true" tabindex="-1"></a>    ipw <span class="op">=</span> (df[D] <span class="op">/</span> e <span class="op">-</span> (<span class="dv">1</span><span class="op">-</span>df[D]) <span class="op">/</span> (<span class="dv">1</span><span class="op">-</span>e)) <span class="op">*</span> df[y]</span>
+<span id="cb11-7"><a href="#cb11-7" aria-hidden="true" tabindex="-1"></a>    aipw <span class="op">=</span> slearn <span class="op">+</span> df[D] <span class="op">/</span> e <span class="op">*</span> (df[y] <span class="op">-</span> mu1) <span class="op">-</span> (<span class="dv">1</span><span class="op">-</span>df[D]) <span class="op">/</span> (<span class="dv">1</span><span class="op">-</span>e) <span class="op">*</span> (df[y] <span class="op">-</span> mu0)</span>
+<span id="cb11-8"><a href="#cb11-8" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> np.mean((slearn, ipw, aipw), axis<span class="op">=</span><span class="dv">1</span>)</span>
+<span id="cb11-9"><a href="#cb11-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-10"><a href="#cb11-10" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> simulate_estimators(X_e, X_mu, D, y):</span>
+<span id="cb11-11"><a href="#cb11-11" aria-hidden="true" tabindex="-1"></a>    r <span class="op">=</span> Parallel(n_jobs<span class="op">=</span><span class="dv">8</span>)(delayed(compare_estimators)(X_e, X_mu, D, y, i) <span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">100</span>))</span>
+<span id="cb11-12"><a href="#cb11-12" aria-hidden="true" tabindex="-1"></a>    df_tau <span class="op">=</span> pd.DataFrame(r, columns<span class="op">=</span>[<span class="st">'S-learn'</span>, <span class="st">'IPW'</span>, <span class="st">'AIPW'</span>])</span>
+<span id="cb11-13"><a href="#cb11-13" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> df_tau</span>
+<span id="cb11-14"><a href="#cb11-14" aria-hidden="true" tabindex="-1"></a><span class="co"># The actual plots</span></span>
+<span id="cb11-15"><a href="#cb11-15" aria-hidden="true" tabindex="-1"></a>ax <span class="op">=</span> pw.Brick(figsize<span class="op">=</span>(<span class="dv">4</span>, <span class="fl">3.5</span>))</span>
+<span id="cb11-16"><a href="#cb11-16" aria-hidden="true" tabindex="-1"></a>wrong_reg_df <span class="op">=</span> simulate_estimators(</span>
+<span id="cb11-17"><a href="#cb11-17" aria-hidden="true" tabindex="-1"></a>  X_e<span class="op">=</span>[<span class="st">'male'</span>, <span class="st">'age'</span>], X_mu<span class="op">=</span>[<span class="st">'hours'</span>], D<span class="op">=</span><span class="st">"dark_mode"</span>, y<span class="op">=</span><span class="st">"read_time"</span></span>
+<span id="cb11-18"><a href="#cb11-18" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb11-19"><a href="#cb11-19" aria-hidden="true" tabindex="-1"></a>wrong_reg_plot <span class="op">=</span> sns.boxplot(</span>
+<span id="cb11-20"><a href="#cb11-20" aria-hidden="true" tabindex="-1"></a>  data<span class="op">=</span>pd.melt(wrong_reg_df), x<span class="op">=</span><span class="st">'variable'</span>, y<span class="op">=</span><span class="st">'value'</span>, hue<span class="op">=</span><span class="st">'variable'</span>,</span>
+<span id="cb11-21"><a href="#cb11-21" aria-hidden="true" tabindex="-1"></a>  ax<span class="op">=</span>ax,</span>
+<span id="cb11-22"><a href="#cb11-22" aria-hidden="true" tabindex="-1"></a>  linewidth<span class="op">=</span><span class="dv">2</span></span>
+<span id="cb11-23"><a href="#cb11-23" aria-hidden="true" tabindex="-1"></a>)<span class="op">;</span></span>
+<span id="cb11-24"><a href="#cb11-24" aria-hidden="true" tabindex="-1"></a>wrong_reg_plot.<span class="bu">set</span>(</span>
+<span id="cb11-25"><a href="#cb11-25" aria-hidden="true" tabindex="-1"></a>  title<span class="op">=</span><span class="st">"Distribution of $\hat τ$"</span>, xlabel<span class="op">=</span><span class="st">''</span>, ylabel<span class="op">=</span><span class="st">''</span></span>
+<span id="cb11-26"><a href="#cb11-26" aria-hidden="true" tabindex="-1"></a>)<span class="op">;</span></span>
+<span id="cb11-27"><a href="#cb11-27" aria-hidden="true" tabindex="-1"></a>ax.axhline(<span class="dv">2</span>, c<span class="op">=</span><span class="st">'r'</span>, ls<span class="op">=</span><span class="st">':'</span>)<span class="op">;</span></span>
+<span id="cb11-28"><a href="#cb11-28" aria-hidden="true" tabindex="-1"></a>ax.savefig()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
-<div class="cell-output cell-output-display" data-execution_count="7">
+<div class="cell-output cell-output-display" data-execution_count="9">
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="index_files/figure-html/cell-8-output-1.png" class="quarto-figure quarto-figure-center figure-img" width="457" height="404"></p>
+<p><img src="index_files/figure-html/cell-10-output-1.png" class="quarto-figure quarto-figure-center figure-img" width="457" height="404"></p>
 </figure>
 </div>
 </div>
 </div>
 </div><div class="column" style="width:50%;">
 <p>Wrong <strong>propensity score</strong> model:</p>
-<div id="2b7107e9" class="cell" data-execution_count="8">
+<div id="378e1bb2" class="cell" data-execution_count="10">
 <details class="code-fold">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>ax <span class="op">=</span> pw.Brick(figsize<span class="op">=</span>(<span class="dv">4</span>, <span class="fl">3.5</span>))</span>
-<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>wrong_ps_df <span class="op">=</span> simulate_estimators(</span>
-<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>  [<span class="st">'age'</span>], [<span class="st">'male'</span>, <span class="st">'hours'</span>], D<span class="op">=</span><span class="st">"dark_mode"</span>, y<span class="op">=</span><span class="st">"read_time"</span></span>
-<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a>)</span>
-<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a>wrong_ps_plot <span class="op">=</span> sns.boxplot(</span>
-<span id="cb10-6"><a href="#cb10-6" aria-hidden="true" tabindex="-1"></a>  data<span class="op">=</span>pd.melt(wrong_ps_df), x<span class="op">=</span><span class="st">'variable'</span>, y<span class="op">=</span><span class="st">'value'</span>, hue<span class="op">=</span><span class="st">'variable'</span>,</span>
-<span id="cb10-7"><a href="#cb10-7" aria-hidden="true" tabindex="-1"></a>  ax<span class="op">=</span>ax,</span>
-<span id="cb10-8"><a href="#cb10-8" aria-hidden="true" tabindex="-1"></a>  linewidth<span class="op">=</span><span class="dv">2</span></span>
-<span id="cb10-9"><a href="#cb10-9" aria-hidden="true" tabindex="-1"></a>)<span class="op">;</span></span>
-<span id="cb10-10"><a href="#cb10-10" aria-hidden="true" tabindex="-1"></a>ax.set_title(<span class="st">"Distribution of $\hat τ$"</span>)<span class="op">;</span></span>
-<span id="cb10-11"><a href="#cb10-11" aria-hidden="true" tabindex="-1"></a>ax.axhline(<span class="dv">2</span>, c<span class="op">=</span><span class="st">'r'</span>, ls<span class="op">=</span><span class="st">':'</span>)<span class="op">;</span></span>
-<span id="cb10-12"><a href="#cb10-12" aria-hidden="true" tabindex="-1"></a>ax.savefig()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>ax <span class="op">=</span> pw.Brick(figsize<span class="op">=</span>(<span class="dv">4</span>, <span class="fl">3.5</span>))</span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>wrong_ps_df <span class="op">=</span> simulate_estimators(</span>
+<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a>  [<span class="st">'age'</span>], [<span class="st">'male'</span>, <span class="st">'hours'</span>], D<span class="op">=</span><span class="st">"dark_mode"</span>, y<span class="op">=</span><span class="st">"read_time"</span></span>
+<span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb12-5"><a href="#cb12-5" aria-hidden="true" tabindex="-1"></a>wrong_ps_plot <span class="op">=</span> sns.boxplot(</span>
+<span id="cb12-6"><a href="#cb12-6" aria-hidden="true" tabindex="-1"></a>  data<span class="op">=</span>pd.melt(wrong_ps_df), x<span class="op">=</span><span class="st">'variable'</span>, y<span class="op">=</span><span class="st">'value'</span>, hue<span class="op">=</span><span class="st">'variable'</span>,</span>
+<span id="cb12-7"><a href="#cb12-7" aria-hidden="true" tabindex="-1"></a>  ax<span class="op">=</span>ax,</span>
+<span id="cb12-8"><a href="#cb12-8" aria-hidden="true" tabindex="-1"></a>  linewidth<span class="op">=</span><span class="dv">2</span></span>
+<span id="cb12-9"><a href="#cb12-9" aria-hidden="true" tabindex="-1"></a>)<span class="op">;</span></span>
+<span id="cb12-10"><a href="#cb12-10" aria-hidden="true" tabindex="-1"></a>ax.set_title(<span class="st">"Distribution of $\hat τ$"</span>)<span class="op">;</span></span>
+<span id="cb12-11"><a href="#cb12-11" aria-hidden="true" tabindex="-1"></a>ax.axhline(<span class="dv">2</span>, c<span class="op">=</span><span class="st">'r'</span>, ls<span class="op">=</span><span class="st">':'</span>)<span class="op">;</span></span>
+<span id="cb12-12"><a href="#cb12-12" aria-hidden="true" tabindex="-1"></a>ax.savefig()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
-<div class="cell-output cell-output-display" data-execution_count="8">
+<div class="cell-output cell-output-display" data-execution_count="10">
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="index_files/figure-html/cell-9-output-1.png" class="quarto-figure quarto-figure-center figure-img" width="476" height="424"></p>
+<p><img src="index_files/figure-html/cell-11-output-1.png" class="quarto-figure quarto-figure-center figure-img" width="476" height="424"></p>
 </figure>
 </div>
 </div>

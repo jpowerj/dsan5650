@@ -126,7 +126,6 @@ def generate_data(N=300, seed=1):
   return df
 
 user_df = generate_data(N=300)
-user_df.head()
 ols_model = smf.ols("read_time ~ dark_mode", data=user_df).fit()
 ols_summary = ols_model.summary()
 results_as_html = ols_summary.tables[1].as_html()
@@ -141,6 +140,25 @@ ols_summary_df[['coef','std err']]
 ::::
 
 * ...So, is this a causal effect? Does dark theme **cause** users to spend less time reading?
+
+## Unit of Observation: (Article, Reader) {.title-10 .smaller .crunch-title}
+
+*(...since I couldn't figure out how to fit it on the last slide)*
+
+```{python}
+#| label: page-read-data
+user_df.head()
+```
+
+## What Does the Data Look Like?
+
+```{python}
+#| fig-align: center
+#ax = pw.Brick(figsize=(8,5))
+sns.pairplot(
+  data=user_df, aspect=0.8
+)
+```
 
 ## Balance {.smaller .crunch-title .table-90}
 

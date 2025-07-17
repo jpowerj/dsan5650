@@ -404,7 +404,7 @@ Figure&nbsp;1: Should this be matched with an <strong>apple</strong>? Or an <str
 </figure>
 </div>
 </div><div class="column" style="width:50%;">
-<div class="cell" data-layout-align="center">
+<div class="cell">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a></a><span class="fu">library</span>(tidyverse)</span>
@@ -482,9 +482,9 @@ Figure&nbsp;1: Should this be matched with an <strong>apple</strong>? Or an <str
 <span id="cb4-17"><a></a>  <span class="fu">theme_dsan</span>(<span class="at">base_size=</span><span class="dv">16</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output-display">
-<div class="quarto-figure quarto-figure-center">
+<div>
 <figure>
-<p><img data-src="index_files/figure-revealjs/growth-data-1.png" class="quarto-figure quarto-figure-center" width="336"></p>
+<p><img data-src="index_files/figure-revealjs/growth-data-1.png" width="336"></p>
 </figure>
 </div>
 </div>
@@ -619,7 +619,7 @@ Figure&nbsp;1: Should this be matched with an <strong>apple</strong>? Or an <str
 </div>
 <div class="columns">
 <div class="column" style="width:40%;">
-<div class="cell" data-layout-align="center">
+<div class="cell">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb5"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a></a><span class="fu">library</span>(tidyverse)</span>
@@ -703,7 +703,7 @@ Figure&nbsp;1: Should this be matched with an <strong>apple</strong>? Or an <str
 <p><img data-src="images/pgm_smoking.svg" class="quarto-figure quarto-figure-center" style="width:70.0%"></p>
 </figure>
 </div>
-<div class="cell" data-layout-align="center">
+<div class="cell">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb7"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a></a>smoke_df <span class="sc">|&gt;</span> <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x=</span>enroll, <span class="at">y=</span>ncigs)) <span class="sc">+</span></span>
@@ -724,9 +724,9 @@ Figure&nbsp;1: Should this be matched with an <strong>apple</strong>? Or an <str
 <span id="cb7-16"><a></a>  <span class="fu">theme_dsan</span>(<span class="at">base_size=</span><span class="dv">24</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output-display">
-<div class="quarto-figure quarto-figure-center">
+<div>
 <figure>
-<p><img data-src="index_files/figure-revealjs/smoke-naive-plot-1.png" class="quarto-figure quarto-figure-center" width="960"></p>
+<p><img data-src="index_files/figure-revealjs/smoke-naive-plot-1.png" width="960"></p>
 </figure>
 </div>
 </div>
@@ -737,7 +737,7 @@ Figure&nbsp;1: Should this be matched with an <strong>apple</strong>? Or an <str
 <h2>Inverse Probability-of-Treatment Weighting</h2>
 <div class="columns">
 <div class="column" style="width:50%;">
-<div class="cell" data-layout-align="center">
+<div class="cell">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb8"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a></a>eprop_model <span class="ot">&lt;-</span> <span class="fu">glm</span>(enroll <span class="sc">~</span> motiv, <span class="at">family=</span><span class="st">'binomial'</span>, <span class="at">data=</span>smoke_df)</span>
@@ -755,15 +755,15 @@ Figure&nbsp;1: Should this be matched with an <strong>apple</strong>? Or an <str
 <span id="cb8-13"><a></a>  <span class="fu">labs</span>(<span class="at">title=</span><span class="st">"Before Weighting"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output-display">
-<div class="quarto-figure quarto-figure-center">
+<div>
 <figure>
-<p><img data-src="index_files/figure-revealjs/motive-ncigs-plot-1.png" class="quarto-figure quarto-figure-center" width="960"></p>
+<p><img data-src="index_files/figure-revealjs/motive-ncigs-plot-1.png" width="960"></p>
 </figure>
 </div>
 </div>
 </div>
 </div><div class="column" style="width:50%;">
-<div class="cell" data-layout-align="center">
+<div class="cell">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb9"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a></a>smoke_df <span class="sc">|&gt;</span> <span class="fu">mutate</span>(<span class="at">enroll=</span><span class="fu">factor</span>(enroll)) <span class="sc">|&gt;</span></span>
@@ -777,9 +777,9 @@ Figure&nbsp;1: Should this be matched with an <strong>apple</strong>? Or an <str
 <span id="cb9-9"><a></a>  <span class="fu">labs</span>(<span class="at">title=</span><span class="st">"After Weighting"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output-display">
-<div class="quarto-figure quarto-figure-center">
+<div>
 <figure>
-<p><img data-src="index_files/figure-revealjs/ipw-plot-1.png" class="quarto-figure quarto-figure-center" width="960"></p>
+<p><img data-src="index_files/figure-revealjs/ipw-plot-1.png" width="960"></p>
 </figure>
 </div>
 </div>
@@ -827,11 +827,11 @@ Figure&nbsp;1: Should this be matched with an <strong>apple</strong>? Or an <str
 <center>
 <p>↓</p>
 </center>
-<div class="cell" data-layout-align="center">
+<div class="cell">
 <div class="cell-output-display">
-<div class="quarto-figure quarto-figure-center">
+<div>
 <figure>
-<p><img data-src="index_files/figure-revealjs/enroll-propensity-1.png" class="quarto-figure quarto-figure-center" width="960"></p>
+<p><img data-src="index_files/figure-revealjs/enroll-propensity-1.png" width="960"></p>
 </figure>
 </div>
 </div>
@@ -846,11 +846,11 @@ Figure&nbsp;1: Should this be matched with an <strong>apple</strong>? Or an <str
 <center>
 <p>↑</p>
 </center>
-<div class="cell" data-layout-align="center">
+<div class="cell">
 <div class="cell-output-display">
-<div class="quarto-figure quarto-figure-center">
+<div>
 <figure>
-<p><img data-src="index_files/figure-revealjs/enroll-ipw-1.png" class="quarto-figure quarto-figure-center" width="960"></p>
+<p><img data-src="index_files/figure-revealjs/enroll-ipw-1.png" width="960"></p>
 </figure>
 </div>
 </div>
@@ -861,7 +861,7 @@ Figure&nbsp;1: Should this be matched with an <strong>apple</strong>? Or an <str
 </section>
 <section id="the-final-result" class="slide level2 smaller crunch-title crunch-p">
 <h2>The Final Result!</h2>
-<div class="cell columns column-output-location" data-layout-align="center">
+<div class="cell columns column-output-location">
 <div class="column">
 <details open="" class="code-fold">
 <summary>Code</summary>
@@ -898,7 +898,7 @@ Figure&nbsp;1: Should this be matched with an <strong>apple</strong>? Or an <str
 </div>
 </div>
 </div></div>
-<div class="cell columns column-output-location" data-layout-align="center">
+<div class="cell columns column-output-location">
 <div class="column">
 <details open="" class="code-fold">
 <summary>Code</summary>
@@ -924,7 +924,7 @@ enroll       -5.6645     0.5463  -10.37   &lt;1e-06 ***
 Standard error: HC0 robust</code></pre>
 </div>
 </div></div>
-<div class="cell columns column-output-location" data-layout-align="center">
+<div class="cell columns column-output-location">
 <div class="column">
 <details open="" class="code-fold">
 <summary>Code</summary>
