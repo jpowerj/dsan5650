@@ -8,7 +8,7 @@
 
 <meta name="author" content="Jeff Jacobs">
 
-<title>Week 9: Instrumental Variable (IV) Estimation – DSAN 5650</title>
+<title>Week 9: Doubly-Robust Estimation and Instrumental Variables – DSAN 5650</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -341,7 +341,7 @@ window.Quarto = {
     </ul>
     </div>
 <div class="quarto-sidebar-footer"><div class="sidebar-footer-item">
-<p><em>Updated 2025-07-16, 08:18:17 PM</em></p>
+<p><em>Updated 2025-07-17, 05:07:14 PM</em></p>
 </div></div></nav>
 <div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
@@ -379,7 +379,7 @@ window.Quarto = {
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Week 9: Instrumental Variable (IV) Estimation</h1>
+<h1 class="title">Week 9: Doubly-Robust Estimation and Instrumental Variables</h1>
 <p class="subtitle lead"><em>DSAN 5650: Causal Inference for Computational Social Science</em><br><span class="subsubtitle">Summer 2025, Georgetown University</span></p>
   <div class="quarto-categories">
     <div class="quarto-category">Class Sessions</div>
@@ -598,7 +598,7 @@ window.Quarto = {
 <p><img src="images/modes.png" class="img-fluid quarto-figure quarto-figure-center figure-img"></p>
 </figure>
 </div>
-<div id="5ee0c4dd" class="cell" data-execution_count="1">
+<div id="7b1d61fe" class="cell" data-execution_count="1">
 <div class="cell-output cell-output-display" data-execution_count="1">
 <div>
 
@@ -711,7 +711,7 @@ window.Quarto = {
 </section>
 <section id="what-does-the-data-look-like" class="level2">
 <h2 class="anchored" data-anchor-id="what-does-the-data-look-like">What Does the Data Look Like?</h2>
-<div id="a5488c75" class="cell" data-execution_count="3">
+<div id="468146c5" class="cell" data-execution_count="3">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="co">#ax = pw.Brick(figsize=(8,5))</span></span>
@@ -733,7 +733,7 @@ window.Quarto = {
 <div class="columns">
 <div class="column" style="width:50%;">
 <p>Enter <strong>Uber</strong>’s causal inference library: <a href="https://causalml.readthedocs.io/en/latest/about.html"><code>causalml</code></a></p>
-<div id="f0b1ff66" class="cell" data-df-print="kable" data-execution_count="4">
+<div id="cd306a02" class="cell" data-df-print="kable" data-execution_count="4">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> IPython.display <span class="im">import</span> display, HTML</span>
@@ -817,7 +817,7 @@ window.Quarto = {
 </section>
 <section id="model-1-propensity-score" class="level2 smaller crunch-title crunch-img crunch-quarto-figure">
 <h2 class="smaller crunch-title crunch-img crunch-quarto-figure anchored" data-anchor-id="model-1-propensity-score">Model 1: Propensity Score</h2>
-<div id="c893a973" class="cell" data-execution_count="5">
+<div id="a89d2ae4" class="cell" data-execution_count="5">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> estimate_e(df, X, D, model_e):</span>
@@ -844,7 +844,7 @@ window.Quarto = {
 </div>
 </div>
 </div>
-<div id="9de38add" class="cell" data-execution_count="6">
+<div id="9e162d69" class="cell" data-execution_count="6">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>w <span class="op">=</span> <span class="dv">1</span> <span class="op">/</span> (user_df[<span class="st">'e'</span>] <span class="op">*</span> user_df[<span class="st">"dark_mode"</span>] <span class="op">+</span> (<span class="dv">1</span><span class="op">-</span>user_df[<span class="st">'e'</span>]) <span class="op">*</span> (<span class="dv">1</span><span class="op">-</span>user_df[<span class="st">"dark_mode"</span>]))</span>
@@ -890,7 +890,7 @@ window.Quarto = {
 <ul>
 <li>First, with <code>scikit-learn</code>:</li>
 </ul>
-<div id="7cf09984" class="cell" data-execution_count="7">
+<div id="2dae233d" class="cell" data-execution_count="7">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> estimate_mu(df, X, D, y, model_mu):</span>
@@ -912,7 +912,7 @@ window.Quarto = {
 <ul>
 <li>Enter <a href="https://econml.azurewebsites.net/index.html"><code>EconML</code></a>, Microsoft’s “Official” ML-based econometrics library 😎</li>
 </ul>
-<div id="9d61411f" class="cell" data-execution_count="8">
+<div id="480627b3" class="cell" data-execution_count="8">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> econml.dr <span class="im">import</span> LinearDRLearner</span>
@@ -955,7 +955,7 @@ window.Quarto = {
 <div class="columns">
 <div class="column" style="width:50%;">
 <p>Wrong <strong>regression</strong> model:</p>
-<div id="792674fe" class="cell" data-execution_count="9">
+<div id="cec63831" class="cell" data-execution_count="9">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> compare_estimators(X_e, X_mu, D, y, seed):</span>
@@ -997,7 +997,7 @@ window.Quarto = {
 </div>
 </div><div class="column" style="width:50%;">
 <p>Wrong <strong>propensity score</strong> model:</p>
-<div id="378e1bb2" class="cell" data-execution_count="10">
+<div id="0e7d7f9a" class="cell" data-execution_count="10">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb12"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>ax <span class="op">=</span> pw.Brick(figsize<span class="op">=</span>(<span class="dv">4</span>, <span class="fl">3.5</span>))</span>

@@ -11,7 +11,7 @@
   <meta name="generator" content="quarto-1.6.40">
 
   <meta name="author" content="Jeff Jacobs">
-  <title>DSAN 5650 – Week 9: Instrumental Variable (IV) Estimation</title>
+  <title>DSAN 5650 – Week 9: Doubly-Robust Estimation and Instrumental Variables</title>
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
@@ -218,7 +218,7 @@
     <div class="slides">
 
 <section id="title-slide" class="quarto-title-block center">
-  <h1 class="title">Week 9: Instrumental Variable (IV) Estimation</h1>
+  <h1 class="title">Week 9: Doubly-Robust Estimation and Instrumental Variables</h1>
   <p class="subtitle"><em>DSAN 5650: Causal Inference for Computational Social Science</em><br><span class="subsubtitle">Summer 2025, Georgetown University</span></p>
 
 <div class="quarto-title-authors">
@@ -409,7 +409,7 @@ Jeff Jacobs
 <p><img data-src="images/modes.png" class="quarto-figure quarto-figure-center"></p>
 </figure>
 </div>
-<div id="134a05ed" class="cell" data-execution_count="1">
+<div id="d4c8bf88" class="cell" data-execution_count="1">
 <div class="cell-output cell-output-display" data-execution_count="1">
 <div>
 <style scoped="">
@@ -546,7 +546,7 @@ Jeff Jacobs
 </section>
 <section id="what-does-the-data-look-like" class="slide level2">
 <h2>What Does the Data Look Like?</h2>
-<div id="087c2859" class="cell" data-execution_count="3">
+<div id="57298530" class="cell" data-execution_count="3">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb4"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a></a><span class="co">#ax = pw.Brick(figsize=(8,5))</span></span>
@@ -568,7 +568,7 @@ Jeff Jacobs
 <div class="columns">
 <div class="column" style="width:50%;">
 <p>Enter <strong>Uber</strong>’s causal inference library: <a href="https://causalml.readthedocs.io/en/latest/about.html"><code>causalml</code></a></p>
-<div id="552d5520" class="cell" data-df-print="kable" data-execution_count="4">
+<div id="9b965374" class="cell" data-df-print="kable" data-execution_count="4">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb5"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a></a><span class="im">from</span> IPython.display <span class="im">import</span> display, HTML</span>
@@ -651,7 +651,7 @@ Jeff Jacobs
 </section>
 <section id="model-1-propensity-score" class="slide level2 smaller crunch-title crunch-img crunch-quarto-figure">
 <h2>Model 1: Propensity Score</h2>
-<div id="c0c81838" class="cell" data-execution_count="5">
+<div id="b412240b" class="cell" data-execution_count="5">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb6"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a></a><span class="kw">def</span> estimate_e(df, X, D, model_e):</span>
@@ -678,7 +678,7 @@ Jeff Jacobs
 </div>
 </div>
 </div>
-<div id="1fb45c10" class="cell" data-execution_count="6">
+<div id="ad290617" class="cell" data-execution_count="6">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb7"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a></a>w <span class="op">=</span> <span class="dv">1</span> <span class="op">/</span> (user_df[<span class="st">'e'</span>] <span class="op">*</span> user_df[<span class="st">"dark_mode"</span>] <span class="op">+</span> (<span class="dv">1</span><span class="op">-</span>user_df[<span class="st">'e'</span>]) <span class="op">*</span> (<span class="dv">1</span><span class="op">-</span>user_df[<span class="st">"dark_mode"</span>]))</span>
@@ -724,7 +724,7 @@ Jeff Jacobs
 <ul>
 <li>First, with <code>scikit-learn</code>:</li>
 </ul>
-<div id="d9c04792" class="cell" data-execution_count="7">
+<div id="3dc467ce" class="cell" data-execution_count="7">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb8"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a></a><span class="kw">def</span> estimate_mu(df, X, D, y, model_mu):</span>
@@ -746,7 +746,7 @@ Jeff Jacobs
 <ul>
 <li>Enter <a href="https://econml.azurewebsites.net/index.html"><code>EconML</code></a>, Microsoft’s “Official” ML-based econometrics library 😎</li>
 </ul>
-<div id="341f58df" class="cell" data-execution_count="8">
+<div id="bac98546" class="cell" data-execution_count="8">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb10"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a></a><span class="im">from</span> econml.dr <span class="im">import</span> LinearDRLearner</span>
@@ -789,7 +789,7 @@ Jeff Jacobs
 <div class="columns">
 <div class="column" style="width:50%;">
 <p>Wrong <strong>regression</strong> model:</p>
-<div id="8638b0c1" class="cell" data-execution_count="9">
+<div id="14202e77" class="cell" data-execution_count="9">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb11"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a></a><span class="kw">def</span> compare_estimators(X_e, X_mu, D, y, seed):</span>
@@ -831,7 +831,7 @@ Jeff Jacobs
 </div>
 </div><div class="column" style="width:50%;">
 <p>Wrong <strong>propensity score</strong> model:</p>
-<div id="c3958b81" class="cell" data-execution_count="10">
+<div id="63929a16" class="cell" data-execution_count="10">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb12"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a></a>ax <span class="op">=</span> pw.Brick(figsize<span class="op">=</span>(<span class="dv">4</span>, <span class="fl">3.5</span>))</span>
