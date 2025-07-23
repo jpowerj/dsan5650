@@ -9,6 +9,7 @@ date-format: full
 lecnum: 9
 categories:
   - "Class Sessions"
+cache: true
 format:
   revealjs:
     df-print: kable

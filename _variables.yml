@@ -52,8 +52,8 @@ w09:
   date-md: "Jul 16"
 w10:
   weeknum: 10
-  title: "Double-Debiased Machine Learning"
-  footer: "Double-Debiased Machine Learning"
+  title: "Text-as-Data"
+  footer: "Text-as-Data"
   date-md: "Jul 23"
 w11:
   weeknum: 11
@@ -62,8 +62,8 @@ w11:
   date-md: "Jul 30"
 w12:
   weeknum: 12
-  title: "Final Project Presentations"
-  footer: "Final Project Presentations"
+  title: "Double-Debiased Machine Learning"
+  footer: "Double-Debiased Machine Learning"
   date-md: "Aug 6"
 hw1:
   title: "Causal Modeling with DAGs and PGMs: Direct and Indirect Effects"
@@ -81,18 +81,18 @@ midterm:
   date-full: "Wednesday, **July 2**"
 hw3:
   title: "Social Science: PGMs and the Asymptote of Causality"
-  date-md: "Jul 11 (Friday), 5:59pm EDT"
-  date-full: "Friday, **July 11**"
+  date-md: "TBD"
+  date-full: "TBD"
   url: "#"
 hw4:
   title: "Computational Causal Methods"
-  date-md: "Jul 25 (Friday), 5:59pm EDT"
-  date-full: "Friday, **July 25**"
+  date-md: "TBD"
+  date-full: "TBD"
   url: "#"
 hw5:
   title: "Fancy Computational Causal Methods"
-  date-md: "Aug 1 (Friday), 5:59pm EDT"
-  date-full: "Friday, **July 25**"
+  date-md: "TBD"
+  date-full: "TBD"
   url: "#"
 final:
   title: "Final Project"

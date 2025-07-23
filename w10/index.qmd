@@ -1,0 +1,226 @@
+---
+title: "Week 10: Text-as-Data"
+subtitle: "*DSAN 5650: Causal Inference for Computational Social Science*<br><span class='subsubtitle'>Summer 2025, Georgetown University</span>"
+author: "Jeff Jacobs"
+institute: "[`jj1088@georgetown.edu`](mailto:jj1088@georgetown.edu)"
+bibliography: "../_DSAN5650.bib"
+date: 2025-07-23
+date-format: full
+lecnum: 10
+categories:
+  - "Class Sessions"
+tbl-cap-location: bottom
+format:
+  revealjs:
+    df-print: kable
+    footer: "DSAN 5650 Week 10: {{< var w10.footer >}}"
+    output-file: "slides.html"
+    html-math-method: mathjax
+    scrollable: true
+    link-external-icon: true
+    link-external-newwindow: true
+    echo: true
+    code-fold: true
+    theme: [default, "../dsan-globals/jjquarto.scss"]
+    include-in-header:
+      text: "<link rel='stylesheet' href='https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css'><link rel='stylesheet' type='text/css' href='https://cdn.jsdelivr.net/gh/dreampulse/computer-modern-web-font@master/fonts.css'>"
+    slide-number: true
+    simplemenu:
+      flat: true
+      barhtml:
+        header: "<div class='menubar'><span style='position: absolute; left: 8; padding-left: 8px;'><a href='./index.html'>&larr; Return to Notes</a></span><ul class='menu'></ul></div>"
+      scale: 0.5
+    revealjs-plugins:
+      - simplemenu
+  html:
+    df-print: kable
+    output-file: "index.html"
+    html-math-method: mathjax
+    link-external-icon: true
+    link-external-newwindow: true
+    echo: true
+    code-fold: true
+    include-in-header:
+      text: "<link rel='stylesheet' href='https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css'><link rel='stylesheet' type='text/css' href='https://cdn.jsdelivr.net/gh/dreampulse/computer-modern-web-font@master/fonts.css'>"
+---
+
+::: {.content-visible unless-format="revealjs"}
+
+<center>
+<a class="h2" href="./slides.html" target="_blank">Open slides in new window &rarr;</a>
+</center>
+
+:::
+
+# Schedule {.smaller .crunch-title .crunch-callout .code-90 data-stack-name="Schedule"}
+
+Today's Planned Schedule:
+
+| | Start | End | Topic |
+|:- |:- |:- |:- |
+| **Lecture** | 6:30pm | 6:45pm | [Final Projects: Dependent vs. Independent Vars &rarr;](#final-projects-independent-vs.-dependent-variables) |
+| | 6:45pm | 7:10pm | [Instrumental Variables Lite &rarr;](#instrumental-variables)
+| | 7:10pm | 8:00pm | [Text-as-Data Part 1: TAD in General &rarr;](#text-as-data-part-1-tad-in-general) |
+| **Break!** | 8:00pm | 8:10pm | |
+| | 8:10pm | 9:00pm | [Text-as-Data Part 2: Causal Text Analysis &rarr;](#text-as-data-part-2-causal-inferences-with-text) |
+
+: {tbl-colwidths="[12,12,12,64]"}
+
+{{< include ../dsan-globals/_globals-tex.qmd >}}
+
+# Final Projects: Independent vs. Dependent Variables {.smaller .title-09 data-name="Final Projects"}
+
+:::: {.columns}
+::: {.column width="50%"}
+
+* Starting point: puzzle in social world!
+  * *Why are **fertility rates** dropping in these countries?*
+  * *What explains the move from "quietism" to **"Political Islam"**?*
+  * *What behaviors produce **positive health outcomes** in old age?*
+* **Independent** Variable / Treatment!
+  * What Happens When...
+  * Start with independent var $\Rightarrow$ *"What are the effects of this cause?"*
+
+:::
+::: {.column width="50%"}
+
+![](images/pgm_general.svg){fig-align="center" width="95%" .nostretch}
+
+* **Dependent** Variable $Y$
+  * *"I wonder what **explains this?**"*
+  * Start with dependent var $\Rightarrow$ *"What is the cause of this effect?"*
+
+:::
+::::
+
+# Instrumental Variables {.crunch-title .title-12 .text-85 .not-title-slide .crunch-quarto-figure .crunch-img .crunch-p .crunch-math data-stack-name="Instrumental Vars"}
+
+:::: {.columns}
+::: {.column width="50%"}
+
+*If **randomization** works to obtain causal effects...*<br><br>
+
+![](images/02_pgm_randomization.svg){fig-align="center" width="90%"}
+
+:::
+::: {.column width="50%"}
+
+*...Find something random in the causal system, use e.g. matching to "force" the same scenario!*
+
+![](images/03_pgm_iv.svg){fig-align="center" width="90%"}
+
+:::
+::::
+
+General form: $\text{Effect}(D \rightarrow Y) = \frac{\text{Effect}(Z \rightarrow Y)}{\text{Effect}(Z \rightarrow D)}$ [*(Try "plugging in" $Z$ = Coin Flip!)*]{.text-70}
+
+$$
+\beta_{\text{IV}}^{\text{Wald}} = \frac{
+  \mathbb{E}[Y_i \mid Z_i = 1] - \mathbb{E}[Y_i \mid Z_i = 0]
+  }{
+    \mathbb{E}[D_i \mid Z_i = 1] - \mathbb{E}[D_i \mid Z_i = 0]
+  }, \;
+\beta_{\text{IV}} = \frac{\text{Cov}[Y, Z]}{\text{Cov}[D,Z]}
+$$
+
+## Birthday as Instrument
+
+* Mini-Lab Time!
+
+# Text-as-Data Part 1: TAD in General {.crunch-title .title-09 data-stack-name="Text-as-Data"}
+
+* Computers don't exactly "read" text! They process **numeric representations** of some feature(s) of the text
+  * Ex: **sentiment**, **topic**, **embedding in semantic space**
+* $\Rightarrow$ When we do causal inference with text, we're **not studying $D \rightarrow Y$ itself!** Instead, we study:
+  * **Text as Outcome**: $D \rightarrow g(Y)$ and/or
+  * **Text as Treatment**: $g(D) \rightarrow Y$
+
+## Topic Models {.smaller .crunch-title .crunch-ul .table-90}
+
+* Intuition is just: let's model **latent topics** "underlying" **observed words**
+
+| Section | Keywords |
+| - | - |
+| U.S. News | state, court, federal, republican |
+| World News | government, country, officials, minister |
+| Arts | music, show, art, dance |
+| Sports | game, league, team, coach |
+| Real Estate | home, bedrooms, bathrooms, building |
+
+* Already, by just classifying articles based on these keyword counts:
+
+| | Arts | Real Estate | Sports | U.S. News | World News | Total |
+|-:|:-:|:-:|:-:|:-:|:-:|
+| **Correct** | 3020 | 690 | 4860 | 1330 | 1730 | 11630 |
+| **Incorrect** | 750 | 60 | 370 | 1100 | 590 | 2870 |
+| **Accuracy** | 0.801 | 0.920 | 0.929 | 0.547 | 0.746 | 0.802 |
+
+## Topic Models as PGMs
+
+![From @blei_probabilistic_2012](images/lda.jpg){fig-align="center"}
+
+# Text-as-Data Part 2: Causal Inferences with Text {.smaller .crunch-title .title-10 .crunch-ul .crunch-p data-stack-name="Causal Text Analysis"}
+
+*(The necessity for **sample splitting**!)*
+
+* Recall the **media effects** example from [Week 3](https://jjacobs.me/dsan5650/w03/#studying-fake-news); here an experiment where:
+* **Treatment** ($D_i = 1$) watches **presidential debate** (control doesn't watch anything)
+* **Outcome** $Y_i$: We estimate a **topic model** of the respondent's verbal answer to "what do you think are the most important issues in US politics today?"
+
+| | $Y_i \mid \textsf{do}(D_i \leftarrow 1)$ | $Y_i \mid \textsf{do}(D_i \leftarrow 0)$ |
+|:-:|:-:|:-:|
+| Person 1 | Candidate's Morals | Taxes |
+| Person 2 | Candidate's Morals | Taxes |
+| Person 3 | Polarization | Immigration |
+| Person 4 | Polarization | Immigration |
+
+: From @egami_how_2022 {#tbl-naoki cap-location="bottom"}
+
+## "Discovered" Topics *Depend on the Data* 😟 {.smaller .crunch-title .title-11 .table-85}
+
+| | $Y_i \mid \textsf{do}(D_i \leftarrow 1)$ | $Y_i \mid \textsf{do}(D_i \leftarrow 0)$ |
+|-:|:-:|:-:|
+| Person 1 | Candidate's Morals | Taxes |
+| Person 2 | Candidate's Morals | Taxes |
+| Person 3 | Polarization | Immigration |
+| Person 4 | Polarization | Immigration |
+
+: From @egami_how_2022 {#tbl-naoki cap-location="bottom"}
+
+:::: {.columns}
+::: {.column width="50%"}
+
+| | Actual Assignment | Outcome $Y_i$ |
+|:-:|:-:|:-:|
+| Person 1 | $D_1 = 1$ | Morals |
+| Person 2 | $D_2 = 1$ | Morals |
+| Person 3 | $D_3 = 0$ | Immigration |
+| Person 4 | $D_4 = 0$ | Immigration |
+
+: Realized assignments and outcomes in World 1 {#tbl-world1}
+
+:::
+::: {.column width="50%"}
+
+| | Actual Assignment | Outcome $Y_i$ |
+|:-:|:-:|:-:|
+| Person 1 | $D_1 = 1$ | Morals |
+| Person 2 | $D_2 = 0$ | Taxes |
+| Person 3 | $D_3 = 1$ | Polarization |
+| Person 4 | $D_4 = 0$ | Immigration |
+
+: Realized assignments and outcomes in World 2 {#tbl-world2}
+
+:::
+::::
+
+## The Solution? *Sample Splitting!* {.crunch-title .crunch-ul}
+
+* Machine learning noticed this long ago: the goal is a model that **generalizes**, not **memorizes!**
+
+![](images/sample_split.jpg){fig-align="center"}
+
+## References
+
+::: {#refs}
+:::
