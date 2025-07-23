@@ -100,10 +100,10 @@ Expectations for group projects will **scale** based on the number of members in
     * ***Submitted*** to instructors by Tuesday, July 15th, 6:30pm EDT
     * ***Approved*** by an instructor by Tuesday, July 22nd, 6:30pm EDT
 * **Final Draft**:
-    * ***Submitted*** to instructors for review by TBD
-    * ***Approved*** by an instructor by TBD
+    * ***Submitted*** to instructors for review by Friday, August 1st, 5:59pm EDT
+    * ***Approved*** by an instructor by Monday, August 4th, 11:59pm EDT
 * **Final Submission**:
-    * ***Submitted*** via Canvas by TBD
+    * ***Submitted*** via Canvas by Friday, August 8th, 5:59pm EDT
 
 ## Submission Format
 
@@ -119,4 +119,4 @@ The course's [Canvas page]({{< var canvas_url >}}) now has a "Final Project" ass
 ::: {#refs}
 :::
 
-[^montessori]: If you can't tell, my whole educational philosophy here is just the <a href='https://en.wikipedia.org/wiki/Montessori_education' target='_blank'>Montessori system</a>---this approach was originally developed for younger (primary school) children, but lots and lots of <a href='https://www.penguinrandomhouse.com/books/579922/how-we-learn-by-stanislas-dehaene/' target='_blank'>recent educational research</a> indicates that it's an actually an extremely effective way to learn, and to motivate self-learning, for people of any age 😎
+[^montessori]: If you can't tell, my whole educational philosophy here is just the [Montessori system](https://en.wikipedia.org/wiki/Montessori_education)---this approach was originally developed for younger (primary school) children, but lots and lots of <a href='https://www.penguinrandomhouse.com/books/579922/how-we-learn-by-stanislas-dehaene/' target='_blank'>recent educational research</a> indicates that it's an actually an extremely effective way to learn, and to motivate self-learning, for people of any age 😎

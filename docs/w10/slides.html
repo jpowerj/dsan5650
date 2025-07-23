@@ -260,10 +260,34 @@ Jeff Jacobs
 </div>
 </section>
 
-<section id="final-projects-independent-vs.-dependent-variables" class="title-slide slide level1 smaller title-09 center" data-name="Final Projects">
-<h1>Final Projects: Independent vs.&nbsp;Dependent Variables</h1>
-<div class="columns">
-<div class="column" style="width:50%;">
+<section>
+<section id="final-project-timeline" class="title-slide slide level1 smaller center" data-stack-name="Final Projects">
+<h1>Final Project Timeline</h1>
+<ul>
+<li><strong>Proposal (Abstract on Notion)</strong>:
+<ul>
+<li><strong><em>Submitted</em></strong> to instructors by Tuesday, July 15th, 6:30pm EDT ✅</li>
+<li><strong><em>Approved</em></strong> by an instructor by Tuesday, July 22nd, 6:30pm EDT ✅</li>
+</ul></li>
+<li><strong>Final Draft</strong>:
+<ul>
+<li><strong><em>Submitted</em></strong> to instructors for review by <strong>Friday, August 1st</strong>, 5:59pm EDT</li>
+<li><strong><em>Approved</em></strong> by an instructor by <strong>Monday, August 4th</strong>, 11:59pm EDT</li>
+</ul></li>
+<li><strong>Final Submission</strong>:
+<ul>
+<li><strong><em>Submitted</em></strong> via Canvas by <strong>Friday, August 8th</strong>, 5:59pm EDT</li>
+</ul></li>
+</ul>
+</section>
+<section id="independent-vs.-dependent-variables" class="slide level2 smaller title-09 crunch-title crunch-quarto-figure crunch-quarto-layout-panel crunch-ul crunch-img crunch-p">
+<h2>Independent vs.&nbsp;Dependent Variables</h2>
+<div>
+
+</div>
+<div class="quarto-layout-panel" data-layout="[1,1]">
+<div class="quarto-layout-row quarto-layout-valign-center">
+<div id="puzzle" class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: flex-start;">
 <ul>
 <li>Starting point: puzzle in social world!
 <ul>
@@ -271,28 +295,44 @@ Jeff Jacobs
 <li><em>What explains the move from “quietism” to <strong>“Political Islam”</strong>?</em></li>
 <li><em>What behaviors produce <strong>positive health outcomes</strong> in old age?</em></li>
 </ul></li>
-<li><strong>Independent</strong> Variable / Treatment!
-<ul>
-<li>What Happens When…</li>
-<li>Start with independent var <span class="math inline">\(\Rightarrow\)</span> <em>“What are the effects of this cause?”</em></li>
-</ul></li>
 </ul>
-</div><div class="column" style="width:50%;">
+</div>
+<div id="indep-dep-pgm" class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
 <div class="quarto-figure quarto-figure-center">
 <figure>
-<p><img data-src="images/pgm_general.svg" class="quarto-figure quarto-figure-center" style="width:95.0%"></p>
+<p><img data-src="images/pgm_general.svg" class="quarto-figure quarto-figure-center" width="580"></p>
 </figure>
 </div>
+</div>
+</div>
+</div>
+<div class="columns">
+<div class="column" style="width:50%;">
+<center>
+<p><strong>Independent</strong> Variable / Treatment <span class="math inline">\(D\)</span></p>
+</center>
 <ul>
-<li><strong>Dependent</strong> Variable <span class="math inline">\(Y\)</span>
+<li>What happens when…
 <ul>
-<li><em>“I wonder what <strong>explains this?</strong>”</em></li>
-<li>Start with dependent var <span class="math inline">\(\Rightarrow\)</span> <em>“What is the cause of this effect?”</em></li>
+<li>[Someone gets a degree/internship]</li>
+<li>[There are casualties in a conflict]</li>
 </ul></li>
+<li>Start with independent var <span class="math inline">\(\Rightarrow\)</span> <em>“What are the effects of this cause?”</em></li>
+</ul>
+</div><div class="column" style="width:50%;">
+<center>
+<p><strong>Dependent</strong> Variable / Outcome <span class="math inline">\(Y\)</span></p>
+</center>
+<ul>
+<li><em>“I wonder what <strong>explains this?</strong>”</em>
+<ul>
+<li>[Differences in earnings]</li>
+<li>[Probability of news story]</li>
+</ul></li>
+<li>Start with dependent var <span class="math inline">\(\Rightarrow\)</span> <em>“What are the causes of this effect?”</em></li>
 </ul>
 </div></div>
-</section>
-
+</section></section>
 <section>
 <section id="instrumental-variables" class="title-slide slide level1 crunch-title title-12 text-85 not-title-slide crunch-quarto-figure crunch-img crunch-p crunch-math center" data-stack-name="Instrumental Vars">
 <h1>Instrumental Variables</h1>
@@ -328,7 +368,6 @@ Jeff Jacobs
 <li>Mini-Lab Time!</li>
 </ul>
 </section></section>
-<section>
 <section id="text-as-data-part-1-tad-in-general" class="title-slide slide level1 crunch-title title-09 center" data-stack-name="Text-as-Data">
 <h1>Text-as-Data Part 1: TAD in General</h1>
 <ul>
@@ -343,87 +382,7 @@ Jeff Jacobs
 </ul></li>
 </ul>
 </section>
-<section id="topic-models" class="slide level2 smaller crunch-title crunch-ul table-90">
-<h2>Topic Models</h2>
-<ul>
-<li>Intuition is just: let’s model <strong>latent topics</strong> “underlying” <strong>observed words</strong></li>
-</ul>
-<table>
-<thead>
-<tr class="header">
-<th>Section</th>
-<th>Keywords</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td>U.S. News</td>
-<td>state, court, federal, republican</td>
-</tr>
-<tr class="even">
-<td>World News</td>
-<td>government, country, officials, minister</td>
-</tr>
-<tr class="odd">
-<td>Arts</td>
-<td>music, show, art, dance</td>
-</tr>
-<tr class="even">
-<td>Sports</td>
-<td>game, league, team, coach</td>
-</tr>
-<tr class="odd">
-<td>Real Estate</td>
-<td>home, bedrooms, bathrooms, building</td>
-</tr>
-</tbody>
-</table>
-<ul>
-<li>Already, by just classifying articles based on these keyword counts:</li>
-</ul>
-<table>
-<thead>
-<tr class="header">
-<th style="text-align: right;"></th>
-<th style="text-align: center;">Arts</th>
-<th style="text-align: center;">Real Estate</th>
-<th style="text-align: center;">Sports</th>
-<th style="text-align: center;">U.S. News</th>
-<th style="text-align: center;">World News</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td style="text-align: right;"><strong>Correct</strong></td>
-<td style="text-align: center;">3020</td>
-<td style="text-align: center;">690</td>
-<td style="text-align: center;">4860</td>
-<td style="text-align: center;">1330</td>
-<td style="text-align: center;">1730</td>
-</tr>
-<tr class="even">
-<td style="text-align: right;"><strong>Incorrect</strong></td>
-<td style="text-align: center;">750</td>
-<td style="text-align: center;">60</td>
-<td style="text-align: center;">370</td>
-<td style="text-align: center;">1100</td>
-<td style="text-align: center;">590</td>
-</tr>
-<tr class="odd">
-<td style="text-align: right;"><strong>Accuracy</strong></td>
-<td style="text-align: center;">0.801</td>
-<td style="text-align: center;">0.920</td>
-<td style="text-align: center;">0.929</td>
-<td style="text-align: center;">0.547</td>
-<td style="text-align: center;">0.746</td>
-</tr>
-</tbody>
-</table>
-</section>
-<section id="topic-models-as-pgms" class="slide level2">
-<h2>Topic Models as PGMs</h2>
 
-<img data-src="images/lda.jpg" class="r-stretch quarto-figure-center"><p class="caption">From <span class="citation" data-cites="blei_probabilistic_2012">Blei (<a href="#/references" role="doc-biblioref" onclick="">2012</a>)</span></p></section></section>
 <section>
 <section id="text-as-data-part-2-causal-inferences-with-text" class="title-slide slide level1 smaller crunch-title title-10 crunch-ul crunch-p center" data-stack-name="Causal Text Analysis">
 <h1>Text-as-Data Part 2: Causal Inferences with Text</h1>
@@ -618,9 +577,111 @@ Table&nbsp;4: Realized assignments and outcomes in World 2
 </ul>
 
 <img data-src="images/sample_split.jpg" class="quarto-figure quarto-figure-center r-stretch"></section>
+<section id="topic-models" class="slide level2 smaller crunch-title crunch-ul table-90">
+<h2>Topic Models</h2>
+<ul>
+<li>Intuition is just: let’s model <strong>latent topics</strong> “underlying” <strong>observed words</strong></li>
+</ul>
+<table>
+<thead>
+<tr class="header">
+<th>Section</th>
+<th>Keywords</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>U.S. News</td>
+<td>state, court, federal, republican</td>
+</tr>
+<tr class="even">
+<td>World News</td>
+<td>government, country, officials, minister</td>
+</tr>
+<tr class="odd">
+<td>Arts</td>
+<td>music, show, art, dance</td>
+</tr>
+<tr class="even">
+<td>Sports</td>
+<td>game, league, team, coach</td>
+</tr>
+<tr class="odd">
+<td>Real Estate</td>
+<td>home, bedrooms, bathrooms, building</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>Already, by just classifying articles based on these keyword counts:</li>
+</ul>
+<table>
+<thead>
+<tr class="header">
+<th style="text-align: right;"></th>
+<th style="text-align: center;">Arts</th>
+<th style="text-align: center;">Real Estate</th>
+<th style="text-align: center;">Sports</th>
+<th style="text-align: center;">U.S. News</th>
+<th style="text-align: center;">World News</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: right;"><strong>Correct</strong></td>
+<td style="text-align: center;">3020</td>
+<td style="text-align: center;">690</td>
+<td style="text-align: center;">4860</td>
+<td style="text-align: center;">1330</td>
+<td style="text-align: center;">1730</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;"><strong>Incorrect</strong></td>
+<td style="text-align: center;">750</td>
+<td style="text-align: center;">60</td>
+<td style="text-align: center;">370</td>
+<td style="text-align: center;">1100</td>
+<td style="text-align: center;">590</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;"><strong>Accuracy</strong></td>
+<td style="text-align: center;">0.801</td>
+<td style="text-align: center;">0.920</td>
+<td style="text-align: center;">0.929</td>
+<td style="text-align: center;">0.547</td>
+<td style="text-align: center;">0.746</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="topic-models-as-pgms" class="slide level2 smaller crunch-title crunch-img">
+<h2>Topic Models as PGMs</h2>
+
+<img data-src="images/lda.jpg" class="r-stretch quarto-figure-center"><p class="caption">From <span class="citation" data-cites="blei_probabilistic_2012">Blei (<a href="#/references" role="doc-biblioref" onclick="">2012</a>)</span></p><center>
+<p><em>…Unlocks a world of social modeling through text!</em></p>
+</center>
+</section>
+<section id="cross-sectional-analysis" class="slide level2">
+<h2>Cross-Sectional Analysis</h2>
+<p><span class="citation" data-cites="blaydes_mirrors_2018">Blaydes, Grimmer, and McQueen (<a href="#/references" role="doc-biblioref" onclick="">2018</a>)</span></p>
+</section>
+<section id="influence-over-time" class="slide level2">
+<h2>Influence Over Time</h2>
+
+<img data-src="images/novelty_transience.png" class="r-stretch quarto-figure-center"><p class="caption">From <span class="citation" data-cites="barron_individuals_2018">Barron et al. (<a href="#/references" role="doc-biblioref" onclick="">2018</a>)</span></p></section>
+<section id="textual-influence-over-time" class="slide level2">
+<h2>Textual Influence Over Time</h2>
+
+<img data-src="images/novelty-resonance-marxism.svg" class="quarto-figure quarto-figure-center r-stretch"></section>
 <section id="references" class="slide level2 smaller scrollable">
 <h2>References</h2>
 <div id="refs" class="references csl-bib-body hanging-indent" data-entry-spacing="0" role="list">
+<div id="ref-barron_individuals_2018" class="csl-entry" role="listitem">
+Barron, Alexander T. J., Jenny Huang, Rebecca L. Spang, and Simon DeDeo. 2018. <span>“Individuals, <span>Institutions</span>, and <span>Innovation</span> in the <span>Debates</span> of the <span>French Revolution</span>.”</span> <em>Proceedings of the National Academy of Sciences</em> 115 (18): 4607–12. <a href="https://doi.org/10.1073/pnas.1717729115">https://doi.org/10.1073/pnas.1717729115</a>.
+</div>
+<div id="ref-blaydes_mirrors_2018" class="csl-entry" role="listitem">
+Blaydes, Lisa, Justin Grimmer, and Alison McQueen. 2018. <span>“Mirrors for <span>Princes</span> and <span>Sultans</span>: <span>Advice</span> on the <span>Art</span> of <span>Governance</span> in the <span>Medieval Christian</span> and <span>Islamic Worlds</span>.”</span> <em>The Journal of Politics</em> 80 (4): 1150–67. <a href="https://doi.org/10.1086/699246">https://doi.org/10.1086/699246</a>.
+</div>
 <div id="ref-blei_probabilistic_2012" class="csl-entry" role="listitem">
 Blei, David M. 2012. <span>“Probabilistic Topic Models.”</span> <em>Commun. ACM</em> 55 (4): 77–84. <a href="https://doi.org/10.1145/2133806.2133826">https://doi.org/10.1145/2133806.2133826</a>.
 </div>

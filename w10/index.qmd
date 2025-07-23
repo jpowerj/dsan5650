@@ -68,27 +68,62 @@ Today's Planned Schedule:
 
 {{< include ../dsan-globals/_globals-tex.qmd >}}
 
-# Final Projects: Independent vs. Dependent Variables {.smaller .title-09 data-name="Final Projects"}
+# Final Project Timeline {.smaller data-stack-name="Final Projects"}
 
-:::: {.columns}
-::: {.column width="50%"}
+* **Proposal (Abstract on Notion)**:
+    * ***Submitted*** to instructors by Tuesday, July 15th, 6:30pm EDT ✅
+    * ***Approved*** by an instructor by Tuesday, July 22nd, 6:30pm EDT ✅
+* **Final Draft**:
+    * ***Submitted*** to instructors for review by **Friday, August 1st**, 5:59pm EDT
+    * ***Approved*** by an instructor by **Monday, August 4th**, 11:59pm EDT
+* **Final Submission**:
+    * ***Submitted*** via Canvas by **Friday, August 8th**, 5:59pm EDT
+
+## Independent vs. Dependent Variables {.smaller .title-09 .crunch-title .crunch-quarto-figure .crunch-quarto-layout-panel .crunch-ul .crunch-img .crunch-p}
+
+:::: {layout="[1,1]" layout-valign="center"}
+::: {#puzzle}
 
 * Starting point: puzzle in social world!
   * *Why are **fertility rates** dropping in these countries?*
   * *What explains the move from "quietism" to **"Political Islam"**?*
   * *What behaviors produce **positive health outcomes** in old age?*
-* **Independent** Variable / Treatment!
-  * What Happens When...
-  * Start with independent var $\Rightarrow$ *"What are the effects of this cause?"*
+
+:::
+::: {#indep-dep-pgm}
+
+![](images/pgm_general.svg){fig-align="center" width="580" .nostretch}
+
+:::
+::::
+
+:::: {.columns}
+::: {.column width="50%"}
+
+<center>
+
+**Independent** Variable / Treatment $D$
+
+</center>
+
+* What happens when...
+  * [Someone gets a degree/internship]
+  * [There are casualties in a conflict]
+* Start with independent var $\Rightarrow$ *"What are the effects of this cause?"*
 
 :::
 ::: {.column width="50%"}
 
-![](images/pgm_general.svg){fig-align="center" width="95%" .nostretch}
+<center>
 
-* **Dependent** Variable $Y$
-  * *"I wonder what **explains this?**"*
-  * Start with dependent var $\Rightarrow$ *"What is the cause of this effect?"*
+**Dependent** Variable / Outcome $Y$
+
+</center>
+
+* *"I wonder what **explains this?**"*
+  * [Differences in earnings]
+  * [Probability of news story]
+* Start with dependent var $\Rightarrow$ *"What are the causes of this effect?"*
 
 :::
 ::::
@@ -134,30 +169,6 @@ $$
 * $\Rightarrow$ When we do causal inference with text, we're **not studying $D \rightarrow Y$ itself!** Instead, we study:
   * **Text as Outcome**: $D \rightarrow g(Y)$ and/or
   * **Text as Treatment**: $g(D) \rightarrow Y$
-
-## Topic Models {.smaller .crunch-title .crunch-ul .table-90}
-
-* Intuition is just: let's model **latent topics** "underlying" **observed words**
-
-| Section | Keywords |
-| - | - |
-| U.S. News | state, court, federal, republican |
-| World News | government, country, officials, minister |
-| Arts | music, show, art, dance |
-| Sports | game, league, team, coach |
-| Real Estate | home, bedrooms, bathrooms, building |
-
-* Already, by just classifying articles based on these keyword counts:
-
-| | Arts | Real Estate | Sports | U.S. News | World News | Total |
-|-:|:-:|:-:|:-:|:-:|:-:|
-| **Correct** | 3020 | 690 | 4860 | 1330 | 1730 | 11630 |
-| **Incorrect** | 750 | 60 | 370 | 1100 | 590 | 2870 |
-| **Accuracy** | 0.801 | 0.920 | 0.929 | 0.547 | 0.746 | 0.802 |
-
-## Topic Models as PGMs
-
-![From @blei_probabilistic_2012](images/lda.jpg){fig-align="center"}
 
 # Text-as-Data Part 2: Causal Inferences with Text {.smaller .crunch-title .title-10 .crunch-ul .crunch-p data-stack-name="Causal Text Analysis"}
 
@@ -219,6 +230,49 @@ $$
 * Machine learning noticed this long ago: the goal is a model that **generalizes**, not **memorizes!**
 
 ![](images/sample_split.jpg){fig-align="center"}
+
+
+## Topic Models {.smaller .crunch-title .crunch-ul .table-90}
+
+* Intuition is just: let's model **latent topics** "underlying" **observed words**
+
+| Section | Keywords |
+| - | - |
+| U.S. News | state, court, federal, republican |
+| World News | government, country, officials, minister |
+| Arts | music, show, art, dance |
+| Sports | game, league, team, coach |
+| Real Estate | home, bedrooms, bathrooms, building |
+
+* Already, by just classifying articles based on these keyword counts:
+
+| | Arts | Real Estate | Sports | U.S. News | World News | Total |
+|-:|:-:|:-:|:-:|:-:|:-:|
+| **Correct** | 3020 | 690 | 4860 | 1330 | 1730 | 11630 |
+| **Incorrect** | 750 | 60 | 370 | 1100 | 590 | 2870 |
+| **Accuracy** | 0.801 | 0.920 | 0.929 | 0.547 | 0.746 | 0.802 |
+
+## Topic Models as PGMs {.smaller .crunch-title .crunch-img}
+
+![From @blei_probabilistic_2012](images/lda.jpg){fig-align="center"}
+
+<center>
+
+*...Unlocks a world of social modeling through text!*
+
+</center>
+
+## Cross-Sectional Analysis
+
+@blaydes_mirrors_2018
+
+## Influence Over Time
+
+![From @barron_individuals_2018](images/novelty_transience.png){fig-align="center"}
+
+## Textual Influence Over Time
+
+![](images/novelty-resonance-marxism.svg){fig-align="center"}
 
 ## References
 

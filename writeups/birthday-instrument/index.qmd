@@ -1,0 +1,367 @@
+---
+title: "Birthdays as Instruments for Catholic School Effects"
+sidebar: mainnav
+date: 2025-06-28
+categories:
+  - Labs
+format:
+  html:
+    code-fold: show
+    df-print: kable
+---
+
+```{r}
+library(tidyverse) |> suppressPackageStartupMessages()
+library(lubridate) |> suppressPackageStartupMessages()
+library(extraDistr) |> suppressPackageStartupMessages()
+library(scales) |> suppressPackageStartupMessages()
+set.seed(5650)
+n <- 10000
+dob_vals <- lubridate::make_date(1999, 8, 27)
+cath_vals <- rbern(n, prob=0.5)
+offset_vals <- rdunif(n, min=0, max=364)
+student_df <- tibble(day_of_yr=offset_vals, catholic=factor(cath_vals)) |>
+  mutate(
+    dob=dob_vals + duration(day_of_yr, unit="days") - duration(1, unit="days"),
+    turns_18 = lubridate::as_date(dob + duration(18, unit="years"))
+  ) |>
+  arrange(dob)
+#duration(sample(0:364, n()), unit = "days"))
+(student_df <- student_df |> mutate(
+  year_abbr = as.character(lubridate::year(dob)),
+  month_str = factor(
+    paste0("",month.abb[lubridate::month(dob)],"",str_sub(year_abbr, 3, 4)),
+    levels=c(
+      "Aug99","Sep99","Oct99","Nov99","Dec99","Jan00","Feb00",
+      "Mar00","Apr00","May00","Jun00","Jul00","Aug00"
+    )
+  )
+))
+```
+
+```{r}
+(month_df <- student_df |> group_by(month_str, catholic) |> summarize(month_total=n()))
+```
+
+```{r}
+month_df |> ggplot(aes(x=month_str,y=month_total, fill=catholic)) +
+  geom_bar(stat='identity') +
+  theme_classic()
+```
+
+## Now the simulation
+
+* First day of school year: Aug 26
+* Last day of school: Jun 18
+* $\implies$ This cohort = all who turn 5 yrs old between Aug 27 2004 and Aug 26 2005
+* $\implies$ All born between Aug 27 1999 and Aug 26 2000
+
+```{r}
+student_df <- student_df |> mutate(
+  can_drop_out = as.numeric(turns_18 <= lubridate::make_date(2018, 6, 18))
+)
+student_df |> group_by(dob) |> summarize(sum(can_drop_out))
+```
+
+```{r}
+(elig_prop <- student_df |> summarize(elig_prop=mean(can_drop_out)) |> pull())
+#raw_dropout_rate <- 0.046
+raw_dropout_rate <- 0.086
+(dropout_rate <- (1/elig_prop) * raw_dropout_rate)
+```
+
+* https://dcps.dc.gov/sites/default/files/dc/sites/dcps/publication/attachments/SY%2024-25%20Calendar_English_Updated_022625.pdf
+
+
+```{r}
+# Simulate desire to drop out
+set.seed(5651)
+wtd_vals <- rbern(nrow(student_df), prob=dropout_rate)
+student_df$wants_to_drop <- wtd_vals
+student_df <- student_df |> mutate(
+  dropout = as.numeric(wants_to_drop==1 & can_drop_out==1)
+)
+mean(student_df$dropout)
+```
+
+```{r}
+student_df |> group_by(turns_18) |> summarize(
+  dob_dropouts=sum(dropout),
+  wants_dropout=sum(wants_to_drop),
+  total=n(), 
+) |> head()
+```
+
+Cumulative dropout over time...
+
+```{r}
+dob_df <- student_df |> group_by(dob, catholic) |> summarize(
+  dob_dropout=sum(dropout)
+)
+#dob_df$drop_todate <- cumsum(dob_df$dob_dropout)
+#dob_df |> group_by(catholic) |> summarize(drop_todate=cumsum(dob_dropout)) |> ungroup()
+dob_df <- dob_df |> group_by(catholic) |> arrange(dob) |>
+  mutate(drop_todate=cumsum(dob_dropout)) |>
+  ungroup()
+```
+
+Dropouts by day
+
+```{r}
+dob_df |> ggplot(aes(x=dob, y=drop_todate, color=catholic)) +
+  geom_line(linewidth=0.5) +
+  geom_vline(
+    xintercept=lubridate::make_date(2000, 6, 18),
+    linetype='dashed',
+  ) +
+  theme_classic()
+```
+
+Dropouts by month
+
+```{r}
+dob_df <- dob_df |> mutate(
+  year_abbr = as.character(lubridate::year(dob)),
+  month_str = factor(
+    paste0("",month.abb[lubridate::month(dob)],"",str_sub(year_abbr, 3, 4)),
+    levels=c(
+      "Aug99","Sep99","Oct99","Nov99","Dec99","Jan00","Feb00",
+      "Mar00","Apr00","May00","Jun00","Jul00","Aug00"
+    )
+  )
+)
+month_drop_df <- dob_df |> group_by(month_str, catholic) |>
+  summarize(month_dropout=sum(dob_dropout))
+month_drop_df$total_dropouts <- cumsum(month_drop_df$month_dropout)
+month_drop_df <- month_drop_df |> mutate(
+  next_month = lead(month_str, default="Aug00"),
+  prev_month_dropouts = lag(total_dropouts, default=0),
+  change = total_dropouts - prev_month_dropouts
+)
+# month_drop_df
+month_drop_df |> ggplot(aes(x=month_str, y=total_dropouts, fill=catholic)) +
+  geom_bar(stat='identity') +
+  # geom_segment(aes(xend=next_month), linetype="dashed") +
+  geom_text(
+    aes(label=month_dropout),
+    position=position_dodge(width=0.9),
+    vjust=-0.25, size=3.5, show.legend=FALSE
+  ) +
+  theme_classic()
+```
+
+```{r}
+wtd_df <- student_df |> group_by(month_str, catholic) |>
+  summarize(total_wtd=sum(wants_to_drop))
+wtd_df |> ggplot(aes(x=month_str, y=total_wtd, fill=catholic)) +
+  geom_bar(stat='identity') +
+  theme_classic()
+```
+
+Count up schooling days
+
+```{r}
+grad_day <- lubridate::make_date(2018, 6, 18)
+student_df <- student_df |> mutate(
+  schooling_start = lubridate::make_date(2005, 8, 26),
+  schooling_end = as_date(ifelse(dropout==1, as_date(turns_18), as_date(grad_day))),
+  school_days = difftime(schooling_end, schooling_start, units="days"),
+  school_yrs = interval(schooling_start, schooling_end) / years(1)
+)
+student_df |> head()
+```
+
+Simulated earnings
+
+```{r}
+student_df$earnings_noise <- rnorm(nrow(student_df), 0, 500)
+student_df <- student_df |> mutate(
+  earnings = 10000 * school_yrs + 5000 * as.numeric(catholic) + earnings_noise
+)
+student_df |> ggplot(aes(x=earnings, fill=catholic)) + 
+  geom_density() +
+  theme_classic()
+```
+
+```{r}
+student_df |> ggplot(aes(x=school_yrs, fill=catholic)) +
+  geom_density(alpha=0.5) +
+  theme_classic()
+```
+
+```{r}
+schooling_df <- student_df |> group_by(month_str, catholic) |> summarize(
+  mean_yrs=mean(school_yrs),
+  n=n()
+)
+# Plot mean school days by month
+schooling_df |> ggplot(aes(x=month_str, y=mean_yrs, color=catholic)) +
+  geom_vline(aes(xintercept=month_str), linetype='dashed', linewidth=0.5, alpha=0.18) +
+  geom_point(size=2) +
+  theme_classic()
+```
+
+```{r}
+(max_schooling <- max(student_df$school_yrs))
+```
+
+```{r}
+q1 <- c("Aug99","Sep99","Oct99","Nov99")
+q2 <- c("Dec99","Jan00","Feb00")
+q3 <- c("Mar00","Apr00","May00")
+q4 <- c("Jun00","Jul00","Aug00")
+schooling_df <- schooling_df |> mutate(
+  qtr = case_match(
+    month_str,
+    q1 ~ 1,
+    q2 ~ 2,
+    q3 ~ 3,
+    q4 ~ 4
+  )
+)
+qtr_df <- schooling_df |> group_by(qtr, catholic) |> summarize(
+  mean_yrs_qtr=mean(mean_yrs),
+  n_qtr=sum(n)
+)
+qtr_df |> ggplot(aes(x=qtr, y=mean_yrs_qtr, color=catholic)) +
+  geom_point(
+    stat='identity', size=2, position=position_dodge2(width=0.4)
+  ) +
+  geom_segment(
+    aes(yend=max_schooling),
+    # position=position_jitterdodge(
+    #   #dodge.width=0.5
+    # ),
+    position=position_dodge2(width=0.4),
+    linetype='dotted', linewidth=0.5
+  ) +
+  # ylim(12.759, 12.82) +
+  geom_hline(
+    aes(
+      yintercept=max_schooling,
+      #linetype='Max Possible'
+    ),
+    linewidth=0.5
+  ) +
+  # scale_linetype_manual("", values=c("dashed")) +
+  # geom_text(x=2.5, y=12.81, label='Maximum Possible (Non-Dropout Amount)', vjust=-1) +
+  labs(
+    title="Schooling Gap By Quarter of Birth",
+    x="DOB Quarter",
+    y="Mean Years of Schooling"
+  ) +
+  theme_classic(base_size=14)
+```
+
+```{r}
+schooling_df <- schooling_df |> mutate(
+  half = factor(
+    ifelse(qtr==1 | qtr==2, 0, 1),
+    levels=c(0,1)
+  )
+)
+half_df <- schooling_df |> group_by(half, catholic) |> summarize(
+  mean_yrs_half=mean(mean_yrs),
+  n_half=sum(n)
+)
+half_df |> ggplot(aes(x=half, y=mean_yrs_half, color=catholic)) +
+  geom_point(
+    stat='identity', size=2.5,
+    position=position_dodge2(width=0.4)
+  ) +
+  geom_segment(
+    aes(yend=max_schooling),
+    position=position_dodge2(width=0.4),
+    linetype='dotted', linewidth=0.6
+  ) +
+  # ylim(12.759, 12.82) +
+  geom_hline(
+    aes(
+      yintercept=max_schooling,
+      #linetype='Max Possible'
+    ),
+    linewidth=0.5
+  ) +
+  # scale_linetype_manual("", values=c("dashed")) +
+  # geom_text(x=1.5, y=12.81, label='Maximum Possible (Non-Dropout Amount)', vjust=-1) +
+  labs(
+    title="Schooling Gap By DOB Half",
+    x="DOB Half",
+    y="Mean Years of Schooling"
+  ) +
+  #xlim(0.5, 2.5) +
+  # ylim(12.76, 12.82) +
+  theme_classic(base_size=14)
+```
+
+
+```{r}
+h0 <- c("Aug99","Sep99","Oct99","Nov99","Dec99","Jan00","Feb00")
+h1 <- c("Mar00","Apr00","May00","Jun00","Jul00","Aug00")
+student_df <- student_df |> mutate(
+  half = factor(
+    ifelse(month_str %in% h0, 0, 1),
+    levels=c(0,1)
+  )
+)
+earn_df <- student_df |> group_by(half, catholic) |>
+  summarize(mean_earnings=mean(earnings))
+earn_df
+# earn_df |> pivot_wider(-half)
+earn_df |> ggplot(aes(x=half, y=log(mean_earnings), color=catholic, group=catholic)) +
+  geom_point(stat='identity', size=2.5) +
+  geom_line() +
+  # ylim(12.759, 12.82) +
+  # scale_linetype_manual("", values=c("dashed")) +
+  labs(
+    title="Earnings Gap By DOB Half",
+    x="DOB Half",
+    y="Mean Earnings"
+  ) +
+  #xlim(0.5, 2.5) +
+  # ylim(127400, 128100) +
+  theme_classic(base_size=14)
+```
+
+```{r}
+student_df <- student_df |> mutate(
+  qtr = case_match(
+    month_str,
+    q1 ~ 1,
+    q2 ~ 2,
+    q3 ~ 3,
+    q4 ~ 4
+  )
+)
+earn_df <- student_df |> group_by(qtr, catholic) |>
+  summarize(mean_earnings=mean(earnings))
+earn_df
+# earn_df |> pivot_wider(-half)
+earn_df |> ggplot(aes(x=qtr, y=log(mean_earnings), color=catholic, group=catholic)) +
+  geom_point(stat='identity', size=2.5) +
+  geom_line() +
+  # ylim(12.759, 12.82) +
+  # scale_linetype_manual("", values=c("dashed")) +
+  labs(
+    title="Earnings Gap By DOB Half",
+    x="DOB Quarter",
+    y="Mean Earnings"
+  ) +
+  #xlim(0.5, 2.5) +
+  # ylim(127400, 128100) +
+  theme_classic(base_size=14)
+```
+
+```{r}
+lm(mean_earnings ~ as.numeric(qtr), data=earn_df)
+```
+
+```{r}
+lm(as.numeric(catholic) ~ as.numeric(qtr), data=earn_df)
+```
+
+```{r}
+lm(mean_earnings ~ as.numeric(catholic), data=earn_df)
+```
+
+
