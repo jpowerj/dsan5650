@@ -10,6 +10,8 @@ format:
     df-print: kable
 ---
 
+## Uniformly-Distributed Birthdays and Catholic Schooling
+
 ```{r}
 library(tidyverse) |> suppressPackageStartupMessages()
 library(lubridate) |> suppressPackageStartupMessages()
@@ -27,7 +29,7 @@ student_df <- tibble(day_of_yr=offset_vals, catholic=factor(cath_vals)) |>
   ) |>
   arrange(dob)
 #duration(sample(0:364, n()), unit = "days"))
-(student_df <- student_df |> mutate(
+student_df <- student_df |> mutate(
   year_abbr = as.character(lubridate::year(dob)),
   month_str = factor(
     paste0("",month.abb[lubridate::month(dob)],"",str_sub(year_abbr, 3, 4)),
@@ -36,20 +38,21 @@ student_df <- tibble(day_of_yr=offset_vals, catholic=factor(cath_vals)) |>
       "Mar00","Apr00","May00","Jun00","Jul00","Aug00"
     )
   )
-))
+)
+student_df |> head()
 ```
 
-```{r}
-(month_df <- student_df |> group_by(month_str, catholic) |> summarize(month_total=n()))
-```
+## Number of Students Per Month
 
 ```{r}
+#| warning: false
+month_df <- student_df |> group_by(month_str, catholic) |> summarize(month_total=n())
 month_df |> ggplot(aes(x=month_str,y=month_total, fill=catholic)) +
   geom_bar(stat='identity') +
   theme_classic()
 ```
 
-## Now the simulation
+## Now the Dropping-Out Simulation
 
 * First day of school year: Aug 26
 * Last day of school: Jun 18
@@ -60,17 +63,19 @@ month_df |> ggplot(aes(x=month_str,y=month_total, fill=catholic)) +
 student_df <- student_df |> mutate(
   can_drop_out = as.numeric(turns_18 <= lubridate::make_date(2018, 6, 18))
 )
-student_df |> group_by(dob) |> summarize(sum(can_drop_out))
+student_df |> group_by(dob) |> summarize(sum(can_drop_out)) |> head()
 ```
+
+What percentage of students will actually have a chance to drop out? i.e., What proportion of students are born so that they turn 18 before the last day of school?
 
 ```{r}
 (elig_prop <- student_df |> summarize(elig_prop=mean(can_drop_out)) |> pull())
-#raw_dropout_rate <- 0.046
+# National mean 8.6%
 raw_dropout_rate <- 0.086
 (dropout_rate <- (1/elig_prop) * raw_dropout_rate)
 ```
 
-* https://dcps.dc.gov/sites/default/files/dc/sites/dcps/publication/attachments/SY%2024-25%20Calendar_English_Updated_022625.pdf
+* [DCPS School Year Calendar](https://dcps.dc.gov/sites/default/files/dc/sites/dcps/publication/attachments/SY%2024-25%20Calendar_English_Updated_022625.pdf)
 
 
 ```{r}
@@ -92,7 +97,7 @@ student_df |> group_by(turns_18) |> summarize(
 ) |> head()
 ```
 
-Cumulative dropout over time...
+## Compute Cumulative Number of Dropouts Over Time
 
 ```{r}
 dob_df <- student_df |> group_by(dob, catholic) |> summarize(
@@ -105,7 +110,7 @@ dob_df <- dob_df |> group_by(catholic) |> arrange(dob) |>
   ungroup()
 ```
 
-Dropouts by day
+## Plot Cumulative Dropouts by Day
 
 ```{r}
 dob_df |> ggplot(aes(x=dob, y=drop_todate, color=catholic)) +
@@ -117,7 +122,7 @@ dob_df |> ggplot(aes(x=dob, y=drop_todate, color=catholic)) +
   theme_classic()
 ```
 
-Dropouts by month
+## Plot Cumulative Dropouts by Month
 
 ```{r}
 dob_df <- dob_df |> mutate(
@@ -150,6 +155,8 @@ month_drop_df |> ggplot(aes(x=month_str, y=total_dropouts, fill=catholic)) +
   theme_classic()
 ```
 
+(Sanity check: `wtd_df` = students who want to drop, per month)
+
 ```{r}
 wtd_df <- student_df |> group_by(month_str, catholic) |>
   summarize(total_wtd=sum(wants_to_drop))
@@ -158,7 +165,7 @@ wtd_df |> ggplot(aes(x=month_str, y=total_wtd, fill=catholic)) +
   theme_classic()
 ```
 
-Count up schooling days
+## Compute Total Years (with Decimals) of Schooling
 
 ```{r}
 grad_day <- lubridate::make_date(2018, 6, 18)
@@ -171,7 +178,7 @@ student_df <- student_df |> mutate(
 student_df |> head()
 ```
 
-Simulated earnings
+## Simulated Earnings $n$ Years Later
 
 ```{r}
 student_df$earnings_noise <- rnorm(nrow(student_df), 0, 500)
@@ -188,6 +195,8 @@ student_df |> ggplot(aes(x=school_yrs, fill=catholic)) +
   geom_density(alpha=0.5) +
   theme_classic()
 ```
+
+## Mean Years of Schooling by Birth Month
 
 ```{r}
 schooling_df <- student_df |> group_by(month_str, catholic) |> summarize(
