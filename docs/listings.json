@@ -18,8 +18,8 @@
     "listing": "/writeups/index.html",
     "items": [
       "/writeups/hw2-guide/HW2_Guide.html",
-      "/writeups/bayesian-workflow/Bayesian_Workflow.html",
-      "/writeups/birthday-instrument/index.html"
+      "/writeups/birthday-instrument/index.html",
+      "/writeups/bayesian-workflow/Bayesian_Workflow.html"
     ]
   }
 ]

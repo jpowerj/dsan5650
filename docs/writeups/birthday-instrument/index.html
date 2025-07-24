@@ -6,7 +6,7 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
-<meta name="dcterms.date" content="2025-06-28">
+<meta name="dcterms.date" content="2025-07-20">
 
 <title>Birthdays as Instruments for Catholic School Effects – DSAN 5650</title>
 <style>
@@ -55,7 +55,27 @@ div.sourceCode
 @media screen {
 pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
 }
-</style>
+/* CSS for citations */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+  margin-bottom: 0em;
+}
+.hanging-indent div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}</style>
 
 
 <script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
@@ -327,7 +347,7 @@ window.Quarto = {
     </ul>
     </div>
 <div class="quarto-sidebar-footer"><div class="sidebar-footer-item">
-<p><em>Updated 2025-07-23, 08:17:14 PM</em></p>
+<p><em>Updated 2025-07-23, 10:12:48 PM</em></p>
 </div></div></nav>
 <div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
@@ -336,7 +356,8 @@ window.Quarto = {
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#uniformly-distributed-birthdays-and-catholic-schooling" id="toc-uniformly-distributed-birthdays-and-catholic-schooling" class="nav-link active" data-scroll-target="#uniformly-distributed-birthdays-and-catholic-schooling">Uniformly-Distributed Birthdays and Catholic Schooling</a></li>
+  <li><a href="#overview" id="toc-overview" class="nav-link active" data-scroll-target="#overview">Overview</a></li>
+  <li><a href="#uniformly-distributed-birthdays-and-catholic-schooling" id="toc-uniformly-distributed-birthdays-and-catholic-schooling" class="nav-link" data-scroll-target="#uniformly-distributed-birthdays-and-catholic-schooling">Uniformly-Distributed Birthdays and Catholic Schooling</a></li>
   <li><a href="#number-of-students-per-month" id="toc-number-of-students-per-month" class="nav-link" data-scroll-target="#number-of-students-per-month">Number of Students Per Month</a></li>
   <li><a href="#now-the-dropping-out-simulation" id="toc-now-the-dropping-out-simulation" class="nav-link" data-scroll-target="#now-the-dropping-out-simulation">Now the Dropping-Out Simulation</a></li>
   <li><a href="#compute-cumulative-number-of-dropouts-over-time" id="toc-compute-cumulative-number-of-dropouts-over-time" class="nav-link" data-scroll-target="#compute-cumulative-number-of-dropouts-over-time">Compute Cumulative Number of Dropouts Over Time</a></li>
@@ -367,7 +388,7 @@ window.Quarto = {
     <div>
     <div class="quarto-title-meta-heading">Published</div>
     <div class="quarto-title-meta-contents">
-      <p class="date">June 28, 2025</p>
+      <p class="date">July 20, 2025</p>
     </div>
   </div>
   
@@ -379,6 +400,31 @@ window.Quarto = {
 </header>
 
 
+<section id="overview" class="level2">
+<h2 class="anchored" data-anchor-id="overview">Overview</h2>
+<p>In this writeup, the goal is to walk through a <strong>third</strong> approach (in addition to <strong>adjusting for covariates</strong> and <strong>propensity score weighting</strong>) you can take towards <strong>tackling the issue of confounding</strong>. The following diagram illustrates what we’re hoping to achieve:</p>
+<ul>
+<li>We <em>want</em> to estimate the (average) causal effect of Catholic Schooling <span class="math inline">\(D\)</span> on Post-Grad Earnings <span class="math inline">\(Y\)</span>.</li>
+<li>However, there is an <strong>unmeasured covariate</strong>, Work Ethic <span class="math inline">\(X\)</span> (a <em>fork</em> relative to <span class="math inline">\(D \leftarrow X \rightarrow Y\)</span>), which is <strong>confounding</strong> this effect <span class="math inline">\(D \rightarrow Y\)</span>.</li>
+<li>So, as <span class="citation" data-cites="angrist_does_1991">Angrist and Krueger (<a href="#ref-angrist_does_1991" role="doc-biblioref">1991</a>)</span> proposed, we can “work around” this confounding (literally, given how the diagram is set up) by using <strong>day of birth relative to school cohort</strong> as an <strong>instrument</strong>:
+<ul>
+<li>Since this day of birth has <strong>no direct causal relationship</strong> with work ethic, and</li>
+<li>Has <strong>no direct causal relationship</strong> with Post-Grad Earnings (only an <em>indirect</em> effect on it through Catholic Schooling <span class="math inline">\(D\)</span>),</li>
+<li>This cohort-relative date of birth can play the same role that a <strong>random coin flip</strong> plays in the “gold standard” of randomized medical trials!</li>
+</ul></li>
+<li>Under these assumptions (which need to be argued for! And are argued for in <span class="citation" data-cites="angrist_does_1991">Angrist and Krueger (<a href="#ref-angrist_does_1991" role="doc-biblioref">1991</a>)</span>), we can recover the causal effect of <span class="math inline">\(D\)</span> on <span class="math inline">\(Y\)</span> via the “classical IV estimator”:</li>
+</ul>
+<p><span class="math display">\[
+\beta_{\text{IV}}^{D \rightarrow Y} = \frac{\text{Cov}[Z,Y]}{\text{Cov}[D,Y]}
+\]</span></p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/01_pgm_catholic.svg" class="img-fluid figure-img" width="480"></p>
+<figcaption>Causal diagram illustrating the role of our proposed <strong>instrument <span class="math inline">\(Z\)</span></strong>: a student’s day of birth within the cohort they enter school with. <strong>If</strong> <span class="math inline">\(Z\)</span> has (a) no direct causal relationship with Work Ethic (<span class="math inline">\(X\)</span>) and (b) no <em>direct</em> causal relationship with Post-Grad Earnings <span class="math inline">\(Y\)</span> (that is, only an <em>indirect</em> effect on it through Catholic Schooling <span class="math inline">\(D\)</span>), then we can recover the <strong>causal effect</strong> of Catholic Schooling on Post-Grad Earnings by computing <span class="math inline">\(\beta_{\text{IV}}^{D \rightarrow Y} = \frac{\text{Cov}[Z,Y]}{\text{Cov}[D,Y]}\)</span></figcaption>
+</figure>
+</div>
+<p>In this writeup, we will generate <strong>simulated</strong> data on birthdates, school-dropout behavior, and eventual earnings, then use the above IV estimator formula to recover the <strong>causal effect</strong> of Catholic Schooling on Post-Grad Earnings. We can then verify the accuracy of this estimate, since we generated the data in the first place! The beauty of generative modeling 😉</p>
+</section>
 <section id="uniformly-distributed-birthdays-and-catholic-schooling" class="level2">
 <h2 class="anchored" data-anchor-id="uniformly-distributed-birthdays-and-catholic-schooling">Uniformly-Distributed Birthdays and Catholic Schooling</h2>
 <div class="cell">
@@ -1350,9 +1396,14 @@ Coefficients:
 </div>
 
 
+
 </section>
 
-</main> <!-- /main -->
+<div id="quarto-appendix" class="default"><section class="quarto-appendix-contents" role="doc-bibliography" id="quarto-bibliography"><h2 class="anchored quarto-appendix-heading">References</h2><div id="refs" class="references csl-bib-body hanging-indent" data-entry-spacing="0" role="list">
+<div id="ref-angrist_does_1991" class="csl-entry" role="listitem">
+Angrist, Joshua D., and Alan B. Krueger. 1991. <span>“Does <span>Compulsory School Attendance Affect Schooling</span> and <span>Earnings</span>?”</span> <em>The Quarterly Journal of Economics</em> 106 (4): 979–1014. <a href="https://doi.org/10.2307/2937954">https://doi.org/10.2307/2937954</a>.
+</div>
+</div></section></div></main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
 window.document.addEventListener("DOMContentLoaded", function (event) {
   const toggleBodyColorMode = (bsSheetEl) => {
