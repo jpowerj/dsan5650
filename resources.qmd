@@ -8,6 +8,7 @@ csl: chicago-17-no-url.csl
 
 | What Jeff calls it | Citation (hover and/or click for PDF link) |
 | - | - |
+| **"Statistical Rethinking"** | @mcelreath_statistical_2020 |
 | **"The Multilevel book"** | @gelman_data_2007 |
 | **"The Koller PGM book"** | @koller_probabilistic_2009 |
 | **"The non-technical Pearl book"** | @pearl_book_2018 |
@@ -75,6 +76,12 @@ This book contrasts with the Angrist and Pischke book in using the language of c
 <i class='bi bi-1-circle'></i> **@koller_probabilistic_2009, *Probabilistic Graphical Models: Principles and Techniques***
 
 Chapter 2, with an overview of probability theory and graph theory, is included in the [Syllabus](./syllabus.qmd) as the recommended reading for Week 2! Then, Chapter 3 will give you the core concepts of Bayes Nets specifically, while Chapter 6 will add in a few of the useful additional tools we use, like **plate notation**.
+
+### Bayesian Data Analysis
+
+<i class='bi bi-1-circle'></i> **@mcelreath_statistical_2020, *Statistical Rethinking***
+
+<i class='bi bi-2-circle'></i> **@gelman_bayesian_2013, *Bayesian Data Analysis***
 
 ### Multilevel Modeling
 

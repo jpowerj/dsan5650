@@ -4,7 +4,7 @@
     "href": "resources.html",
     "title": "Resources",
     "section": "",
-    "text": "PDF Links for Jeff’s Off-Hand References\n\n\n\n\n\n\n\n\n\n\nWhat Jeff calls it\nCitation (hover and/or click for PDF link)\n\n\n\n\n“The Multilevel book”\nGelman and Hill (2007)\n\n\n“The Koller PGM book”\nKoller and Friedman (2009)\n\n\n“The non-technical Pearl book”\nPearl and Mackenzie (2018)\n\n\n“The technical Pearl book” (containing, e.g., axioms and proofs)\nPearl (2000)\n\n\n“The French Revolution paper”\nBarron et al. (2018)",
+    "text": "PDF Links for Jeff’s Off-Hand References\n\n\n\n\n\n\n\n\n\n\nWhat Jeff calls it\nCitation (hover and/or click for PDF link)\n\n\n\n\n“Statistical Rethinking”\nMcElreath (2020)\n\n\n“The Multilevel book”\nGelman and Hill (2007)\n\n\n“The Koller PGM book”\nKoller and Friedman (2009)\n\n\n“The non-technical Pearl book”\nPearl and Mackenzie (2018)\n\n\n“The technical Pearl book” (containing, e.g., axioms and proofs)\nPearl (2000)\n\n\n“The French Revolution paper”\nBarron et al. (2018)",
     "crumbs": [
       "Resources"
     ]
@@ -24,7 +24,7 @@
     "href": "resources.html#topic-specific-textbooks",
     "title": "Resources",
     "section": "Topic-Specific Textbooks",
-    "text": "Topic-Specific Textbooks\n\nProbabilistic Graphical Models\n Koller and Friedman (2009), Probabilistic Graphical Models: Principles and Techniques\nChapter 2, with an overview of probability theory and graph theory, is included in the Syllabus as the recommended reading for Week 2! Then, Chapter 3 will give you the core concepts of Bayes Nets specifically, while Chapter 6 will add in a few of the useful additional tools we use, like plate notation.\n\n\nMultilevel Modeling\n Gelman and Hill (2007), Data Analysis Using Regression and Multilevel/Hierarchical Models",
+    "text": "Topic-Specific Textbooks\n\nProbabilistic Graphical Models\n Koller and Friedman (2009), Probabilistic Graphical Models: Principles and Techniques\nChapter 2, with an overview of probability theory and graph theory, is included in the Syllabus as the recommended reading for Week 2! Then, Chapter 3 will give you the core concepts of Bayes Nets specifically, while Chapter 6 will add in a few of the useful additional tools we use, like plate notation.\n\n\nBayesian Data Analysis\n McElreath (2020), Statistical Rethinking\n Gelman et al. (2013), Bayesian Data Analysis\n\n\nMultilevel Modeling\n Gelman and Hill (2007), Data Analysis Using Regression and Multilevel/Hierarchical Models",
     "crumbs": [
       "Resources"
     ]
