@@ -81,7 +81,17 @@ Chapter 2, with an overview of probability theory and graph theory, is included 
 
 <i class='bi bi-1-circle'></i> **@mcelreath_statistical_2020, *Statistical Rethinking***
 
-<i class='bi bi-2-circle'></i> **@gelman_bayesian_2013, *Bayesian Data Analysis***
+This is... possibly the book I draw on the most for the in-class and homework examples, because in my opinion it has the perfect pedagogical mixture of interesting social-scientific examples and theoretical motivations for how we can analyze those interesting examples via Bayesian modeling! So, meaning, if I introduce an example from this book, and you find yourself struggling with the logic behind it, you can go to the relevant section and read from the start of the chapter to see how McElreath "builds up to" it!
+
+<i class='bi bi-2-circle'></i> **@lee_bayesian_2013, *Bayesian Cognitive Modeling: A Practical Course***
+
+I wasn't sure whether to place this in the "topic-specific" or "reference texts" section here, because, it serves both purposes! The split between different chapters has a super helpful logic:
+
+* The earlier chapters walk you step-by-step through how you can "build up" from simpler to more complex Bayesian models of things like differences-in-means, two-sided vs. one-sided hypotheses, and so on, and then
+* The chapter near the middle discusses how to use e.g. Bayes Factor and log-likelihood methods to *compare* the different models introduced in the earlier chapters, and then finally
+* The chapters at the end apply all of the above, by taking a series of prominent research topics in Cognitive Science and showing how to effectively model them via PGMs and Bayesian inference.
+
+<i class='bi bi-3-circle'></i> **@gelman_bayesian_2013, *Bayesian Data Analysis***
 
 ### Multilevel Modeling
 
