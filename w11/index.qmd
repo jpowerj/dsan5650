@@ -379,7 +379,96 @@ beta100_plot.savefig()
 :::
 ::::
 
-## (2) How Sensitive Are My Results to *Omitted Variable Bias*?
+# Sensitivity Analysis 2: How Sensitive Are My Results to *Omitted/Included Variable Bias*? {.smaller data-stack-name="Included Variable Bias"}
+
+* You probably know about **omitted variable bias** from previous classes / intuition...
+* But **included variable bias?**
+* That's right folks... **colliders** can be agents of chaos, laying waste to our best, most meticulously-measured models
+
+![](images/mood_crop.jpg){fig-align="center"}
+
+## Does Marriage Cause Happiness? {.smaller .crunch-title .crunch-ul .crunch-quarto-figure .table-80 .crunch-img .crunch-p}
+
+```{=html}
+<table>
+<thead>
+</thead>
+<tbody>
+<tr>
+  <td width="10%"><span data-qmd="<i class='bi bi-1-circle'></i>"></span></td>
+  <td width="90%">Each year, 20 people are born with uniformly-distributed happiness values</td>
+</tr>
+<tr>
+  <td><span data-qmd="<i class='bi bi-2-circle'></i>"></span></td>
+  <td>Each year, each person ages one year; Happiness does not change</td>
+</tr>
+<tr>
+  <td><span data-qmd="<i class='bi bi-3-circle'></i>"></span></td>
+  <td>At age 18, individuals can become married; Odds of marriage each year proportional to individual's happiness; Once married, they remain married</td>
+</tr>
+<tr>
+  <td><span data-qmd="<i class='bi bi-4-circle'></i>"></span></td>
+  <td>At age 65 individuals leave the sample (They move to Boca Raton, Florida)</td>
+</tr>
+</tbody>
+</table>
+```
+
+```{python}
+#| label: fig-happiness-plot
+#| fig-align: center
+#| fig-width: 8
+#| fig-height: 3
+#| fig-cap: "Happiness by Age (From [PyMC port](https://github.com/pymc-devs/pymc-examples/blob/main/examples/statistical_rethinking_lectures/utils.py) of *Statistical Rethinking* lectures)"
+from scipy.special import expit
+from scipy import stats as stats
+def plot_scatter(xs, ys, **scatter_kwargs):
+    """Draw scatter plot with consistent style (e.g. unfilled points)"""
+    defaults = {"alpha": 0.6, "lw": 3, "s": 80, "color": "C0", "facecolors": "none"}
+
+    for k, v in defaults.items():
+        val = scatter_kwargs.get(k, v)
+        scatter_kwargs[k] = val
+
+    plt.scatter(xs, ys, **scatter_kwargs)
+age = np.arange(1, 71)
+happiness = np.linspace(-2, 2, 40)
+age_grid, happiness_grid = np.meshgrid(age, happiness)
+
+# Arbitrary
+beta_happiness = 20
+beta_age = 1
+min_marriage_age = 18
+
+age_grid = age_grid.ravel()
+happiness_grid = happiness_grid.ravel()
+married_grid = []
+for a, h in zip(age_grid, happiness_grid):
+    p_marriage = expit(h * beta_happiness + (a - 40 - 18) * beta_age)
+    married_grid.append(stats.bernoulli(p=p_marriage).rvs())
+
+married_grid = np.array(married_grid).astype(int)
+
+plot_scatter(
+    age_grid[married_grid == 0],
+    happiness_grid[married_grid == 0],
+    s=20,
+    alpha=0.8,
+    color="lightgray",
+    label="Unmarried",
+)
+plot_scatter(
+    age_grid[married_grid == 1],
+    happiness_grid[married_grid == 1],
+    s=20,
+    alpha=1,
+    color="C0",
+    label="Married",
+)
+plt.xlabel("Age")
+plt.ylabel("Happiness (std)")
+plt.legend();
+```
 
 ## References
 

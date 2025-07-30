@@ -743,9 +743,104 @@ Fig&nbsp;3. <em>“I don’t trust this coin, it’ll take lots of flips with H/
 </div>
 </div>
 </div></div>
-</section>
-<section id="how-sensitive-are-my-results-to-omitted-variable-bias" class="slide level2">
-<h2>(2) How Sensitive Are My Results to <em>Omitted Variable Bias</em>?</h2>
+</section></section>
+<section>
+<section id="sensitivity-analysis-2-how-sensitive-are-my-results-to-omittedincluded-variable-bias" class="title-slide slide level1 smaller center" data-stack-name="Included Variable Bias">
+<h1>Sensitivity Analysis 2: How Sensitive Are My Results to <em>Omitted/Included Variable Bias</em>?</h1>
+<ul>
+<li>You probably know about <strong>omitted variable bias</strong> from previous classes / intuition…</li>
+<li>But <strong>included variable bias?</strong></li>
+<li>That’s right folks… <strong>colliders</strong> can be agents of chaos, laying waste to our best, most meticulously-measured models</li>
+</ul>
+
+<img data-src="images/mood_crop.jpg" class="quarto-figure quarto-figure-center r-stretch"></section>
+<section id="does-marriage-cause-happiness" class="slide level2 smaller crunch-title crunch-ul crunch-quarto-figure table-80 crunch-img crunch-p">
+<h2>Does Marriage Cause Happiness?</h2>
+<table data-quarto-postprocess="true">
+<tbody>
+<tr class="odd">
+<td width="10%"><i class="bi bi-1-circle"></i></td>
+<td width="90%">Each year, 20 people are born with uniformly-distributed happiness values</td>
+</tr>
+<tr class="even">
+<td><i class="bi bi-2-circle"></i></td>
+<td>Each year, each person ages one year; Happiness does not change</td>
+</tr>
+<tr class="odd">
+<td><i class="bi bi-3-circle"></i></td>
+<td>At age 18, individuals can become married; Odds of marriage each year proportional to individual's happiness; Once married, they remain married</td>
+</tr>
+<tr class="even">
+<td><i class="bi bi-4-circle"></i></td>
+<td>At age 65 individuals leave the sample (They move to Boca Raton, Florida)</td>
+</tr>
+</tbody>
+</table>
+<div id="cell-fig-happiness-plot" class="cell" data-fig-height="3" data-fig-width="8" data-execution_count="12">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a></a><span class="im">from</span> scipy.special <span class="im">import</span> expit</span>
+<span id="cb13-2"><a></a><span class="im">from</span> scipy <span class="im">import</span> stats <span class="im">as</span> stats</span>
+<span id="cb13-3"><a></a><span class="kw">def</span> plot_scatter(xs, ys, <span class="op">**</span>scatter_kwargs):</span>
+<span id="cb13-4"><a></a>    <span class="co">"""Draw scatter plot with consistent style (e.g. unfilled points)"""</span></span>
+<span id="cb13-5"><a></a>    defaults <span class="op">=</span> {<span class="st">"alpha"</span>: <span class="fl">0.6</span>, <span class="st">"lw"</span>: <span class="dv">3</span>, <span class="st">"s"</span>: <span class="dv">80</span>, <span class="st">"color"</span>: <span class="st">"C0"</span>, <span class="st">"facecolors"</span>: <span class="st">"none"</span>}</span>
+<span id="cb13-6"><a></a></span>
+<span id="cb13-7"><a></a>    <span class="cf">for</span> k, v <span class="kw">in</span> defaults.items():</span>
+<span id="cb13-8"><a></a>        val <span class="op">=</span> scatter_kwargs.get(k, v)</span>
+<span id="cb13-9"><a></a>        scatter_kwargs[k] <span class="op">=</span> val</span>
+<span id="cb13-10"><a></a></span>
+<span id="cb13-11"><a></a>    plt.scatter(xs, ys, <span class="op">**</span>scatter_kwargs)</span>
+<span id="cb13-12"><a></a>age <span class="op">=</span> np.arange(<span class="dv">1</span>, <span class="dv">71</span>)</span>
+<span id="cb13-13"><a></a>happiness <span class="op">=</span> np.linspace(<span class="op">-</span><span class="dv">2</span>, <span class="dv">2</span>, <span class="dv">40</span>)</span>
+<span id="cb13-14"><a></a>age_grid, happiness_grid <span class="op">=</span> np.meshgrid(age, happiness)</span>
+<span id="cb13-15"><a></a></span>
+<span id="cb13-16"><a></a><span class="co"># Arbitrary</span></span>
+<span id="cb13-17"><a></a>beta_happiness <span class="op">=</span> <span class="dv">20</span></span>
+<span id="cb13-18"><a></a>beta_age <span class="op">=</span> <span class="dv">1</span></span>
+<span id="cb13-19"><a></a>min_marriage_age <span class="op">=</span> <span class="dv">18</span></span>
+<span id="cb13-20"><a></a></span>
+<span id="cb13-21"><a></a>age_grid <span class="op">=</span> age_grid.ravel()</span>
+<span id="cb13-22"><a></a>happiness_grid <span class="op">=</span> happiness_grid.ravel()</span>
+<span id="cb13-23"><a></a>married_grid <span class="op">=</span> []</span>
+<span id="cb13-24"><a></a><span class="cf">for</span> a, h <span class="kw">in</span> <span class="bu">zip</span>(age_grid, happiness_grid):</span>
+<span id="cb13-25"><a></a>    p_marriage <span class="op">=</span> expit(h <span class="op">*</span> beta_happiness <span class="op">+</span> (a <span class="op">-</span> <span class="dv">40</span> <span class="op">-</span> <span class="dv">18</span>) <span class="op">*</span> beta_age)</span>
+<span id="cb13-26"><a></a>    married_grid.append(stats.bernoulli(p<span class="op">=</span>p_marriage).rvs())</span>
+<span id="cb13-27"><a></a></span>
+<span id="cb13-28"><a></a>married_grid <span class="op">=</span> np.array(married_grid).astype(<span class="bu">int</span>)</span>
+<span id="cb13-29"><a></a></span>
+<span id="cb13-30"><a></a>plot_scatter(</span>
+<span id="cb13-31"><a></a>    age_grid[married_grid <span class="op">==</span> <span class="dv">0</span>],</span>
+<span id="cb13-32"><a></a>    happiness_grid[married_grid <span class="op">==</span> <span class="dv">0</span>],</span>
+<span id="cb13-33"><a></a>    s<span class="op">=</span><span class="dv">20</span>,</span>
+<span id="cb13-34"><a></a>    alpha<span class="op">=</span><span class="fl">0.8</span>,</span>
+<span id="cb13-35"><a></a>    color<span class="op">=</span><span class="st">"lightgray"</span>,</span>
+<span id="cb13-36"><a></a>    label<span class="op">=</span><span class="st">"Unmarried"</span>,</span>
+<span id="cb13-37"><a></a>)</span>
+<span id="cb13-38"><a></a>plot_scatter(</span>
+<span id="cb13-39"><a></a>    age_grid[married_grid <span class="op">==</span> <span class="dv">1</span>],</span>
+<span id="cb13-40"><a></a>    happiness_grid[married_grid <span class="op">==</span> <span class="dv">1</span>],</span>
+<span id="cb13-41"><a></a>    s<span class="op">=</span><span class="dv">20</span>,</span>
+<span id="cb13-42"><a></a>    alpha<span class="op">=</span><span class="dv">1</span>,</span>
+<span id="cb13-43"><a></a>    color<span class="op">=</span><span class="st">"C0"</span>,</span>
+<span id="cb13-44"><a></a>    label<span class="op">=</span><span class="st">"Married"</span>,</span>
+<span id="cb13-45"><a></a>)</span>
+<span id="cb13-46"><a></a>plt.xlabel(<span class="st">"Age"</span>)</span>
+<span id="cb13-47"><a></a>plt.ylabel(<span class="st">"Happiness (std)"</span>)</span>
+<span id="cb13-48"><a></a>plt.legend()<span class="op">;</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-display">
+<div id="fig-happiness-plot" class="quarto-float quarto-figure quarto-figure-center" data-fig-align="center">
+<figure class="quarto-float quarto-float-fig">
+<div aria-describedby="fig-happiness-plot-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img data-src="index_files/figure-revealjs/fig-happiness-plot-output-1.png" class="quarto-figure quarto-figure-center" width="825" height="434">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-happiness-plot-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Fig&nbsp;4. Happiness by Age (From <a href="https://github.com/pymc-devs/pymc-examples/blob/main/examples/statistical_rethinking_lectures/utils.py">PyMC port</a> of <em>Statistical Rethinking</em> lectures)
+</figcaption>
+</figure>
+</div>
+</div>
+</div>
 </section>
 <section id="references" class="slide level2 smaller scrollable">
 <h2>References</h2>

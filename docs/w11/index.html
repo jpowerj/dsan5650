@@ -351,7 +351,7 @@ window.Quarto = {
     </ul>
     </div>
 <div class="quarto-sidebar-footer"><div class="sidebar-footer-item">
-<p><em>Updated 2025-07-30, 05:25:22 PM</em></p>
+<p><em>Updated 2025-07-30, 06:31:17 PM</em></p>
 </div></div></nav>
 <div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
@@ -374,7 +374,10 @@ window.Quarto = {
   <ul class="collapse">
   <li><a href="#the-beta-distribution-textbetaalpha-beta-the-workhorse-prior" id="toc-the-beta-distribution-textbetaalpha-beta-the-workhorse-prior" class="nav-link" data-scroll-target="#the-beta-distribution-textbetaalpha-beta-the-workhorse-prior">The Beta Distribution <span class="math inline">\(\text{Beta}(\alpha, \beta)\)</span>: The “Workhorse” Prior!</a></li>
   <li><a href="#modeling-domain-knowledge-with-priors" id="toc-modeling-domain-knowledge-with-priors" class="nav-link" data-scroll-target="#modeling-domain-knowledge-with-priors">Modeling <em>Domain Knowledge</em> with Priors</a></li>
-  <li><a href="#how-sensitive-are-my-results-to-omitted-variable-bias" id="toc-how-sensitive-are-my-results-to-omitted-variable-bias" class="nav-link" data-scroll-target="#how-sensitive-are-my-results-to-omitted-variable-bias">(2) How Sensitive Are My Results to <em>Omitted Variable Bias</em>?</a></li>
+  </ul></li>
+  <li><a href="#sensitivity-analysis-2-how-sensitive-are-my-results-to-omittedincluded-variable-bias" id="toc-sensitivity-analysis-2-how-sensitive-are-my-results-to-omittedincluded-variable-bias" class="nav-link" data-scroll-target="#sensitivity-analysis-2-how-sensitive-are-my-results-to-omittedincluded-variable-bias">Sensitivity Analysis 2: How Sensitive Are My Results to <em>Omitted/Included Variable Bias</em>?</a>
+  <ul class="collapse">
+  <li><a href="#does-marriage-cause-happiness" id="toc-does-marriage-cause-happiness" class="nav-link" data-scroll-target="#does-marriage-cause-happiness">Does Marriage Cause Happiness?</a></li>
   <li><a href="#references" id="toc-references" class="nav-link" data-scroll-target="#references">References</a></li>
   </ul></li>
   </ul>
@@ -973,8 +976,106 @@ Fig&nbsp;3. <em>“I don’t trust this coin, it’ll take lots of flips with H/
 </div>
 </div>
 </section>
-<section id="how-sensitive-are-my-results-to-omitted-variable-bias" class="level2">
-<h2 class="anchored" data-anchor-id="how-sensitive-are-my-results-to-omitted-variable-bias">(2) How Sensitive Are My Results to <em>Omitted Variable Bias</em>?</h2>
+</section>
+<section id="sensitivity-analysis-2-how-sensitive-are-my-results-to-omittedincluded-variable-bias" class="level1 smaller" data-stack-name="Included Variable Bias">
+<h1 class="smaller" data-stack-name="Included Variable Bias">Sensitivity Analysis 2: How Sensitive Are My Results to <em>Omitted/Included Variable Bias</em>?</h1>
+<ul>
+<li>You probably know about <strong>omitted variable bias</strong> from previous classes / intuition…</li>
+<li>But <strong>included variable bias?</strong></li>
+<li>That’s right folks… <strong>colliders</strong> can be agents of chaos, laying waste to our best, most meticulously-measured models</li>
+</ul>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/mood_crop.jpg" class="img-fluid quarto-figure quarto-figure-center figure-img"></p>
+</figure>
+</div>
+<section id="does-marriage-cause-happiness" class="level2 smaller crunch-title crunch-ul crunch-quarto-figure table-80 crunch-img crunch-p">
+<h2 class="smaller crunch-title crunch-ul crunch-quarto-figure table-80 crunch-img crunch-p anchored" data-anchor-id="does-marriage-cause-happiness">Does Marriage Cause Happiness?</h2>
+<table data-quarto-postprocess="true" class="table">
+<tbody>
+<tr class="odd">
+<td width="10%"><i class="bi bi-1-circle"></i></td>
+<td width="90%">Each year, 20 people are born with uniformly-distributed happiness values</td>
+</tr>
+<tr class="even">
+<td><i class="bi bi-2-circle"></i></td>
+<td>Each year, each person ages one year; Happiness does not change</td>
+</tr>
+<tr class="odd">
+<td><i class="bi bi-3-circle"></i></td>
+<td>At age 18, individuals can become married; Odds of marriage each year proportional to individual's happiness; Once married, they remain married</td>
+</tr>
+<tr class="even">
+<td><i class="bi bi-4-circle"></i></td>
+<td>At age 65 individuals leave the sample (They move to Boca Raton, Florida)</td>
+</tr>
+</tbody>
+</table>
+<div id="cell-fig-happiness-plot" class="cell" data-fig-height="3" data-fig-width="8" data-execution_count="12">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> scipy.special <span class="im">import</span> expit</span>
+<span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> scipy <span class="im">import</span> stats <span class="im">as</span> stats</span>
+<span id="cb20-3"><a href="#cb20-3" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> plot_scatter(xs, ys, <span class="op">**</span>scatter_kwargs):</span>
+<span id="cb20-4"><a href="#cb20-4" aria-hidden="true" tabindex="-1"></a>    <span class="co">"""Draw scatter plot with consistent style (e.g. unfilled points)"""</span></span>
+<span id="cb20-5"><a href="#cb20-5" aria-hidden="true" tabindex="-1"></a>    defaults <span class="op">=</span> {<span class="st">"alpha"</span>: <span class="fl">0.6</span>, <span class="st">"lw"</span>: <span class="dv">3</span>, <span class="st">"s"</span>: <span class="dv">80</span>, <span class="st">"color"</span>: <span class="st">"C0"</span>, <span class="st">"facecolors"</span>: <span class="st">"none"</span>}</span>
+<span id="cb20-6"><a href="#cb20-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-7"><a href="#cb20-7" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> k, v <span class="kw">in</span> defaults.items():</span>
+<span id="cb20-8"><a href="#cb20-8" aria-hidden="true" tabindex="-1"></a>        val <span class="op">=</span> scatter_kwargs.get(k, v)</span>
+<span id="cb20-9"><a href="#cb20-9" aria-hidden="true" tabindex="-1"></a>        scatter_kwargs[k] <span class="op">=</span> val</span>
+<span id="cb20-10"><a href="#cb20-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-11"><a href="#cb20-11" aria-hidden="true" tabindex="-1"></a>    plt.scatter(xs, ys, <span class="op">**</span>scatter_kwargs)</span>
+<span id="cb20-12"><a href="#cb20-12" aria-hidden="true" tabindex="-1"></a>age <span class="op">=</span> np.arange(<span class="dv">1</span>, <span class="dv">71</span>)</span>
+<span id="cb20-13"><a href="#cb20-13" aria-hidden="true" tabindex="-1"></a>happiness <span class="op">=</span> np.linspace(<span class="op">-</span><span class="dv">2</span>, <span class="dv">2</span>, <span class="dv">40</span>)</span>
+<span id="cb20-14"><a href="#cb20-14" aria-hidden="true" tabindex="-1"></a>age_grid, happiness_grid <span class="op">=</span> np.meshgrid(age, happiness)</span>
+<span id="cb20-15"><a href="#cb20-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-16"><a href="#cb20-16" aria-hidden="true" tabindex="-1"></a><span class="co"># Arbitrary</span></span>
+<span id="cb20-17"><a href="#cb20-17" aria-hidden="true" tabindex="-1"></a>beta_happiness <span class="op">=</span> <span class="dv">20</span></span>
+<span id="cb20-18"><a href="#cb20-18" aria-hidden="true" tabindex="-1"></a>beta_age <span class="op">=</span> <span class="dv">1</span></span>
+<span id="cb20-19"><a href="#cb20-19" aria-hidden="true" tabindex="-1"></a>min_marriage_age <span class="op">=</span> <span class="dv">18</span></span>
+<span id="cb20-20"><a href="#cb20-20" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-21"><a href="#cb20-21" aria-hidden="true" tabindex="-1"></a>age_grid <span class="op">=</span> age_grid.ravel()</span>
+<span id="cb20-22"><a href="#cb20-22" aria-hidden="true" tabindex="-1"></a>happiness_grid <span class="op">=</span> happiness_grid.ravel()</span>
+<span id="cb20-23"><a href="#cb20-23" aria-hidden="true" tabindex="-1"></a>married_grid <span class="op">=</span> []</span>
+<span id="cb20-24"><a href="#cb20-24" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> a, h <span class="kw">in</span> <span class="bu">zip</span>(age_grid, happiness_grid):</span>
+<span id="cb20-25"><a href="#cb20-25" aria-hidden="true" tabindex="-1"></a>    p_marriage <span class="op">=</span> expit(h <span class="op">*</span> beta_happiness <span class="op">+</span> (a <span class="op">-</span> <span class="dv">40</span> <span class="op">-</span> <span class="dv">18</span>) <span class="op">*</span> beta_age)</span>
+<span id="cb20-26"><a href="#cb20-26" aria-hidden="true" tabindex="-1"></a>    married_grid.append(stats.bernoulli(p<span class="op">=</span>p_marriage).rvs())</span>
+<span id="cb20-27"><a href="#cb20-27" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-28"><a href="#cb20-28" aria-hidden="true" tabindex="-1"></a>married_grid <span class="op">=</span> np.array(married_grid).astype(<span class="bu">int</span>)</span>
+<span id="cb20-29"><a href="#cb20-29" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-30"><a href="#cb20-30" aria-hidden="true" tabindex="-1"></a>plot_scatter(</span>
+<span id="cb20-31"><a href="#cb20-31" aria-hidden="true" tabindex="-1"></a>    age_grid[married_grid <span class="op">==</span> <span class="dv">0</span>],</span>
+<span id="cb20-32"><a href="#cb20-32" aria-hidden="true" tabindex="-1"></a>    happiness_grid[married_grid <span class="op">==</span> <span class="dv">0</span>],</span>
+<span id="cb20-33"><a href="#cb20-33" aria-hidden="true" tabindex="-1"></a>    s<span class="op">=</span><span class="dv">20</span>,</span>
+<span id="cb20-34"><a href="#cb20-34" aria-hidden="true" tabindex="-1"></a>    alpha<span class="op">=</span><span class="fl">0.8</span>,</span>
+<span id="cb20-35"><a href="#cb20-35" aria-hidden="true" tabindex="-1"></a>    color<span class="op">=</span><span class="st">"lightgray"</span>,</span>
+<span id="cb20-36"><a href="#cb20-36" aria-hidden="true" tabindex="-1"></a>    label<span class="op">=</span><span class="st">"Unmarried"</span>,</span>
+<span id="cb20-37"><a href="#cb20-37" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb20-38"><a href="#cb20-38" aria-hidden="true" tabindex="-1"></a>plot_scatter(</span>
+<span id="cb20-39"><a href="#cb20-39" aria-hidden="true" tabindex="-1"></a>    age_grid[married_grid <span class="op">==</span> <span class="dv">1</span>],</span>
+<span id="cb20-40"><a href="#cb20-40" aria-hidden="true" tabindex="-1"></a>    happiness_grid[married_grid <span class="op">==</span> <span class="dv">1</span>],</span>
+<span id="cb20-41"><a href="#cb20-41" aria-hidden="true" tabindex="-1"></a>    s<span class="op">=</span><span class="dv">20</span>,</span>
+<span id="cb20-42"><a href="#cb20-42" aria-hidden="true" tabindex="-1"></a>    alpha<span class="op">=</span><span class="dv">1</span>,</span>
+<span id="cb20-43"><a href="#cb20-43" aria-hidden="true" tabindex="-1"></a>    color<span class="op">=</span><span class="st">"C0"</span>,</span>
+<span id="cb20-44"><a href="#cb20-44" aria-hidden="true" tabindex="-1"></a>    label<span class="op">=</span><span class="st">"Married"</span>,</span>
+<span id="cb20-45"><a href="#cb20-45" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb20-46"><a href="#cb20-46" aria-hidden="true" tabindex="-1"></a>plt.xlabel(<span class="st">"Age"</span>)</span>
+<span id="cb20-47"><a href="#cb20-47" aria-hidden="true" tabindex="-1"></a>plt.ylabel(<span class="st">"Happiness (std)"</span>)</span>
+<span id="cb20-48"><a href="#cb20-48" aria-hidden="true" tabindex="-1"></a>plt.legend()<span class="op">;</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-display">
+<div id="fig-happiness-plot" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-happiness-plot-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="index_files/figure-html/fig-happiness-plot-output-1.png" class="quarto-figure quarto-figure-center figure-img" width="602" height="434">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-happiness-plot-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Fig&nbsp;4. Happiness by Age (From <a href="https://github.com/pymc-devs/pymc-examples/blob/main/examples/statistical_rethinking_lectures/utils.py">PyMC port</a> of <em>Statistical Rethinking</em> lectures)
+</figcaption>
+</figure>
+</div>
+</div>
+</div>
 </section>
 <section id="references" class="level2">
 <h2 class="anchored" data-anchor-id="references">References</h2>
