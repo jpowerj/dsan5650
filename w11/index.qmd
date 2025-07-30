@@ -1,0 +1,387 @@
+---
+title: "Week 11: Sensitivity Analysis"
+subtitle: "*DSAN 5650: Causal Inference for Computational Social Science*<br><span class='subsubtitle'>Summer 2025, Georgetown University</span>"
+author: "Jeff Jacobs"
+institute: "[`jj1088@georgetown.edu`](mailto:jj1088@georgetown.edu)"
+bibliography: "../_DSAN5650.bib"
+date: 2025-07-30
+date-format: full
+lecnum: 11
+categories:
+  - "Class Sessions"
+tbl-cap-location: bottom
+crossref:
+  fig-title: "Fig"
+  title-delim: ". "
+format:
+  revealjs:
+    df-print: kable
+    footer: "DSAN 5650 Week 11: {{< var w11.footer >}}"
+    output-file: "slides.html"
+    html-math-method: mathjax
+    scrollable: true
+    link-external-icon: true
+    link-external-newwindow: true
+    echo: true
+    code-fold: true
+    theme: [default, "../dsan-globals/jjquarto.scss"]
+    include-in-header:
+      text: "<link rel='stylesheet' href='https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css'><link rel='stylesheet' type='text/css' href='https://cdn.jsdelivr.net/gh/dreampulse/computer-modern-web-font@master/fonts.css'>"
+    slide-number: true
+    simplemenu:
+      flat: true
+      barhtml:
+        header: "<div class='menubar'><span style='position: absolute; left: 8; padding-left: 8px;'><a href='./index.html'>&larr; Return to Notes</a></span><ul class='menu'></ul></div>"
+      scale: 0.5
+    revealjs-plugins:
+      - simplemenu
+  html:
+    df-print: kable
+    output-file: "index.html"
+    html-math-method: mathjax
+    link-external-icon: true
+    link-external-newwindow: true
+    echo: true
+    code-fold: true
+    include-in-header:
+      text: "<link rel='stylesheet' href='https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css'><link rel='stylesheet' type='text/css' href='https://cdn.jsdelivr.net/gh/dreampulse/computer-modern-web-font@master/fonts.css'>"
+---
+
+::: {.content-visible unless-format="revealjs"}
+
+<center>
+<a class="h2" href="./slides.html" target="_blank">Open slides in new window &rarr;</a>
+</center>
+
+:::
+
+# Schedule {.smaller .crunch-title .crunch-callout .code-90 data-stack-name="Schedule"}
+
+Today's Planned Schedule:
+
+| | Start | End | Topic |
+|:- |:- |:- |:- |
+| **Lecture** | 6:30pm | 6:45pm | [Final Projects: Dependent vs. Independent Vars &rarr;](#final-projects-independent-vs.-dependent-variables) |
+| | 6:45pm | 7:10pm | [Instrumental Variables Lite &rarr;](#instrumental-variables)
+| | 7:10pm | 8:00pm | [Text-as-Data Part 1: TAD in General &rarr;](#text-as-data-part-1-tad-in-general) |
+| **Break!** | 8:00pm | 8:10pm | |
+| | 8:10pm | 9:00pm | [Text-as-Data Part 2: Causal Text Analysis &rarr;](#text-as-data-part-2-causal-inferences-with-text) |
+
+: {tbl-colwidths="[12,12,12,64]"}
+
+{{< include ../dsan-globals/_globals-tex.qmd >}}
+
+# Final Project Drafts: Friday, 5:59pm EDT {data-name="Final Projects"}
+
+* On Canvas!
+* Think of it as a **skeleton** of the final project
+* Final submission = draft + missing pieces filled in
+
+# Topic Models Over Space and Time {data-stack-name="Topic Models"}
+
+## Topic Models {.smaller .crunch-title .crunch-ul .table-90}
+
+* Intuition is just: let's model **latent topics** "underlying" **observed words**
+
+| Section | Keywords |
+| - | - |
+| U.S. News | state, court, federal, republican |
+| World News | government, country, officials, minister |
+| Arts | music, show, art, dance |
+| Sports | game, league, team, coach |
+| Real Estate | home, bedrooms, bathrooms, building |
+
+* Already, by just classifying articles based on these keyword counts:
+
+| | Arts | Real Estate | Sports | U.S. News | World News | Total |
+|-:|:-:|:-:|:-:|:-:|:-:|
+| **Correct** | 3020 | 690 | 4860 | 1330 | 1730 | 11630 |
+| **Incorrect** | 750 | 60 | 370 | 1100 | 590 | 2870 |
+| **Accuracy** | 0.801 | 0.920 | 0.929 | 0.547 | 0.746 | 0.802 |
+
+## Topic Models as PGMs {.smaller .crunch-title .crunch-img}
+
+![From @blei_probabilistic_2012](images/lda.jpg){fig-align="center"}
+
+<center>
+
+*...Unlocks a world of social modeling through text!*
+
+</center>
+
+## Cross-Sectional Analysis
+
+@blaydes_mirrors_2018
+
+## Influence Over Time
+
+![From @barron_individuals_2018](images/novelty_transience.png){fig-align="center"}
+
+## Textual Influence Over Time
+
+![](images/novelty-resonance-marxism.svg){fig-align="center"}
+
+# Sensitivity Analysis 1: Sensitivity to Priors {data-stack-name="Sensitivity to Priors"}
+
+```{python}
+#| label: py-imports
+#| fig-align: center
+import pandas as pd
+import numpy as np
+import matplotlib.pyplot as plt
+import seaborn as sns
+cb_palette = ['#e69f00','#56b4e9','#009e73']
+sns.set_palette(cb_palette)
+import patchworklib as pw
+import pymc as pm
+import arviz as az
+def draw_prior_sample(model, return_idata=False):
+  with model:
+    prior_idata = pm.sample_prior_predictive(draws=10_000, random_seed=5650)
+  prior_df = prior_idata.prior.to_dataframe().reset_index().drop(columns='chain')
+  if return_idata:
+    return prior_idata, prior_df
+  return prior_df
+# Plotting function
+def gen_dist_plot(dist_df, plot_title, size='third', custom_ylim=None):
+  plot_width = 2
+  if size == 'quarter':
+    plot_width = 1.5
+  plot_height = 0.625 * plot_width
+  plot_figsize = (plot_width, plot_height)
+  ax = pw.Brick(figsize=plot_figsize)
+  sns.histplot(
+    x="p_heads", data=dist_df, ax=ax,
+    bins=25, alpha=0.8, stat='probability'
+  );
+  ax.set_xlim(0, 1);
+  if custom_ylim is not None:
+    ax.set_ylim(custom_ylim)
+  ax.set_title(plot_title)
+  return ax
+```
+
+## The Beta Distribution $\text{Beta}(\alpha, \beta)$: The "Workhorse" Prior! {.smaller .title-09 .crunch-title .crunch-quarto-figure .crunch-ul .crunch-img .text-60}
+
+<center style='margin: 5px;'>
+
+[**Biased coin** framing: $\alpha$ is "pseudo-count" of **heads**, $\beta$ = "pseudo-count" of **tails**]{style="border: 1px solid black; padding: 5px;"}
+
+</center>
+
+:::: {.columns}
+::: {.column width="33%"}
+
+<center>
+
+<i class='bi bi-1-circle'></i> $p \sim$ "$\text{Beta}(0, 0)$"
+
+</center>
+
+```{python}
+#| label: beta00-plot
+#| fig-align: center
+# b00_df = pd.DataFrame({'p_heads': np.arange(0, 1+1/25, 1/25)})
+# b00_df['Probability'] = 0
+ax = pw.Brick(figsize=(2, 1.25))
+sns.histplot(
+  x=[], ax=ax, # data=b00_df
+);
+ax.set_xlabel('p_heads');
+ax.set_ylabel('Probability')
+ax.set_xticks([0, 0.25, 0.5, 0.75, 1]);
+ax.set_ylim(0, 1);
+ax.savefig()
+```
+
+:::
+::: {.column width="33%"}
+
+<center>
+
+<i class='bi bi-2-circle'></i> $p \sim$ "$\text{Beta}(1, 0)$"
+
+</center>
+
+```{python}
+#| label: beta10-plot
+#| fig-align: center
+b10_df = pd.DataFrame({
+  'draw': [0],
+  'p_heads': [0],
+})
+ax = pw.Brick(figsize=(2, 1.25))
+sns.histplot(
+  x='p_heads', stat='probability', ax=ax,
+  bins=25,
+  data=b10_df
+);
+ax.set_xlim(0, 1);
+ax.set_ylim(0, 1);
+ax.savefig()
+```
+
+:::
+::: {.column width="33%"}
+
+<center>
+
+<i class='bi bi-3-circle'></i> $p \sim$ "$\text{Beta}(0, 1)$"
+
+</center>
+
+```{python}
+#| label: beta01-plot
+#| fig-align: center
+b01_df = pd.DataFrame({
+  'draw': [0],
+  'p_heads': [1],
+})
+ax = pw.Brick(figsize=(2, 1.25))
+sns.histplot(
+  x='p_heads', stat='probability', ax=ax,
+  bins=25,
+  data=b01_df
+);
+ax.set_xlim(0, 1);
+ax.set_ylim(0, 1);
+ax.savefig()
+```
+
+:::
+::::
+
+:::: {.columns}
+::: {.column width="33%"}
+
+<center>
+<i class='bi bi-4-circle'></i> **Informative** Prior
+</center>
+
+```{python}
+#| label: fig-informative-prior
+#| crop: false
+#| fig-align: center
+#| fig-cap: "*\"I'll start by assuming a **fair** coin\"*"
+# Informative Prior
+with pm.Model() as informative_model:
+  p_heads = pm.Beta("p_heads", alpha=2, beta=2)
+  result = pm.Bernoulli("result", p=p_heads)
+informative_df = draw_prior_sample(informative_model)
+informative_plot = gen_dist_plot(informative_df, "Beta(2, 2) Prior on p");
+informative_plot.savefig()
+```
+
+:::
+::: {.column width="33%"}
+
+<center>
+<i class='bi bi-5-circle'></i> **Weak** Prior
+</center>
+
+```{python}
+#| label: fig-weak-prior
+#| fig-align: center
+#| fig-cap: "*\"I have no idea, I'll assume all biases equally likely\"*"
+# Weakly Informative
+with pm.Model() as weak_model:
+  p_heads = pm.Beta("p_heads", alpha=1, beta=1)
+  result = pm.Bernoulli("result", p=p_heads)
+weak_df = draw_prior_sample(weak_model)
+weak_plot = gen_dist_plot(weak_df, "Beta(1, 1) Prior on p");
+weak_plot.savefig()
+```
+
+:::
+::: {.column width="33%"}
+
+<center>
+<i class='bi bi-6-circle'></i> **Skeptical** (Jeffreys) Prior
+</center>
+
+```{python}
+#| label: fig-skeptical-prior
+#| fig-align: center
+#| fig-cap: "*\"I don't trust this coin, it'll take lots of flips with H/T balance to convince me it's fair!\"*"
+# Skeptical / Jeffreys
+with pm.Model() as skeptical_model:
+  p_heads = pm.Beta("p_heads", alpha=0.5, beta=0.5)
+  result = pm.Bernoulli("result", p=p_heads)
+skeptical_df = draw_prior_sample(skeptical_model)
+skeptical_plot = gen_dist_plot(skeptical_df, "Beta(0.5, 0.5) Prior on p");
+# And combine
+skeptical_plot.savefig()
+```
+
+:::
+::::
+
+## Modeling *Domain Knowledge* with Priors {.smaller .crunch-title .title-12}
+
+**Population proportion** framing: $\frac{\alpha}{\alpha + \beta}$ = mean, $\alpha + \beta$ = "precision"
+
+:::: {.columns}
+::: {.column width="33%"}
+
+```{python}
+#| label: heads-more-likely
+#| fig-align: center
+with pm.Model() as heads_model:
+  p_heads = pm.Beta("p_heads", alpha=2, beta=1)
+  result = pm.Bernoulli("result", p=p_heads)
+heads_df = draw_prior_sample(heads_model)
+heads_plot = gen_dist_plot(heads_df, "Beta(2, 1) Prior on p", size='quarter');
+heads_plot.savefig()
+```
+
+:::
+::: {.column width="33%"}
+
+```{python}
+#| label: tails-more-likely
+with pm.Model() as tails_model:
+  p_heads = pm.Beta("p_heads", alpha=1, beta=2)
+  result = pm.Bernoulli("result", p=p_heads)
+tails_df = draw_prior_sample(tails_model)
+tails_plot = gen_dist_plot(tails_df, "Beta(1, 2) Prior on p", size='quarter');
+tails_plot.savefig()
+```
+
+:::
+::::
+
+:::: {.columns}
+::: {.column width="50%"}
+
+```{python}
+#| label: tails-very-likely
+with pm.Model() as beta23_model:
+  p_heads = pm.Beta("p_heads", alpha=2, beta=3)
+  result = pm.Bernoulli("result", p=p_heads)
+beta23_df = draw_prior_sample(beta23_model)
+beta23_plot = gen_dist_plot(beta23_df, "Beta(2, 3) Prior on p", size='quarter');
+beta23_plot.savefig()
+```
+
+:::
+::: {.column width="33%"}
+
+```{python}
+#| label: beta2030-model
+with pm.Model() as beta100_model:
+  p_heads = pm.Beta("p_heads", alpha=40, beta=60)
+  result = pm.Bernoulli("result", p=p_heads)
+beta100_df = draw_prior_sample(beta100_model)
+beta100_plot = gen_dist_plot(beta100_df, "Beta(40, 60) Prior on p", size='quarter');
+beta100_plot.savefig()
+```
+
+:::
+::::
+
+## (2) How Sensitive Are My Results to *Omitted Variable Bias*?
+
+## References
+
+::: {#refs}
+:::

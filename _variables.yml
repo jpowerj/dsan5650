@@ -57,13 +57,13 @@ w10:
   date-md: "Jul 23"
 w11:
   weeknum: 11
-  title: "Causal Forests for Heterogeneous Treatment Effects"
-  footer: "Causal Forests"
+  title: "Sensitivity Analysis"
+  footer: "Sensitivity Analysis"
   date-md: "Jul 30"
 w12:
   weeknum: 12
-  title: "Double-Debiased Machine Learning"
-  footer: "Double-Debiased Machine Learning"
+  title: "Causal Forests for Heterogeneous Treatment Effects"
+  footer: "Causal Forests"
   date-md: "Aug 6"
 hw1:
   title: "Causal Modeling with DAGs and PGMs: Direct and Indirect Effects"

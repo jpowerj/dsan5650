@@ -11,16 +11,17 @@
       "/w07/index.html",
       "/w08/index.html",
       "/w09/index.html",
-      "/w10/index.html"
+      "/w10/index.html",
+      "/w11/index.html"
     ]
   },
   {
     "listing": "/writeups/index.html",
     "items": [
-      "/writeups/hw2-guide/HW2_Guide.html",
       "/writeups/birthday-instrument/index.html",
       "/writeups/informative-priors/FlatPriors_MiniLab.html",
-      "/writeups/bayesian-workflow/Bayesian_Workflow.html"
+      "/writeups/bayesian-workflow/Bayesian_Workflow.html",
+      "/writeups/hw2-guide/HW2_Guide.html"
     ]
   }
 ]
