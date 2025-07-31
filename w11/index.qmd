@@ -55,22 +55,6 @@ format:
 
 :::
 
-# Schedule {.smaller .crunch-title .crunch-callout .code-90 data-stack-name="Schedule"}
-
-Today's Planned Schedule:
-
-| | Start | End | Topic |
-|:- |:- |:- |:- |
-| **Lecture** | 6:30pm | 6:45pm | [Final Projects: Dependent vs. Independent Vars &rarr;](#final-projects-independent-vs.-dependent-variables) |
-| | 6:45pm | 7:10pm | [Instrumental Variables Lite &rarr;](#instrumental-variables)
-| | 7:10pm | 8:00pm | [Text-as-Data Part 1: TAD in General &rarr;](#text-as-data-part-1-tad-in-general) |
-| **Break!** | 8:00pm | 8:10pm | |
-| | 8:10pm | 9:00pm | [Text-as-Data Part 2: Causal Text Analysis &rarr;](#text-as-data-part-2-causal-inferences-with-text) |
-
-: {tbl-colwidths="[12,12,12,64]"}
-
-{{< include ../dsan-globals/_globals-tex.qmd >}}
-
 # Final Project Drafts: Friday, 5:59pm EDT {data-name="Final Projects"}
 
 * On Canvas!
@@ -321,7 +305,7 @@ skeptical_plot.savefig()
 **Population proportion** framing: $\frac{\alpha}{\alpha + \beta}$ = mean, $\alpha + \beta$ = "precision"
 
 :::: {.columns}
-::: {.column width="33%"}
+::: {.column width="50%"}
 
 ```{python}
 #| label: heads-more-likely
@@ -330,20 +314,21 @@ with pm.Model() as heads_model:
   p_heads = pm.Beta("p_heads", alpha=2, beta=1)
   result = pm.Bernoulli("result", p=p_heads)
 heads_df = draw_prior_sample(heads_model)
-heads_plot = gen_dist_plot(heads_df, "Beta(2, 1) Prior on p", size='quarter');
+heads_plot = gen_dist_plot(heads_df, "Beta(2, 1) Prior on p");
 heads_plot.savefig()
 ```
 
 :::
-::: {.column width="33%"}
+::: {.column width="50%"}
 
 ```{python}
 #| label: tails-more-likely
+#| fig-align: center
 with pm.Model() as tails_model:
   p_heads = pm.Beta("p_heads", alpha=1, beta=2)
   result = pm.Bernoulli("result", p=p_heads)
 tails_df = draw_prior_sample(tails_model)
-tails_plot = gen_dist_plot(tails_df, "Beta(1, 2) Prior on p", size='quarter');
+tails_plot = gen_dist_plot(tails_df, "Beta(1, 2) Prior on p");
 tails_plot.savefig()
 ```
 
@@ -355,39 +340,40 @@ tails_plot.savefig()
 
 ```{python}
 #| label: tails-very-likely
+#| fig-align: center
 with pm.Model() as beta23_model:
   p_heads = pm.Beta("p_heads", alpha=2, beta=3)
   result = pm.Bernoulli("result", p=p_heads)
 beta23_df = draw_prior_sample(beta23_model)
-beta23_plot = gen_dist_plot(beta23_df, "Beta(2, 3) Prior on p", size='quarter');
+beta23_plot = gen_dist_plot(beta23_df, "Beta(2, 3) Prior on p");
 beta23_plot.savefig()
 ```
 
 :::
-::: {.column width="33%"}
+::: {.column width="50%"}
 
 ```{python}
 #| label: beta2030-model
+#| fig-align: center
 with pm.Model() as beta100_model:
   p_heads = pm.Beta("p_heads", alpha=40, beta=60)
   result = pm.Bernoulli("result", p=p_heads)
 beta100_df = draw_prior_sample(beta100_model)
-beta100_plot = gen_dist_plot(beta100_df, "Beta(40, 60) Prior on p", size='quarter');
+beta100_plot = gen_dist_plot(beta100_df, "Beta(40, 60) Prior on p");
 beta100_plot.savefig()
 ```
 
 :::
 ::::
 
-# Sensitivity Analysis 2: How Sensitive Are My Results to *Omitted/Included Variable Bias*? {.smaller data-stack-name="Included Variable Bias"}
+# Sensitivity Analysis 2: How Sensitive Are My Results to *Omitted/Included Variable Bias*? {.smaller .title-10 .crunch-title data-stack-name="Included Variable Bias"}
 
-* You probably know about **omitted variable bias** from previous classes / intuition...
-* But **included variable bias?**
-* That's right folks... **colliders** can be agents of chaos, laying waste to our best, most meticulously-measured models
+* You probably know about **omitted variable bias** from previous classes / intuition... but, **included variable bias?**
+* That's right folks... **colliders** can be agents of chaos, laying waste to our best, most meticulously-planned-out models
 
 ![](images/mood_crop.jpg){fig-align="center"}
 
-## Does Marriage Cause Happiness? {.smaller .crunch-title .crunch-ul .crunch-quarto-figure .table-80 .crunch-img .crunch-p}
+## Does Aging Cause Sadness? {.smaller .crunch-title .crunch-ul .crunch-quarto-figure .table-80 .crunch-img .crunch-quarto-layout-panel .crunch-quarto-layout-cell .crunch-figure .crunch-figcaption .inline-70}
 
 ```{=html}
 <table>
@@ -408,67 +394,126 @@ beta100_plot.savefig()
 </tr>
 <tr>
   <td><span data-qmd="<i class='bi bi-4-circle'></i>"></span></td>
-  <td>At age 65 individuals leave the sample (They move to Boca Raton, Florida)</td>
+  <td>At age 70 individuals leave the sample (They move to Boca Raton, Florida)</td>
 </tr>
 </tbody>
 </table>
 ```
 
+:::: {layout="[65,35]" layout-valign="center"}
+::: {#collider-plot}
+
 ```{python}
 #| label: fig-happiness-plot
 #| fig-align: center
-#| fig-width: 8
-#| fig-height: 3
-#| fig-cap: "Happiness by Age (From [PyMC port](https://github.com/pymc-devs/pymc-examples/blob/main/examples/statistical_rethinking_lectures/utils.py) of *Statistical Rethinking* lectures)"
+#| fig-cap: "Happiness by Age"
+import numpy as np
+rng = np.random.default_rng(seed=5650)
 from scipy.special import expit
-from scipy import stats as stats
-def plot_scatter(xs, ys, **scatter_kwargs):
-    """Draw scatter plot with consistent style (e.g. unfilled points)"""
-    defaults = {"alpha": 0.6, "lw": 3, "s": 80, "color": "C0", "facecolors": "none"}
 
-    for k, v in defaults.items():
-        val = scatter_kwargs.get(k, v)
-        scatter_kwargs[k] = val
+# The original R code:
+# sim_happiness <- function( seed=1977 , N_years=1000 , max_age=65 , N_births=20 , aom=18 ) {
+#     set.seed(seed)
+#     H <- M <- A <- c()
+#     for ( t in 1:N_years ) {
+#         A <- A + 1 # age existing individuals
+#         A <- c( A , rep(1,N_births) ) # newborns
+#         H <- c( H , seq(from=-2,to=2,length.out=N_births) ) # sim happiness trait - never changes
+#         M <- c( M , rep(0,N_births) ) # not yet married
+#         # for each person over 17, chance get married
+#         for ( i in 1:length(A) ) {
+#             if ( A[i] >= aom & M[i]==0 ) {
+#                 M[i] <- rbern(1,inv_logit(H[i]-4))
+#             }
+#         }
+#         # mortality
+#         deaths <- which( A > max_age )
+#         if ( length(deaths)>0 ) {
+#             A <- A[ -deaths ]
+#             H <- H[ -deaths ]
+#             M <- M[ -deaths ]
+#        }
+#     }
+#     d <- data.frame(age=A,married=M,happiness=H)
+#     return(d)
 
-    plt.scatter(xs, ys, **scatter_kwargs)
-age = np.arange(1, 71)
-happiness = np.linspace(-2, 2, 40)
-age_grid, happiness_grid = np.meshgrid(age, happiness)
+# DGP: happiness -> marriage <- age
+years = 70
+num_births = 41
+colnames = ['age','a','h','m']
+sim_dfs = []
+A = np.zeros(shape=(num_births,1))
+H = np.linspace(-2, 2, num=num_births)
+M = np.zeros(shape=(num_births,1))
+def update_m(row):
+  if row['m'] == 0:
+    return int(rng.binomial(
+      n=1,
+      p=expit(row['h'] - 3.875),
+      size=1,
+    ))
+  return 1
+def sim_cohort_to(max_age):
+  sim_df = pd.DataFrame({
+      'age': [1 for _ in range(num_births)],
+      'h': np.linspace(-2, 2, num=num_births),
+      'm': [0 for _ in range(num_births)],
+    }
+  )
+  for t in range(2, max_age + 1):
+    sim_df['age'] = sim_df['age'] + 1
+    if t >= 18:
+      sim_df['m'] = sim_df.apply(update_m, axis=1)
+  return sim_df
+all_sim_dfs = []
+for cur_max_age in range(1, 71):
+  cur_sim_df = sim_cohort_to(cur_max_age)
+  all_sim_dfs.append(cur_sim_df)
+full_sim_df = pd.concat(all_sim_dfs)
 
-# Arbitrary
-beta_happiness = 20
-beta_age = 1
-min_marriage_age = 18
-
-age_grid = age_grid.ravel()
-happiness_grid = happiness_grid.ravel()
-married_grid = []
-for a, h in zip(age_grid, happiness_grid):
-    p_marriage = expit(h * beta_happiness + (a - 40 - 18) * beta_age)
-    married_grid.append(stats.bernoulli(p=p_marriage).rvs())
-
-married_grid = np.array(married_grid).astype(int)
-
-plot_scatter(
-    age_grid[married_grid == 0],
-    happiness_grid[married_grid == 0],
-    s=20,
-    alpha=0.8,
-    color="lightgray",
-    label="Unmarried",
-)
-plot_scatter(
-    age_grid[married_grid == 1],
-    happiness_grid[married_grid == 1],
-    s=20,
-    alpha=1,
-    color="C0",
-    label="Married",
-)
-plt.xlabel("Age")
-plt.ylabel("Happiness (std)")
-plt.legend();
+# full_sim_df.head()
+cbg_palette = ['#c6c6c666'] + cb_palette
+full_sim_df['m_label'] = full_sim_df['m'].apply(lambda x: "Unmarried" if x == 0 else "Married")
+full_sim_df = full_sim_df.rename(columns={'age': 'Age', 'h': 'Happiness'})
+ax = pw.Brick(figsize=(5.25,2.75));
+sns.scatterplot(
+  x='Age', y='Happiness', hue='m_label',
+  data=full_sim_df,
+  ax=ax,
+  palette=cbg_palette,
+  sizes=2,
+  legend=True,
+);
+ax.legend_.set_title("")
+ax.move_legend("upper center", bbox_to_anchor=(0.5, 1.15), ncol=2)
+ax.savefig()
 ```
+
+:::
+::: {#collider-text}
+
+```{python}
+#| label: fig-mean-happiness-plot
+#| fig-align: center
+#| fig-cap: "Mean happiness by age x marriage status"
+mean_hap_df = full_sim_df.groupby(['Age','m_label'])['Happiness'].mean().reset_index()
+ax = pw.Brick(figsize=(3,2.5));
+sns.lineplot(
+  x='Age', y='Happiness', hue='m_label', data=mean_hap_df,
+  ax=ax
+);
+ax.savefig()
+```
+
+<center>
+
+[...What's happening here?]{.text-70}<br>
+$\textsf{Happy} \rightarrow {}^{🤔}\textsf{Marriage}^{🤔} \leftarrow \textsf{Age}$
+
+</center>
+
+:::
+::::
 
 ## References
 

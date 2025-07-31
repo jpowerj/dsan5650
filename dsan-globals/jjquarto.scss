@@ -331,6 +331,9 @@ font-size: 80% !important;
 .inline-80 .math.inline {
     font-size: 80% !important;
 }
+.inline-70 .math.inline {
+    font-size: 70% !important;
+}
 .math-95 .math.display {
     font-size: 95% !important;
 }
@@ -362,9 +365,9 @@ top: 0px !important;
 }
 
 .output-center .cell-output pre {
-max-width: fit-content;
-margin-left: auto;
-margin-right: auto;
+    max-width: fit-content;
+    margin-left: auto;
+    margin-right: auto;
 }
 .output-nowrap .cell-output pre code {
 word-break: normal !important;
@@ -615,9 +618,9 @@ text-align: right !important;
 
 /* For lists, shifting the bullet points */
 .unindent-lists ul {
-margin-left: 0px !important;
+    margin-left: 0px !important;
 }
 
 .valign-cols div.column {
-vertical-align: middle !important;
+    vertical-align: middle !important;
 }

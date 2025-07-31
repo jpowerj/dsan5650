@@ -1,0 +1,37 @@
+```{python}
+# A = np.column_stack((A,new_ages))
+# new_happiness = np.linspace(-2, 2, num=n_births)
+# H = np.column_stack((H, new_happiness))
+# new_marriage = np.zeros(n_births)
+# M = np.column_stack([M, new_marriage])
+# # for each person over 17, chance get married
+# for j in range(18, A.shape[1]):
+#   for i in range(0, n_births):
+#     if (A[i,j] >= 18) and (M[i,j] == 0):
+#       M[i,j] = stats.bernoulli(1,expit(H[i,j]-4))
+
+
+# Plotting code
+
+# ax = pw.Brick(figsize=(5,3))
+# ax.scatter(
+#     A[:,M == 0],
+#     H[:,M == 0],
+#     s=11,
+#     alpha=0.8,
+#     color="lightgray",
+#     label="Unmarried",
+# )
+# ax.scatter(
+#     A[:,M == 1],
+#     H[:,M == 1],
+#     s=11,
+#     alpha=1,
+#     color="C0",
+#     label="Married",
+# )
+# ax.set_xlabel("Age")
+# ax.set_ylabel("Happiness (std)")
+# ax.legend();
+# ax.savefig()
+```
