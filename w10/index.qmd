@@ -7,6 +7,7 @@ bibliography: "../_DSAN5650.bib"
 date: 2025-07-23
 date-format: full
 lecnum: 10
+cache: true
 categories:
   - "Class Sessions"
 tbl-cap-location: bottom
