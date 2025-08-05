@@ -458,74 +458,52 @@ Jeff Jacobs
 <span id="cb1-99"><a></a>combined_df <span class="op">=</span> pd.concat([mean_hap_df, married_df, unmarried_df], ignore_index<span class="op">=</span><span class="va">True</span>)</span>
 <span id="cb1-100"><a></a><span class="co"># display(combined_df.tail())</span></span>
 <span id="cb1-101"><a></a></span>
-<span id="cb1-102"><a></a>ax <span class="op">=</span> pw.Brick(figsize<span class="op">=</span>(<span class="fl">3.75</span>,<span class="fl">2.55</span>))<span class="op">;</span></span>
-<span id="cb1-103"><a></a></span>
-<span id="cb1-104"><a></a>ax.set_xlim(<span class="dv">0</span>, <span class="dv">70</span>)<span class="op">;</span></span>
-<span id="cb1-105"><a></a><span class="co"># ax.set_ylim(-1.2, 1.2);</span></span>
-<span id="cb1-106"><a></a>cbg_palette <span class="op">=</span> [<span class="st">'black'</span>, cb_palette[<span class="dv">0</span>], <span class="st">'#b2b2b2ff'</span>]</span>
-<span id="cb1-107"><a></a></span>
-<span id="cb1-108"><a></a><span class="co"># And plot</span></span>
-<span id="cb1-109"><a></a>sns.lineplot(</span>
-<span id="cb1-110"><a></a>  x<span class="op">=</span><span class="st">'Age'</span>, y<span class="op">=</span><span class="st">'Happiness_mean'</span>,</span>
-<span id="cb1-111"><a></a>  hue<span class="op">=</span><span class="st">'m_label'</span>,</span>
-<span id="cb1-112"><a></a>  <span class="co"># marker=".",</span></span>
-<span id="cb1-113"><a></a>  <span class="co"># s=20,</span></span>
-<span id="cb1-114"><a></a>  data<span class="op">=</span>combined_df,</span>
-<span id="cb1-115"><a></a>  palette<span class="op">=</span>cbg_palette,</span>
-<span id="cb1-116"><a></a>  <span class="co"># color=cbg_palette[0],</span></span>
-<span id="cb1-117"><a></a>  <span class="co"># order=3,</span></span>
-<span id="cb1-118"><a></a>  ax<span class="op">=</span>ax</span>
-<span id="cb1-119"><a></a>)<span class="op">;</span></span>
-<span id="cb1-120"><a></a>ax.set_title(<span class="st">"Mean Happiness by Status"</span>)<span class="op">;</span></span>
-<span id="cb1-121"><a></a>ax.legend_.set_title(<span class="st">""</span>)<span class="op">;</span></span>
-<span id="cb1-122"><a></a>ax.set_ylabel(<span class="st">"Mean Happiness"</span>)<span class="op">;</span></span>
-<span id="cb1-123"><a></a>ax.savefig()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb1-102"><a></a>ax <span class="op">=</span> pw.Brick(figsize<span class="op">=</span>(<span class="fl">3.75</span>,<span class="fl">2.4</span>))<span class="op">;</span></span>
+<span id="cb1-103"><a></a>ax.set_xlim(<span class="dv">0</span>, <span class="dv">70</span>)<span class="op">;</span></span>
+<span id="cb1-104"><a></a><span class="co"># ax.set_ylim(-1.2, 1.2);</span></span>
+<span id="cb1-105"><a></a>cbg_palette <span class="op">=</span> [<span class="st">'black'</span>, cb_palette[<span class="dv">0</span>], <span class="st">'#b2b2b2ff'</span>]</span>
+<span id="cb1-106"><a></a></span>
+<span id="cb1-107"><a></a><span class="co"># And plot</span></span>
+<span id="cb1-108"><a></a>sns.lineplot(</span>
+<span id="cb1-109"><a></a>  x<span class="op">=</span><span class="st">'Age'</span>, y<span class="op">=</span><span class="st">'Happiness_mean'</span>,</span>
+<span id="cb1-110"><a></a>  hue<span class="op">=</span><span class="st">'m_label'</span>,</span>
+<span id="cb1-111"><a></a>  <span class="co"># marker=".",</span></span>
+<span id="cb1-112"><a></a>  <span class="co"># s=20,</span></span>
+<span id="cb1-113"><a></a>  data<span class="op">=</span>combined_df,</span>
+<span id="cb1-114"><a></a>  palette<span class="op">=</span>cbg_palette,</span>
+<span id="cb1-115"><a></a>  <span class="co"># color=cbg_palette[0],</span></span>
+<span id="cb1-116"><a></a>  <span class="co"># order=3,</span></span>
+<span id="cb1-117"><a></a>  ax<span class="op">=</span>ax</span>
+<span id="cb1-118"><a></a>)<span class="op">;</span></span>
+<span id="cb1-119"><a></a>ax.set_title(<span class="st">"Mean Happiness by Status"</span>)<span class="op">;</span></span>
+<span id="cb1-120"><a></a>ax.legend_.set_title(<span class="st">""</span>)<span class="op">;</span></span>
+<span id="cb1-121"><a></a>ax.set_xlabel(<span class="st">"Mean Happiness"</span>)<span class="op">;</span></span>
+<span id="cb1-122"><a></a>ax.savefig()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="quarto-layout-panel" data-layout="[60,40]">
 <div class="quarto-layout-row quarto-layout-valign-center">
 <div id="collider-plot" class="quarto-layout-cell" style="flex-basis: 60.0%;justify-content: flex-start;">
-<div class="cell" data-execution_count="1">
-<div id="fig-happiness-plot" class="cell quarto-float quarto-figure quarto-figure-center" data-execution_count="1">
+<div id="cell-fig-happiness-plot" class="cell" data-execution_count="1">
+<div class="cell-output cell-output-display" data-execution_count="10">
+<div id="fig-happiness-plot" class="quarto-float quarto-figure quarto-figure-center" data-fig-align="center">
 <figure class="quarto-float quarto-float-fig">
 <div aria-describedby="fig-happiness-plot-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<div class="cell-output cell-output-display" data-execution_count="1">
-<div id="fig-happiness-plot-1" class="quarto-float quarto-figure quarto-figure-center" data-fig-align="center">
-<figure class="quarto-float quarto-subfloat-fig">
-<div aria-describedby="fig-happiness-plot-1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img data-src="index_files/figure-revealjs/fig-happiness-plot-output-1.png" class="quarto-figure quarto-figure-center" data-ref-parent="fig-happiness-plot" width="583" height="360">
+<img data-src="index_files/figure-revealjs/fig-happiness-plot-output-1.png" class="quarto-figure quarto-figure-center" width="583" height="360">
 </div>
-<figcaption class="quarto-float-caption-bottom quarto-subfloat-caption quarto-subfloat-fig" id="fig-happiness-plot-1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-(a) Happiness by Age, 70 birth cohorts of size 41 each<br>(DC minimum marriage age = 18)
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-happiness-plot-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Fig&nbsp;1. Happiness by Age, 70 birth cohorts of size 41 each<br>(DC minimum marriage age = 18)
 </figcaption>
 </figure>
 </div>
-</div>
-<div class="cell-output cell-output-display">
-<div id="fig-happiness-plot-2" class="quarto-float quarto-figure quarto-figure-center" height="360" width="583" data-fig-align="center">
-<figure class="quarto-float quarto-subfloat-fig">
-<div aria-describedby="fig-happiness-plot-2-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img data-src="index_files/figure-revealjs/fig-happiness-plot-output-2.png" id="fig-happiness-plot-2" class="quarto-figure quarto-figure-center" data-ref-parent="fig-happiness-plot" width="583" height="360">
-</div>
-<figcaption class="quarto-float-caption-bottom quarto-subfloat-caption quarto-subfloat-fig" id="fig-happiness-plot-2-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-(b)
-</figcaption>
-</figure>
-</div>
-</div>
-</div>
-<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig quarto-uncaptioned" id="fig-happiness-plot-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Fig&nbsp;1
-</figcaption>
-</figure>
 </div>
 </div>
 </div>
 <div id="collider-text" class="quarto-layout-cell" style="flex-basis: 40.0%;justify-content: flex-start;">
-<div id="cell-mean-happiness-plot" class="cell" data-execution_count="2">
-<div class="cell-output cell-output-display" data-execution_count="2">
+<div id="cell-mean-happiness-plot" class="cell" data-crop="false" data-execution_count="2">
+<div class="cell-output cell-output-display" data-execution_count="11">
 <div class="quarto-figure quarto-figure-center">
 <figure>
-<p><img data-src="index_files/figure-revealjs/mean-happiness-plot-output-1.png" id="mean-happiness-plot" class="quarto-figure quarto-figure-center" width="452" height="331"></p>
+<p><img data-src="index_files/figure-revealjs/mean-happiness-plot-output-1.png" id="mean-happiness-plot" class="quarto-figure quarto-figure-center" width="452" height="316"></p>
 </figure>
 </div>
 </div>
