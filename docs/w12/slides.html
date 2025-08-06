@@ -98,6 +98,7 @@
     div.csl-bib-body { }
     div.csl-entry {
       clear: both;
+      margin-bottom: 0em;
     }
     .hanging-indent div.csl-entry {
       margin-left:2em;
@@ -231,7 +232,8 @@ Jeff Jacobs
 
   <p class="date">Wednesday, August 6, 2025</p>
 </section>
-<section id="schedule" class="title-slide slide level1 smaller crunch-title crunch-callout code-90 center" data-name="Schedule">
+<section>
+<section id="schedule" class="title-slide slide level1 smaller crunch-title crunch-callout code-90 center" data-stack-name="Schedule">
 <h1>Schedule</h1>
 <p>Today’s Planned Schedule:</p>
 <table>
@@ -254,19 +256,19 @@ Jeff Jacobs
 <td style="text-align: left;"><strong>Lecture</strong></td>
 <td style="text-align: left;">6:30pm</td>
 <td style="text-align: left;">6:45pm</td>
-<td style="text-align: left;"><a href="#/final-projects-independent-vs.-dependent-variables">Final Projects →</a></td>
+<td style="text-align: left;"><a href="#/final-project--end-of-term-things">Final Projects →</a></td>
 </tr>
 <tr class="even">
 <td style="text-align: left;"></td>
 <td style="text-align: left;">6:45pm</td>
 <td style="text-align: left;">7:10pm</td>
-<td style="text-align: left;"><a href="#/instrumental-variables">Included Variable Bias →</a></td>
+<td style="text-align: left;"><a href="#/does-aging-cause-sadness">Included Variable Bias →</a></td>
 </tr>
 <tr class="odd">
 <td style="text-align: left;"></td>
 <td style="text-align: left;">7:10pm</td>
 <td style="text-align: left;">8:00pm</td>
-<td style="text-align: left;"><a href="#/text-as-data-part-1-tad-in-general">Heterogeneous Treatment Effects →</a></td>
+<td style="text-align: left;"><a href="#/heterogeneous-treatment-effects">Heterogeneous Treatment Effects →</a></td>
 </tr>
 <tr class="even">
 <td style="text-align: left;"><strong>Break!</strong></td>
@@ -278,7 +280,7 @@ Jeff Jacobs
 <td style="text-align: left;"></td>
 <td style="text-align: left;">8:10pm</td>
 <td style="text-align: left;">9:00pm</td>
-<td style="text-align: left;"><a href="#/text-as-data-part-2-causal-inferences-with-text">Causal Forests →</a></td>
+<td style="text-align: left;"><a href="#/causal-forests">Causal Forests →</a></td>
 </tr>
 </tbody>
 </table>
@@ -323,7 +325,32 @@ Jeff Jacobs
 \]</span></p>
 </div>
 </section>
-
+<section id="final-project-end-of-term-things" class="slide level2">
+<h2>Final Project / End of Term Things</h2>
+<ul>
+<li><strong>Midterm</strong> grading will be done TONIGHT</li>
+<li><strong>Submit button</strong> for HW3 / HW4 TONIGHT</li>
+</ul>
+</section>
+<section id="sensitivity-analysis" class="slide level2 smaller crunch-title">
+<h2>Sensitivity Analysis</h2>
+<ul>
+<li>So you’ve got an estimate of a causal effect! What now? Two possible next steps…</li>
+<li><i class="bi bi-1-circle"></i> <strong>Sensitivity Analysis</strong>: Check <strong>robustness</strong> of your results
+<ul>
+<li>Modeling choices → <strong>one point</strong> in param space (<em>garden of forking paths</em>)</li>
+<li>If results “truly” hold, shouldn’t disappear with small changes in parameters/choices</li>
+<li><em>Last week</em>: Can re-estimate with <strong>informative</strong> → <strong>weak</strong> → <strong>skeptical</strong> priors</li>
+<li><em>This week</em>: Simulate <strong>how “strong”</strong> omissions would have to be to <strong>“ruin” finding</strong></li>
+</ul></li>
+<li><i class="bi bi-2-circle"></i> <strong>Heterogeneous Treatment Effects</strong>: How does the effect <strong>vary</strong> btwn subgroups?
+<ul>
+<li>Example today: PROGRESA (Cash transfer poverty-alleviation program in Mexico)</li>
+<li>Program has an <strong>overall</strong> causal effect, but also a <strong>greater</strong> causal effect on <strong>indigenous</strong> households, relative to non-indigenous</li>
+<li>How can we find group-specific effects? <strong>Causal forests!</strong></li>
+</ul></li>
+</ul>
+</section></section>
 <section>
 <section id="sensitivity-analysis-2-how-sensitive-are-my-results-to-omittedincluded-variable-bias" class="title-slide slide level1 smaller title-10 crunch-title center" data-stack-name="Included Variable Bias">
 <h1>Sensitivity Analysis 2: How Sensitive Are My Results to <em>Omitted/Included Variable Bias</em>?</h1>
@@ -483,24 +510,45 @@ Jeff Jacobs
 <div class="quarto-layout-panel" data-layout="[60,40]">
 <div class="quarto-layout-row quarto-layout-valign-center">
 <div id="collider-plot" class="quarto-layout-cell" style="flex-basis: 60.0%;justify-content: flex-start;">
-<div id="cell-fig-happiness-plot" class="cell" data-execution_count="1">
-<div class="cell-output cell-output-display" data-execution_count="10">
-<div id="fig-happiness-plot" class="quarto-float quarto-figure quarto-figure-center" data-fig-align="center">
+<div class="cell" data-execution_count="1">
+<div id="fig-happiness-plot" class="cell quarto-float quarto-figure quarto-figure-center" data-execution_count="1">
 <figure class="quarto-float quarto-float-fig">
 <div aria-describedby="fig-happiness-plot-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img data-src="index_files/figure-revealjs/fig-happiness-plot-output-1.png" class="quarto-figure quarto-figure-center" width="583" height="360">
+<div class="cell-output cell-output-display" data-execution_count="1">
+<div id="fig-happiness-plot-1" class="quarto-float quarto-figure quarto-figure-center" data-fig-align="center">
+<figure class="quarto-float quarto-subfloat-fig">
+<div aria-describedby="fig-happiness-plot-1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img data-src="index_files/figure-revealjs/fig-happiness-plot-output-1.png" class="quarto-figure quarto-figure-center" data-ref-parent="fig-happiness-plot" width="583" height="360">
 </div>
-<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-happiness-plot-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Fig&nbsp;1. Happiness by Age, 70 birth cohorts of size 41 each<br>(DC minimum marriage age = 18)
+<figcaption class="quarto-float-caption-bottom quarto-subfloat-caption quarto-subfloat-fig" id="fig-happiness-plot-1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+(a) Happiness by Age, 70 birth cohorts of size 41 each<br>(DC minimum marriage age = 18)
+</figcaption>
+</figure>
+</div>
+</div>
+<div class="cell-output cell-output-display">
+<div id="fig-happiness-plot-2" class="quarto-float quarto-figure quarto-figure-center" data-fig-align="center" height="360" width="583">
+<figure class="quarto-float quarto-subfloat-fig">
+<div aria-describedby="fig-happiness-plot-2-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img data-src="index_files/figure-revealjs/fig-happiness-plot-output-2.png" id="fig-happiness-plot-2" class="quarto-figure quarto-figure-center" data-ref-parent="fig-happiness-plot" width="583" height="360">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-subfloat-caption quarto-subfloat-fig" id="fig-happiness-plot-2-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+(b)
 </figcaption>
 </figure>
 </div>
 </div>
 </div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig quarto-uncaptioned" id="fig-happiness-plot-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Fig&nbsp;1
+</figcaption>
+</figure>
+</div>
+</div>
 </div>
 <div id="collider-text" class="quarto-layout-cell" style="flex-basis: 40.0%;justify-content: flex-start;">
 <div id="cell-mean-happiness-plot" class="cell" data-crop="false" data-execution_count="2">
-<div class="cell-output cell-output-display" data-execution_count="11">
+<div class="cell-output cell-output-display" data-execution_count="2">
 <div class="quarto-figure quarto-figure-center">
 <figure>
 <p><img data-src="index_files/figure-revealjs/mean-happiness-plot-output-1.png" id="mean-happiness-plot" class="quarto-figure quarto-figure-center" width="452" height="316"></p>
@@ -514,6 +562,89 @@ Fig&nbsp;1. Happiness by Age, 70 birth cohorts of size 41 each<br>(DC minimum ma
 </div>
 </div>
 </div>
+</section>
+<section id="assessing-the-impact-of-omitted-included-vars" class="slide level2 smaller crunch-title">
+<h2>Assessing the Impact of Omitted / Included Vars</h2>
+<ul>
+<li>Working example from <span class="citation" data-cites="cinelli_making_2020">Cinelli and Hazlett (<a href="#/references" role="doc-biblioref" onclick="">2020</a>)</span>: what is the <strong>causal impact</strong> of <strong>experiencing violence</strong> on <strong>support for a peace deal</strong></li>
+<li>Researcher A models this scenario as:</li>
+</ul>
+<p><span class="math display">\[
+PeaceIndex = \tau^{\text{res}} DirectHarm + \beta^ resFemale+Villageβˆv,res+Xβˆres+"ˆres
+\]</span></p>
+<ul>
+<li>Researcher B instead prefers:</li>
+</ul>
+<p><span class="math display">\[
+PeaceIndex=τˆDirectHarm+βˆfFemale+Villageβˆv+Xβˆ+γˆCenter+"ˆfull,
+\]</span></p>
+<blockquote>
+<p>Our earlier estimate <span class="math inline">\(\tau^{\text{res}}\)</span> would differ from our target quantity <span class="math inline">\(\tau\)</span>: but how badly? […] How strong would the confounder(s) have to be to change the estimates in such a way to affect the main conclusions of a study?</p>
+</blockquote>
+</section>
+<section id="the-classical-ovb-equation" class="slide level2 smaller crunch-title title-12 crunch-ul crunch-math footnotes-0 math-90 inline-90">
+<h2>The Classical OVB Equation</h2>
+<ul>
+<li>Remember that <span class="math inline">\(D\)</span> is our <strong>treatment</strong> variable! (<span class="math inline">\(\mathbf{X}\)</span> = covariates, <span class="math inline">\(Y\)</span> = outcome)</li>
+<li>In a perfect world, we would estimate <span class="math inline">\(Y = \hat{\tau}D + \mathbf{X} \hat{\beta} + \hat{\gamma}Z+ \varepsilon_{\text{full}}\)</span></li>
+<li>But, <span class="math inline">\(Z\)</span> is <strong>unobserved</strong> <span class="math inline">\(\leadsto\)</span> <strong>“restricted”</strong> model <span class="math inline">\(Y = \hat{\tau}_{\text{res}}D + \mathbf{X} \hat{\beta}_{\text{res}} + \varepsilon_{\text{res}}\)</span></li>
+<li>What is the “gap” between <span class="math inline">\(\hat{\tau}\)</span> and <span class="math inline">\(\hat{\tau}^{\text{res}}\)</span>? <span class="math inline">\(\text{OVB} = \hat{\tau}_{\text{res}} - \hat{\tau}\)</span></li>
+</ul>
+<div class="columns">
+<div class="column" style="width:40%;">
+<p><span class="math display">\[
+\begin{align*}
+\hat{\tau}_{\text{res}} &amp;= \frac{
+  \text{Cov}[D^{\top \mathbf{X}}, Y^{\top \mathbf{X}}]
+}{
+  \text{Var}[D^{\top \mathbf{X}}]
+} \\
+&amp;= \frac{
+  \text{Cov}[D^{\top \mathbf{X}}, \hat{\tau}D^{\top \mathbf{X}} + \hat{\gamma}Z^{\top \mathbf{X}}]
+}{
+  \text{Var}[D^{\top \mathbf{X}}]
+} \\
+&amp;= \hat{\tau} + \hat{\gamma}\frac{
+  \text{Cov}[D^{\top \mathbf{X}}, Z^{\top \mathbf{X}}]
+}{
+  \text{Var}[D^{\top \mathbf{X}}]
+} \\
+&amp;= \hat{\tau} + \hat{\gamma}\hat{\delta} \\
+\implies \text{OVB} &amp;= \hat{\tau}_{\text{res}} - \hat{\tau} = \overbrace{
+  \boxed{\hat{\gamma} \times \hat{\delta}}
+}^{\mathclap{\text{Impact} \, \times \, \text{Imbalance}}}
+\end{align*}
+\]</span></p>
+</div><div class="column" style="width:60%;">
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="images/sensitivity.svg" class="quarto-figure quarto-figure-center" width="360"></p>
+</figure>
+</div>
+</div></div>
+
+<aside><div>
+<p>The ability to produce <strong>orthogonalized</strong> (<span class="math inline">\(\top \mathbf{X}\)</span>) versions of vars in the model utilizes the <a href="https://en.wikipedia.org/wiki/Frisch%E2%80%93Waugh%E2%80%93Lovell_theorem">Frisch-Waugh-Lovell Theorem</a></p>
+</div></aside></section>
+<section id="more-generally" class="slide level2">
+<h2>More Generally</h2>
+<ul>
+<li>What if we don’t have a <strong>specific</strong> omitted variable in mind? We just want to know the expected impact <strong>if</strong> there were omitted vars… Enter “Partial <span class="math inline">\(R^2\)</span>”</li>
+</ul>
+<div class="columns">
+<div class="column" style="width:50%;">
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="images/r2.svg" class="quarto-figure quarto-figure-center"></p>
+</figure>
+</div>
+</div><div class="column" style="width:50%;">
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="images/r2_extreme.svg" class="quarto-figure quarto-figure-center"></p>
+</figure>
+</div>
+</div></div>
 </section></section>
 <section>
 <section id="heterogeneous-treatment-effects" class="title-slide slide level1 center" data-stack-name="HTEs">
@@ -525,8 +656,10 @@ Fig&nbsp;1. Happiness by Age, 70 birth cohorts of size 41 each<br>(DC minimum ma
 </section>
 <section id="references" class="slide level2 smaller scrollable">
 <h2>References</h2>
-<div id="refs" role="list">
-
+<div id="refs" class="references csl-bib-body hanging-indent" data-entry-spacing="0" role="list">
+<div id="ref-cinelli_making_2020" class="csl-entry" role="listitem">
+Cinelli, Carlos, and Chad Hazlett. 2020. <span>“Making <span>Sense</span> of <span>Sensitivity</span>: <span>Extending Omitted Variable Bias</span>.”</span> <em>Journal of the Royal Statistical Society Series B: Statistical Methodology</em> 82 (1): 39–67. <a href="https://doi.org/10.1111/rssb.12348">https://doi.org/10.1111/rssb.12348</a>.
+</div>
 </div>
 
 

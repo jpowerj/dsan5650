@@ -59,6 +59,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 div.csl-bib-body { }
 div.csl-entry {
   clear: both;
+  margin-bottom: 0em;
 }
 .hanging-indent div.csl-entry {
   margin-left:2em;
@@ -158,7 +159,7 @@ window.Quarto = {
 <link rel="stylesheet" href="../dsan-globals/jjstyles.css">
 </head>
 
-<body class="nav-sidebar floating">
+<body class="nav-sidebar floating slimcontent">
 
 <div id="quarto-search-results"></div>
   <header id="quarto-header" class="headroom fixed-top">
@@ -356,7 +357,7 @@ window.Quarto = {
     </ul>
     </div>
 <div class="quarto-sidebar-footer"><div class="sidebar-footer-item">
-<p><em>Updated 2025-08-04, 06:46:35 PM</em></p>
+<p><em>Updated 2025-08-06, 06:10:08 PM</em></p>
 </div></div></nav>
 <div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
@@ -365,10 +366,17 @@ window.Quarto = {
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#schedule" id="toc-schedule" class="nav-link active" data-scroll-target="#schedule">Schedule</a></li>
+  <li><a href="#schedule" id="toc-schedule" class="nav-link active" data-scroll-target="#schedule">Schedule</a>
+  <ul class="collapse">
+  <li><a href="#final-project-end-of-term-things" id="toc-final-project-end-of-term-things" class="nav-link" data-scroll-target="#final-project-end-of-term-things">Final Project / End of Term Things</a></li>
+  <li><a href="#sensitivity-analysis" id="toc-sensitivity-analysis" class="nav-link" data-scroll-target="#sensitivity-analysis">Sensitivity Analysis</a></li>
+  </ul></li>
   <li><a href="#sensitivity-analysis-2-how-sensitive-are-my-results-to-omittedincluded-variable-bias" id="toc-sensitivity-analysis-2-how-sensitive-are-my-results-to-omittedincluded-variable-bias" class="nav-link" data-scroll-target="#sensitivity-analysis-2-how-sensitive-are-my-results-to-omittedincluded-variable-bias">Sensitivity Analysis 2: How Sensitive Are My Results to <em>Omitted/Included Variable Bias</em>?</a>
   <ul class="collapse">
   <li><a href="#does-aging-cause-sadness" id="toc-does-aging-cause-sadness" class="nav-link" data-scroll-target="#does-aging-cause-sadness">Does Aging Cause Sadness?</a></li>
+  <li><a href="#assessing-the-impact-of-omitted-included-vars" id="toc-assessing-the-impact-of-omitted-included-vars" class="nav-link" data-scroll-target="#assessing-the-impact-of-omitted-included-vars">Assessing the Impact of Omitted / Included Vars</a></li>
+  <li><a href="#the-classical-ovb-equation" id="toc-the-classical-ovb-equation" class="nav-link" data-scroll-target="#the-classical-ovb-equation">The Classical OVB Equation</a></li>
+  <li><a href="#more-generally" id="toc-more-generally" class="nav-link" data-scroll-target="#more-generally">More Generally</a></li>
   </ul></li>
   <li><a href="#heterogeneous-treatment-effects" id="toc-heterogeneous-treatment-effects" class="nav-link" data-scroll-target="#heterogeneous-treatment-effects">Heterogeneous Treatment Effects</a>
   <ul class="collapse">
@@ -379,7 +387,7 @@ window.Quarto = {
 <div class="toc-actions"><ul><li><a href="https://github.com/jpowerj/dsan5650/blob/main/w12/index.qmd" target="_blank" class="toc-action"><i class="bi bi-github"></i>View source</a></li></ul></div><div class="quarto-alternate-formats"><h2>Other Formats</h2><ul><li><a href="slides.html"><i class="bi bi-file-slides"></i>RevealJS</a></li></ul></div></nav>
     </div>
 <!-- main -->
-<main class="content" id="quarto-document-content">
+<main class="content page-columns page-full" id="quarto-document-content">
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
@@ -426,8 +434,8 @@ window.Quarto = {
 <center>
 <a class="h2" href="./slides.html" target="_blank">Open slides in new window →</a>
 </center>
-<section id="schedule" class="level1 smaller crunch-title crunch-callout code-90" data-name="Schedule">
-<h1 class="smaller crunch-title crunch-callout code-90" data-name="Schedule">Schedule</h1>
+<section id="schedule" class="level1 smaller crunch-title crunch-callout code-90" data-stack-name="Schedule">
+<h1 class="smaller crunch-title crunch-callout code-90" data-stack-name="Schedule">Schedule</h1>
 <p>Today’s Planned Schedule:</p>
 <table class="table">
 <colgroup>
@@ -449,19 +457,19 @@ window.Quarto = {
 <td style="text-align: left;"><strong>Lecture</strong></td>
 <td style="text-align: left;">6:30pm</td>
 <td style="text-align: left;">6:45pm</td>
-<td style="text-align: left;"><a href="#final-projects-independent-vs.-dependent-variables">Final Projects →</a></td>
+<td style="text-align: left;"><a href="#final-project--end-of-term-things">Final Projects →</a></td>
 </tr>
 <tr class="even">
 <td style="text-align: left;"></td>
 <td style="text-align: left;">6:45pm</td>
 <td style="text-align: left;">7:10pm</td>
-<td style="text-align: left;"><a href="#instrumental-variables">Included Variable Bias →</a></td>
+<td style="text-align: left;"><a href="#does-aging-cause-sadness">Included Variable Bias →</a></td>
 </tr>
 <tr class="odd">
 <td style="text-align: left;"></td>
 <td style="text-align: left;">7:10pm</td>
 <td style="text-align: left;">8:00pm</td>
-<td style="text-align: left;"><a href="#text-as-data-part-1-tad-in-general">Heterogeneous Treatment Effects →</a></td>
+<td style="text-align: left;"><a href="#heterogeneous-treatment-effects">Heterogeneous Treatment Effects →</a></td>
 </tr>
 <tr class="even">
 <td style="text-align: left;"><strong>Break!</strong></td>
@@ -473,7 +481,7 @@ window.Quarto = {
 <td style="text-align: left;"></td>
 <td style="text-align: left;">8:10pm</td>
 <td style="text-align: left;">9:00pm</td>
-<td style="text-align: left;"><a href="#text-as-data-part-2-causal-inferences-with-text">Causal Forests →</a></td>
+<td style="text-align: left;"><a href="#causal-forests">Causal Forests →</a></td>
 </tr>
 </tbody>
 </table>
@@ -517,8 +525,34 @@ window.Quarto = {
 \newcommand{\bigVar}[1]{\text{Var}\mkern-4mu \left[ #1 \right]}
 \]</span></p>
 </div>
+<section id="final-project-end-of-term-things" class="level2">
+<h2 class="anchored" data-anchor-id="final-project-end-of-term-things">Final Project / End of Term Things</h2>
+<ul>
+<li><strong>Midterm</strong> grading will be done TONIGHT</li>
+<li><strong>Submit button</strong> for HW3 / HW4 TONIGHT</li>
+</ul>
 </section>
-<section id="sensitivity-analysis-2-how-sensitive-are-my-results-to-omittedincluded-variable-bias" class="level1 smaller title-10 crunch-title" data-stack-name="Included Variable Bias">
+<section id="sensitivity-analysis" class="level2 smaller crunch-title">
+<h2 class="smaller crunch-title anchored" data-anchor-id="sensitivity-analysis">Sensitivity Analysis</h2>
+<ul>
+<li>So you’ve got an estimate of a causal effect! What now? Two possible next steps…</li>
+<li><i class="bi bi-1-circle"></i> <strong>Sensitivity Analysis</strong>: Check <strong>robustness</strong> of your results
+<ul>
+<li>Modeling choices → <strong>one point</strong> in param space (<em>garden of forking paths</em>)</li>
+<li>If results “truly” hold, shouldn’t disappear with small changes in parameters/choices</li>
+<li><em>Last week</em>: Can re-estimate with <strong>informative</strong> → <strong>weak</strong> → <strong>skeptical</strong> priors</li>
+<li><em>This week</em>: Simulate <strong>how “strong”</strong> omissions would have to be to <strong>“ruin” finding</strong></li>
+</ul></li>
+<li><i class="bi bi-2-circle"></i> <strong>Heterogeneous Treatment Effects</strong>: How does the effect <strong>vary</strong> btwn subgroups?
+<ul>
+<li>Example today: PROGRESA (Cash transfer poverty-alleviation program in Mexico)</li>
+<li>Program has an <strong>overall</strong> causal effect, but also a <strong>greater</strong> causal effect on <strong>indigenous</strong> households, relative to non-indigenous</li>
+<li>How can we find group-specific effects? <strong>Causal forests!</strong></li>
+</ul></li>
+</ul>
+</section>
+</section>
+<section id="sensitivity-analysis-2-how-sensitive-are-my-results-to-omittedincluded-variable-bias" class="level1 smaller title-10 crunch-title page-columns page-full" data-stack-name="Included Variable Bias">
 <h1 class="smaller title-10 crunch-title" data-stack-name="Included Variable Bias">Sensitivity Analysis 2: How Sensitive Are My Results to <em>Omitted/Included Variable Bias</em>?</h1>
 <ul>
 <li>You probably know about <strong>omitted variable bias</strong> from previous classes / intuition… but, <strong>included variable bias?</strong></li>
@@ -654,28 +688,27 @@ window.Quarto = {
 <span id="cb1-99"><a href="#cb1-99" aria-hidden="true" tabindex="-1"></a>combined_df <span class="op">=</span> pd.concat([mean_hap_df, married_df, unmarried_df], ignore_index<span class="op">=</span><span class="va">True</span>)</span>
 <span id="cb1-100"><a href="#cb1-100" aria-hidden="true" tabindex="-1"></a><span class="co"># display(combined_df.tail())</span></span>
 <span id="cb1-101"><a href="#cb1-101" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-102"><a href="#cb1-102" aria-hidden="true" tabindex="-1"></a>ax <span class="op">=</span> pw.Brick(figsize<span class="op">=</span>(<span class="fl">3.75</span>,<span class="fl">2.55</span>))<span class="op">;</span></span>
-<span id="cb1-103"><a href="#cb1-103" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-104"><a href="#cb1-104" aria-hidden="true" tabindex="-1"></a>ax.set_xlim(<span class="dv">0</span>, <span class="dv">70</span>)<span class="op">;</span></span>
-<span id="cb1-105"><a href="#cb1-105" aria-hidden="true" tabindex="-1"></a><span class="co"># ax.set_ylim(-1.2, 1.2);</span></span>
-<span id="cb1-106"><a href="#cb1-106" aria-hidden="true" tabindex="-1"></a>cbg_palette <span class="op">=</span> [<span class="st">'black'</span>, cb_palette[<span class="dv">0</span>], <span class="st">'#b2b2b2ff'</span>]</span>
-<span id="cb1-107"><a href="#cb1-107" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-108"><a href="#cb1-108" aria-hidden="true" tabindex="-1"></a><span class="co"># And plot</span></span>
-<span id="cb1-109"><a href="#cb1-109" aria-hidden="true" tabindex="-1"></a>sns.lineplot(</span>
-<span id="cb1-110"><a href="#cb1-110" aria-hidden="true" tabindex="-1"></a>  x<span class="op">=</span><span class="st">'Age'</span>, y<span class="op">=</span><span class="st">'Happiness_mean'</span>,</span>
-<span id="cb1-111"><a href="#cb1-111" aria-hidden="true" tabindex="-1"></a>  hue<span class="op">=</span><span class="st">'m_label'</span>,</span>
-<span id="cb1-112"><a href="#cb1-112" aria-hidden="true" tabindex="-1"></a>  <span class="co"># marker=".",</span></span>
-<span id="cb1-113"><a href="#cb1-113" aria-hidden="true" tabindex="-1"></a>  <span class="co"># s=20,</span></span>
-<span id="cb1-114"><a href="#cb1-114" aria-hidden="true" tabindex="-1"></a>  data<span class="op">=</span>combined_df,</span>
-<span id="cb1-115"><a href="#cb1-115" aria-hidden="true" tabindex="-1"></a>  palette<span class="op">=</span>cbg_palette,</span>
-<span id="cb1-116"><a href="#cb1-116" aria-hidden="true" tabindex="-1"></a>  <span class="co"># color=cbg_palette[0],</span></span>
-<span id="cb1-117"><a href="#cb1-117" aria-hidden="true" tabindex="-1"></a>  <span class="co"># order=3,</span></span>
-<span id="cb1-118"><a href="#cb1-118" aria-hidden="true" tabindex="-1"></a>  ax<span class="op">=</span>ax</span>
-<span id="cb1-119"><a href="#cb1-119" aria-hidden="true" tabindex="-1"></a>)<span class="op">;</span></span>
-<span id="cb1-120"><a href="#cb1-120" aria-hidden="true" tabindex="-1"></a>ax.set_title(<span class="st">"Mean Happiness by Status"</span>)<span class="op">;</span></span>
-<span id="cb1-121"><a href="#cb1-121" aria-hidden="true" tabindex="-1"></a>ax.legend_.set_title(<span class="st">""</span>)<span class="op">;</span></span>
-<span id="cb1-122"><a href="#cb1-122" aria-hidden="true" tabindex="-1"></a>ax.set_ylabel(<span class="st">"Mean Happiness"</span>)<span class="op">;</span></span>
-<span id="cb1-123"><a href="#cb1-123" aria-hidden="true" tabindex="-1"></a>ax.savefig()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb1-102"><a href="#cb1-102" aria-hidden="true" tabindex="-1"></a>ax <span class="op">=</span> pw.Brick(figsize<span class="op">=</span>(<span class="fl">3.75</span>,<span class="fl">2.4</span>))<span class="op">;</span></span>
+<span id="cb1-103"><a href="#cb1-103" aria-hidden="true" tabindex="-1"></a>ax.set_xlim(<span class="dv">0</span>, <span class="dv">70</span>)<span class="op">;</span></span>
+<span id="cb1-104"><a href="#cb1-104" aria-hidden="true" tabindex="-1"></a><span class="co"># ax.set_ylim(-1.2, 1.2);</span></span>
+<span id="cb1-105"><a href="#cb1-105" aria-hidden="true" tabindex="-1"></a>cbg_palette <span class="op">=</span> [<span class="st">'black'</span>, cb_palette[<span class="dv">0</span>], <span class="st">'#b2b2b2ff'</span>]</span>
+<span id="cb1-106"><a href="#cb1-106" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-107"><a href="#cb1-107" aria-hidden="true" tabindex="-1"></a><span class="co"># And plot</span></span>
+<span id="cb1-108"><a href="#cb1-108" aria-hidden="true" tabindex="-1"></a>sns.lineplot(</span>
+<span id="cb1-109"><a href="#cb1-109" aria-hidden="true" tabindex="-1"></a>  x<span class="op">=</span><span class="st">'Age'</span>, y<span class="op">=</span><span class="st">'Happiness_mean'</span>,</span>
+<span id="cb1-110"><a href="#cb1-110" aria-hidden="true" tabindex="-1"></a>  hue<span class="op">=</span><span class="st">'m_label'</span>,</span>
+<span id="cb1-111"><a href="#cb1-111" aria-hidden="true" tabindex="-1"></a>  <span class="co"># marker=".",</span></span>
+<span id="cb1-112"><a href="#cb1-112" aria-hidden="true" tabindex="-1"></a>  <span class="co"># s=20,</span></span>
+<span id="cb1-113"><a href="#cb1-113" aria-hidden="true" tabindex="-1"></a>  data<span class="op">=</span>combined_df,</span>
+<span id="cb1-114"><a href="#cb1-114" aria-hidden="true" tabindex="-1"></a>  palette<span class="op">=</span>cbg_palette,</span>
+<span id="cb1-115"><a href="#cb1-115" aria-hidden="true" tabindex="-1"></a>  <span class="co"># color=cbg_palette[0],</span></span>
+<span id="cb1-116"><a href="#cb1-116" aria-hidden="true" tabindex="-1"></a>  <span class="co"># order=3,</span></span>
+<span id="cb1-117"><a href="#cb1-117" aria-hidden="true" tabindex="-1"></a>  ax<span class="op">=</span>ax</span>
+<span id="cb1-118"><a href="#cb1-118" aria-hidden="true" tabindex="-1"></a>)<span class="op">;</span></span>
+<span id="cb1-119"><a href="#cb1-119" aria-hidden="true" tabindex="-1"></a>ax.set_title(<span class="st">"Mean Happiness by Status"</span>)<span class="op">;</span></span>
+<span id="cb1-120"><a href="#cb1-120" aria-hidden="true" tabindex="-1"></a>ax.legend_.set_title(<span class="st">""</span>)<span class="op">;</span></span>
+<span id="cb1-121"><a href="#cb1-121" aria-hidden="true" tabindex="-1"></a>ax.set_xlabel(<span class="st">"Mean Happiness"</span>)<span class="op">;</span></span>
+<span id="cb1-122"><a href="#cb1-122" aria-hidden="true" tabindex="-1"></a>ax.savefig()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="quarto-layout-panel" data-layout="[60,40]">
 <div class="quarto-layout-row quarto-layout-valign-center">
@@ -697,7 +730,7 @@ window.Quarto = {
 </div>
 </div>
 <div class="cell-output cell-output-display">
-<div id="fig-happiness-plot-2" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center" width="583" height="360">
+<div id="fig-happiness-plot-2" class="quarto-float quarto-figure quarto-figure-center anchored" height="360" width="583" data-fig-align="center">
 <figure class="quarto-float quarto-subfloat-fig figure">
 <div aria-describedby="fig-happiness-plot-2-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <img src="index_files/figure-html/fig-happiness-plot-output-2.png" id="fig-happiness-plot-2" class="quarto-figure quarto-figure-center anchored figure-img" data-ref-parent="fig-happiness-plot" width="583" height="360">
@@ -717,11 +750,11 @@ Fig&nbsp;1
 </div>
 </div>
 <div id="collider-text" class="quarto-layout-cell" style="flex-basis: 40.0%;justify-content: flex-start;">
-<div id="cell-mean-happiness-plot" class="cell" data-execution_count="2">
+<div id="cell-mean-happiness-plot" class="cell" data-crop="false" data-execution_count="2">
 <div class="cell-output cell-output-display" data-execution_count="2">
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="index_files/figure-html/mean-happiness-plot-output-1.png" id="mean-happiness-plot" class="quarto-figure quarto-figure-center anchored figure-img" width="452" height="331"></p>
+<p><img src="index_files/figure-html/mean-happiness-plot-output-1.png" id="mean-happiness-plot" class="quarto-figure quarto-figure-center anchored figure-img" width="452" height="316"></p>
 </figure>
 </div>
 </div>
@@ -729,6 +762,91 @@ Fig&nbsp;1
 <center>
 <p><span class="text-70">…What’s happening here?</span><br> <span class="math inline">\(\textsf{Happy} \rightarrow {}^{🤔}\textsf{Marriage}^{🤔} \leftarrow \textsf{Age}\)</span></p>
 </center>
+</div>
+</div>
+</div>
+</section>
+<section id="assessing-the-impact-of-omitted-included-vars" class="level2 smaller crunch-title">
+<h2 class="smaller crunch-title anchored" data-anchor-id="assessing-the-impact-of-omitted-included-vars">Assessing the Impact of Omitted / Included Vars</h2>
+<ul>
+<li>Working example from <span class="citation" data-cites="cinelli_making_2020">Cinelli and Hazlett (<a href="#ref-cinelli_making_2020" role="doc-biblioref">2020</a>)</span>: what is the <strong>causal impact</strong> of <strong>experiencing violence</strong> on <strong>support for a peace deal</strong></li>
+<li>Researcher A models this scenario as:</li>
+</ul>
+<p><span class="math display">\[
+PeaceIndex = \tau^{\text{res}} DirectHarm + \beta^ resFemale+Villageβˆv,res+Xβˆres+"ˆres
+\]</span></p>
+<ul>
+<li>Researcher B instead prefers:</li>
+</ul>
+<p><span class="math display">\[
+PeaceIndex=τˆDirectHarm+βˆfFemale+Villageβˆv+Xβˆ+γˆCenter+"ˆfull,
+\]</span></p>
+<blockquote class="blockquote">
+<p>Our earlier estimate <span class="math inline">\(\tau^{\text{res}}\)</span> would differ from our target quantity <span class="math inline">\(\tau\)</span>: but how badly? […] How strong would the confounder(s) have to be to change the estimates in such a way to affect the main conclusions of a study?</p>
+</blockquote>
+</section>
+<section id="the-classical-ovb-equation" class="level2 smaller crunch-title title-12 crunch-ul crunch-math footnotes-0 math-90 inline-90 page-columns page-full">
+<h2 class="smaller crunch-title title-12 crunch-ul crunch-math footnotes-0 math-90 inline-90 anchored" data-anchor-id="the-classical-ovb-equation">The Classical OVB Equation</h2>
+<ul>
+<li>Remember that <span class="math inline">\(D\)</span> is our <strong>treatment</strong> variable! (<span class="math inline">\(\mathbf{X}\)</span> = covariates, <span class="math inline">\(Y\)</span> = outcome)</li>
+<li>In a perfect world, we would estimate <span class="math inline">\(Y = \hat{\tau}D + \mathbf{X} \hat{\beta} + \hat{\gamma}Z+ \varepsilon_{\text{full}}\)</span></li>
+<li>But, <span class="math inline">\(Z\)</span> is <strong>unobserved</strong> <span class="math inline">\(\leadsto\)</span> <strong>“restricted”</strong> model <span class="math inline">\(Y = \hat{\tau}_{\text{res}}D + \mathbf{X} \hat{\beta}_{\text{res}} + \varepsilon_{\text{res}}\)</span></li>
+<li>What is the “gap” between <span class="math inline">\(\hat{\tau}\)</span> and <span class="math inline">\(\hat{\tau}^{\text{res}}\)</span>? <span class="math inline">\(\text{OVB} = \hat{\tau}_{\text{res}} - \hat{\tau}\)</span></li>
+</ul>
+<div class="columns">
+<div class="column" style="width:40%;">
+<p><span class="math display">\[
+\begin{align*}
+\hat{\tau}_{\text{res}} &amp;= \frac{
+  \text{Cov}[D^{\top \mathbf{X}}, Y^{\top \mathbf{X}}]
+}{
+  \text{Var}[D^{\top \mathbf{X}}]
+} \\
+&amp;= \frac{
+  \text{Cov}[D^{\top \mathbf{X}}, \hat{\tau}D^{\top \mathbf{X}} + \hat{\gamma}Z^{\top \mathbf{X}}]
+}{
+  \text{Var}[D^{\top \mathbf{X}}]
+} \\
+&amp;= \hat{\tau} + \hat{\gamma}\frac{
+  \text{Cov}[D^{\top \mathbf{X}}, Z^{\top \mathbf{X}}]
+}{
+  \text{Var}[D^{\top \mathbf{X}}]
+} \\
+&amp;= \hat{\tau} + \hat{\gamma}\hat{\delta} \\
+\implies \text{OVB} &amp;= \hat{\tau}_{\text{res}} - \hat{\tau} = \overbrace{
+  \boxed{\hat{\gamma} \times \hat{\delta}}
+}^{\mathclap{\text{Impact} \, \times \, \text{Imbalance}}}
+\end{align*}
+\]</span></p>
+</div><div class="column" style="width:60%;">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/sensitivity.svg" class="img-fluid quarto-figure quarto-figure-center figure-img" width="360"></p>
+</figure>
+</div>
+</div>
+</div>
+
+<div class="no-row-height column-margin column-container"><div class="margin-aside">
+<p>The ability to produce <strong>orthogonalized</strong> (<span class="math inline">\(\top \mathbf{X}\)</span>) versions of vars in the model utilizes the <a href="https://en.wikipedia.org/wiki/Frisch%E2%80%93Waugh%E2%80%93Lovell_theorem">Frisch-Waugh-Lovell Theorem</a></p>
+</div></div></section>
+<section id="more-generally" class="level2">
+<h2 class="anchored" data-anchor-id="more-generally">More Generally</h2>
+<ul>
+<li>What if we don’t have a <strong>specific</strong> omitted variable in mind? We just want to know the expected impact <strong>if</strong> there were omitted vars… Enter “Partial <span class="math inline">\(R^2\)</span>”</li>
+</ul>
+<div class="columns">
+<div class="column" style="width:50%;">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/r2.svg" class="img-fluid quarto-figure quarto-figure-center figure-img"></p>
+</figure>
+</div>
+</div><div class="column" style="width:50%;">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/r2_extreme.svg" class="img-fluid quarto-figure quarto-figure-center figure-img"></p>
+</figure>
 </div>
 </div>
 </div>
@@ -741,8 +859,10 @@ Fig&nbsp;1
 </section>
 <section id="references" class="level2">
 <h2 class="anchored" data-anchor-id="references">References</h2>
-<div id="refs" role="list">
-
+<div id="refs" class="references csl-bib-body hanging-indent" data-entry-spacing="0" role="list">
+<div id="ref-cinelli_making_2020" class="csl-entry" role="listitem">
+Cinelli, Carlos, and Chad Hazlett. 2020. <span>“Making <span>Sense</span> of <span>Sensitivity</span>: <span>Extending Omitted Variable Bias</span>.”</span> <em>Journal of the Royal Statistical Society Series B: Statistical Methodology</em> 82 (1): 39–67. <a href="https://doi.org/10.1111/rssb.12348">https://doi.org/10.1111/rssb.12348</a>.
+</div>
 </div>
 
 

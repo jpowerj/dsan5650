@@ -660,121 +660,156 @@ Fig&nbsp;3. <em>“I don’t trust this coin, it’ll take lots of flips with H/
 </ul>
 
 <img data-src="images/mood_crop.jpg" class="quarto-figure quarto-figure-center r-stretch"></section>
-<section id="does-aging-cause-sadness" class="slide level2 smaller crunch-title crunch-ul crunch-quarto-figure table-80 crunch-img crunch-quarto-layout-panel crunch-quarto-layout-cell crunch-figure crunch-figcaption inline-70">
+<section id="does-aging-cause-sadness" class="slide level2 smaller crunch-title crunch-ul crunch-quarto-figure table-80 crunch-img crunch-quarto-layout-panel crunch-quarto-layout-cell crunch-figure crunch-figcaption inline-70 crunch-p">
 <h2>Does Aging Cause Sadness?</h2>
 <table data-quarto-postprocess="true">
 <tbody>
 <tr class="odd">
-<td width="10%"><i class="bi bi-1-circle"></i></td>
-<td width="90%">Each year, 20 people are born with uniformly-distributed happiness values</td>
+<td style="text-align: right;" width="5%"><i class="bi bi-1-circle"></i></td>
+<td width="95%">Each year, 20 people are born with uniformly-distributed happiness values</td>
 </tr>
 <tr class="even">
-<td><i class="bi bi-2-circle"></i></td>
+<td style="text-align: right;"><i class="bi bi-2-circle"></i></td>
 <td>Each year, each person ages one year; Happiness does not change</td>
 </tr>
 <tr class="odd">
-<td><i class="bi bi-3-circle"></i></td>
+<td style="text-align: right;"><i class="bi bi-3-circle"></i></td>
 <td>At age 18, individuals can become married; Odds of marriage each year proportional to individual's happiness; Once married, they remain married</td>
 </tr>
 <tr class="even">
-<td><i class="bi bi-4-circle"></i></td>
+<td style="text-align: right;"><i class="bi bi-4-circle"></i></td>
 <td>At age 70 individuals leave the sample (They move to Boca Raton, Florida)</td>
 </tr>
 </tbody>
 </table>
 <details class="code-fold">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
-<span id="cb13-2"><a></a>rng <span class="op">=</span> np.random.default_rng(seed<span class="op">=</span><span class="dv">5650</span>)</span>
-<span id="cb13-3"><a></a><span class="im">from</span> scipy.special <span class="im">import</span> expit</span>
-<span id="cb13-4"><a></a></span>
-<span id="cb13-5"><a></a><span class="co"># The original R code:</span></span>
-<span id="cb13-6"><a></a><span class="co"># sim_happiness &lt;- function( seed=1977 , N_years=1000 , max_age=65 , N_births=20 , aom=18 ) {</span></span>
-<span id="cb13-7"><a></a><span class="co">#     set.seed(seed)</span></span>
-<span id="cb13-8"><a></a><span class="co">#     H &lt;- M &lt;- A &lt;- c()</span></span>
-<span id="cb13-9"><a></a><span class="co">#     for ( t in 1:N_years ) {</span></span>
-<span id="cb13-10"><a></a><span class="co">#         A &lt;- A + 1 # age existing individuals</span></span>
-<span id="cb13-11"><a></a><span class="co">#         A &lt;- c( A , rep(1,N_births) ) # newborns</span></span>
-<span id="cb13-12"><a></a><span class="co">#         H &lt;- c( H , seq(from=-2,to=2,length.out=N_births) ) # sim happiness trait - never changes</span></span>
-<span id="cb13-13"><a></a><span class="co">#         M &lt;- c( M , rep(0,N_births) ) # not yet married</span></span>
-<span id="cb13-14"><a></a><span class="co">#         # for each person over 17, chance get married</span></span>
-<span id="cb13-15"><a></a><span class="co">#         for ( i in 1:length(A) ) {</span></span>
-<span id="cb13-16"><a></a><span class="co">#             if ( A[i] &gt;= aom &amp; M[i]==0 ) {</span></span>
-<span id="cb13-17"><a></a><span class="co">#                 M[i] &lt;- rbern(1,inv_logit(H[i]-4))</span></span>
-<span id="cb13-18"><a></a><span class="co">#             }</span></span>
-<span id="cb13-19"><a></a><span class="co">#         }</span></span>
-<span id="cb13-20"><a></a><span class="co">#         # mortality</span></span>
-<span id="cb13-21"><a></a><span class="co">#         deaths &lt;- which( A &gt; max_age )</span></span>
-<span id="cb13-22"><a></a><span class="co">#         if ( length(deaths)&gt;0 ) {</span></span>
-<span id="cb13-23"><a></a><span class="co">#             A &lt;- A[ -deaths ]</span></span>
-<span id="cb13-24"><a></a><span class="co">#             H &lt;- H[ -deaths ]</span></span>
-<span id="cb13-25"><a></a><span class="co">#             M &lt;- M[ -deaths ]</span></span>
-<span id="cb13-26"><a></a><span class="co">#        }</span></span>
-<span id="cb13-27"><a></a><span class="co">#     }</span></span>
-<span id="cb13-28"><a></a><span class="co">#     d &lt;- data.frame(age=A,married=M,happiness=H)</span></span>
-<span id="cb13-29"><a></a><span class="co">#     return(d)</span></span>
-<span id="cb13-30"><a></a></span>
-<span id="cb13-31"><a></a><span class="co"># DGP: happiness -&gt; marriage &lt;- age</span></span>
-<span id="cb13-32"><a></a>years <span class="op">=</span> <span class="dv">70</span></span>
-<span id="cb13-33"><a></a>num_births <span class="op">=</span> <span class="dv">41</span></span>
-<span id="cb13-34"><a></a>colnames <span class="op">=</span> [<span class="st">'age'</span>,<span class="st">'a'</span>,<span class="st">'h'</span>,<span class="st">'m'</span>]</span>
-<span id="cb13-35"><a></a>sim_dfs <span class="op">=</span> []</span>
-<span id="cb13-36"><a></a>A <span class="op">=</span> np.zeros(shape<span class="op">=</span>(num_births,<span class="dv">1</span>))</span>
-<span id="cb13-37"><a></a>H <span class="op">=</span> np.linspace(<span class="op">-</span><span class="dv">2</span>, <span class="dv">2</span>, num<span class="op">=</span>num_births)</span>
-<span id="cb13-38"><a></a>M <span class="op">=</span> np.zeros(shape<span class="op">=</span>(num_births,<span class="dv">1</span>))</span>
-<span id="cb13-39"><a></a><span class="kw">def</span> update_m(row):</span>
-<span id="cb13-40"><a></a>  <span class="cf">if</span> row[<span class="st">'m'</span>] <span class="op">==</span> <span class="dv">0</span>:</span>
-<span id="cb13-41"><a></a>    <span class="cf">return</span> <span class="bu">int</span>(rng.binomial(</span>
-<span id="cb13-42"><a></a>      n<span class="op">=</span><span class="dv">1</span>,</span>
-<span id="cb13-43"><a></a>      p<span class="op">=</span>expit(row[<span class="st">'h'</span>] <span class="op">-</span> <span class="fl">3.875</span>),</span>
-<span id="cb13-44"><a></a>      size<span class="op">=</span><span class="dv">1</span>,</span>
-<span id="cb13-45"><a></a>    ))</span>
-<span id="cb13-46"><a></a>  <span class="cf">return</span> <span class="dv">1</span></span>
-<span id="cb13-47"><a></a><span class="kw">def</span> sim_cohort_to(max_age):</span>
-<span id="cb13-48"><a></a>  sim_df <span class="op">=</span> pd.DataFrame({</span>
-<span id="cb13-49"><a></a>      <span class="st">'age'</span>: [<span class="dv">1</span> <span class="cf">for</span> _ <span class="kw">in</span> <span class="bu">range</span>(num_births)],</span>
-<span id="cb13-50"><a></a>      <span class="st">'h'</span>: np.linspace(<span class="op">-</span><span class="dv">2</span>, <span class="dv">2</span>, num<span class="op">=</span>num_births),</span>
-<span id="cb13-51"><a></a>      <span class="st">'m'</span>: [<span class="dv">0</span> <span class="cf">for</span> _ <span class="kw">in</span> <span class="bu">range</span>(num_births)],</span>
-<span id="cb13-52"><a></a>    }</span>
-<span id="cb13-53"><a></a>  )</span>
-<span id="cb13-54"><a></a>  <span class="cf">for</span> t <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">2</span>, max_age <span class="op">+</span> <span class="dv">1</span>):</span>
-<span id="cb13-55"><a></a>    sim_df[<span class="st">'age'</span>] <span class="op">=</span> sim_df[<span class="st">'age'</span>] <span class="op">+</span> <span class="dv">1</span></span>
-<span id="cb13-56"><a></a>    <span class="cf">if</span> t <span class="op">&gt;=</span> <span class="dv">18</span>:</span>
-<span id="cb13-57"><a></a>      sim_df[<span class="st">'m'</span>] <span class="op">=</span> sim_df.<span class="bu">apply</span>(update_m, axis<span class="op">=</span><span class="dv">1</span>)</span>
-<span id="cb13-58"><a></a>  <span class="cf">return</span> sim_df</span>
-<span id="cb13-59"><a></a>all_sim_dfs <span class="op">=</span> []</span>
-<span id="cb13-60"><a></a><span class="cf">for</span> cur_max_age <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">1</span>, <span class="dv">71</span>):</span>
-<span id="cb13-61"><a></a>  cur_sim_df <span class="op">=</span> sim_cohort_to(cur_max_age)</span>
-<span id="cb13-62"><a></a>  all_sim_dfs.append(cur_sim_df)</span>
-<span id="cb13-63"><a></a>full_sim_df <span class="op">=</span> pd.concat(all_sim_dfs)</span>
-<span id="cb13-64"><a></a></span>
-<span id="cb13-65"><a></a><span class="co"># full_sim_df.head()</span></span>
-<span id="cb13-66"><a></a>cbg_palette <span class="op">=</span> [<span class="st">'#c6c6c666'</span>] <span class="op">+</span> cb_palette</span>
-<span id="cb13-67"><a></a>full_sim_df[<span class="st">'m_label'</span>] <span class="op">=</span> full_sim_df[<span class="st">'m'</span>].<span class="bu">apply</span>(<span class="kw">lambda</span> x: <span class="st">"Unmarried"</span> <span class="cf">if</span> x <span class="op">==</span> <span class="dv">0</span> <span class="cf">else</span> <span class="st">"Married"</span>)</span>
-<span id="cb13-68"><a></a>full_sim_df <span class="op">=</span> full_sim_df.rename(columns<span class="op">=</span>{<span class="st">'age'</span>: <span class="st">'Age'</span>, <span class="st">'h'</span>: <span class="st">'Happiness'</span>})</span>
-<span id="cb13-69"><a></a>ax <span class="op">=</span> pw.Brick(figsize<span class="op">=</span>(<span class="fl">5.25</span>,<span class="fl">2.75</span>))<span class="op">;</span></span>
-<span id="cb13-70"><a></a>sns.scatterplot(</span>
-<span id="cb13-71"><a></a>  x<span class="op">=</span><span class="st">'Age'</span>, y<span class="op">=</span><span class="st">'Happiness'</span>, hue<span class="op">=</span><span class="st">'m_label'</span>,</span>
-<span id="cb13-72"><a></a>  data<span class="op">=</span>full_sim_df,</span>
-<span id="cb13-73"><a></a>  ax<span class="op">=</span>ax,</span>
-<span id="cb13-74"><a></a>  palette<span class="op">=</span>cbg_palette,</span>
-<span id="cb13-75"><a></a>  sizes<span class="op">=</span><span class="dv">2</span>,</span>
-<span id="cb13-76"><a></a>  legend<span class="op">=</span><span class="va">True</span>,</span>
-<span id="cb13-77"><a></a>)<span class="op">;</span></span>
-<span id="cb13-78"><a></a>ax.legend_.set_title(<span class="st">""</span>)</span>
-<span id="cb13-79"><a></a>ax.move_legend(<span class="st">"upper center"</span>, bbox_to_anchor<span class="op">=</span>(<span class="fl">0.5</span>, <span class="fl">1.15</span>), ncol<span class="op">=</span><span class="dv">2</span>)</span>
-<span id="cb13-80"><a></a>ax.savefig()</span>
-<span id="cb13-81"><a></a>mean_hap_df <span class="op">=</span> full_sim_df.groupby([<span class="st">'Age'</span>,<span class="st">'m_label'</span>])[<span class="st">'Happiness'</span>].mean().reset_index()</span>
-<span id="cb13-82"><a></a>ax <span class="op">=</span> pw.Brick(figsize<span class="op">=</span>(<span class="dv">3</span>,<span class="fl">2.5</span>))<span class="op">;</span></span>
-<span id="cb13-83"><a></a>sns.lineplot(</span>
-<span id="cb13-84"><a></a>  x<span class="op">=</span><span class="st">'Age'</span>, y<span class="op">=</span><span class="st">'Happiness'</span>, hue<span class="op">=</span><span class="st">'m_label'</span>, data<span class="op">=</span>mean_hap_df,</span>
-<span id="cb13-85"><a></a>  ax<span class="op">=</span>ax</span>
-<span id="cb13-86"><a></a>)<span class="op">;</span></span>
-<span id="cb13-87"><a></a>ax.savefig()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
+<span id="cb13-2"><a></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb13-3"><a></a>rng <span class="op">=</span> np.random.default_rng(seed<span class="op">=</span><span class="dv">5650</span>)</span>
+<span id="cb13-4"><a></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
+<span id="cb13-5"><a></a><span class="im">import</span> seaborn <span class="im">as</span> sns</span>
+<span id="cb13-6"><a></a>cb_palette <span class="op">=</span> [<span class="st">'#e69f00'</span>,<span class="st">'#56b4e9'</span>,<span class="st">'#009e73'</span>]</span>
+<span id="cb13-7"><a></a>sns.set_palette(cb_palette)</span>
+<span id="cb13-8"><a></a><span class="im">import</span> patchworklib <span class="im">as</span> pw</span>
+<span id="cb13-9"><a></a><span class="im">from</span> scipy.special <span class="im">import</span> expit</span>
+<span id="cb13-10"><a></a></span>
+<span id="cb13-11"><a></a><span class="co"># The original R code:</span></span>
+<span id="cb13-12"><a></a><span class="co"># sim_happiness &lt;- function( seed=1977 , N_years=1000 , max_age=65 , N_births=20 , aom=18 ) {</span></span>
+<span id="cb13-13"><a></a><span class="co">#     set.seed(seed)</span></span>
+<span id="cb13-14"><a></a><span class="co">#     H &lt;- M &lt;- A &lt;- c()</span></span>
+<span id="cb13-15"><a></a><span class="co">#     for ( t in 1:N_years ) {</span></span>
+<span id="cb13-16"><a></a><span class="co">#         A &lt;- A + 1 # age existing individuals</span></span>
+<span id="cb13-17"><a></a><span class="co">#         A &lt;- c( A , rep(1,N_births) ) # newborns</span></span>
+<span id="cb13-18"><a></a><span class="co">#         H &lt;- c( H , seq(from=-2,to=2,length.out=N_births) ) # sim happiness trait - never changes</span></span>
+<span id="cb13-19"><a></a><span class="co">#         M &lt;- c( M , rep(0,N_births) ) # not yet married</span></span>
+<span id="cb13-20"><a></a><span class="co">#         # for each person over 17, chance get married</span></span>
+<span id="cb13-21"><a></a><span class="co">#         for ( i in 1:length(A) ) {</span></span>
+<span id="cb13-22"><a></a><span class="co">#             if ( A[i] &gt;= aom &amp; M[i]==0 ) {</span></span>
+<span id="cb13-23"><a></a><span class="co">#                 M[i] &lt;- rbern(1,inv_logit(H[i]-4))</span></span>
+<span id="cb13-24"><a></a><span class="co">#             }</span></span>
+<span id="cb13-25"><a></a><span class="co">#         }</span></span>
+<span id="cb13-26"><a></a><span class="co">#         # mortality</span></span>
+<span id="cb13-27"><a></a><span class="co">#         deaths &lt;- which( A &gt; max_age )</span></span>
+<span id="cb13-28"><a></a><span class="co">#         if ( length(deaths)&gt;0 ) {</span></span>
+<span id="cb13-29"><a></a><span class="co">#             A &lt;- A[ -deaths ]</span></span>
+<span id="cb13-30"><a></a><span class="co">#             H &lt;- H[ -deaths ]</span></span>
+<span id="cb13-31"><a></a><span class="co">#             M &lt;- M[ -deaths ]</span></span>
+<span id="cb13-32"><a></a><span class="co">#        }</span></span>
+<span id="cb13-33"><a></a><span class="co">#     }</span></span>
+<span id="cb13-34"><a></a><span class="co">#     d &lt;- data.frame(age=A,married=M,happiness=H)</span></span>
+<span id="cb13-35"><a></a><span class="co">#     return(d)</span></span>
+<span id="cb13-36"><a></a></span>
+<span id="cb13-37"><a></a><span class="co"># DGP: happiness -&gt; marriage &lt;- age</span></span>
+<span id="cb13-38"><a></a>years <span class="op">=</span> <span class="dv">70</span></span>
+<span id="cb13-39"><a></a>num_births <span class="op">=</span> <span class="dv">41</span></span>
+<span id="cb13-40"><a></a>colnames <span class="op">=</span> [<span class="st">'age'</span>,<span class="st">'a'</span>,<span class="st">'h'</span>,<span class="st">'m'</span>]</span>
+<span id="cb13-41"><a></a>sim_dfs <span class="op">=</span> []</span>
+<span id="cb13-42"><a></a>A <span class="op">=</span> np.zeros(shape<span class="op">=</span>(num_births,<span class="dv">1</span>))</span>
+<span id="cb13-43"><a></a>H <span class="op">=</span> np.linspace(<span class="op">-</span><span class="dv">2</span>, <span class="dv">2</span>, num<span class="op">=</span>num_births)</span>
+<span id="cb13-44"><a></a>M <span class="op">=</span> np.zeros(shape<span class="op">=</span>(num_births,<span class="dv">1</span>))</span>
+<span id="cb13-45"><a></a><span class="kw">def</span> update_m(row):</span>
+<span id="cb13-46"><a></a>  <span class="cf">if</span> row[<span class="st">'m'</span>] <span class="op">==</span> <span class="dv">0</span>:</span>
+<span id="cb13-47"><a></a>    <span class="cf">return</span> <span class="bu">int</span>(rng.binomial(</span>
+<span id="cb13-48"><a></a>      n<span class="op">=</span><span class="dv">1</span>,</span>
+<span id="cb13-49"><a></a>      p<span class="op">=</span>expit(row[<span class="st">'h'</span>] <span class="op">-</span> <span class="fl">3.875</span>),</span>
+<span id="cb13-50"><a></a>      size<span class="op">=</span><span class="dv">1</span>,</span>
+<span id="cb13-51"><a></a>    ))</span>
+<span id="cb13-52"><a></a>  <span class="cf">return</span> <span class="dv">1</span></span>
+<span id="cb13-53"><a></a><span class="kw">def</span> sim_cohort_to(max_age):</span>
+<span id="cb13-54"><a></a>  sim_df <span class="op">=</span> pd.DataFrame({</span>
+<span id="cb13-55"><a></a>      <span class="st">'age'</span>: [<span class="dv">1</span> <span class="cf">for</span> _ <span class="kw">in</span> <span class="bu">range</span>(num_births)],</span>
+<span id="cb13-56"><a></a>      <span class="st">'h'</span>: np.linspace(<span class="op">-</span><span class="dv">2</span>, <span class="dv">2</span>, num<span class="op">=</span>num_births),</span>
+<span id="cb13-57"><a></a>      <span class="st">'m'</span>: [<span class="dv">0</span> <span class="cf">for</span> _ <span class="kw">in</span> <span class="bu">range</span>(num_births)],</span>
+<span id="cb13-58"><a></a>    }</span>
+<span id="cb13-59"><a></a>  )</span>
+<span id="cb13-60"><a></a>  <span class="cf">for</span> t <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">2</span>, max_age <span class="op">+</span> <span class="dv">1</span>):</span>
+<span id="cb13-61"><a></a>    sim_df[<span class="st">'age'</span>] <span class="op">=</span> sim_df[<span class="st">'age'</span>] <span class="op">+</span> <span class="dv">1</span></span>
+<span id="cb13-62"><a></a>    <span class="cf">if</span> t <span class="op">&gt;=</span> <span class="dv">18</span>:</span>
+<span id="cb13-63"><a></a>      sim_df[<span class="st">'m'</span>] <span class="op">=</span> sim_df.<span class="bu">apply</span>(update_m, axis<span class="op">=</span><span class="dv">1</span>)</span>
+<span id="cb13-64"><a></a>  <span class="cf">return</span> sim_df</span>
+<span id="cb13-65"><a></a>all_sim_dfs <span class="op">=</span> []</span>
+<span id="cb13-66"><a></a><span class="cf">for</span> cur_max_age <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">1</span>, <span class="dv">71</span>):</span>
+<span id="cb13-67"><a></a>  cur_sim_df <span class="op">=</span> sim_cohort_to(cur_max_age)</span>
+<span id="cb13-68"><a></a>  all_sim_dfs.append(cur_sim_df)</span>
+<span id="cb13-69"><a></a>full_sim_df <span class="op">=</span> pd.concat(all_sim_dfs)</span>
+<span id="cb13-70"><a></a></span>
+<span id="cb13-71"><a></a><span class="co"># full_sim_df.head()</span></span>
+<span id="cb13-72"><a></a>cbg_palette <span class="op">=</span> [<span class="st">'#c6c6c666'</span>] <span class="op">+</span> cb_palette</span>
+<span id="cb13-73"><a></a>full_sim_df[<span class="st">'m_label'</span>] <span class="op">=</span> full_sim_df[<span class="st">'m'</span>].<span class="bu">apply</span>(<span class="kw">lambda</span> x: <span class="st">"Unmarried"</span> <span class="cf">if</span> x <span class="op">==</span> <span class="dv">0</span> <span class="cf">else</span> <span class="st">"Married"</span>)</span>
+<span id="cb13-74"><a></a>full_sim_df <span class="op">=</span> full_sim_df.rename(columns<span class="op">=</span>{<span class="st">'age'</span>: <span class="st">'Age'</span>, <span class="st">'h'</span>: <span class="st">'Happiness'</span>})</span>
+<span id="cb13-75"><a></a>ax <span class="op">=</span> pw.Brick(figsize<span class="op">=</span>(<span class="fl">5.25</span>,<span class="fl">2.75</span>))<span class="op">;</span></span>
+<span id="cb13-76"><a></a>sns.scatterplot(</span>
+<span id="cb13-77"><a></a>  x<span class="op">=</span><span class="st">'Age'</span>, y<span class="op">=</span><span class="st">'Happiness'</span>, hue<span class="op">=</span><span class="st">'m_label'</span>,</span>
+<span id="cb13-78"><a></a>  data<span class="op">=</span>full_sim_df,</span>
+<span id="cb13-79"><a></a>  ax<span class="op">=</span>ax,</span>
+<span id="cb13-80"><a></a>  palette<span class="op">=</span>cbg_palette,</span>
+<span id="cb13-81"><a></a>  s<span class="op">=</span><span class="dv">22</span>,</span>
+<span id="cb13-82"><a></a>  legend<span class="op">=</span><span class="va">True</span>,</span>
+<span id="cb13-83"><a></a>)<span class="op">;</span></span>
+<span id="cb13-84"><a></a>ax.move_legend(<span class="st">"upper center"</span>, bbox_to_anchor<span class="op">=</span>(<span class="fl">0.5</span>, <span class="fl">1.15</span>), ncol<span class="op">=</span><span class="dv">2</span>)<span class="op">;</span></span>
+<span id="cb13-85"><a></a>ax.legend_.set_title(<span class="st">""</span>)<span class="op">;</span></span>
+<span id="cb13-86"><a></a>ax.axvline(x<span class="op">=</span><span class="fl">17.5</span>, color<span class="op">=</span><span class="st">'black'</span>, ls<span class="op">=</span><span class="st">'dashed'</span>, lw<span class="op">=</span><span class="dv">1</span>)<span class="op">;</span></span>
+<span id="cb13-87"><a></a>ax.savefig()</span>
+<span id="cb13-88"><a></a>mean_hap_df <span class="op">=</span> full_sim_df.groupby(<span class="st">'Age'</span>)[<span class="st">'Happiness'</span>].mean().reset_index()</span>
+<span id="cb13-89"><a></a>mean_hap_df[<span class="st">'m_label'</span>] <span class="op">=</span> <span class="st">"All"</span></span>
+<span id="cb13-90"><a></a>mean_hap_df[<span class="st">'Happiness_mean'</span>] <span class="op">=</span> <span class="dv">0</span></span>
+<span id="cb13-91"><a></a>group_hap_df <span class="op">=</span> full_sim_df[full_sim_df[<span class="st">'Age'</span>] <span class="op">&gt;=</span> <span class="dv">18</span>].groupby([<span class="st">'Age'</span>,<span class="st">'m_label'</span>])[<span class="st">'Happiness'</span>].mean().reset_index()</span>
+<span id="cb13-92"><a></a>married_df <span class="op">=</span> group_hap_df[group_hap_df[<span class="st">'m_label'</span>] <span class="op">==</span> <span class="st">"Married"</span>].copy()</span>
+<span id="cb13-93"><a></a>unmarried_df <span class="op">=</span> group_hap_df[group_hap_df[<span class="st">'m_label'</span>] <span class="op">==</span> <span class="st">"Unmarried"</span>].copy()</span>
+<span id="cb13-94"><a></a><span class="co"># Moving averages</span></span>
+<span id="cb13-95"><a></a>win_size <span class="op">=</span> <span class="dv">3</span></span>
+<span id="cb13-96"><a></a>married_df[<span class="st">'Happiness_mean'</span>] <span class="op">=</span> married_df[<span class="st">'Happiness'</span>].rolling(window<span class="op">=</span>win_size).mean()</span>
+<span id="cb13-97"><a></a>unmarried_df[<span class="st">'Happiness_mean'</span>] <span class="op">=</span> unmarried_df[<span class="st">'Happiness'</span>].rolling(window<span class="op">=</span>win_size).mean()</span>
+<span id="cb13-98"><a></a><span class="co"># Merge back together</span></span>
+<span id="cb13-99"><a></a>combined_df <span class="op">=</span> pd.concat([mean_hap_df, married_df, unmarried_df], ignore_index<span class="op">=</span><span class="va">True</span>)</span>
+<span id="cb13-100"><a></a><span class="co"># display(combined_df.tail())</span></span>
+<span id="cb13-101"><a></a></span>
+<span id="cb13-102"><a></a>ax <span class="op">=</span> pw.Brick(figsize<span class="op">=</span>(<span class="fl">3.75</span>,<span class="fl">2.4</span>))<span class="op">;</span></span>
+<span id="cb13-103"><a></a>ax.set_xlim(<span class="dv">0</span>, <span class="dv">70</span>)<span class="op">;</span></span>
+<span id="cb13-104"><a></a><span class="co"># ax.set_ylim(-1.2, 1.2);</span></span>
+<span id="cb13-105"><a></a>cbg_palette <span class="op">=</span> [<span class="st">'black'</span>, cb_palette[<span class="dv">0</span>], <span class="st">'#b2b2b2ff'</span>]</span>
+<span id="cb13-106"><a></a></span>
+<span id="cb13-107"><a></a><span class="co"># And plot</span></span>
+<span id="cb13-108"><a></a>sns.lineplot(</span>
+<span id="cb13-109"><a></a>  x<span class="op">=</span><span class="st">'Age'</span>, y<span class="op">=</span><span class="st">'Happiness_mean'</span>,</span>
+<span id="cb13-110"><a></a>  hue<span class="op">=</span><span class="st">'m_label'</span>,</span>
+<span id="cb13-111"><a></a>  <span class="co"># marker=".",</span></span>
+<span id="cb13-112"><a></a>  <span class="co"># s=20,</span></span>
+<span id="cb13-113"><a></a>  data<span class="op">=</span>combined_df,</span>
+<span id="cb13-114"><a></a>  palette<span class="op">=</span>cbg_palette,</span>
+<span id="cb13-115"><a></a>  <span class="co"># color=cbg_palette[0],</span></span>
+<span id="cb13-116"><a></a>  <span class="co"># order=3,</span></span>
+<span id="cb13-117"><a></a>  ax<span class="op">=</span>ax</span>
+<span id="cb13-118"><a></a>)<span class="op">;</span></span>
+<span id="cb13-119"><a></a>ax.set_title(<span class="st">"Mean Happiness by Status"</span>)<span class="op">;</span></span>
+<span id="cb13-120"><a></a>ax.legend_.set_title(<span class="st">""</span>)<span class="op">;</span></span>
+<span id="cb13-121"><a></a>ax.set_xlabel(<span class="st">"Mean Happiness"</span>)<span class="op">;</span></span>
+<span id="cb13-122"><a></a>ax.savefig()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
-<div class="quarto-layout-panel" data-layout="[65,35]">
+<div class="quarto-layout-panel" data-layout="[60,40]">
 <div class="quarto-layout-row quarto-layout-valign-center">
-<div id="collider-plot" class="quarto-layout-cell" style="flex-basis: 65.0%;justify-content: flex-start;">
+<div id="collider-plot" class="quarto-layout-cell" style="flex-basis: 60.0%;justify-content: flex-start;">
 <div id="cell-fig-happiness-plot" class="cell" data-execution_count="12">
 <div class="cell-output cell-output-display" data-execution_count="12">
 <div id="fig-happiness-plot" class="quarto-float quarto-figure quarto-figure-center" data-fig-align="center">
@@ -783,24 +818,19 @@ Fig&nbsp;3. <em>“I don’t trust this coin, it’ll take lots of flips with H/
 <img data-src="index_files/figure-revealjs/fig-happiness-plot-output-1.png" class="quarto-figure quarto-figure-center" width="583" height="360">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-happiness-plot-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Fig&nbsp;4. Happiness by Age
+Fig&nbsp;4. Happiness by Age, 70 birth cohorts of size 41 each<br>(DC minimum marriage age = 18)
 </figcaption>
 </figure>
 </div>
 </div>
 </div>
 </div>
-<div id="collider-text" class="quarto-layout-cell" style="flex-basis: 35.0%;justify-content: flex-start;">
-<div id="cell-fig-mean-happiness-plot" class="cell" data-execution_count="13">
+<div id="collider-text" class="quarto-layout-cell" style="flex-basis: 40.0%;justify-content: flex-start;">
+<div id="cell-mean-happiness-plot" class="cell" data-crop="false" data-execution_count="13">
 <div class="cell-output cell-output-display" data-execution_count="13">
-<div id="fig-mean-happiness-plot" class="quarto-float quarto-figure quarto-figure-center" data-fig-align="center">
-<figure class="quarto-float quarto-float-fig">
-<div aria-describedby="fig-mean-happiness-plot-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img data-src="index_files/figure-revealjs/fig-mean-happiness-plot-output-1.png" class="quarto-figure quarto-figure-center" width="380" height="310">
-</div>
-<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-mean-happiness-plot-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Fig&nbsp;5. Mean happiness by age x marriage status
-</figcaption>
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="index_files/figure-revealjs/mean-happiness-plot-output-1.png" id="mean-happiness-plot" class="quarto-figure quarto-figure-center" width="452" height="316"></p>
 </figure>
 </div>
 </div>

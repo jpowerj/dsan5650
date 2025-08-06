@@ -55,21 +55,39 @@ format:
 
 :::
 
-# Schedule {.smaller .crunch-title .crunch-callout .code-90 data-name="Schedule"}
+# Schedule {.smaller .crunch-title .crunch-callout .code-90 data-stack-name="Schedule"}
 
 Today's Planned Schedule:
 
 | | Start | End | Topic |
 |:- |:- |:- |:- |
-| **Lecture** | 6:30pm | 6:45pm | [Final Projects &rarr;](#final-projects-independent-vs.-dependent-variables) |
-| | 6:45pm | 7:10pm | [Included Variable Bias &rarr;](#instrumental-variables)
-| | 7:10pm | 8:00pm | [Heterogeneous Treatment Effects &rarr;](#text-as-data-part-1-tad-in-general) |
+| **Lecture** | 6:30pm | 6:45pm | [Final Projects &rarr;](#final-project--end-of-term-things) |
+| | 6:45pm | 7:10pm | [Included Variable Bias &rarr;](#does-aging-cause-sadness)
+| | 7:10pm | 8:00pm | [Heterogeneous Treatment Effects &rarr;](#heterogeneous-treatment-effects) |
 | **Break!** | 8:00pm | 8:10pm | |
-| | 8:10pm | 9:00pm | [Causal Forests &rarr;](#text-as-data-part-2-causal-inferences-with-text) |
+| | 8:10pm | 9:00pm | [Causal Forests &rarr;](#causal-forests) |
 
 : {tbl-colwidths="[12,12,12,64]"}
 
 {{< include ../dsan-globals/_globals-tex.qmd >}}
+
+## Final Project / End of Term Things
+
+* **Midterm** grading will be done TONIGHT
+* **Submit button** for HW3 / HW4 TONIGHT
+
+## Sensitivity Analysis {.smaller .crunch-title}
+
+* So you've got an estimate of a causal effect! What now? Two possible next steps...
+* <i class='bi bi-1-circle'></i> **Sensitivity Analysis**: Check **robustness** of your results
+  * Modeling choices &rarr; **one point** in param space (*garden of forking paths*)
+  * If results "truly" hold, shouldn't disappear with small changes in parameters/choices
+  * *Last week*: Can re-estimate with **informative** &rarr; **weak** &rarr; **skeptical** priors
+  * *This week*: Simulate **how "strong"** omissions would have to be to **"ruin" finding**
+* <i class='bi bi-2-circle'></i> **Heterogeneous Treatment Effects**: How does the effect **vary** btwn subgroups?
+  * Example today: PROGRESA (Cash transfer poverty-alleviation program in Mexico)
+  * Program has an **overall** causal effect, but also a **greater** causal effect on **indigenous** households, relative to non-indigenous
+  * How can we find group-specific effects? **Causal forests!**
 
 # Sensitivity Analysis 2: How Sensitive Are My Results to *Omitted/Included Variable Bias*? {.smaller .title-10 .crunch-title data-stack-name="Included Variable Bias"}
 
@@ -81,6 +99,88 @@ Today's Planned Schedule:
 ## Does Aging Cause Sadness? {.smaller .crunch-title .title-11 .crunch-ul .crunch-quarto-figure .table-80 .crunch-img .crunch-quarto-layout-panel .crunch-quarto-layout-cell .crunch-figure .crunch-figcaption .inline-70 .crunch-p}
 
 {{< include ../_components/age-happy-plot.qmd >}}
+
+## Assessing the Impact of Omitted / Included Vars {.smaller .crunch-title}
+
+* Working example from @cinelli_making_2020: what is the **causal impact** of **experiencing violence** on **support for a peace deal**
+* Researcher A models this scenario as:
+
+$$
+PeaceIndex = \tau^{\text{res}} DirectHarm + \beta^ resFemale+Villageβˆv,res+Xβˆres+"ˆres
+$$
+
+* Researcher B instead prefers:
+
+$$
+PeaceIndex=τˆDirectHarm+βˆfFemale+Villageβˆv+Xβˆ+γˆCenter+"ˆfull,
+$$
+
+> Our earlier estimate $\tau^{\text{res}}$ would differ from our target quantity $\tau$: but how badly? [...] How strong would the confounder(s) have to be to change the estimates in such a way to affect the main conclusions of a study?
+
+## The Classical OVB Equation {.smaller .crunch-title .title-12 .crunch-ul .crunch-math .footnotes-0 .math-90 .inline-90}
+
+* Remember that $D$ is our **treatment** variable! ($\mathbf{X}$ = covariates, $Y$ = outcome)
+* In a perfect world, we would estimate $Y = \hat{\tau}D + \mathbf{X} \hat{\beta} + \hat{\gamma}Z+ \varepsilon_{\text{full}}$
+* But, $Z$ is **unobserved** $\leadsto$ **"restricted"** model $Y = \hat{\tau}_{\text{res}}D + \mathbf{X} \hat{\beta}_{\text{res}} + \varepsilon_{\text{res}}$
+* What is the "gap" between $\hat{\tau}$ and $\hat{\tau}^{\text{res}}$? $\text{OVB} = \hat{\tau}_{\text{res}} - \hat{\tau}$
+
+:::: {.columns}
+::: {.column width="40%"}
+
+$$
+\begin{align*}
+\hat{\tau}_{\text{res}} &= \frac{
+  \text{Cov}[D^{\top \mathbf{X}}, Y^{\top \mathbf{X}}]
+}{
+  \text{Var}[D^{\top \mathbf{X}}]
+} \\
+&= \frac{
+  \text{Cov}[D^{\top \mathbf{X}}, \hat{\tau}D^{\top \mathbf{X}} + \hat{\gamma}Z^{\top \mathbf{X}}]
+}{
+  \text{Var}[D^{\top \mathbf{X}}]
+} \\
+&= \hat{\tau} + \hat{\gamma}\frac{
+  \text{Cov}[D^{\top \mathbf{X}}, Z^{\top \mathbf{X}}]
+}{
+  \text{Var}[D^{\top \mathbf{X}}]
+} \\
+&= \hat{\tau} + \hat{\gamma}\hat{\delta} \\
+\implies \text{OVB} &= \hat{\tau}_{\text{res}} - \hat{\tau} = \overbrace{
+  \boxed{\hat{\gamma} \times \hat{\delta}}
+}^{\mathclap{\text{Impact} \, \times \, \text{Imbalance}}}
+\end{align*}
+$$
+
+:::
+::: {.column width="60%"}
+
+![](images/sensitivity.svg){fig-align="center" width="360"}
+
+:::
+::::
+
+::: {.aside}
+
+The ability to produce **orthogonalized** ($\top \mathbf{X}$) versions of vars in the model utilizes the [Frisch-Waugh-Lovell Theorem](https://en.wikipedia.org/wiki/Frisch%E2%80%93Waugh%E2%80%93Lovell_theorem)
+
+:::
+
+## More Generally
+
+* What if we don't have a **specific** omitted variable in mind? We just want to know the expected impact **if** there were omitted vars... Enter "Partial $R^2$"
+
+:::: {.columns}
+::: {.column width="50%"}
+
+![](images/r2.svg){fig-align="center"}
+
+:::
+::: {.column width="50%"}
+
+![](images/r2_extreme.svg){fig-align="center"}
+
+:::
+::::
 
 # Heterogeneous Treatment Effects {data-stack-name="HTEs"}
 
