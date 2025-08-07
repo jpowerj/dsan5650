@@ -357,7 +357,7 @@ window.Quarto = {
     </ul>
     </div>
 <div class="quarto-sidebar-footer"><div class="sidebar-footer-item">
-<p><em>Updated 2025-08-06, 06:10:08 PM</em></p>
+<p><em>Updated 2025-08-06, 08:21:17 PM</em></p>
 </div></div></nav>
 <div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
@@ -730,7 +730,7 @@ window.Quarto = {
 </div>
 </div>
 <div class="cell-output cell-output-display">
-<div id="fig-happiness-plot-2" class="quarto-float quarto-figure quarto-figure-center anchored" height="360" width="583" data-fig-align="center">
+<div id="fig-happiness-plot-2" class="quarto-float quarto-figure quarto-figure-center anchored" height="360" data-fig-align="center" width="583">
 <figure class="quarto-float quarto-subfloat-fig figure">
 <div aria-describedby="fig-happiness-plot-2-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <img src="index_files/figure-html/fig-happiness-plot-output-2.png" id="fig-happiness-plot-2" class="quarto-figure quarto-figure-center anchored figure-img" data-ref-parent="fig-happiness-plot" width="583" height="360">
@@ -766,23 +766,24 @@ Fig&nbsp;1
 </div>
 </div>
 </section>
-<section id="assessing-the-impact-of-omitted-included-vars" class="level2 smaller crunch-title">
-<h2 class="smaller crunch-title anchored" data-anchor-id="assessing-the-impact-of-omitted-included-vars">Assessing the Impact of Omitted / Included Vars</h2>
+<section id="assessing-the-impact-of-omitted-included-vars" class="level2 smaller crunch-title title-10 math-90 crunch-math crunch-ul">
+<h2 class="smaller crunch-title title-10 math-90 crunch-math crunch-ul anchored" data-anchor-id="assessing-the-impact-of-omitted-included-vars">Assessing the Impact of Omitted / Included Vars</h2>
 <ul>
-<li>Working example from <span class="citation" data-cites="cinelli_making_2020">Cinelli and Hazlett (<a href="#ref-cinelli_making_2020" role="doc-biblioref">2020</a>)</span>: what is the <strong>causal impact</strong> of <strong>experiencing violence</strong> on <strong>support for a peace deal</strong></li>
+<li>Working example from <span class="citation" data-cites="cinelli_making_2020">Cinelli and Hazlett (<a href="#ref-cinelli_making_2020" role="doc-biblioref">2020</a>)</span>: <a href="https://en.wikipedia.org/wiki/War_in_Darfur">War in Darfur (2004-2020)</a></li>
+<li>What is the <strong>causal impact</strong> of <strong>experiencing violence</strong> on <strong>support for a peace deal</strong></li>
 <li>Researcher A models this scenario as:</li>
 </ul>
 <p><span class="math display">\[
-PeaceIndex = \tau^{\text{res}} DirectHarm + \beta^ resFemale+Villageβˆv,res+Xβˆres+"ˆres
+\textsf{PeaceIndex} = \tau_{\text{res}} \textsf{DirectHarm} + \hat{\beta}_{\text{f},\text{res}}\textsf{Female} + \textsf{Village} \hat{\boldsymbol \beta}_{\text{v},\text{res}} + \mathbf{X} \hat{\boldsymbol \beta}_{\text{res}} + \hat{\varepsilon}_{\text{res}}
 \]</span></p>
 <ul>
 <li>Researcher B instead prefers:</li>
 </ul>
 <p><span class="math display">\[
-PeaceIndex=τˆDirectHarm+βˆfFemale+Villageβˆv+Xβˆ+γˆCenter+"ˆfull,
+\textsf{PeaceIndex} = \tau \textsf{DirectHarm} + \hat{\beta}_{\text{f}}\textsf{Female} + \textsf{Village} \hat{\boldsymbol \beta}_{\text{v}} + \mathbf{X} \hat{\boldsymbol \beta} + \boxed{\hat{\gamma}\textsf{Center}} + \hat{\varepsilon}_{\text{full}}
 \]</span></p>
 <blockquote class="blockquote">
-<p>Our earlier estimate <span class="math inline">\(\tau^{\text{res}}\)</span> would differ from our target quantity <span class="math inline">\(\tau\)</span>: but how badly? […] How strong would the confounder(s) have to be to change the estimates in such a way to affect the main conclusions of a study?</p>
+<p>Our earlier estimate <span class="math inline">\(\tau_{\text{res}}\)</span> would differ from our target quantity <span class="math inline">\(\tau\)</span>: but how badly? […] How strong would the confounder(s) have to be to change the estimates in such a way to affect the main conclusions of a study?</p>
 </blockquote>
 </section>
 <section id="the-classical-ovb-equation" class="level2 smaller crunch-title title-12 crunch-ul crunch-math footnotes-0 math-90 inline-90 page-columns page-full">

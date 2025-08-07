@@ -345,7 +345,7 @@ Jeff Jacobs
 <section>
 <section id="sensitivity-analysis-1-sensitivity-to-priors" class="title-slide slide level1 center" data-stack-name="Sensitivity to Priors">
 <h1>Sensitivity Analysis 1: Sensitivity to Priors</h1>
-<div id="cell-py-imports" class="cell" data-execution_count="1">
+<div id="cell-py-imports" class="cell" data-execution_count="2">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
@@ -397,7 +397,7 @@ Jeff Jacobs
 <center>
 <p><i class="bi bi-1-circle"></i> <span class="math inline">\(p \sim\)</span> “<span class="math inline">\(\text{Beta}(0, 0)\)</span>”</p>
 </center>
-<div id="cell-beta00-plot" class="cell" data-execution_count="2">
+<div id="cell-beta00-plot" class="cell" data-execution_count="3">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a></a><span class="co"># b00_df = pd.DataFrame({'p_heads': np.arange(0, 1+1/25, 1/25)})</span></span>
@@ -424,7 +424,7 @@ Jeff Jacobs
 <center>
 <p><i class="bi bi-2-circle"></i> <span class="math inline">\(p \sim\)</span> “<span class="math inline">\(\text{Beta}(1, 0)\)</span>”</p>
 </center>
-<div id="cell-beta10-plot" class="cell" data-execution_count="3">
+<div id="cell-beta10-plot" class="cell" data-execution_count="4">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb4"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a></a>b10_df <span class="op">=</span> pd.DataFrame({</span>
@@ -453,7 +453,7 @@ Jeff Jacobs
 <center>
 <p><i class="bi bi-3-circle"></i> <span class="math inline">\(p \sim\)</span> “<span class="math inline">\(\text{Beta}(0, 1)\)</span>”</p>
 </center>
-<div id="cell-beta01-plot" class="cell" data-execution_count="4">
+<div id="cell-beta01-plot" class="cell" data-execution_count="5">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb5"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a></a>b01_df <span class="op">=</span> pd.DataFrame({</span>
@@ -484,7 +484,7 @@ Jeff Jacobs
 <center>
 <i class="bi bi-4-circle"></i> <strong>Informative</strong> Prior
 </center>
-<div id="cell-fig-informative-prior" class="cell" data-crop="false" data-execution_count="5">
+<div id="cell-fig-informative-prior" class="cell" data-crop="false" data-execution_count="6">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb6"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a></a><span class="co"># Informative Prior</span></span>
@@ -512,7 +512,7 @@ Fig&nbsp;1. <em>“I’ll start by assuming a <strong>fair</strong> coin”</em>
 <center>
 <i class="bi bi-5-circle"></i> <strong>Weak</strong> Prior
 </center>
-<div id="cell-fig-weak-prior" class="cell" data-execution_count="6">
+<div id="cell-fig-weak-prior" class="cell" data-execution_count="7">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb7"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a></a><span class="co"># Weakly Informative</span></span>
@@ -540,7 +540,7 @@ Fig&nbsp;2. <em>“I have no idea, I’ll assume all biases equally likely”</e
 <center>
 <i class="bi bi-6-circle"></i> <strong>Skeptical</strong> (Jeffreys) Prior
 </center>
-<div id="cell-fig-skeptical-prior" class="cell" data-execution_count="7">
+<div id="cell-fig-skeptical-prior" class="cell" data-execution_count="8">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb8"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a></a><span class="co"># Skeptical / Jeffreys</span></span>
@@ -572,7 +572,7 @@ Fig&nbsp;3. <em>“I don’t trust this coin, it’ll take lots of flips with H/
 <p><strong>Population proportion</strong> framing: <span class="math inline">\(\frac{\alpha}{\alpha + \beta}\)</span> = mean, <span class="math inline">\(\alpha + \beta\)</span> = “precision”</p>
 <div class="columns">
 <div class="column" style="width:50%;">
-<div id="cell-heads-more-likely" class="cell" data-execution_count="8">
+<div id="cell-heads-more-likely" class="cell" data-execution_count="9">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb9"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a></a><span class="cf">with</span> pm.Model() <span class="im">as</span> heads_model:</span>
@@ -591,7 +591,7 @@ Fig&nbsp;3. <em>“I don’t trust this coin, it’ll take lots of flips with H/
 </div>
 </div>
 </div><div class="column" style="width:50%;">
-<div id="cell-tails-more-likely" class="cell" data-execution_count="9">
+<div id="cell-tails-more-likely" class="cell" data-execution_count="10">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb10"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a></a><span class="cf">with</span> pm.Model() <span class="im">as</span> tails_model:</span>
@@ -612,7 +612,7 @@ Fig&nbsp;3. <em>“I don’t trust this coin, it’ll take lots of flips with H/
 </div></div>
 <div class="columns">
 <div class="column" style="width:50%;">
-<div id="cell-tails-very-likely" class="cell" data-execution_count="10">
+<div id="cell-tails-very-likely" class="cell" data-execution_count="11">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb11"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a></a><span class="cf">with</span> pm.Model() <span class="im">as</span> beta23_model:</span>
@@ -631,7 +631,7 @@ Fig&nbsp;3. <em>“I don’t trust this coin, it’ll take lots of flips with H/
 </div>
 </div>
 </div><div class="column" style="width:50%;">
-<div id="cell-beta2030-model" class="cell" data-execution_count="11">
+<div id="cell-beta2030-model" class="cell" data-execution_count="12">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb12"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a></a><span class="cf">with</span> pm.Model() <span class="im">as</span> beta100_model:</span>
@@ -810,7 +810,7 @@ Fig&nbsp;3. <em>“I don’t trust this coin, it’ll take lots of flips with H/
 <div class="quarto-layout-panel" data-layout="[60,40]">
 <div class="quarto-layout-row quarto-layout-valign-center">
 <div id="collider-plot" class="quarto-layout-cell" style="flex-basis: 60.0%;justify-content: flex-start;">
-<div id="cell-fig-happiness-plot" class="cell" data-execution_count="12">
+<div id="cell-fig-happiness-plot" class="cell" data-execution_count="13">
 <div class="cell-output cell-output-display" data-execution_count="12">
 <div id="fig-happiness-plot" class="quarto-float quarto-figure quarto-figure-center" data-fig-align="center">
 <figure class="quarto-float quarto-float-fig">
@@ -826,7 +826,7 @@ Fig&nbsp;4. Happiness by Age, 70 birth cohorts of size 41 each<br>(DC minimum ma
 </div>
 </div>
 <div id="collider-text" class="quarto-layout-cell" style="flex-basis: 40.0%;justify-content: flex-start;">
-<div id="cell-mean-happiness-plot" class="cell" data-crop="false" data-execution_count="13">
+<div id="cell-mean-happiness-plot" class="cell" data-crop="false" data-execution_count="14">
 <div class="cell-output cell-output-display" data-execution_count="13">
 <div class="quarto-figure quarto-figure-center">
 <figure>

@@ -100,22 +100,23 @@ Today's Planned Schedule:
 
 {{< include ../_components/age-happy-plot.qmd >}}
 
-## Assessing the Impact of Omitted / Included Vars {.smaller .crunch-title}
+## Assessing the Impact of Omitted / Included Vars {.smaller .crunch-title .title-10 .math-90 .crunch-math .crunch-ul}
 
-* Working example from @cinelli_making_2020: what is the **causal impact** of **experiencing violence** on **support for a peace deal**
+* Working example from @cinelli_making_2020: [War in Darfur (2004-2020)](https://en.wikipedia.org/wiki/War_in_Darfur)
+* What is the **causal impact** of **experiencing violence** on **support for a peace deal**
 * Researcher A models this scenario as:
 
 $$
-PeaceIndex = \tau^{\text{res}} DirectHarm + \beta^ resFemale+Villageβˆv,res+Xβˆres+"ˆres
+\textsf{PeaceIndex} = \tau_{\text{res}} \textsf{DirectHarm} + \hat{\beta}_{\text{f},\text{res}}\textsf{Female} + \textsf{Village} \hat{\boldsymbol \beta}_{\text{v},\text{res}} + \mathbf{X} \hat{\boldsymbol \beta}_{\text{res}} + \hat{\varepsilon}_{\text{res}}
 $$
 
 * Researcher B instead prefers:
 
 $$
-PeaceIndex=τˆDirectHarm+βˆfFemale+Villageβˆv+Xβˆ+γˆCenter+"ˆfull,
+\textsf{PeaceIndex} = \tau \textsf{DirectHarm} + \hat{\beta}_{\text{f}}\textsf{Female} + \textsf{Village} \hat{\boldsymbol \beta}_{\text{v}} + \mathbf{X} \hat{\boldsymbol \beta} + \boxed{\hat{\gamma}\textsf{Center}} + \hat{\varepsilon}_{\text{full}}
 $$
 
-> Our earlier estimate $\tau^{\text{res}}$ would differ from our target quantity $\tau$: but how badly? [...] How strong would the confounder(s) have to be to change the estimates in such a way to affect the main conclusions of a study?
+> Our earlier estimate $\tau_{\text{res}}$ would differ from our target quantity $\tau$: but how badly? [...] How strong would the confounder(s) have to be to change the estimates in such a way to affect the main conclusions of a study?
 
 ## The Classical OVB Equation {.smaller .crunch-title .title-12 .crunch-ul .crunch-math .footnotes-0 .math-90 .inline-90}
 
