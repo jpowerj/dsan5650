@@ -1,0 +1,29 @@
+
+```{=html}
+<style>
+div.callout-note > .callout-header {
+  background-color: #f8f8f8 !important;
+}
+.callout.callout-style-default {
+  border: 1px solid #dee2e6 !important;
+}
+div.callout-tip > .callout-header {
+  background-color: rgba(230, 159, 0, 0.2) !important;
+}
+/* .callout.callout-tip {
+  border: 1px solid rgba(230, 159, 0, 0.2)  !important;
+} */
+div.callout-important > .callout-header {
+  background-color: rgba(86, 180, 233, 0.2) !important;
+}
+/* div.callout-note.callout {
+  border-left-color: #f8f8f8 !important;
+} */
+</style>
+```
+
+::: {.callout-note title="Changelog"}
+
+* *[Sunday, July 12, 11pm]* Updated examples box for each option to reflect that **HW3A** and **HW3B** will walk you through examples of these two approaches, respectively.
+
+:::
