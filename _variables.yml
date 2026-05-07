@@ -7,68 +7,67 @@ email_url: "https://groups.google.com/a/georgetown.edu/g/dsan5650"
 w01:
   weeknum: 1
   title: "From a Science of Particles to a Science of People"
-  footer: "From Science to Social Science"
-  date-md: "May 21"
+  footer: "From Particles to People"
+  date-md: "May 20"
 w02:
   weeknum: 2
   title: "Probabilistic Graphical Models (PGMs) as Data-Generating Processes (DGPs)"
   footer: "Probabilistic Graphical Models (PGMs)"
-  date-md: "May 28"
+  date-md: "May 27"
 w03:
   weeknum: 3
   title: "From PGMs to Causal Diagrams"
   footer: "PGMs as Causal Graphs"
-  date-md: "Jun 4"
+  date-md: "Jun 3"
 w04:
   weeknum: 4
   title: "Clearing the Path from Cause to Effect"
   footer: "The Four Elemental Confounds"
-  date-md: "Jun 11"
+  date-md: "Jun 10"
 w05:
   weeknum: 5
   title: "Multilevel Modeling, Closing Backdoor Paths"
   footer: "MLM, Backdoor Paths"
-  date-md: "Jun 18"
+  date-md: "Jun 17"
 w06:
   weeknum: 6
   title: "Midterm Pre-Review"
   footer: "Bayesian Workflow"
-  date-md: "Jun 25"
+  date-md: "Jun 24"
 w07:
   weeknum: 7
   title: "Midterm Introduction"
   footer: "Midterm Intro"
-  date-md: "Jul 2"
+  date-md: "Jul 1"
 w08:
   weeknum: 8
-  # title: "ATEs, ATTs, HTEs, and OBAs (Other Beautiful Acronyms)"
   title: "Propensity Score Weighting"
   footer: "Propensity Score Weighting"
-  date-md: "Jul 9"
+  date-md: "Jul 8"
 w09:
   weeknum: 9
   title: "Doubly-Robust Estimation and Instrumental Variables"
   footer: "Instrumental Variables"
-  date-md: "Jul 16"
+  date-md: "Jul 15"
 w10:
   weeknum: 10
   title: "Text-as-Data"
   footer: "Text-as-Data"
-  date-md: "Jul 23"
+  date-md: "Jul 22"
 w11:
   weeknum: 11
   title: "Sensitivity Analysis"
   footer: "Sensitivity Analysis"
-  date-md: "Jul 30"
+  date-md: "Jul 29"
 w12:
   weeknum: 12
   title: "Causal Forests for Heterogeneous Treatment Effects"
   footer: "Causal Forests"
-  date-md: "Aug 6"
+  date-md: "Aug 5"
 hw1:
   title: "Causal Modeling with DAGs and PGMs: Direct and Indirect Effects"
-  date-md: "Jun 9, 11:59pm EDT"
-  date-full: "Monday, **June 9**"
+  date-md: "Jun 5, 11:59pm EDT"
+  date-full: "Friday, **June 5**"
   url: "#"
 hw2:
   title: "Using Our Modeling Languages"
@@ -91,6 +90,6 @@ hw4:
   url: "#"
 final:
   title: "Final Project"
-  date-md: "Aug 8 (Friday), 5:59pm EDT"
-  date-full: "Friday, **August 15**"
+  date-md: "Aug 7 (Friday), 5:59pm EDT"
+  date-full: "Friday, **August 7**"
   url: "#"

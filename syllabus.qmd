@@ -5,7 +5,7 @@ subtitle: "*DSAN 5650: Causal Inference for Computational Social Science*"
 times: "Wednesdays 6:30-9pm, Online"
 author: "Prof. Jeff Jacobs"
 email: "jj1088@georgetown.edu"
-term: "Summer 2025, Georgetown University"
+term: "Summer 2026, Georgetown University"
 # latex-auto-install: false
 bibliography: "_DSAN5650.bib"
 csl: chicago-17-no-url.csl
@@ -30,9 +30,7 @@ The course meets on **Wednesdays from 6:30-9pm online via [Zoom](https://maps.ap
 
 * Prof. Jeff Jacobs, [`jj1088@georgetown.edu`](mailto:jj1088@georgetown.edu)
   * Office hours (Click to schedule): [Tuesdays, 3:30-6pm](https://jjacobs.me/meet)
-* TA Courtney Green, [`crg123@georgetown.edu`](mailto:crg123@georgetown.edu)
-  * Office hours by appointment
-* TA Wendy Hu, [`lh1078@georgetown.edu`](mailto:lh1078@georgetown.edu)
+* TA Noelle Martell, [`nm1237@georgetown.edu`](mailto:nm1237@georgetown.edu)
   * Office hours by appointment
 
 ## Course Description

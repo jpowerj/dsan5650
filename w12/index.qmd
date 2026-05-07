@@ -1,10 +1,10 @@
 ---
 title: "Week 12: Causal Forests for Heterogeneous Treatment Effects"
-subtitle: "*DSAN 5650: Causal Inference for Computational Social Science*<br><span class='subsubtitle'>Summer 2025, Georgetown University</span>"
+subtitle: "*DSAN 5650: Causal Inference for Computational Social Science*<br><span class='subsubtitle'>Summer 2026, Georgetown University</span>"
 author: "Jeff Jacobs"
 institute: "[`jj1088@georgetown.edu`](mailto:jj1088@georgetown.edu)"
 bibliography: "../_DSAN5650.bib"
-date: 2025-08-06
+date: 2026-08-05
 date-format: full
 lecnum: 12
 categories:
