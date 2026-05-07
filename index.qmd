@@ -2,7 +2,7 @@
 title: "DSAN 5650: Causal Inference for Computational Social Science"
 subtitle: "Wednesdays 6:30-9pm, Online (Zoom) Sessions"
 author: "Jeff Jacobs ([`jj1088@georgetown.edu`](mailto:jj1088@georgetown.edu))"
-institute: "Georgetown University, Summer 2025"
+institute: "Georgetown University, Summer 2026"
 listing:
   sort-ui: false
   filter-ui: false
@@ -16,7 +16,7 @@ listing:
   date-format: "MMMM D"
 ---
 
-Welcome to the homepage for ***DSAN 5650: Causal Inference for Computational Social Science*** at Georgetown University, for the Summer 2025 session!
+Welcome to the homepage for ***DSAN 5650: Causal Inference for Computational Social Science*** at Georgetown University, for the Summer 2026 session!
 
 The course meets on **Wednesdays from 6:30pm to 9:00pm** online, via the **Zoom Link** provided in the sidebar.
 

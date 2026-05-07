@@ -1,16 +1,17 @@
 /*-- scss:defaults --*/
-$font-family-sans-serif: "Computer Modern Sans", sans-serif !default;
+$font-family-sans-serif: "Computer Modern Sans",
+sans-serif !default;
 
 /*-- scss:rules --*/
 body {
-font-family: "Computer Modern Sans", sans-serif;
+    font-family: "Computer Modern Sans", sans-serif;
 }
 
 a.disabled {
-/* Make the disabled links grayish */
-color: gray;
-/* And disable the pointer events */
-pointer-events: none;
+    /* Make the disabled links grayish */
+    color: gray;
+    /* And disable the pointer events */
+    pointer-events: none;
 }
 
 .alg {
@@ -18,21 +19,22 @@ pointer-events: none;
 }
 
 .aside-80 aside {
-font-size: 1.3rem !important;
+    font-size: 1.3rem !important;
 }
 
 .blockquote-90 blockquote {
-font-size: 90% !important;
+    font-size: 90% !important;
 }
 
 .border-all td {
-border: 1px solid black !important;
+    border: 1px solid black !important;
 }
 
 .boxed {
     border: 3px solid black !important;
     padding: 2px !important;
 }
+
 .boxed-cb {
     border: 3px solid #e69f00 !important;
     padding: 5px !important;
@@ -48,55 +50,71 @@ border: 1px solid #dee2e6 !important;
 .caption {
     text-align: center;
 }
-.caption-60 .caption, .caption-60 figcaption {
+
+.caption-60 .caption,
+.caption-60 figcaption {
     font-size: 60% !important;
 }
-.caption-50 .caption, .caption-50 figcaption {
+
+.caption-50 .caption,
+.caption-50 figcaption {
     font-size: 50% !important;
 }
 
 .cb1 {
-/* #E69F00 */
-color: rgb(230, 159, 0) !important;
+    /* #E69F00 */
+    color: rgb(230, 159, 0) !important;
 }
+
 .cb1-bg {
     background-color: rgb(230, 159, 0) !important;
 }
+
 .cb1a-bg {
     background-color: rgba(230, 159, 0, 0.333) !important;
     text-align: center !important;
 }
+
 .cb2 {
     /* #56B4E9 */
     color: rgb(86, 180, 233) !important;
 }
+
 .cb2-bg {
     background-color: rgb(86, 180, 233) !important;
 }
+
 .cb2a-bg {
     background-color: rgba(86, 180, 233, 0.333) !important;
     text-align: center !important;
 }
+
 .cb3 {
     /* #009E73 */
     color: rgb(0, 158, 115) !important;
 }
+
 .cb3-bg {
     background-color: rgb(0, 158, 115) !important;
 }
+
 .cb3a-bg {
     background-color: rgba(0, 158, 115, 0.333) !important;
     text-align: center !important;
 }
+
 .cb4 {
     color: #F0E442 !important;
 }
+
 .cbg {
     color: rgb(211, 211, 211) !important;
 }
+
 .cbg-bg {
     background-color: rgb(211, 211, 211) !important;
 }
+
 .cbga-bg {
     background-color: rgba(211, 211, 211, 0.333) !important;
     text-align: center !important;
@@ -106,9 +124,11 @@ color: rgb(230, 159, 0) !important;
 .cb-in {
     color: #679d67 !important;
 }
+
 .cb-hidden {
     color: #666693 !important;
 }
+
 .cb-out {
     color: #976464 !important;
 }
@@ -116,12 +136,15 @@ color: rgb(230, 159, 0) !important;
 .code-90 code {
     font-size: 90% !important;
 }
+
 .code-85 code {
     font-size: 85% !important;
 }
+
 .code-80 code {
     font-size: 80% !important;
 }
+
 .code-black code {
     color: black !important;
 }
@@ -157,25 +180,27 @@ color: rgb(230, 159, 0) !important;
 }
 
 .crunch-figure figure {
-margin-top: 0px !important;
-margin-bottom: 0px !important;
+    margin-top: 0px !important;
+    margin-bottom: 0px !important;
 }
+
 .crunch-figcaption figcaption {
-margin-top: 0px !important;
-margin-bottom: 0px !important;
+    margin-top: 0px !important;
+    margin-bottom: 0px !important;
 }
 
 .crunch-hr hr {
-margin-top: 8px !important;
-margin-bottom: 6px !important;
+    margin-top: 8px !important;
+    margin-bottom: 6px !important;
 }
+
 .crunch-hr-3 hr {
-margin-top: 4px !important;
-margin-bottom: 3px !important;
+    margin-top: 4px !important;
+    margin-bottom: 3px !important;
 }
 
 .crunch-iframe iframe {
-margin-bottom: 0px !important;
+    margin-bottom: 0px !important;
 }
 
 .crunch-img img {
@@ -187,30 +212,37 @@ margin-bottom: 0px !important;
     margin-top: 2px !important;
     margin-bottom: 2px !important;
 }
+
 .crunch-li-4 li {
     margin-top: 4px !important;
     margin-bottom: 4px !important;
 }
+
 .crunch-li-5 li {
     margin-top: 5px !important;
     margin-bottom: 5px !important;
 }
+
 .crunch-li-6 li {
     margin-top: 6px !important;
     margin-bottom: 6px !important;
 }
+
 .crunch-li-7 li {
     margin-top: 7px !important;
     margin-bottom: 7px !important;
 }
+
 .crunch-li-8 li {
     margin-top: 8px !important;
     margin-bottom: 8px !important;
 }
+
 .crunch-li-10 li {
     margin-top: 10px !important;
     margin-bottom: 10px !important;
 }
+
 .crunch-li-first li:first-of-type {
     margin-top: 2px !important;
 }
@@ -219,6 +251,7 @@ margin-bottom: 0px !important;
     margin-top: 10px !important;
     margin-bottom: 10px !important;
 }
+
 .crunch-math-15 mjx-container {
     margin-top: 15px !important;
     margin-bottom: 15px !important;
@@ -228,18 +261,22 @@ margin-bottom: 0px !important;
     margin-top: 2px !important;
     margin-bottom: 2px !important;
 }
+
 .crunch-p-5 p {
     margin-top: 5px !important;
     margin-bottom: 5px !important;
 }
+
 .crunch-p-6 p {
     margin-top: 6px !important;
     margin-bottom: 6px !important;
 }
+
 .crunch-p-8 p {
     margin-top: 8px !important;
     margin-bottom: 8px !important;
 }
+
 /* Bottom padding */
 .crunch-p-bpad p {
     padding-bottom: 0px !important;
@@ -249,6 +286,7 @@ margin-bottom: 0px !important;
     margin-top: 0px !important;
     margin-bottom: 0px !important;
 }
+
 .crop-quarto-figure .quarto-figure {
     margin-bottom: 0px !important;
 }
@@ -284,19 +322,22 @@ details {
 }
 
 figcaption {
-text-align: center !important;
+    text-align: center !important;
 }
 
 /* fix mapview... */
 .fix-mapview .leaflet {
-height: 400px !important;
+    height: 400px !important;
 }
+
 .leaflet {
-width: 100% !important;
+    width: 100% !important;
 }
+
 .leaflet-350 .leaflet {
-height: 350px !important;
+    height: 350px !important;
 }
+
 .leaflet-375 .leaflet {
     height: 375px !important;
 }
@@ -304,64 +345,75 @@ height: 350px !important;
 .plotly-300 .plotly {
     height: 300px !important;
 }
+
 .plotly-340 .plotly {
     height: 340px !important;
 }
+
 .plotly-350 .plotly {
     height: 350px !important;
 }
+
 .plotly {
     width: 100% !important;
 }
 
 .fix-tex-headers th {
-font-size: 1em !important;
+    font-size: 1em !important;
 }
 
 .fn-span {
-font-size: 80% !important;
+    font-size: 80% !important;
 }
 
 .inline-95 .math.inline {
     font-size: 95% !important;
 }
+
 .inline-90 .math.inline {
     font-size: 90% !important;
 }
+
 .inline-80 .math.inline {
     font-size: 80% !important;
 }
+
 .inline-70 .math.inline {
     font-size: 70% !important;
 }
+
 .math-95 .math.display {
     font-size: 95% !important;
 }
+
 .math-90 .math.display {
-font-size: 90% !important;
+    font-size: 90% !important;
 }
+
 .math-80 .math.display {
-font-size: 80% !important;
+    font-size: 80% !important;
 }
+
 .math-75 .math.display {
     font-size: 75% !important;
 }
+
 .math-70 .math.display {
     font-size: 70% !important;
 }
 
 .footnotes-0 aside {
-bottom: 0px !important;
-margin-top: 0px !important;
+    bottom: 0px !important;
+    margin-top: 0px !important;
 }
 
 .new-unit {
-border-top: 2px solid gray !important;
+    border-top: 2px solid gray !important;
 }
 
 .not-title-slide {
-display: block !important;
-top: 0px !important;
+    display: block !important;
+    top: 0px !important;
 }
 
 .output-center .cell-output pre {
@@ -369,169 +421,203 @@ top: 0px !important;
     margin-left: auto;
     margin-right: auto;
 }
+
 .output-nowrap .cell-output pre code {
-word-break: normal !important;
-white-space: pre-wrap !important;
+    word-break: normal !important;
+    white-space: pre-wrap !important;
 }
+
 .output-90 .cell-output {
-font-size: 80% !important;
+    font-size: 80% !important;
 }
+
 .output-80 .cell-output {
-font-size: 80% !important;
+    font-size: 80% !important;
 }
+
 .output-75 .cell-output {
-font-size: 75% !important;
+    font-size: 75% !important;
 }
 
 .p-60 p {
-font-size: 60% !important;
+    font-size: 60% !important;
 }
+
 .p-70 p {
-font-size: 70% !important;
+    font-size: 70% !important;
 }
+
 .p-75 p {
-font-size: 75% !important;
+    font-size: 75% !important;
 }
+
 .p-80 p {
-font-size: 80% !important;
+    font-size: 80% !important;
 }
+
 .p-85 p {
-font-size: 85% !important;
+    font-size: 85% !important;
 }
+
 .p-90 p {
-font-size: 90% !important;
+    font-size: 90% !important;
 }
 
 .sidebar-footer-item {
-font-size: 80% !important;
+    font-size: 80% !important;
 }
 
 .sidebar-menu-container {
-padding-top: 10px !important;
+    padding-top: 10px !important;
 }
+
 .sidebar-subtitle {
-font-size: 12pt !important;
-line-height: 0.7em !important;
+    font-size: 12pt !important;
+    line-height: 0.7em !important;
 }
 
 .smaller-table td {
     font-size: 80% !important;
 }
+
 .smaller-table th {
     font-size: 80% !important;
 }
-.table-90 td, .table-90 th {
+
+.table-90 td,
+.table-90 th {
     font-size: 90% !important;
 }
-.table-85 td, .table-85 th {
+
+.table-85 td,
+.table-85 th {
     font-size: 85% !important;
 }
-.table-80 td, .table-80 th {
+
+.table-80 td,
+.table-80 th {
     font-size: 80% !important;
 }
-.table-70 td, .table-70 th {
+
+.table-75 td,
+.table-75 th {
+    font-size: 75% !important;
+}
+
+.table-70 td,
+.table-70 th {
     font-size: 70% !important;
 }
+
 .table-nolines td {
     border: 0px !important;
 }
+
 .table-crunch-td td {
     padding-top: 1px !important;
     padding-bottom: 1px !important;
 }
 
 .sticky-head {
-position: sticky;
-top: 0;
-background-color: white;
-/* border-bottom: 2px solid gray !important; */
-border-top: none !important;
-border-bottom: none !important;
-/* box-shadow: inset 0 2px 0 #000000, inset 0 -2px 0 #000000; */
-box-shadow: inset 0 -2px 0 gray;
-padding: 2px 0;
+    position: sticky;
+    top: 0;
+    background-color: white;
+    /* border-bottom: 2px solid gray !important; */
+    border-top: none !important;
+    border-bottom: none !important;
+    /* box-shadow: inset 0 2px 0 #000000, inset 0 -2px 0 #000000; */
+    box-shadow: inset 0 -2px 0 gray;
+    padding: 2px 0;
 }
 
 .sticky-table {
-border-collapse: collapse;
-border-spacing: 0;
+    border-collapse: collapse;
+    border-spacing: 0;
 }
 
 .sticky-table tbody:nth-of-type(1) tr:nth-of-type(1) td {
-border-top: none !important;
+    border-top: none !important;
 }
 
 .small-tex-td {
     font-size: 2.0rem !important;
 }
+
 .small-tex-th {
     font-size: 2.0rem !important;
 }
 
 .small-title h1 {
-font-size: var(--r-heading2-size) !important;
+    font-size: var(--r-heading2-size) !important;
 }
+
 .small-title h2 {
     font-size: var(--r-heading3-size) !important;
 }
 
 summary {
-font-size: 1.2rem !important;
+    font-size: 1.2rem !important;
 }
 
 .table-80 td {
-font-size: 80% !important;
+    font-size: 80% !important;
 }
+
 .table-80 th {
-font-size: 80% !important;
+    font-size: 80% !important;
 }
+
 .table-87 td {
-font-size: 87% !important;
+    font-size: 87% !important;
 }
+
 .table-87 th {
-font-size: 87% !important;
+    font-size: 87% !important;
 }
+
 .table-90 td {
-font-size: 90% !important;
+    font-size: 90% !important;
 }
+
 .table-90 th {
-font-size: 90% !important;
+    font-size: 90% !important;
 }
 
 /* and one small fix for weird FF behavior, described in https://stackoverflow.com/questions/7517127/ */
 table thead th {
-background-clip: padding-box;
+    background-clip: padding-box;
 }
 
 .table-va td {
     vertical-align: middle !important;
 }
+
 .table-valign td {
     vertical-align: middle !important;
 }
 
 /* td centering */
 .tdc {
-vertical-align: middle !important;
-text-align: center !important;
+    vertical-align: middle !important;
+    text-align: center !important;
 }
 
 /* td vertical centering */
 .tdvc {
-vertical-align: middle !important;
+    vertical-align: middle !important;
 }
 
 /* td vertical top-align */
 .tdvt {
-vertical-align: top !important;
+    vertical-align: top !important;
 }
 
 .tdvc-all td {
-vertical-align: middle !important;
+    vertical-align: middle !important;
 }
 
 .tdvt-all td {
-vertical-align: top !important;
+    vertical-align: top !important;
 }
 
 .td-no-bottom td {
@@ -541,75 +627,102 @@ vertical-align: top !important;
 .text-50 p {
     font-size: 50% !important;
 }
+
 .text-60 {
-        font-size: 60% !important;
+    font-size: 60% !important;
 }
+
 .text-65 {
     font-size: 65% !important;
 }
+
 .text-70 {
-font-size: 70% !important;
+    font-size: 70% !important;
 }
+
 .text-75 {
-font-size: 75% !important;
+    font-size: 75% !important;
 }
+
 .text-80 {
     font-size: 80% !important;
 }
+
 .text-82 {
     font-size: 82% !important;
 }
+
 .text-85 {
-font-size: 85% !important;
+    font-size: 85% !important;
 }
+
 .text-90 {
-font-size: 90% !important;
+    font-size: 90% !important;
 }
+
 .text-95 {
-font-size: 95% !important;
+    font-size: 95% !important;
 }
 
 .reveal .title {
     font-size: 200% !important;
 }
+
 .reveal .subtitle {
     font-size: 90% !important;
 }
 
-.title-06 h2, .title-06 h1 {
+.title-06 h2,
+.title-06 h1 {
     font-size: calc(0.6 * var(--r-heading2-size)) !important;
 }
-.title-065 h2, .title-065 h1 {
+
+.title-065 h2,
+.title-065 h1 {
     font-size: calc(0.65 * var(--r-heading2-size)) !important;
 }
-.title-07 h2, .title-07 h1 {
+
+.title-07 h2,
+.title-07 h1 {
     font-size: calc(0.7 * var(--r-heading2-size)) !important;
 }
-.title-08 h2, .title-08 h1 {
-font-size: calc(0.8 * var(--r-heading2-size)) !important;
+
+.title-08 h2,
+.title-08 h1 {
+    font-size: calc(0.8 * var(--r-heading2-size)) !important;
 }
-.title-09 h2, .title-09 h1 {
-font-size: calc(0.9 * var(--r-heading2-size)) !important;
+
+.title-09 h2,
+.title-09 h1 {
+    font-size: calc(0.9 * var(--r-heading2-size)) !important;
 }
-.title-10 h2, .title-10 h1 {
+
+.title-10 h2,
+.title-10 h1 {
     font-size: calc(1.0 * var(--r-heading2-size)) !important;
 }
-.title-11 h2, .title-11 h1 {
+
+.title-11 h2,
+.title-11 h1 {
     font-size: calc(1.1 * var(--r-heading2-size)) !important;
 }
-.title-12 h2, .title-12 h1 {
+
+.title-12 h2,
+.title-12 h1 {
     font-size: calc(1.2 * var(--r-heading2-size)) !important;
 }
-.title-13 h2, .title-13 h1 {
+
+.title-13 h2,
+.title-13 h1 {
     font-size: calc(1.3 * var(--r-heading2-size)) !important;
 }
 
 .title-center h2 {
-text-align: center !important;
+    text-align: center !important;
 }
 
 .title-right h2 {
-text-align: right !important;
+    text-align: right !important;
 }
 
 .under {

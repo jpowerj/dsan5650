@@ -9,7 +9,7 @@ date-format: full
 lecnum: 9
 categories:
   - "Class Sessions"
-cache: true
+cache: false
 format:
   revealjs:
     df-print: kable
@@ -99,7 +99,6 @@ import pandas as pd
 import numpy as np
 import matplotlib.pyplot as plt
 import seaborn as sns
-import patchworklib as pw;
 
 import statsmodels.formula.api as smf
 from causalml.match import create_table_one
@@ -130,11 +129,13 @@ user_df = generate_data(N=300)
 ols_model = smf.ols("read_time ~ dark_mode", data=user_df).fit()
 ols_summary = ols_model.summary()
 results_as_html = ols_summary.tables[1].as_html()
-ols_summary_df = pd.read_html(results_as_html, header=0, index_col=0)[0]
-ols_summary_df[['coef','std err']]
-#type(ols_summary.tables[1])[['coef','std err']]
-# .tables[1]
-# ols_df[['coef','std err']]
+print(results_as_html)
+
+# ols_summary_df = pd.read_html(results_as_html, header=0, index_col=0)[0]
+# ols_summary_df[['coef','std err']]
+# #type(ols_summary.tables[1])[['coef','std err']]
+# # .tables[1]
+# # ols_df[['coef','std err']]
 ```
 
 :::
@@ -215,7 +216,7 @@ def estimate_e(df, X, D, model_e):
     e = model_e.fit(df[X], df[D]).predict_proba(df[X])[:,1]
     return e
 user_df['e'] = estimate_e(user_df, X, "dark_mode", LogisticRegression())
-ax = pw.Brick(figsize=(7, 2.75));
+fig, ax = plt.subplots(figsize=(7,2.75))
 sns.kdeplot(
   x='e', hue='dark_mode', data=user_df,
   # bins=30,
@@ -225,7 +226,6 @@ sns.kdeplot(
   ax=ax
 );
 ax.set_xlabel("$e(X)$");
-ax.savefig()
 ```
 
 ```{python}
@@ -287,7 +287,7 @@ def simulate_estimators(X_e, X_mu, D, y):
     df_tau = pd.DataFrame(r, columns=['S-learn', 'IPW', 'AIPW'])
     return df_tau
 # The actual plots
-ax = pw.Brick(figsize=(4, 3.5))
+fig, ax = plt.subplots(figsize=(4,3.5))
 wrong_reg_df = simulate_estimators(
   X_e=['male', 'age'], X_mu=['hours'], D="dark_mode", y="read_time"
 )
@@ -300,7 +300,6 @@ wrong_reg_plot.set(
   title="Distribution of $\hat τ$", xlabel='', ylabel=''
 );
 ax.axhline(2, c='r', ls=':');
-ax.savefig()
 ```
 
 :::
@@ -310,7 +309,7 @@ Wrong **propensity score** model:
 
 ```{python}
 #| fig-align: center
-ax = pw.Brick(figsize=(4, 3.5))
+fig, ax = plt.subplots(figsize=(4, 3.5))
 wrong_ps_df = simulate_estimators(
   ['age'], ['male', 'hours'], D="dark_mode", y="read_time"
 )
@@ -321,7 +320,7 @@ wrong_ps_plot = sns.boxplot(
 );
 ax.set_title("Distribution of $\hat τ$");
 ax.axhline(2, c='r', ls=':');
-ax.savefig()
+plt.show()
 ```
 
 :::

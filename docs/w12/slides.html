@@ -7,8 +7,8 @@
 <script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
 <link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
 <link href="../site_libs/quarto-html/light-border.css" rel="stylesheet">
-<link href="../site_libs/quarto-html/quarto-syntax-highlighting-549806ee2085284f45b00abea8c6df48.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
-  <meta name="generator" content="quarto-1.6.40">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-e44360b8a8db1e130c7792fece1c8032.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
+  <meta name="generator" content="quarto-1.10.3">
 
   <meta name="author" content="Jeff Jacobs">
   <title>DSAN 5650 – Week 12: Causal Forests for Heterogeneous Treatment Effects</title>
@@ -18,6 +18,9 @@
   <link rel="stylesheet" href="../site_libs/revealjs/dist/reset.css">
   <link rel="stylesheet" href="../site_libs/revealjs/dist/reveal.css">
   <style>
+    /* Default styles provided by pandoc.
+    ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+    */
     code{white-space: pre-wrap;}
     span.smallcaps{font-variant: small-caps;}
     div.columns{display: flex; gap: min(4vw, 1.5em);}
@@ -29,76 +32,10 @@
       margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
       vertical-align: middle;
     }
-    /* CSS for syntax highlighting */
-    pre > code.sourceCode { white-space: pre; position: relative; }
-    pre > code.sourceCode > span { line-height: 1.25; }
-    pre > code.sourceCode > span:empty { height: 1.2em; }
-    .sourceCode { overflow: visible; }
-    code.sourceCode > span { color: inherit; text-decoration: inherit; }
-    div.sourceCode { margin: 1em 0; }
-    pre.sourceCode { margin: 0; }
-    @media screen {
-    div.sourceCode { overflow: auto; }
-    }
-    @media print {
-    pre > code.sourceCode { white-space: pre-wrap; }
-    pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
-    }
-    pre.numberSource code
-      { counter-reset: source-line 0; }
-    pre.numberSource code > span
-      { position: relative; left: -4em; counter-increment: source-line; }
-    pre.numberSource code > span > a:first-child::before
-      { content: counter(source-line);
-        position: relative; left: -1em; text-align: right; vertical-align: baseline;
-        border: none; display: inline-block;
-        -webkit-touch-callout: none; -webkit-user-select: none;
-        -khtml-user-select: none; -moz-user-select: none;
-        -ms-user-select: none; user-select: none;
-        padding: 0 4px; width: 4em;
-        color: #aaaaaa;
-      }
-    pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
-    div.sourceCode
-      { color: #003b4f; background-color: #f1f3f5; }
-    @media screen {
-    pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
-    }
-    code span { color: #003b4f; } /* Normal */
-    code span.al { color: #ad0000; } /* Alert */
-    code span.an { color: #5e5e5e; } /* Annotation */
-    code span.at { color: #657422; } /* Attribute */
-    code span.bn { color: #ad0000; } /* BaseN */
-    code span.bu { } /* BuiltIn */
-    code span.cf { color: #003b4f; font-weight: bold; } /* ControlFlow */
-    code span.ch { color: #20794d; } /* Char */
-    code span.cn { color: #8f5902; } /* Constant */
-    code span.co { color: #5e5e5e; } /* Comment */
-    code span.cv { color: #5e5e5e; font-style: italic; } /* CommentVar */
-    code span.do { color: #5e5e5e; font-style: italic; } /* Documentation */
-    code span.dt { color: #ad0000; } /* DataType */
-    code span.dv { color: #ad0000; } /* DecVal */
-    code span.er { color: #ad0000; } /* Error */
-    code span.ex { } /* Extension */
-    code span.fl { color: #ad0000; } /* Float */
-    code span.fu { color: #4758ab; } /* Function */
-    code span.im { color: #00769e; } /* Import */
-    code span.in { color: #5e5e5e; } /* Information */
-    code span.kw { color: #003b4f; font-weight: bold; } /* Keyword */
-    code span.op { color: #5e5e5e; } /* Operator */
-    code span.ot { color: #003b4f; } /* Other */
-    code span.pp { color: #ad0000; } /* Preprocessor */
-    code span.sc { color: #5e5e5e; } /* SpecialChar */
-    code span.ss { color: #20794d; } /* SpecialString */
-    code span.st { color: #20794d; } /* String */
-    code span.va { color: #111111; } /* Variable */
-    code span.vs { color: #20794d; } /* VerbatimString */
-    code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
     /* CSS for citations */
     div.csl-bib-body { }
     div.csl-entry {
       clear: both;
-      margin-bottom: 0em;
     }
     .hanging-indent div.csl-entry {
       margin-left:2em;
@@ -115,7 +52,7 @@
     div.csl-indent {
       margin-left: 2em;
     }  </style>
-  <link rel="stylesheet" href="../site_libs/revealjs/dist/theme/quarto-0ba57519f6ec69054f1c33bbde2e5ac2.css">
+  <link rel="stylesheet" href="../site_libs/revealjs/dist/theme/quarto-0e1388dc2fc4ad380e0d61aeba2915cb.css">
   <link href="../site_libs/revealjs/plugin/quarto-line-highlight/line-highlight.css" rel="stylesheet">
   <link href="../site_libs/revealjs/plugin/reveal-menu/menu.css" rel="stylesheet">
   <link href="../site_libs/revealjs/plugin/reveal-menu/quarto-menu.css" rel="stylesheet">
@@ -362,206 +299,6 @@ Jeff Jacobs
 <img data-src="images/mood_crop.jpg" class="quarto-figure quarto-figure-center r-stretch"></section>
 <section id="does-aging-cause-sadness" class="slide level2 smaller crunch-title title-11 crunch-ul crunch-quarto-figure table-80 crunch-img crunch-quarto-layout-panel crunch-quarto-layout-cell crunch-figure crunch-figcaption inline-70 crunch-p">
 <h2>Does Aging Cause Sadness?</h2>
-<table data-quarto-postprocess="true">
-<tbody>
-<tr class="odd">
-<td style="text-align: right;" width="5%"><i class="bi bi-1-circle"></i></td>
-<td width="95%">Each year, 20 people are born with uniformly-distributed happiness values</td>
-</tr>
-<tr class="even">
-<td style="text-align: right;"><i class="bi bi-2-circle"></i></td>
-<td>Each year, each person ages one year; Happiness does not change</td>
-</tr>
-<tr class="odd">
-<td style="text-align: right;"><i class="bi bi-3-circle"></i></td>
-<td>At age 18, individuals can become married; Odds of marriage each year proportional to individual's happiness; Once married, they remain married</td>
-</tr>
-<tr class="even">
-<td style="text-align: right;"><i class="bi bi-4-circle"></i></td>
-<td>At age 70 individuals leave the sample (They move to Boca Raton, Florida)</td>
-</tr>
-</tbody>
-</table>
-<details class="code-fold">
-<summary>Code</summary>
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
-<span id="cb1-2"><a></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
-<span id="cb1-3"><a></a>rng <span class="op">=</span> np.random.default_rng(seed<span class="op">=</span><span class="dv">5650</span>)</span>
-<span id="cb1-4"><a></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
-<span id="cb1-5"><a></a><span class="im">import</span> seaborn <span class="im">as</span> sns</span>
-<span id="cb1-6"><a></a>cb_palette <span class="op">=</span> [<span class="st">'#e69f00'</span>,<span class="st">'#56b4e9'</span>,<span class="st">'#009e73'</span>]</span>
-<span id="cb1-7"><a></a>sns.set_palette(cb_palette)</span>
-<span id="cb1-8"><a></a><span class="im">import</span> patchworklib <span class="im">as</span> pw</span>
-<span id="cb1-9"><a></a><span class="im">from</span> scipy.special <span class="im">import</span> expit</span>
-<span id="cb1-10"><a></a></span>
-<span id="cb1-11"><a></a><span class="co"># The original R code:</span></span>
-<span id="cb1-12"><a></a><span class="co"># sim_happiness &lt;- function( seed=1977 , N_years=1000 , max_age=65 , N_births=20 , aom=18 ) {</span></span>
-<span id="cb1-13"><a></a><span class="co">#     set.seed(seed)</span></span>
-<span id="cb1-14"><a></a><span class="co">#     H &lt;- M &lt;- A &lt;- c()</span></span>
-<span id="cb1-15"><a></a><span class="co">#     for ( t in 1:N_years ) {</span></span>
-<span id="cb1-16"><a></a><span class="co">#         A &lt;- A + 1 # age existing individuals</span></span>
-<span id="cb1-17"><a></a><span class="co">#         A &lt;- c( A , rep(1,N_births) ) # newborns</span></span>
-<span id="cb1-18"><a></a><span class="co">#         H &lt;- c( H , seq(from=-2,to=2,length.out=N_births) ) # sim happiness trait - never changes</span></span>
-<span id="cb1-19"><a></a><span class="co">#         M &lt;- c( M , rep(0,N_births) ) # not yet married</span></span>
-<span id="cb1-20"><a></a><span class="co">#         # for each person over 17, chance get married</span></span>
-<span id="cb1-21"><a></a><span class="co">#         for ( i in 1:length(A) ) {</span></span>
-<span id="cb1-22"><a></a><span class="co">#             if ( A[i] &gt;= aom &amp; M[i]==0 ) {</span></span>
-<span id="cb1-23"><a></a><span class="co">#                 M[i] &lt;- rbern(1,inv_logit(H[i]-4))</span></span>
-<span id="cb1-24"><a></a><span class="co">#             }</span></span>
-<span id="cb1-25"><a></a><span class="co">#         }</span></span>
-<span id="cb1-26"><a></a><span class="co">#         # mortality</span></span>
-<span id="cb1-27"><a></a><span class="co">#         deaths &lt;- which( A &gt; max_age )</span></span>
-<span id="cb1-28"><a></a><span class="co">#         if ( length(deaths)&gt;0 ) {</span></span>
-<span id="cb1-29"><a></a><span class="co">#             A &lt;- A[ -deaths ]</span></span>
-<span id="cb1-30"><a></a><span class="co">#             H &lt;- H[ -deaths ]</span></span>
-<span id="cb1-31"><a></a><span class="co">#             M &lt;- M[ -deaths ]</span></span>
-<span id="cb1-32"><a></a><span class="co">#        }</span></span>
-<span id="cb1-33"><a></a><span class="co">#     }</span></span>
-<span id="cb1-34"><a></a><span class="co">#     d &lt;- data.frame(age=A,married=M,happiness=H)</span></span>
-<span id="cb1-35"><a></a><span class="co">#     return(d)</span></span>
-<span id="cb1-36"><a></a></span>
-<span id="cb1-37"><a></a><span class="co"># DGP: happiness -&gt; marriage &lt;- age</span></span>
-<span id="cb1-38"><a></a>years <span class="op">=</span> <span class="dv">70</span></span>
-<span id="cb1-39"><a></a>num_births <span class="op">=</span> <span class="dv">41</span></span>
-<span id="cb1-40"><a></a>colnames <span class="op">=</span> [<span class="st">'age'</span>,<span class="st">'a'</span>,<span class="st">'h'</span>,<span class="st">'m'</span>]</span>
-<span id="cb1-41"><a></a>sim_dfs <span class="op">=</span> []</span>
-<span id="cb1-42"><a></a>A <span class="op">=</span> np.zeros(shape<span class="op">=</span>(num_births,<span class="dv">1</span>))</span>
-<span id="cb1-43"><a></a>H <span class="op">=</span> np.linspace(<span class="op">-</span><span class="dv">2</span>, <span class="dv">2</span>, num<span class="op">=</span>num_births)</span>
-<span id="cb1-44"><a></a>M <span class="op">=</span> np.zeros(shape<span class="op">=</span>(num_births,<span class="dv">1</span>))</span>
-<span id="cb1-45"><a></a><span class="kw">def</span> update_m(row):</span>
-<span id="cb1-46"><a></a>  <span class="cf">if</span> row[<span class="st">'m'</span>] <span class="op">==</span> <span class="dv">0</span>:</span>
-<span id="cb1-47"><a></a>    <span class="cf">return</span> <span class="bu">int</span>(rng.binomial(</span>
-<span id="cb1-48"><a></a>      n<span class="op">=</span><span class="dv">1</span>,</span>
-<span id="cb1-49"><a></a>      p<span class="op">=</span>expit(row[<span class="st">'h'</span>] <span class="op">-</span> <span class="fl">3.875</span>),</span>
-<span id="cb1-50"><a></a>      size<span class="op">=</span><span class="dv">1</span>,</span>
-<span id="cb1-51"><a></a>    ))</span>
-<span id="cb1-52"><a></a>  <span class="cf">return</span> <span class="dv">1</span></span>
-<span id="cb1-53"><a></a><span class="kw">def</span> sim_cohort_to(max_age):</span>
-<span id="cb1-54"><a></a>  sim_df <span class="op">=</span> pd.DataFrame({</span>
-<span id="cb1-55"><a></a>      <span class="st">'age'</span>: [<span class="dv">1</span> <span class="cf">for</span> _ <span class="kw">in</span> <span class="bu">range</span>(num_births)],</span>
-<span id="cb1-56"><a></a>      <span class="st">'h'</span>: np.linspace(<span class="op">-</span><span class="dv">2</span>, <span class="dv">2</span>, num<span class="op">=</span>num_births),</span>
-<span id="cb1-57"><a></a>      <span class="st">'m'</span>: [<span class="dv">0</span> <span class="cf">for</span> _ <span class="kw">in</span> <span class="bu">range</span>(num_births)],</span>
-<span id="cb1-58"><a></a>    }</span>
-<span id="cb1-59"><a></a>  )</span>
-<span id="cb1-60"><a></a>  <span class="cf">for</span> t <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">2</span>, max_age <span class="op">+</span> <span class="dv">1</span>):</span>
-<span id="cb1-61"><a></a>    sim_df[<span class="st">'age'</span>] <span class="op">=</span> sim_df[<span class="st">'age'</span>] <span class="op">+</span> <span class="dv">1</span></span>
-<span id="cb1-62"><a></a>    <span class="cf">if</span> t <span class="op">&gt;=</span> <span class="dv">18</span>:</span>
-<span id="cb1-63"><a></a>      sim_df[<span class="st">'m'</span>] <span class="op">=</span> sim_df.<span class="bu">apply</span>(update_m, axis<span class="op">=</span><span class="dv">1</span>)</span>
-<span id="cb1-64"><a></a>  <span class="cf">return</span> sim_df</span>
-<span id="cb1-65"><a></a>all_sim_dfs <span class="op">=</span> []</span>
-<span id="cb1-66"><a></a><span class="cf">for</span> cur_max_age <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">1</span>, <span class="dv">71</span>):</span>
-<span id="cb1-67"><a></a>  cur_sim_df <span class="op">=</span> sim_cohort_to(cur_max_age)</span>
-<span id="cb1-68"><a></a>  all_sim_dfs.append(cur_sim_df)</span>
-<span id="cb1-69"><a></a>full_sim_df <span class="op">=</span> pd.concat(all_sim_dfs)</span>
-<span id="cb1-70"><a></a></span>
-<span id="cb1-71"><a></a><span class="co"># full_sim_df.head()</span></span>
-<span id="cb1-72"><a></a>cbg_palette <span class="op">=</span> [<span class="st">'#c6c6c666'</span>] <span class="op">+</span> cb_palette</span>
-<span id="cb1-73"><a></a>full_sim_df[<span class="st">'m_label'</span>] <span class="op">=</span> full_sim_df[<span class="st">'m'</span>].<span class="bu">apply</span>(<span class="kw">lambda</span> x: <span class="st">"Unmarried"</span> <span class="cf">if</span> x <span class="op">==</span> <span class="dv">0</span> <span class="cf">else</span> <span class="st">"Married"</span>)</span>
-<span id="cb1-74"><a></a>full_sim_df <span class="op">=</span> full_sim_df.rename(columns<span class="op">=</span>{<span class="st">'age'</span>: <span class="st">'Age'</span>, <span class="st">'h'</span>: <span class="st">'Happiness'</span>})</span>
-<span id="cb1-75"><a></a>ax <span class="op">=</span> pw.Brick(figsize<span class="op">=</span>(<span class="fl">5.25</span>,<span class="fl">2.75</span>))<span class="op">;</span></span>
-<span id="cb1-76"><a></a>sns.scatterplot(</span>
-<span id="cb1-77"><a></a>  x<span class="op">=</span><span class="st">'Age'</span>, y<span class="op">=</span><span class="st">'Happiness'</span>, hue<span class="op">=</span><span class="st">'m_label'</span>,</span>
-<span id="cb1-78"><a></a>  data<span class="op">=</span>full_sim_df,</span>
-<span id="cb1-79"><a></a>  ax<span class="op">=</span>ax,</span>
-<span id="cb1-80"><a></a>  palette<span class="op">=</span>cbg_palette,</span>
-<span id="cb1-81"><a></a>  s<span class="op">=</span><span class="dv">22</span>,</span>
-<span id="cb1-82"><a></a>  legend<span class="op">=</span><span class="va">True</span>,</span>
-<span id="cb1-83"><a></a>)<span class="op">;</span></span>
-<span id="cb1-84"><a></a>ax.move_legend(<span class="st">"upper center"</span>, bbox_to_anchor<span class="op">=</span>(<span class="fl">0.5</span>, <span class="fl">1.15</span>), ncol<span class="op">=</span><span class="dv">2</span>)<span class="op">;</span></span>
-<span id="cb1-85"><a></a>ax.legend_.set_title(<span class="st">""</span>)<span class="op">;</span></span>
-<span id="cb1-86"><a></a>ax.axvline(x<span class="op">=</span><span class="fl">17.5</span>, color<span class="op">=</span><span class="st">'black'</span>, ls<span class="op">=</span><span class="st">'dashed'</span>, lw<span class="op">=</span><span class="dv">1</span>)<span class="op">;</span></span>
-<span id="cb1-87"><a></a>ax.savefig()</span>
-<span id="cb1-88"><a></a>mean_hap_df <span class="op">=</span> full_sim_df.groupby(<span class="st">'Age'</span>)[<span class="st">'Happiness'</span>].mean().reset_index()</span>
-<span id="cb1-89"><a></a>mean_hap_df[<span class="st">'m_label'</span>] <span class="op">=</span> <span class="st">"All"</span></span>
-<span id="cb1-90"><a></a>mean_hap_df[<span class="st">'Happiness_mean'</span>] <span class="op">=</span> <span class="dv">0</span></span>
-<span id="cb1-91"><a></a>group_hap_df <span class="op">=</span> full_sim_df[full_sim_df[<span class="st">'Age'</span>] <span class="op">&gt;=</span> <span class="dv">18</span>].groupby([<span class="st">'Age'</span>,<span class="st">'m_label'</span>])[<span class="st">'Happiness'</span>].mean().reset_index()</span>
-<span id="cb1-92"><a></a>married_df <span class="op">=</span> group_hap_df[group_hap_df[<span class="st">'m_label'</span>] <span class="op">==</span> <span class="st">"Married"</span>].copy()</span>
-<span id="cb1-93"><a></a>unmarried_df <span class="op">=</span> group_hap_df[group_hap_df[<span class="st">'m_label'</span>] <span class="op">==</span> <span class="st">"Unmarried"</span>].copy()</span>
-<span id="cb1-94"><a></a><span class="co"># Moving averages</span></span>
-<span id="cb1-95"><a></a>win_size <span class="op">=</span> <span class="dv">3</span></span>
-<span id="cb1-96"><a></a>married_df[<span class="st">'Happiness_mean'</span>] <span class="op">=</span> married_df[<span class="st">'Happiness'</span>].rolling(window<span class="op">=</span>win_size).mean()</span>
-<span id="cb1-97"><a></a>unmarried_df[<span class="st">'Happiness_mean'</span>] <span class="op">=</span> unmarried_df[<span class="st">'Happiness'</span>].rolling(window<span class="op">=</span>win_size).mean()</span>
-<span id="cb1-98"><a></a><span class="co"># Merge back together</span></span>
-<span id="cb1-99"><a></a>combined_df <span class="op">=</span> pd.concat([mean_hap_df, married_df, unmarried_df], ignore_index<span class="op">=</span><span class="va">True</span>)</span>
-<span id="cb1-100"><a></a><span class="co"># display(combined_df.tail())</span></span>
-<span id="cb1-101"><a></a></span>
-<span id="cb1-102"><a></a>ax <span class="op">=</span> pw.Brick(figsize<span class="op">=</span>(<span class="fl">3.75</span>,<span class="fl">2.4</span>))<span class="op">;</span></span>
-<span id="cb1-103"><a></a>ax.set_xlim(<span class="dv">0</span>, <span class="dv">70</span>)<span class="op">;</span></span>
-<span id="cb1-104"><a></a><span class="co"># ax.set_ylim(-1.2, 1.2);</span></span>
-<span id="cb1-105"><a></a>cbg_palette <span class="op">=</span> [<span class="st">'black'</span>, cb_palette[<span class="dv">0</span>], <span class="st">'#b2b2b2ff'</span>]</span>
-<span id="cb1-106"><a></a></span>
-<span id="cb1-107"><a></a><span class="co"># And plot</span></span>
-<span id="cb1-108"><a></a>sns.lineplot(</span>
-<span id="cb1-109"><a></a>  x<span class="op">=</span><span class="st">'Age'</span>, y<span class="op">=</span><span class="st">'Happiness_mean'</span>,</span>
-<span id="cb1-110"><a></a>  hue<span class="op">=</span><span class="st">'m_label'</span>,</span>
-<span id="cb1-111"><a></a>  <span class="co"># marker=".",</span></span>
-<span id="cb1-112"><a></a>  <span class="co"># s=20,</span></span>
-<span id="cb1-113"><a></a>  data<span class="op">=</span>combined_df,</span>
-<span id="cb1-114"><a></a>  palette<span class="op">=</span>cbg_palette,</span>
-<span id="cb1-115"><a></a>  <span class="co"># color=cbg_palette[0],</span></span>
-<span id="cb1-116"><a></a>  <span class="co"># order=3,</span></span>
-<span id="cb1-117"><a></a>  ax<span class="op">=</span>ax</span>
-<span id="cb1-118"><a></a>)<span class="op">;</span></span>
-<span id="cb1-119"><a></a>ax.set_title(<span class="st">"Mean Happiness by Status"</span>)<span class="op">;</span></span>
-<span id="cb1-120"><a></a>ax.legend_.set_title(<span class="st">""</span>)<span class="op">;</span></span>
-<span id="cb1-121"><a></a>ax.set_xlabel(<span class="st">"Mean Happiness"</span>)<span class="op">;</span></span>
-<span id="cb1-122"><a></a>ax.savefig()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
-<div class="quarto-layout-panel" data-layout="[60,40]">
-<div class="quarto-layout-row quarto-layout-valign-center">
-<div id="collider-plot" class="quarto-layout-cell" style="flex-basis: 60.0%;justify-content: flex-start;">
-<div class="cell" data-execution_count="1">
-<div id="fig-happiness-plot" class="cell quarto-float quarto-figure quarto-figure-center" data-execution_count="1">
-<figure class="quarto-float quarto-float-fig">
-<div aria-describedby="fig-happiness-plot-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<div class="cell-output cell-output-display" data-execution_count="1">
-<div id="fig-happiness-plot-1" class="quarto-float quarto-figure quarto-figure-center" data-fig-align="center">
-<figure class="quarto-float quarto-subfloat-fig">
-<div aria-describedby="fig-happiness-plot-1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img data-src="index_files/figure-revealjs/fig-happiness-plot-output-1.png" class="quarto-figure quarto-figure-center" data-ref-parent="fig-happiness-plot" width="583" height="360">
-</div>
-<figcaption class="quarto-float-caption-bottom quarto-subfloat-caption quarto-subfloat-fig" id="fig-happiness-plot-1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-(a) Happiness by Age, 70 birth cohorts of size 41 each<br>(DC minimum marriage age = 18)
-</figcaption>
-</figure>
-</div>
-</div>
-<div class="cell-output cell-output-display">
-<div id="fig-happiness-plot-2" class="quarto-float quarto-figure quarto-figure-center" data-fig-align="center" height="360" width="583">
-<figure class="quarto-float quarto-subfloat-fig">
-<div aria-describedby="fig-happiness-plot-2-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img data-src="index_files/figure-revealjs/fig-happiness-plot-output-2.png" id="fig-happiness-plot-2" class="quarto-figure quarto-figure-center" data-ref-parent="fig-happiness-plot" width="583" height="360">
-</div>
-<figcaption class="quarto-float-caption-bottom quarto-subfloat-caption quarto-subfloat-fig" id="fig-happiness-plot-2-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-(b)
-</figcaption>
-</figure>
-</div>
-</div>
-</div>
-<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig quarto-uncaptioned" id="fig-happiness-plot-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Fig&nbsp;1
-</figcaption>
-</figure>
-</div>
-</div>
-</div>
-<div id="collider-text" class="quarto-layout-cell" style="flex-basis: 40.0%;justify-content: flex-start;">
-<div id="cell-mean-happiness-plot" class="cell" data-crop="false" data-execution_count="2">
-<div class="cell-output cell-output-display" data-execution_count="2">
-<div class="quarto-figure quarto-figure-center">
-<figure>
-<p><img data-src="index_files/figure-revealjs/mean-happiness-plot-output-1.png" id="mean-happiness-plot" class="quarto-figure quarto-figure-center" width="452" height="316"></p>
-</figure>
-</div>
-</div>
-</div>
-<center>
-<p><span class="text-70">…What’s happening here?</span><br> <span class="math inline">\(\textsf{Happy} \rightarrow {}^{🤔}\textsf{Marriage}^{🤔} \leftarrow \textsf{Age}\)</span></p>
-</center>
-</div>
-</div>
-</div>
 </section>
 <section id="assessing-the-impact-of-omitted-included-vars" class="slide level2 smaller crunch-title title-10 math-90 crunch-math crunch-ul">
 <h2>Assessing the Impact of Omitted / Included Vars</h2>
@@ -657,7 +394,7 @@ Fig&nbsp;1
 </section>
 <section id="references" class="slide level2 smaller scrollable">
 <h2>References</h2>
-<div id="refs" class="references csl-bib-body hanging-indent" data-entry-spacing="0" role="list">
+<div id="refs" class="references csl-bib-body hanging-indent" role="list">
 <div id="ref-cinelli_making_2020" class="csl-entry" role="listitem">
 Cinelli, Carlos, and Chad Hazlett. 2020. <span>“Making <span>Sense</span> of <span>Sensitivity</span>: <span>Extending Omitted Variable Bias</span>.”</span> <em>Journal of the Royal Statistical Society Series B: Statistical Methodology</em> 82 (1): 39–67. <a href="https://doi.org/10.1111/rssb.12348">https://doi.org/10.1111/rssb.12348</a>.
 </div>
@@ -883,197 +620,180 @@ Cinelli, Carlos, and Chad Hazlett. 2020. <span>“Making <span>Sense</span> of <
       });
     </script>
     <script id="quarto-html-after-body" type="application/javascript">
-    window.document.addEventListener("DOMContentLoaded", function (event) {
-      const toggleBodyColorMode = (bsSheetEl) => {
-        const mode = bsSheetEl.getAttribute("data-mode");
-        const bodyEl = window.document.querySelector("body");
-        if (mode === "dark") {
-          bodyEl.classList.add("quarto-dark");
-          bodyEl.classList.remove("quarto-light");
-        } else {
-          bodyEl.classList.add("quarto-light");
-          bodyEl.classList.remove("quarto-dark");
-        }
-      }
-      const toggleBodyColorPrimary = () => {
-        const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
-        if (bsSheetEl) {
-          toggleBodyColorMode(bsSheetEl);
-        }
-      }
-      toggleBodyColorPrimary();  
-      const tabsets =  window.document.querySelectorAll(".panel-tabset-tabby")
-      tabsets.forEach(function(tabset) {
-        const tabby = new Tabby('#' + tabset.id);
-      });
-      const isCodeAnnotation = (el) => {
-        for (const clz of el.classList) {
-          if (clz.startsWith('code-annotation-')) {                     
-            return true;
+      window.document.addEventListener("DOMContentLoaded", function (event) {
+        const tabsets =  window.document.querySelectorAll(".panel-tabset-tabby")
+        tabsets.forEach(function(tabset) {
+          const tabby = new Tabby('#' + tabset.id);
+        });
+        const isCodeAnnotation = (el) => {
+          for (const clz of el.classList) {
+            if (clz.startsWith('code-annotation-')) {                     
+              return true;
+            }
           }
+          return false;
         }
-        return false;
-      }
-      const onCopySuccess = function(e) {
-        // button target
-        const button = e.trigger;
-        // don't keep focus
-        button.blur();
-        // flash "checked"
-        button.classList.add('code-copy-button-checked');
-        var currentTitle = button.getAttribute("title");
-        button.setAttribute("title", "Copied!");
-        let tooltip;
-        if (window.bootstrap) {
-          button.setAttribute("data-bs-toggle", "tooltip");
-          button.setAttribute("data-bs-placement", "left");
-          button.setAttribute("data-bs-title", "Copied!");
-          tooltip = new bootstrap.Tooltip(button, 
-            { trigger: "manual", 
-              customClass: "code-copy-button-tooltip",
-              offset: [0, -8]});
-          tooltip.show();    
-        }
-        setTimeout(function() {
-          if (tooltip) {
-            tooltip.hide();
-            button.removeAttribute("data-bs-title");
-            button.removeAttribute("data-bs-toggle");
-            button.removeAttribute("data-bs-placement");
+        const onCopySuccess = function(e) {
+          // button target
+          const button = e.trigger;
+          // don't keep focus
+          button.blur();
+          // flash "checked"
+          button.classList.add('code-copy-button-checked');
+          var currentTitle = button.getAttribute("title");
+          button.setAttribute("title", "Copied!");
+          let tooltip;
+          if (window.bootstrap) {
+            button.setAttribute("data-bs-toggle", "tooltip");
+            button.setAttribute("data-bs-placement", "left");
+            button.setAttribute("data-bs-title", "Copied!");
+            tooltip = new bootstrap.Tooltip(button, 
+              { trigger: "manual", 
+                customClass: "code-copy-button-tooltip",
+                offset: [0, -8]});
+            tooltip.show();    
           }
-          button.setAttribute("title", currentTitle);
-          button.classList.remove('code-copy-button-checked');
-        }, 1000);
-        // clear code selection
-        e.clearSelection();
-      }
-      const getTextToCopy = function(trigger) {
-          const codeEl = trigger.previousElementSibling.cloneNode(true);
+          setTimeout(function() {
+            if (tooltip) {
+              tooltip.hide();
+              button.removeAttribute("data-bs-title");
+              button.removeAttribute("data-bs-toggle");
+              button.removeAttribute("data-bs-placement");
+            }
+            button.setAttribute("title", currentTitle);
+            button.classList.remove('code-copy-button-checked');
+          }, 1000);
+          // clear code selection
+          e.clearSelection();
+        }
+        const getTextToCopy = function(trigger) {
+          const outerScaffold = trigger.parentElement.cloneNode(true);
+          const codeEl = outerScaffold.querySelector('code');
           for (const childEl of codeEl.children) {
             if (isCodeAnnotation(childEl)) {
               childEl.remove();
             }
           }
           return codeEl.innerText;
-      }
-      const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
-        text: getTextToCopy
-      });
-      clipboard.on('success', onCopySuccess);
-      if (window.document.getElementById('quarto-embedded-source-code-modal')) {
-        const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
-          text: getTextToCopy,
-          container: window.document.getElementById('quarto-embedded-source-code-modal')
-        });
-        clipboardModal.on('success', onCopySuccess);
-      }
-        var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
-        var mailtoRegex = new RegExp(/^mailto:/);
-          var filterRegex = new RegExp('/' + window.location.host + '/');
-        var isInternal = (href) => {
-            return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
         }
-        // Inspect non-navigation links and adorn them if external
-     	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
-        for (var i=0; i<links.length; i++) {
-          const link = links[i];
-          if (!isInternal(link.href)) {
-            // undo the damage that might have been done by quarto-nav.js in the case of
-            // links that we want to consider external
-            if (link.dataset.originalHref !== undefined) {
-              link.href = link.dataset.originalHref;
+        const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+          text: getTextToCopy
+        });
+        clipboard.on('success', onCopySuccess);
+        if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+          const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+            text: getTextToCopy,
+            container: window.document.getElementById('quarto-embedded-source-code-modal')
+          });
+          clipboardModal.on('success', onCopySuccess);
+        }
+          var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+          var mailtoRegex = new RegExp(/^mailto:/);
+            var filterRegex = new RegExp('/' + window.location.host + '/');
+          var isInternal = (href) => {
+              return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+          }
+          // Inspect non-navigation links and adorn them if external
+         var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+          for (var i=0; i<links.length; i++) {
+            const link = links[i];
+            if (!isInternal(link.href)) {
+              // undo the damage that might have been done by quarto-nav.js in the case of
+              // links that we want to consider external
+              if (link.dataset.originalHref !== undefined) {
+                link.href = link.dataset.originalHref;
+              }
+                // target, if specified
+                link.setAttribute("target", "_blank");
+                if (link.getAttribute("rel") === null) {
+                  link.setAttribute("rel", "noopener");
+                }
+                // default icon
+                link.classList.add("external");
             }
-              // target, if specified
-              link.setAttribute("target", "_blank");
-              if (link.getAttribute("rel") === null) {
-                link.setAttribute("rel", "noopener");
-              }
-              // default icon
-              link.classList.add("external");
           }
-        }
-      function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
-        const config = {
-          allowHTML: true,
-          maxWidth: 500,
-          delay: 100,
-          arrow: false,
-          appendTo: function(el) {
-              return el.closest('section.slide') || el.parentElement;
-          },
-          interactive: true,
-          interactiveBorder: 10,
-          theme: 'light-border',
-          placement: 'bottom-start',
-        };
-        if (contentFn) {
-          config.content = contentFn;
-        }
-        if (onTriggerFn) {
-          config.onTrigger = onTriggerFn;
-        }
-        if (onUntriggerFn) {
-          config.onUntrigger = onUntriggerFn;
-        }
-          config['offset'] = [0,0];
-          config['maxWidth'] = 700;
-        window.tippy(el, config); 
-      }
-      const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
-      for (var i=0; i<noterefs.length; i++) {
-        const ref = noterefs[i];
-        tippyHover(ref, function() {
-          // use id or data attribute instead here
-          let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
-          try { href = new URL(href).hash; } catch {}
-          const id = href.replace(/^#\/?/, "");
-          const note = window.document.getElementById(id);
-          if (note) {
-            return note.innerHTML;
-          } else {
-            return "";
+        function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+          const config = {
+            allowHTML: true,
+            maxWidth: 500,
+            delay: 100,
+            arrow: false,
+            appendTo: function(el) {
+                return el.closest('section.slide') || el.parentElement;
+            },
+            interactive: true,
+            interactiveBorder: 10,
+            theme: 'light-border',
+            placement: 'bottom-start',
+          };
+          if (contentFn) {
+            config.content = contentFn;
           }
-        });
-      }
-      const findCites = (el) => {
-        const parentEl = el.parentElement;
-        if (parentEl) {
-          const cites = parentEl.dataset.cites;
-          if (cites) {
-            return {
-              el,
-              cites: cites.split(' ')
-            };
-          } else {
-            return findCites(el.parentElement)
+          if (onTriggerFn) {
+            config.onTrigger = onTriggerFn;
           }
-        } else {
-          return undefined;
+          if (onUntriggerFn) {
+            config.onUntrigger = onUntriggerFn;
+          }
+            config['offset'] = [0,0];
+            config['maxWidth'] = 700;
+          window.tippy(el, config); 
         }
-      };
-      var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
-      for (var i=0; i<bibliorefs.length; i++) {
-        const ref = bibliorefs[i];
-        const citeInfo = findCites(ref);
-        if (citeInfo) {
-          tippyHover(citeInfo.el, function() {
-            var popup = window.document.createElement('div');
-            citeInfo.cites.forEach(function(cite) {
-              var citeDiv = window.document.createElement('div');
-              citeDiv.classList.add('hanging-indent');
-              citeDiv.classList.add('csl-entry');
-              var biblioDiv = window.document.getElementById('ref-' + cite);
-              if (biblioDiv) {
-                citeDiv.innerHTML = biblioDiv.innerHTML;
-              }
-              popup.appendChild(citeDiv);
-            });
-            return popup.innerHTML;
+        const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+        for (var i=0; i<noterefs.length; i++) {
+          const ref = noterefs[i];
+          tippyHover(ref, function() {
+            // use id or data attribute instead here
+            let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+            try { href = new URL(href).hash; } catch {}
+            const id = href.replace(/^#\/?/, "");
+            const note = window.document.getElementById(id);
+            if (note) {
+              return note.innerHTML;
+            } else {
+              return "";
+            }
           });
         }
-      }
-    });
-    </script>
+        const findCites = (el) => {
+          const parentEl = el.parentElement;
+          if (parentEl) {
+            const cites = parentEl.dataset.cites;
+            if (cites) {
+              return {
+                el,
+                cites: cites.split(' ')
+              };
+            } else {
+              return findCites(el.parentElement)
+            }
+          } else {
+            return undefined;
+          }
+        };
+        var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+        for (var i=0; i<bibliorefs.length; i++) {
+          const ref = bibliorefs[i];
+          const citeInfo = findCites(ref);
+          if (citeInfo) {
+            tippyHover(citeInfo.el, function() {
+              var popup = window.document.createElement('div');
+              citeInfo.cites.forEach(function(cite) {
+                var citeDiv = window.document.createElement('div');
+                citeDiv.classList.add('hanging-indent');
+                citeDiv.classList.add('csl-entry');
+                var biblioDiv = window.document.getElementById('ref-' + cite);
+                if (biblioDiv) {
+                  citeDiv.innerHTML = biblioDiv.innerHTML;
+                }
+                popup.appendChild(citeDiv);
+              });
+              return popup.innerHTML;
+            });
+          }
+        }
+      });
+      </script>
     
 
 </body></html>

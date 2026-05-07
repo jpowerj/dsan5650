@@ -32,7 +32,7 @@ website:
         href: "https://georgetown.zoom.us/j/94493188667?pwd=s4Q8TbTwZTNyK0G0VJsVe1Lefrd3AY.1"
         target: "_blank"
       - text: "Recordings <i class='bi bi-box-arrow-up-right ps-1'></i>"
-        href: "https://georgetown.hosted.panopto.com/Panopto/Pages/Sessions/List.aspx?folderID=413d999a-16d1-4b36-93b6-b2de013af117"
+        href: ""
         target: "_blank"
       - "---"
       - text: "Week 1: {{< var w01.date-md >}}"
@@ -77,6 +77,9 @@ website:
         target: "_blank"
       - text: "Anonymous Feedback <i class='bi bi-box-arrow-up-right ps-1'></i>"
         href: "https://forms.gle/PoyySPdVeBN37oBb8"
+        target: "_blank"
+      - text: "2025 Recordings <i class='bi bi-box-arrow-up-right ps-1'></i>"
+        href: "https://georgetown.hosted.panopto.com/Panopto/Pages/Sessions/List.aspx?folderID=413d999a-16d1-4b36-93b6-b2de013af117"
         target: "_blank"
 
 format:
