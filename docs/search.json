@@ -2605,7 +2605,7 @@
     "href": "w09/index.html#double-robustness-to-the-rescue",
     "title": "Week 9: Doubly-Robust Estimation and Instrumental Variables",
     "section": "Double-Robustness to the Rescue!",
-    "text": "Double-Robustness to the Rescue!\n\n\nWrong regression model:\n\n\nCode\ndef compare_estimators(X_e, X_mu, D, y, seed):\n    df = generate_data(seed=seed)\n    e = estimate_e(df, X_e, D, LogisticRegression())\n    mu0, mu1 = estimate_mu(df, X_mu, D, y, LinearRegression())\n    slearn = mu1 - mu0\n    ipw = (df[D] / e - (1-df[D]) / (1-e)) * df[y]\n    aipw = slearn + df[D] / e * (df[y] - mu1) - (1-df[D]) / (1-e) * (df[y] - mu0)\n    return np.mean((slearn, ipw, aipw), axis=1)\n\ndef simulate_estimators(X_e, X_mu, D, y):\n    r = Parallel(n_jobs=8)(delayed(compare_estimators)(X_e, X_mu, D, y, i) for i in range(100))\n    df_tau = pd.DataFrame(r, columns=['S-learn', 'IPW', 'AIPW'])\n    return df_tau\n# The actual plots\nfig, ax = plt.subplots(figsize=(4,3.5))\nwrong_reg_df = simulate_estimators(\n  X_e=['male', 'age'], X_mu=['hours'], D=\"dark_mode\", y=\"read_time\"\n)\nwrong_reg_plot = sns.boxplot(\n  data=pd.melt(wrong_reg_df), x='variable', y='value', hue='variable',\n  ax=ax,\n  linewidth=2\n);\nwrong_reg_plot.set(\n  title=\"Distribution of $\\hat τ$\", xlabel='', ylabel=''\n);\nax.axhline(2, c='r', ls=':');\n\n\n&lt;&gt;:25: SyntaxWarning:\n\n\"\\h\" is an invalid escape sequence. Such sequences will not work in the future. Did you mean \"\\\\h\"? A raw string is also an option.\n\n&lt;&gt;:25: SyntaxWarning:\n\n\"\\h\" is an invalid escape sequence. Such sequences will not work in the future. Did you mean \"\\\\h\"? A raw string is also an option.\n\n/var/folders/n2/m7_fj5vx6c50_yj7g23mwmq00000gn/T/ipykernel_66104/2518988729.py:25: SyntaxWarning:\n\n\"\\h\" is an invalid escape sequence. Such sequences will not work in the future. Did you mean \"\\\\h\"? A raw string is also an option.\n\n\n\n\n\n\n\n\n\n\n\nWrong propensity score model:\n\n\nCode\nfig, ax = plt.subplots(figsize=(4, 3.5))\nwrong_ps_df = simulate_estimators(\n  ['age'], ['male', 'hours'], D=\"dark_mode\", y=\"read_time\"\n)\nwrong_ps_plot = sns.boxplot(\n  data=pd.melt(wrong_ps_df), x='variable', y='value', hue='variable',\n  ax=ax,\n  linewidth=2\n);\nax.set_title(\"Distribution of $\\hat τ$\");\nax.axhline(2, c='r', ls=':');\nplt.show()\n\n\n&lt;&gt;:10: SyntaxWarning:\n\n\"\\h\" is an invalid escape sequence. Such sequences will not work in the future. Did you mean \"\\\\h\"? A raw string is also an option.\n\n&lt;&gt;:10: SyntaxWarning:\n\n\"\\h\" is an invalid escape sequence. Such sequences will not work in the future. Did you mean \"\\\\h\"? A raw string is also an option.\n\n/var/folders/n2/m7_fj5vx6c50_yj7g23mwmq00000gn/T/ipykernel_66104/591257935.py:10: SyntaxWarning:\n\n\"\\h\" is an invalid escape sequence. Such sequences will not work in the future. Did you mean \"\\\\h\"? A raw string is also an option.",
+    "text": "Double-Robustness to the Rescue!\n\n\nWrong regression model:\n\n\nCode\ndef compare_estimators(X_e, X_mu, D, y, seed):\n    df = generate_data(seed=seed)\n    e = estimate_e(df, X_e, D, LogisticRegression())\n    mu0, mu1 = estimate_mu(df, X_mu, D, y, LinearRegression())\n    slearn = mu1 - mu0\n    ipw = (df[D] / e - (1-df[D]) / (1-e)) * df[y]\n    aipw = slearn + df[D] / e * (df[y] - mu1) - (1-df[D]) / (1-e) * (df[y] - mu0)\n    return np.mean((slearn, ipw, aipw), axis=1)\n\ndef simulate_estimators(X_e, X_mu, D, y):\n    r = Parallel(n_jobs=8)(delayed(compare_estimators)(X_e, X_mu, D, y, i) for i in range(100))\n    df_tau = pd.DataFrame(r, columns=['S-learn', 'IPW', 'AIPW'])\n    return df_tau\n# The actual plots\nfig, ax = plt.subplots(figsize=(4,3.5))\nwrong_reg_df = simulate_estimators(\n  X_e=['male', 'age'], X_mu=['hours'], D=\"dark_mode\", y=\"read_time\"\n)\nwrong_reg_plot = sns.boxplot(\n  data=pd.melt(wrong_reg_df), x='variable', y='value', hue='variable',\n  ax=ax,\n  linewidth=2\n);\nwrong_reg_plot.set(\n  title=\"Distribution of $\\hat τ$\", xlabel='', ylabel=''\n);\nax.axhline(2, c='r', ls=':');\n\n\n&lt;&gt;:25: SyntaxWarning:\n\n\"\\h\" is an invalid escape sequence. Such sequences will not work in the future. Did you mean \"\\\\h\"? A raw string is also an option.\n\n&lt;&gt;:25: SyntaxWarning:\n\n\"\\h\" is an invalid escape sequence. Such sequences will not work in the future. Did you mean \"\\\\h\"? A raw string is also an option.\n\n/var/folders/n2/m7_fj5vx6c50_yj7g23mwmq00000gn/T/ipykernel_75661/2518988729.py:25: SyntaxWarning:\n\n\"\\h\" is an invalid escape sequence. Such sequences will not work in the future. Did you mean \"\\\\h\"? A raw string is also an option.\n\n\n\n\n\n\n\n\n\n\n\nWrong propensity score model:\n\n\nCode\nfig, ax = plt.subplots(figsize=(4, 3.5))\nwrong_ps_df = simulate_estimators(\n  ['age'], ['male', 'hours'], D=\"dark_mode\", y=\"read_time\"\n)\nwrong_ps_plot = sns.boxplot(\n  data=pd.melt(wrong_ps_df), x='variable', y='value', hue='variable',\n  ax=ax,\n  linewidth=2\n);\nax.set_title(\"Distribution of $\\hat τ$\");\nax.axhline(2, c='r', ls=':');\nplt.show()\n\n\n&lt;&gt;:10: SyntaxWarning:\n\n\"\\h\" is an invalid escape sequence. Such sequences will not work in the future. Did you mean \"\\\\h\"? A raw string is also an option.\n\n&lt;&gt;:10: SyntaxWarning:\n\n\"\\h\" is an invalid escape sequence. Such sequences will not work in the future. Did you mean \"\\\\h\"? A raw string is also an option.\n\n/var/folders/n2/m7_fj5vx6c50_yj7g23mwmq00000gn/T/ipykernel_75661/591257935.py:10: SyntaxWarning:\n\n\"\\h\" is an invalid escape sequence. Such sequences will not work in the future. Did you mean \"\\\\h\"? A raw string is also an option.",
     "crumbs": [
       "Week 9: {{< var w09.date-md >}}"
     ]
@@ -2735,7 +2735,7 @@
     "href": "w01/index.html#why-is-georgetown-having-me-teach-this",
     "title": "Week 1: Science from Particles to People",
     "section": "Why Is Georgetown Having Me Teach This?",
-    "text": "Why Is Georgetown Having Me Teach This?\n\n\n\n\nQuanty things \\(\\leadsto\\) PhD in Political Economy\nPhD exam major: Political Philosophy\nPhD exam minor: International Relations\nPhD exam paper: “How to Do Things with Translations”\nGame-changing Research Fellowships at… (Nothing was the same -drake):\nSanta Fe Institute: dedicated to the multidisciplinary study of complex systems: physical, computational, biological, social\n\n\n\n\n\n\n\n\n\n                                                    \n\n\n\n\n\nFigure 1: Years spent questing in dungeons of academia\n\n\n\n\n\n\n\nCentre for the Study of the History of Political Thought, Queen Mary University of London (QMUL): New approaches to the history of political thought [Quentin Skinner, “Cambridge School”] have changed how we study ideas from the past and their relevance to contemporary politics. The focus of the Centre is to explore [ts].",
+    "text": "Why Is Georgetown Having Me Teach This?\n\n\nQuanty things \\(\\leadsto\\) PhD in Political Economy\nPhD exam major: Political Philosophy\nPhD exam minor: International Relations (“How to Do Things with Translations”)\nBrain-changing Research Fellowships at…\nSanta Fe Institute: dedicated to the multidisciplinary study of complex systems: physical, computational, biological, social\nCentre for the Study of the History of Political Thought, Queen Mary University of London (QMUL): New approaches to the history of political thought [Quentin Skinner, “Cambridge School”] have changed how we study ideas from the past and their relevance to contemporary politics. The focus of the Centre is to explore [that sort of thing then, innit guv’nor!].",
     "crumbs": [
       "Week 1: {{< var w01.date-md >}}"
     ]
@@ -2795,7 +2795,7 @@
     "href": "w01/index.html#lil-wayne-on-spaced-repetition",
     "title": "Week 1: Science from Particles to People",
     "section": "Lil Wayne on Spaced Repetition",
-    "text": "Lil Wayne on Spaced Repetition\n\n\n\n\n\n\nFigure 2: From The Carter (Documentary)",
+    "text": "Lil Wayne on Spaced Repetition\n\n\n\n\n\n\nFig 1: From The Carter (Documentary)",
     "crumbs": [
       "Week 1: {{< var w01.date-md >}}"
     ]
@@ -2805,7 +2805,17 @@
     "href": "w01/index.html#maria-montessori-on-your-final-project",
     "title": "Week 1: Science from Particles to People",
     "section": "Maria Montessori on Your Final Project",
-    "text": "Maria Montessori on Your Final Project\n\nOur teaching should be governed, not by a desire to make students learn things, but by the endeavor to keep burning within them that light which is called curiosity. (Montessori 1916)1\n\n\nTo this end: your final project is to explore some potential causal linkage from \\(X\\) to \\(Y\\) (more later!)\nThe sole requirement is: sufficient curiosity to serve as fuel for your journey from associational world to causal world",
+    "text": "Maria Montessori on Your Final Project\n\nOur teaching should be governed, not by a desire to make students learn things, but by the endeavor to keep burning within them that light which is called curiosity. (Montessori 1916)\n\n\nTo this end: your final project is to explore some potential causal linkage from \\(X\\) to \\(Y\\) (more later!)\nThe sole requirement is: sufficient curiosity to serve as fuel for your journey from associational world to causal world",
+    "crumbs": [
+      "Week 1: {{< var w01.date-md >}}"
+    ]
+  },
+  {
+    "objectID": "w01/index.html#earning-your-grade-effort-growth-mindset",
+    "href": "w01/index.html#earning-your-grade-effort-growth-mindset",
+    "title": "Week 1: Science from Particles to People",
+    "section": "Earning Your Grade: Effort + Growth Mindset!",
+    "text": "Earning Your Grade: Effort + Growth Mindset!\n Because you learn to          by         ing, the more         ing you do [adapted to where you’re at, background-wise, time-outside-of-class-wise], the better grade you can get:\n\nFor each          you do [“good faith attempt”], you receive one ✅s\nIf it looks good as-is, with “good” defined as “demonstrates understanding of the relevant material [to instructors, in dialogue with students]”, you receive a second ✅\nOtherwise you can earn this second ✅ by re-trying until understanding is achieved\n\n ✅s convert to points via (required) main quests, (technically not required) sidequests:\n\n\n\n\n\n\n\n\n\n\n\n\nMain Quest\n#\nCompletion?\nUnderstanding?\n\n\n\n\nHomework (🔲🔲)\n4\n🔲🔲🔲🔲🔲🔲🔲🔲\n🔲🔲🔲🔲🔲🔲🔲🔲\n\n\nMidterm (🔲🔲)\n1\n🔲🔲\n🔲🔲\n\n\nProject (🔲🔲🔲)\n1\n🔲🔲🔲\n🔲🔲🔲\n\n\nMeeting (🔲)\n2\n🔲\n\n\nTotal = 27 🔲s\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nSide Quest\n\n\n\n\n\n\n\nLab (🔲)\n8\n🔲🔲🔲🔲\n🔲🔲🔲🔲\n\n\nReading (🔲)\n8\n🔲🔲🔲🔲\n🔲🔲🔲🔲\n\n\nMeeting (🔲)\n2\n🔲\n\n\nTotal = 17 🔲s\n\n\nCombined = 44 🔲s\n\n\n\n\n\n\n\n\n\n\n0.5\n1.0\n1.5\n2.0\n2.5\n3.0\n3.5\n4.0\n\n\n🔲🔲🔲🔲🔲\n🔲🔲🔲🔲🔲\n🔲🔲🔲🔲🔲\n🔲🔲🔲🔲🔲\n🔲🔲🔲🔲🔲\n🔲🔲🔲🔲🔲\n🔲🔲🔲🔲🔲\n🔲🔲🔲🔲🔲\n\n\n🏃‍♀️\n🙇‍♀️🧘🧠💪 ↓ 💪🧠🧘🙇‍♀️\n🏃‍♀️\n\n\n✅✅✅✅✅\n✅✅✅✅✅\n✅✅✅✅✅\n✅✅✅✅✅\n✅✅✅✅✅\n✅✅✅✅✅\n✅✅✅✅✅\n✅✅✅✅✅",
     "crumbs": [
       "Week 1: {{< var w01.date-md >}}"
     ]
@@ -2825,7 +2835,7 @@
     "href": "w01/index.html#homo-sapienshomo-arbitratushomo-mischievous",
     "title": "Week 1: Science from Particles to People",
     "section": "Homo sapiens/Homo arbitratus/Homo mischievous",
-    "text": "Homo sapiens/Homo arbitratus/Homo mischievous\n\nLatin sapiens denotes being “discerning” or “wise”\n\n\n\n\n\nBut… technically nothing stops us from choosing to be “unwise” whenever we’d like… bc free will\n\\(\\Rightarrow\\) For this class, humans are Homo arbitratus: arbitratus denotes choosing what to do, after we’ve sapiently “discerned”/thought about it",
+    "text": "Homo sapiens/Homo arbitratus/Homo mischievous\n\n\n\n\n\n\n\n\nLatin sapiens denotes being “discerning” or “wise”\nBut… technically nothing stops us from choosing to be “unwise” whenever we’d like… bc free will\n\\(\\Rightarrow\\) For this class, humans are Homo arbitratus: arbitratus denotes choosing what to do, after we’ve [sapiently] thought about it",
     "crumbs": [
       "Week 1: {{< var w01.date-md >}}"
     ]
@@ -2835,7 +2845,7 @@
     "href": "w01/index.html#laws-of-physics-vs.-laws-of-social-science",
     "title": "Week 1: Science from Particles to People",
     "section": "Laws of Physics vs. “Laws” of Social Science",
-    "text": "Laws of Physics vs. “Laws” of Social Science\n\nIf we tell an inanimate object that we’ve discovered a law saying that it will accelerate towards Earth at \\(9.8~\\textrm{m}/\\textrm{s}^2\\)\n\n…It will likely2 still accelerate towards Earth at \\(9.8~\\textrm{m}/\\textrm{s}^2\\)\n\n\n\n\n\n\nIf we tell a human we’ve discovered a law saying they will quack like a duck at 7:30pm EDT every Wednesday\n\n…They can utilize their free will to violate this “law”",
+    "text": "Laws of Physics vs. “Laws” of Social Science\n\nIf we tell an inanimate object that we’ve discovered a law saying that it will accelerate towards Earth at \\(9.8~\\textrm{m}/\\textrm{s}^2\\)\n\n…It will likely1 still accelerate towards Earth at \\(9.8~\\textrm{m}/\\textrm{s}^2\\)\n\n\n\n\n\n\nIf we tell a human we’ve discovered a law saying they will quack like a duck at 7:30pm EDT every Wednesday\n\n…They can utilize their free will to violate this “law”",
     "crumbs": [
       "Week 1: {{< var w01.date-md >}}"
     ]
@@ -2854,28 +2864,8 @@
     "objectID": "w01/index.html#the-takeaway-bayesian-humility",
     "href": "w01/index.html#the-takeaway-bayesian-humility",
     "title": "Week 1: Science from Particles to People",
-    "section": "The Takeaway: [Bayesian] Humility!",
-    "text": "The Takeaway: [Bayesian] Humility!\n\nSocial science, with “science” used in the same sense as for physics, may be a quixotic endeavor3\nInstead, we’ll do social science, where we use data to…\n Infer tendencies: \\(\\mathcal{H}\\) = «\\(X\\) tends to cause \\(Y\\)»\n With some degree of veracity: \\(\\Pr(\\mathcal{H}) \\approx 0.7\\)\n Construct models that we can update with new evidence: Bayes’ rule! \\(\\Pr(\\mathcal{H} \\mid E) = \\frac{\\Pr(E \\mid \\mathcal{H} ) \\Pr(\\mathcal{H})}{\\Pr(E)} \\approx 0.8\\)\nPls notice “slippage” between aleatory probability within \\(\\mathcal{H}\\) (“tends to”) vs. epistemic probability “outside of”, talking about \\(\\mathcal{H}\\) (“I’m 70% confident about \\(\\mathcal{H}\\)”)",
-    "crumbs": [
-      "Week 1: {{< var w01.date-md >}}"
-    ]
-  },
-  {
-    "objectID": "w01/index.html#the-logic-of-violence-in-civil-war",
-    "href": "w01/index.html#the-logic-of-violence-in-civil-war",
-    "title": "Week 1: Science from Particles to People",
-    "section": "The Logic of Violence in Civil War",
-    "text": "The Logic of Violence in Civil War\n\n\n\nKalyvas (2006)",
-    "crumbs": [
-      "Week 1: {{< var w01.date-md >}}"
-    ]
-  },
-  {
-    "objectID": "w01/index.html#matching-estimators",
-    "href": "w01/index.html#matching-estimators",
-    "title": "Week 1: Science from Particles to People",
-    "section": "Matching Estimators",
-    "text": "Matching Estimators\n\n\n\nImage Source",
+    "section": "The Takeaway: Bayesian Humility!",
+    "text": "The Takeaway: Bayesian Humility!\n\nSocial science, with “science” used in the same sense as for physics, may be a quixotic endeavor2\nInstead, we’ll do social science, where we use data to…\n Infer tendencies: \\(\\mathcal{H}\\) = «\\(X\\) tends to cause \\(Y\\)»\n With some degree of veracity: \\(\\Pr(\\mathcal{H}) \\approx 0.7\\)\n Construct models that we can update with new evidence: Bayes’ rule! \\(\\Pr(\\mathcal{H} \\mid E) = \\frac{\\Pr(E \\mid \\mathcal{H} ) \\Pr(\\mathcal{H})}{\\Pr(E)} \\approx 0.8\\)\nPls notice “slippage” between aleatory probability within \\(\\mathcal{H}\\) (“tends to”) vs. epistemic probability “outside of”, talking about \\(\\mathcal{H}\\) (“I’m 70% confident about \\(\\mathcal{H}\\)”)",
     "crumbs": [
       "Week 1: {{< var w01.date-md >}}"
     ]
@@ -2896,6 +2886,16 @@
     "title": "Week 1: Science from Particles to People",
     "section": "Does Inequality Cause Poor Military Performance?",
     "text": "Does Inequality Cause Poor Military Performance?\n\n\n\n\n\n\n\n\nCovariates\nSultanate of Morocco Spanish-Moroccan War, 1859-60\nKhanate of Kokand War with Russia, 1864-65\n\n\n\n\n\\(X\\): Military Inequality\nLow (0.01)\nExtreme (0.70)\n\n\n\\(\\mathbf{Z}\\): Matched Covariates:\n\n\n\n\nInitial relative power\n66%\n66%\n\n\nTotal fielded force\n55,000\n50,000\n\n\nRegime type\nAbsolutist Monarchy (−6)\nAbsolute Monarchy (−7)\n\n\nDistance from capital\n208km\n265km\n\n\nStanding army\nYes\nYes\n\n\nComposite military\nYes\nYes\n\n\nInitiator\nNo\nNo\n\n\nJoiner\nNo\nNo\n\n\nDemocratic opponent\nNo\nNo\n\n\nGreat Power\nNo\nNo\n\n\nCivil war\nNo\nNo\n\n\nCombined arms\nYes\nYes\n\n\nDoctrine\nOffensive\nOffensive\n\n\nSuperior weapons\nNo\nNo\n\n\nFortifications\nYes\nYes\n\n\nForeign advisors\nYes\nYes\n\n\nTerrain\nSemiarid coastal plain\nSemiarid grassland plain\n\n\nTopography\nRugged\nRugged\n\n\nWar duration\n126 days\n378 days\n\n\nRecent war history w/opp\nYes\nYes\n\n\nFacing colonizer\nYes\nYes\n\n\nIdentity dimension\nSunni Islam/Christian\nSunni Islam/Christian\n\n\nNew leader\nYes\nYes\n\n\nPopulation\n8–8.5 million\n5–6 million\n\n\nEthnoling fractionalization (ELF)\nHigh\nHigh\n\n\nCiv-mil relations\nRuler as commander\nRuler as commander\n\n\n\\(Y\\): Battlefield Performance:\n\n\n\n\nLoss-exchange ratio\n0.43\n0.02\n\n\nMass desertion\nNo\nYes\n\n\nMass defection\nNo\nNo\n\n\nFratricidal violence\nNo\nYes",
+    "crumbs": [
+      "Week 1: {{< var w01.date-md >}}"
+    ]
+  },
+  {
+    "objectID": "w01/index.html#the-logic-of-violence-in-civil-war",
+    "href": "w01/index.html#the-logic-of-violence-in-civil-war",
+    "title": "Week 1: Science from Particles to People",
+    "section": "The Logic of Violence in Civil War",
+    "text": "The Logic of Violence in Civil War\n\n\n\nKalyvas (2006)",
     "crumbs": [
       "Week 1: {{< var w01.date-md >}}"
     ]
@@ -2935,7 +2935,7 @@
     "href": "w01/index.html#footnotes",
     "title": "Week 1: Science from Particles to People",
     "section": "Footnotes",
-    "text": "Footnotes\n\n\n“Couldn’t do classes, them lessons used to bore me, I was tryna school heads like Waldorf and Montessori” -Bar dropped by local rapper one day in freestyle that I never forgot↩︎\nObligatory quantum mechanics footnote: human agency [maybe] plays a role, in a quirky way, in physics at tiny subatomic scales… but once we coarse grain to atoms (and avoid speed of light), Newton’s Laws accurate to many decimals 🤯↩︎\nAt least, for the time being… BUT see Sperber (1996), which will come up later↩︎",
+    "text": "Footnotes\n\n\nObligatory quantum footnote: human agency [maybe] plays a role, in a quirky way, in physics at tiny subatomic scales; but once we coarse grain to atoms (+avoid speed of light), Newton’s Laws accurate to many decimals 🤯↩︎\nAt least, for the time being… BUT see Sperber (1996), which will come up later↩︎",
     "crumbs": [
       "Week 1: {{< var w01.date-md >}}"
     ]
@@ -2959,7 +2959,7 @@
     "href": "w01/slides.html#why-is-georgetown-having-me-teach-this",
     "title": "Week 1: Science from Particles to People",
     "section": "Why Is Georgetown Having Me Teach This?",
-    "text": "Why Is Georgetown Having Me Teach This?\n\n\n\n\nQuanty things \\(\\leadsto\\) PhD in Political Economy\nPhD exam major: Political Philosophy\nPhD exam minor: International Relations\nPhD exam paper: “How to Do Things with Translations”\nGame-changing Research Fellowships at… (Nothing was the same -drake):\nSanta Fe Institute: dedicated to the multidisciplinary study of complex systems: physical, computational, biological, social\n\n\n\n\n\n\n\n\n\n                                                    \n\n\n\n\n\nFigure 1: Years spent questing in dungeons of academia\n\n\n\n\n\n\n\nCentre for the Study of the History of Political Thought, Queen Mary University of London (QMUL): New approaches to the history of political thought [Quentin Skinner, “Cambridge School”] have changed how we study ideas from the past and their relevance to contemporary politics. The focus of the Centre is to explore [ts]."
+    "text": "Why Is Georgetown Having Me Teach This?\n\n\nQuanty things \\(\\leadsto\\) PhD in Political Economy\nPhD exam major: Political Philosophy\nPhD exam minor: International Relations (“How to Do Things with Translations”)\nBrain-changing Research Fellowships at…\nSanta Fe Institute: dedicated to the multidisciplinary study of complex systems: physical, computational, biological, social\nCentre for the Study of the History of Political Thought, Queen Mary University of London (QMUL): New approaches to the history of political thought [Quentin Skinner, “Cambridge School”] have changed how we study ideas from the past and their relevance to contemporary politics. The focus of the Centre is to explore [that sort of thing then, innit guv’nor!]."
   },
   {
     "objectID": "w01/slides.html#dissertation-nlp-x-history",
@@ -3001,14 +3001,21 @@
     "href": "w01/slides.html#lil-wayne-on-spaced-repetition",
     "title": "Week 1: Science from Particles to People",
     "section": "Lil Wayne on Spaced Repetition",
-    "text": "Lil Wayne on Spaced Repetition\n\n\n\n\n\n\nFigure 2: From The Carter (Documentary)"
+    "text": "Lil Wayne on Spaced Repetition\n\n\n\n\n\n\nFig 1: From The Carter (Documentary)"
   },
   {
     "objectID": "w01/slides.html#maria-montessori-on-your-final-project",
     "href": "w01/slides.html#maria-montessori-on-your-final-project",
     "title": "Week 1: Science from Particles to People",
     "section": "Maria Montessori on Your Final Project",
-    "text": "Maria Montessori on Your Final Project\n\nOur teaching should be governed, not by a desire to make students learn things, but by the endeavor to keep burning within them that light which is called curiosity. (Montessori 1916)1\n\n\nTo this end: your final project is to explore some potential causal linkage from \\(X\\) to \\(Y\\) (more later!)\nThe sole requirement is: sufficient curiosity to serve as fuel for your journey from associational world to causal world\n\n“Couldn’t do classes, them lessons used to bore me, I was tryna school heads like Waldorf and Montessori” -Bar dropped by local rapper one day in freestyle that I never forgot"
+    "text": "Maria Montessori on Your Final Project\n\nOur teaching should be governed, not by a desire to make students learn things, but by the endeavor to keep burning within them that light which is called curiosity. (Montessori 1916)\n\n\nTo this end: your final project is to explore some potential causal linkage from \\(X\\) to \\(Y\\) (more later!)\nThe sole requirement is: sufficient curiosity to serve as fuel for your journey from associational world to causal world"
+  },
+  {
+    "objectID": "w01/slides.html#earning-your-grade-effort-growth-mindset",
+    "href": "w01/slides.html#earning-your-grade-effort-growth-mindset",
+    "title": "Week 1: Science from Particles to People",
+    "section": "Earning Your Grade: Effort + Growth Mindset!",
+    "text": "Earning Your Grade: Effort + Growth Mindset!\n Because you learn to          by         ing, the more         ing you do [adapted to where you’re at, background-wise, time-outside-of-class-wise], the better grade you can get:\n\nFor each          you do [“good faith attempt”], you receive one ✅s\nIf it looks good as-is, with “good” defined as “demonstrates understanding of the relevant material [to instructors, in dialogue with students]”, you receive a second ✅\nOtherwise you can earn this second ✅ by re-trying until understanding is achieved\n\n ✅s convert to points via (required) main quests, (technically not required) sidequests:\n\n\n\n\n\n\n\n\n\n\n\n\nMain Quest\n#\nCompletion?\nUnderstanding?\n\n\n\n\nHomework (🔲🔲)\n4\n🔲🔲🔲🔲🔲🔲🔲🔲\n🔲🔲🔲🔲🔲🔲🔲🔲\n\n\nMidterm (🔲🔲)\n1\n🔲🔲\n🔲🔲\n\n\nProject (🔲🔲🔲)\n1\n🔲🔲🔲\n🔲🔲🔲\n\n\nMeeting (🔲)\n2\n🔲\n\n\nTotal = 27 🔲s\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nSide Quest\n\n\n\n\n\n\n\nLab (🔲)\n8\n🔲🔲🔲🔲\n🔲🔲🔲🔲\n\n\nReading (🔲)\n8\n🔲🔲🔲🔲\n🔲🔲🔲🔲\n\n\nMeeting (🔲)\n2\n🔲\n\n\nTotal = 17 🔲s\n\n\nCombined = 44 🔲s\n\n\n\n\n\n\n\n\n\n\n0.5\n1.0\n1.5\n2.0\n2.5\n3.0\n3.5\n4.0\n\n\n🔲🔲🔲🔲🔲\n🔲🔲🔲🔲🔲\n🔲🔲🔲🔲🔲\n🔲🔲🔲🔲🔲\n🔲🔲🔲🔲🔲\n🔲🔲🔲🔲🔲\n🔲🔲🔲🔲🔲\n🔲🔲🔲🔲🔲\n\n\n🏃‍♀️\n🙇‍♀️🧘🧠💪 ↓ 💪🧠🧘🙇‍♀️\n🏃‍♀️\n\n\n✅✅✅✅✅\n✅✅✅✅✅\n✅✅✅✅✅\n✅✅✅✅✅\n✅✅✅✅✅\n✅✅✅✅✅\n✅✅✅✅✅\n✅✅✅✅✅"
   },
   {
     "objectID": "w01/slides.html#coarse-graining-units-of-observation",
@@ -3022,14 +3029,14 @@
     "href": "w01/slides.html#homo-sapienshomo-arbitratushomo-mischievous",
     "title": "Week 1: Science from Particles to People",
     "section": "Homo sapiens/Homo arbitratus/Homo mischievous",
-    "text": "Homo sapiens/Homo arbitratus/Homo mischievous\n\nLatin sapiens denotes being “discerning” or “wise”\n\n\n\n\n\nBut… technically nothing stops us from choosing to be “unwise” whenever we’d like… bc free will\n\\(\\Rightarrow\\) For this class, humans are Homo arbitratus: arbitratus denotes choosing what to do, after we’ve sapiently “discerned”/thought about it"
+    "text": "Homo sapiens/Homo arbitratus/Homo mischievous\n\n\n\n\n\n\n\n\nLatin sapiens denotes being “discerning” or “wise”\nBut… technically nothing stops us from choosing to be “unwise” whenever we’d like… bc free will\n\\(\\Rightarrow\\) For this class, humans are Homo arbitratus: arbitratus denotes choosing what to do, after we’ve [sapiently] thought about it"
   },
   {
     "objectID": "w01/slides.html#laws-of-physics-vs.-laws-of-social-science",
     "href": "w01/slides.html#laws-of-physics-vs.-laws-of-social-science",
     "title": "Week 1: Science from Particles to People",
     "section": "Laws of Physics vs. “Laws” of Social Science",
-    "text": "Laws of Physics vs. “Laws” of Social Science\n\nIf we tell an inanimate object that we’ve discovered a law saying that it will accelerate towards Earth at \\(9.8~\\textrm{m}/\\textrm{s}^2\\)\n\n…It will likely1 still accelerate towards Earth at \\(9.8~\\textrm{m}/\\textrm{s}^2\\)\n\n\n\n\n\n\nIf we tell a human we’ve discovered a law saying they will quack like a duck at 7:30pm EDT every Wednesday\n\n…They can utilize their free will to violate this “law”\n\n\n\n\n\n\n\n\n\n\n\n\nObligatory quantum mechanics footnote: human agency [maybe] plays a role, in a quirky way, in physics at tiny subatomic scales… but once we coarse grain to atoms (and avoid speed of light), Newton’s Laws accurate to many decimals 🤯"
+    "text": "Laws of Physics vs. “Laws” of Social Science\n\nIf we tell an inanimate object that we’ve discovered a law saying that it will accelerate towards Earth at \\(9.8~\\textrm{m}/\\textrm{s}^2\\)\n\n…It will likely1 still accelerate towards Earth at \\(9.8~\\textrm{m}/\\textrm{s}^2\\)\n\n\n\n\n\n\nIf we tell a human we’ve discovered a law saying they will quack like a duck at 7:30pm EDT every Wednesday\n\n…They can utilize their free will to violate this “law”\n\n\n\n\n\n\n\n\n\n\n\n\nObligatory quantum footnote: human agency [maybe] plays a role, in a quirky way, in physics at tiny subatomic scales; but once we coarse grain to atoms (+avoid speed of light), Newton’s Laws accurate to many decimals 🤯"
   },
   {
     "objectID": "w01/slides.html#strangely-relevant-cs-topic-the-halting-problem",
@@ -3042,22 +3049,8 @@
     "objectID": "w01/slides.html#the-takeaway-bayesian-humility",
     "href": "w01/slides.html#the-takeaway-bayesian-humility",
     "title": "Week 1: Science from Particles to People",
-    "section": "The Takeaway: [Bayesian] Humility!",
-    "text": "The Takeaway: [Bayesian] Humility!\n\nSocial science, with “science” used in the same sense as for physics, may be a quixotic endeavor1\nInstead, we’ll do social science, where we use data to…\n Infer tendencies: \\(\\mathcal{H}\\) = «\\(X\\) tends to cause \\(Y\\)»\n With some degree of veracity: \\(\\Pr(\\mathcal{H}) \\approx 0.7\\)\n Construct models that we can update with new evidence: Bayes’ rule! \\(\\Pr(\\mathcal{H} \\mid E) = \\frac{\\Pr(E \\mid \\mathcal{H} ) \\Pr(\\mathcal{H})}{\\Pr(E)} \\approx 0.8\\)\nPls notice “slippage” between aleatory probability within \\(\\mathcal{H}\\) (“tends to”) vs. epistemic probability “outside of”, talking about \\(\\mathcal{H}\\) (“I’m 70% confident about \\(\\mathcal{H}\\)”)\n\nAt least, for the time being… BUT see Sperber (1996), which will come up later"
-  },
-  {
-    "objectID": "w01/slides.html#the-logic-of-violence-in-civil-war",
-    "href": "w01/slides.html#the-logic-of-violence-in-civil-war",
-    "title": "Week 1: Science from Particles to People",
-    "section": "The Logic of Violence in Civil War",
-    "text": "The Logic of Violence in Civil War\n\nKalyvas (2006)"
-  },
-  {
-    "objectID": "w01/slides.html#matching-estimators",
-    "href": "w01/slides.html#matching-estimators",
-    "title": "Week 1: Science from Particles to People",
-    "section": "Matching Estimators",
-    "text": "Matching Estimators\n\nImage Source"
+    "section": "The Takeaway: Bayesian Humility!",
+    "text": "The Takeaway: Bayesian Humility!\n\nSocial science, with “science” used in the same sense as for physics, may be a quixotic endeavor1\nInstead, we’ll do social science, where we use data to…\n Infer tendencies: \\(\\mathcal{H}\\) = «\\(X\\) tends to cause \\(Y\\)»\n With some degree of veracity: \\(\\Pr(\\mathcal{H}) \\approx 0.7\\)\n Construct models that we can update with new evidence: Bayes’ rule! \\(\\Pr(\\mathcal{H} \\mid E) = \\frac{\\Pr(E \\mid \\mathcal{H} ) \\Pr(\\mathcal{H})}{\\Pr(E)} \\approx 0.8\\)\nPls notice “slippage” between aleatory probability within \\(\\mathcal{H}\\) (“tends to”) vs. epistemic probability “outside of”, talking about \\(\\mathcal{H}\\) (“I’m 70% confident about \\(\\mathcal{H}\\)”)\n\nAt least, for the time being… BUT see Sperber (1996), which will come up later"
   },
   {
     "objectID": "w01/slides.html#case-study-military-inequality-leadsto-military-success",
@@ -3072,6 +3065,13 @@
     "title": "Week 1: Science from Particles to People",
     "section": "Does Inequality Cause Poor Military Performance?",
     "text": "Does Inequality Cause Poor Military Performance?\n\n\n\n\n\n\n\n\nCovariates\nSultanate of Morocco Spanish-Moroccan War, 1859-60\nKhanate of Kokand War with Russia, 1864-65\n\n\n\n\n\\(X\\): Military Inequality\nLow (0.01)\nExtreme (0.70)\n\n\n\\(\\mathbf{Z}\\): Matched Covariates:\n\n\n\n\nInitial relative power\n66%\n66%\n\n\nTotal fielded force\n55,000\n50,000\n\n\nRegime type\nAbsolutist Monarchy (−6)\nAbsolute Monarchy (−7)\n\n\nDistance from capital\n208km\n265km\n\n\nStanding army\nYes\nYes\n\n\nComposite military\nYes\nYes\n\n\nInitiator\nNo\nNo\n\n\nJoiner\nNo\nNo\n\n\nDemocratic opponent\nNo\nNo\n\n\nGreat Power\nNo\nNo\n\n\nCivil war\nNo\nNo\n\n\nCombined arms\nYes\nYes\n\n\nDoctrine\nOffensive\nOffensive\n\n\nSuperior weapons\nNo\nNo\n\n\nFortifications\nYes\nYes\n\n\nForeign advisors\nYes\nYes\n\n\nTerrain\nSemiarid coastal plain\nSemiarid grassland plain\n\n\nTopography\nRugged\nRugged\n\n\nWar duration\n126 days\n378 days\n\n\nRecent war history w/opp\nYes\nYes\n\n\nFacing colonizer\nYes\nYes\n\n\nIdentity dimension\nSunni Islam/Christian\nSunni Islam/Christian\n\n\nNew leader\nYes\nYes\n\n\nPopulation\n8–8.5 million\n5–6 million\n\n\nEthnoling fractionalization (ELF)\nHigh\nHigh\n\n\nCiv-mil relations\nRuler as commander\nRuler as commander\n\n\n\\(Y\\): Battlefield Performance:\n\n\n\n\nLoss-exchange ratio\n0.43\n0.02\n\n\nMass desertion\nNo\nYes\n\n\nMass defection\nNo\nNo\n\n\nFratricidal violence\nNo\nYes"
+  },
+  {
+    "objectID": "w01/slides.html#the-logic-of-violence-in-civil-war",
+    "href": "w01/slides.html#the-logic-of-violence-in-civil-war",
+    "title": "Week 1: Science from Particles to People",
+    "section": "The Logic of Violence in Civil War",
+    "text": "The Logic of Violence in Civil War\n\nKalyvas (2006)"
   },
   {
     "objectID": "w01/slides.html#particularly-fun-non-standard-examples",

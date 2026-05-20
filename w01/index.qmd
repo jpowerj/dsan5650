@@ -7,7 +7,9 @@ bibliography: "../_DSAN5650.bib"
 date: 2026-05-20
 date-format: full
 lecnum: 1
-cache: true
+cache: false
+crossref:
+  fig-title: "Fig"
 categories:
   - "Class Sessions"
 format:
@@ -61,8 +63,6 @@ Today's Planned Schedule:
 
 : {tbl-colwidths="[12,12,12,64]"}
 
-{{< include ../dsan-globals/_globals-py.qmd >}}
-
 {{< include ../dsan-globals/_globals-tex.qmd >}}
 
 ::: {.hidden}
@@ -115,58 +115,16 @@ Today's Planned Schedule:
 <i class='bi bi-4-circle'></i> **Columbia**, PhD in Political Economy
 
 
-## Why Is Georgetown Having Me Teach This? {.smaller .crunch-title .crunch-ul .crunch-li-8 .crunch-quarto-layout-panel .crunch-quarto-figure}
+## Why Is Georgetown Having Me Teach This? {.smaller .crunch-title .title-11 .crunch-ul .crunch-li-8 .crunch-quarto-layout-panel .crunch-quarto-figure .ul-block}
 
-::: {layout="[55,45]" layout-align="center" layout-valign="top"}
-::: {#why-background-left}
+<!-- Background figure here -->
 
 * Quanty things $\leadsto$ PhD in **Political Economy**
 * PhD exam major: **Political Philosophy**
-* PhD exam minor: **International Relations**
-* PhD exam paper: "How to Do Things with Translations"
-* Game-changing Research Fellowships at... (Nothing was the same -drake):
-* [Santa Fe Institute](https://en.wikipedia.org/wiki/Santa_Fe_Institute): *dedicated to the multidisciplinary study of complex systems: physical, computational, biological, social*
-
-:::
-::: {#fig-background-right}
-<center>
-
-```{python}
-#| label: bg-sunburst
-#| fig-align: center
-#| align: center
-#| echo: false
-import plotly.express as px
-import plotly.io as pio
-pio.renderers.default = "notebook"
-import pandas as pd
-year_df = pd.DataFrame({
-  'field': ['Math<br>(BS)','CS<br>(BS,MS)','Pol Phil<br>(PhD Pt 1)','Econ<br>(BS+Job)','Pol Econ<br>(PhD Pt 2)'],
-  'cat': ['Quant','Quant','Humanities','Social Sci','Social Sci'],
-  'yrs': [4, 6, 3, 6, 5]
-})
-fig = px.sunburst(
-    year_df, path=['cat','field'], values='yrs',
-    width=450, height=400, color='cat',
-    color_discrete_map={'Quant': cb_palette[0], 'Humanities': cb_palette[1], 'Social Sci': cb_palette[2]},
-    hover_data=[]
-)
-fig.update_traces(
-   hovertemplate=None,
-   hoverinfo='skip'
-)
-# Update layout for tight margin
-# See https://plotly.com/python/creating-and-updating-figures/
-fig.update_layout(margin = dict(t=0, l=0, r=0, b=0))
-fig.show()
-```
-</center>
-
-Years spent questing in dungeons of academia
-:::
-:::
-
-* [Centre for the Study of the History of Political Thought](https://projects.history.qmul.ac.uk/hpt/), Queen Mary University of London (QMUL): *New approaches to the history of political thought [Quentin Skinner, "Cambridge School"] have changed how we study ideas from the past and their relevance to contemporary politics. The focus of the Centre is to explore [ts].*
+* PhD exam minor: **International Relations** (["How to Do Things with Translations"](https://cs.stanford.edu/~jjacobs3/Jacobs-Translations_Paper_2018-09-01.pdf))
+* Brain-changing Research Fellowships at...
+* [Santa Fe Institute](https://en.wikipedia.org/wiki/Santa_Fe_Institute): *dedicated to the multidisciplinary study of complex systems: physical, **computational**, biological, **social***
+* [Centre for the Study of the History of Political Thought](https://projects.history.qmul.ac.uk/hpt/), Queen Mary University of London (QMUL): *New approaches to the **history of political thought** [Quentin Skinner, "Cambridge School"] have changed how we study **ideas from the past** and their relevance to **contemporary politics**. The focus of the Centre is to explore [that sort of thing then, innit guv'nor!].*
 
 ## Dissertation (NLP x History) {.crunch-title}
 
@@ -174,7 +132,7 @@ Years spent questing in dungeons of academia
 
 ![](images/diss.png){fig-align="center"}
 
-## (IR Part) Wars of Ideas I: Cold War {.smaller .crunch-img}
+## (IR Part) Wars of Ideas I: Cold War {.smaller .crunch-title .title-12 .crunch-img}
 
 * Cold War arms shipments (SIPRI) vs. propaganda (*Печать СССР*): here, to 🇪🇹
 
@@ -210,14 +168,171 @@ From [The Carter (Documentary)](https://en.wikipedia.org/wiki/The_Carter){target
 
 ## Maria Montessori on Your Final Project {.title-09 .aside-05}
 
-> Our teaching should be governed, not by a desire to **make** students learn things, but by the endeavor to **keep burning within them** that light which is called **curiosity**. [@montessori_spontaneous_1916]^[*"Couldn't do classes, them lessons used to bore me, I was tryna school heads like Waldorf and Montessori"* -Bar dropped by local rapper one day in freestyle that I never forgot]
+> Our teaching should be governed, not by a desire to **make** students learn things, but by the endeavor to **keep burning within them** that light which is called **curiosity**. [@montessori_spontaneous_1916]
 
 * To this end: your final project is to explore some potential **causal linkage** from $X$ to $Y$ (more later!)
 * The sole requirement is: sufficient **curiosity** to serve as **fuel** for your journey from **associational** world to **causal** world
 
+## Earning Your Grade: Effort + Growth Mindset! {.crunch-title .title-11 .crunch-blockquote .crunch-ul .text-65 .crunch-p-3 .table-70 .crunch-quarto-figure .crunch-quarto-layout-panel}
+
+<i class='bi bi-1-circle'></i> Because you **learn to [&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;]{.underline} by [&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;]{.underline}ing**, the **more [&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;]{.underline}ing you do** [adapted to where you're at, **background**-wise, **time-outside-of-class**-wise], the better **grade** you can get:
+
+* For each [&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;]{.underline} you do [["good faith attempt"](https://www.cs.umd.edu/~nelson/classes/resources/good_faith_attempt/)], you receive **one ✅s**
+* If it looks good as-is, with "good" defined as "demonstrates understanding of the relevant material [to instructors, in dialogue with students]", you receive a **second [✅]{.check-gold}**
+* Otherwise you can earn this **second [✅]{.check-gold}** by **re-trying** until understanding is achieved
+
+<i class='bi bi-2-circle'></i> ✅s **convert to points** via **(required) main quests**, (technically not required) **sidequests**:
+
+:::: {layout="[58,42]"}
+::: {#main-quests}
+
+```{=html}
+<table>
+<colgroup>
+<col style="width: 35%;">
+<col style="width: 5%;">
+<col style="width: 30%;">
+<col style="width: 30%;">
+</colgroup>
+<thead>
+<tr>
+  <th>Main Quest</th>
+  <th class='tdc'>#</th>
+  <th class='tdc'>Completion?</th>
+  <th class='tdc'>Understanding?</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+  <td class='tdvc'>Homework (🔲🔲)</td>
+  <td class='tdc'>4</td>
+  <td class='tdc'>🔲🔲🔲🔲🔲🔲🔲🔲</td>
+  <td class='tdc'><span class='box-gold'>🔲🔲🔲🔲🔲🔲🔲🔲</span></td>
+</tr>
+<tr>
+  <td>Midterm (🔲🔲)</td>
+  <td class='tdc'>1</td>
+  <td class='tdc'>🔲🔲</td>
+  <td class='tdc'><span class='box-gold'>🔲🔲</span></td>
+</tr>
+<tr>
+  <td>Project (🔲🔲🔲)</td>
+  <td class='tdc'>1</td>
+  <td class='tdc'>🔲🔲🔲</td>
+  <td class='tdc'><span class='box-gold'>🔲🔲🔲</span></td>
+</tr>
+<tr>
+  <td>Meeting (<span class='box-left-half'>🔲</span>)</td>
+  <td class='tdc'>2</td>
+  <td colspan='2' class='tdc'>🔲</td>
+</tr>
+<tr>
+  <td colspan="4" class='tdc tdvc'><b>Total = 27 🔲s</b></td>
+</tr>
+</tbody>
+</table>
+```
+
+:::
+::: {#side-quests}
+
+```{=html}
+<table>
+<colgroup>
+<col style="width: 46%;">
+<col style="width: 4%;">
+<col style="width: 25%;">
+<col style="width: 25%;">
+</colgroup>
+<thead>
+<tr>
+  <th>Side Quest</th>
+  <th class='tdc'></th>
+  <th class='tdc'></th>
+  <th class='tdc'></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+  <td><span data-qmd="Lab (<span class='box-left-half'>🔲</span>)"></span></td>
+  <td class='tdc'>8</td>
+  <td class='tdc'>🔲🔲🔲🔲</td>
+  <td class='tdc'><span class='box-gold'>🔲🔲🔲🔲</span></td>
+</tr>
+<tr>
+  <td><span data-qmd="Reading (<span class='box-left-half'>🔲</span>)"></span></td>
+  <td class='tdc'>8</td>
+  <td class='tdc'>🔲🔲🔲🔲</td>
+  <td class='tdc'><span class='box-gold'>🔲🔲🔲🔲</span></td>
+</tr>
+<tr>
+  <td>Meeting (<span class='box-left-half'>🔲</span>)</td>
+  <td class='tdc'>2</td>
+  <td colspan='2' class='tdc'>🔲</td>
+</tr>
+<tr>
+  <td colspan="4" class='tdc tdvc'><b>Total = 17 🔲s</b></td>
+</tr>
+<tr>
+  <td colspan="4" class='tdc tdvc cb1a-bg' style='border: 2px solid darkgrey;'><b>Combined = 44 🔲s</b></td>
+</tr>
+</tbody>
+</table>
+```
+
+:::
+::::
+
+<center style='margin-top: 10px !important;'>
+
+```{=html}
+<table class='table-no-borders'>
+<tbody>
+<tr>
+  <td class='tdr' style='border-right: 1px solid black !important; padding-right: 5px !important;'>0.5</td>
+  <td class='tdr' style='border-right: 1px solid black !important; padding-right: 5px !important;'>1.0</td>
+  <td class='tdr' style='border-right: 1px solid black !important; padding-right: 5px !important;'>1.5</td>
+  <td class='tdr' style='border-right: 1px solid black !important; padding-right: 5px !important;'>2.0</td>
+  <td class='tdr' style='border-right: 1px solid black !important; padding-right: 5px !important;'>2.5</td>
+  <td class='tdr' style='border-right: 1px solid black !important; padding-right: 5px !important;'>3.0</td>
+  <td class='tdr' style='border-right: 1px solid black !important; padding-right: 5px !important;'>3.5</td>
+  <td class='tdr' style='border-right: 1px solid black !important; padding-right: 5px !important;'>4.0</td>
+</tr>
+<tr>
+  <td class='tdr tdvc'>🔲🔲🔲🔲🔲</td>
+  <td class='tdr tdvc'>🔲🔲🔲🔲🔲</td>
+  <td class='tdr tdvc'>🔲🔲🔲🔲🔲</td>
+  <td class='tdr tdvc'>🔲🔲🔲🔲🔲</td>
+  <td class='tdr tdvc'>🔲🔲🔲🔲🔲</td>
+  <td class='tdr tdvc'>🔲🔲🔲🔲🔲</td>
+  <td class='tdr tdvc'>🔲🔲🔲🔲🔲</td>
+  <td class='tdr tdvc'>🔲🔲🔲🔲🔲</td>
+</tr>
+<tr>
+  <td colspan='3' class='tdc tdvc' style='padding: 5px !important;'><span class='flip-emoji'>🏃‍♀️</span></td>
+  <td colspan="2" class='tdc tdvc' style='padding: 5px !important;'>🙇‍♀️🧘🧠💪<b>&nbsp;&darr;&nbsp;</b>💪🧠🧘🙇‍♀️</td>
+  <td colspan='3' class='tdc tdvc' style='padding: 5px !important;'><span class='flip-emoji'>🏃‍♀️</span></td>
+</tr>
+<tr>
+  <td class='tdr tdvc'>✅✅✅✅✅</td>
+  <td class='tdr tdvc'>✅✅✅✅✅</td>
+  <td class='tdr tdvc'>✅✅✅✅✅</td>
+  <td class='tdr tdvc'>✅✅✅✅✅</td>
+  <td class='tdr tdvc'>✅✅✅✅✅</td>
+  <td class='tdr tdvc'>✅✅✅✅✅</td>
+  <td class='tdr tdvc'>✅✅✅✅✅</td>
+  <td class='tdr tdvc'>✅✅✅✅✅</td>
+</tr>
+</tbody>
+</table>
+```
+
+</center>
+
+
 # The [Science]{.orbitron-jj} $\leadsto$ [Social Science]{.barrio-jj} "Phase Transition" {data-stack-name="Science &rarr; Social Science"}
 
-## Coarse-Graining Units of Observation {.smaller .table-85}
+## Coarse-Graining Units of Observation {.smaller .title-12 .table-85}
 
 ```{=html}
 <table>
@@ -277,28 +392,22 @@ From [The Carter (Documentary)](https://en.wikipedia.org/wiki/The_Carter){target
 </table>
 ```
 
-## *Homo sapiens*/*Homo arbitratus*/*Homo mischievous* {.title-08 .crunch-title .crunch-ul}
+## *Homo sapiens*/*Homo arbitratus*/*Homo mischievous* {.title-065 .crunch-title .crunch-ul .ul-block}
+
+::: {#mischievous style="float: right;"}
+
+![](images/mood_crop.jpg){fig-align="center" width="290"}
+
+:::
 
 * Latin [*sapiens*](https://en.wiktionary.org/wiki/sapiens#Latin) denotes being "discerning" or "wise"
-
-:::: {layout="[66,34]" layout-valign="center"}
-::: {#homo-mischief}
-
 * But... technically nothing stops us from **choosing** to be "unwise" whenever we'd like... bc **free will**
-* $\Rightarrow$ For this class, humans are *Homo arbitratus*: [*arbitratus*](https://en.wiktionary.org/wiki/arbitratus#Latin) denotes **choosing** what to do, after we've sapiently "discerned"/thought about it
+* $\Rightarrow$ For this class, humans are *Homo arbitratus*: [*arbitratus*](https://en.wiktionary.org/wiki/arbitratus#Latin) denotes **choosing** what to do, after we've [sapiently] thought about it
 
-:::
-::: {#mischievous}
-
-![](images/mood_crop.jpg){fig-align="center" width="300"}
-
-:::
-::::
-
-## Laws of Physics vs. "Laws" of Social Science {.title-08 .crunch-title .crunch-ul .crunch-quarto-figure .aside-05 .crunch-li-8}
+## Laws of Physics vs. "Laws" of Social Science {.title-08 .crunch-title .crunch-ul .crunch-quarto-figure .aside-80 .crunch-li-8 .crunch-img .crunch-footnotes}
 
 * If we tell an inanimate object that we've discovered a **law** saying that it will accelerate towards Earth at $9.8~\textrm{m}/\textrm{s}^2$
-  * ...It will likely^[Obligatory quantum mechanics footnote: human agency [maybe] plays a role, in a quirky way, in physics at tiny subatomic scales... but once we **coarse grain** to atoms (and avoid speed of light), Newton's Laws accurate to many decimals 🤯] still accelerate towards Earth at $9.8~\textrm{m}/\textrm{s}^2$
+  * ...It will likely^[Obligatory quantum footnote: human agency [maybe] plays a role, in a quirky way, in physics at tiny subatomic scales; but once we **coarse grain** to atoms (+avoid speed of light), Newton's Laws accurate to many decimals 🤯] still accelerate towards Earth at $9.8~\textrm{m}/\textrm{s}^2$
 
 :::: {layout="[70,30]"}
 ::: {#human-law}
@@ -398,7 +507,7 @@ def my_mischievous_function(input):
 :::
 ::::
 
-## The Takeaway: [Bayesian] Humility! {.crunch-title .title-09 .crunch-ul .crunch-li-8 .aside-05 .text-90}
+## The Takeaway: Bayesian Humility! {.crunch-title .title-09 .crunch-ul .crunch-li-8 .aside-05 .text-90}
 
 * Social [science]{.orbitron-jj}, with ["science"]{.orbitron-jj} used in the same sense as for physics, may be a quixotic endeavor^[At least, for the time being... BUT see @sperber_explaining_1996, which will come up later]
 * Instead, we'll do [**social science**]{.barrio-jj}, where we use data to...
@@ -407,13 +516,7 @@ def my_mischievous_function(input):
 * <i class='bi bi-3-circle'></i> Construct models that we can **update** with **new evidence**: Bayes' rule! $\Pr(\mathcal{H} \mid E) = \frac{\Pr(E \mid \mathcal{H} ) \Pr(\mathcal{H})}{\Pr(E)} \approx 0.8$
 * Pls notice "slippage" between **aleatory probability** *within* $\mathcal{H}$ ("tends to") vs. **epistemic probability** "outside of", talking *about* $\mathcal{H}$ ("I'm 70\% confident about $\mathcal{H}$")
 
-# Motivation I: Humble-Bayesian Social Science
-
-## The Logic of Violence in Civil War {.smaller .crunch-title}
-
-![@kalyvas_logic_2006](images/kalyvas.jpg){fig-align="center"}
-
-## Matching Estimators {.crunch-title}
+# Matching Estimators for Apples-to-Apples Comparisons {data-stack-name="Causality" .crunch-title}
 
 ![[Image Source](https://shirt.woot.com/offers/comparing-apples-to-oranges)](images/fruit.png){fig-align="center"}
 
@@ -462,6 +565,12 @@ def my_mischievous_function(input):
 | Mass desertion | No | Yes |
 | Mass defection | No | No |
 | Fratricidal violence | No | Yes |
+
+# Motivation II: Humble-Bayesian Social Science {data-stack-name="CSS"}
+
+## The Logic of Violence in Civil War {.smaller .crunch-title}
+
+![@kalyvas_logic_2006](images/kalyvas.jpg){fig-align="center"}
 
 ## Particularly Fun Non-"Standard" Examples
 

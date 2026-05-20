@@ -32,7 +32,7 @@ website:
         href: "https://georgetown.zoom.us/j/98920056721?pwd=bzPp7bakbfXEdBXpoLAYsNIqcd3IO4.1"
         target: "_blank"
       - text: "Recordings <i class='bi bi-box-arrow-up-right ps-1'></i>"
-        href: ""
+        href: "https://georgetown.hosted.panopto.com/Panopto/Pages/Sessions/List.aspx?folderID=1b54d832-55b1-45df-ad98-b450004b55d5"
         target: "_blank"
       - "---"
       - text: "Week 1: {{< var w01.date-md >}}"

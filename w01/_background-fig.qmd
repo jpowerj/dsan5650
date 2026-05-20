@@ -1,0 +1,37 @@
+
+::: {#fig-background-right style="float: right;"}
+<center>
+
+```{python}
+#| label: bg-sunburst
+#| fig-align: center
+#| align: center
+#| echo: false
+import plotly.express as px
+import plotly.io as pio
+pio.renderers.default = "notebook"
+import pandas as pd
+year_df = pd.DataFrame({
+  'field': ['Math<br>(BS)','CS<br>(BS,MS)','Pol Phil<br>(PhD Pt 1)','Econ<br>(BS+Job)','Pol Econ<br>(PhD Pt 2)'],
+  'cat': ['Quant','Quant','Humanities','Social Sci','Social Sci'],
+  'yrs': [4, 6, 3, 6, 5]
+})
+fig = px.sunburst(
+    year_df, path=['cat','field'], values='yrs',
+    width=450, height=400, color='cat',
+    color_discrete_map={'Quant': cb_palette[0], 'Humanities': cb_palette[1], 'Social Sci': cb_palette[2]},
+    hover_data=[]
+)
+fig.update_traces(
+   hovertemplate=None,
+   hoverinfo='skip'
+)
+# Update layout for tight margin
+# See https://plotly.com/python/creating-and-updating-figures/
+fig.update_layout(margin = dict(t=0, l=0, r=0, b=0))
+fig.show()
+```
+</center>
+
+Years spent questing in dungeons of academia
+:::
