@@ -82,9 +82,9 @@ website:
 format:
   html:
     theme:
-      light: default
-      dark: darkly
-    css: "/dsan-globals/jjstyles.css"
+      light: [default, "./dsan-globals/jjquarto.scss"]
+      dark: [darkly, "./dsan-globals/jjquarto.scss"]
+    css: "./dsan-globals/jjstyles.css"
     toc: true
     link-external-newwindow: true
     link-external-icon: true
