@@ -375,6 +375,12 @@ From [The Carter (Documentary)](https://en.wikipedia.org/wiki/The_Carter){target
 
 # The [Science]{.orbitron-jj} $\leadsto$ [Social Science]{.barrio-jj} "Phase Transition" {data-stack-name="Science &rarr; Social Science"}
 
+<center>
+
+[Today's Demo: [Schelling's Attendance Model](https://observablehq.com/@jpowerj/schelling-attendance)]{.boxed-cb}
+
+</center>
+
 ## Coarse-Graining Units of Observation {.smaller .title-12 .table-85}
 
 ```{=html}
