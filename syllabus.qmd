@@ -93,23 +93,39 @@ The following is a rough map of what we will work through together throughout th
 </tr>
 </thead>
 <tbody>
-<tr>
+<tr class='td-nb'>
     <td><span data-qmd="**Unit 1**: The Language of Causal Modeling"></span></td>
     <td>1</td>
     <td><span data-qmd="{{< var w01.date-md >}}"></span></td>
-    <td><span data-qmd='[{{< var w01.title >}}](./w01/)<br>**Relevant Supplementary Material:**<br>Santa Fe Institute online course: [*Introduction to Renormalization*](https://www.youtube.com/playlist?list=PLF0b3ThojznTzAA7bfLWh4RKzRrwNF4L0), up through Video 5, "Coarse Graining II: Entropy"^[Challenge yourself to keep watching to the end of the 5th video here, if you can! Even if you feel frustrated/scared! Because, the *examples* (e.g., macro vs. microeconomics) are what we mainly care about here, more so than e.g. the mathematical definition of entropy (which we will go towards at a slower pace!)]'></span></td>
+    <td><span data-qmd='[{{< var w01.title >}}](./w01/)<br>'></span></td>
+</tr>
+<tr class='td-nb'>
+  <td class='td-nb'></td>
+  <td colspan="3" align="center" class='td-nb'>Recommended Readings</td>
 </tr>
 <tr>
+  <td></td>
+  <td colspan="3" class='text-85' style='padding-top: 0px;'><div data-qmd="Santa Fe Institute online course: [*Introduction to Renormalization*](https://www.youtube.com/playlist?list=PLF0b3ThojznTzAA7bfLWh4RKzRrwNF4L0), up through Video 5, *Coarse Graining II: Entropy*^[Challenge yourself to keep watching to the end of the 5th video here, if you can! Even if you feel frustrated/scared! Because, the *examples* (e.g., macro vs. microeconomics) are what we mainly care about here, more so than e.g. the mathematical definition of entropy (which we will go towards at a slower pace!)]"></div></td>
+</tr>
+<tr class='td-nb'>
     <td></td>
     <td>2</td>
     <td><span data-qmd="{{< var w02.date-md >}}"></span></td>
-    <td><span data-qmd='[{{< var w02.title >}}](./w02/)<br>**Relevant Reading:**<br>@koller_probabilistic_2009, Chapter 2: "Foundations". *Especially pp. 15-34, as a DSAN 5100 refresher!*'></span></td>
+    <td><span data-qmd='[{{< var w02.title >}}](./w02/)<br>'></span></td>
+</tr>
+<tr class='td-nb'>
+  <td class='td-nb'></td>
+  <td colspan="3" align="center" class='td-nb'>Recommended Readings</td>
+</tr>
+<tr>
+  <td></td>
+  <td colspan="3" class='text-85' style='padding-top: 0px;'><div data-qmd="@koller_probabilistic_2009, Chapter 2: *Foundations*. Especially pp. 15-34, as a helpful DSAN 5100 refresher!"></div></td>
 </tr>
 <tr class='new-unit'>
     <td><span data-qmd="**Unit 2**: Doin Thangs"></span></td>
     <td>3</td>
     <td><span data-qmd="{{< var w03.date-md >}}"></span></td>
-    <td><span data-qmd="[{{< var w03.title >}}](./w03/)<br>*[Deliverable, 11:59pm EDT] HW1: {{< var hw1.title >}}*"></span></td>
+    <td><span data-qmd='[{{< var w03.title >}}](./w03/)'></span></td>
 </tr>
 <tr>
     <td></td>
@@ -125,39 +141,21 @@ The following is a rough map of what we will work through together throughout th
 </tr>
 <tr>
     <td></td>
-    <td></td>
-    <td><span data-qmd="*Jun 22 (Sunday)*"></span></td>
-    <td><span data-qmd="*HW2 Released on JupyterHub*"></span></td>
-</tr>
-<tr>
-    <td></td>
     <td>6</td>
     <td><span data-qmd="{{< var w06.date-md >}}"></span></td>
     <td><span data-qmd="[{{<var w06.title >}}](./w06/)"></span></td>
 </tr>
-<!-- <tr>
-    <td></td>
-    <td></td>
-    <td><span data-qmd="*Feb 21 (Friday), 5:59pm EST*"></span></td>
-    <td><span data-qmd="*[Deliverable] <a href='{{< var hw2.url >}}' target='_blank'>HW2: {{< var hw2.title >}}</a>*"></span></td>
-</tr> -->
 <tr class='new-unit'>
     <td><span data-qmd="**Midterm Week**"></span></td>
     <td>7</td>
-    <td><span data-qmd="*Jul 1 (Tuesday)*"></span></td>
-    <td><span data-qmd="*[Deliverable, 11:59pm EDT] HW2: {{< var hw2.title >}}*"></span></td>
-</tr>
-<tr>
-    <td></td>
-    <td></td>
     <td><span data-qmd="{{< var w07.date-md >}}"></span></td>
-    <td><span data-qmd="[{{< var w07.title >}}](./w07/)<br>*27-Hour Take-Home Midterm released, 9:00pm EDT*"></span></td>
+    <td><span data-qmd="[{{< var w07.title >}}](./w07/)<br>*51-Hour Take-Home Midterm released, 9:00pm EDT*"></span></td>
 </tr>
 <tr>
     <td></td>
     <td></td>
-    <td><span data-qmd="*Jul 3 (Thursday)*"></span></td>
-    <td><span data-qmd="*[Deliverable, 11:59pm EDT] 27-Hour Take-Home Midterm*"></span></td>
+    <td><span data-qmd="*Jul 3 (Friday)*"></span></td>
+    <td><span data-qmd="*[Deliverable, 11:59pm EDT] 51-Hour Take-Home Midterm*"></span></td>
 </tr>
 <tr class='new-unit'>
     <td><span data-qmd="**Unit 4:** Machine Learning for Causal Inference"></span></td>
@@ -201,18 +199,51 @@ The following is a rough map of what we will work through together throughout th
 
 ## Assignments and Grading
 
-The main assignment in the course will be your **final project**, submitted at the end of the semester. However, there will also be a (virtual) in-class midterm exam and a series of assignments which exist to let you explore each of the modules of the course, in turn.
+The main assignment in the course will be your **final project**, submitted at the end of the semester. However, there will also be a **take-home midterm exam** and a series of assignments which exist to let you explore each of the modules of the course, in turn. These requirements are divided into mandatory **main quests** and non-mandatory **side quests**, as follows.
 
-| Assignment | Due Date | % of Grade |
-| - | - | - |
-| [HW1: {{< var hw1.title >}}]({{< var hw1.url >}}) | {{< var hw1.date-full >}} | 11.25% |
-| [HW2: {{< var hw2.title >}}]({{< var hw2.url >}}) | {{< var hw2.date-full >}} | 11.25% |
-| [HW3: {{< var hw3.title >}}]({{< var hw3.url >}}) | {{< var hw3.date-full >}} | 11.25% |
-| {{< var midterm.title >}} | {{< var midterm.date-full >}} | 25% |
-| [HW4: {{< var hw4.title >}}]({{< var hw4.url >}}) | {{< var hw4.date-full >}} | 11.25% |
-| [Final Project](./final.qmd) | {{< var final.date-full >}} | 30% |
+### Main Quests
+
+| Main Quest | Due Date | ✅s Possible |
+| - | - |:-:|
+| [HW1: {{< var hw1.title >}}]({{< var hw1.url >}}) | {{< var hw1.date-full >}} | 4 |
+| [HW2: {{< var hw2.title >}}]({{< var hw2.url >}}) | {{< var hw2.date-full >}} | 4 |
+| [HW3: {{< var hw3.title >}}]({{< var hw3.url >}}) | {{< var hw3.date-full >}} | 4 |
+| {{< var midterm.title >}} | {{< var midterm.date-full >}} | 4 |
+| [HW4: {{< var hw4.title >}}]({{< var hw4.url >}}) | {{< var hw4.date-full >}} | 4 |
+| [Final Project](./final.qmd) | {{< var final.date-full >}} | 6 |
+| Two Required Meetings with Instructors | | 1 |
+| **Total** | | **27** |
 
 : {tbl-colwidths="[55,25,20]"}
+
+### Side Quests
+
+| Side Quest | ✅s Possible |
+| - |:-:|
+| 8 Lab Assignments | 8 |
+| 8 Reading-Based Assignments | 8 |
+| Additional Meeting(s) with Instructors | 2 |
+| **Total** | **18** |
+
+: {tbl-colwidths="[80,20]"}
+
+The ✅s are then converted into your final grade as follows:
+
+* Each ✅ is converted into **0.1 "Quality Points"**, which are then
+* Matched with the ["Quality Points Table"](https://sites.google.com/a/georgetown.edu/gsas-graduate-bulletin/iii-academic-regulations-procedures) in Georgetown's Graduate Bulletin to determine your final letter grade, where
+* **Surpassing** the listed "Grade Quality Points" implies **obtaining the next letter grade**.
+
+For ease of interpretation, the following table illustrates how each possible number of ✅s maps to a letter grade:
+
+| Number of ✅s (Inclusive) | Quality Points | Letter Grade |
+|:-:|:-:|:-|
+| 37 - 45 | 3.7 - 4.5 | A |
+| 34 - 36 | 3.4 - 3.6 | A- |
+| 31 - 33 | 3.1 - 3.3 | B+ |
+| 27 - 30 | 2.7 - 3.0 | B |
+| 20 - 26 | 2.0 - 2.6 | B- |
+| 11 - 19 | 1.1 - 1.9 | C |
+| 0 - 10 | 0.0 - 1.0 | F |
 
 ### Homework Lateness Policy
 
@@ -224,3 +255,9 @@ After the due date, for each assignment besides the midterm, you will have a gra
 * 42 to 54 hours late: 10% penalty
 * 54 to 66 hours late: 20% penalty
 * More than 66 hours late: Assignment submissions no longer accepted (without instructor approval)
+
+Excused lateness exceptions will be grounded in a policy where you can "pause" the class (due-date-wise, but also just, expectation-of-progress-wise more generally) to take the time you need to handle things happening in your life. Then, you can "resume" work once you feel more centered/once you find yourself back on stable ground. The ["Maslow's hierarchy"](https://en.wikipedia.org/wiki/Maslow%27s_hierarchy_of_needs) model from psychology (@fig-maslow) provides a straightforward way to think about this approach.
+
+![Maslow's Hierarchy of Needs, from [Wikimedia](https://commons.wikimedia.org/wiki/File:Maslow%27s_Hierarchy_of_Needs_Pyramid_(original_five-level_model).png)](images/maslow.png){#fig-maslow .lightbox fig-align="center" width="80%"}
+
+Learning data ethics is way up there in the blue triangle, so, it's important that you feel like the first four levels are solidified before you turn your focus back to classwork. And, it's a win-win, because it means that once you're back in action you can be more engaged and receptive to new topics, rather than being forced to "simulate" being in the blue triangle while in reality struggling in other spots!

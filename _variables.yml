@@ -66,7 +66,7 @@ w12:
 hw1:
   title: "Causal Modeling with DAGs and PGMs: Direct and Indirect Effects"
   date-md: "Jun 5, 11:59pm EDT"
-  date-full: "Friday, **June 5**"
+  date-full: "Wednesday, **June 3**"
   url: "#"
 hw2:
   title: "Using Our Modeling Languages"
@@ -83,7 +83,7 @@ hw3:
   date-full: "TBD"
   url: "#"
 hw4:
-  title: "Computational Causal Methods"
+  title: "Causal Machine Learning Methods"
   date-md: "TBD"
   date-full: "TBD"
   url: "#"

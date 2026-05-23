@@ -684,6 +684,11 @@ table thead th {
     border-bottom: 0px !important;
 }
 
+.td-nb td,
+.td-nb tr {
+    border-bottom: 0px solid grey !important;
+}
+
 .text-50 p {
     font-size: 50% !important;
 }
