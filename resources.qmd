@@ -155,6 +155,10 @@ Here I literally added it to the resources folder *before* I realized that it ha
 
 ## Miscellaneous / Commonly-Used Books That We're Not Really Using
 
+<i class='bi bi-1-circle'></i> **@hernan_causal_2025, *Causal Inference: What If?***
+
+You can think of this as, it would be a perfect textbook for a "Part 2" of this course. This also means, however, that it's **perfect for handling "corner cases"** that you might run into while working on e.g. your Final Project! For instance, it has chapters explicitly walking through how you might handle datasets with obvious **measurement bias**, **selection bias**, and so on.
+
 <i class='bi bi-1-circle'></i> **@king_designing_1994, *Designing Social Inquiry***
 
 I don't really have a substantive critique of this book, or a deep reason for not using it, other than that I find myself getting really bored whenever I try to read it 🙈
