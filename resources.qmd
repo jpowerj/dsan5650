@@ -6,14 +6,53 @@ csl: chicago-17-no-url.csl
 
 ::: {.callout-note title="PDF Links for Jeff's Off-Hand References"}
 
-| What Jeff calls it | Citation (hover and/or click for PDF link) |
-| - | - |
-| **"Statistical Rethinking"** | @mcelreath_statistical_2020 |
-| **"The Multilevel book"** | @gelman_data_2007 |
-| **"The Koller PGM book"** | @koller_probabilistic_2009 |
-| **"The non-technical Pearl book"** | @pearl_book_2018 |
-| **"The technical Pearl book"** (containing, e.g., axioms and proofs) | @pearl_causality_2000 |
-| **"The French Revolution paper"** | @barron_individuals_2018 |
+```{=html}
+<table>
+<colgroup>
+<col style="width: 55%;">
+<col style="width: 45%;">
+</colgroup>
+<thead>
+<tr>
+  <th>What Jeff calls it</th>
+  <th>Citation (click for PDF link)</th>
+</tr>
+</thead>
+<tbody>
+<tr class='td-nb'>
+  <td><span data-qmd='**"The WebPPL interactive textbook"**'></span></td>
+  <td><span data-qmd="@goodman_probabilistic_2016"></span></td>
+</tr>
+<tr>
+  <td colspan='2' class='tdc td-nb' style="padding-top: 0px;"><span data-qmd="[**5650 Edition Here**](https://jjacobs.me/probmods)"></span></td>
+</tr>
+<tr>
+  <td><span data-qmd='**"Statistical Rethinking"**'></span></td>
+  <td><span data-qmd='@mcelreath_statistical_2020'></span></td>
+</tr>
+<tr>
+  <td><span data-qmd='**"The Multilevel book"**'></span></td>
+  <td><span data-qmd='@gelman_data_2007'></span></td>
+</tr>
+<tr>
+  <td><span data-qmd='**"The Koller PGM book"**'></span></td>
+  <td><span data-qmd='@koller_probabilistic_2009'></span></td>
+</tr>
+<tr>
+  <td><span data-qmd='**"The non-technical Pearl book"**'></span></td>
+  <td><span data-qmd='@pearl_book_2018'></span></td>
+</tr>
+<tr>
+  <td><span data-qmd='**"The technical Pearl book"** (containing, e.g., axioms and proofs)'></span></td>
+  <td><span data-qmd='@pearl_causality_2000'></span></td>
+</tr>
+<tr>
+  <td><span data-qmd='**"The French Revolution paper"**'></span></td>
+  <td><span data-qmd='@barron_individuals_2018'></span></td>
+</tr>
+</tbody>
+</table>
+```
 
 :::
 

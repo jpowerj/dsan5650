@@ -1,3 +1,15 @@
 **@acharya_slavery_2023, "Slavery, Politics, and Causality", *Harvard Kennedy School Working Paper***
 
 A rare paper that touches specifically on the veracity of drawing *causal* inferences from historical data!
+
+---
+
+| What Jeff calls it | Citation (hover and/or click for PDF link) |
+| - | - |
+| **"The WebPPL interactive textbook"** | @goodman_probabilistic_2016 [**5650 Edition Here**](https://jjacobs.me/probmods) |
+| **"Statistical Rethinking"** | @mcelreath_statistical_2020 |
+| **"The Multilevel book"** | @gelman_data_2007 |
+| **"The Koller PGM book"** | @koller_probabilistic_2009 |
+| **"The non-technical Pearl book"** | @pearl_book_2018 |
+| **"The technical Pearl book"** (containing, e.g., axioms and proofs) | @pearl_causality_2000 |
+| **"The French Revolution paper"** | @barron_individuals_2018 |
