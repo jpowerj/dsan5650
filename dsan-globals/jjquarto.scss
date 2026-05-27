@@ -247,9 +247,11 @@ border: 1px solid #dee2e6 !important;
     margin-top: 2px !important;
 }
 
-.crunch-math mjx-container {
-    margin-top: 10px !important;
-    margin-bottom: 10px !important;
+.crunch-math mjx-container,
+.crunch-math .MathJax_Display,
+.crunch-math .math.display {
+    margin-top: 5px !important;
+    margin-bottom: 5px !important;
 }
 
 .crunch-math-15 mjx-container {

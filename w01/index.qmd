@@ -17,13 +17,18 @@ format:
     df-print: kable
     footer: "DSAN 5650 Week 1: {{< var w01.footer >}}"
     output-file: "slides.html"
-    html-math-method: mathjax
+    html-math-method: katex
     scrollable: true
     link-external-icon: true
     link-external-newwindow: true
     theme: [default, "../dsan-globals/jjquarto.scss"]
     include-in-header:
-      text: "<link rel='stylesheet' href='https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css'><link rel='stylesheet' type='text/css' href='https://cdn.jsdelivr.net/gh/dreampulse/computer-modern-web-font@master/fonts.css'><link rel='preconnect' href='https://fonts.googleapis.com'><link rel='preconnect' href='https://fonts.gstatic.com' crossorigin><link href='https://fonts.googleapis.com/css2?family=Barrio&family=Yuji+Boku&family=Orbitron:wght@400..900&display=swap' rel='stylesheet'>"
+      text: |
+        <link rel='stylesheet' href='https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css'>
+        <link rel='stylesheet' type='text/css' href='https://cdn.jsdelivr.net/gh/bitmaks/cm-web-fonts@latest/fonts.css'>
+        <link rel='preconnect' href='https://fonts.googleapis.com'>
+        <link rel='preconnect' href='https://fonts.gstatic.com' crossorigin>
+        <link href='https://fonts.googleapis.com/css2?family=Barrio&family=Yuji+Boku&family=Orbitron:wght@400..900&display=swap' rel='stylesheet'>
     slide-number: true
     simplemenu:
       flat: true
@@ -372,259 +377,13 @@ From [The Carter (Documentary)](https://en.wikipedia.org/wiki/The_Carter){target
 
 </center>
 
-
-# The [Science]{.orbitron-jj} $\leadsto$ [Social Science]{.barrio-jj} "Phase Transition" {data-stack-name="Science &rarr; Social Science"}
+# The [Science]{.orbitron-jj} $\leadsto$ [Social Science]{.barrio-jj} "Phase Transition" {data-name="Science &rarr; Social Science"}
 
 <center>
 
 [Today's Demo: [Schelling's Attendance Model](https://observablehq.com/@jpowerj/schelling-attendance)]{.boxed-cb}
 
 </center>
-
-## Coarse-Graining Units of Observation {.smaller .title-12 .table-85}
-
-```{=html}
-<table>
-<thead>
-<tr>
-  <th>Field</th>
-  <th colspan="2">Example Unit of Observation</td>
-</tr>
-</thead>
-<tbody>
-<tr>
-  <td width="20%">Physics</td>
-  <td width="30%"><span data-qmd="Particle"></span></td>
-  <td width="50%" align="right"><span data-qmd="\[Particle = **Fine-Graining** of Molecules\]"></span></td>
-</tr>
-<tr>
-  <td>Chemistry</td>
-  <td><span data-qmd="Molecule = $\cup$(Particles)"></span></td>
-  <td><span data-qmd="\[Molecule = **Coarse-Graining** of Particles\]"></span></td>
-</tr>
-<tr>
-  <td>Biology</td>
-  <td colspan="2"><span data-qmd="Cell = $\cup$(Molecules)"></span></td>
-</tr>
-<tr>
-  <td>Neuro/Cog Sci</td>
-  <td colspan="2"><span data-qmd="Brain = $\cup$(Cells)"></span></td>
-</tr>
-<tr>
-  <td>Human Physiology</td>
-  <td colspan="2"><span data-qmd="Body = Brain $\cup$ Other Organs"></span></td>
-</tr>
-<tr style="border-top: 5px solid #e69f00; border-bottom: 5px solid #e69f00;">
-  <td colspan="3" align="center" class='cb1a-bg'><span data-qmd="&uarr; [Science]{.orbitron-jj} &nbsp;&nbsp; 🧐 **something happens here...** 🤔 &nbsp;&nbsp; &darr; [Social Science]{.barrio-jj}"></span></td>
-</tr>
-<tr>
-  <td>Anthropology</td>
-  <td colspan="2"><span data-qmd="Human-Relational System (e.g., Kinship) = $\cup$(Brains) $\times$ Natural Environment"></span></td>
-</tr>
-<tr>
-  <td>Economics</td>
-  <td colspan="2"><span data-qmd="Economy = Specific relational system of *exchange* w.r.t. scarce resources"></span></td>
-</tr>
-<tr>
-  <td>Political Economy</td>
-  <td colspan="2"><span data-qmd="Economy-Context = Economic Exchange $\cap$ Relational Power"></span></td>
-</tr>
-<tr>
-  <td>Sociology</td>
-  <td colspan="2"><span data-qmd="Society = $\cup$(Relational Systems: Kinship, Friendship, Authority, Power, Violence)"></span></td>
-</tr>
-<tr>
-  <td>History</td>
-  <td colspan="2"><span data-qmd="[*Longue-Durée*](https://en.wikipedia.org/wiki/Longue_dur%C3%A9e) = Evolution of Societies over Time and Space"></span></td>
-</tr>
-</tbody>
-</table>
-```
-
-## *Homo sapiens*/*Homo arbitratus*/*Homo mischievous* {.title-065 .crunch-title .crunch-ul .ul-block}
-
-::: {#mischievous style="float: right;"}
-
-![](images/mood_crop.jpg){fig-align="center" width="290"}
-
-:::
-
-* Latin [*sapiens*](https://en.wiktionary.org/wiki/sapiens#Latin) denotes being "discerning" or "wise"
-* But... technically nothing stops us from **choosing** to be "unwise" whenever we'd like... bc **free will**
-* $\Rightarrow$ For this class, humans are *Homo arbitratus*: [*arbitratus*](https://en.wiktionary.org/wiki/arbitratus#Latin) denotes **choosing** what to do, after we've [sapiently] thought about it
-
-## Laws of Physics vs. "Laws" of Social Science {.title-08 .crunch-title .crunch-ul .crunch-quarto-figure .aside-80 .crunch-li-8 .crunch-img .crunch-footnotes}
-
-* If we tell an inanimate object that we've discovered a **law** saying that it will accelerate towards Earth at $9.8~\textrm{m}/\textrm{s}^2$
-  * ...It will likely^[Obligatory quantum footnote: human agency [maybe] plays a role, in a quirky way, in physics at tiny subatomic scales; but once we **coarse grain** to atoms (+avoid speed of light), Newton's Laws accurate to many decimals 🤯] still accelerate towards Earth at $9.8~\textrm{m}/\textrm{s}^2$
-
-:::: {layout="[70,30]"}
-::: {#human-law}
-
-* If we tell a **human** we've discovered a **law** saying they will quack like a duck at 7:30pm EDT every Wednesday
-  * ...They can utilize their **free will** to violate this "law"
-
-:::
-::: {#cause-problems}
-
-![](images/cause_problems.jpg){fig-align="center"}
-
-:::
-::::
-
-## Strangely-Relevant CS Topic: The Halting Problem {.smaller .title-09 .table-75 .crunch-title .crunch-ul .crunch-li-8}
-
-* Kurt Gödel $\leftrightarrow$ Alan Turing: [*Entscheidungsproblem*](https://www.cs.virginia.edu/~robins/Turing_Paper_1936.pdf)
-* **Theorem**: It is not possible to write a computer program $P(x)$ that detects whether or not a computer program $x$ will eventually halt (as opposed to, e.g., looping forever)
-* **Proof**: Assume $P(x)$ *is* possible to write. Run it on `mischievous_program.py`. Infinite contradiction loop.
-
-:::: {.columns}
-::: {.column width="60%"}
-
-``` {.python filename="halting_problem_solver.py" style="margin-bottom: 25px;"}
-def will_it_halt(program, input):
-  # Put code you think will work here
-  # Return True if program will halt, False otherwise
-```
-
-``` {.python filename="mischievous_program.py"}
-def my_mischievous_function(input):
-  if will_it_halt(my_mischevious_function, input):
-    while True: pass # Infinite loop
-  else:
-    return # Halt
-```
-
-:::
-::: {.column width="40%"}
-
-```{=html}
-<center>
-
-<table>
-<thead>
-<tr>
-  <th><span data-qmd="Input&rarr;<br>&darr;Program"></span></th>
-  <th align="center">0</th>
-  <th align="center">1</th>
-  <th align="center">2</th>
-  <th align="center"><span data-qmd="$\cdots$"></span></th>
-</tr>
-</thead>
-<tbody>
-<tr>
-  <td>0</td>
-  <td class='cb1a-bg' align="center"><span data-qmd="**Halt**"></span></td>
-  <td align="center">Loop</td>
-  <td align="center">Loop</td>
-  <td align="center"><span data-qmd="$\cdots$"></span></td>
-</tr>
-<tr>
-  <td>1</td>
-  <td>Loop</td>
-  <td class='cb1a-bg'><span data-qmd="**Loop**"></span></td>
-  <td>Halt</td>
-  <td><span data-qmd="$\cdots$"></span></td>
-</tr>
-<tr>
-  <td>2</td>
-  <td>Loop</td>
-  <td>Loop</td>
-  <td class='cb1a-bg'><span data-qmd="**Loop**"></span></td>
-  <td><span data-qmd="$\cdots$"></span></td>
-</tr>
-<tr>
-  <td><span data-qmd="$\vdots$"></span></td>
-  <td><span data-qmd="$\vdots$"></span></td>
-  <td><span data-qmd="$\vdots$"></span></td>
-  <td><span data-qmd="$\vdots$"></span></td>
-  <td class='cb1a-bg'><span data-qmd="$\mathbf{\ddots}$"></span></td>
-</tr>
-<tr style="border-top: 3px solid black;">
-  <td align="center"><span data-qmd="![](images/mood_face.jpg){width='50'}"></span></td>
-  <td class='cb1a-bg' style="vertical-align: middle;"><span data-qmd="**Loop**"></span></td>
-  <td class='cb1a-bg' style="vertical-align: middle;"><span data-qmd="**Halt**"></span></td>
-  <td class='cb1a-bg' style="vertical-align: middle;"><span data-qmd="**Halt**"></span></td>
-  <td class='cb1a-bg' style="vertical-align: middle;"><span data-qmd="$\mathbf{\cdots}$"></span></td>
-</tr>
-</tbody>
-</table>
-
-</center>
-```
-
-:::
-::::
-
-## The Takeaway: Bayesian Humility! {.crunch-title .title-09 .crunch-ul .crunch-li-8 .aside-05 .text-90}
-
-* Social [science]{.orbitron-jj}, with ["science"]{.orbitron-jj} used in the same sense as for physics, may be a quixotic endeavor^[At least, for the time being... BUT see @sperber_explaining_1996, which will come up later]
-* Instead, we'll do [**social science**]{.barrio-jj}, where we use data to...
-* <i class='bi bi-1-circle'></i> Infer **tendencies**: $\mathcal{H}$ = «$X$ tends to cause $Y$»
-* <i class='bi bi-2-circle'></i> With some degree of **veracity**: $\Pr(\mathcal{H}) \approx 0.7$
-* <i class='bi bi-3-circle'></i> Construct models that we can **update** with **new evidence**: Bayes' rule! $\Pr(\mathcal{H} \mid E) = \frac{\Pr(E \mid \mathcal{H} ) \Pr(\mathcal{H})}{\Pr(E)} \approx 0.8$
-* Pls notice "slippage" between **aleatory probability** *within* $\mathcal{H}$ ("tends to") vs. **epistemic probability** "outside of", talking *about* $\mathcal{H}$ ("I'm 70\% confident about $\mathcal{H}$")
-
-# Matching Estimators for Apples-to-Apples Comparisons {data-stack-name="Causality" .crunch-title}
-
-![[Image Source](https://shirt.woot.com/offers/comparing-apples-to-oranges)](images/fruit.png){fig-align="center"}
-
-## Case Study: Military Inequality $\leadsto$ Military Success {.smaller .crunch-title .title-09 .crunch-ul .crunch-blockquote .crunch-li-8}
-
-* @lyall_divided_2020: "Treating certain ethnic groups as second-class citizens [...] leads victimized soldiers to subvert military authorities once war begins. The higher an army's inequality, the greater its rates of desertion, side-switching, and casualties"
-
-> Matching constructs **pairs of belligerents** that are **similar** across a wide range of traits thought to dictate battlefield performance but that **vary** in levels of prewar inequality. The more similar the belligerents, the better our estimate of inequality's effects, as all other traits are shared and thus cannot explain observed differences in performance, helping assess how battlefield performance **would have** improved (declined) if the belligerent had a lower (higher) level of prewar inequality.
-> 
-> Since [non-matched] cases are **dropped** [...] selected cases are more representative of average belligerents/wars than outliers with few or no matches, [providing] surer ground for testing generalizability of the book's claims than focusing solely on canonical but unrepresentative usual suspects (Germany, the United States, Israel)
-
-## Does Inequality Cause Poor Military Performance? {.smaller .crunch-title .title-10 .table-80 .text-60}
-
-| <br>Covariates | Sultanate of Morocco<br> *Spanish-Moroccan War, 1859-60* | Khanate of Kokand<br> *War with Russia, 1864-65* |
-| - | - | - |
-| **$X$: Military Inequality** | Low (0.01) | Extreme (0.70) |
-| **$\mathbf{Z}$: Matched Covariates:** | | |
-| Initial relative power | 66% | 66% |
-| Total fielded force | 55,000 | 50,000 |
-| Regime type | Absolutist Monarchy (−6) | Absolute Monarchy (−7) |
-| Distance from capital | 208km | 265km |
-| Standing army | Yes | Yes |
-| Composite military | Yes | Yes |
-| Initiator | No | No |
-| Joiner | No | No |
-| Democratic opponent | No | No |
-| Great Power | No | No |
-| Civil war | No | No |
-| Combined arms | Yes | Yes |
-| Doctrine | Offensive | Offensive |
-| Superior weapons | No | No |
-| Fortifications | Yes | Yes |
-| Foreign advisors | Yes | Yes |
-| Terrain | Semiarid coastal plain | Semiarid grassland plain |
-| Topography | Rugged | Rugged |
-| War duration | 126 days | 378 days |
-| Recent war history w/opp | Yes | Yes |
-| Facing colonizer | Yes | Yes |
-| Identity dimension | Sunni Islam/Christian | Sunni Islam/Christian |
-| New leader | Yes | Yes |
-| Population | 8–8.5 million | 5–6 million |
-| Ethnoling fractionalization (ELF) | High | High |
-| Civ-mil relations | Ruler as commander | Ruler as commander |
-| **$Y$: Battlefield Performance:** | | |
-| Loss-exchange ratio | 0.43 | 0.02 |
-| Mass desertion | No | Yes |
-| Mass defection | No | No |
-| Fratricidal violence | No | Yes |
-
-# Motivation II: Humble-Bayesian Social Science {data-stack-name="CSS"}
-
-## The Logic of Violence in Civil War {.smaller .crunch-title}
-
-![@kalyvas_logic_2006](images/kalyvas.jpg){fig-align="center"}
-
-## Particularly Fun Non-"Standard" Examples
-
-* DeDeo, French Revolution
-* Grimmer, Mirrors for Sultans and Princes
 
 # Course Logistics {data-stack-name="Logistics"}
 

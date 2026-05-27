@@ -4,6 +4,7 @@ subtitle: "*DSAN 5650: Causal Inference for Computational Social Science*<br><sp
 author: "Jeff Jacobs"
 institute: "[`jj1088@georgetown.edu`](mailto:jj1088@georgetown.edu)"
 bibliography: "../_DSAN5650.bib"
+csl: "../chicago-17-no-url.csl"
 date: 2026-05-27
 date-format: full
 lecnum: 2
@@ -14,13 +15,17 @@ format:
     df-print: kable
     footer: "DSAN 5650 Week 2: {{< var w02.footer >}}"
     output-file: "slides.html"
-    html-math-method: mathjax
     scrollable: true
     link-external-icon: true
     link-external-newwindow: true
     theme: [default, "../dsan-globals/jjquarto.scss"]
     include-in-header:
-      text: "<link rel='stylesheet' href='https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css'><link rel='stylesheet' type='text/css' href='https://cdn.jsdelivr.net/gh/dreampulse/computer-modern-web-font@master/fonts.css'><link rel='preconnect' href='https://fonts.googleapis.com'><link rel='preconnect' href='https://fonts.gstatic.com' crossorigin><link href='https://fonts.googleapis.com/css2?family=Barrio&display=swap' rel='stylesheet'>"
+      text: |
+        <link rel='stylesheet' href='https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css'>
+        <link rel='stylesheet' type='text/css' href='https://cdn.jsdelivr.net/gh/dreampulse/computer-modern-web-font@master/fonts.css'>
+        <link rel='preconnect' href='https://fonts.googleapis.com'>
+        <link rel='preconnect' href='https://fonts.gstatic.com' crossorigin>
+        <link href='https://fonts.googleapis.com/css2?family=Barrio&display=swap' rel='stylesheet'>
     slide-number: true
     simplemenu:
       flat: true
@@ -32,7 +37,6 @@ format:
   html:
     df-print: kable
     output-file: "index.html"
-    html-math-method: mathjax
     link-external-icon: true
     link-external-newwindow: true
 ---
@@ -45,14 +49,13 @@ format:
 
 :::
 
-# Schedule {.smaller .crunch-title .crunch-callout .code-90 data-name="Schedule"}
+# Schedule {.smaller .crunch-title .crunch-callout .code-90}
 
 Today's Planned Schedule:
 
 | | Start | End | Topic |
 |:- |:- |:- |:- |
-| **Lecture** | 6:30pm | 6:45pm | [TA Intros &rarr;](#ta-intros) |
-| | 6:45pm | 7:00pm | [HW1 Questions and Concerns &rarr;](#hw1-questions-andor-concerns)
+| **Lecture** | 6:30pm | 7:00pm | [HW1 Questions and Concerns &rarr;](#hw1-questions-andor-concerns)
 | | 7:00pm | 7:30pm | [Motivating Examples: Causal Inference &rarr;](#motivation-ii-causal-inference) |
 | | 7:30pm | 7:45pm | [Your First Probabilistic Graphical Model! &rarr;](#your-first-probabilistic-graphical-model)
 | **Break!** | 7:45pm | 8:00pm | |
@@ -79,68 +82,258 @@ Today's Planned Schedule:
 
 :::
 
-# TA Intros {data-stack-name="TA Intros"}
-
-## Courtney Green {.crunch-title .text-90}
-
-**Background:** BA in Public Policy & Leadership, now interested in using data to examine structural disparities.
-
-**Interests & what I can help with:** How sociodemographic factors (e.g., race, gender, income, immigration status, education level) shape policy outcomes and institutional practices in areas like criminal justice, housing, healthcare, education, and environment.
-
-* **Ask me about:** Counterfactual balancing, handling messy or privacy-limited datasets, and framing causal questions around inequality.
-
-* Reach out if you're thinking about a final project that touches social systems, systemic inequity, or fairness! 
-
-## What Got Me Interested in Causal Inference {.crunch-title .text-75}
-**5000 Project: Over-Policing and Wrongful Convictions in Illinois** 
-
-* **Motivation:** Explore what demographic factors predict wrongful convictions using real exoneration data.
-* **Challenge:** No data on “non-exonerated innocents,” so I (with prof's help) created a counterfactual dataset by sampling from the incarcerated population
-* **Method:** Trained models (logistic regression, random forest, KNN) on a balanced dataset of 548 exonerated and 548 non-exonerated individuals
-* **Finding:** Race and geography (esp. Cook Count/Chicago) were the strongest predictors of exoneration
-* **Takeaway:** Questions about systemic bias can’t be answered with just descriptive stats, you need counterfactual reasoning and causal inference
-
-<span style="font-size: 80%;">[(Optional) View the counterfactual setup](https://crg123.georgetown.domains/projects/dsan-5000/_site/technical-details/data-balancing/main.html)</span>
-
-
-## Wendy Hu {.crunch-title .text-82 .crunch-ul}
-
-* **Background:** BS in Social Work, passionate about advancing social equity through computational tools
-* **Interest:** I bring a background in social welfare, public health, and NGO data, with experience analyzing behavioral and institutional outcomes. My work spans Indigenous health, gender equity, and trauma-informed service design—always with a focus on equity, system change, and policy relevance.
-* **Ask me about:** Framing social justice questions in data terms, working with community or clinical datasets and interpreting model results in context.
-* If you’re designing a project around health, inequality, nonprofit impact, or any socially embedded issue—I’d love to help bridge rigor and relevance.
-
-## Jeff's HW1 Update/Apology
-
-* Basically... I goofed by trying to shove a homework into the first two weeks of class 😭
-* Last week was "setting the table", so there are a few (multiple-choice) questions on that
-* But, really only makes sense to have HW starting from **end of today**, once we've introduced **PGMs**, the **language** we need to actually do Causal Computational Social Science!
+# The [Science]{.orbitron-jj} $\leadsto$ [Social Science]{.barrio-jj} "Phase Transition" {data-stack-name="Science &rarr; Social Science"}
 
 <center>
 
-<i class='bi bi-exclamation-triangle'></i> **Due date pushed** to **Friday, June 6, 5:59pm** <i class='bi bi-exclamation-triangle'></i>
+[Today's Demo: [Schelling's Attendance Model](https://observablehq.com/@jpowerj/schelling-attendance)]{.boxed-cb}
 
 </center>
 
-## HW1 Detail (Plz Don't Hate Me 🙈) {.crunch-title .smaller .title-09}
+## Coarse-Graining Units of Observation {.smaller .title-12 .table-85}
 
-*(The main reason this is taking me so long)*
+```{=html}
+<table>
+<thead>
+<tr>
+  <th>Field</th>
+  <th colspan="2">Example Unit of Observation</td>
+</tr>
+</thead>
+<tbody>
+<tr>
+  <td width="20%">Physics</td>
+  <td width="30%"><span data-qmd="Particle"></span></td>
+  <td width="50%" align="right"><span data-qmd="\[Particle = **Fine-Graining** of Molecules\]"></span></td>
+</tr>
+<tr>
+  <td>Chemistry</td>
+  <td><span data-qmd="Molecule = $\cup$(Particles)"></span></td>
+  <td><span data-qmd="\[Molecule = **Coarse-Graining** of Particles\]"></span></td>
+</tr>
+<tr>
+  <td>Biology</td>
+  <td colspan="2"><span data-qmd="Cell = $\cup$(Molecules)"></span></td>
+</tr>
+<tr>
+  <td>Neuro/Cog Sci</td>
+  <td colspan="2"><span data-qmd="Brain = $\cup$(Cells)"></span></td>
+</tr>
+<tr>
+  <td>Human Physiology</td>
+  <td colspan="2"><span data-qmd="Body = Brain $\cup$ Other Organs"></span></td>
+</tr>
+<tr style="border-top: 5px solid #e69f00; border-bottom: 5px solid #e69f00;">
+  <td colspan="3" align="center" class='cb1a-bg'><span data-qmd="&uarr; [Science]{.orbitron-jj} &nbsp;&nbsp; 🧐 **something happens here...** 🤔 &nbsp;&nbsp; &darr; [Social Science]{.barrio-jj}"></span></td>
+</tr>
+<tr>
+  <td>Anthropology</td>
+  <td colspan="2"><span data-qmd="Human-Relational System (e.g., Kinship) = $\cup$(Brains) $\times$ Natural Environment"></span></td>
+</tr>
+<tr>
+  <td>Economics</td>
+  <td colspan="2"><span data-qmd="Economy = Specific relational system of *exchange* w.r.t. scarce resources"></span></td>
+</tr>
+<tr>
+  <td>Political Economy</td>
+  <td colspan="2"><span data-qmd="Economy-Context = Economic Exchange $\cap$ Relational Power"></span></td>
+</tr>
+<tr>
+  <td>Sociology</td>
+  <td colspan="2"><span data-qmd="Society = $\cup$(Relational Systems: Kinship, Friendship, Authority, Power, Violence)"></span></td>
+</tr>
+<tr>
+  <td>History</td>
+  <td colspan="2"><span data-qmd="[*Longue-Durée*](https://en.wikipedia.org/wiki/Longue_dur%C3%A9e) = Evolution of Societies over Time and Space"></span></td>
+</tr>
+</tbody>
+</table>
+```
 
-* Two key libraries for "main" course content (HW2 onwards):
-  * In R: [`rethinking`](https://github.com/rmcelreath/rethinking), "lite" version of [Stan](https://mc-stan.org/)
-  * In Python: [`PyMC`](https://www.pymc.io/welcome.html)
-* Both are overkill for current unit: lots of work required to "turn off" fancy features and [implement basic PGMs](https://discourse.pymc.io/t/bayes-nets-belief-networks-and-pymc/5150/2)
-* $\leadsto$ Only way I know to achieve two goals:
-  * <i class='bi bi-1-circle'></i> Learning **simple PGMs first**, as tools for **thinking**, before adding in additional full-on **coding** baggage of Stan/PyMC
-  * <i class='bi bi-2-circle'></i> Having an entire **textbook** on these base PGMs that you can use as reference
-* Is to use [small, restricted] subset of JavaScript, called [WebPPL](http://webppl.org/), because...
+## *Homo sapiens*/*Homo arbitratus*/*Homo mischievous* {.title-065 .crunch-title .crunch-ul .ul-block}
 
+::: {#mischievous style="float: right;"}
 
+![](images/mood_crop.jpg){fig-align="center" width="290"}
+
+:::
+
+* Latin [*sapiens*](https://en.wiktionary.org/wiki/sapiens#Latin) denotes being "discerning" or "wise"
+* But... technically nothing stops us from **choosing** to be "unwise" whenever we'd like... bc **free will**
+* $\Rightarrow$ For this class, humans are *Homo arbitratus*: [*arbitratus*](https://en.wiktionary.org/wiki/arbitratus#Latin) denotes **choosing** what to do, after we've [sapiently] thought about it
+
+## Laws of Physics vs. "Laws" of Social Science {.title-08 .crunch-title .crunch-ul .crunch-quarto-figure .aside-80 .crunch-li-8 .crunch-img .crunch-footnotes .text-95}
+
+* If we tell an inanimate object that we've discovered a **law** saying that it will accelerate towards Earth at $9.8~\textrm{m}/\textrm{s}^2$
+  * ...It will likely^[Obligatory quantum footnote: human agency [maybe] plays a role, in a quirky way, in physics at tiny subatomic scales; but once we **coarse grain** to atoms (+avoid speed of light), Newton's Laws accurate to many decimals 🤯] still accelerate towards Earth at $9.8~\textrm{m}/\textrm{s}^2$
+
+:::: {layout="[70,30]"}
+::: {#human-law}
+
+* If we tell a **human** we've discovered a **law** saying they will quack like a duck at 7:30pm EDT every Wednesday
+  * ...They can utilize their **free will** to violate this "law"
+
+:::
+::: {#cause-problems}
+
+![](images/cause_problems.jpg){fig-align="center"}
+
+:::
+::::
+
+## Strangely-Relevant CS Topic: The Halting Problem {.smaller .title-09 .table-75 .crunch-title .crunch-ul .crunch-li-8}
+
+* Kurt Gödel $\leftrightarrow$ Alan Turing: [*Entscheidungsproblem*](https://www.cs.virginia.edu/~robins/Turing_Paper_1936.pdf)
+* **Theorem**: It is not possible to write a computer program $P(x)$ that detects whether or not a computer program $x$ will eventually halt (as opposed to, e.g., looping forever)
+* **Proof**: Assume $P(x)$ *is* possible to write. Run it on `mischievous_program.py`. Infinite contradiction loop.
+
+:::: {.columns}
+::: {.column width="60%"}
+
+``` {.python filename="halting_problem_solver.py" style="margin-bottom: 25px;"}
+def will_it_halt(program, input):
+  # Put code you think will work here
+  # Return True if program will halt, False otherwise
+```
+
+``` {.python filename="mischievous_program.py"}
+def my_mischievous_function(input):
+  if will_it_halt(my_mischevious_function, input):
+    while True: pass # Infinite loop
+  else:
+    return # Halt
+```
+
+:::
+::: {.column width="40%"}
+
+```{=html}
 <center>
 
-[http://probmods.org/](http://probmods.org/){.boxed-cb}
+<table>
+<thead>
+<tr>
+  <th><span data-qmd="Input&rarr;<br>&darr;Program"></span></th>
+  <th align="center">0</th>
+  <th align="center">1</th>
+  <th align="center">2</th>
+  <th align="center"><span data-qmd="$\cdots$"></span></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+  <td>0</td>
+  <td class='cb1a-bg' align="center"><span data-qmd="**Halt**"></span></td>
+  <td align="center">Loop</td>
+  <td align="center">Loop</td>
+  <td align="center"><span data-qmd="$\cdots$"></span></td>
+</tr>
+<tr>
+  <td>1</td>
+  <td>Loop</td>
+  <td class='cb1a-bg'><span data-qmd="**Loop**"></span></td>
+  <td>Halt</td>
+  <td><span data-qmd="$\cdots$"></span></td>
+</tr>
+<tr>
+  <td>2</td>
+  <td>Loop</td>
+  <td>Loop</td>
+  <td class='cb1a-bg'><span data-qmd="**Loop**"></span></td>
+  <td><span data-qmd="$\cdots$"></span></td>
+</tr>
+<tr>
+  <td><span data-qmd="$\vdots$"></span></td>
+  <td><span data-qmd="$\vdots$"></span></td>
+  <td><span data-qmd="$\vdots$"></span></td>
+  <td><span data-qmd="$\vdots$"></span></td>
+  <td class='cb1a-bg'><span data-qmd="$\mathbf{\ddots}$"></span></td>
+</tr>
+<tr style="border-top: 3px solid black;">
+  <td align="center"><span data-qmd="![](images/mood_face.jpg){width='50'}"></span></td>
+  <td class='cb1a-bg' style="vertical-align: middle;"><span data-qmd="**Loop**"></span></td>
+  <td class='cb1a-bg' style="vertical-align: middle;"><span data-qmd="**Halt**"></span></td>
+  <td class='cb1a-bg' style="vertical-align: middle;"><span data-qmd="**Halt**"></span></td>
+  <td class='cb1a-bg' style="vertical-align: middle;"><span data-qmd="$\mathbf{\cdots}$"></span></td>
+</tr>
+</tbody>
+</table>
 
 </center>
+```
+
+:::
+::::
+
+## The Takeaway: Bayesian Humility! {.crunch-title .title-09 .crunch-ul .crunch-li-8 .aside-05 .text-85}
+
+* Social [science]{.orbitron-jj}, with ["science"]{.orbitron-jj} used in the same sense as for physics, may be a quixotic endeavor^[At least, for the time being... BUT see @sperber_explaining_1996, which will come up later]
+* Instead, we'll do [**social science**]{.barrio-jj}, where we use data to...
+* <i class='bi bi-1-circle'></i> Infer **tendencies**: $\mathcal{H}$ = «$X$ tends to cause $Y$»
+* <i class='bi bi-2-circle'></i> With some degree of **veracity**: $\Pr(\mathcal{H}) \approx 0.7$
+* <i class='bi bi-3-circle'></i> Construct models that we can **update** with **new evidence**: Bayes' rule! $\Pr(\mathcal{H} \mid E) = \frac{\Pr(E \mid \mathcal{H} ) \Pr(\mathcal{H})}{\Pr(E)} \approx 0.8$
+* Notice "slippage" between **aleatory probability** *within* $\mathcal{H}$ ("tends to") vs. **epistemic probability** "outside of", talking *about* $\mathcal{H}$ ("I'm 70\% confident about $\mathcal{H}$")
+
+# Matching Estimators for Apples-to-Apples Comparisons {data-stack-name="Causality" .crunch-title}
+
+![[Image Source](https://shirt.woot.com/offers/comparing-apples-to-oranges)](images/fruit.png){fig-align="center"}
+
+## Case Study: Military Inequality $\leadsto$ Military Success {.smaller .crunch-title .title-09 .crunch-ul .crunch-blockquote .crunch-li-8}
+
+* @lyall_divided_2020: "Treating certain ethnic groups as second-class citizens [...] leads victimized soldiers to subvert military authorities once war begins. The higher an army's inequality, the greater its rates of desertion, side-switching, and casualties"
+
+> Matching constructs **pairs of belligerents** that are **similar** across a wide range of traits thought to dictate battlefield performance but that **vary** in levels of prewar inequality. The more similar the belligerents, the better our estimate of inequality's effects, as all other traits are shared and thus cannot explain observed differences in performance, helping assess how battlefield performance **would have** improved (declined) if the belligerent had a lower (higher) level of prewar inequality.
+> 
+> Since [non-matched] cases are **dropped** [...] selected cases are more representative of average belligerents/wars than outliers with few or no matches, [providing] surer ground for testing generalizability of the book's claims than focusing solely on canonical but unrepresentative usual suspects (Germany, the United States, Israel)
+
+## Does Inequality Cause Poor Military Performance? {.smaller .crunch-title .title-10 .table-80 .text-60}
+
+| <br>Covariates | Sultanate of Morocco<br> *Spanish-Moroccan War, 1859-60* | Khanate of Kokand<br> *War with Russia, 1864-65* |
+| - | - | - |
+| **$X$: Military Inequality** | Low (0.01) | Extreme (0.70) |
+| **$\mathbf{Z}$: Matched Covariates:** | | |
+| Initial relative power | 66% | 66% |
+| Total fielded force | 55,000 | 50,000 |
+| Regime type | Absolutist Monarchy (−6) | Absolute Monarchy (−7) |
+| Distance from capital | 208km | 265km |
+| Standing army | Yes | Yes |
+| Composite military | Yes | Yes |
+| Initiator | No | No |
+| Joiner | No | No |
+| Democratic opponent | No | No |
+| Great Power | No | No |
+| Civil war | No | No |
+| Combined arms | Yes | Yes |
+| Doctrine | Offensive | Offensive |
+| Superior weapons | No | No |
+| Fortifications | Yes | Yes |
+| Foreign advisors | Yes | Yes |
+| Terrain | Semiarid coastal plain | Semiarid grassland plain |
+| Topography | Rugged | Rugged |
+| War duration | 126 days | 378 days |
+| Recent war history w/opp | Yes | Yes |
+| Facing colonizer | Yes | Yes |
+| Identity dimension | Sunni Islam/Christian | Sunni Islam/Christian |
+| New leader | Yes | Yes |
+| Population | 8–8.5 million | 5–6 million |
+| Ethnoling fractionalization (ELF) | High | High |
+| Civ-mil relations | Ruler as commander | Ruler as commander |
+| **$Y$: Battlefield Performance:** | | |
+| Loss-exchange ratio | 0.43 | 0.02 |
+| Mass desertion | No | Yes |
+| Mass defection | No | No |
+| Fratricidal violence | No | Yes |
+
+# Motivation II: Humble-Bayesian Social Science {data-stack-name="CSS"}
+
+## The Logic of Violence in Civil War {.smaller .crunch-title}
+
+![@kalyvas_logic_2006](images/kalyvas.jpg){fig-align="center"}
+
+## Particularly Fun Non-"Standard" Examples
+
+* DeDeo, French Revolution
+* Grimmer, Mirrors for Sultans and Princes
 
 # Motivating Examples: Causal Inference {data-stack-name="Causal Inference"}
 
@@ -169,12 +362,12 @@ Today's Planned Schedule:
 :::
 ::: {#looked-at-the-data}
 
-{{< video https://jpj.georgetown.domains/dsan5650-scratch/looked_at_the_data.mp4 >}}
+{{< video https://jpj.georgetown.domains/dsan5650-data/looked_at_the_data.mp4 >}}
 
 :::
 ::::
 
-## Blasting Off Into Causality! {.title-10 .crunch-title .not-title-slide}
+## Blasting Off Into Causality! {.title-10 .crunch-title}
 
 ![](images/posadism_causal.jpg){fig-align="center"}
 
@@ -339,7 +532,7 @@ $X$ causes $Y$ if and only if:
 * <i class='bi bi-2-circle'></i> What do you think the arrows represent?
 * <i class='bi bi-3-circle'></i> Can we use this to find the **"root cause"** of (e.g.) observed **chest pain**? Or conversely, to **predict** possible &uarr; in likelihood of chest pain if we start smoking?
 
-## Bayesian Inference but with Pictures {.title-09 .crunch-title .crunch-ul .crunch-li-8 .crunch-callout .text-90 .inline-90}
+## Bayesian Inference but with Pictures {.title-09 .crunch-title .crunch-ul .crunch-li-8 .crunch-callout .text-90 .inline-90 .crunch-p-6}
 
 A **Probabilistic Graphical Model (PGM)** provides us with:
 
@@ -349,7 +542,7 @@ A **Probabilistic Graphical Model (PGM)** provides us with:
 
 Example: Let's model how **weather** $W$ affects **evening plans** $Y$: the choice between **going to a party** or **staying in to watch movies**
 
-::: {.callout-tip title="<i class='bi bi-info-circle'></i> The Partier's Dilemma" icon="false"}
+::: {.callout-tip title="<i class='bi bi-info-circle' style='vertical-align: middle;'></i> The Partier's Dilemma" icon="false"}
 
 1.  A person $i$ wakes up with some initial affinity for partying: $\Pr(Y_i = \textsf{Go})$
 2.  $i$ then goes to their window and observes the weather $W_i$ outside:
@@ -358,20 +551,21 @@ Example: Let's model how **weather** $W$ affects **evening plans** $Y$: the choi
 
 :::
 
-## Two Main "Building Blocks" {.crunch-title .title-09 .inline-95 .math-80 .crunch-ul .crunch-math .crunch-li-8 .text-90}
+## Two Main "Building Blocks" {.crunch-title .title-09 .inline-90 .math-80 .crunch-ul .crunch-math .crunch-li-8 .text-80}
 
-* **Nodes** like $\require{enclose}\enclose{circle}{\kern .01em ~X~\kern .01em}$ denote **Random Variables**
-
-$$
-\boxed{\require{enclose}\enclose{circle}{\kern .01em ~X~\kern .01em}} \simeq \boxed{ \begin{array}{c|cc}x & \textsf{Tails} & \textsf{Heads} \\\hline \Pr(X = x) & 0.5 & 0.5\end{array}}
-$$
-
-* **Edges** like $\require{enclose}\enclose{circle}{\kern .01em ~X~\kern .01em} \rightarrow \; \enclose{circle}{\kern.01em Y~\kern .01em}$ denote **relationships** between RVs
-  * What an edge "means" can get [ontologically] tricky!
-  * Retain sanity by just remembering: an edge $\require{enclose}\enclose{circle}{\kern .01em ~X~\kern .01em} \rightarrow \; \enclose{circle}{\kern.01em Y~\kern .01em}$ is included in our PGM if we "care about" modeling the **conditional probability table (CPT)** of $Y$ w.r.t. $X$
+[**Nodes**]{.boxed} like $\require{enclose}\enclose{circle}{X}$ denote **Random Variables**:
 
 $$
-\require{enclose}\boxed{ \enclose{circle}{\kern .01em ~X~\kern .01em} \rightarrow \; \enclose{circle}{\kern.01em Y~\kern .01em} } \simeq \boxed{
+\require{enclose}\boxed{\enclose{circle}{X}} \simeq \boxed{ \begin{array}{c|cc}x & \textsf{Tails} & \textsf{Heads} \\\hline \Pr(X = x) & 0.5 & 0.5\end{array}}
+$$
+
+[**Edges**]{.boxed} like $\require{enclose}\enclose{circle}{X} \rightarrow \enclose{circle}{Y}$ denote **relationships** between RVs
+
+* What an edge "means" can get [ontologically] tricky!
+* Retain sanity by just remembering: an edge $\require{enclose}\enclose{circle}{X} \rightarrow \enclose{circle}{Y}$ is included in our PGM if we "care about" modeling the **conditional probability table (CPT)** of $Y$ w.r.t. $X$
+
+$$
+\require{enclose}\boxed{ \enclose{circle}{X} \rightarrow \enclose{circle}{Y} } \simeq \boxed{
   \begin{array}{c|cc}
   x & \Pr(Y = \textsf{Lose} \mid X = x) & \Pr(Y = \textsf{Win} \mid X = x) \\\hline
   \textsf{Tails} & 0.8 & 0.2 \\
@@ -382,9 +576,9 @@ $$
 
 ## PGM for the Partier's Dilemma {.smaller .crunch-title .crunch-ul .table-90}
 
-* A node $\pnode{W}$ denoting RV $W$, which can take on values in $\mathcal{R}_W = \{\textsf{Sun}, \textsf{Rain}\}$,
-* A node $\pnode{Y}$ denoting RV $Y$, which can take on values in $\mathcal{R}_Y = \{\textsf{Go}, \textsf{Stay}\}$, and 
-* An edge $\pedge{W}{Y}$ representing the following relationship between $W$ and $Y$:
+* A node $\require{enclose}\enclose{circle}{W}$ denoting RV $W$, which can take on values in $\mathcal{R}_W = \{\textsf{Sun}, \textsf{Rain}\}$,
+* A node $\require{enclose}\enclose{circle}{Y}$ denoting RV $Y$, which can take on values in $\mathcal{R}_Y = \{\textsf{Go}, \textsf{Stay}\}$, and 
+* An edge $\require{enclose}\enclose{circle}{W} \rightarrow \enclose{circle}{Y}$ representing the following relationship between $W$ and $Y$:
   * $\Pr(Y = \textsf{Go} \mid W = \textsf{Sun}) = 0.8$
   * $\Pr(Y = \textsf{Stay} \mid W = \textsf{Sun}) = 0.2$
   * $\Pr(Y = \textsf{Go} \mid W = \textsf{Rain}) = 0.1$
@@ -404,7 +598,7 @@ Our PGM of the Partier's Dilemma
 | $W = \textsf{Sun}$ | 0.2 | 0.8 |
 | $W = \textsf{Rain}$ | 0.9 | 0.1 |
 
-The Conditional Probability Table (CPT) for the edge $\pedge{W}{Y}$ in @fig-partier-dgp
+The Conditional Probability Table (CPT) for the edge $\require{enclose}\enclose{circle}{W} \rightarrow \enclose{circle}{Y}$ in @fig-partier-dgp
 :::
 ::::
 
@@ -417,7 +611,7 @@ The Conditional Probability Table (CPT) for the edge $\pedge{W}{Y}$ in @fig-part
 * $\Rightarrow$ Can use our PGM as a **weather-inference machine!**
 * If we **observe** $i$ at a party, what can we infer about the **weather** outside?
 
-## Observed Partier, Latent Weather {.title-09}
+## Observed Partier, Latent Weather {.title-09 .crunch-title}
 
 * We can draw this situation as a PGM with **shaded** and **unshaded nodes**, distinguishing what we **know** from what we'd like to **infer**:
 
@@ -427,7 +621,7 @@ The Conditional Probability Table (CPT) for the edge $\pedge{W}{Y}$ in @fig-part
 |:-:|:-:|:-:|
 | ❓ | &nbsp; | ✅ |
 
-: {tbl-colwidths="[18,64,18]"}
+: {tbl-colwidths="[17,66,17]"}
 
 * And we can now use Bayes' Rule to compute how observed information ($i$ at party $\Rightarrow [Y = \textsf{Go}]$) "flows" back into $W$
 

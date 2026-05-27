@@ -979,39 +979,67 @@
     ]
   },
   {
-    "objectID": "w02/slides.html#courtney-green",
-    "href": "w02/slides.html#courtney-green",
+    "objectID": "w02/slides.html#coarse-graining-units-of-observation",
+    "href": "w02/slides.html#coarse-graining-units-of-observation",
     "title": "Week 2: Probabilistic Graphical Models (PGMs)",
-    "section": "Courtney Green",
-    "text": "Courtney Green\nBackground: BA in Public Policy & Leadership, now interested in using data to examine structural disparities.\nInterests & what I can help with: How sociodemographic factors (e.g., race, gender, income, immigration status, education level) shape policy outcomes and institutional practices in areas like criminal justice, housing, healthcare, education, and environment.\n\nAsk me about: Counterfactual balancing, handling messy or privacy-limited datasets, and framing causal questions around inequality.\nReach out if you’re thinking about a final project that touches social systems, systemic inequity, or fairness!"
+    "section": "Coarse-Graining Units of Observation",
+    "text": "Coarse-Graining Units of Observation\n\n\n\nField\nExample Unit of Observation\n\n\n\n\nPhysics\nParticle\n[Particle = Fine-Graining of Molecules]\n\n\nChemistry\nMolecule = \\(\\cup\\)(Particles)\n[Molecule = Coarse-Graining of Particles]\n\n\nBiology\nCell = \\(\\cup\\)(Molecules)\n\n\nNeuro/Cog Sci\nBrain = \\(\\cup\\)(Cells)\n\n\nHuman Physiology\nBody = Brain \\(\\cup\\) Other Organs\n\n\n↑ Science    🧐 something happens here… 🤔    ↓ Social Science\n\n\nAnthropology\nHuman-Relational System (e.g., Kinship) = \\(\\cup\\)(Brains) \\(\\times\\) Natural Environment\n\n\nEconomics\nEconomy = Specific relational system of exchange w.r.t. scarce resources\n\n\nPolitical Economy\nEconomy-Context = Economic Exchange \\(\\cap\\) Relational Power\n\n\nSociology\nSociety = \\(\\cup\\)(Relational Systems: Kinship, Friendship, Authority, Power, Violence)\n\n\nHistory\nLongue-Durée = Evolution of Societies over Time and Space"
   },
   {
-    "objectID": "w02/slides.html#what-got-me-interested-in-causal-inference",
-    "href": "w02/slides.html#what-got-me-interested-in-causal-inference",
+    "objectID": "w02/slides.html#homo-sapienshomo-arbitratushomo-mischievous",
+    "href": "w02/slides.html#homo-sapienshomo-arbitratushomo-mischievous",
     "title": "Week 2: Probabilistic Graphical Models (PGMs)",
-    "section": "What Got Me Interested in Causal Inference",
-    "text": "What Got Me Interested in Causal Inference\n5000 Project: Over-Policing and Wrongful Convictions in Illinois\n\nMotivation: Explore what demographic factors predict wrongful convictions using real exoneration data.\nChallenge: No data on “non-exonerated innocents,” so I (with prof’s help) created a counterfactual dataset by sampling from the incarcerated population\nMethod: Trained models (logistic regression, random forest, KNN) on a balanced dataset of 548 exonerated and 548 non-exonerated individuals\nFinding: Race and geography (esp. Cook Count/Chicago) were the strongest predictors of exoneration\nTakeaway: Questions about systemic bias can’t be answered with just descriptive stats, you need counterfactual reasoning and causal inference\n\n(Optional) View the counterfactual setup"
+    "section": "Homo sapiens/Homo arbitratus/Homo mischievous",
+    "text": "Homo sapiens/Homo arbitratus/Homo mischievous\n\n\n\n\n\n\n\n\nLatin sapiens denotes being “discerning” or “wise”\nBut… technically nothing stops us from choosing to be “unwise” whenever we’d like… bc free will\n\\(\\Rightarrow\\) For this class, humans are Homo arbitratus: arbitratus denotes choosing what to do, after we’ve [sapiently] thought about it"
   },
   {
-    "objectID": "w02/slides.html#wendy-hu",
-    "href": "w02/slides.html#wendy-hu",
+    "objectID": "w02/slides.html#laws-of-physics-vs.-laws-of-social-science",
+    "href": "w02/slides.html#laws-of-physics-vs.-laws-of-social-science",
     "title": "Week 2: Probabilistic Graphical Models (PGMs)",
-    "section": "Wendy Hu",
-    "text": "Wendy Hu\n\nBackground: BS in Social Work, passionate about advancing social equity through computational tools\nInterest: I bring a background in social welfare, public health, and NGO data, with experience analyzing behavioral and institutional outcomes. My work spans Indigenous health, gender equity, and trauma-informed service design—always with a focus on equity, system change, and policy relevance.\nAsk me about: Framing social justice questions in data terms, working with community or clinical datasets and interpreting model results in context.\nIf you’re designing a project around health, inequality, nonprofit impact, or any socially embedded issue—I’d love to help bridge rigor and relevance."
+    "section": "Laws of Physics vs. “Laws” of Social Science",
+    "text": "Laws of Physics vs. “Laws” of Social Science\n\nIf we tell an inanimate object that we’ve discovered a law saying that it will accelerate towards Earth at \\(9.8~\\textrm{m}/\\textrm{s}^2\\)\n\n…It will likely1 still accelerate towards Earth at \\(9.8~\\textrm{m}/\\textrm{s}^2\\)\n\n\n\n\n\n\nIf we tell a human we’ve discovered a law saying they will quack like a duck at 7:30pm EDT every Wednesday\n\n…They can utilize their free will to violate this “law”\n\n\n\n\n\n\n\n\n\n\n\n\nObligatory quantum footnote: human agency [maybe] plays a role, in a quirky way, in physics at tiny subatomic scales; but once we coarse grain to atoms (+avoid speed of light), Newton’s Laws accurate to many decimals 🤯"
   },
   {
-    "objectID": "w02/slides.html#jeffs-hw1-updateapology",
-    "href": "w02/slides.html#jeffs-hw1-updateapology",
+    "objectID": "w02/slides.html#strangely-relevant-cs-topic-the-halting-problem",
+    "href": "w02/slides.html#strangely-relevant-cs-topic-the-halting-problem",
     "title": "Week 2: Probabilistic Graphical Models (PGMs)",
-    "section": "Jeff’s HW1 Update/Apology",
-    "text": "Jeff’s HW1 Update/Apology\n\nBasically… I goofed by trying to shove a homework into the first two weeks of class 😭\nLast week was “setting the table”, so there are a few (multiple-choice) questions on that\nBut, really only makes sense to have HW starting from end of today, once we’ve introduced PGMs, the language we need to actually do Causal Computational Social Science!\n\n\n Due date pushed to Friday, June 6, 5:59pm"
+    "section": "Strangely-Relevant CS Topic: The Halting Problem",
+    "text": "Strangely-Relevant CS Topic: The Halting Problem\n\nKurt Gödel \\(\\leftrightarrow\\) Alan Turing: Entscheidungsproblem\nTheorem: It is not possible to write a computer program \\(P(x)\\) that detects whether or not a computer program \\(x\\) will eventually halt (as opposed to, e.g., looping forever)\nProof: Assume \\(P(x)\\) is possible to write. Run it on mischievous_program.py. Infinite contradiction loop.\n\n\n\n\n\nhalting_problem_solver.py\n\ndef will_it_halt(program, input):\n  # Put code you think will work here\n  # Return True if program will halt, False otherwise\n\n\n\nmischievous_program.py\n\ndef my_mischievous_function(input):\n  if will_it_halt(my_mischevious_function, input):\n    while True: pass # Infinite loop\n  else:\n    return # Halt\n\n\n\n\n\n\n\n\nInput→↓Program\n0\n1\n2\n\\(\\cdots\\)\n\n\n\n\n0\nHalt\nLoop\nLoop\n\\(\\cdots\\)\n\n\n1\nLoop\nLoop\nHalt\n\\(\\cdots\\)\n\n\n2\nLoop\nLoop\nLoop\n\\(\\cdots\\)\n\n\n\\(\\vdots\\)\n\\(\\vdots\\)\n\\(\\vdots\\)\n\\(\\vdots\\)\n\\(\\mathbf{\\ddots}\\)\n\n\n\nLoop\nHalt\nHalt\n\\(\\mathbf{\\cdots}\\)"
   },
   {
-    "objectID": "w02/slides.html#hw1-detail-plz-dont-hate-me",
-    "href": "w02/slides.html#hw1-detail-plz-dont-hate-me",
+    "objectID": "w02/slides.html#the-takeaway-bayesian-humility",
+    "href": "w02/slides.html#the-takeaway-bayesian-humility",
     "title": "Week 2: Probabilistic Graphical Models (PGMs)",
-    "section": "HW1 Detail (Plz Don’t Hate Me 🙈)",
-    "text": "HW1 Detail (Plz Don’t Hate Me 🙈)\n(The main reason this is taking me so long)\n\nTwo key libraries for “main” course content (HW2 onwards):\n\nIn R: rethinking, “lite” version of Stan\nIn Python: PyMC\n\nBoth are overkill for current unit: lots of work required to “turn off” fancy features and implement basic PGMs\n\\(\\leadsto\\) Only way I know to achieve two goals:\n\n Learning simple PGMs first, as tools for thinking, before adding in additional full-on coding baggage of Stan/PyMC\n Having an entire textbook on these base PGMs that you can use as reference\n\nIs to use [small, restricted] subset of JavaScript, called WebPPL, because…\n\n\nhttp://probmods.org/"
+    "section": "The Takeaway: Bayesian Humility!",
+    "text": "The Takeaway: Bayesian Humility!\n\nSocial science, with “science” used in the same sense as for physics, may be a quixotic endeavor1\nInstead, we’ll do social science, where we use data to…\n Infer tendencies: \\(\\mathcal{H}\\) = «\\(X\\) tends to cause \\(Y\\)»\n With some degree of veracity: \\(\\Pr(\\mathcal{H}) \\approx 0.7\\)\n Construct models that we can update with new evidence: Bayes’ rule! \\(\\Pr(\\mathcal{H} \\mid E) = \\frac{\\Pr(E \\mid \\mathcal{H} ) \\Pr(\\mathcal{H})}{\\Pr(E)} \\approx 0.8\\)\nNotice “slippage” between aleatory probability within \\(\\mathcal{H}\\) (“tends to”) vs. epistemic probability “outside of”, talking about \\(\\mathcal{H}\\) (“I’m 70% confident about \\(\\mathcal{H}\\)”)\n\nAt least, for the time being… BUT see Sperber (1996), which will come up later"
+  },
+  {
+    "objectID": "w02/slides.html#case-study-military-inequality-leadsto-military-success",
+    "href": "w02/slides.html#case-study-military-inequality-leadsto-military-success",
+    "title": "Week 2: Probabilistic Graphical Models (PGMs)",
+    "section": "Case Study: Military Inequality \\(\\leadsto\\) Military Success",
+    "text": "Case Study: Military Inequality \\(\\leadsto\\) Military Success\n\nLyall (2020): “Treating certain ethnic groups as second-class citizens […] leads victimized soldiers to subvert military authorities once war begins. The higher an army’s inequality, the greater its rates of desertion, side-switching, and casualties”\n\n\nMatching constructs pairs of belligerents that are similar across a wide range of traits thought to dictate battlefield performance but that vary in levels of prewar inequality. The more similar the belligerents, the better our estimate of inequality’s effects, as all other traits are shared and thus cannot explain observed differences in performance, helping assess how battlefield performance would have improved (declined) if the belligerent had a lower (higher) level of prewar inequality.\nSince [non-matched] cases are dropped […] selected cases are more representative of average belligerents/wars than outliers with few or no matches, [providing] surer ground for testing generalizability of the book’s claims than focusing solely on canonical but unrepresentative usual suspects (Germany, the United States, Israel)"
+  },
+  {
+    "objectID": "w02/slides.html#does-inequality-cause-poor-military-performance",
+    "href": "w02/slides.html#does-inequality-cause-poor-military-performance",
+    "title": "Week 2: Probabilistic Graphical Models (PGMs)",
+    "section": "Does Inequality Cause Poor Military Performance?",
+    "text": "Does Inequality Cause Poor Military Performance?\n\n\n\n\n\n\n\n\nCovariates\nSultanate of Morocco Spanish-Moroccan War, 1859-60\nKhanate of Kokand War with Russia, 1864-65\n\n\n\n\n\\(X\\): Military Inequality\nLow (0.01)\nExtreme (0.70)\n\n\n\\(\\mathbf{Z}\\): Matched Covariates:\n\n\n\n\nInitial relative power\n66%\n66%\n\n\nTotal fielded force\n55,000\n50,000\n\n\nRegime type\nAbsolutist Monarchy (−6)\nAbsolute Monarchy (−7)\n\n\nDistance from capital\n208km\n265km\n\n\nStanding army\nYes\nYes\n\n\nComposite military\nYes\nYes\n\n\nInitiator\nNo\nNo\n\n\nJoiner\nNo\nNo\n\n\nDemocratic opponent\nNo\nNo\n\n\nGreat Power\nNo\nNo\n\n\nCivil war\nNo\nNo\n\n\nCombined arms\nYes\nYes\n\n\nDoctrine\nOffensive\nOffensive\n\n\nSuperior weapons\nNo\nNo\n\n\nFortifications\nYes\nYes\n\n\nForeign advisors\nYes\nYes\n\n\nTerrain\nSemiarid coastal plain\nSemiarid grassland plain\n\n\nTopography\nRugged\nRugged\n\n\nWar duration\n126 days\n378 days\n\n\nRecent war history w/opp\nYes\nYes\n\n\nFacing colonizer\nYes\nYes\n\n\nIdentity dimension\nSunni Islam/Christian\nSunni Islam/Christian\n\n\nNew leader\nYes\nYes\n\n\nPopulation\n8–8.5 million\n5–6 million\n\n\nEthnoling fractionalization (ELF)\nHigh\nHigh\n\n\nCiv-mil relations\nRuler as commander\nRuler as commander\n\n\n\\(Y\\): Battlefield Performance:\n\n\n\n\nLoss-exchange ratio\n0.43\n0.02\n\n\nMass desertion\nNo\nYes\n\n\nMass defection\nNo\nNo\n\n\nFratricidal violence\nNo\nYes"
+  },
+  {
+    "objectID": "w02/slides.html#the-logic-of-violence-in-civil-war",
+    "href": "w02/slides.html#the-logic-of-violence-in-civil-war",
+    "title": "Week 2: Probabilistic Graphical Models (PGMs)",
+    "section": "The Logic of Violence in Civil War",
+    "text": "The Logic of Violence in Civil War\n\nKalyvas (2006)"
+  },
+  {
+    "objectID": "w02/slides.html#particularly-fun-non-standard-examples",
+    "href": "w02/slides.html#particularly-fun-non-standard-examples",
+    "title": "Week 2: Probabilistic Graphical Models (PGMs)",
+    "section": "Particularly Fun Non-“Standard” Examples",
+    "text": "Particularly Fun Non-“Standard” Examples\n\nDeDeo, French Revolution\nGrimmer, Mirrors for Sultans and Princes"
   },
   {
     "objectID": "w02/slides.html#disclaimer-unfortunate-side-effects-of-engaging-seriously-with-causality",
@@ -1137,14 +1165,14 @@
     "href": "w02/slides.html#two-main-building-blocks",
     "title": "Week 2: Probabilistic Graphical Models (PGMs)",
     "section": "Two Main “Building Blocks”",
-    "text": "Two Main “Building Blocks”\n\nNodes like \\(\\require{enclose}\\enclose{circle}{\\kern .01em ~X~\\kern .01em}\\) denote Random Variables\n\n\\[\n\\boxed{\\require{enclose}\\enclose{circle}{\\kern .01em ~X~\\kern .01em}} \\simeq \\boxed{ \\begin{array}{c|cc}x & \\textsf{Tails} & \\textsf{Heads} \\\\\\hline \\Pr(X = x) & 0.5 & 0.5\\end{array}}\n\\]\n\nEdges like \\(\\require{enclose}\\enclose{circle}{\\kern .01em ~X~\\kern .01em} \\rightarrow \\; \\enclose{circle}{\\kern.01em Y~\\kern .01em}\\) denote relationships between RVs\n\nWhat an edge “means” can get [ontologically] tricky!\nRetain sanity by just remembering: an edge \\(\\require{enclose}\\enclose{circle}{\\kern .01em ~X~\\kern .01em} \\rightarrow \\; \\enclose{circle}{\\kern.01em Y~\\kern .01em}\\) is included in our PGM if we “care about” modeling the conditional probability table (CPT) of \\(Y\\) w.r.t. \\(X\\)\n\n\n\\[\n\\require{enclose}\\boxed{ \\enclose{circle}{\\kern .01em ~X~\\kern .01em} \\rightarrow \\; \\enclose{circle}{\\kern.01em Y~\\kern .01em} } \\simeq \\boxed{\n  \\begin{array}{c|cc}\n  x & \\Pr(Y = \\textsf{Lose} \\mid X = x) & \\Pr(Y = \\textsf{Win} \\mid X = x) \\\\\\hline\n  \\textsf{Tails} & 0.8 & 0.2 \\\\\n  \\textsf{Heads} & 0.5 & 0.5\n  \\end{array}\n}\n\\]"
+    "text": "Two Main “Building Blocks”\nNodes like \\(\\require{enclose}\\enclose{circle}{X}\\) denote Random Variables:\n\\[\n\\require{enclose}\\boxed{\\enclose{circle}{X}} \\simeq \\boxed{ \\begin{array}{c|cc}x & \\textsf{Tails} & \\textsf{Heads} \\\\\\hline \\Pr(X = x) & 0.5 & 0.5\\end{array}}\n\\]\nEdges like \\(\\require{enclose}\\enclose{circle}{X} \\rightarrow \\enclose{circle}{Y}\\) denote relationships between RVs\n\nWhat an edge “means” can get [ontologically] tricky!\nRetain sanity by just remembering: an edge \\(\\require{enclose}\\enclose{circle}{X} \\rightarrow \\enclose{circle}{Y}\\) is included in our PGM if we “care about” modeling the conditional probability table (CPT) of \\(Y\\) w.r.t. \\(X\\)\n\n\\[\n\\require{enclose}\\boxed{ \\enclose{circle}{X} \\rightarrow \\enclose{circle}{Y} } \\simeq \\boxed{\n  \\begin{array}{c|cc}\n  x & \\Pr(Y = \\textsf{Lose} \\mid X = x) & \\Pr(Y = \\textsf{Win} \\mid X = x) \\\\\\hline\n  \\textsf{Tails} & 0.8 & 0.2 \\\\\n  \\textsf{Heads} & 0.5 & 0.5\n  \\end{array}\n}\n\\]"
   },
   {
     "objectID": "w02/slides.html#pgm-for-the-partiers-dilemma",
     "href": "w02/slides.html#pgm-for-the-partiers-dilemma",
     "title": "Week 2: Probabilistic Graphical Models (PGMs)",
     "section": "PGM for the Partier’s Dilemma",
-    "text": "PGM for the Partier’s Dilemma\n\nA node \\(\\pnode{W}\\) denoting RV \\(W\\), which can take on values in \\(\\mathcal{R}_W = \\{\\textsf{Sun}, \\textsf{Rain}\\}\\),\nA node \\(\\pnode{Y}\\) denoting RV \\(Y\\), which can take on values in \\(\\mathcal{R}_Y = \\{\\textsf{Go}, \\textsf{Stay}\\}\\), and\nAn edge \\(\\pedge{W}{Y}\\) representing the following relationship between \\(W\\) and \\(Y\\):\n\n\\(\\Pr(Y = \\textsf{Go} \\mid W = \\textsf{Sun}) = 0.8\\)\n\\(\\Pr(Y = \\textsf{Stay} \\mid W = \\textsf{Sun}) = 0.2\\)\n\\(\\Pr(Y = \\textsf{Go} \\mid W = \\textsf{Rain}) = 0.1\\)\n\\(\\Pr(Y = \\textsf{Stay} \\mid W = \\textsf{Rain}) = 0.9\\)\n\n\n\n\n\n\n\n\n\n\n\nFigure 1: Our PGM of the Partier’s Dilemma\n\n\n\n\n\n\n\n\n\n\n\n\n\\(\\Pr(Y = \\textsf{Stay} \\mid W)\\)\n\\(\\Pr(Y = \\textsf{Go} \\mid W)\\)\n\n\n\n\n\\(W = \\textsf{Sun}\\)\n0.2\n0.8\n\n\n\\(W = \\textsf{Rain}\\)\n0.9\n0.1\n\n\n\n\n\nFigure 2: The Conditional Probability Table (CPT) for the edge \\(\\pedge{W}{Y}\\) in Figure 1"
+    "text": "PGM for the Partier’s Dilemma\n\nA node \\(\\require{enclose}\\enclose{circle}{W}\\) denoting RV \\(W\\), which can take on values in \\(\\mathcal{R}_W = \\{\\textsf{Sun}, \\textsf{Rain}\\}\\),\nA node \\(\\require{enclose}\\enclose{circle}{Y}\\) denoting RV \\(Y\\), which can take on values in \\(\\mathcal{R}_Y = \\{\\textsf{Go}, \\textsf{Stay}\\}\\), and\nAn edge \\(\\require{enclose}\\enclose{circle}{W} \\rightarrow \\enclose{circle}{Y}\\) representing the following relationship between \\(W\\) and \\(Y\\):\n\n\\(\\Pr(Y = \\textsf{Go} \\mid W = \\textsf{Sun}) = 0.8\\)\n\\(\\Pr(Y = \\textsf{Stay} \\mid W = \\textsf{Sun}) = 0.2\\)\n\\(\\Pr(Y = \\textsf{Go} \\mid W = \\textsf{Rain}) = 0.1\\)\n\\(\\Pr(Y = \\textsf{Stay} \\mid W = \\textsf{Rain}) = 0.9\\)\n\n\n\n\n\n\n\n\n\n\n\nFigure 1: Our PGM of the Partier’s Dilemma\n\n\n\n\n\n\n\n\n\n\n\n\n\\(\\Pr(Y = \\textsf{Stay} \\mid W)\\)\n\\(\\Pr(Y = \\textsf{Go} \\mid W)\\)\n\n\n\n\n\\(W = \\textsf{Sun}\\)\n0.2\n0.8\n\n\n\\(W = \\textsf{Rain}\\)\n0.9\n0.1\n\n\n\n\n\nFigure 2: The Conditional Probability Table (CPT) for the edge \\(\\require{enclose}\\enclose{circle}{W} \\rightarrow \\enclose{circle}{Y}\\) in Figure 1"
   },
   {
     "objectID": "w02/slides.html#observed-vs.-latent-nodes",
@@ -1172,7 +1200,7 @@
     "href": "w02/slides.html#references",
     "title": "Week 2: Probabilistic Graphical Models (PGMs)",
     "section": "References",
-    "text": "References\n\n\nFinetti, Bruno de. 1972. Probability, Induction and Statistics: The Art of Guessing. J. Wiley. https://books.google.com?id=hENg7qRPOPYC.\n\n\nHume, David. 1739. A Treatise of Human Nature: Being an Attempt to Introduce the Experimental Method of Reasoning Into Moral Subjects; and Dialogues Concerning Natural Religion. Longmans, Green.\n\n\nKoller, Daphne, and Nir Friedman. 2009. Probabilistic Graphical Models: Principles and Techniques. MIT Press. https://www.dropbox.com/scl/fi/6qmnr9feizngaq4005isj/Probabilistic-Graphical-Models.pdf?rlkey=4803nmsffh4xtsdfiji8jppb1&dl=1.\n\n\nPearl, Judea. 2000. Causality: Models, Reasoning, and Inference. Cambridge University Press. https://www.dropbox.com/scl/fi/4kfpro4gpx7tg55fwd7qt/Judea-Pearl-Causality_-Models-Reasoning-and-Inference.pdf?rlkey=f0abw0cgmsyiegx6xapq5z7j2&dl=1."
+    "text": "References\n\n\nFinetti, Bruno de. 1972. Probability, Induction and Statistics: The Art of Guessing. J. Wiley.\n\n\nHume, David. 1739. A Treatise of Human Nature: Being an Attempt to Introduce the Experimental Method of Reasoning Into Moral Subjects; and Dialogues Concerning Natural Religion. Longmans, Green.\n\n\nKalyvas, Stathis N. 2006. The Logic of Violence in Civil War. Cambridge University Press.\n\n\nKoller, Daphne, and Nir Friedman. 2009. Probabilistic Graphical Models: Principles and Techniques. MIT Press.\n\n\nLyall, Jason. 2020. Divided Armies: Inequality and Battlefield Performance in Modern War. Princeton University Press.\n\n\nPearl, Judea. 2000. Causality: Models, Reasoning, and Inference. Cambridge University Press.\n\n\nSperber, Dan. 1996. Explaining Culture: A Naturalistic Approach. Cambridge: Blackwell."
   },
   {
     "objectID": "w02/slides.html#appendix-zero-probabilities",
@@ -1192,51 +1220,91 @@
     ]
   },
   {
-    "objectID": "w02/index.html#courtney-green",
-    "href": "w02/index.html#courtney-green",
+    "objectID": "w02/index.html#coarse-graining-units-of-observation",
+    "href": "w02/index.html#coarse-graining-units-of-observation",
     "title": "Week 2: Probabilistic Graphical Models (PGMs)",
-    "section": "Courtney Green",
-    "text": "Courtney Green\nBackground: BA in Public Policy & Leadership, now interested in using data to examine structural disparities.\nInterests & what I can help with: How sociodemographic factors (e.g., race, gender, income, immigration status, education level) shape policy outcomes and institutional practices in areas like criminal justice, housing, healthcare, education, and environment.\n\nAsk me about: Counterfactual balancing, handling messy or privacy-limited datasets, and framing causal questions around inequality.\nReach out if you’re thinking about a final project that touches social systems, systemic inequity, or fairness!",
+    "section": "Coarse-Graining Units of Observation",
+    "text": "Coarse-Graining Units of Observation\n\n\n\nField\nExample Unit of Observation\n\n\n\n\nPhysics\nParticle\n[Particle = Fine-Graining of Molecules]\n\n\nChemistry\nMolecule = \\(\\cup\\)(Particles)\n[Molecule = Coarse-Graining of Particles]\n\n\nBiology\nCell = \\(\\cup\\)(Molecules)\n\n\nNeuro/Cog Sci\nBrain = \\(\\cup\\)(Cells)\n\n\nHuman Physiology\nBody = Brain \\(\\cup\\) Other Organs\n\n\n↑ Science    🧐 something happens here… 🤔    ↓ Social Science\n\n\nAnthropology\nHuman-Relational System (e.g., Kinship) = \\(\\cup\\)(Brains) \\(\\times\\) Natural Environment\n\n\nEconomics\nEconomy = Specific relational system of exchange w.r.t. scarce resources\n\n\nPolitical Economy\nEconomy-Context = Economic Exchange \\(\\cap\\) Relational Power\n\n\nSociology\nSociety = \\(\\cup\\)(Relational Systems: Kinship, Friendship, Authority, Power, Violence)\n\n\nHistory\nLongue-Durée = Evolution of Societies over Time and Space",
     "crumbs": [
       "Week 2: {{< var w02.date-md >}}"
     ]
   },
   {
-    "objectID": "w02/index.html#what-got-me-interested-in-causal-inference",
-    "href": "w02/index.html#what-got-me-interested-in-causal-inference",
+    "objectID": "w02/index.html#homo-sapienshomo-arbitratushomo-mischievous",
+    "href": "w02/index.html#homo-sapienshomo-arbitratushomo-mischievous",
     "title": "Week 2: Probabilistic Graphical Models (PGMs)",
-    "section": "What Got Me Interested in Causal Inference",
-    "text": "What Got Me Interested in Causal Inference\n5000 Project: Over-Policing and Wrongful Convictions in Illinois\n\nMotivation: Explore what demographic factors predict wrongful convictions using real exoneration data.\nChallenge: No data on “non-exonerated innocents,” so I (with prof’s help) created a counterfactual dataset by sampling from the incarcerated population\nMethod: Trained models (logistic regression, random forest, KNN) on a balanced dataset of 548 exonerated and 548 non-exonerated individuals\nFinding: Race and geography (esp. Cook Count/Chicago) were the strongest predictors of exoneration\nTakeaway: Questions about systemic bias can’t be answered with just descriptive stats, you need counterfactual reasoning and causal inference\n\n(Optional) View the counterfactual setup",
+    "section": "Homo sapiens/Homo arbitratus/Homo mischievous",
+    "text": "Homo sapiens/Homo arbitratus/Homo mischievous\n\n\n\n\n\n\n\n\nLatin sapiens denotes being “discerning” or “wise”\nBut… technically nothing stops us from choosing to be “unwise” whenever we’d like… bc free will\n\\(\\Rightarrow\\) For this class, humans are Homo arbitratus: arbitratus denotes choosing what to do, after we’ve [sapiently] thought about it",
     "crumbs": [
       "Week 2: {{< var w02.date-md >}}"
     ]
   },
   {
-    "objectID": "w02/index.html#wendy-hu",
-    "href": "w02/index.html#wendy-hu",
+    "objectID": "w02/index.html#laws-of-physics-vs.-laws-of-social-science",
+    "href": "w02/index.html#laws-of-physics-vs.-laws-of-social-science",
     "title": "Week 2: Probabilistic Graphical Models (PGMs)",
-    "section": "Wendy Hu",
-    "text": "Wendy Hu\n\nBackground: BS in Social Work, passionate about advancing social equity through computational tools\nInterest: I bring a background in social welfare, public health, and NGO data, with experience analyzing behavioral and institutional outcomes. My work spans Indigenous health, gender equity, and trauma-informed service design—always with a focus on equity, system change, and policy relevance.\nAsk me about: Framing social justice questions in data terms, working with community or clinical datasets and interpreting model results in context.\nIf you’re designing a project around health, inequality, nonprofit impact, or any socially embedded issue—I’d love to help bridge rigor and relevance.",
+    "section": "Laws of Physics vs. “Laws” of Social Science",
+    "text": "Laws of Physics vs. “Laws” of Social Science\n\nIf we tell an inanimate object that we’ve discovered a law saying that it will accelerate towards Earth at \\(9.8~\\textrm{m}/\\textrm{s}^2\\)\n\n…It will likely1 still accelerate towards Earth at \\(9.8~\\textrm{m}/\\textrm{s}^2\\)\n\n\n\n\n\n\nIf we tell a human we’ve discovered a law saying they will quack like a duck at 7:30pm EDT every Wednesday\n\n…They can utilize their free will to violate this “law”",
     "crumbs": [
       "Week 2: {{< var w02.date-md >}}"
     ]
   },
   {
-    "objectID": "w02/index.html#jeffs-hw1-updateapology",
-    "href": "w02/index.html#jeffs-hw1-updateapology",
+    "objectID": "w02/index.html#strangely-relevant-cs-topic-the-halting-problem",
+    "href": "w02/index.html#strangely-relevant-cs-topic-the-halting-problem",
     "title": "Week 2: Probabilistic Graphical Models (PGMs)",
-    "section": "Jeff’s HW1 Update/Apology",
-    "text": "Jeff’s HW1 Update/Apology\n\nBasically… I goofed by trying to shove a homework into the first two weeks of class 😭\nLast week was “setting the table”, so there are a few (multiple-choice) questions on that\nBut, really only makes sense to have HW starting from end of today, once we’ve introduced PGMs, the language we need to actually do Causal Computational Social Science!\n\n\n Due date pushed to Friday, June 6, 5:59pm",
+    "section": "Strangely-Relevant CS Topic: The Halting Problem",
+    "text": "Strangely-Relevant CS Topic: The Halting Problem\n\nKurt Gödel \\(\\leftrightarrow\\) Alan Turing: Entscheidungsproblem\nTheorem: It is not possible to write a computer program \\(P(x)\\) that detects whether or not a computer program \\(x\\) will eventually halt (as opposed to, e.g., looping forever)\nProof: Assume \\(P(x)\\) is possible to write. Run it on mischievous_program.py. Infinite contradiction loop.\n\n\n\n\n\nhalting_problem_solver.py\n\ndef will_it_halt(program, input):\n  # Put code you think will work here\n  # Return True if program will halt, False otherwise\n\n\n\nmischievous_program.py\n\ndef my_mischievous_function(input):\n  if will_it_halt(my_mischevious_function, input):\n    while True: pass # Infinite loop\n  else:\n    return # Halt\n\n\n\n\n\n\n\n\nInput→↓Program\n0\n1\n2\n\\(\\cdots\\)\n\n\n\n\n0\nHalt\nLoop\nLoop\n\\(\\cdots\\)\n\n\n1\nLoop\nLoop\nHalt\n\\(\\cdots\\)\n\n\n2\nLoop\nLoop\nLoop\n\\(\\cdots\\)\n\n\n\\(\\vdots\\)\n\\(\\vdots\\)\n\\(\\vdots\\)\n\\(\\vdots\\)\n\\(\\mathbf{\\ddots}\\)\n\n\n\nLoop\nHalt\nHalt\n\\(\\mathbf{\\cdots}\\)",
     "crumbs": [
       "Week 2: {{< var w02.date-md >}}"
     ]
   },
   {
-    "objectID": "w02/index.html#hw1-detail-plz-dont-hate-me",
-    "href": "w02/index.html#hw1-detail-plz-dont-hate-me",
+    "objectID": "w02/index.html#the-takeaway-bayesian-humility",
+    "href": "w02/index.html#the-takeaway-bayesian-humility",
     "title": "Week 2: Probabilistic Graphical Models (PGMs)",
-    "section": "HW1 Detail (Plz Don’t Hate Me 🙈)",
-    "text": "HW1 Detail (Plz Don’t Hate Me 🙈)\n(The main reason this is taking me so long)\n\nTwo key libraries for “main” course content (HW2 onwards):\n\nIn R: rethinking, “lite” version of Stan\nIn Python: PyMC\n\nBoth are overkill for current unit: lots of work required to “turn off” fancy features and implement basic PGMs\n\\(\\leadsto\\) Only way I know to achieve two goals:\n\n Learning simple PGMs first, as tools for thinking, before adding in additional full-on coding baggage of Stan/PyMC\n Having an entire textbook on these base PGMs that you can use as reference\n\nIs to use [small, restricted] subset of JavaScript, called WebPPL, because…\n\n\nhttp://probmods.org/",
+    "section": "The Takeaway: Bayesian Humility!",
+    "text": "The Takeaway: Bayesian Humility!\n\nSocial science, with “science” used in the same sense as for physics, may be a quixotic endeavor2\nInstead, we’ll do social science, where we use data to…\n Infer tendencies: \\(\\mathcal{H}\\) = «\\(X\\) tends to cause \\(Y\\)»\n With some degree of veracity: \\(\\Pr(\\mathcal{H}) \\approx 0.7\\)\n Construct models that we can update with new evidence: Bayes’ rule! \\(\\Pr(\\mathcal{H} \\mid E) = \\frac{\\Pr(E \\mid \\mathcal{H} ) \\Pr(\\mathcal{H})}{\\Pr(E)} \\approx 0.8\\)\nNotice “slippage” between aleatory probability within \\(\\mathcal{H}\\) (“tends to”) vs. epistemic probability “outside of”, talking about \\(\\mathcal{H}\\) (“I’m 70% confident about \\(\\mathcal{H}\\)”)",
+    "crumbs": [
+      "Week 2: {{< var w02.date-md >}}"
+    ]
+  },
+  {
+    "objectID": "w02/index.html#case-study-military-inequality-leadsto-military-success",
+    "href": "w02/index.html#case-study-military-inequality-leadsto-military-success",
+    "title": "Week 2: Probabilistic Graphical Models (PGMs)",
+    "section": "Case Study: Military Inequality \\(\\leadsto\\) Military Success",
+    "text": "Case Study: Military Inequality \\(\\leadsto\\) Military Success\n\nLyall (2020): “Treating certain ethnic groups as second-class citizens […] leads victimized soldiers to subvert military authorities once war begins. The higher an army’s inequality, the greater its rates of desertion, side-switching, and casualties”\n\n\nMatching constructs pairs of belligerents that are similar across a wide range of traits thought to dictate battlefield performance but that vary in levels of prewar inequality. The more similar the belligerents, the better our estimate of inequality’s effects, as all other traits are shared and thus cannot explain observed differences in performance, helping assess how battlefield performance would have improved (declined) if the belligerent had a lower (higher) level of prewar inequality.\nSince [non-matched] cases are dropped […] selected cases are more representative of average belligerents/wars than outliers with few or no matches, [providing] surer ground for testing generalizability of the book’s claims than focusing solely on canonical but unrepresentative usual suspects (Germany, the United States, Israel)",
+    "crumbs": [
+      "Week 2: {{< var w02.date-md >}}"
+    ]
+  },
+  {
+    "objectID": "w02/index.html#does-inequality-cause-poor-military-performance",
+    "href": "w02/index.html#does-inequality-cause-poor-military-performance",
+    "title": "Week 2: Probabilistic Graphical Models (PGMs)",
+    "section": "Does Inequality Cause Poor Military Performance?",
+    "text": "Does Inequality Cause Poor Military Performance?\n\n\n\n\n\n\n\n\nCovariates\nSultanate of Morocco Spanish-Moroccan War, 1859-60\nKhanate of Kokand War with Russia, 1864-65\n\n\n\n\n\\(X\\): Military Inequality\nLow (0.01)\nExtreme (0.70)\n\n\n\\(\\mathbf{Z}\\): Matched Covariates:\n\n\n\n\nInitial relative power\n66%\n66%\n\n\nTotal fielded force\n55,000\n50,000\n\n\nRegime type\nAbsolutist Monarchy (−6)\nAbsolute Monarchy (−7)\n\n\nDistance from capital\n208km\n265km\n\n\nStanding army\nYes\nYes\n\n\nComposite military\nYes\nYes\n\n\nInitiator\nNo\nNo\n\n\nJoiner\nNo\nNo\n\n\nDemocratic opponent\nNo\nNo\n\n\nGreat Power\nNo\nNo\n\n\nCivil war\nNo\nNo\n\n\nCombined arms\nYes\nYes\n\n\nDoctrine\nOffensive\nOffensive\n\n\nSuperior weapons\nNo\nNo\n\n\nFortifications\nYes\nYes\n\n\nForeign advisors\nYes\nYes\n\n\nTerrain\nSemiarid coastal plain\nSemiarid grassland plain\n\n\nTopography\nRugged\nRugged\n\n\nWar duration\n126 days\n378 days\n\n\nRecent war history w/opp\nYes\nYes\n\n\nFacing colonizer\nYes\nYes\n\n\nIdentity dimension\nSunni Islam/Christian\nSunni Islam/Christian\n\n\nNew leader\nYes\nYes\n\n\nPopulation\n8–8.5 million\n5–6 million\n\n\nEthnoling fractionalization (ELF)\nHigh\nHigh\n\n\nCiv-mil relations\nRuler as commander\nRuler as commander\n\n\n\\(Y\\): Battlefield Performance:\n\n\n\n\nLoss-exchange ratio\n0.43\n0.02\n\n\nMass desertion\nNo\nYes\n\n\nMass defection\nNo\nNo\n\n\nFratricidal violence\nNo\nYes",
+    "crumbs": [
+      "Week 2: {{< var w02.date-md >}}"
+    ]
+  },
+  {
+    "objectID": "w02/index.html#the-logic-of-violence-in-civil-war",
+    "href": "w02/index.html#the-logic-of-violence-in-civil-war",
+    "title": "Week 2: Probabilistic Graphical Models (PGMs)",
+    "section": "The Logic of Violence in Civil War",
+    "text": "The Logic of Violence in Civil War\n\n\n\nKalyvas (2006)",
+    "crumbs": [
+      "Week 2: {{< var w02.date-md >}}"
+    ]
+  },
+  {
+    "objectID": "w02/index.html#particularly-fun-non-standard-examples",
+    "href": "w02/index.html#particularly-fun-non-standard-examples",
+    "title": "Week 2: Probabilistic Graphical Models (PGMs)",
+    "section": "Particularly Fun Non-“Standard” Examples",
+    "text": "Particularly Fun Non-“Standard” Examples\n\nDeDeo, French Revolution\nGrimmer, Mirrors for Sultans and Princes",
     "crumbs": [
       "Week 2: {{< var w02.date-md >}}"
     ]
@@ -1316,7 +1384,7 @@
     "href": "w02/index.html#so-whats-the-problem",
     "title": "Week 2: Probabilistic Graphical Models (PGMs)",
     "section": "So What’s the Problem?",
-    "text": "So What’s the Problem?\n\nNon-probabilistic models: High potential for being garbage\n\ntldr: even if SUPER certain, using \\(\\Pr(\\mathcal{H}) = 1-\\varepsilon\\) with tiny \\(\\varepsilon\\) has literal life-saving advantages1 (Finetti 1972)\n\nProbabilistic models: Getting there, still looking at “surface”\n\nOf the \\(N = 100\\) times we observed event \\(X\\) occurring, event \\(Y\\) also occurred \\(90\\) of those times\n\\(\\implies \\Pr(Y \\mid X) = \\frac{\\#[X, Y]}{\\#[X]} = \\frac{90}{100} = 0.9\\)\n\nCausal models: Does \\(Y\\) happen because of \\(X\\) happening? For that, need to start modeling what’s happening under the surface making \\(X\\) and \\(Y\\) “pop up” together so often",
+    "text": "So What’s the Problem?\n\nNon-probabilistic models: High potential for being garbage\n\ntldr: even if SUPER certain, using \\(\\Pr(\\mathcal{H}) = 1-\\varepsilon\\) with tiny \\(\\varepsilon\\) has literal life-saving advantages3 (Finetti 1972)\n\nProbabilistic models: Getting there, still looking at “surface”\n\nOf the \\(N = 100\\) times we observed event \\(X\\) occurring, event \\(Y\\) also occurred \\(90\\) of those times\n\\(\\implies \\Pr(Y \\mid X) = \\frac{\\#[X, Y]}{\\#[X]} = \\frac{90}{100} = 0.9\\)\n\nCausal models: Does \\(Y\\) happen because of \\(X\\) happening? For that, need to start modeling what’s happening under the surface making \\(X\\) and \\(Y\\) “pop up” together so often",
     "crumbs": [
       "Week 2: {{< var w02.date-md >}}"
     ]
@@ -1416,7 +1484,7 @@
     "href": "w02/index.html#two-main-building-blocks",
     "title": "Week 2: Probabilistic Graphical Models (PGMs)",
     "section": "Two Main “Building Blocks”",
-    "text": "Two Main “Building Blocks”\n\nNodes like \\(\\require{enclose}\\enclose{circle}{\\kern .01em ~X~\\kern .01em}\\) denote Random Variables\n\n\\[\n\\boxed{\\require{enclose}\\enclose{circle}{\\kern .01em ~X~\\kern .01em}} \\simeq \\boxed{ \\begin{array}{c|cc}x & \\textsf{Tails} & \\textsf{Heads} \\\\\\hline \\Pr(X = x) & 0.5 & 0.5\\end{array}}\n\\]\n\nEdges like \\(\\require{enclose}\\enclose{circle}{\\kern .01em ~X~\\kern .01em} \\rightarrow \\; \\enclose{circle}{\\kern.01em Y~\\kern .01em}\\) denote relationships between RVs\n\nWhat an edge “means” can get [ontologically] tricky!\nRetain sanity by just remembering: an edge \\(\\require{enclose}\\enclose{circle}{\\kern .01em ~X~\\kern .01em} \\rightarrow \\; \\enclose{circle}{\\kern.01em Y~\\kern .01em}\\) is included in our PGM if we “care about” modeling the conditional probability table (CPT) of \\(Y\\) w.r.t. \\(X\\)\n\n\n\\[\n\\require{enclose}\\boxed{ \\enclose{circle}{\\kern .01em ~X~\\kern .01em} \\rightarrow \\; \\enclose{circle}{\\kern.01em Y~\\kern .01em} } \\simeq \\boxed{\n  \\begin{array}{c|cc}\n  x & \\Pr(Y = \\textsf{Lose} \\mid X = x) & \\Pr(Y = \\textsf{Win} \\mid X = x) \\\\\\hline\n  \\textsf{Tails} & 0.8 & 0.2 \\\\\n  \\textsf{Heads} & 0.5 & 0.5\n  \\end{array}\n}\n\\]",
+    "text": "Two Main “Building Blocks”\nNodes like \\(\\require{enclose}\\enclose{circle}{X}\\) denote Random Variables:\n\\[\n\\require{enclose}\\boxed{\\enclose{circle}{X}} \\simeq \\boxed{ \\begin{array}{c|cc}x & \\textsf{Tails} & \\textsf{Heads} \\\\\\hline \\Pr(X = x) & 0.5 & 0.5\\end{array}}\n\\]\nEdges like \\(\\require{enclose}\\enclose{circle}{X} \\rightarrow \\enclose{circle}{Y}\\) denote relationships between RVs\n\nWhat an edge “means” can get [ontologically] tricky!\nRetain sanity by just remembering: an edge \\(\\require{enclose}\\enclose{circle}{X} \\rightarrow \\enclose{circle}{Y}\\) is included in our PGM if we “care about” modeling the conditional probability table (CPT) of \\(Y\\) w.r.t. \\(X\\)\n\n\\[\n\\require{enclose}\\boxed{ \\enclose{circle}{X} \\rightarrow \\enclose{circle}{Y} } \\simeq \\boxed{\n  \\begin{array}{c|cc}\n  x & \\Pr(Y = \\textsf{Lose} \\mid X = x) & \\Pr(Y = \\textsf{Win} \\mid X = x) \\\\\\hline\n  \\textsf{Tails} & 0.8 & 0.2 \\\\\n  \\textsf{Heads} & 0.5 & 0.5\n  \\end{array}\n}\n\\]",
     "crumbs": [
       "Week 2: {{< var w02.date-md >}}"
     ]
@@ -1426,7 +1494,7 @@
     "href": "w02/index.html#pgm-for-the-partiers-dilemma",
     "title": "Week 2: Probabilistic Graphical Models (PGMs)",
     "section": "PGM for the Partier’s Dilemma",
-    "text": "PGM for the Partier’s Dilemma\n\nA node \\(\\pnode{W}\\) denoting RV \\(W\\), which can take on values in \\(\\mathcal{R}_W = \\{\\textsf{Sun}, \\textsf{Rain}\\}\\),\nA node \\(\\pnode{Y}\\) denoting RV \\(Y\\), which can take on values in \\(\\mathcal{R}_Y = \\{\\textsf{Go}, \\textsf{Stay}\\}\\), and\nAn edge \\(\\pedge{W}{Y}\\) representing the following relationship between \\(W\\) and \\(Y\\):\n\n\\(\\Pr(Y = \\textsf{Go} \\mid W = \\textsf{Sun}) = 0.8\\)\n\\(\\Pr(Y = \\textsf{Stay} \\mid W = \\textsf{Sun}) = 0.2\\)\n\\(\\Pr(Y = \\textsf{Go} \\mid W = \\textsf{Rain}) = 0.1\\)\n\\(\\Pr(Y = \\textsf{Stay} \\mid W = \\textsf{Rain}) = 0.9\\)\n\n\n\n\n\n\n\n\n\n\n\nFigure 1: Our PGM of the Partier’s Dilemma\n\n\n\n\n\n\n\n\n\n\n\n\n\\(\\Pr(Y = \\textsf{Stay} \\mid W)\\)\n\\(\\Pr(Y = \\textsf{Go} \\mid W)\\)\n\n\n\n\n\\(W = \\textsf{Sun}\\)\n0.2\n0.8\n\n\n\\(W = \\textsf{Rain}\\)\n0.9\n0.1\n\n\n\n\n\nFigure 2: The Conditional Probability Table (CPT) for the edge \\(\\pedge{W}{Y}\\) in Figure 1",
+    "text": "PGM for the Partier’s Dilemma\n\nA node \\(\\require{enclose}\\enclose{circle}{W}\\) denoting RV \\(W\\), which can take on values in \\(\\mathcal{R}_W = \\{\\textsf{Sun}, \\textsf{Rain}\\}\\),\nA node \\(\\require{enclose}\\enclose{circle}{Y}\\) denoting RV \\(Y\\), which can take on values in \\(\\mathcal{R}_Y = \\{\\textsf{Go}, \\textsf{Stay}\\}\\), and\nAn edge \\(\\require{enclose}\\enclose{circle}{W} \\rightarrow \\enclose{circle}{Y}\\) representing the following relationship between \\(W\\) and \\(Y\\):\n\n\\(\\Pr(Y = \\textsf{Go} \\mid W = \\textsf{Sun}) = 0.8\\)\n\\(\\Pr(Y = \\textsf{Stay} \\mid W = \\textsf{Sun}) = 0.2\\)\n\\(\\Pr(Y = \\textsf{Go} \\mid W = \\textsf{Rain}) = 0.1\\)\n\\(\\Pr(Y = \\textsf{Stay} \\mid W = \\textsf{Rain}) = 0.9\\)\n\n\n\n\n\n\n\n\n\n\n\nFigure 1: Our PGM of the Partier’s Dilemma\n\n\n\n\n\n\n\n\n\n\n\n\n\\(\\Pr(Y = \\textsf{Stay} \\mid W)\\)\n\\(\\Pr(Y = \\textsf{Go} \\mid W)\\)\n\n\n\n\n\\(W = \\textsf{Sun}\\)\n0.2\n0.8\n\n\n\\(W = \\textsf{Rain}\\)\n0.9\n0.1\n\n\n\n\n\nFigure 2: The Conditional Probability Table (CPT) for the edge \\(\\require{enclose}\\enclose{circle}{W} \\rightarrow \\enclose{circle}{Y}\\) in Figure 1",
     "crumbs": [
       "Week 2: {{< var w02.date-md >}}"
     ]
@@ -1466,7 +1534,7 @@
     "href": "w02/index.html#references",
     "title": "Week 2: Probabilistic Graphical Models (PGMs)",
     "section": "References",
-    "text": "References\n\n\nFinetti, Bruno de. 1972. Probability, Induction and Statistics: The Art of Guessing. J. Wiley. https://books.google.com?id=hENg7qRPOPYC.\n\n\nHume, David. 1739. A Treatise of Human Nature: Being an Attempt to Introduce the Experimental Method of Reasoning Into Moral Subjects; and Dialogues Concerning Natural Religion. Longmans, Green.\n\n\nKoller, Daphne, and Nir Friedman. 2009. Probabilistic Graphical Models: Principles and Techniques. MIT Press. https://www.dropbox.com/scl/fi/6qmnr9feizngaq4005isj/Probabilistic-Graphical-Models.pdf?rlkey=4803nmsffh4xtsdfiji8jppb1&dl=1.\n\n\nPearl, Judea. 2000. Causality: Models, Reasoning, and Inference. Cambridge University Press. https://www.dropbox.com/scl/fi/4kfpro4gpx7tg55fwd7qt/Judea-Pearl-Causality_-Models-Reasoning-and-Inference.pdf?rlkey=f0abw0cgmsyiegx6xapq5z7j2&dl=1.",
+    "text": "References\n\n\nFinetti, Bruno de. 1972. Probability, Induction and Statistics: The Art of Guessing. J. Wiley.\n\n\nHume, David. 1739. A Treatise of Human Nature: Being an Attempt to Introduce the Experimental Method of Reasoning Into Moral Subjects; and Dialogues Concerning Natural Religion. Longmans, Green.\n\n\nKalyvas, Stathis N. 2006. The Logic of Violence in Civil War. Cambridge University Press.\n\n\nKoller, Daphne, and Nir Friedman. 2009. Probabilistic Graphical Models: Principles and Techniques. MIT Press.\n\n\nLyall, Jason. 2020. Divided Armies: Inequality and Battlefield Performance in Modern War. Princeton University Press.\n\n\nPearl, Judea. 2000. Causality: Models, Reasoning, and Inference. Cambridge University Press.\n\n\nSperber, Dan. 1996. Explaining Culture: A Naturalistic Approach. Cambridge: Blackwell.",
     "crumbs": [
       "Week 2: {{< var w02.date-md >}}"
     ]
@@ -1486,7 +1554,7 @@
     "href": "w02/index.html#footnotes",
     "title": "Week 2: Probabilistic Graphical Models (PGMs)",
     "section": "Footnotes",
-    "text": "Footnotes\n\n\nSee Appendix Slide↩︎",
+    "text": "Footnotes\n\n\nObligatory quantum footnote: human agency [maybe] plays a role, in a quirky way, in physics at tiny subatomic scales; but once we coarse grain to atoms (+avoid speed of light), Newton’s Laws accurate to many decimals 🤯↩︎\nAt least, for the time being… BUT see Sperber (1996), which will come up later↩︎\nSee Appendix Slide↩︎",
     "crumbs": [
       "Week 2: {{< var w02.date-md >}}"
     ]
@@ -2605,7 +2673,7 @@
     "href": "w09/index.html#double-robustness-to-the-rescue",
     "title": "Week 9: Doubly-Robust Estimation and Instrumental Variables",
     "section": "Double-Robustness to the Rescue!",
-    "text": "Double-Robustness to the Rescue!\n\n\nWrong regression model:\n\n\nCode\ndef compare_estimators(X_e, X_mu, D, y, seed):\n    df = generate_data(seed=seed)\n    e = estimate_e(df, X_e, D, LogisticRegression())\n    mu0, mu1 = estimate_mu(df, X_mu, D, y, LinearRegression())\n    slearn = mu1 - mu0\n    ipw = (df[D] / e - (1-df[D]) / (1-e)) * df[y]\n    aipw = slearn + df[D] / e * (df[y] - mu1) - (1-df[D]) / (1-e) * (df[y] - mu0)\n    return np.mean((slearn, ipw, aipw), axis=1)\n\ndef simulate_estimators(X_e, X_mu, D, y):\n    r = Parallel(n_jobs=8)(delayed(compare_estimators)(X_e, X_mu, D, y, i) for i in range(100))\n    df_tau = pd.DataFrame(r, columns=['S-learn', 'IPW', 'AIPW'])\n    return df_tau\n# The actual plots\nfig, ax = plt.subplots(figsize=(4,3.5))\nwrong_reg_df = simulate_estimators(\n  X_e=['male', 'age'], X_mu=['hours'], D=\"dark_mode\", y=\"read_time\"\n)\nwrong_reg_plot = sns.boxplot(\n  data=pd.melt(wrong_reg_df), x='variable', y='value', hue='variable',\n  ax=ax,\n  linewidth=2\n);\nwrong_reg_plot.set(\n  title=\"Distribution of $\\hat τ$\", xlabel='', ylabel=''\n);\nax.axhline(2, c='r', ls=':');\n\n\n&lt;&gt;:25: SyntaxWarning:\n\n\"\\h\" is an invalid escape sequence. Such sequences will not work in the future. Did you mean \"\\\\h\"? A raw string is also an option.\n\n&lt;&gt;:25: SyntaxWarning:\n\n\"\\h\" is an invalid escape sequence. Such sequences will not work in the future. Did you mean \"\\\\h\"? A raw string is also an option.\n\n/var/folders/n2/m7_fj5vx6c50_yj7g23mwmq00000gn/T/ipykernel_22587/2518988729.py:25: SyntaxWarning:\n\n\"\\h\" is an invalid escape sequence. Such sequences will not work in the future. Did you mean \"\\\\h\"? A raw string is also an option.\n\n\n\n\n\n\n\n\n\n\n\nWrong propensity score model:\n\n\nCode\nfig, ax = plt.subplots(figsize=(4, 3.5))\nwrong_ps_df = simulate_estimators(\n  ['age'], ['male', 'hours'], D=\"dark_mode\", y=\"read_time\"\n)\nwrong_ps_plot = sns.boxplot(\n  data=pd.melt(wrong_ps_df), x='variable', y='value', hue='variable',\n  ax=ax,\n  linewidth=2\n);\nax.set_title(\"Distribution of $\\hat τ$\");\nax.axhline(2, c='r', ls=':');\nplt.show()\n\n\n&lt;&gt;:10: SyntaxWarning:\n\n\"\\h\" is an invalid escape sequence. Such sequences will not work in the future. Did you mean \"\\\\h\"? A raw string is also an option.\n\n&lt;&gt;:10: SyntaxWarning:\n\n\"\\h\" is an invalid escape sequence. Such sequences will not work in the future. Did you mean \"\\\\h\"? A raw string is also an option.\n\n/var/folders/n2/m7_fj5vx6c50_yj7g23mwmq00000gn/T/ipykernel_22587/591257935.py:10: SyntaxWarning:\n\n\"\\h\" is an invalid escape sequence. Such sequences will not work in the future. Did you mean \"\\\\h\"? A raw string is also an option.",
+    "text": "Double-Robustness to the Rescue!\n\n\nWrong regression model:\n\n\nCode\ndef compare_estimators(X_e, X_mu, D, y, seed):\n    df = generate_data(seed=seed)\n    e = estimate_e(df, X_e, D, LogisticRegression())\n    mu0, mu1 = estimate_mu(df, X_mu, D, y, LinearRegression())\n    slearn = mu1 - mu0\n    ipw = (df[D] / e - (1-df[D]) / (1-e)) * df[y]\n    aipw = slearn + df[D] / e * (df[y] - mu1) - (1-df[D]) / (1-e) * (df[y] - mu0)\n    return np.mean((slearn, ipw, aipw), axis=1)\n\ndef simulate_estimators(X_e, X_mu, D, y):\n    r = Parallel(n_jobs=8)(delayed(compare_estimators)(X_e, X_mu, D, y, i) for i in range(100))\n    df_tau = pd.DataFrame(r, columns=['S-learn', 'IPW', 'AIPW'])\n    return df_tau\n# The actual plots\nfig, ax = plt.subplots(figsize=(4,3.5))\nwrong_reg_df = simulate_estimators(\n  X_e=['male', 'age'], X_mu=['hours'], D=\"dark_mode\", y=\"read_time\"\n)\nwrong_reg_plot = sns.boxplot(\n  data=pd.melt(wrong_reg_df), x='variable', y='value', hue='variable',\n  ax=ax,\n  linewidth=2\n);\nwrong_reg_plot.set(\n  title=\"Distribution of $\\hat τ$\", xlabel='', ylabel=''\n);\nax.axhline(2, c='r', ls=':');\n\n\n&lt;&gt;:25: SyntaxWarning:\n\n\"\\h\" is an invalid escape sequence. Such sequences will not work in the future. Did you mean \"\\\\h\"? A raw string is also an option.\n\n&lt;&gt;:25: SyntaxWarning:\n\n\"\\h\" is an invalid escape sequence. Such sequences will not work in the future. Did you mean \"\\\\h\"? A raw string is also an option.\n\n/var/folders/n2/m7_fj5vx6c50_yj7g23mwmq00000gn/T/ipykernel_13446/2518988729.py:25: SyntaxWarning:\n\n\"\\h\" is an invalid escape sequence. Such sequences will not work in the future. Did you mean \"\\\\h\"? A raw string is also an option.\n\n\n\n\n\n\n\n\n\n\n\nWrong propensity score model:\n\n\nCode\nfig, ax = plt.subplots(figsize=(4, 3.5))\nwrong_ps_df = simulate_estimators(\n  ['age'], ['male', 'hours'], D=\"dark_mode\", y=\"read_time\"\n)\nwrong_ps_plot = sns.boxplot(\n  data=pd.melt(wrong_ps_df), x='variable', y='value', hue='variable',\n  ax=ax,\n  linewidth=2\n);\nax.set_title(\"Distribution of $\\hat τ$\");\nax.axhline(2, c='r', ls=':');\nplt.show()\n\n\n&lt;&gt;:10: SyntaxWarning:\n\n\"\\h\" is an invalid escape sequence. Such sequences will not work in the future. Did you mean \"\\\\h\"? A raw string is also an option.\n\n&lt;&gt;:10: SyntaxWarning:\n\n\"\\h\" is an invalid escape sequence. Such sequences will not work in the future. Did you mean \"\\\\h\"? A raw string is also an option.\n\n/var/folders/n2/m7_fj5vx6c50_yj7g23mwmq00000gn/T/ipykernel_13446/591257935.py:10: SyntaxWarning:\n\n\"\\h\" is an invalid escape sequence. Such sequences will not work in the future. Did you mean \"\\\\h\"? A raw string is also an option.",
     "crumbs": [
       "Week 9: {{< var w09.date-md >}}"
     ]
@@ -2821,96 +2889,6 @@
     ]
   },
   {
-    "objectID": "w01/index.html#coarse-graining-units-of-observation",
-    "href": "w01/index.html#coarse-graining-units-of-observation",
-    "title": "Week 1: Science from Particles to People",
-    "section": "Coarse-Graining Units of Observation",
-    "text": "Coarse-Graining Units of Observation\n\n\n\nField\nExample Unit of Observation\n\n\n\n\nPhysics\nParticle\n[Particle = Fine-Graining of Molecules]\n\n\nChemistry\nMolecule = \\(\\cup\\)(Particles)\n[Molecule = Coarse-Graining of Particles]\n\n\nBiology\nCell = \\(\\cup\\)(Molecules)\n\n\nNeuro/Cog Sci\nBrain = \\(\\cup\\)(Cells)\n\n\nHuman Physiology\nBody = Brain \\(\\cup\\) Other Organs\n\n\n↑ Science    🧐 something happens here… 🤔    ↓ Social Science\n\n\nAnthropology\nHuman-Relational System (e.g., Kinship) = \\(\\cup\\)(Brains) \\(\\times\\) Natural Environment\n\n\nEconomics\nEconomy = Specific relational system of exchange w.r.t. scarce resources\n\n\nPolitical Economy\nEconomy-Context = Economic Exchange \\(\\cap\\) Relational Power\n\n\nSociology\nSociety = \\(\\cup\\)(Relational Systems: Kinship, Friendship, Authority, Power, Violence)\n\n\nHistory\nLongue-Durée = Evolution of Societies over Time and Space",
-    "crumbs": [
-      "Week 1: {{< var w01.date-md >}}"
-    ]
-  },
-  {
-    "objectID": "w01/index.html#homo-sapienshomo-arbitratushomo-mischievous",
-    "href": "w01/index.html#homo-sapienshomo-arbitratushomo-mischievous",
-    "title": "Week 1: Science from Particles to People",
-    "section": "Homo sapiens/Homo arbitratus/Homo mischievous",
-    "text": "Homo sapiens/Homo arbitratus/Homo mischievous\n\n\n\n\n\n\n\n\nLatin sapiens denotes being “discerning” or “wise”\nBut… technically nothing stops us from choosing to be “unwise” whenever we’d like… bc free will\n\\(\\Rightarrow\\) For this class, humans are Homo arbitratus: arbitratus denotes choosing what to do, after we’ve [sapiently] thought about it",
-    "crumbs": [
-      "Week 1: {{< var w01.date-md >}}"
-    ]
-  },
-  {
-    "objectID": "w01/index.html#laws-of-physics-vs.-laws-of-social-science",
-    "href": "w01/index.html#laws-of-physics-vs.-laws-of-social-science",
-    "title": "Week 1: Science from Particles to People",
-    "section": "Laws of Physics vs. “Laws” of Social Science",
-    "text": "Laws of Physics vs. “Laws” of Social Science\n\nIf we tell an inanimate object that we’ve discovered a law saying that it will accelerate towards Earth at \\(9.8~\\textrm{m}/\\textrm{s}^2\\)\n\n…It will likely1 still accelerate towards Earth at \\(9.8~\\textrm{m}/\\textrm{s}^2\\)\n\n\n\n\n\n\nIf we tell a human we’ve discovered a law saying they will quack like a duck at 7:30pm EDT every Wednesday\n\n…They can utilize their free will to violate this “law”",
-    "crumbs": [
-      "Week 1: {{< var w01.date-md >}}"
-    ]
-  },
-  {
-    "objectID": "w01/index.html#strangely-relevant-cs-topic-the-halting-problem",
-    "href": "w01/index.html#strangely-relevant-cs-topic-the-halting-problem",
-    "title": "Week 1: Science from Particles to People",
-    "section": "Strangely-Relevant CS Topic: The Halting Problem",
-    "text": "Strangely-Relevant CS Topic: The Halting Problem\n\nKurt Gödel \\(\\leftrightarrow\\) Alan Turing: Entscheidungsproblem\nTheorem: It is not possible to write a computer program \\(P(x)\\) that detects whether or not a computer program \\(x\\) will eventually halt (as opposed to, e.g., looping forever)\nProof: Assume \\(P(x)\\) is possible to write. Run it on mischievous_program.py. Infinite contradiction loop.\n\n\n\n\n\nhalting_problem_solver.py\n\ndef will_it_halt(program, input):\n  # Put code you think will work here\n  # Return True if program will halt, False otherwise\n\n\n\nmischievous_program.py\n\ndef my_mischievous_function(input):\n  if will_it_halt(my_mischevious_function, input):\n    while True: pass # Infinite loop\n  else:\n    return # Halt\n\n\n\n\n\n\n\n\nInput→↓Program\n0\n1\n2\n\\(\\cdots\\)\n\n\n\n\n0\nHalt\nLoop\nLoop\n\\(\\cdots\\)\n\n\n1\nLoop\nLoop\nHalt\n\\(\\cdots\\)\n\n\n2\nLoop\nLoop\nLoop\n\\(\\cdots\\)\n\n\n\\(\\vdots\\)\n\\(\\vdots\\)\n\\(\\vdots\\)\n\\(\\vdots\\)\n\\(\\mathbf{\\ddots}\\)\n\n\n\nLoop\nHalt\nHalt\n\\(\\mathbf{\\cdots}\\)",
-    "crumbs": [
-      "Week 1: {{< var w01.date-md >}}"
-    ]
-  },
-  {
-    "objectID": "w01/index.html#the-takeaway-bayesian-humility",
-    "href": "w01/index.html#the-takeaway-bayesian-humility",
-    "title": "Week 1: Science from Particles to People",
-    "section": "The Takeaway: Bayesian Humility!",
-    "text": "The Takeaway: Bayesian Humility!\n\nSocial science, with “science” used in the same sense as for physics, may be a quixotic endeavor2\nInstead, we’ll do social science, where we use data to…\n Infer tendencies: \\(\\mathcal{H}\\) = «\\(X\\) tends to cause \\(Y\\)»\n With some degree of veracity: \\(\\Pr(\\mathcal{H}) \\approx 0.7\\)\n Construct models that we can update with new evidence: Bayes’ rule! \\(\\Pr(\\mathcal{H} \\mid E) = \\frac{\\Pr(E \\mid \\mathcal{H} ) \\Pr(\\mathcal{H})}{\\Pr(E)} \\approx 0.8\\)\nPls notice “slippage” between aleatory probability within \\(\\mathcal{H}\\) (“tends to”) vs. epistemic probability “outside of”, talking about \\(\\mathcal{H}\\) (“I’m 70% confident about \\(\\mathcal{H}\\)”)",
-    "crumbs": [
-      "Week 1: {{< var w01.date-md >}}"
-    ]
-  },
-  {
-    "objectID": "w01/index.html#case-study-military-inequality-leadsto-military-success",
-    "href": "w01/index.html#case-study-military-inequality-leadsto-military-success",
-    "title": "Week 1: Science from Particles to People",
-    "section": "Case Study: Military Inequality \\(\\leadsto\\) Military Success",
-    "text": "Case Study: Military Inequality \\(\\leadsto\\) Military Success\n\nLyall (2020): “Treating certain ethnic groups as second-class citizens […] leads victimized soldiers to subvert military authorities once war begins. The higher an army’s inequality, the greater its rates of desertion, side-switching, and casualties”\n\n\nMatching constructs pairs of belligerents that are similar across a wide range of traits thought to dictate battlefield performance but that vary in levels of prewar inequality. The more similar the belligerents, the better our estimate of inequality’s effects, as all other traits are shared and thus cannot explain observed differences in performance, helping assess how battlefield performance would have improved (declined) if the belligerent had a lower (higher) level of prewar inequality.\nSince [non-matched] cases are dropped […] selected cases are more representative of average belligerents/wars than outliers with few or no matches, [providing] surer ground for testing generalizability of the book’s claims than focusing solely on canonical but unrepresentative usual suspects (Germany, the United States, Israel)",
-    "crumbs": [
-      "Week 1: {{< var w01.date-md >}}"
-    ]
-  },
-  {
-    "objectID": "w01/index.html#does-inequality-cause-poor-military-performance",
-    "href": "w01/index.html#does-inequality-cause-poor-military-performance",
-    "title": "Week 1: Science from Particles to People",
-    "section": "Does Inequality Cause Poor Military Performance?",
-    "text": "Does Inequality Cause Poor Military Performance?\n\n\n\n\n\n\n\n\nCovariates\nSultanate of Morocco Spanish-Moroccan War, 1859-60\nKhanate of Kokand War with Russia, 1864-65\n\n\n\n\n\\(X\\): Military Inequality\nLow (0.01)\nExtreme (0.70)\n\n\n\\(\\mathbf{Z}\\): Matched Covariates:\n\n\n\n\nInitial relative power\n66%\n66%\n\n\nTotal fielded force\n55,000\n50,000\n\n\nRegime type\nAbsolutist Monarchy (−6)\nAbsolute Monarchy (−7)\n\n\nDistance from capital\n208km\n265km\n\n\nStanding army\nYes\nYes\n\n\nComposite military\nYes\nYes\n\n\nInitiator\nNo\nNo\n\n\nJoiner\nNo\nNo\n\n\nDemocratic opponent\nNo\nNo\n\n\nGreat Power\nNo\nNo\n\n\nCivil war\nNo\nNo\n\n\nCombined arms\nYes\nYes\n\n\nDoctrine\nOffensive\nOffensive\n\n\nSuperior weapons\nNo\nNo\n\n\nFortifications\nYes\nYes\n\n\nForeign advisors\nYes\nYes\n\n\nTerrain\nSemiarid coastal plain\nSemiarid grassland plain\n\n\nTopography\nRugged\nRugged\n\n\nWar duration\n126 days\n378 days\n\n\nRecent war history w/opp\nYes\nYes\n\n\nFacing colonizer\nYes\nYes\n\n\nIdentity dimension\nSunni Islam/Christian\nSunni Islam/Christian\n\n\nNew leader\nYes\nYes\n\n\nPopulation\n8–8.5 million\n5–6 million\n\n\nEthnoling fractionalization (ELF)\nHigh\nHigh\n\n\nCiv-mil relations\nRuler as commander\nRuler as commander\n\n\n\\(Y\\): Battlefield Performance:\n\n\n\n\nLoss-exchange ratio\n0.43\n0.02\n\n\nMass desertion\nNo\nYes\n\n\nMass defection\nNo\nNo\n\n\nFratricidal violence\nNo\nYes",
-    "crumbs": [
-      "Week 1: {{< var w01.date-md >}}"
-    ]
-  },
-  {
-    "objectID": "w01/index.html#the-logic-of-violence-in-civil-war",
-    "href": "w01/index.html#the-logic-of-violence-in-civil-war",
-    "title": "Week 1: Science from Particles to People",
-    "section": "The Logic of Violence in Civil War",
-    "text": "The Logic of Violence in Civil War\n\n\n\nKalyvas (2006)",
-    "crumbs": [
-      "Week 1: {{< var w01.date-md >}}"
-    ]
-  },
-  {
-    "objectID": "w01/index.html#particularly-fun-non-standard-examples",
-    "href": "w01/index.html#particularly-fun-non-standard-examples",
-    "title": "Week 1: Science from Particles to People",
-    "section": "Particularly Fun Non-“Standard” Examples",
-    "text": "Particularly Fun Non-“Standard” Examples\n\nDeDeo, French Revolution\nGrimmer, Mirrors for Sultans and Princes",
-    "crumbs": [
-      "Week 1: {{< var w01.date-md >}}"
-    ]
-  },
-  {
     "objectID": "w01/index.html#jupyterhub",
     "href": "w01/index.html#jupyterhub",
     "title": "Week 1: Science from Particles to People",
@@ -2925,17 +2903,7 @@
     "href": "w01/index.html#references",
     "title": "Week 1: Science from Particles to People",
     "section": "References",
-    "text": "References\n\n\nKalyvas, Stathis N. 2006. The Logic of Violence in Civil War. Cambridge University Press. https://www.dropbox.com/scl/fi/4es1r44ldnqtcroonr5g7/The-Logic-of-Violence-in-Civil-War.pdf?rlkey=uonfmw5zkx1ja5l8emv2bzfmg&dl=1.\n\n\nLyall, Jason. 2020. Divided Armies: Inequality and Battlefield Performance in Modern War. Princeton University Press. https://books.google.com?id=A32pDwAAQBAJ.\n\n\nMontessori, Maria. 1916. Spontaneous Activity in Education: A Basic Guide to the Montessori Methods of Learning in the Classroom. Lulu Press. https://books.google.com?id=c0PYvAEACAAJ.\n\n\nSperber, Dan. 1996. Explaining Culture: A Naturalistic Approach. Blackwell. https://www.dropbox.com/scl/fi/he6idaajr6vopybv13qhd/Explaining-Culture-A-Naturalistic-Approach.pdf?rlkey=8oyhnsu5ycet4osstft252jaw&dl=1.",
-    "crumbs": [
-      "Week 1: {{< var w01.date-md >}}"
-    ]
-  },
-  {
-    "objectID": "w01/index.html#footnotes",
-    "href": "w01/index.html#footnotes",
-    "title": "Week 1: Science from Particles to People",
-    "section": "Footnotes",
-    "text": "Footnotes\n\n\nObligatory quantum footnote: human agency [maybe] plays a role, in a quirky way, in physics at tiny subatomic scales; but once we coarse grain to atoms (+avoid speed of light), Newton’s Laws accurate to many decimals 🤯↩︎\nAt least, for the time being… BUT see Sperber (1996), which will come up later↩︎",
+    "text": "References\n\n\nMontessori, Maria. 1916. Spontaneous Activity in Education: A Basic Guide to the Montessori Methods of Learning in the Classroom. Lulu Press. https://books.google.com?id=c0PYvAEACAAJ.",
     "crumbs": [
       "Week 1: {{< var w01.date-md >}}"
     ]
@@ -2959,7 +2927,7 @@
     "href": "w01/slides.html#why-is-georgetown-having-me-teach-this",
     "title": "Week 1: Science from Particles to People",
     "section": "Why Is Georgetown Having Me Teach This?",
-    "text": "Why Is Georgetown Having Me Teach This?\n\n\n\n\n\n\n                                                    \n\n\n\n\n\nFig 1: Years spent questing in dungeons of academia\n\n\n\n\nQuanty things \\(\\leadsto\\) PhD in Political Economy\nPhD exam major: Political Philosophy\nPhD exam minor: International Relations (“How to Do Things with Translations”)\nBrain-changing Research Fellowships at…\nSanta Fe Institute: dedicated to the multidisciplinary study of complex systems: physical, computational, biological, social\nCentre for the Study of the History of Political Thought, Queen Mary University of London (QMUL): New approaches to the history of political thought [Quentin Skinner, “Cambridge School”] have changed how we study ideas from the past and their relevance to contemporary politics. The focus of the Centre is to explore [that sort of thing then, innit guv’nor!]."
+    "text": "Why Is Georgetown Having Me Teach This?\n\n\n\n\n\n\n                                                    \n\n\n\n\n\nFig 1: Years spent questing in dungeons of academia\n\n\n\n\nQuanty things \\leadsto PhD in Political Economy\nPhD exam major: Political Philosophy\nPhD exam minor: International Relations (“How to Do Things with Translations”)\nBrain-changing Research Fellowships at…\nSanta Fe Institute: dedicated to the multidisciplinary study of complex systems: physical, computational, biological, social\nCentre for the Study of the History of Political Thought, Queen Mary University of London (QMUL): New approaches to the history of political thought [Quentin Skinner, “Cambridge School”] have changed how we study ideas from the past and their relevance to contemporary politics. The focus of the Centre is to explore [that sort of thing then, innit guv’nor!]."
   },
   {
     "objectID": "w01/slides.html#dissertation-nlp-x-history",
@@ -2994,7 +2962,7 @@
     "href": "w01/slides.html#but-now-teaching",
     "title": "Week 1: Science from Particles to People",
     "section": "But Now… Teaching!",
-    "text": "But Now… Teaching!\n\nGrowth mindset: “I can’t do this” \\(\\leadsto\\) “I can’t do this yet!”\nThink of anything you’re able to do… There was a point in life when you didn’t know how to do it! What happened? Your brain established and/or rearranged neural pathways as you struggled with it!\nHow does this neural re-arrangement work? One “cheatcode” is spaced repetition:\n\n\nImage source"
+    "text": "But Now… Teaching!\n\nGrowth mindset: “I can’t do this” \\leadsto “I can’t do this yet!”\nThink of anything you’re able to do… There was a point in life when you didn’t know how to do it! What happened? Your brain established and/or rearranged neural pathways as you struggled with it!\nHow does this neural re-arrangement work? One “cheatcode” is spaced repetition:\n\n\nImage source"
   },
   {
     "objectID": "w01/slides.html#lil-wayne-on-spaced-repetition",
@@ -3008,7 +2976,7 @@
     "href": "w01/slides.html#maria-montessori-on-your-final-project",
     "title": "Week 1: Science from Particles to People",
     "section": "Maria Montessori on Your Final Project",
-    "text": "Maria Montessori on Your Final Project\n\nOur teaching should be governed, not by a desire to make students learn things, but by the endeavor to keep burning within them that light which is called curiosity. (Montessori 1916)\n\n\nTo this end: your final project is to explore some potential causal linkage from \\(X\\) to \\(Y\\) (more later!)\nThe sole requirement is: sufficient curiosity to serve as fuel for your journey from associational world to causal world"
+    "text": "Maria Montessori on Your Final Project\n\nOur teaching should be governed, not by a desire to make students learn things, but by the endeavor to keep burning within them that light which is called curiosity. (Montessori 1916)\n\n\nTo this end: your final project is to explore some potential causal linkage from X to Y (more later!)\nThe sole requirement is: sufficient curiosity to serve as fuel for your journey from associational world to causal world"
   },
   {
     "objectID": "w01/slides.html#earning-your-grade-effort-growth-mindset",
@@ -3016,69 +2984,6 @@
     "title": "Week 1: Science from Particles to People",
     "section": "Earning Your Grade: Effort + Growth Mindset!",
     "text": "Earning Your Grade: Effort + Growth Mindset!\n Because you learn to          by         ing, the more         ing you do [adapted to where you’re at, background-wise, time-outside-of-class-wise], the better grade you can get:\n\nFor each          you do [“good faith attempt”], you receive one ✅s\nIf it looks good as-is, with “good” defined as “demonstrates understanding of the relevant material [to instructors, in dialogue with students]”, you receive a second ✅\nOtherwise you can earn this second ✅ by re-trying until understanding is achieved\n\n ✅s convert to points via (required) main quests, (technically not required) sidequests:\n\n\n\n\n\n\n\n\n\n\n\n\nMain Quest\n#\nCompletion?\nUnderstanding?\n\n\n\n\nHomework (🔲🔲)\n4\n🔲🔲🔲🔲🔲🔲🔲🔲\n🔲🔲🔲🔲🔲🔲🔲🔲\n\n\nMidterm (🔲🔲)\n1\n🔲🔲\n🔲🔲\n\n\nProject (🔲🔲🔲)\n1\n🔲🔲🔲\n🔲🔲🔲\n\n\nMeeting (🔲)\n2\n🔲\n\n\nTotal = 27 🔲s\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nSide Quest\n\n\n\n\n\n\n\nLab (🔲)\n8\n🔲🔲🔲🔲\n🔲🔲🔲🔲\n\n\nReading (🔲)\n8\n🔲🔲🔲🔲\n🔲🔲🔲🔲\n\n\nMeeting (🔲)\n2\n🔲\n\n\nTotal = 17 🔲s\n\n\nCombined = 44 🔲s\n\n\n\n\n\n\n\n\n\n\n0.5\n1.0\n1.5\n2.0\n2.5\n3.0\n3.5\n4.0\n\n\n🔲🔲🔲🔲🔲\n🔲🔲🔲🔲🔲\n🔲🔲🔲🔲🔲\n🔲🔲🔲🔲🔲\n🔲🔲🔲🔲🔲\n🔲🔲🔲🔲🔲\n🔲🔲🔲🔲🔲\n🔲🔲🔲🔲🔲\n\n\n🏃‍♀️\n🙇‍♀️🧘🧠💪 ↓ 💪🧠🧘🙇‍♀️\n🏃‍♀️\n\n\n✅✅✅✅✅\n✅✅✅✅✅\n✅✅✅✅✅\n✅✅✅✅✅\n✅✅✅✅✅\n✅✅✅✅✅\n✅✅✅✅✅\n✅✅✅✅✅"
-  },
-  {
-    "objectID": "w01/slides.html#coarse-graining-units-of-observation",
-    "href": "w01/slides.html#coarse-graining-units-of-observation",
-    "title": "Week 1: Science from Particles to People",
-    "section": "Coarse-Graining Units of Observation",
-    "text": "Coarse-Graining Units of Observation\n\n\n\nField\nExample Unit of Observation\n\n\n\n\nPhysics\nParticle\n[Particle = Fine-Graining of Molecules]\n\n\nChemistry\nMolecule = \\(\\cup\\)(Particles)\n[Molecule = Coarse-Graining of Particles]\n\n\nBiology\nCell = \\(\\cup\\)(Molecules)\n\n\nNeuro/Cog Sci\nBrain = \\(\\cup\\)(Cells)\n\n\nHuman Physiology\nBody = Brain \\(\\cup\\) Other Organs\n\n\n↑ Science    🧐 something happens here… 🤔    ↓ Social Science\n\n\nAnthropology\nHuman-Relational System (e.g., Kinship) = \\(\\cup\\)(Brains) \\(\\times\\) Natural Environment\n\n\nEconomics\nEconomy = Specific relational system of exchange w.r.t. scarce resources\n\n\nPolitical Economy\nEconomy-Context = Economic Exchange \\(\\cap\\) Relational Power\n\n\nSociology\nSociety = \\(\\cup\\)(Relational Systems: Kinship, Friendship, Authority, Power, Violence)\n\n\nHistory\nLongue-Durée = Evolution of Societies over Time and Space"
-  },
-  {
-    "objectID": "w01/slides.html#homo-sapienshomo-arbitratushomo-mischievous",
-    "href": "w01/slides.html#homo-sapienshomo-arbitratushomo-mischievous",
-    "title": "Week 1: Science from Particles to People",
-    "section": "Homo sapiens/Homo arbitratus/Homo mischievous",
-    "text": "Homo sapiens/Homo arbitratus/Homo mischievous\n\n\n\n\n\n\n\n\nLatin sapiens denotes being “discerning” or “wise”\nBut… technically nothing stops us from choosing to be “unwise” whenever we’d like… bc free will\n\\(\\Rightarrow\\) For this class, humans are Homo arbitratus: arbitratus denotes choosing what to do, after we’ve [sapiently] thought about it"
-  },
-  {
-    "objectID": "w01/slides.html#laws-of-physics-vs.-laws-of-social-science",
-    "href": "w01/slides.html#laws-of-physics-vs.-laws-of-social-science",
-    "title": "Week 1: Science from Particles to People",
-    "section": "Laws of Physics vs. “Laws” of Social Science",
-    "text": "Laws of Physics vs. “Laws” of Social Science\n\nIf we tell an inanimate object that we’ve discovered a law saying that it will accelerate towards Earth at \\(9.8~\\textrm{m}/\\textrm{s}^2\\)\n\n…It will likely1 still accelerate towards Earth at \\(9.8~\\textrm{m}/\\textrm{s}^2\\)\n\n\n\n\n\n\nIf we tell a human we’ve discovered a law saying they will quack like a duck at 7:30pm EDT every Wednesday\n\n…They can utilize their free will to violate this “law”\n\n\n\n\n\n\n\n\n\n\n\n\nObligatory quantum footnote: human agency [maybe] plays a role, in a quirky way, in physics at tiny subatomic scales; but once we coarse grain to atoms (+avoid speed of light), Newton’s Laws accurate to many decimals 🤯"
-  },
-  {
-    "objectID": "w01/slides.html#strangely-relevant-cs-topic-the-halting-problem",
-    "href": "w01/slides.html#strangely-relevant-cs-topic-the-halting-problem",
-    "title": "Week 1: Science from Particles to People",
-    "section": "Strangely-Relevant CS Topic: The Halting Problem",
-    "text": "Strangely-Relevant CS Topic: The Halting Problem\n\nKurt Gödel \\(\\leftrightarrow\\) Alan Turing: Entscheidungsproblem\nTheorem: It is not possible to write a computer program \\(P(x)\\) that detects whether or not a computer program \\(x\\) will eventually halt (as opposed to, e.g., looping forever)\nProof: Assume \\(P(x)\\) is possible to write. Run it on mischievous_program.py. Infinite contradiction loop.\n\n\n\n\n\nhalting_problem_solver.py\n\ndef will_it_halt(program, input):\n  # Put code you think will work here\n  # Return True if program will halt, False otherwise\n\n\n\nmischievous_program.py\n\ndef my_mischievous_function(input):\n  if will_it_halt(my_mischevious_function, input):\n    while True: pass # Infinite loop\n  else:\n    return # Halt\n\n\n\n\n\n\n\n\nInput→↓Program\n0\n1\n2\n\\(\\cdots\\)\n\n\n\n\n0\nHalt\nLoop\nLoop\n\\(\\cdots\\)\n\n\n1\nLoop\nLoop\nHalt\n\\(\\cdots\\)\n\n\n2\nLoop\nLoop\nLoop\n\\(\\cdots\\)\n\n\n\\(\\vdots\\)\n\\(\\vdots\\)\n\\(\\vdots\\)\n\\(\\vdots\\)\n\\(\\mathbf{\\ddots}\\)\n\n\n\nLoop\nHalt\nHalt\n\\(\\mathbf{\\cdots}\\)"
-  },
-  {
-    "objectID": "w01/slides.html#the-takeaway-bayesian-humility",
-    "href": "w01/slides.html#the-takeaway-bayesian-humility",
-    "title": "Week 1: Science from Particles to People",
-    "section": "The Takeaway: Bayesian Humility!",
-    "text": "The Takeaway: Bayesian Humility!\n\nSocial science, with “science” used in the same sense as for physics, may be a quixotic endeavor1\nInstead, we’ll do social science, where we use data to…\n Infer tendencies: \\(\\mathcal{H}\\) = «\\(X\\) tends to cause \\(Y\\)»\n With some degree of veracity: \\(\\Pr(\\mathcal{H}) \\approx 0.7\\)\n Construct models that we can update with new evidence: Bayes’ rule! \\(\\Pr(\\mathcal{H} \\mid E) = \\frac{\\Pr(E \\mid \\mathcal{H} ) \\Pr(\\mathcal{H})}{\\Pr(E)} \\approx 0.8\\)\nPls notice “slippage” between aleatory probability within \\(\\mathcal{H}\\) (“tends to”) vs. epistemic probability “outside of”, talking about \\(\\mathcal{H}\\) (“I’m 70% confident about \\(\\mathcal{H}\\)”)\n\nAt least, for the time being… BUT see Sperber (1996), which will come up later"
-  },
-  {
-    "objectID": "w01/slides.html#case-study-military-inequality-leadsto-military-success",
-    "href": "w01/slides.html#case-study-military-inequality-leadsto-military-success",
-    "title": "Week 1: Science from Particles to People",
-    "section": "Case Study: Military Inequality \\(\\leadsto\\) Military Success",
-    "text": "Case Study: Military Inequality \\(\\leadsto\\) Military Success\n\nLyall (2020): “Treating certain ethnic groups as second-class citizens […] leads victimized soldiers to subvert military authorities once war begins. The higher an army’s inequality, the greater its rates of desertion, side-switching, and casualties”\n\n\nMatching constructs pairs of belligerents that are similar across a wide range of traits thought to dictate battlefield performance but that vary in levels of prewar inequality. The more similar the belligerents, the better our estimate of inequality’s effects, as all other traits are shared and thus cannot explain observed differences in performance, helping assess how battlefield performance would have improved (declined) if the belligerent had a lower (higher) level of prewar inequality.\nSince [non-matched] cases are dropped […] selected cases are more representative of average belligerents/wars than outliers with few or no matches, [providing] surer ground for testing generalizability of the book’s claims than focusing solely on canonical but unrepresentative usual suspects (Germany, the United States, Israel)"
-  },
-  {
-    "objectID": "w01/slides.html#does-inequality-cause-poor-military-performance",
-    "href": "w01/slides.html#does-inequality-cause-poor-military-performance",
-    "title": "Week 1: Science from Particles to People",
-    "section": "Does Inequality Cause Poor Military Performance?",
-    "text": "Does Inequality Cause Poor Military Performance?\n\n\n\n\n\n\n\n\nCovariates\nSultanate of Morocco Spanish-Moroccan War, 1859-60\nKhanate of Kokand War with Russia, 1864-65\n\n\n\n\n\\(X\\): Military Inequality\nLow (0.01)\nExtreme (0.70)\n\n\n\\(\\mathbf{Z}\\): Matched Covariates:\n\n\n\n\nInitial relative power\n66%\n66%\n\n\nTotal fielded force\n55,000\n50,000\n\n\nRegime type\nAbsolutist Monarchy (−6)\nAbsolute Monarchy (−7)\n\n\nDistance from capital\n208km\n265km\n\n\nStanding army\nYes\nYes\n\n\nComposite military\nYes\nYes\n\n\nInitiator\nNo\nNo\n\n\nJoiner\nNo\nNo\n\n\nDemocratic opponent\nNo\nNo\n\n\nGreat Power\nNo\nNo\n\n\nCivil war\nNo\nNo\n\n\nCombined arms\nYes\nYes\n\n\nDoctrine\nOffensive\nOffensive\n\n\nSuperior weapons\nNo\nNo\n\n\nFortifications\nYes\nYes\n\n\nForeign advisors\nYes\nYes\n\n\nTerrain\nSemiarid coastal plain\nSemiarid grassland plain\n\n\nTopography\nRugged\nRugged\n\n\nWar duration\n126 days\n378 days\n\n\nRecent war history w/opp\nYes\nYes\n\n\nFacing colonizer\nYes\nYes\n\n\nIdentity dimension\nSunni Islam/Christian\nSunni Islam/Christian\n\n\nNew leader\nYes\nYes\n\n\nPopulation\n8–8.5 million\n5–6 million\n\n\nEthnoling fractionalization (ELF)\nHigh\nHigh\n\n\nCiv-mil relations\nRuler as commander\nRuler as commander\n\n\n\\(Y\\): Battlefield Performance:\n\n\n\n\nLoss-exchange ratio\n0.43\n0.02\n\n\nMass desertion\nNo\nYes\n\n\nMass defection\nNo\nNo\n\n\nFratricidal violence\nNo\nYes"
-  },
-  {
-    "objectID": "w01/slides.html#the-logic-of-violence-in-civil-war",
-    "href": "w01/slides.html#the-logic-of-violence-in-civil-war",
-    "title": "Week 1: Science from Particles to People",
-    "section": "The Logic of Violence in Civil War",
-    "text": "The Logic of Violence in Civil War\n\nKalyvas (2006)"
-  },
-  {
-    "objectID": "w01/slides.html#particularly-fun-non-standard-examples",
-    "href": "w01/slides.html#particularly-fun-non-standard-examples",
-    "title": "Week 1: Science from Particles to People",
-    "section": "Particularly Fun Non-“Standard” Examples",
-    "text": "Particularly Fun Non-“Standard” Examples\n\nDeDeo, French Revolution\nGrimmer, Mirrors for Sultans and Princes"
   },
   {
     "objectID": "w01/slides.html#jupyterhub",
@@ -3092,7 +2997,7 @@
     "href": "w01/slides.html#references",
     "title": "Week 1: Science from Particles to People",
     "section": "References",
-    "text": "References\n\n\nKalyvas, Stathis N. 2006. The Logic of Violence in Civil War. Cambridge University Press. https://www.dropbox.com/scl/fi/4es1r44ldnqtcroonr5g7/The-Logic-of-Violence-in-Civil-War.pdf?rlkey=uonfmw5zkx1ja5l8emv2bzfmg&dl=1.\n\n\nLyall, Jason. 2020. Divided Armies: Inequality and Battlefield Performance in Modern War. Princeton University Press. https://books.google.com?id=A32pDwAAQBAJ.\n\n\nMontessori, Maria. 1916. Spontaneous Activity in Education: A Basic Guide to the Montessori Methods of Learning in the Classroom. Lulu Press. https://books.google.com?id=c0PYvAEACAAJ.\n\n\nSperber, Dan. 1996. Explaining Culture: A Naturalistic Approach. Blackwell. https://www.dropbox.com/scl/fi/he6idaajr6vopybv13qhd/Explaining-Culture-A-Naturalistic-Approach.pdf?rlkey=8oyhnsu5ycet4osstft252jaw&dl=1."
+    "text": "References\n\n\nMontessori, Maria. 1916. Spontaneous Activity in Education: A Basic Guide to the Montessori Methods of Learning in the Classroom. Lulu Press. https://books.google.com?id=c0PYvAEACAAJ."
   },
   {
     "objectID": "midterm.html",

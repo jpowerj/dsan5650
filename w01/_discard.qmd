@@ -168,3 +168,5 @@ ggplot(spur_df, aes(x=year, y=val_norm, color=factor(varname, labels = c("Ski Re
     values=c('Ski Revenue'=cbPalette[1], 'Lawyers in Georgia'=cbPalette[2])
   )
 ```
+
+<link rel='stylesheet' type='text/css' href='https://cdn.jsdelivr.net/gh/dreampulse/computer-modern-web-font@master/fonts.css'>
