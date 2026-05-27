@@ -9,7 +9,10 @@
 <link href="../site_libs/quarto-html/light-border.css" rel="stylesheet">
 <link href="../site_libs/quarto-html/quarto-syntax-highlighting-e44360b8a8db1e130c7792fece1c8032.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="../site_libs/quarto-contrib/videojs/video.min.js"></script>
-<link href="../site_libs/quarto-contrib/videojs/video-js.css" rel="stylesheet"><meta charset="utf-8">
+<link href="../site_libs/quarto-contrib/videojs/video-js.css" rel="stylesheet">
+<script src="../site_libs/quarto-contrib/glightbox/glightbox.min.js"></script>
+<link href="../site_libs/quarto-contrib/glightbox/glightbox.min.css" rel="stylesheet">
+<link href="../site_libs/quarto-contrib/glightbox/lightbox.css" rel="stylesheet"><meta charset="utf-8">
   <meta name="generator" content="quarto-1.10.3">
 
   <meta name="author" content="Jeff Jacobs">
@@ -121,7 +124,7 @@
     div.csl-indent {
       margin-left: 2em;
     }  </style>
-  <link rel="stylesheet" href="../site_libs/revealjs/dist/theme/quarto-462da3f1088dd7fa73de805e1ba69918.css">
+  <link rel="stylesheet" href="../site_libs/revealjs/dist/theme/quarto-56a9c602ea82873ca2acbba5dedf75fa.css">
   <link href="../site_libs/revealjs/plugin/quarto-line-highlight/line-highlight.css" rel="stylesheet">
   <link href="../site_libs/revealjs/plugin/reveal-menu/menu.css" rel="stylesheet">
   <link href="../site_libs/revealjs/plugin/reveal-menu/quarto-menu.css" rel="stylesheet">
@@ -544,10 +547,10 @@ Jeff Jacobs
 <ul>
 <li>Social <span class="orbitron-jj">science</span>, with <span class="orbitron-jj">“science”</span> used in the same sense as for physics, may be a quixotic endeavor<sup>1</sup></li>
 <li>Instead, we’ll do <span class="barrio-jj"><strong>social science</strong></span>, where we use data to…</li>
-<li><i class="bi bi-1-circle"></i> Infer <strong>tendencies</strong>: <span class="math inline">\(\mathcal{H}\)</span> = «<span class="math inline">\(X\)</span> tends to cause <span class="math inline">\(Y\)</span>»</li>
-<li><i class="bi bi-2-circle"></i> With some degree of <strong>veracity</strong>: <span class="math inline">\(\Pr(\mathcal{H}) \approx 0.7\)</span></li>
-<li><i class="bi bi-3-circle"></i> Construct models that we can <strong>update</strong> with <strong>new evidence</strong>: Bayes’ rule! <span class="math inline">\(\Pr(\mathcal{H} \mid E) = \frac{\Pr(E \mid \mathcal{H} ) \Pr(\mathcal{H})}{\Pr(E)} \approx 0.8\)</span></li>
-<li>Notice “slippage” between <strong>aleatory probability</strong> <em>within</em> <span class="math inline">\(\mathcal{H}\)</span> (“tends to”) vs.&nbsp;<strong>epistemic probability</strong> “outside of”, talking <em>about</em> <span class="math inline">\(\mathcal{H}\)</span> (“I’m 70% confident about <span class="math inline">\(\mathcal{H}\)</span>”)</li>
+<li><i class="bi bi-1-circle"></i> Infer <strong>tendencies</strong>: <span class="math inline">\(\mathsf{H}\)</span> = «<span class="math inline">\(X\)</span> tends to cause <span class="math inline">\(Y\)</span>»</li>
+<li><i class="bi bi-2-circle"></i> With some degree of <strong>veracity</strong>: <span class="math inline">\(\Pr(\mathsf{H}) \approx 0.7\)</span></li>
+<li><i class="bi bi-3-circle"></i> Construct models that we can <strong>update</strong> with <strong>new evidence</strong>: Bayes’ rule! <span class="math inline">\(\Pr(\mathsf{H} \mid E) = \frac{\Pr(E \mid \mathsf{H} ) \Pr(\mathsf{H})}{\Pr(E)} \approx 0.8\)</span></li>
+<li>Notice “slippage” between <strong>aleatory probability</strong> <em>within</em> <span class="math inline">\(\mathsf{H}\)</span> (“tends to”) vs.&nbsp;<strong>epistemic probability</strong> “outside of”, talking <em>about</em> <span class="math inline">\(\mathsf{H}\)</span> (“I’m 70% confident about <span class="math inline">\(\mathsf{H}\)</span>”)</li>
 </ul>
 <aside><ol class="aside-footnotes"><li id="fn2"><p>At least, for the time being… BUT see <span class="citation" data-cites="sperber_explaining_1996">Sperber (<a href="#/references" role="doc-biblioref" onclick="">1996</a>)</span>, which will come up later</p></li></ol></aside></section></section>
 <section>
@@ -761,8 +764,9 @@ Jeff Jacobs
 <section id="particularly-fun-non-standard-examples" class="slide level2">
 <h2>Particularly Fun Non-“Standard” Examples</h2>
 <ul>
-<li>DeDeo, French Revolution</li>
-<li>Grimmer, Mirrors for Sultans and Princes</li>
+<li><span class="citation" data-cites="barron_individuals_2018">Barron et al. (<a href="#/references" role="doc-biblioref" onclick="">2018</a>)</span></li>
+<li><span class="citation" data-cites="blaydes_mirrors_2018">Blaydes, Grimmer, and McQueen (<a href="#/references" role="doc-biblioref" onclick="">2018</a>)</span></li>
+<li><span class="citation" data-cites="kozlowski_geometry_2019">Kozlowski, Taddy, and Evans (<a href="#/references" role="doc-biblioref" onclick="">2019</a>)</span></li>
 </ul>
 </section></section>
 <section>
@@ -801,7 +805,7 @@ Jeff Jacobs
 <img data-src="images/posadism_causal.jpg" class="quarto-figure quarto-figure-center r-stretch"></section>
 <section id="data-generating-processes-dgps" class="slide level2 title-09 text-85 crunch-title crunch-ul crunch-quarto-figure crunch-quarto-layout-panel crunch-li-5">
 <h2>Data-Generating Processes (DGPs)</h2>
-<div class="quarto-layout-panel" data-layout="[55,45]" data-layout-align="center">
+<div class="quarto-layout-panel" data-layout-align="center" data-layout="[55,45]">
 <div class="quarto-layout-row quarto-layout-valign-center">
 <div id="dgps-5100" class="quarto-layout-cell" style="flex-basis: 55.0%;justify-content: center;">
 <ul>
@@ -870,7 +874,7 @@ Jeff Jacobs
 <ul>
 <li>Non-probabilistic models: High potential for being garbage
 <ul>
-<li><em>tldr: even if SUPER certain, using <span class="math inline">\(\Pr(\mathcal{H}) = 1-\varepsilon\)</span> with tiny <span class="math inline">\(\varepsilon\)</span> has literal life-saving advantages</em><sup>1</sup> <span class="citation" data-cites="finetti_probability_1972">(<a href="#/references" role="doc-biblioref" onclick="">Finetti 1972</a>)</span></li>
+<li><em>tldr: even if SUPER certain, using <span class="math inline">\(\Pr(\mathsf{H}) = 1-\varepsilon\)</span> with tiny <span class="math inline">\(\varepsilon\)</span> has literal life-saving advantages</em><sup>1</sup> <span class="citation" data-cites="finetti_probability_1972">(<a href="#/references" role="doc-biblioref" onclick="">Finetti 1972</a>)</span></li>
 </ul></li>
 <li>Probabilistic models: Getting there, still looking at “surface”
 <ul>
@@ -949,7 +953,7 @@ Jeff Jacobs
 <li><span class="citation" data-cites="pearl_causality_2000">Pearl (<a href="#/references" role="doc-biblioref" onclick="">2000</a>)</span>: Formal proofs that (<span class="math inline">\(\Pr\)</span> axioms) <span class="math inline">\(\cup\)</span> (<span class="math inline">\(\textsf{do}\)</span> axioms) <span class="math inline">\(\Rightarrow\)</span> causal inference procedures successfully recover causal effects</li>
 </ul>
 </section>
-<section id="preview-do-calculus" class="slide level2 crunch-title crunch-math text-85 table-85 crunch-ul inline-90 math-90 crunch-li-6">
+<section id="preview-do-calculus" class="slide level2 crunch-title crunch-math text-80 table-85 crunch-ul inline-85 math-90 crunch-li-6">
 <h2>Preview: do-Calculus</h2>
 <ul>
 <li><em>Extends</em> core of probability to incorporate causality, via <span class="math inline">\(\textsf{do}\)</span> operator</li>
@@ -977,13 +981,15 @@ Jeff Jacobs
 </tbody>
 </table>
 <ul>
-<li><p>Probably the most difficult thing in 5650 to wrap head around</p></li>
-<li><p>“Special”: <span class="math inline">\(\Pr(\textsf{do}(X = 5))\)</span> <em>not</em> well-defined, only <span class="math inline">\(\Pr(Y = 6 \mid \textsf{do}(X = 5))\)</span></p></li>
-<li><p>To emphasize special-ness, we may use notation like:</p>
+<li><p>Trickiest 5650 thing to wrap head around at first!</p></li>
+<li><p>“Special” means <span class="math inline">\(\Pr(\textsf{do}(X = 5))\)</span> <em>not</em> well-defined, only <span class="math inline">\(\Pr(Y = 6 \mid \textsf{do}(X = 5))\)</span></p>
+<ul>
+<li>What would <span class="math inline">\(\Pr(X = 6 \mid \textsf{do}(X = 5)))\)</span> be? <span class="math inline">\(\Pr(X = 5 \mid \textsf{do}(X = 5))\)</span>?</li>
+</ul></li>
+<li><p>To avoid confusion with “normal” events, we may use notation like:</p>
 <p><span class="math display">\[
-\Pr(Y = 6 \mid \textsf{do}(X = 5)) \equiv \textstyle \Pr_{\textsf{do}(X = 5)}(Y = 6)
-\]</span></p>
-<p>to avoid confusion with “normal” events</p></li>
+\Pr(Y = 6 \mid \textsf{do}(X = 5)) \equiv \textstyle \Pr_{\textsf{do}(X = 5)}(Y = 6) \text{ or }\Pr(Y = 6 \mid \Omega_{X = 5})
+\]</span></p></li>
 </ul>
 </section>
 <section id="causal-world-unlocked-with-great-power-comes-great-responsibility" class="slide level2 title-08 crunch-title crunch-ul">
@@ -998,15 +1004,24 @@ Jeff Jacobs
 <li><strong>Now</strong> we can actually infer that the occurrence of <span class="math inline">\(E_0\)</span> <strong>caused</strong> an increase in the likelihood of <span class="math inline">\(E_1\)</span> occurring!</li>
 </ul>
 </section>
-<section id="ulysses-and-the-computational-sirens" class="slide level2 smaller crunch-title">
+<section id="ulysses-and-the-computational-sirens" class="slide level2 smaller crunch-title title-11">
 <h2>Ulysses and the [Computational] Sirens</h2>
 
 <img data-src="images/sirens.jpg" class="quarto-figure quarto-figure-center r-stretch"></section></section>
 <section>
 <section id="your-first-pgm" class="title-slide slide level1 smaller crunch-title title-10 crunch-ul crunch-li-8 crunch-quarto-figure crunch-img crunch-p center" data-stack-name="PGMs">
 <h1>Your First PGM!</h1>
-
-<img data-src="images/medical.jpg" class="r-stretch quarto-figure-center"><p class="caption"><a href="http://probmods.org/chapters/dependence.html">Image source</a></p><ul>
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><a href="images/medical.jpg" class="lightbox" data-gallery="quarto-lightbox-gallery-1" title="From Probabilistic Models of Cognition, Ch 4"><img data-src="images/medical.jpg" class="quarto-figure quarto-figure-center" style="width:50.0%" alt="From Probabilistic Models of Cognition, Ch 4"></a></p>
+</figure>
+</div>
+<figcaption><a href="https://jjacobs.me/probmods/ch04/#graphical-notations-for-dependence">From <em>Probabilistic Models of Cognition</em>, Ch 4</a></figcaption>
+</figure>
+</div>
+<ul>
 <li><i class="bi bi-1-circle"></i> Which of the variables (ovals) are <strong>observed</strong>? Which are <strong>latent</strong>?</li>
 <li><i class="bi bi-2-circle"></i> What do you think the arrows represent?</li>
 <li><i class="bi bi-3-circle"></i> Can we use this to find the <strong>“root cause”</strong> of (e.g.) observed <strong>chest pain</strong>? Or conversely, to <strong>predict</strong> possible ↑ in likelihood of chest pain if we start smoking?</li>
@@ -1021,11 +1036,11 @@ Jeff Jacobs
 <li>Representation of a <strong>data-generating process (DGP)!</strong></li>
 </ul>
 <p>Example: Let’s model how <strong>weather</strong> <span class="math inline">\(W\)</span> affects <strong>evening plans</strong> <span class="math inline">\(Y\)</span>: the choice between <strong>going to a party</strong> or <strong>staying in to watch movies</strong></p>
-<div title="<i class='bi bi-info-circle' style='vertical-align: middle;'></i> The Partier's Dilemma">
+<div title="<i class='bi bi-info-circle' style='vertical-align: middle;'></i> DGP: The Partier's Dilemma">
 <div class="callout callout-tip no-icon callout-titled callout-style-default">
 <div class="callout-body">
 <div class="callout-title">
-<p><strong><i class="bi bi-info-circle" style="vertical-align: middle;"></i> The Partier’s Dilemma</strong></p>
+<p><strong><i class="bi bi-info-circle" style="vertical-align: middle;"></i> DGP: The Partier’s Dilemma</strong></p>
 </div>
 <div class="callout-content">
 <ol type="1">
@@ -1124,7 +1139,7 @@ Figure&nbsp;2: The Conditional Probability Table (CPT) for the edge <span class=
 </div>
 </div>
 </section>
-<section id="observed-vs.-latent-nodes" class="slide level2">
+<section id="observed-vs.-latent-nodes" class="slide level2 crunch-title">
 <h2>Observed vs.&nbsp;Latent Nodes</h2>
 <ul>
 <li>PGMs help us make <strong>valid (Bayesian) inferences</strong> about the world in the face of <strong>incomplete information</strong>!</li>
@@ -1186,9 +1201,15 @@ Figure&nbsp;2: The Conditional Probability Table (CPT) for the edge <span class=
 <li>We’ve learned something interesting! Observing <span class="math inline">\(i\)</span> at the party <span class="math inline">\(\leadsto\)</span> probability of sun jumps from <span class="math inline">\(0.5\)</span> (<strong>“prior”</strong> estimate of <span class="math inline">\(W\)</span>, best guess without any other relevant info) to <span class="math inline">\(0.89\)</span> (<strong>“posterior”</strong> estimate of <span class="math inline">\(W\)</span>, best guess after incorporating relevant info).</li>
 </ul>
 </section>
-<section id="references" class="slide level2 smaller scrollable">
+<section id="references" class="slide level2 crunch-title smaller scrollable">
 <h2>References</h2>
 <div id="refs" class="references csl-bib-body hanging-indent" data-entry-spacing="0" role="list">
+<div id="ref-barron_individuals_2018" class="csl-entry" role="listitem">
+Barron, Alexander T. J., Jenny Huang, Rebecca L. Spang, and Simon DeDeo. 2018. <span>“<a href="https://doi.org/10.1073/pnas.1717729115">Individuals, <span>Institutions</span>, and <span>Innovation</span> in the <span>Debates</span> of the <span>French Revolution</span></a>.”</span> <em>Proceedings of the National Academy of Sciences</em> 115 (18): 4607–12.
+</div>
+<div id="ref-blaydes_mirrors_2018" class="csl-entry" role="listitem">
+Blaydes, Lisa, Justin Grimmer, and Alison McQueen. 2018. <span>“<a href="https://doi.org/10.1086/699246">Mirrors for <span>Princes</span> and <span>Sultans</span>: <span>Advice</span> on the <span>Art</span> of <span>Governance</span> in the <span>Medieval Christian</span> and <span>Islamic Worlds</span></a>.”</span> <em>The Journal of Politics</em> 80 (4): 1150–67.
+</div>
 <div id="ref-finetti_probability_1972" class="csl-entry" role="listitem">
 Finetti, Bruno de. 1972. <em><a href="https://books.google.com?id=hENg7qRPOPYC">Probability, <span>Induction</span> and <span>Statistics</span>: <span>The Art</span> of <span>Guessing</span></a></em>. J. Wiley.
 </div>
@@ -1200,6 +1221,9 @@ Kalyvas, Stathis N. 2006. <em><a href="https://www.dropbox.com/scl/fi/4es1r44ldn
 </div>
 <div id="ref-koller_probabilistic_2009" class="csl-entry" role="listitem">
 Koller, Daphne, and Nir Friedman. 2009. <em><a href="https://www.dropbox.com/scl/fi/6qmnr9feizngaq4005isj/Probabilistic-Graphical-Models.pdf?rlkey=4803nmsffh4xtsdfiji8jppb1&amp;dl=1">Probabilistic <span>Graphical Models</span>: <span>Principles</span> and <span>Techniques</span></a></em>. MIT Press.
+</div>
+<div id="ref-kozlowski_geometry_2019" class="csl-entry" role="listitem">
+Kozlowski, Austin C., Matt Taddy, and James A. Evans. 2019. <span>“<a href="https://doi.org/10.1177/0003122419877135">The <span>Geometry</span> of <span>Culture</span>: <span>Analyzing</span> the <span>Meanings</span> of <span>Class</span> Through <span>Word Embeddings</span></a>.”</span> <em>American Sociological Review</em> 84 (5): 905–49.
 </div>
 <div id="ref-lyall_divided_2020" class="csl-entry" role="listitem">
 Lyall, Jason. 2020. <em><a href="https://books.google.com?id=A32pDwAAQBAJ">Divided <span>Armies</span>: <span>Inequality</span> and <span>Battlefield Performance</span> in <span>Modern War</span></a></em>. Princeton University Press.
@@ -1616,6 +1640,38 @@ Sperber, Dan. 1996. <em><a href="https://www.dropbox.com/scl/fi/he6idaajr6vopybv
       });
       </script>
     <script>videojs(video_shortcode_videojs_video1);</script>
+    <script>var lightboxQuarto = GLightbox({"closeEffect":"zoom","descPosition":"bottom","loop":false,"openEffect":"zoom","selector":".lightbox"});
+    (function() {
+      let previousOnload = window.onload;
+      window.onload = () => {
+        if (previousOnload) {
+          previousOnload();
+        }
+        lightboxQuarto.on('slide_before_load', (data) => {
+          const { slideIndex, slideNode, slideConfig, player, trigger } = data;
+          const href = trigger.getAttribute('href');
+          if (href !== null) {
+            const imgEl = window.document.querySelector(`a[href="${href}"] img`);
+            if (imgEl !== null) {
+              const srcAttr = imgEl.getAttribute("src");
+              if (srcAttr && srcAttr.startsWith("data:")) {
+                slideConfig.href = srcAttr;
+              }
+            }
+          } 
+        });
+      
+        lightboxQuarto.on('slide_after_load', (data) => {
+          const { slideIndex, slideNode, slideConfig, player, trigger } = data;
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(slideNode);
+          }
+        });
+      
+      };
+      
+    })();
+              </script>
     
 
 </body></html>

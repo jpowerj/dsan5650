@@ -269,10 +269,10 @@ def my_mischievous_function(input):
 
 * Social [science]{.orbitron-jj}, with ["science"]{.orbitron-jj} used in the same sense as for physics, may be a quixotic endeavor^[At least, for the time being... BUT see @sperber_explaining_1996, which will come up later]
 * Instead, we'll do [**social science**]{.barrio-jj}, where we use data to...
-* <i class='bi bi-1-circle'></i> Infer **tendencies**: $\mathcal{H}$ = «$X$ tends to cause $Y$»
-* <i class='bi bi-2-circle'></i> With some degree of **veracity**: $\Pr(\mathcal{H}) \approx 0.7$
-* <i class='bi bi-3-circle'></i> Construct models that we can **update** with **new evidence**: Bayes' rule! $\Pr(\mathcal{H} \mid E) = \frac{\Pr(E \mid \mathcal{H} ) \Pr(\mathcal{H})}{\Pr(E)} \approx 0.8$
-* Notice "slippage" between **aleatory probability** *within* $\mathcal{H}$ ("tends to") vs. **epistemic probability** "outside of", talking *about* $\mathcal{H}$ ("I'm 70\% confident about $\mathcal{H}$")
+* <i class='bi bi-1-circle'></i> Infer **tendencies**: $\mathsf{H}$ = «$X$ tends to cause $Y$»
+* <i class='bi bi-2-circle'></i> With some degree of **veracity**: $\Pr(\mathsf{H}) \approx 0.7$
+* <i class='bi bi-3-circle'></i> Construct models that we can **update** with **new evidence**: Bayes' rule! $\Pr(\mathsf{H} \mid E) = \frac{\Pr(E \mid \mathsf{H} ) \Pr(\mathsf{H})}{\Pr(E)} \approx 0.8$
+* Notice "slippage" between **aleatory probability** *within* $\mathsf{H}$ ("tends to") vs. **epistemic probability** "outside of", talking *about* $\mathsf{H}$ ("I'm 70\% confident about $\mathsf{H}$")
 
 # Matching Estimators for Apples-to-Apples Comparisons {data-stack-name="Causality" .crunch-title}
 
@@ -332,8 +332,9 @@ def my_mischievous_function(input):
 
 ## Particularly Fun Non-"Standard" Examples
 
-* DeDeo, French Revolution
-* Grimmer, Mirrors for Sultans and Princes
+* @barron_individuals_2018
+* @blaydes_mirrors_2018
+* @kozlowski_geometry_2019
 
 # Motivating Examples: Causal Inference {data-stack-name="Causal Inference"}
 
@@ -422,7 +423,7 @@ def my_mischievous_function(input):
 ## So What's the Problem? {.crunch-title .crunch-ul .crunch-li-8 .inline-90 .text-90}
 
 * Non-probabilistic models: High potential for being garbage
-  * *tldr: even if SUPER certain, using $\Pr(\mathcal{H}) = 1-\varepsilon$ with tiny $\varepsilon$ has literal life-saving advantages*^[See [Appendix Slide](#appendix-zero-probabilities)] [@finetti_probability_1972]
+  * *tldr: even if SUPER certain, using $\Pr(\mathsf{H}) = 1-\varepsilon$ with tiny $\varepsilon$ has literal life-saving advantages*^[See [Appendix Slide](#appendix-zero-probabilities)] [@finetti_probability_1972]
 * Probabilistic models: Getting there, still looking at "surface"
   * Of the $N = 100$ times we observed event $X$ occurring, event $Y$ also occurred $90$ of those times
   * $\implies \Pr(Y \mid X) = \frac{\#[X, Y]}{\#[X]} = \frac{90}{100} = 0.9$
@@ -491,7 +492,7 @@ $X$ causes $Y$ if and only if:
 * Recent decades: researchers have built up an additional "layer" of modeling tools, augmenting existing machinery of probability to address causality head-on!
 * @pearl_causality_2000: Formal proofs that ($\Pr$ axioms) $\cup$ ($\textsf{do}$ axioms) $\Rightarrow$ causal inference procedures successfully recover causal effects
 
-## Preview: do-Calculus {.crunch-title .crunch-math .text-85 .table-85 .crunch-ul .inline-90 .math-90 .crunch-li-6}
+## Preview: do-Calculus {.crunch-title .crunch-math .text-80 .table-85 .crunch-ul .inline-85 .math-90 .crunch-li-6}
 
 * *Extends* core of probability to incorporate causality, via $\textsf{do}$ operator
 * $\textsf{do}(X = 5)$ is a "special" **event**, representing **intervention in DGP** to **force** $X \leftarrow 5$... $\textsf{do}(X = 5)$ **not the same event** as $X = 5$!
@@ -502,15 +503,14 @@ $X$ causes $Y$ if and only if:
 
 : {tbl-colwidths="[46,2,52]"}
 
-* Probably the most difficult thing in 5650 to wrap head around
-* "Special": $\Pr(\textsf{do}(X = 5))$ *not* well-defined, only $\Pr(Y = 6 \mid \textsf{do}(X = 5))$
-* To emphasize special-ness, we may use notation like:
+* Trickiest 5650 thing to wrap head around at first!
+* "Special" means $\Pr(\textsf{do}(X = 5))$ *not* well-defined, only $\Pr(Y = 6 \mid \textsf{do}(X = 5))$
+  * What would $\Pr(X = 6 \mid \textsf{do}(X = 5)))$ be? $\Pr(X = 5 \mid \textsf{do}(X = 5))$?
+* To avoid confusion with "normal" events, we may use notation like:
 
   $$
-  \Pr(Y = 6 \mid \textsf{do}(X = 5)) \equiv \textstyle \Pr_{\textsf{do}(X = 5)}(Y = 6)
+  \Pr(Y = 6 \mid \textsf{do}(X = 5)) \equiv \textstyle \Pr_{\textsf{do}(X = 5)}(Y = 6) \text{ or }\Pr(Y = 6 \mid \Omega_{X = 5})
   $$
-
-  to avoid confusion with "normal" events
 
 ## Causal World Unlocked 😎 (With Great Power Comes Great Responsibility...) {.title-08 .crunch-title .crunch-ul}
 
@@ -520,13 +520,13 @@ $X$ causes $Y$ if and only if:
   * The probability that $E_1$ occurs **conditional on** the event $\textsf{do}(E_0)$ occurring is $\Pr(E_1 \mid \textsf{do}(E_0)) = 0.75$,
 * **Now** we can actually infer that the occurrence of $E_0$ **caused** an increase in the likelihood of $E_1$ occurring!
 
-## Ulysses and the [Computational] Sirens {.smaller .crunch-title}
+## Ulysses and the [Computational] Sirens {.smaller .crunch-title .title-11}
 
 ![](images/sirens.jpg){fig-align="center"}
 
 # Your First PGM! {.smaller .crunch-title .title-10 .crunch-ul .crunch-li-8 .crunch-quarto-figure .crunch-img .crunch-p data-stack-name="PGMs"}
 
-![[Image source](http://probmods.org/chapters/dependence.html)](images/medical.jpg){fig-align="center"}
+![[From *Probabilistic Models of Cognition*, Ch 4](https://jjacobs.me/probmods/ch04/#graphical-notations-for-dependence)](images/medical.jpg){.lightbox fig-align="center" width="50%"}
 
 * <i class='bi bi-1-circle'></i> Which of the variables (ovals) are **observed**? Which are **latent**?
 * <i class='bi bi-2-circle'></i> What do you think the arrows represent?
@@ -542,7 +542,7 @@ A **Probabilistic Graphical Model (PGM)** provides us with:
 
 Example: Let's model how **weather** $W$ affects **evening plans** $Y$: the choice between **going to a party** or **staying in to watch movies**
 
-::: {.callout-tip title="<i class='bi bi-info-circle' style='vertical-align: middle;'></i> The Partier's Dilemma" icon="false"}
+::: {.callout-tip title="<i class='bi bi-info-circle' style='vertical-align: middle;'></i> DGP: The Partier's Dilemma" icon="false"}
 
 1.  A person $i$ wakes up with some initial affinity for partying: $\Pr(Y_i = \textsf{Go})$
 2.  $i$ then goes to their window and observes the weather $W_i$ outside:
@@ -602,7 +602,7 @@ The Conditional Probability Table (CPT) for the edge $\require{enclose}\enclose{
 :::
 ::::
 
-## Observed vs. Latent Nodes
+## Observed vs. Latent Nodes {.crunch-title}
 
 * PGMs help us make **valid (Bayesian) inferences** about the world in the face of **incomplete information**!
 * Key remaining tool: separation of nodes into two categories:
@@ -648,7 +648,7 @@ $$
 
 * We've learned something interesting! Observing $i$ at the party $\leadsto$ probability of sun jumps from $0.5$ (**"prior"** estimate of $W$, best guess without any other relevant info) to $0.89$ (**"posterior"** estimate of $W$, best guess after incorporating relevant info).
 
-## References
+## References {.crunch-title}
 
 ::: {#refs}
 :::

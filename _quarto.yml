@@ -78,6 +78,9 @@ website:
       - text: "2025 Recordings <i class='bi bi-box-arrow-up-right ps-1'></i>"
         href: "https://georgetown.hosted.panopto.com/Panopto/Pages/Sessions/List.aspx?folderID=413d999a-16d1-4b36-93b6-b2de013af117"
         target: "_blank"
+      - text: "Interactive Textbook <i class='bi bi-box-arrow-up-right ps-1'></i>"
+        href: "https://jjacobs.me/probmods"
+        target: "_blank"
 
 format:
   html:
