@@ -176,7 +176,7 @@ $X$ causes $Y$ if and only if:
 
 <center>
 
-{{< video https://jpj.georgetown.domains/dsan5650-scratch/fence_dog.mp4 height="400" align="center" >}}
+{{< video https://jpj.georgetown.domains/dsan5650-data/fence_dog.mp4 height="400" align="center" >}}
 
 </center>
 
