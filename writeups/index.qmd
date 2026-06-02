@@ -6,7 +6,7 @@ listing:
   type: table
   categories: true
   include:
-    categories: "{Labs,Extra Writeups,Clarifications}"
+    categories: "{Labs,Demos,Extra Writeups,Clarifications}"
   fields: [title,date,categories]
   field-display-names: 
     title: "Title"

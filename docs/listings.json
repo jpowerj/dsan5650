@@ -2,6 +2,7 @@
   {
     "listing": "/writeups/index.html",
     "items": [
+      "/writeups/ideal-points/index.html",
       "/writeups/birthday-instrument/index.html",
       "/writeups/informative-priors/FlatPriors_MiniLab.html",
       "/writeups/bayesian-workflow/Bayesian_Workflow.html",
