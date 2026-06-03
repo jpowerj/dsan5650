@@ -159,6 +159,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
   <link href="https://fonts.googleapis.com/css2?family=Barrio&amp;family=Yuji+Boku&amp;family=Orbitron:wght@400..900&amp;display=swap" rel="stylesheet">
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200&amp;icon_names=potted_plant">
 </head>
 <body class="quarto-light">
   <div class="reveal">
@@ -295,6 +296,20 @@ Jeff Jacobs
   /* font-weight: 400; */
   font-style: normal;
 }
+.material-symbols-outlined {
+  margin-top: 5px;
+  margin-right: -6px;
+  vertical-align: -5px;
+  font-size: 38pt;
+  background-color: lightgrey;
+  border: 2px solid lightgrey;
+  border-radius: 8px;
+  font-variation-settings:
+  'FILL' 0,
+  'wght' 400,
+  'GRAD' 0,
+  'opsz' 60
+}
 </style>
 </div>
 </section>
@@ -302,13 +317,11 @@ Jeff Jacobs
 <section>
 <section id="logistics" class="title-slide slide level1 crunch-title title-11 crunch-ul crunch-p smaller table-85 crunch-li-5 center" data-stack-name="Recap">
 <h1>Logistics</h1>
-<center>
+<center style="margin-bottom: 10px;">
 <p><span class="boxed-cb">🆕 JAH AutoHinter <strong>Documentation</strong> at <a href="https://jjacobs.me/jah"><strong><code>jjacobs.me/jah</code></strong></a> &nbsp;🆕</span></p>
 </center>
-<ul>
-<li>HW1 Questions / Concerns?</li>
-<li>Labs + Reading Adventures coming this+next week:</li>
-</ul>
+<p><i class="bi bi-1-circle"></i> HW1 Questions / Concerns?</p>
+<p><i class="bi bi-2-circle"></i> Labs + Reading Adventures coming this+next week:</p>
 <table class="caption-top">
 <colgroup>
 <col style="width: 42%">
@@ -331,9 +344,6 @@ Corpora: <span class="citation" data-cites="elster_roundtable_1996 kassenova_ato
 <li>
 Style vs.&nbsp;Content: <span class="citation" data-cites="wang_winning_2017">(<a href="#/references" role="doc-biblioref" onclick="">Wang et al. 2017</a>)</span>
 </li>
-<li>
-Diffusion: <span class="citation" data-cites="sperber_explaining_1996">(<a href="#/references" role="doc-biblioref" onclick="">Sperber 1996</a>)</span>
-</li>
 </ul></td>
 </tr>
 <tr class="even">
@@ -354,9 +364,9 @@ Diffusion: <span class="citation" data-cites="sperber_explaining_1996">(<a href=
 <li>Social <span class="orbitron-jj">science</span>, with <span class="orbitron-jj">“science”</span> used in the same sense as for physics, may be a quixotic endeavor<sup>1</sup></li>
 <li>Instead, we’ll do <span class="barrio-jj"><strong>social science</strong></span>, where we use data to…</li>
 <li><i class="bi bi-1-circle"></i> Infer <strong>tendencies</strong>: <span class="math inline">\(\mathsf{H}\)</span> = «<span class="math inline">\(X\)</span> tends to cause <span class="math inline">\(Y\)</span>»</li>
-<li><i class="bi bi-2-circle"></i> With some degree of <strong>veracity</strong>: <span class="math inline">\(\Pr(\mathsf{H}) \approx 0.7\)</span></li>
-<li><i class="bi bi-3-circle"></i> Construct models that we can <strong>update</strong> with <strong>new evidence</strong>: Bayes’ rule! <span class="math inline">\(\Pr(\mathsf{H} \mid E) = \frac{\Pr(E \mid \mathsf{H} ) \Pr(\mathsf{H})}{\Pr(E)} \approx 0.8\)</span></li>
-<li>Notice “slippage” between <strong>aleatory probability</strong> <em>within</em> <span class="math inline">\(\mathsf{H}\)</span> (“tends to”) vs.&nbsp;<strong>epistemic probability</strong> “outside of”, talking <em>about</em> <span class="math inline">\(\mathsf{H}\)</span> (“I’m 70% confident about <span class="math inline">\(\mathsf{H}\)</span>”)</li>
+<li><i class="bi bi-2-circle"></i> With some degree of <strong>veracity</strong>: <span class="math inline">\(\Pr(\mathcal{H}) \approx 0.7\)</span></li>
+<li><i class="bi bi-3-circle"></i> Construct models that we can <strong>update</strong> with <strong>new evidence</strong>: Bayes’ rule! <span class="math inline">\(\Pr(\mathcal{H} \mid E) = \frac{\Pr(E \mid \mathcal{H} ) \Pr(\mathcal{H})}{\Pr(E)} \approx 0.8\)</span></li>
+<li>Notice “slippage” between <strong>aleatory probability</strong> <em>within</em> <span class="math inline">\(\mathcal{H}\)</span> (“tends to”) vs.&nbsp;<strong>epistemic probability</strong> “outside of”, talking <em>about</em> <span class="math inline">\(\mathcal{H}\)</span> (“I’m 70% confident about <span class="math inline">\(\mathcal{H}\)</span>”)</li>
 </ul>
 <aside><ol class="aside-footnotes"><li id="fn1"><p>At least, for the time being… BUT see <span class="citation" data-cites="sperber_explaining_1996">Sperber (<a href="#/references" role="doc-biblioref" onclick="">1996</a>)</span>, which will come up later</p></li></ol></aside></section>
 <section id="disclaimer-unfortunate-side-effects-of-engaging-seriously-with-causality" class="slide level2 smaller title-10 crunch-p crunch-img">
@@ -399,7 +409,7 @@ Diffusion: <span class="citation" data-cites="sperber_explaining_1996">(<a href=
 <div class="quarto-layout-cell" style="flex-basis: 45.0%;justify-content: center;">
 <div class="quarto-figure quarto-figure-center">
 <figure>
-<p><img data-src="images/hmm_clusters_single_dist.svg" class="quarto-figure quarto-figure-center" width="280"></p>
+<p><img data-src="images/hmm_clusters_single_dist.svg" class="quarto-figure quarto-figure-center" width="300"></p>
 </figure>
 </div>
 </div>
@@ -407,10 +417,7 @@ Diffusion: <span class="citation" data-cites="sperber_explaining_1996">(<a href=
 </div>
 <ul>
 <li>5650: <strong>Dive into DGPs</strong>, rather than treating as black box/footnote to Law of Large Numbers, so we can move [<em>asymptotically!</em>]…</li>
-<li><strong>From <em>associational</em> statements</strong>:
-<ul>
-<li>«<span class="math inline">\(\underbrace{\text{An increase}}_{\small\text{noun}}\)</span> in <span class="math inline">\(X\)</span> by 1 is associated with increase in <span class="math inline">\(Y\)</span> by <span class="math inline">\(\beta\)</span>»</li>
-</ul></li>
+<li><strong>From <em>associational</em> statements</strong>:<br>«<span class="math inline">\(\underbrace{\text{An increase}}_{\small\text{noun}}\)</span> in <span class="math inline">\(X\)</span> by 1 is associated with increase in <span class="math inline">\(Y\)</span> by <span class="math inline">\(\beta\)</span>»</li>
 <li><strong>To <em>causal</em> ones</strong>: «<span class="math inline">\(\underbrace{\text{Increasing}}_{\small\text{verb}}\)</span> <span class="math inline">\(X\)</span> by 1 <em>causes</em> <span class="math inline">\(Y\)</span> to increase by <span class="math inline">\(\beta\)</span>»</li>
 </ul>
 </section>
@@ -426,10 +433,33 @@ Diffusion: <span class="citation" data-cites="sperber_explaining_1996">(<a href=
 <img data-src="images/fwds_from_grandma.jpg" class="quarto-figure quarto-figure-center r-stretch" style="width:45.0%" id="fig-shootings"><p class="caption">
 Figure&nbsp;1: <em>Will putting Mr.&nbsp;Guns-Dog in timeout prevent plate-breaking?</em>
 </p></section>
-<section id="one-last-metaphor" class="slide level2 crunch-title">
-<h2>One Last Metaphor…</h2>
-
-<img data-src="images/knob-hot-cold-anno.png" style="width:80.0%" class="r-stretch quarto-figure-center"><p class="caption"><strong>The <span class="math inline">\(\textsf{do}(\cdot)\)</span> operator <em>mutates</em> DGPs</strong></p></section></section>
+<section id="potted_plant-one-last-metaphor" class="slide level2 crunch-quarto-layout-panel">
+<h2><span class="material-symbols-outlined">potted_plant</span> One Last Metaphor…</h2>
+<div class="grid-parent" style="display: grid; grid-template-columns: 30% 50% 20%; align-items: center;">
+<div id="thermo-left">
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="images/knob-hot-cold-anno.png" style="width:80.0%"></p>
+<figcaption><strong>The <span class="math inline">\(\textsf{do}(\cdot)\)</span> operator <em>mutates</em> DGPs!</strong></figcaption>
+</figure>
+</div>
+</div>
+<div id="thermo-mid">
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="images/dgp_heat.svg" class="quarto-figure quarto-figure-center" style="width:100.0%"></p>
+</figure>
+</div>
+</div>
+<div id="thermo-right">
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="images/thermometer.webp" class="quarto-figure quarto-figure-center" style="width:70.0%"></p>
+</figure>
+</div>
+</div>
+</div>
+</section></section>
 <section>
 <section id="your-first-pgm" class="title-slide slide level1 smaller crunch-title title-10 crunch-ul crunch-li-8 crunch-quarto-figure crunch-img crunch-p center" data-stack-name="PGMs">
 <h1>Your First PGM!</h1>
@@ -468,9 +498,9 @@ Figure&nbsp;1: <em>Will putting Mr.&nbsp;Guns-Dog in timeout prevent plate-break
 <ol type="1">
 <li>A person <span class="math inline">\(i\)</span> wakes up with some initial affinity for partying: <span class="math inline">\(\Pr(Y_i = \textsf{Go})\)</span></li>
 <li><span class="math inline">\(i\)</span> then goes to their window and observes the weather <span class="math inline">\(W_i\)</span> outside:
-<ol type="i">
-<li>If the weather is <strong>sunny</strong>, <span class="math inline">\(i\)</span>’s affinity increases: <span class="math inline">\(\Pr(Y_i = \textsf{Go} \mid W_i = \textsf{Sun}) &gt; \Pr(Y = \textsf{Go})\)</span></li>
-<li>Otherwise, if it is <strong>rainy</strong>, <span class="math inline">\(i\)</span>’s affinity decreases: <span class="math inline">\(\Pr(Y_i = \textsf{Go} \mid W_i = \textsf{Rain}) &lt; \Pr(Y = \textsf{Go})\)</span></li>
+<ol type="1">
+<li>If weather is <strong>sunny</strong>, <span class="math inline">\(i\)</span>’s affinity increases: <span class="math inline">\(\Pr(Y_i = \textsf{Go} \mid W_i = \textsf{Sun}) &gt; \Pr(Y = \textsf{Go})\)</span></li>
+<li>Otherwise, if <strong>rainy</strong>, <span class="math inline">\(i\)</span>’s affinity decreases: <span class="math inline">\(\Pr(Y_i = \textsf{Go} \mid W_i = \textsf{Rain}) &lt; \Pr(Y = \textsf{Go})\)</span></li>
 </ol></li>
 </ol>
 </div>
@@ -478,7 +508,7 @@ Figure&nbsp;1: <em>Will putting Mr.&nbsp;Guns-Dog in timeout prevent plate-break
 </div>
 </div>
 </section>
-<section id="two-main-building-blocks" class="slide level2 crunch-title title-09 inline-90 math-80 crunch-ul crunch-math crunch-li-8 text-80">
+<section id="two-main-building-blocks" class="slide level2 crunch-title title-09 math-80 crunch-ul crunch-math crunch-li-8 text-80">
 <h2>Two Main “Building Blocks”</h2>
 <p><span class="boxed"><strong>Nodes</strong></span> like <span class="math inline">\(\require{enclose}\enclose{circle}{X}\)</span> denote <strong>Random Variables</strong>:</p>
 <p><span class="math display">\[
@@ -486,9 +516,8 @@ Figure&nbsp;1: <em>Will putting Mr.&nbsp;Guns-Dog in timeout prevent plate-break
 \]</span></p>
 <p><span class="boxed"><strong>Edges</strong></span> like <span class="math inline">\(\require{enclose}\enclose{circle}{X} \rightarrow \enclose{circle}{Y}\)</span> denote <strong>relationships</strong> between RVs</p>
 <ul>
-<li>What an edge “means” can get [ontologically] tricky!</li>
-<li>Retain sanity by just remembering: an edge <span class="math inline">\(\require{enclose}\enclose{circle}{X} \rightarrow \enclose{circle}{Y}\)</span> is included in our PGM if we “care about” modeling the <strong>conditional probability table (CPT)</strong> of <span class="math inline">\(Y\)</span> w.r.t. <span class="math inline">\(X\)</span></li>
-</ul>
+<li><p>What an edge “means” can get [ontologically] tricky! (We’ll change the meaning when we move to <strong>causal</strong> PGMs)</p></li>
+<li><p>Retain sanity by just remembering: edge <span class="math inline">\(\require{enclose}\enclose{circle}{X} \rightarrow \enclose{circle}{Y}\)</span> is included if we “care about” modeling <strong>conditional probability</strong> of <span class="math inline">\(Y\)</span> <strong>given values of</strong> <span class="math inline">\(X\)</span></p>
 <p><span class="math display">\[
 \require{enclose}\boxed{ \enclose{circle}{X} \rightarrow \enclose{circle}{Y} } \simeq \boxed{
   \begin{array}{c|cc}
@@ -497,7 +526,55 @@ Figure&nbsp;1: <em>Will putting Mr.&nbsp;Guns-Dog in timeout prevent plate-break
   \textsf{Heads} &amp; 0.5 &amp; 0.5
   \end{array}
 }
-\]</span></p>
+\]</span></p></li>
+</ul>
+</section>
+<section id="full-pgm-specification" class="slide level2 crunch-title smaller title-11 crunch-ul crunch-quarto-figure crunch-img crunch-p">
+<h2>Full PGM Specification</h2>
+<ul>
+<li>We have <strong>fully specified</strong> a PGM <span class="math inline">\(\mathcal{G}\)</span> once we have provided:<br><i class="bi bi-1-circle"></i> A list of nodes <span class="math inline">\(\{\require{enclose}\enclose{circle}{X_1}, \ldots, \enclose{circle}{X_n}\}\)</span>, one per RV <span class="math inline">\(X_i\)</span><br><i class="bi bi-2-circle"></i> <strong>Conditional Probability Tables (CPTs)</strong> specifying <span class="math inline">\(\Pr(X_i \mid \text{Pa}(X_i))\)</span> for all <span class="math inline">\(\require{enclose}\enclose{circle}{X_i}\)</span></li>
+<li><span class="math inline">\(\text{Pa}(X_i)\)</span> denotes <strong>all parents of <span class="math inline">\(X_i\)</span></strong> (sources of arrows <strong>pointing into</strong> <span class="math inline">\(\require{enclose}\enclose{circle}{X_i}\)</span>)</li>
+</ul>
+<div class="columns">
+<div class="column" style="width:40%;">
+<ul>
+<li>Here <span class="math inline">\(\text{Pa}(\text{Cough}) = \{L, C\}\)</span>, so CPT for <span class="math inline">\(\text{Cough}\)</span> provides <span class="math inline">\(\Pr(\text{Cough} = v \mid L = \ell, C = c)\)</span> for all possible values <span class="math inline">\(v\)</span> of <span class="math inline">\(\text{Cough}\)</span>, <span class="math inline">\(\ell\)</span> of <span class="math inline">\(L\)</span> (Lung Disease) and <span class="math inline">\(c\)</span> of <span class="math inline">\(C\)</span> (Cold)</li>
+<li><span class="math inline">\(\text{Pa}(\text{Smokes}) = \varnothing\)</span>! So CPT for <span class="math inline">\(\text{Smokes}\)</span> only needs to provide <span class="math inline">\(\Pr(S = s)\)</span> for the two possible values <span class="math inline">\(s \in \mathcal{R}_S = \{\textsf{F}, \textsf{T}\}\)</span></li>
+</ul>
+</div><div class="column" style="width:60%;">
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><a href="images/medical.jpg" class="lightbox" data-gallery="quarto-lightbox-gallery-2"><img data-src="images/medical.jpg" class="quarto-figure quarto-figure-center" style="width:90.0%"></a></p>
+</figure>
+</div>
+</div></div>
+</section>
+<section id="potted_plant-intervening" class="slide level2 smaller crunch-title">
+<h2><span class="material-symbols-outlined">potted_plant</span> Intervening…</h2>
+<div class="columns">
+<div class="column" style="width:45%;">
+<center>
+<p>&nbsp;<br><strong><em>Before…</em></strong></p>
+</center>
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="images/dgp_grade.svg" class="quarto-figure quarto-figure-center" style="width:100.0%"></p>
+</figure>
+</div>
+</div><div class="column" style="width:10%;">
+<center>
+<p><span class="math inline">\(\textsf{do}(G \leftarrow \textsf{A})\)</span></p>
+</center>
+</div><div class="column" style="width:45%;">
+<center>
+<p>&nbsp;<br><strong><em>…After</em></strong></p>
+</center>
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="images/dgp_grade_do.svg" class="quarto-figure quarto-figure-center" style="width:100.0%"></p>
+</figure>
+</div>
+</div></div>
 </section>
 <section id="pgm-for-the-partiers-dilemma" class="slide level2 smaller crunch-title crunch-ul table-90">
 <h2>PGM for the Partier’s Dilemma</h2>
@@ -565,13 +642,13 @@ Figure&nbsp;3: The Conditional Probability Table (CPT) for the edge <span class=
 <h2>Observed vs.&nbsp;Latent Nodes</h2>
 <ul>
 <li>PGMs help us make <strong>valid (Bayesian) inferences</strong> about the world in the face of <strong>incomplete information</strong>!</li>
-<li>Key remaining tool: separation of nodes into two categories:
+<li><span class="math inline">\(\Rightarrow\)</span> <strong>Two types</strong> of nodes based on <strong>available information</strong>:
 <ul>
 <li><strong>Observed nodes</strong> (shaded)</li>
 <li><strong>Latent nodes</strong> (unshaded)</li>
 </ul></li>
-<li><span class="math inline">\(\Rightarrow\)</span> Can use our PGM as a <strong>weather-inference machine!</strong></li>
-<li>If we <strong>observe</strong> <span class="math inline">\(i\)</span> at a party, what can we infer about the <strong>weather</strong> outside?</li>
+<li><span class="math inline">\(\leadsto\)</span> Can use our PGM as a <strong>weather-inference machine!</strong></li>
+<li>If we <strong>observe</strong> <span class="math inline">\(i\)</span> at a party, what can we infer about the <strong>weather</strong> outside [even if we can’t go outside and observe it]?</li>
 </ul>
 </section>
 <section id="observed-partier-latent-weather" class="slide level2 title-09 crunch-title">
@@ -843,12 +920,12 @@ Figure&nbsp;4: Your model failing to achieve its goal bc you haven’t yet disti
 <h1>Your First Causal Diagram</h1>
 
 </section>
-<section id="the-elite-hacker-known-only-as-gump" class="slide level2 smaller crunch-title title-12">
+<section id="the-elite-hacker-known-only-as-gump" class="slide level2 smaller crunch-title title-11">
 <h2>The Elite Hacker Known Only As <span class="orbitron-jj">GUMP</span></h2>
-<ul>
-<li><span class="orbitron-jj">GUMP</span> has figured out how to hack into Georgetown’s grade servers, instantly zapping his grade up to an A+…</li>
-</ul>
-<video id="video_shortcode_videojs_video3" class="video-js vjs-default-skin vjs-big-play-centered vjs-fluid" controls="" preload="auto" data-setup="{}" title=""><source src="https://jpj.georgetown.domains/dsan5650-data/hackers.mp4"></video>
+<p><span class="orbitron-jj">GUMP</span> has figured out how to hack Georgetown grade servers, instantly zapping their grade up to an A+…</p>
+<center>
+<video id="video_shortcode_videojs_video3" height="500" class="video-js vjs-default-skin vjs-big-play-centered " controls="" preload="auto" data-setup="{}" title=""><source src="https://jpj.georgetown.domains/dsan5650-data/hackers.mp4"></video>
+</center>
 </section>
 <section id="the-four-elemental-confounds" class="slide level2 smaller" data-stack-name="Forks, Pipes, Colliders">
 <h2>The Four Elemental Confounds</h2>

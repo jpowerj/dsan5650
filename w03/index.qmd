@@ -32,6 +32,7 @@ format:
         <link rel='preconnect' href='https://fonts.gstatic.com' crossorigin>
         <link href='https://fonts.googleapis.com/css2?family=Barrio&family=Yuji+Boku&family=Orbitron:wght@400..900&display=swap' rel='stylesheet'>
         <link href='https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css' rel='stylesheet' integrity='sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB' crossorigin='anonymous'>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200&icon_names=potted_plant" />
     slide-number: true
     simplemenu:
       flat: true
@@ -96,6 +97,20 @@ Today's Planned Schedule:
   /* font-weight: 400; */
   font-style: normal;
 }
+.material-symbols-outlined {
+  margin-top: 5px;
+  margin-right: -6px;
+  vertical-align: -5px;
+  font-size: 38pt;
+  background-color: lightgrey;
+  border: 2px solid lightgrey;
+  border-radius: 8px;
+  font-variation-settings:
+  'FILL' 0,
+  'wght' 400,
+  'GRAD' 0,
+  'opsz' 60
+}
 </style>
 ```
 
@@ -103,14 +118,15 @@ Today's Planned Schedule:
 
 # Logistics {.crunch-title .title-11 .crunch-ul .crunch-p .smaller .table-85 .crunch-li-5 data-stack-name="Recap"}
 
-<center>
+<center style='margin-bottom: 10px;'>
 
 [🆕 JAH AutoHinter **Documentation** at [**`jjacobs.me/jah`**](https://jjacobs.me/jah) &nbsp;🆕]{.boxed-cb}
 
 </center>
 
-* HW1 Questions / Concerns?
-* Labs + Reading Adventures coming this+next week:
+<i class='bi bi-1-circle'></i> HW1 Questions / Concerns?
+
+<i class='bi bi-2-circle'></i> Labs + Reading Adventures coming this+next week:
 
 ```{=html}
 <table>
@@ -127,7 +143,7 @@ Today's Planned Schedule:
 <tbody>
 <tr>
   <td><span data-qmd="**Lab 1:** Novelty and Resonance in French Revolution Debates <span class='badge text-bg-secondary' style='padding-top: 0.2em; padding-bottom: 0.2em; padding-left: 0.4em; padding-right: 0.4em; margin-right: 0.1em;'><code style='color: white;'>#</code>InformationTheory</span><span class='badge text-bg-secondary' style='padding-top: 0.2em; padding-bottom: 0.2em; padding-left: 0.4em; padding-right: 0.4em;'><code style='color: white;'>#</code>TextAnalysis</span>"></span></td>
-  <td><div data-qmd="**RQ 1:** How to Do Things with Rhetoric <span class='badge text-bg-secondary' style='padding-top: 0.2em; padding-bottom: 0.2em; padding-left: 0.4em; padding-right: 0.4em; margin-right: 0.1em;'><code style='color: white;'>#</code>InformationTheory</span><span class='badge text-bg-secondary' style='padding-top: 0.2em; padding-bottom: 0.2em; padding-left: 0.4em; padding-right: 0.4em; margin-right: 0.1em;'><code style='color: white;'>#</code>TextAnalysis</span><span class='badge text-bg-secondary' style='padding-top: 0.2em; padding-bottom: 0.2em; padding-left: 0.4em; padding-right: 0.4em;'><code style='color: white;'>#</code>WarsOfIdeas</span><ul><li>Corpora: [@elster_roundtable_1996; @kassenova_atomic_2022; @schoenhals_doing_1992; @mishal_speaking_1994; @oireachtas_explore_2022]</li><li>Style vs. Content: [@wang_winning_2017]</li><li>Diffusion: [@sperber_explaining_1996]</li></ul>"></div></td>
+  <td><div data-qmd="**RQ 1:** How to Do Things with Rhetoric <span class='badge text-bg-secondary' style='padding-top: 0.2em; padding-bottom: 0.2em; padding-left: 0.4em; padding-right: 0.4em; margin-right: 0.1em;'><code style='color: white;'>#</code>InformationTheory</span><span class='badge text-bg-secondary' style='padding-top: 0.2em; padding-bottom: 0.2em; padding-left: 0.4em; padding-right: 0.4em; margin-right: 0.1em;'><code style='color: white;'>#</code>TextAnalysis</span><span class='badge text-bg-secondary' style='padding-top: 0.2em; padding-bottom: 0.2em; padding-left: 0.4em; padding-right: 0.4em;'><code style='color: white;'>#</code>WarsOfIdeas</span><ul><li>Corpora: [@elster_roundtable_1996; @kassenova_atomic_2022; @schoenhals_doing_1992; @mishal_speaking_1994; @oireachtas_explore_2022]</li><li>Style vs. Content: [@wang_winning_2017]</li></ul>"></div></td>
 </tr>
 <tr>
   <td><span data-qmd="**Lab 2:** Optical Illusions as Causal Colliders <span class='badge text-bg-secondary' style='padding-top: 0.2em; padding-bottom: 0.2em; padding-left: 0.4em; padding-right: 0.4em; margin-right: 0.1em;'><code style='color: white;'>#</code>CausalGraphs</span><span class='badge text-bg-secondary' style='padding-top: 0.2em; padding-bottom: 0.2em; padding-left: 0.4em; padding-right: 0.4em; margin-right: 0.1em;'><code style='color: white;'>#</code>MindPlayinTricksOnMe</span><span class='badge text-bg-secondary' style='padding-top: 0.2em; padding-bottom: 0.2em; padding-left: 0.4em; padding-right: 0.4em;'><code style='color: white;'>#</code>WebPPL</span>"></span></td>
@@ -148,9 +164,9 @@ Today's Planned Schedule:
 * Social [science]{.orbitron-jj}, with ["science"]{.orbitron-jj} used in the same sense as for physics, may be a quixotic endeavor^[At least, for the time being... BUT see @sperber_explaining_1996, which will come up later]
 * Instead, we'll do [**social science**]{.barrio-jj}, where we use data to...
 * <i class='bi bi-1-circle'></i> Infer **tendencies**: $\mathsf{H}$ = «$X$ tends to cause $Y$»
-* <i class='bi bi-2-circle'></i> With some degree of **veracity**: $\Pr(\mathsf{H}) \approx 0.7$
-* <i class='bi bi-3-circle'></i> Construct models that we can **update** with **new evidence**: Bayes' rule! $\Pr(\mathsf{H} \mid E) = \frac{\Pr(E \mid \mathsf{H} ) \Pr(\mathsf{H})}{\Pr(E)} \approx 0.8$
-* Notice "slippage" between **aleatory probability** *within* $\mathsf{H}$ ("tends to") vs. **epistemic probability** "outside of", talking *about* $\mathsf{H}$ ("I'm 70\% confident about $\mathsf{H}$")
+* <i class='bi bi-2-circle'></i> With some degree of **veracity**: $\Pr(\mathcal{H}) \approx 0.7$
+* <i class='bi bi-3-circle'></i> Construct models that we can **update** with **new evidence**: Bayes' rule! $\Pr(\mathcal{H} \mid E) = \frac{\Pr(E \mid \mathcal{H} ) \Pr(\mathcal{H})}{\Pr(E)} \approx 0.8$
+* Notice "slippage" between **aleatory probability** *within* $\mathcal{H}$ ("tends to") vs. **epistemic probability** "outside of", talking *about* $\mathcal{H}$ ("I'm 70\% confident about $\mathcal{H}$")
 
 ## Disclaimer: Unfortunate Side Effects of Engaging Seriously with Causality {.smaller .title-10 .crunch-p .crunch-img}
 
@@ -194,13 +210,12 @@ Today's Planned Schedule:
 
 :::
 
-![](images/hmm_clusters_single_dist.svg){fig-align="center" width="280"}
+![](images/hmm_clusters_single_dist.svg){fig-align="center" width="300"}
 
 ::::
 
 * 5650: **Dive into DGPs**, rather than treating as black box/footnote to Law of Large Numbers, so we can move [*asymptotically!*]...
-* **From *associational* statements**:
-  * «$\underbrace{\text{An increase}}_{\small\text{noun}}$ in $X$ by 1 is associated with increase in $Y$ by $\beta$»
+* **From *associational* statements**:<br>«$\underbrace{\text{An increase}}_{\small\text{noun}}$ in $X$ by 1 is associated with increase in $Y$ by $\beta$»
 * **To *causal* ones**: «$\underbrace{\text{Increasing}}_{\small\text{verb}}$ $X$ by 1 *causes* $Y$ to increase by $\beta$»
 
 ## Causality in the Social World {.smaller .crunch-title .title-11 .crunch-ul .crunch-li-8 .crunch-img .crunch-quarto-layout-panel .crunch-quarto-figure}
@@ -213,9 +228,27 @@ Today's Planned Schedule:
 
 ![*Will putting Mr. Guns-Dog in timeout prevent plate-breaking?*](images/fwds_from_grandma.jpg){#fig-shootings fig-align="center" width="45%"}
 
-## One Last Metaphor... {.crunch-title}
+## [potted_plant]{.material-symbols-outlined} One Last Metaphor... {.crunch-quarto-layout-panel}
 
-![**The $\textsf{do}(\cdot)$ operator *mutates* DGPs**](images/knob-hot-cold-anno.png){fig-align="center" width="80%"}
+<div class='grid-parent' style='display: grid; grid-template-columns: 30% 50% 20%; align-items: center;'>
+
+::: {#thermo-left}
+
+![**The $\textsf{do}(\cdot)$ operator *mutates* DGPs!**](images/knob-hot-cold-anno.png){fig-align="center" width="80%"}
+
+:::
+::: {#thermo-mid}
+
+![](images/dgp_heat.svg){fig-align="center" width="100%"}
+
+:::
+::: {#thermo-right}
+
+![](images/thermometer.webp){fig-align="center" width="70%"}
+
+:::
+
+</div>
 
 # Your First PGM! {.smaller .crunch-title .title-10 .crunch-ul .crunch-li-8 .crunch-quarto-figure .crunch-img .crunch-p data-stack-name="PGMs"}
 
@@ -238,13 +271,13 @@ Example: Let's model how **weather** $W$ affects **evening plans** $Y$: the choi
 ::: {.callout-tip title="<i class='bi bi-info-circle' style='vertical-align: middle;'></i> DGP: The Partier's Dilemma" icon="false"}
 
 1.  A person $i$ wakes up with some initial affinity for partying: $\Pr(Y_i = \textsf{Go})$
-2.  $i$ then goes to their window and observes the weather $W_i$ outside:
-    i. If the weather is **sunny**, $i$'s affinity increases: $\Pr(Y_i = \textsf{Go} \mid W_i = \textsf{Sun}) > \Pr(Y = \textsf{Go})$
-    ii. Otherwise, if it is **rainy**, $i$'s affinity decreases: $\Pr(Y_i = \textsf{Go} \mid W_i = \textsf{Rain}) < \Pr(Y = \textsf{Go})$
+1.  $i$ then goes to their window and observes the weather $W_i$ outside:
+    1. If weather is **sunny**, $i$'s affinity increases: $\Pr(Y_i = \textsf{Go} \mid W_i = \textsf{Sun}) > \Pr(Y = \textsf{Go})$
+    2. Otherwise, if **rainy**, $i$'s affinity decreases: $\Pr(Y_i = \textsf{Go} \mid W_i = \textsf{Rain}) < \Pr(Y = \textsf{Go})$
 
 :::
 
-## Two Main "Building Blocks" {.crunch-title .title-09 .inline-90 .math-80 .crunch-ul .crunch-math .crunch-li-8 .text-80}
+## Two Main "Building Blocks" {.crunch-title .title-09 .math-80 .crunch-ul .crunch-math .crunch-li-8 .text-80}
 
 [**Nodes**]{.boxed} like $\require{enclose}\enclose{circle}{X}$ denote **Random Variables**:
 
@@ -254,18 +287,73 @@ $$
 
 [**Edges**]{.boxed} like $\require{enclose}\enclose{circle}{X} \rightarrow \enclose{circle}{Y}$ denote **relationships** between RVs
 
-* What an edge "means" can get [ontologically] tricky!
-* Retain sanity by just remembering: an edge $\require{enclose}\enclose{circle}{X} \rightarrow \enclose{circle}{Y}$ is included in our PGM if we "care about" modeling the **conditional probability table (CPT)** of $Y$ w.r.t. $X$
+* What an edge "means" can get [ontologically] tricky! (We'll change the meaning when we move to **causal** PGMs)
+* Retain sanity by just remembering: edge $\require{enclose}\enclose{circle}{X} \rightarrow \enclose{circle}{Y}$ is included if we "care about" modeling **conditional probability** of $Y$ **given values of** $X$
 
-$$
-\require{enclose}\boxed{ \enclose{circle}{X} \rightarrow \enclose{circle}{Y} } \simeq \boxed{
-  \begin{array}{c|cc}
-  x & \Pr(Y = \textsf{Lose} \mid X = x) & \Pr(Y = \textsf{Win} \mid X = x) \\\hline
-  \textsf{Tails} & 0.8 & 0.2 \\
-  \textsf{Heads} & 0.5 & 0.5
-  \end{array}
-}
-$$
+  $$
+  \require{enclose}\boxed{ \enclose{circle}{X} \rightarrow \enclose{circle}{Y} } \simeq \boxed{
+    \begin{array}{c|cc}
+    x & \Pr(Y = \textsf{Lose} \mid X = x) & \Pr(Y = \textsf{Win} \mid X = x) \\\hline
+    \textsf{Tails} & 0.8 & 0.2 \\
+    \textsf{Heads} & 0.5 & 0.5
+    \end{array}
+  }
+  $$
+
+## Full PGM Specification {.crunch-title .smaller .title-11 .crunch-ul .crunch-quarto-figure .crunch-img .crunch-p}
+
+* We have **fully specified** a PGM $\mathcal{G}$ once we have provided:<br><i class='bi bi-1-circle'></i> A list of nodes $\{\require{enclose}\enclose{circle}{X_1}, \ldots, \enclose{circle}{X_n}\}$, one per RV $X_i$<br><i class='bi bi-2-circle'></i> **Conditional Probability Tables (CPTs)** specifying $\Pr(X_i \mid \text{Pa}(X_i))$ for all $\require{enclose}\enclose{circle}{X_i}$
+* $\text{Pa}(X_i)$ denotes **all parents of $X_i$** (sources of arrows **pointing into** $\require{enclose}\enclose{circle}{X_i}$)
+
+:::: {.columns}
+::: {.column width="40%"}
+
+* Here $\text{Pa}(\text{Cough}) = \{L, C\}$, so CPT for $\text{Cough}$ provides $\Pr(\text{Cough} = v \mid L = \ell, C = c)$ for all possible values $v$ of $\text{Cough}$, $\ell$ of $L$ (Lung Disease) and $c$ of $C$ (Cold)
+* $\text{Pa}(\text{Smokes}) = \varnothing$! So CPT for $\text{Smokes}$ only needs to provide $\Pr(S = s)$ for the two possible values $s \in \mathcal{R}_S = \{\textsf{F}, \textsf{T}\}$
+
+:::
+::: {.column width="60%"}
+
+![](images/medical.jpg){.lightbox fig-align="center" width="90%"}
+
+:::
+::::
+
+## [potted_plant]{.material-symbols-outlined} Intervening... {.smaller .crunch-title}
+
+:::: {.columns}
+::: {.column width="45%"}
+
+<center>
+
+&nbsp;<br>***Before...***
+
+</center>
+
+![](images/dgp_grade.svg){fig-align="center" width="100%"}
+
+:::
+::: {.column width="10%"}
+
+<center>
+
+$\textsf{do}(G \leftarrow \textsf{A})$
+
+</center>
+
+:::
+::: {.column width="45%"}
+
+<center>
+
+&nbsp;<br>***...After***
+
+</center>
+
+![](images/dgp_grade_do.svg){fig-align="center" width="100%"}
+
+:::
+::::
 
 ## PGM for the Partier's Dilemma {.smaller .crunch-title .crunch-ul .table-90}
 
@@ -298,11 +386,11 @@ The Conditional Probability Table (CPT) for the edge $\require{enclose}\enclose{
 ## Observed vs. Latent Nodes {.crunch-title}
 
 * PGMs help us make **valid (Bayesian) inferences** about the world in the face of **incomplete information**!
-* Key remaining tool: separation of nodes into two categories:
+* $\Rightarrow$ **Two types** of nodes based on **available information**:
   * **Observed nodes** (shaded)
   * **Latent nodes** (unshaded)
-* $\Rightarrow$ Can use our PGM as a **weather-inference machine!**
-* If we **observe** $i$ at a party, what can we infer about the **weather** outside?
+* $\leadsto$ Can use our PGM as a **weather-inference machine!**
+* If we **observe** $i$ at a party, what can we infer about the **weather** outside [even if we can't go outside and observe it]?
 
 ## Observed Partier, Latent Weather {.title-09 .crunch-title}
 
@@ -494,11 +582,15 @@ problems?
 
 # Your First Causal Diagram {data-stack-name="Causal PGMs"}
 
-## The Elite Hacker Known Only As [GUMP]{.orbitron-jj} {.smaller .crunch-title .title-12}
+## The Elite Hacker Known Only As [GUMP]{.orbitron-jj} {.smaller .crunch-title .title-11}
 
-* [GUMP]{.orbitron-jj} has figured out how to hack into Georgetown's grade servers, instantly zapping his grade up to an A+...
+[GUMP]{.orbitron-jj} has figured out how to hack Georgetown grade servers, instantly zapping their grade up to an A+...
 
-{{< video https://jpj.georgetown.domains/dsan5650-data/hackers.mp4 >}}
+<center>
+
+{{< video https://jpj.georgetown.domains/dsan5650-data/hackers.mp4 height="500" >}}
+
+</center>
 
 ## The Four Elemental Confounds {.smaller data-stack-name="Forks, Pipes, Colliders"}
 
