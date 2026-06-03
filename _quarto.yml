@@ -81,6 +81,9 @@ website:
       - text: "Interactive Textbook <i class='bi bi-box-arrow-up-right ps-1'></i>"
         href: "https://jjacobs.me/probmods"
         target: "_blank"
+      - text: "Observable Notebooks <i class='bi bi-box-arrow-up-right ps-1'></i>"
+        href: "https://observablehq.com/collection/@jpowerj/dsan-5650-causal-inference-for-computational-socia"
+        target: "_blank"
 
 format:
   html:
