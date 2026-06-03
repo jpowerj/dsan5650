@@ -4,6 +4,7 @@ subtitle: "*DSAN 5650: Causal Inference for Computational Social Science*<br><sp
 author: "Jeff Jacobs"
 institute: "[`jj1088@georgetown.edu`](mailto:jj1088@georgetown.edu)"
 bibliography: "../_DSAN5650.bib"
+csl: "../chicago-17-no-url.csl"
 date: 2026-06-03
 date-format: full
 lecnum: 3
@@ -23,7 +24,14 @@ format:
     code-fold: true
     theme: [default, "../dsan-globals/jjquarto.scss"]
     include-in-header:
-      text: "<link rel='stylesheet' href='https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css'><link rel='stylesheet' type='text/css' href='https://cdn.jsdelivr.net/gh/dreampulse/computer-modern-web-font@master/fonts.css'><link rel='preconnect' href='https://fonts.googleapis.com'><link rel='preconnect' href='https://fonts.gstatic.com' crossorigin><link href='https://fonts.googleapis.com/css2?family=Barrio&display=swap' rel='stylesheet'>"
+      text: |
+        <script src='https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js' integrity='sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI' crossorigin='anonymous'></script>
+        <link rel='stylesheet' href='https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css'>
+        <link rel='stylesheet' type='text/css' href='https://cdn.jsdelivr.net/gh/dreampulse/computer-modern-web-font@master/fonts.css'>
+        <link rel='preconnect' href='https://fonts.googleapis.com'>
+        <link rel='preconnect' href='https://fonts.gstatic.com' crossorigin>
+        <link href='https://fonts.googleapis.com/css2?family=Barrio&family=Yuji+Boku&family=Orbitron:wght@400..900&display=swap' rel='stylesheet'>
+        <link href='https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css' rel='stylesheet' integrity='sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB' crossorigin='anonymous'>
     slide-number: true
     simplemenu:
       flat: true
@@ -52,7 +60,7 @@ format:
 
 :::
 
-# Schedule {.smaller .crunch-title .crunch-callout .code-90 data-name="Schedule"}
+# Schedule {.smaller .crunch-title .crunch-callout data-name="Schedule"}
 
 Today's Planned Schedule:
 
@@ -67,17 +75,24 @@ Today's Planned Schedule:
 
 : {tbl-colwidths="[12,12,12,64]"}
 
-{{< include ../dsan-globals/_globals-py.qmd >}}
-
 {{< include ../dsan-globals/_globals-tex.qmd >}}
-
 
 ::: {.hidden}
 
 ```{=html}
 <style>
+.orbitron-jj {
+  font-family: "Orbitron", sans-serif;
+  font-optical-sizing: auto;
+  font-style: normal;
+}
 .barrio-jj {
   font-family: "Barrio", system-ui;
+  /* font-weight: 400; */
+  font-style: normal;
+}
+.yuji-boku-jj {
+  font-family: "Yuji Boku", serif;
   /* font-weight: 400; */
   font-style: normal;
 }
@@ -86,87 +101,247 @@ Today's Planned Schedule:
 
 :::
 
-# HW1 Questions and/or Concerns {data-name="HW1"}
+# Logistics {.crunch-title .title-11 .crunch-ul .crunch-p .smaller .table-85 .crunch-li-5 data-stack-name="Recap"}
 
-* 🆕 Submitting to AutoHinter! 🆕
+<center>
 
-# Causality Recap {data-stack-name="Recap"}
+[🆕 JAH AutoHinter **Documentation** at [**`jjacobs.me/jah`**](https://jjacobs.me/jah) &nbsp;🆕]{.boxed-cb}
 
-## So What's the Problem? {.crunch-title .crunch-ul .crunch-li-8 .inline-90 .text-90}
+</center>
 
-* Non-probabilistic models: High potential for being garbage
-  * *tldr: even if SUPER certain, using $\Pr(\mathcal{H}) = 1-\varepsilon$ with tiny $\varepsilon$ has literal life-saving advantages*^[See [Appendix Slide](#appendix-zero-probabilities)] [@finetti_probability_1972]
-* Probabilistic models: Getting there, still looking at "surface"
-  * Of the $N = 100$ times we observed event $X$ occurring, event $Y$ also occurred $90$ of those times
-  * $\implies \Pr(Y \mid X) = \frac{\#[X, Y]}{\#[X]} = \frac{90}{100} = 0.9$
-* Causal models: Does $Y$ happen **because of** $X$ happening? For that, need to start modeling **what's happening under the surface** making $X$ and $Y$ **"pop up" together** so often
+* HW1 Questions / Concerns?
+* Labs + Reading Adventures coming this+next week:
 
-## The *Fundamental* Problem of Causal Inference {.crunch-title .crunch-ul .crunch-callout .title-07}
+```{=html}
+<table>
+<colgroup>
+<col style='width: 42%'>
+<col style='width: 58%'>
+</colgroup>
+<thead>
+<tr>
+  <th class='tdc'>Labs</th>
+  <th class='tdc'>Reading Quests</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+  <td><span data-qmd="**Lab 1:** Novelty and Resonance in French Revolution Debates <span class='badge text-bg-secondary' style='padding-top: 0.2em; padding-bottom: 0.2em; padding-left: 0.4em; padding-right: 0.4em; margin-right: 0.1em;'><code style='color: white;'>#</code>InformationTheory</span><span class='badge text-bg-secondary' style='padding-top: 0.2em; padding-bottom: 0.2em; padding-left: 0.4em; padding-right: 0.4em;'><code style='color: white;'>#</code>TextAnalysis</span>"></span></td>
+  <td><div data-qmd="**RQ 1:** How to Do Things with Rhetoric <span class='badge text-bg-secondary' style='padding-top: 0.2em; padding-bottom: 0.2em; padding-left: 0.4em; padding-right: 0.4em; margin-right: 0.1em;'><code style='color: white;'>#</code>InformationTheory</span><span class='badge text-bg-secondary' style='padding-top: 0.2em; padding-bottom: 0.2em; padding-left: 0.4em; padding-right: 0.4em; margin-right: 0.1em;'><code style='color: white;'>#</code>TextAnalysis</span><span class='badge text-bg-secondary' style='padding-top: 0.2em; padding-bottom: 0.2em; padding-left: 0.4em; padding-right: 0.4em;'><code style='color: white;'>#</code>WarsOfIdeas</span><ul><li>Corpora: [@elster_roundtable_1996; @kassenova_atomic_2022; @schoenhals_doing_1992; @mishal_speaking_1994; @oireachtas_explore_2022]</li><li>Style vs. Content: [@wang_winning_2017]</li><li>Diffusion: [@sperber_explaining_1996]</li></ul>"></div></td>
+</tr>
+<tr>
+  <td><span data-qmd="**Lab 2:** Optical Illusions as Causal Colliders <span class='badge text-bg-secondary' style='padding-top: 0.2em; padding-bottom: 0.2em; padding-left: 0.4em; padding-right: 0.4em; margin-right: 0.1em;'><code style='color: white;'>#</code>CausalGraphs</span><span class='badge text-bg-secondary' style='padding-top: 0.2em; padding-bottom: 0.2em; padding-left: 0.4em; padding-right: 0.4em; margin-right: 0.1em;'><code style='color: white;'>#</code>MindPlayinTricksOnMe</span><span class='badge text-bg-secondary' style='padding-top: 0.2em; padding-bottom: 0.2em; padding-left: 0.4em; padding-right: 0.4em;'><code style='color: white;'>#</code>WebPPL</span>"></span></td>
+  <td><span data-qmd="**RQ 2:** Hitler's Willing Executioners? [@imai_quantitative_2018] <span class='badge text-bg-secondary' style='padding-top: 0.2em; padding-bottom: 0.2em; padding-left: 0.4em; padding-right: 0.4em; margin-right: 0.1em;'><code style='color: white;'>#</code>EcologicalInference</span><span class='badge text-bg-secondary' style='padding-top: 0.2em; padding-bottom: 0.2em; padding-left: 0.4em; padding-right: 0.4em; margin-right: 0.1em;'><code style='color: white;'>#</code>PyMC</span>"></span></td>
+</tr>
+<tr>
+  <td><span data-qmd="**Lab 3:** DW-NOMINATE, Latent Ideology, and Campaign Financing <span class='badge text-bg-secondary' style='padding-top: 0.2em; padding-bottom: 0.2em; padding-left: 0.4em; padding-right: 0.4em;'><code style='color: white;'>#</code>LatentVariables</span>"></span></td>
+  <td><span data-qmd="**RQ 3:** PGMs for @horowitz_ethnic_1985, *Ethnic Groups in Conflict* <span class='badge text-bg-secondary' style='padding-top: 0.2em; padding-bottom: 0.2em; padding-left: 0.4em; padding-right: 0.4em; margin-right: 0.1em;'><code style='color: white;'>#</code>PGMs</span><span class='badge text-bg-secondary' style='padding-top: 0.2em; padding-bottom: 0.2em; padding-left: 0.4em; padding-right: 0.4em;'><code style='color: white;'>#</code>Operationalization</span>"></span></td>
+</tr>
+</tbody>
+</table>
+```
 
-The only workable definition of «$X$ causes $Y$»:
+<!-- W02 Recap -->
 
-::: {.callout-note icon="false" title="<i class='bi bi-info-circle pe-1'></i> Defining Causality [@hume_treatise_1739, ruining everything as usual 😤]"}
+## W02 Recap: Aleatory vs. Epistemic Probability {.crunch-title .title-09 .crunch-ul .crunch-li-8 .aside-05 .text-85}
 
-$X$ causes $Y$ if and only if:
+* Social [science]{.orbitron-jj}, with ["science"]{.orbitron-jj} used in the same sense as for physics, may be a quixotic endeavor^[At least, for the time being... BUT see @sperber_explaining_1996, which will come up later]
+* Instead, we'll do [**social science**]{.barrio-jj}, where we use data to...
+* <i class='bi bi-1-circle'></i> Infer **tendencies**: $\mathsf{H}$ = «$X$ tends to cause $Y$»
+* <i class='bi bi-2-circle'></i> With some degree of **veracity**: $\Pr(\mathsf{H}) \approx 0.7$
+* <i class='bi bi-3-circle'></i> Construct models that we can **update** with **new evidence**: Bayes' rule! $\Pr(\mathsf{H} \mid E) = \frac{\Pr(E \mid \mathsf{H} ) \Pr(\mathsf{H})}{\Pr(E)} \approx 0.8$
+* Notice "slippage" between **aleatory probability** *within* $\mathsf{H}$ ("tends to") vs. **epistemic probability** "outside of", talking *about* $\mathsf{H}$ ("I'm 70\% confident about $\mathsf{H}$")
 
-1. $X$ *temporally precedes* $Y$ and
-2. 
-    * In **two worlds** $W_0$ and $W_1$ where
-    * everything is exactly the same **except that** $X = 0$ in $W_0$ and $X = 1$ in $W_1$,
-    * $Y = 0$ in $W_0$ and $Y = 1$ in $W_1$
+## Disclaimer: Unfortunate Side Effects of Engaging Seriously with Causality {.smaller .title-10 .crunch-p .crunch-img}
+
+:::: {.columns}
+::: {.column width="50%"}
+
+<i class='bi bi-1-circle'></i> You'll no longer be able to read "scientific" writing without striking this expression (involuntarily):
+
+:::
+::: {.column width="50%"}
+
+<i class='bi bi-2-circle'></i> "Scientific" talks will begin to sound like the following:
+
+:::
+::::
+
+:::: {layout="[5,5]" layout-valign="default"}
+::: {#expression}
+
+![](images/hrngg.png){fig-align="center" width="300"}
+
+:::
+::: {#looked-at-the-data}
+
+{{< video https://jpj.georgetown.domains/dsan5650-data/looked_at_the_data.mp4 >}}
+
+:::
+::::
+
+## Blasting Off Into Causality! {.title-10 .crunch-title}
+
+![](images/posadism_causal.jpg){fig-align="center"}
+
+## Data-Generating Processes (DGPs) {.title-09 .text-85 .crunch-title .crunch-ul .crunch-quarto-figure .crunch-quarto-layout-panel .crunch-li-5}
+
+:::: {layout="[55,45]" layout-align="center" layout-valign="center"}
+::: {#dgps-5100}
+
+* You saw this in DSAN 5100!
+* «$X_1, \ldots, X_n$ drawn i.i.d. Normal, mean $\mu$ variance $\sigma^2$» characterizes **DGP of $(X_1, \ldots, X_n)$**
 
 :::
 
-* The problem? We live in **one** world, not two identical worlds simultaneously 😭
+![](images/hmm_clusters_single_dist.svg){fig-align="center" width="280"}
 
-## What Is To Be Done?
+::::
 
-![](images/face_everything_and_rise.jpg){fig-align="center"}
+* 5650: **Dive into DGPs**, rather than treating as black box/footnote to Law of Large Numbers, so we can move [*asymptotically!*]...
+* **From *associational* statements**:
+  * «$\underbrace{\text{An increase}}_{\small\text{noun}}$ in $X$ by 1 is associated with increase in $Y$ by $\beta$»
+* **To *causal* ones**: «$\underbrace{\text{Increasing}}_{\small\text{verb}}$ $X$ by 1 *causes* $Y$ to increase by $\beta$»
 
-## Probability++ {.crunch-title}
-  
-* Tools from prob/stats (RVs, CDFs, Conditional Probability) **necessary but not sufficient** for causal inference!
-* Example: Say we use DSAN 5100 tools to discover:
-  * Probability that event $E_1$ occurs is $\Pr(E_1) = 0.5$
-  * Probability that $E_1$ occurs **conditional on** another event $E_0$ occurring is $\Pr(E_1 \mid E_0) = 0.75$
-* Unfortunately, we still **cannot** infer that the occurrence of $E_0$ **causes** an increase in the likelihood of $E_1$ occurring.
+## Causality in the Social World {.smaller .crunch-title .title-11 .crunch-ul .crunch-li-8 .crunch-img .crunch-quarto-layout-panel .crunch-quarto-figure}
 
-## Beyond Conditional Probability {.crunch-title .text-90}
+* Thing we observe (poking out of water): **data**
+* Hidden but possibly discoverable via deeper dive (ecosystem under surface): **DGP**
+* Plz remember centrality of **DGP!** [Heat $\rightarrow$ Thermometer Level]
 
-* This issue (that **conditional probabilities** could not be interpreted causally) at first represented a kind of dead end for scientists interested in employing probability theory to study causal relationships...
-* Recent decades: researchers have built up an additional "layer" of modeling tools, augmenting existing machinery of probability to address causality head-on!
-* @pearl_causality_2000: Formal proofs that ($\Pr$ axioms) $\cup$ ($\textsf{do}$ axioms) $\Rightarrow$ causal inference procedures successfully recover causal effects
+<!-- My sincere belief and definitely not an image forwarded to me unironically by a family member when I was a tween -->
 
-## Preview: do-Calculus {.crunch-title .crunch-math .text-85 .table-85 .crunch-ul .inline-90 .math-90 .crunch-li-6}
+![*Will putting Mr. Guns-Dog in timeout prevent plate-breaking?*](images/fwds_from_grandma.jpg){#fig-shootings fig-align="center" width="45%"}
 
-* *Extends* core of probability to incorporate causality, via $\textsf{do}$ operator
-* $\textsf{do}(X = 5)$ is a "special" **event**, representing **intervention in DGP** to **force** $X \leftarrow 5$... $\textsf{do}(X = 5)$ **not the same event** as $X = 5$!
+## One Last Metaphor... {.crunch-title}
 
-| $X = 5$ | $\neq$ | $\textsf{do}(X = 5)$ |
+![**The $\textsf{do}(\cdot)$ operator *mutates* DGPs**](images/knob-hot-cold-anno.png){fig-align="center" width="80%"}
+
+# Your First PGM! {.smaller .crunch-title .title-10 .crunch-ul .crunch-li-8 .crunch-quarto-figure .crunch-img .crunch-p data-stack-name="PGMs"}
+
+![[From *Probabilistic Models of Cognition*, Ch 4](https://jjacobs.me/probmods/ch04/#graphical-notations-for-dependence)](images/medical.jpg){.lightbox fig-align="center" width="50%"}
+
+* <i class='bi bi-1-circle'></i> Which of the variables (ovals) are **observed**? Which are **latent**?
+* <i class='bi bi-2-circle'></i> What do you think the arrows represent?
+* <i class='bi bi-3-circle'></i> Can we use this to find the **"root cause"** of (e.g.) observed **chest pain**? Or conversely, to **predict** possible &uarr; in likelihood of chest pain if we start smoking?
+
+## Bayesian Inference but with Pictures {.title-09 .crunch-title .crunch-ul .crunch-li-8 .crunch-callout .text-90 .inline-90 .crunch-p-6}
+
+A **Probabilistic Graphical Model (PGM)** provides us with:
+
+* A **formal**-mathematical...
+* But also easily **visualizable** (by construction)...
+* Representation of a **data-generating process (DGP)!**
+
+Example: Let's model how **weather** $W$ affects **evening plans** $Y$: the choice between **going to a party** or **staying in to watch movies**
+
+::: {.callout-tip title="<i class='bi bi-info-circle' style='vertical-align: middle;'></i> DGP: The Partier's Dilemma" icon="false"}
+
+1.  A person $i$ wakes up with some initial affinity for partying: $\Pr(Y_i = \textsf{Go})$
+2.  $i$ then goes to their window and observes the weather $W_i$ outside:
+    i. If the weather is **sunny**, $i$'s affinity increases: $\Pr(Y_i = \textsf{Go} \mid W_i = \textsf{Sun}) > \Pr(Y = \textsf{Go})$
+    ii. Otherwise, if it is **rainy**, $i$'s affinity decreases: $\Pr(Y_i = \textsf{Go} \mid W_i = \textsf{Rain}) < \Pr(Y = \textsf{Go})$
+
+:::
+
+## Two Main "Building Blocks" {.crunch-title .title-09 .inline-90 .math-80 .crunch-ul .crunch-math .crunch-li-8 .text-80}
+
+[**Nodes**]{.boxed} like $\require{enclose}\enclose{circle}{X}$ denote **Random Variables**:
+
+$$
+\require{enclose}\boxed{\enclose{circle}{X}} \simeq \boxed{ \begin{array}{c|cc}x & \textsf{Tails} & \textsf{Heads} \\\hline \Pr(X = x) & 0.5 & 0.5\end{array}}
+$$
+
+[**Edges**]{.boxed} like $\require{enclose}\enclose{circle}{X} \rightarrow \enclose{circle}{Y}$ denote **relationships** between RVs
+
+* What an edge "means" can get [ontologically] tricky!
+* Retain sanity by just remembering: an edge $\require{enclose}\enclose{circle}{X} \rightarrow \enclose{circle}{Y}$ is included in our PGM if we "care about" modeling the **conditional probability table (CPT)** of $Y$ w.r.t. $X$
+
+$$
+\require{enclose}\boxed{ \enclose{circle}{X} \rightarrow \enclose{circle}{Y} } \simeq \boxed{
+  \begin{array}{c|cc}
+  x & \Pr(Y = \textsf{Lose} \mid X = x) & \Pr(Y = \textsf{Win} \mid X = x) \\\hline
+  \textsf{Tails} & 0.8 & 0.2 \\
+  \textsf{Heads} & 0.5 & 0.5
+  \end{array}
+}
+$$
+
+## PGM for the Partier's Dilemma {.smaller .crunch-title .crunch-ul .table-90}
+
+* A node $\require{enclose}\enclose{circle}{W}$ denoting RV $W$, which can take on values in $\mathcal{R}_W = \{\textsf{Sun}, \textsf{Rain}\}$,
+* A node $\require{enclose}\enclose{circle}{Y}$ denoting RV $Y$, which can take on values in $\mathcal{R}_Y = \{\textsf{Go}, \textsf{Stay}\}$, and 
+* An edge $\require{enclose}\enclose{circle}{W} \rightarrow \enclose{circle}{Y}$ representing the following relationship between $W$ and $Y$:
+  * $\Pr(Y = \textsf{Go} \mid W = \textsf{Sun}) = 0.8$
+  * $\Pr(Y = \textsf{Stay} \mid W = \textsf{Sun}) = 0.2$
+  * $\Pr(Y = \textsf{Go} \mid W = \textsf{Rain}) = 0.1$
+  * $\Pr(Y = \textsf{Stay} \mid W = \textsf{Rain}) = 0.9$
+
+:::: {layout="[1,1]"}
+::: {#fig-partier-dgp}
+
+![](images/pgm.svg){fig-align="center" width="400"}
+
+Our PGM of the Partier's Dilemma
+:::
+::: {#fig-partier-cpt}
+
+| | $\Pr(Y = \textsf{Stay} \mid W)$ | $\Pr(Y = \textsf{Go} \mid W)$ |
+|-:|:-:|:-:|
+| $W = \textsf{Sun}$ | 0.2 | 0.8 |
+| $W = \textsf{Rain}$ | 0.9 | 0.1 |
+
+The Conditional Probability Table (CPT) for the edge $\require{enclose}\enclose{circle}{W} \rightarrow \enclose{circle}{Y}$ in @fig-partier-dgp
+:::
+::::
+
+## Observed vs. Latent Nodes {.crunch-title}
+
+* PGMs help us make **valid (Bayesian) inferences** about the world in the face of **incomplete information**!
+* Key remaining tool: separation of nodes into two categories:
+  * **Observed nodes** (shaded)
+  * **Latent nodes** (unshaded)
+* $\Rightarrow$ Can use our PGM as a **weather-inference machine!**
+* If we **observe** $i$ at a party, what can we infer about the **weather** outside?
+
+## Observed Partier, Latent Weather {.title-09 .crunch-title}
+
+* We can draw this situation as a PGM with **shaded** and **unshaded nodes**, distinguishing what we **know** from what we'd like to **infer**:
+
+![](images/pgm_yobs.svg){fig-align="center" width="400"}
+
+| | | |
 |:-:|:-:|:-:|
-| *Observing* that $X$ took on value 5 (for some possibly-unknown reason) | $\neq$ | *Intervening* to force $X \leftarrow 5$, all else in DGP remaining the same (intervention then "flows" through rest of DGP) |
+| ❓ | &nbsp; | ✅ |
 
-: {tbl-colwidths="[46,2,52]"}
+: {tbl-colwidths="[17,66,17]"}
 
-* Probably the most difficult thing in 5650 to wrap head around
-* "Special": $\Pr(\textsf{do}(X = 5))$ *not* well-defined, only $\Pr(Y = 6 \mid \textsf{do}(X = 5))$
-* To emphasize special-ness, we may use notation like:
+* And we can now use Bayes' Rule to compute how observed information ($i$ at party $\Rightarrow [Y = \textsf{Go}]$) "flows" back into $W$
 
-  $$
-  \Pr(Y = 6 \mid \textsf{do}(X = 5)) \equiv \textstyle \Pr_{\textsf{do}(X = 5)}(Y = 6)
-  $$
+## Computation via Bayes' Rule {.smaller .crunch-title .crunch-ul .crunch-math .math-80}
 
-  to avoid confusion with "normal" events
+* Bayes' Rule, $\Pr(A \mid B) = \frac{\Pr(B \mid A)\Pr(A)}{\Pr(B)}$, tells us how to use info about $\Pr(B \mid A)$ to obtain info about $\Pr(A \mid B)$!
+* We use it to obtain a distribution for $W$ **updated to incorporate** new info $[Y = \textsf{Go}]$:
 
-## Causal World Unlocked 😎 (With Great Power Comes Great Responsibility...) {.title-08 .crunch-title .crunch-ul}
+$$
+\begin{align*}
+&\Pr(W = \textsf{Sun} \mid Y = \textsf{Go}) 
+= \frac{\Pr(Y = \textsf{Go} \mid W = \textsf{Sun}) \Pr(W = \textsf{Sun})}{\Pr(Y = \textsf{Go})} \\
+=\, &\frac{\Pr(Y = \textsf{Go} \mid W = \textsf{Sun}) \Pr(W = \textsf{Sun})}{\Pr(Y = \textsf{Go} \mid W = \textsf{Sun}) \Pr(W = \textsf{Sun}) + \Pr(Y = \textsf{Go} \mid W = \textsf{Rain}) \Pr(W = \textsf{Rain})}
+\end{align*}
+$$
 
-* With $\textsf{do}(\cdot)$ in hand... (Alongside DGP satisfying axioms slightly more strict than core probability axioms)
-* We *can* make causal inferences from similar pair of facts! If:
-  * Probability that event $E_1$ occurs is $\Pr(E_1) = 0.5$,
-  * The probability that $E_1$ occurs **conditional on** the event $\textsf{do}(E_0)$ occurring is $\Pr(E_1 \mid \textsf{do}(E_0)) = 0.75$,
-* **Now** we can actually infer that the occurrence of $E_0$ **caused** an increase in the likelihood of $E_1$ occurring!
+* Plug in info from CPT to obtain our new (conditional) probability of interest:
 
-# Back to PGMs: Case Studies {data-stack-name="PGMs"}
+$$
+\begin{align*}
+\Pr(W = \textsf{Sun} \mid Y = \textsf{Go}) &= \frac{(0.8)(0.5)}{(0.8)(0.5) + (0.1)(0.5)} = \frac{0.4}{0.4 + 0.05} \approx 0.89
+\end{align*}
+$$
+
+* We've learned something interesting! Observing $i$ at the party $\leadsto$ probability of sun jumps from $0.5$ (**"prior"** estimate of $W$, best guess without any other relevant info) to $0.89$ (**"posterior"** estimate of $W$, best guess after incorporating relevant info).
+
+<!-- W03 -->
 
 ## Importance of Observed vs. Latent Distinction! {.smaller .crunch-title .title-10}
 
@@ -315,39 +490,17 @@ problems?
 
 ![[Image source](https://www.markovml.com/blog/latent-dirichlet-allocation)](images/lda_pgm.webp){fig-align="center"}
 
-* We don't exactly think "Shakespeare decided on a set of topics, "
+* We don't exactly think "Shakespeare decided on a set of topics, one per word-slot then chose a common word from each word slot"... and yet...!
 
 # Your First Causal Diagram {data-stack-name="Causal PGMs"}
 
-## Getting Shot By A Firing Squad {.crunch-title .crunch-quarto-figure}
+## The Elite Hacker Known Only As [GUMP]{.orbitron-jj} {.smaller .crunch-title .title-12}
 
-:::: {layout="[1,1]" layout-align="center"}
-::: {#firing-squad-img}
+* [GUMP]{.orbitron-jj} has figured out how to hack into Georgetown's grade servers, instantly zapping his grade up to an A+...
 
-![](images/causal_firing_squad.svg){fig-align="center" width="360"}
+{{< video https://jpj.georgetown.domains/dsan5650-data/hackers.mp4 >}}
 
-:::
-::: {#firing-squad-table}
-
-| $O$ | $C$ | $A$ | $B$ | $D$ |
-| - | - | - | - | - |
-| 0 | 0 | 0 | 0 | 0 |
-| 1 | 1 | 1 | 1 | 1 |
-| 0 | 0 | 0 | 0 | 0 |
-| 0 | 0 | 0 | 0 | 0 |
-| 1 | 1 | 1 | 1 | 1 |
-
-$$
-\begin{align*}
-\Pr(D) &= 0.4 \\
-\Pr(D \mid A) &= 1
-\end{align*}
-$$
-
-:::
-::::
-
-# The Four Elemental Confounds {.smaller data-stack-name="Forks, Pipes, Colliders"}
+## The Four Elemental Confounds {.smaller data-stack-name="Forks, Pipes, Colliders"}
 
 ![](images/elemental-confounds.png){fig-align="center"}
 
@@ -355,3 +508,23 @@ $$
 
 ::: {#refs}
 :::
+
+# Appendix 1: Zero Probabilities {.smaller .crunch-title .title-11}
+
+From @koller_probabilistic_2009, pp. 66-67:
+
+> **Zero probabilities**: A common mistake is to assign a probability of zero to an event that is extremely unlikely, but not impossible. The problem is that one can never condition away a zero probability, no matter how much evidence we get. When an event is unlikely but not impossible, giving it probability zero is guaranteed to lead to irrecoverable errors. For example, in one of the early versions of the the Pathfinder system (box 3.D), **10 percent of the misdiagnoses were due to zero probability estimates given by the expert to events that were unlikely but not impossible.**
+
+[&larr; Back to slide](#so-whats-the-problem)
+
+# Appendix 2: More Computational Social Science Examples
+
+## The Logic of Violence in Civil War {.smaller .crunch-title}
+
+![@kalyvas_logic_2006](images/kalyvas.jpg){fig-align="center"}
+
+## Particularly Fun Non-"Standard" Examples
+
+* @barron_individuals_2018
+* @blaydes_mirrors_2018
+* @kozlowski_geometry_2019

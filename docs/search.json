@@ -1360,71 +1360,121 @@
     ]
   },
   {
-    "objectID": "w03/index.html#so-whats-the-problem",
-    "href": "w03/index.html#so-whats-the-problem",
+    "objectID": "w03/index.html#w02-recap-aleatory-vs.-epistemic-probability",
+    "href": "w03/index.html#w02-recap-aleatory-vs.-epistemic-probability",
     "title": "Week 3: From PGMs to Causal Diagrams",
-    "section": "So What’s the Problem?",
-    "text": "So What’s the Problem?\n\nNon-probabilistic models: High potential for being garbage\n\ntldr: even if SUPER certain, using \\(\\Pr(\\mathcal{H}) = 1-\\varepsilon\\) with tiny \\(\\varepsilon\\) has literal life-saving advantages1 (Finetti 1972)\n\nProbabilistic models: Getting there, still looking at “surface”\n\nOf the \\(N = 100\\) times we observed event \\(X\\) occurring, event \\(Y\\) also occurred \\(90\\) of those times\n\\(\\implies \\Pr(Y \\mid X) = \\frac{\\#[X, Y]}{\\#[X]} = \\frac{90}{100} = 0.9\\)\n\nCausal models: Does \\(Y\\) happen because of \\(X\\) happening? For that, need to start modeling what’s happening under the surface making \\(X\\) and \\(Y\\) “pop up” together so often",
+    "section": "W02 Recap: Aleatory vs. Epistemic Probability",
+    "text": "W02 Recap: Aleatory vs. Epistemic Probability\n\nSocial science, with “science” used in the same sense as for physics, may be a quixotic endeavor1\nInstead, we’ll do social science, where we use data to…\n Infer tendencies: \\(\\mathsf{H}\\) = «\\(X\\) tends to cause \\(Y\\)»\n With some degree of veracity: \\(\\Pr(\\mathsf{H}) \\approx 0.7\\)\n Construct models that we can update with new evidence: Bayes’ rule! \\(\\Pr(\\mathsf{H} \\mid E) = \\frac{\\Pr(E \\mid \\mathsf{H} ) \\Pr(\\mathsf{H})}{\\Pr(E)} \\approx 0.8\\)\nNotice “slippage” between aleatory probability within \\(\\mathsf{H}\\) (“tends to”) vs. epistemic probability “outside of”, talking about \\(\\mathsf{H}\\) (“I’m 70% confident about \\(\\mathsf{H}\\)”)",
     "crumbs": [
       "Week 3: {{< var w03.date-md >}}"
     ]
   },
   {
-    "objectID": "w03/index.html#the-fundamental-problem-of-causal-inference",
-    "href": "w03/index.html#the-fundamental-problem-of-causal-inference",
+    "objectID": "w03/index.html#disclaimer-unfortunate-side-effects-of-engaging-seriously-with-causality",
+    "href": "w03/index.html#disclaimer-unfortunate-side-effects-of-engaging-seriously-with-causality",
     "title": "Week 3: From PGMs to Causal Diagrams",
-    "section": "The Fundamental Problem of Causal Inference",
-    "text": "The Fundamental Problem of Causal Inference\nThe only workable definition of «\\(X\\) causes \\(Y\\)»:\n\n\n\n\n\n\nNote Defining Causality (Hume 1739, ruining everything as usual 😤)\n\n\n\n\\(X\\) causes \\(Y\\) if and only if:\n\n\\(X\\) temporally precedes \\(Y\\) and\n\nIn two worlds \\(W_0\\) and \\(W_1\\) where\neverything is exactly the same except that \\(X = 0\\) in \\(W_0\\) and \\(X = 1\\) in \\(W_1\\),\n\\(Y = 0\\) in \\(W_0\\) and \\(Y = 1\\) in \\(W_1\\)\n\n\n\n\n\nThe problem? We live in one world, not two identical worlds simultaneously 😭",
+    "section": "Disclaimer: Unfortunate Side Effects of Engaging Seriously with Causality",
+    "text": "Disclaimer: Unfortunate Side Effects of Engaging Seriously with Causality\n\n\n You’ll no longer be able to read “scientific” writing without striking this expression (involuntarily):\n\n “Scientific” talks will begin to sound like the following:",
     "crumbs": [
       "Week 3: {{< var w03.date-md >}}"
     ]
   },
   {
-    "objectID": "w03/index.html#what-is-to-be-done",
-    "href": "w03/index.html#what-is-to-be-done",
+    "objectID": "w03/index.html#blasting-off-into-causality",
+    "href": "w03/index.html#blasting-off-into-causality",
     "title": "Week 3: From PGMs to Causal Diagrams",
-    "section": "What Is To Be Done?",
-    "text": "What Is To Be Done?",
+    "section": "Blasting Off Into Causality!",
+    "text": "Blasting Off Into Causality!",
     "crumbs": [
       "Week 3: {{< var w03.date-md >}}"
     ]
   },
   {
-    "objectID": "w03/index.html#probability",
-    "href": "w03/index.html#probability",
+    "objectID": "w03/index.html#data-generating-processes-dgps",
+    "href": "w03/index.html#data-generating-processes-dgps",
     "title": "Week 3: From PGMs to Causal Diagrams",
-    "section": "Probability++",
-    "text": "Probability++\n\nTools from prob/stats (RVs, CDFs, Conditional Probability) necessary but not sufficient for causal inference!\nExample: Say we use DSAN 5100 tools to discover:\n\nProbability that event \\(E_1\\) occurs is \\(\\Pr(E_1) = 0.5\\)\nProbability that \\(E_1\\) occurs conditional on another event \\(E_0\\) occurring is \\(\\Pr(E_1 \\mid E_0) = 0.75\\)\n\nUnfortunately, we still cannot infer that the occurrence of \\(E_0\\) causes an increase in the likelihood of \\(E_1\\) occurring.",
+    "section": "Data-Generating Processes (DGPs)",
+    "text": "Data-Generating Processes (DGPs)\n\n\n\n\nYou saw this in DSAN 5100!\n«\\(X_1, \\ldots, X_n\\) drawn i.i.d. Normal, mean \\(\\mu\\) variance \\(\\sigma^2\\)» characterizes DGP of \\((X_1, \\ldots, X_n)\\)\n\n\n\n\n\n\n\n\n\n\n\n\n5650: Dive into DGPs, rather than treating as black box/footnote to Law of Large Numbers, so we can move [asymptotically!]…\nFrom associational statements:\n\n«\\(\\underbrace{\\text{An increase}}_{\\small\\text{noun}}\\) in \\(X\\) by 1 is associated with increase in \\(Y\\) by \\(\\beta\\)»\n\nTo causal ones: «\\(\\underbrace{\\text{Increasing}}_{\\small\\text{verb}}\\) \\(X\\) by 1 causes \\(Y\\) to increase by \\(\\beta\\)»",
     "crumbs": [
       "Week 3: {{< var w03.date-md >}}"
     ]
   },
   {
-    "objectID": "w03/index.html#beyond-conditional-probability",
-    "href": "w03/index.html#beyond-conditional-probability",
+    "objectID": "w03/index.html#causality-in-the-social-world",
+    "href": "w03/index.html#causality-in-the-social-world",
     "title": "Week 3: From PGMs to Causal Diagrams",
-    "section": "Beyond Conditional Probability",
-    "text": "Beyond Conditional Probability\n\nThis issue (that conditional probabilities could not be interpreted causally) at first represented a kind of dead end for scientists interested in employing probability theory to study causal relationships…\nRecent decades: researchers have built up an additional “layer” of modeling tools, augmenting existing machinery of probability to address causality head-on!\nPearl (2000): Formal proofs that (\\(\\Pr\\) axioms) \\(\\cup\\) (\\(\\textsf{do}\\) axioms) \\(\\Rightarrow\\) causal inference procedures successfully recover causal effects",
+    "section": "Causality in the Social World",
+    "text": "Causality in the Social World\n\nThing we observe (poking out of water): data\nHidden but possibly discoverable via deeper dive (ecosystem under surface): DGP\nPlz remember centrality of DGP! [Heat \\(\\rightarrow\\) Thermometer Level]\n\n\n\n\n\n\n\n\nFigure 1: Will putting Mr. Guns-Dog in timeout prevent plate-breaking?",
     "crumbs": [
       "Week 3: {{< var w03.date-md >}}"
     ]
   },
   {
-    "objectID": "w03/index.html#preview-do-calculus",
-    "href": "w03/index.html#preview-do-calculus",
+    "objectID": "w03/index.html#one-last-metaphor",
+    "href": "w03/index.html#one-last-metaphor",
     "title": "Week 3: From PGMs to Causal Diagrams",
-    "section": "Preview: do-Calculus",
-    "text": "Preview: do-Calculus\n\nExtends core of probability to incorporate causality, via \\(\\textsf{do}\\) operator\n\\(\\textsf{do}(X = 5)\\) is a “special” event, representing intervention in DGP to force \\(X \\leftarrow 5\\)… \\(\\textsf{do}(X = 5)\\) not the same event as \\(X = 5\\)!\n\n\n\n\n\n\n\n\n\n\\(X = 5\\)\n\\(\\neq\\)\n\\(\\textsf{do}(X = 5)\\)\n\n\n\n\nObserving that \\(X\\) took on value 5 (for some possibly-unknown reason)\n\\(\\neq\\)\nIntervening to force \\(X \\leftarrow 5\\), all else in DGP remaining the same (intervention then “flows” through rest of DGP)\n\n\n\n\nProbably the most difficult thing in 5650 to wrap head around\n“Special”: \\(\\Pr(\\textsf{do}(X = 5))\\) not well-defined, only \\(\\Pr(Y = 6 \\mid \\textsf{do}(X = 5))\\)\nTo emphasize special-ness, we may use notation like:\n\\[\n\\Pr(Y = 6 \\mid \\textsf{do}(X = 5)) \\equiv \\textstyle \\Pr_{\\textsf{do}(X = 5)}(Y = 6)\n\\]\nto avoid confusion with “normal” events",
+    "section": "One Last Metaphor…",
+    "text": "One Last Metaphor…\n\n\n\nThe \\(\\textsf{do}(\\cdot)\\) operator mutates DGPs",
     "crumbs": [
       "Week 3: {{< var w03.date-md >}}"
     ]
   },
   {
-    "objectID": "w03/index.html#causal-world-unlocked-with-great-power-comes-great-responsibility",
-    "href": "w03/index.html#causal-world-unlocked-with-great-power-comes-great-responsibility",
+    "objectID": "w03/index.html#bayesian-inference-but-with-pictures",
+    "href": "w03/index.html#bayesian-inference-but-with-pictures",
     "title": "Week 3: From PGMs to Causal Diagrams",
-    "section": "Causal World Unlocked 😎 (With Great Power Comes Great Responsibility…)",
-    "text": "Causal World Unlocked 😎 (With Great Power Comes Great Responsibility…)\n\nWith \\(\\textsf{do}(\\cdot)\\) in hand… (Alongside DGP satisfying axioms slightly more strict than core probability axioms)\nWe can make causal inferences from similar pair of facts! If:\n\nProbability that event \\(E_1\\) occurs is \\(\\Pr(E_1) = 0.5\\),\nThe probability that \\(E_1\\) occurs conditional on the event \\(\\textsf{do}(E_0)\\) occurring is \\(\\Pr(E_1 \\mid \\textsf{do}(E_0)) = 0.75\\),\n\nNow we can actually infer that the occurrence of \\(E_0\\) caused an increase in the likelihood of \\(E_1\\) occurring!",
+    "section": "Bayesian Inference but with Pictures",
+    "text": "Bayesian Inference but with Pictures\nA Probabilistic Graphical Model (PGM) provides us with:\n\nA formal-mathematical…\nBut also easily visualizable (by construction)…\nRepresentation of a data-generating process (DGP)!\n\nExample: Let’s model how weather \\(W\\) affects evening plans \\(Y\\): the choice between going to a party or staying in to watch movies\n\n\n\n\n\n\nTip DGP: The Partier’s Dilemma\n\n\n\n\nA person \\(i\\) wakes up with some initial affinity for partying: \\(\\Pr(Y_i = \\textsf{Go})\\)\n\\(i\\) then goes to their window and observes the weather \\(W_i\\) outside:\n\nIf the weather is sunny, \\(i\\)’s affinity increases: \\(\\Pr(Y_i = \\textsf{Go} \\mid W_i = \\textsf{Sun}) &gt; \\Pr(Y = \\textsf{Go})\\)\nOtherwise, if it is rainy, \\(i\\)’s affinity decreases: \\(\\Pr(Y_i = \\textsf{Go} \\mid W_i = \\textsf{Rain}) &lt; \\Pr(Y = \\textsf{Go})\\)",
+    "crumbs": [
+      "Week 3: {{< var w03.date-md >}}"
+    ]
+  },
+  {
+    "objectID": "w03/index.html#two-main-building-blocks",
+    "href": "w03/index.html#two-main-building-blocks",
+    "title": "Week 3: From PGMs to Causal Diagrams",
+    "section": "Two Main “Building Blocks”",
+    "text": "Two Main “Building Blocks”\nNodes like \\(\\require{enclose}\\enclose{circle}{X}\\) denote Random Variables:\n\\[\n\\require{enclose}\\boxed{\\enclose{circle}{X}} \\simeq \\boxed{ \\begin{array}{c|cc}x & \\textsf{Tails} & \\textsf{Heads} \\\\\\hline \\Pr(X = x) & 0.5 & 0.5\\end{array}}\n\\]\nEdges like \\(\\require{enclose}\\enclose{circle}{X} \\rightarrow \\enclose{circle}{Y}\\) denote relationships between RVs\n\nWhat an edge “means” can get [ontologically] tricky!\nRetain sanity by just remembering: an edge \\(\\require{enclose}\\enclose{circle}{X} \\rightarrow \\enclose{circle}{Y}\\) is included in our PGM if we “care about” modeling the conditional probability table (CPT) of \\(Y\\) w.r.t. \\(X\\)\n\n\\[\n\\require{enclose}\\boxed{ \\enclose{circle}{X} \\rightarrow \\enclose{circle}{Y} } \\simeq \\boxed{\n  \\begin{array}{c|cc}\n  x & \\Pr(Y = \\textsf{Lose} \\mid X = x) & \\Pr(Y = \\textsf{Win} \\mid X = x) \\\\\\hline\n  \\textsf{Tails} & 0.8 & 0.2 \\\\\n  \\textsf{Heads} & 0.5 & 0.5\n  \\end{array}\n}\n\\]",
+    "crumbs": [
+      "Week 3: {{< var w03.date-md >}}"
+    ]
+  },
+  {
+    "objectID": "w03/index.html#pgm-for-the-partiers-dilemma",
+    "href": "w03/index.html#pgm-for-the-partiers-dilemma",
+    "title": "Week 3: From PGMs to Causal Diagrams",
+    "section": "PGM for the Partier’s Dilemma",
+    "text": "PGM for the Partier’s Dilemma\n\nA node \\(\\require{enclose}\\enclose{circle}{W}\\) denoting RV \\(W\\), which can take on values in \\(\\mathcal{R}_W = \\{\\textsf{Sun}, \\textsf{Rain}\\}\\),\nA node \\(\\require{enclose}\\enclose{circle}{Y}\\) denoting RV \\(Y\\), which can take on values in \\(\\mathcal{R}_Y = \\{\\textsf{Go}, \\textsf{Stay}\\}\\), and\nAn edge \\(\\require{enclose}\\enclose{circle}{W} \\rightarrow \\enclose{circle}{Y}\\) representing the following relationship between \\(W\\) and \\(Y\\):\n\n\\(\\Pr(Y = \\textsf{Go} \\mid W = \\textsf{Sun}) = 0.8\\)\n\\(\\Pr(Y = \\textsf{Stay} \\mid W = \\textsf{Sun}) = 0.2\\)\n\\(\\Pr(Y = \\textsf{Go} \\mid W = \\textsf{Rain}) = 0.1\\)\n\\(\\Pr(Y = \\textsf{Stay} \\mid W = \\textsf{Rain}) = 0.9\\)\n\n\n\n\n\n\n\n\n\n\n\nFigure 2: Our PGM of the Partier’s Dilemma\n\n\n\n\n\n\n\n\n\n\n\n\n\\(\\Pr(Y = \\textsf{Stay} \\mid W)\\)\n\\(\\Pr(Y = \\textsf{Go} \\mid W)\\)\n\n\n\n\n\\(W = \\textsf{Sun}\\)\n0.2\n0.8\n\n\n\\(W = \\textsf{Rain}\\)\n0.9\n0.1\n\n\n\n\n\nFigure 3: The Conditional Probability Table (CPT) for the edge \\(\\require{enclose}\\enclose{circle}{W} \\rightarrow \\enclose{circle}{Y}\\) in Figure 2",
+    "crumbs": [
+      "Week 3: {{< var w03.date-md >}}"
+    ]
+  },
+  {
+    "objectID": "w03/index.html#observed-vs.-latent-nodes",
+    "href": "w03/index.html#observed-vs.-latent-nodes",
+    "title": "Week 3: From PGMs to Causal Diagrams",
+    "section": "Observed vs. Latent Nodes",
+    "text": "Observed vs. Latent Nodes\n\nPGMs help us make valid (Bayesian) inferences about the world in the face of incomplete information!\nKey remaining tool: separation of nodes into two categories:\n\nObserved nodes (shaded)\nLatent nodes (unshaded)\n\n\\(\\Rightarrow\\) Can use our PGM as a weather-inference machine!\nIf we observe \\(i\\) at a party, what can we infer about the weather outside?",
+    "crumbs": [
+      "Week 3: {{< var w03.date-md >}}"
+    ]
+  },
+  {
+    "objectID": "w03/index.html#observed-partier-latent-weather",
+    "href": "w03/index.html#observed-partier-latent-weather",
+    "title": "Week 3: From PGMs to Causal Diagrams",
+    "section": "Observed Partier, Latent Weather",
+    "text": "Observed Partier, Latent Weather\n\nWe can draw this situation as a PGM with shaded and unshaded nodes, distinguishing what we know from what we’d like to infer:\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n❓\n \n✅\n\n\n\n\nAnd we can now use Bayes’ Rule to compute how observed information (\\(i\\) at party \\(\\Rightarrow [Y = \\textsf{Go}]\\)) “flows” back into \\(W\\)",
+    "crumbs": [
+      "Week 3: {{< var w03.date-md >}}"
+    ]
+  },
+  {
+    "objectID": "w03/index.html#computation-via-bayes-rule",
+    "href": "w03/index.html#computation-via-bayes-rule",
+    "title": "Week 3: From PGMs to Causal Diagrams",
+    "section": "Computation via Bayes’ Rule",
+    "text": "Computation via Bayes’ Rule\n\nBayes’ Rule, \\(\\Pr(A \\mid B) = \\frac{\\Pr(B \\mid A)\\Pr(A)}{\\Pr(B)}\\), tells us how to use info about \\(\\Pr(B \\mid A)\\) to obtain info about \\(\\Pr(A \\mid B)\\)!\nWe use it to obtain a distribution for \\(W\\) updated to incorporate new info \\([Y = \\textsf{Go}]\\):\n\n\\[\n\\begin{align*}\n&\\Pr(W = \\textsf{Sun} \\mid Y = \\textsf{Go})\n= \\frac{\\Pr(Y = \\textsf{Go} \\mid W = \\textsf{Sun}) \\Pr(W = \\textsf{Sun})}{\\Pr(Y = \\textsf{Go})} \\\\\n=\\, &\\frac{\\Pr(Y = \\textsf{Go} \\mid W = \\textsf{Sun}) \\Pr(W = \\textsf{Sun})}{\\Pr(Y = \\textsf{Go} \\mid W = \\textsf{Sun}) \\Pr(W = \\textsf{Sun}) + \\Pr(Y = \\textsf{Go} \\mid W = \\textsf{Rain}) \\Pr(W = \\textsf{Rain})}\n\\end{align*}\n\\]\n\nPlug in info from CPT to obtain our new (conditional) probability of interest:\n\n\\[\n\\begin{align*}\n\\Pr(W = \\textsf{Sun} \\mid Y = \\textsf{Go}) &= \\frac{(0.8)(0.5)}{(0.8)(0.5) + (0.1)(0.5)} = \\frac{0.4}{0.4 + 0.05} \\approx 0.89\n\\end{align*}\n\\]\n\nWe’ve learned something interesting! Observing \\(i\\) at the party \\(\\leadsto\\) probability of sun jumps from \\(0.5\\) (“prior” estimate of \\(W\\), best guess without any other relevant info) to \\(0.89\\) (“posterior” estimate of \\(W\\), best guess after incorporating relevant info).",
     "crumbs": [
       "Week 3: {{< var w03.date-md >}}"
     ]
@@ -1434,7 +1484,7 @@
     "href": "w03/index.html#importance-of-observed-vs.-latent-distinction",
     "title": "Week 3: From PGMs to Causal Diagrams",
     "section": "Importance of Observed vs. Latent Distinction!",
-    "text": "Importance of Observed vs. Latent Distinction!\n\nAcross many different fields, hidden stumbling-block in your project may be failure to model this distinction and pursue its implications!\n\n\n\n\n\n\n\n\n\nFigure 1: Your model failing to achieve its goal bc you haven’t yet distinguished observed vs. latent variables",
+    "text": "Importance of Observed vs. Latent Distinction!\n\nAcross many different fields, hidden stumbling-block in your project may be failure to model this distinction and pursue its implications!\n\n\n\n\n\n\n\n\n\nFigure 4: Your model failing to achieve its goal bc you haven’t yet distinguished observed vs. latent variables",
     "crumbs": [
       "Week 3: {{< var w03.date-md >}}"
     ]
@@ -1544,17 +1594,27 @@
     "href": "w03/index.html#before-we-branch-off-of-pgms",
     "title": "Week 3: From PGMs to Causal Diagrams",
     "section": "Before We Branch Off Of PGMs",
-    "text": "Before We Branch Off Of PGMs\n(Even in non-causal settings)\n\n\n\nImage source\n\n\n\nWe don’t exactly think “Shakespeare decided on a set of topics,”",
+    "text": "Before We Branch Off Of PGMs\n(Even in non-causal settings)\n\n\n\nImage source\n\n\n\nWe don’t exactly think “Shakespeare decided on a set of topics, one per word-slot then chose a common word from each word slot”… and yet…!",
     "crumbs": [
       "Week 3: {{< var w03.date-md >}}"
     ]
   },
   {
-    "objectID": "w03/index.html#getting-shot-by-a-firing-squad",
-    "href": "w03/index.html#getting-shot-by-a-firing-squad",
+    "objectID": "w03/index.html#the-elite-hacker-known-only-as-gump",
+    "href": "w03/index.html#the-elite-hacker-known-only-as-gump",
     "title": "Week 3: From PGMs to Causal Diagrams",
-    "section": "Getting Shot By A Firing Squad",
-    "text": "Getting Shot By A Firing Squad\n\n\n\n\n\n\n\n\n\n\n\n\n\n\\(O\\)\n\\(C\\)\n\\(A\\)\n\\(B\\)\n\\(D\\)\n\n\n\n\n0\n0\n0\n0\n0\n\n\n1\n1\n1\n1\n1\n\n\n0\n0\n0\n0\n0\n\n\n0\n0\n0\n0\n0\n\n\n1\n1\n1\n1\n1\n\n\n\n\\[\n\\begin{align*}\n\\Pr(D) &= 0.4 \\\\\n\\Pr(D \\mid A) &= 1\n\\end{align*}\n\\]",
+    "section": "The Elite Hacker Known Only As GUMP",
+    "text": "The Elite Hacker Known Only As GUMP\n\nGUMP has figured out how to hack into Georgetown’s grade servers, instantly zapping his grade up to an A+…",
+    "crumbs": [
+      "Week 3: {{< var w03.date-md >}}"
+    ]
+  },
+  {
+    "objectID": "w03/index.html#the-four-elemental-confounds",
+    "href": "w03/index.html#the-four-elemental-confounds",
+    "title": "Week 3: From PGMs to Causal Diagrams",
+    "section": "The Four Elemental Confounds",
+    "text": "The Four Elemental Confounds",
     "crumbs": [
       "Week 3: {{< var w03.date-md >}}"
     ]
@@ -1564,7 +1624,27 @@
     "href": "w03/index.html#references",
     "title": "Week 3: From PGMs to Causal Diagrams",
     "section": "References",
-    "text": "References\n\n\nFinetti, Bruno de. 1972. Probability, Induction and Statistics: The Art of Guessing. J. Wiley. https://books.google.com?id=hENg7qRPOPYC.\n\n\nHume, David. 1739. A Treatise of Human Nature: Being an Attempt to Introduce the Experimental Method of Reasoning Into Moral Subjects; and Dialogues Concerning Natural Religion. Longmans, Green.\n\n\nIyengar, Shanto, and Donald R. Kinder. 2010. News That Matters: Television & American Opinion. University of Chicago Press. https://books.google.com?id=SH_T0RLDJaUC.\n\n\nPearl, Judea. 2000. Causality: Models, Reasoning, and Inference. Cambridge University Press. https://www.dropbox.com/scl/fi/4kfpro4gpx7tg55fwd7qt/Judea-Pearl-Causality_-Models-Reasoning-and-Inference.pdf?rlkey=f0abw0cgmsyiegx6xapq5z7j2&dl=1.",
+    "text": "References\n\n\nBarron, Alexander T. J., Jenny Huang, Rebecca L. Spang, and Simon DeDeo. 2018. “Individuals, Institutions, and Innovation in the Debates of the French Revolution.” Proceedings of the National Academy of Sciences 115 (18): 4607–12.\n\n\nBlaydes, Lisa, Justin Grimmer, and Alison McQueen. 2018. “Mirrors for Princes and Sultans: Advice on the Art of Governance in the Medieval Christian and Islamic Worlds.” The Journal of Politics 80 (4): 1150–67.\n\n\nElster, Jon. 1996. The Roundtable Talks and the Breakdown of Communism. University of Chicago Press.\n\n\nHorowitz, Donald L. 1985. Ethnic Groups in Conflict. University of California Press.\n\n\nImai, Kosuke. 2018. Quantitative Social Science: An Introduction. Princeton University Press.\n\n\nIyengar, Shanto, and Donald R. Kinder. 2010. News That Matters: Television & American Opinion. University of Chicago Press.\n\n\nKalyvas, Stathis N. 2006. The Logic of Violence in Civil War. Cambridge University Press.\n\n\nKassenova, Togzhan. 2022. Atomic Steppe: How Kazakhstan Gave Up the Bomb. Stanford, CA: Stanford University Press.\n\n\nKoller, Daphne, and Nir Friedman. 2009. Probabilistic Graphical Models: Principles and Techniques. MIT Press.\n\n\nKozlowski, Austin C., Matt Taddy, and James A. Evans. 2019. “The Geometry of Culture: Analyzing the Meanings of Class Through Word Embeddings.” American Sociological Review 84 (5): 905–49.\n\n\nMishal, Shaul, and Reuben Aharoni. 1994. Speaking Stones: Communiqués from the Intifada Underground. Syracuse University Press.\n\n\nOireachtas, Houses of the. 2022. “Explore the Treaty Debates – Houses of the Oireachtas.” Text. Houses of the Oireachtas. October 10, 2022.\n\n\nSchoenhals, Michael. 1992. Doing Things with Words in Chinese Politics: Five Studies. Center for Chinese Studies, Institute of East Asian Studies, University of California.\n\n\nSperber, Dan. 1996. Explaining Culture: A Naturalistic Approach. Cambridge: Blackwell.\n\n\nWang, Lu, Nick Beauchamp, Sarah Shugars, and Kechen Qin. 2017. “Winning on the Merits: The Joint Effects of Content and Style on Debate Outcomes.” Transactions of the Association for Computational Linguistics 5: 219–32.",
+    "crumbs": [
+      "Week 3: {{< var w03.date-md >}}"
+    ]
+  },
+  {
+    "objectID": "w03/index.html#the-logic-of-violence-in-civil-war",
+    "href": "w03/index.html#the-logic-of-violence-in-civil-war",
+    "title": "Week 3: From PGMs to Causal Diagrams",
+    "section": "The Logic of Violence in Civil War",
+    "text": "The Logic of Violence in Civil War\n\n\n\nKalyvas (2006)",
+    "crumbs": [
+      "Week 3: {{< var w03.date-md >}}"
+    ]
+  },
+  {
+    "objectID": "w03/index.html#particularly-fun-non-standard-examples",
+    "href": "w03/index.html#particularly-fun-non-standard-examples",
+    "title": "Week 3: From PGMs to Causal Diagrams",
+    "section": "Particularly Fun Non-“Standard” Examples",
+    "text": "Particularly Fun Non-“Standard” Examples\n\nBarron et al. (2018)\nBlaydes, Grimmer, and McQueen (2018)\nKozlowski, Taddy, and Evans (2019)",
     "crumbs": [
       "Week 3: {{< var w03.date-md >}}"
     ]
@@ -1574,66 +1654,101 @@
     "href": "w03/index.html#footnotes",
     "title": "Week 3: From PGMs to Causal Diagrams",
     "section": "Footnotes",
-    "text": "Footnotes\n\n\nSee Appendix Slide↩︎",
+    "text": "Footnotes\n\n\nAt least, for the time being… BUT see Sperber (1996), which will come up later↩︎",
     "crumbs": [
       "Week 3: {{< var w03.date-md >}}"
     ]
   },
   {
-    "objectID": "w03/slides.html#so-whats-the-problem",
-    "href": "w03/slides.html#so-whats-the-problem",
+    "objectID": "w03/slides.html#w02-recap-aleatory-vs.-epistemic-probability",
+    "href": "w03/slides.html#w02-recap-aleatory-vs.-epistemic-probability",
     "title": "Week 3: From PGMs to Causal Diagrams",
-    "section": "So What’s the Problem?",
-    "text": "So What’s the Problem?\n\nNon-probabilistic models: High potential for being garbage\n\ntldr: even if SUPER certain, using \\(\\Pr(\\mathcal{H}) = 1-\\varepsilon\\) with tiny \\(\\varepsilon\\) has literal life-saving advantages1 (Finetti 1972)\n\nProbabilistic models: Getting there, still looking at “surface”\n\nOf the \\(N = 100\\) times we observed event \\(X\\) occurring, event \\(Y\\) also occurred \\(90\\) of those times\n\\(\\implies \\Pr(Y \\mid X) = \\frac{\\#[X, Y]}{\\#[X]} = \\frac{90}{100} = 0.9\\)\n\nCausal models: Does \\(Y\\) happen because of \\(X\\) happening? For that, need to start modeling what’s happening under the surface making \\(X\\) and \\(Y\\) “pop up” together so often\n\nSee Appendix Slide"
+    "section": "W02 Recap: Aleatory vs. Epistemic Probability",
+    "text": "W02 Recap: Aleatory vs. Epistemic Probability\n\nSocial science, with “science” used in the same sense as for physics, may be a quixotic endeavor1\nInstead, we’ll do social science, where we use data to…\n Infer tendencies: \\(\\mathsf{H}\\) = «\\(X\\) tends to cause \\(Y\\)»\n With some degree of veracity: \\(\\Pr(\\mathsf{H}) \\approx 0.7\\)\n Construct models that we can update with new evidence: Bayes’ rule! \\(\\Pr(\\mathsf{H} \\mid E) = \\frac{\\Pr(E \\mid \\mathsf{H} ) \\Pr(\\mathsf{H})}{\\Pr(E)} \\approx 0.8\\)\nNotice “slippage” between aleatory probability within \\(\\mathsf{H}\\) (“tends to”) vs. epistemic probability “outside of”, talking about \\(\\mathsf{H}\\) (“I’m 70% confident about \\(\\mathsf{H}\\)”)\n\nAt least, for the time being… BUT see Sperber (1996), which will come up later"
   },
   {
-    "objectID": "w03/slides.html#the-fundamental-problem-of-causal-inference",
-    "href": "w03/slides.html#the-fundamental-problem-of-causal-inference",
+    "objectID": "w03/slides.html#disclaimer-unfortunate-side-effects-of-engaging-seriously-with-causality",
+    "href": "w03/slides.html#disclaimer-unfortunate-side-effects-of-engaging-seriously-with-causality",
     "title": "Week 3: From PGMs to Causal Diagrams",
-    "section": "The Fundamental Problem of Causal Inference",
-    "text": "The Fundamental Problem of Causal Inference\nThe only workable definition of «\\(X\\) causes \\(Y\\)»:\n\n\n\n\n Defining Causality (Hume 1739, ruining everything as usual 😤)\n\n\n\\(X\\) causes \\(Y\\) if and only if:\n\n\\(X\\) temporally precedes \\(Y\\) and\n\nIn two worlds \\(W_0\\) and \\(W_1\\) where\neverything is exactly the same except that \\(X = 0\\) in \\(W_0\\) and \\(X = 1\\) in \\(W_1\\),\n\\(Y = 0\\) in \\(W_0\\) and \\(Y = 1\\) in \\(W_1\\)\n\n\n\n\n\n\n\nThe problem? We live in one world, not two identical worlds simultaneously 😭"
+    "section": "Disclaimer: Unfortunate Side Effects of Engaging Seriously with Causality",
+    "text": "Disclaimer: Unfortunate Side Effects of Engaging Seriously with Causality\n\n\n You’ll no longer be able to read “scientific” writing without striking this expression (involuntarily):\n\n “Scientific” talks will begin to sound like the following:"
   },
   {
-    "objectID": "w03/slides.html#what-is-to-be-done",
-    "href": "w03/slides.html#what-is-to-be-done",
+    "objectID": "w03/slides.html#blasting-off-into-causality",
+    "href": "w03/slides.html#blasting-off-into-causality",
     "title": "Week 3: From PGMs to Causal Diagrams",
-    "section": "What Is To Be Done?",
-    "text": "What Is To Be Done?"
+    "section": "Blasting Off Into Causality!",
+    "text": "Blasting Off Into Causality!"
   },
   {
-    "objectID": "w03/slides.html#probability",
-    "href": "w03/slides.html#probability",
+    "objectID": "w03/slides.html#data-generating-processes-dgps",
+    "href": "w03/slides.html#data-generating-processes-dgps",
     "title": "Week 3: From PGMs to Causal Diagrams",
-    "section": "Probability++",
-    "text": "Probability++\n\nTools from prob/stats (RVs, CDFs, Conditional Probability) necessary but not sufficient for causal inference!\nExample: Say we use DSAN 5100 tools to discover:\n\nProbability that event \\(E_1\\) occurs is \\(\\Pr(E_1) = 0.5\\)\nProbability that \\(E_1\\) occurs conditional on another event \\(E_0\\) occurring is \\(\\Pr(E_1 \\mid E_0) = 0.75\\)\n\nUnfortunately, we still cannot infer that the occurrence of \\(E_0\\) causes an increase in the likelihood of \\(E_1\\) occurring."
+    "section": "Data-Generating Processes (DGPs)",
+    "text": "Data-Generating Processes (DGPs)\n\n\n\n\nYou saw this in DSAN 5100!\n«\\(X_1, \\ldots, X_n\\) drawn i.i.d. Normal, mean \\(\\mu\\) variance \\(\\sigma^2\\)» characterizes DGP of \\((X_1, \\ldots, X_n)\\)\n\n\n\n\n\n\n\n\n\n\n\n\n5650: Dive into DGPs, rather than treating as black box/footnote to Law of Large Numbers, so we can move [asymptotically!]…\nFrom associational statements:\n\n«\\(\\underbrace{\\text{An increase}}_{\\small\\text{noun}}\\) in \\(X\\) by 1 is associated with increase in \\(Y\\) by \\(\\beta\\)»\n\nTo causal ones: «\\(\\underbrace{\\text{Increasing}}_{\\small\\text{verb}}\\) \\(X\\) by 1 causes \\(Y\\) to increase by \\(\\beta\\)»"
   },
   {
-    "objectID": "w03/slides.html#beyond-conditional-probability",
-    "href": "w03/slides.html#beyond-conditional-probability",
+    "objectID": "w03/slides.html#causality-in-the-social-world",
+    "href": "w03/slides.html#causality-in-the-social-world",
     "title": "Week 3: From PGMs to Causal Diagrams",
-    "section": "Beyond Conditional Probability",
-    "text": "Beyond Conditional Probability\n\nThis issue (that conditional probabilities could not be interpreted causally) at first represented a kind of dead end for scientists interested in employing probability theory to study causal relationships…\nRecent decades: researchers have built up an additional “layer” of modeling tools, augmenting existing machinery of probability to address causality head-on!\nPearl (2000): Formal proofs that (\\(\\Pr\\) axioms) \\(\\cup\\) (\\(\\textsf{do}\\) axioms) \\(\\Rightarrow\\) causal inference procedures successfully recover causal effects"
+    "section": "Causality in the Social World",
+    "text": "Causality in the Social World\n\nThing we observe (poking out of water): data\nHidden but possibly discoverable via deeper dive (ecosystem under surface): DGP\nPlz remember centrality of DGP! [Heat \\(\\rightarrow\\) Thermometer Level]\n\n\n\n\nFigure 1: Will putting Mr. Guns-Dog in timeout prevent plate-breaking?"
   },
   {
-    "objectID": "w03/slides.html#preview-do-calculus",
-    "href": "w03/slides.html#preview-do-calculus",
+    "objectID": "w03/slides.html#one-last-metaphor",
+    "href": "w03/slides.html#one-last-metaphor",
     "title": "Week 3: From PGMs to Causal Diagrams",
-    "section": "Preview: do-Calculus",
-    "text": "Preview: do-Calculus\n\nExtends core of probability to incorporate causality, via \\(\\textsf{do}\\) operator\n\\(\\textsf{do}(X = 5)\\) is a “special” event, representing intervention in DGP to force \\(X \\leftarrow 5\\)… \\(\\textsf{do}(X = 5)\\) not the same event as \\(X = 5\\)!\n\n\n\n\n\n\n\n\n\n\\(X = 5\\)\n\\(\\neq\\)\n\\(\\textsf{do}(X = 5)\\)\n\n\n\n\nObserving that \\(X\\) took on value 5 (for some possibly-unknown reason)\n\\(\\neq\\)\nIntervening to force \\(X \\leftarrow 5\\), all else in DGP remaining the same (intervention then “flows” through rest of DGP)\n\n\n\n\nProbably the most difficult thing in 5650 to wrap head around\n“Special”: \\(\\Pr(\\textsf{do}(X = 5))\\) not well-defined, only \\(\\Pr(Y = 6 \\mid \\textsf{do}(X = 5))\\)\nTo emphasize special-ness, we may use notation like:\n\\[\n\\Pr(Y = 6 \\mid \\textsf{do}(X = 5)) \\equiv \\textstyle \\Pr_{\\textsf{do}(X = 5)}(Y = 6)\n\\]\nto avoid confusion with “normal” events"
+    "section": "One Last Metaphor…",
+    "text": "One Last Metaphor…\n\nThe \\(\\textsf{do}(\\cdot)\\) operator mutates DGPs"
   },
   {
-    "objectID": "w03/slides.html#causal-world-unlocked-with-great-power-comes-great-responsibility",
-    "href": "w03/slides.html#causal-world-unlocked-with-great-power-comes-great-responsibility",
+    "objectID": "w03/slides.html#bayesian-inference-but-with-pictures",
+    "href": "w03/slides.html#bayesian-inference-but-with-pictures",
     "title": "Week 3: From PGMs to Causal Diagrams",
-    "section": "Causal World Unlocked 😎 (With Great Power Comes Great Responsibility…)",
-    "text": "Causal World Unlocked 😎 (With Great Power Comes Great Responsibility…)\n\nWith \\(\\textsf{do}(\\cdot)\\) in hand… (Alongside DGP satisfying axioms slightly more strict than core probability axioms)\nWe can make causal inferences from similar pair of facts! If:\n\nProbability that event \\(E_1\\) occurs is \\(\\Pr(E_1) = 0.5\\),\nThe probability that \\(E_1\\) occurs conditional on the event \\(\\textsf{do}(E_0)\\) occurring is \\(\\Pr(E_1 \\mid \\textsf{do}(E_0)) = 0.75\\),\n\nNow we can actually infer that the occurrence of \\(E_0\\) caused an increase in the likelihood of \\(E_1\\) occurring!"
+    "section": "Bayesian Inference but with Pictures",
+    "text": "Bayesian Inference but with Pictures\nA Probabilistic Graphical Model (PGM) provides us with:\n\nA formal-mathematical…\nBut also easily visualizable (by construction)…\nRepresentation of a data-generating process (DGP)!\n\nExample: Let’s model how weather \\(W\\) affects evening plans \\(Y\\): the choice between going to a party or staying in to watch movies\n\n\n\n\n DGP: The Partier’s Dilemma\n\n\n\nA person \\(i\\) wakes up with some initial affinity for partying: \\(\\Pr(Y_i = \\textsf{Go})\\)\n\\(i\\) then goes to their window and observes the weather \\(W_i\\) outside:\n\nIf the weather is sunny, \\(i\\)’s affinity increases: \\(\\Pr(Y_i = \\textsf{Go} \\mid W_i = \\textsf{Sun}) &gt; \\Pr(Y = \\textsf{Go})\\)\nOtherwise, if it is rainy, \\(i\\)’s affinity decreases: \\(\\Pr(Y_i = \\textsf{Go} \\mid W_i = \\textsf{Rain}) &lt; \\Pr(Y = \\textsf{Go})\\)"
+  },
+  {
+    "objectID": "w03/slides.html#two-main-building-blocks",
+    "href": "w03/slides.html#two-main-building-blocks",
+    "title": "Week 3: From PGMs to Causal Diagrams",
+    "section": "Two Main “Building Blocks”",
+    "text": "Two Main “Building Blocks”\nNodes like \\(\\require{enclose}\\enclose{circle}{X}\\) denote Random Variables:\n\\[\n\\require{enclose}\\boxed{\\enclose{circle}{X}} \\simeq \\boxed{ \\begin{array}{c|cc}x & \\textsf{Tails} & \\textsf{Heads} \\\\\\hline \\Pr(X = x) & 0.5 & 0.5\\end{array}}\n\\]\nEdges like \\(\\require{enclose}\\enclose{circle}{X} \\rightarrow \\enclose{circle}{Y}\\) denote relationships between RVs\n\nWhat an edge “means” can get [ontologically] tricky!\nRetain sanity by just remembering: an edge \\(\\require{enclose}\\enclose{circle}{X} \\rightarrow \\enclose{circle}{Y}\\) is included in our PGM if we “care about” modeling the conditional probability table (CPT) of \\(Y\\) w.r.t. \\(X\\)\n\n\\[\n\\require{enclose}\\boxed{ \\enclose{circle}{X} \\rightarrow \\enclose{circle}{Y} } \\simeq \\boxed{\n  \\begin{array}{c|cc}\n  x & \\Pr(Y = \\textsf{Lose} \\mid X = x) & \\Pr(Y = \\textsf{Win} \\mid X = x) \\\\\\hline\n  \\textsf{Tails} & 0.8 & 0.2 \\\\\n  \\textsf{Heads} & 0.5 & 0.5\n  \\end{array}\n}\n\\]"
+  },
+  {
+    "objectID": "w03/slides.html#pgm-for-the-partiers-dilemma",
+    "href": "w03/slides.html#pgm-for-the-partiers-dilemma",
+    "title": "Week 3: From PGMs to Causal Diagrams",
+    "section": "PGM for the Partier’s Dilemma",
+    "text": "PGM for the Partier’s Dilemma\n\nA node \\(\\require{enclose}\\enclose{circle}{W}\\) denoting RV \\(W\\), which can take on values in \\(\\mathcal{R}_W = \\{\\textsf{Sun}, \\textsf{Rain}\\}\\),\nA node \\(\\require{enclose}\\enclose{circle}{Y}\\) denoting RV \\(Y\\), which can take on values in \\(\\mathcal{R}_Y = \\{\\textsf{Go}, \\textsf{Stay}\\}\\), and\nAn edge \\(\\require{enclose}\\enclose{circle}{W} \\rightarrow \\enclose{circle}{Y}\\) representing the following relationship between \\(W\\) and \\(Y\\):\n\n\\(\\Pr(Y = \\textsf{Go} \\mid W = \\textsf{Sun}) = 0.8\\)\n\\(\\Pr(Y = \\textsf{Stay} \\mid W = \\textsf{Sun}) = 0.2\\)\n\\(\\Pr(Y = \\textsf{Go} \\mid W = \\textsf{Rain}) = 0.1\\)\n\\(\\Pr(Y = \\textsf{Stay} \\mid W = \\textsf{Rain}) = 0.9\\)\n\n\n\n\n\n\n\n\n\n\n\nFigure 2: Our PGM of the Partier’s Dilemma\n\n\n\n\n\n\n\n\n\n\n\n\n\\(\\Pr(Y = \\textsf{Stay} \\mid W)\\)\n\\(\\Pr(Y = \\textsf{Go} \\mid W)\\)\n\n\n\n\n\\(W = \\textsf{Sun}\\)\n0.2\n0.8\n\n\n\\(W = \\textsf{Rain}\\)\n0.9\n0.1\n\n\n\n\n\nFigure 3: The Conditional Probability Table (CPT) for the edge \\(\\require{enclose}\\enclose{circle}{W} \\rightarrow \\enclose{circle}{Y}\\) in Figure 2"
+  },
+  {
+    "objectID": "w03/slides.html#observed-vs.-latent-nodes",
+    "href": "w03/slides.html#observed-vs.-latent-nodes",
+    "title": "Week 3: From PGMs to Causal Diagrams",
+    "section": "Observed vs. Latent Nodes",
+    "text": "Observed vs. Latent Nodes\n\nPGMs help us make valid (Bayesian) inferences about the world in the face of incomplete information!\nKey remaining tool: separation of nodes into two categories:\n\nObserved nodes (shaded)\nLatent nodes (unshaded)\n\n\\(\\Rightarrow\\) Can use our PGM as a weather-inference machine!\nIf we observe \\(i\\) at a party, what can we infer about the weather outside?"
+  },
+  {
+    "objectID": "w03/slides.html#observed-partier-latent-weather",
+    "href": "w03/slides.html#observed-partier-latent-weather",
+    "title": "Week 3: From PGMs to Causal Diagrams",
+    "section": "Observed Partier, Latent Weather",
+    "text": "Observed Partier, Latent Weather\n\nWe can draw this situation as a PGM with shaded and unshaded nodes, distinguishing what we know from what we’d like to infer:\n\n\n\n\n\n\n\n\n\n\n❓\n \n✅\n\n\n\n\nAnd we can now use Bayes’ Rule to compute how observed information (\\(i\\) at party \\(\\Rightarrow [Y = \\textsf{Go}]\\)) “flows” back into \\(W\\)"
+  },
+  {
+    "objectID": "w03/slides.html#computation-via-bayes-rule",
+    "href": "w03/slides.html#computation-via-bayes-rule",
+    "title": "Week 3: From PGMs to Causal Diagrams",
+    "section": "Computation via Bayes’ Rule",
+    "text": "Computation via Bayes’ Rule\n\nBayes’ Rule, \\(\\Pr(A \\mid B) = \\frac{\\Pr(B \\mid A)\\Pr(A)}{\\Pr(B)}\\), tells us how to use info about \\(\\Pr(B \\mid A)\\) to obtain info about \\(\\Pr(A \\mid B)\\)!\nWe use it to obtain a distribution for \\(W\\) updated to incorporate new info \\([Y = \\textsf{Go}]\\):\n\n\\[\n\\begin{align*}\n&\\Pr(W = \\textsf{Sun} \\mid Y = \\textsf{Go})\n= \\frac{\\Pr(Y = \\textsf{Go} \\mid W = \\textsf{Sun}) \\Pr(W = \\textsf{Sun})}{\\Pr(Y = \\textsf{Go})} \\\\\n=\\, &\\frac{\\Pr(Y = \\textsf{Go} \\mid W = \\textsf{Sun}) \\Pr(W = \\textsf{Sun})}{\\Pr(Y = \\textsf{Go} \\mid W = \\textsf{Sun}) \\Pr(W = \\textsf{Sun}) + \\Pr(Y = \\textsf{Go} \\mid W = \\textsf{Rain}) \\Pr(W = \\textsf{Rain})}\n\\end{align*}\n\\]\n\nPlug in info from CPT to obtain our new (conditional) probability of interest:\n\n\\[\n\\begin{align*}\n\\Pr(W = \\textsf{Sun} \\mid Y = \\textsf{Go}) &= \\frac{(0.8)(0.5)}{(0.8)(0.5) + (0.1)(0.5)} = \\frac{0.4}{0.4 + 0.05} \\approx 0.89\n\\end{align*}\n\\]\n\nWe’ve learned something interesting! Observing \\(i\\) at the party \\(\\leadsto\\) probability of sun jumps from \\(0.5\\) (“prior” estimate of \\(W\\), best guess without any other relevant info) to \\(0.89\\) (“posterior” estimate of \\(W\\), best guess after incorporating relevant info)."
   },
   {
     "objectID": "w03/slides.html#importance-of-observed-vs.-latent-distinction",
     "href": "w03/slides.html#importance-of-observed-vs.-latent-distinction",
     "title": "Week 3: From PGMs to Causal Diagrams",
     "section": "Importance of Observed vs. Latent Distinction!",
-    "text": "Importance of Observed vs. Latent Distinction!\n\nAcross many different fields, hidden stumbling-block in your project may be failure to model this distinction and pursue its implications!\n\n\n\n\n\n\n\n\n\nFigure 1: Your model failing to achieve its goal bc you haven’t yet distinguished observed vs. latent variables"
+    "text": "Importance of Observed vs. Latent Distinction!\n\nAcross many different fields, hidden stumbling-block in your project may be failure to model this distinction and pursue its implications!\n\n\n\n\n\n\n\n\n\nFigure 4: Your model failing to achieve its goal bc you haven’t yet distinguished observed vs. latent variables"
   },
   {
     "objectID": "w03/slides.html#example-from-cognitive-neuroscience-visual-perception",
@@ -1710,28 +1825,59 @@
     "href": "w03/slides.html#before-we-branch-off-of-pgms",
     "title": "Week 3: From PGMs to Causal Diagrams",
     "section": "Before We Branch Off Of PGMs",
-    "text": "Before We Branch Off Of PGMs\n(Even in non-causal settings)\n\nImage source\nWe don’t exactly think “Shakespeare decided on a set of topics,”"
+    "text": "Before We Branch Off Of PGMs\n(Even in non-causal settings)\n\nImage source\nWe don’t exactly think “Shakespeare decided on a set of topics, one per word-slot then chose a common word from each word slot”… and yet…!"
   },
   {
-    "objectID": "w03/slides.html#getting-shot-by-a-firing-squad",
-    "href": "w03/slides.html#getting-shot-by-a-firing-squad",
+    "objectID": "w03/slides.html#the-elite-hacker-known-only-as-gump",
+    "href": "w03/slides.html#the-elite-hacker-known-only-as-gump",
     "title": "Week 3: From PGMs to Causal Diagrams",
-    "section": "Getting Shot By A Firing Squad",
-    "text": "Getting Shot By A Firing Squad\n\n\n\n\n\n\n\n\n\n\n\n\n\n\\(O\\)\n\\(C\\)\n\\(A\\)\n\\(B\\)\n\\(D\\)\n\n\n\n\n0\n0\n0\n0\n0\n\n\n1\n1\n1\n1\n1\n\n\n0\n0\n0\n0\n0\n\n\n0\n0\n0\n0\n0\n\n\n1\n1\n1\n1\n1\n\n\n\n\\[\n\\begin{align*}\n\\Pr(D) &= 0.4 \\\\\n\\Pr(D \\mid A) &= 1\n\\end{align*}\n\\]"
+    "section": "The Elite Hacker Known Only As GUMP",
+    "text": "The Elite Hacker Known Only As GUMP\n\nGUMP has figured out how to hack into Georgetown’s grade servers, instantly zapping his grade up to an A+…"
+  },
+  {
+    "objectID": "w03/slides.html#the-four-elemental-confounds",
+    "href": "w03/slides.html#the-four-elemental-confounds",
+    "title": "Week 3: From PGMs to Causal Diagrams",
+    "section": "The Four Elemental Confounds",
+    "text": "The Four Elemental Confounds"
   },
   {
     "objectID": "w03/slides.html#references",
     "href": "w03/slides.html#references",
     "title": "Week 3: From PGMs to Causal Diagrams",
     "section": "References",
-    "text": "References\n\n\nFinetti, Bruno de. 1972. Probability, Induction and Statistics: The Art of Guessing. J. Wiley. https://books.google.com?id=hENg7qRPOPYC.\n\n\nHume, David. 1739. A Treatise of Human Nature: Being an Attempt to Introduce the Experimental Method of Reasoning Into Moral Subjects; and Dialogues Concerning Natural Religion. Longmans, Green.\n\n\nIyengar, Shanto, and Donald R. Kinder. 2010. News That Matters: Television & American Opinion. University of Chicago Press. https://books.google.com?id=SH_T0RLDJaUC.\n\n\nPearl, Judea. 2000. Causality: Models, Reasoning, and Inference. Cambridge University Press. https://www.dropbox.com/scl/fi/4kfpro4gpx7tg55fwd7qt/Judea-Pearl-Causality_-Models-Reasoning-and-Inference.pdf?rlkey=f0abw0cgmsyiegx6xapq5z7j2&dl=1."
+    "text": "References\n\n\nBarron, Alexander T. J., Jenny Huang, Rebecca L. Spang, and Simon DeDeo. 2018. “Individuals, Institutions, and Innovation in the Debates of the French Revolution.” Proceedings of the National Academy of Sciences 115 (18): 4607–12.\n\n\nBlaydes, Lisa, Justin Grimmer, and Alison McQueen. 2018. “Mirrors for Princes and Sultans: Advice on the Art of Governance in the Medieval Christian and Islamic Worlds.” The Journal of Politics 80 (4): 1150–67.\n\n\nElster, Jon. 1996. The Roundtable Talks and the Breakdown of Communism. University of Chicago Press.\n\n\nHorowitz, Donald L. 1985. Ethnic Groups in Conflict. University of California Press.\n\n\nImai, Kosuke. 2018. Quantitative Social Science: An Introduction. Princeton University Press.\n\n\nIyengar, Shanto, and Donald R. Kinder. 2010. News That Matters: Television & American Opinion. University of Chicago Press.\n\n\nKalyvas, Stathis N. 2006. The Logic of Violence in Civil War. Cambridge University Press.\n\n\nKassenova, Togzhan. 2022. Atomic Steppe: How Kazakhstan Gave Up the Bomb. Stanford, CA: Stanford University Press.\n\n\nKoller, Daphne, and Nir Friedman. 2009. Probabilistic Graphical Models: Principles and Techniques. MIT Press.\n\n\nKozlowski, Austin C., Matt Taddy, and James A. Evans. 2019. “The Geometry of Culture: Analyzing the Meanings of Class Through Word Embeddings.” American Sociological Review 84 (5): 905–49.\n\n\nMishal, Shaul, and Reuben Aharoni. 1994. Speaking Stones: Communiqués from the Intifada Underground. Syracuse University Press.\n\n\nOireachtas, Houses of the. 2022. “Explore the Treaty Debates – Houses of the Oireachtas.” Text. Houses of the Oireachtas. October 10, 2022.\n\n\nSchoenhals, Michael. 1992. Doing Things with Words in Chinese Politics: Five Studies. Center for Chinese Studies, Institute of East Asian Studies, University of California.\n\n\nSperber, Dan. 1996. Explaining Culture: A Naturalistic Approach. Cambridge: Blackwell.\n\n\nWang, Lu, Nick Beauchamp, Sarah Shugars, and Kechen Qin. 2017. “Winning on the Merits: The Joint Effects of Content and Style on Debate Outcomes.” Transactions of the Association for Computational Linguistics 5: 219–32."
+  },
+  {
+    "objectID": "w03/slides.html#the-logic-of-violence-in-civil-war",
+    "href": "w03/slides.html#the-logic-of-violence-in-civil-war",
+    "title": "Week 3: From PGMs to Causal Diagrams",
+    "section": "The Logic of Violence in Civil War",
+    "text": "The Logic of Violence in Civil War\n\nKalyvas (2006)"
+  },
+  {
+    "objectID": "w03/slides.html#particularly-fun-non-standard-examples",
+    "href": "w03/slides.html#particularly-fun-non-standard-examples",
+    "title": "Week 3: From PGMs to Causal Diagrams",
+    "section": "Particularly Fun Non-“Standard” Examples",
+    "text": "Particularly Fun Non-“Standard” Examples\n\nBarron et al. (2018)\nBlaydes, Grimmer, and McQueen (2018)\nKozlowski, Taddy, and Evans (2019)"
   },
   {
     "objectID": "assignments.html",
     "href": "assignments.html",
     "title": "Assignment Point Distributions",
     "section": "",
-    "text": "Use the tabs below to view the point distributions for different assignments.\nThe distributions are imported from Google Sheets mainly for transparency: so that you can see exactly how totals are computed as a sum of the individual points allocated for each test!\n\nHW1\n\n\n\n\n\n\n\n\n\npart\nqid\npoints\nq_total\npart_total\n\n\n\n\n1\nQ1.1a\n4\n\n\n\n\n\nQ1.1b\n2\n6\n\n\n\n\nQ1.2\n8\n8\n\n\n\n\nQ1.3a\n3\n\n\n\n\n\nQ1.3b\n3\n\n\n\n\n\nQ1.3c\n3\n9\n\n\n\n\nQ1.4a\n3\n\n\n\n\n\nQ1.4b\n3\n6\n29\n\n\n2\nQ2.1\n4\n\n\n\n\n\nQ2.2\n4\n\n\n\n\n\nQ2.3\n4\n\n\n\n\n\nQ2.4\n4\n\n16\n\n\n3\nQ3.1\n4\n\n\n\n\n\nQ3.2\n4\n\n\n\n\n\nQ3.3\n4\n\n12\n\n\n4\nQ4.1\n3\n3\n\n\n\n\nQ4.2a\n4\n\n\n\n\n\nQ4.2b\n2\n6\n\n\n\n\nQ4.3a\n2\n\n\n\n\n\nQ4.3b\n2\n4\n\n\n\n\nQ4.4a\n2\n\n\n\n\n\nQ4.4b\n2\n4\n\n\n\n\nQ4.5a\n2\n\n\n\n\n\nQ4.5b\n2\n4\n\n\n\n\nQ4.6a\n2\n\n\n\n\n\nQ4.6b\n2\n4\n25\n\n\n5\nQ5.1\n4\n4\n\n\n\n\nQ5.2\n2\n2\n\n\n\n\nQ5.3\n2\n\n\n\n\n\nQ5.4a\n4\n\n\n\n\n\nQ5.4b\n3\n\n\n\n\n\nQ5.4c\n3\n10\n18\n\n\n\nTotal\n100",
+    "text": "Assignments will be distributed and submitted via the course’s JupyterHub server. Documentation for the “AutoHint” system can be found here\nUse the tabs below to view the point distributions for different assignments.1",
+    "crumbs": [
+      "Assignments"
+    ]
+  },
+  {
+    "objectID": "assignments.html#footnotes",
+    "href": "assignments.html#footnotes",
+    "title": "Assignment Point Distributions",
+    "section": "Footnotes",
+    "text": "Footnotes\n\n\nThe distributions are imported from Google Sheets mainly for transparency: so that you can see exactly how totals are computed as a sum of the individual points allocated for each test!↩︎",
     "crumbs": [
       "Assignments"
     ]
@@ -2343,7 +2489,7 @@
     "href": "writeups/ideal-points/index.html#identification-by-fixing-legislators-ideal-points",
     "title": "Estimating Legislators’ Ideal Points From Voting Histories",
     "section": "Identification by Fixing Legislator’s Ideal Points",
-    "text": "Identification by Fixing Legislator’s Ideal Points\nIdentification of latent state models can be challenging. The first method for identifying ideal point models is to fix the values of two legislators. These can be arbitrary, but if they are chosen along the ideological dimension of interest it can help the substantive interpretation.\nSince we know a priori, or expect, that the primary ideological dimension is Liberal-Conservative (Poole and Rosenthal 2001), I’ll fix the ideal points of the two party leaders in that congress.\nIn the 109th Congress, the Republican party was the majority party and Bill Frist (Tennessee) was the majority (Republican) leader, and Harry Reid (Nevada) wad the minority (Democratic) leader:\n\\[\n\\begin{aligned}[t]\n\\xi_\\text{FRIST (R TN)} & = 1 \\\\\n\\xi_\\text{REID (D NV)} & = -1\n\\end{aligned}\n\\]\nFor all of those give a weakly informative prior to the ideal points, and item difficulty and discrimination parameters,\n\\[\n\\begin{aligned}[t]\n\\xi_{i} &\\sim \\mathsf{Normal}(\\zeta, \\tau) \\\\\n\\zeta &\\sim \\mathsf{Normal}(0., 10) \\\\\n\\tau &\\sim \\mathsf{HalfCauchy}(0., 5) \\\\\n\\alpha_{j} &\\sim \\mathsf{Normal}(0, 10) \\\\\n\\beta_{j} &\\sim \\mathsf{Normal}(0, 2.5) && j \\in 1, \\dots, J\n\\end{aligned}\n\\]\n\n\nCode\n# mod_ideal_point_1 &lt;- stan_model(\"stan/ideal_point_1.stan\")\n\n\n\n\nCode\n# mod_ideal_point_1\n\n\n// ideal point model\n// identification:\n// - xi ~ hierarchical\n// - except fixed senators\ndata {\n  // number of individuals\n  int N;\n  // number of items\n  int K;\n  // observed votes\n  int&lt;lower = 0, upper = N * K&gt; Y_obs;\n  int y_idx_leg[Y_obs];\n  int y_idx_vote[Y_obs];\n  int y[Y_obs];\n  // priors\n  // on items\n  real alpha_loc;\n  real&lt;lower = 0.&gt; alpha_scale;\n  real beta_loc;\n  real&lt;lower = 0.&gt; beta_scale;\n  // on legislators\n  int N_xi_obs;\n  int idx_xi_obs[N_xi_obs];\n  vector[N_xi_obs] xi_obs;\n  int N_xi_param;\n  int idx_xi_param[N_xi_param];\n  // prior on ideal points\n  real zeta_loc;\n  real&lt;lower = 0.&gt; zeta_scale;\n  real tau_scale;\n}\nparameters {\n  // item difficulties\n  vector[K] alpha;\n  // item discrimination\n  vector[K] beta;\n  // unknown ideal points\n  vector[N_xi_param] xi_param;\n  // hyperpriors\n  real&lt;lower = 0.&gt; tau;\n  real&lt;lower = 0.&gt; zeta;\n}\ntransformed parameters {\n  // create xi from observed and parameter ideal points\n  vector[Y_obs] mu;\n  vector[N] xi;\n  xi[idx_xi_param] = xi_param;\n  xi[idx_xi_obs] = xi_obs;\n  for (i in 1:Y_obs) {\n    mu[i] = alpha[y_idx_vote[i]] + beta[y_idx_vote[i]] * xi[y_idx_leg[i]];\n  }\n}\nmodel {\n  alpha ~ normal(alpha_loc, alpha_scale);\n  beta ~ normal(beta_loc, beta_scale);\n  xi_param ~ normal(zeta, tau);\n  xi_obs ~ normal(zeta, tau);\n  zeta ~ normal(zeta_loc, zeta_scale);\n  tau ~ cauchy(0., tau_scale);\n  y ~ bernoulli_logit(mu);\n}\ngenerated quantities {\n  vector[Y_obs] log_lik;\n  for (i in 1:Y_obs) {\n    log_lik[i] = bernoulli_logit_lpmf(y[i] | mu[i]);\n  }\n}\nCreate a data frame with the fixed values for identification. Additionally, set initial values of ideal points: Republicans at xi = 1, Democrats at xi = -1, and independents at xi = 0. This may help speed up convergence.\n\n\nCode\nxi_1 &lt;- s109_legis_data |&gt;\n  mutate(\n    xi = if_else(\n      legislator == \"FRIST (R TN)\",\n      1,\n      if_else(\n        legislator == \"REID (D NV)\",\n        -1,\n        NA_real_\n      )\n    ),\n    init = if_else(\n      party == \"Republican\",\n      1,\n      if_else(party == \"Democratic\", -1, 0)\n    )\n  )\n\n\nDefine and setup all the data needed for this:\n\n\nCode\nlegislators_data_1 &lt;- within(list(), {\n    y &lt;- as.integer(s109_votes$yea)\n    y_idx_leg &lt;- as.integer(s109_votes$.legis_id)\n    y_idx_vote &lt;- as.integer(s109_votes$.rollcall_id)\n    Y_obs &lt;- length(y)\n    N &lt;- max(s109_votes$.legis_id)\n    K &lt;- max(s109_votes$.rollcall_id)\n    # priors\n    alpha_loc &lt;- 0\n    alpha_scale &lt;- 5\n    beta_loc &lt;- 0\n    beta_scale &lt;- 2.5\n    N_xi_obs &lt;- sum(!is.na(xi_1$xi))\n    idx_xi_obs &lt;- which(!is.na(xi_1$xi))\n    xi_obs &lt;- xi_1$xi[!is.na(xi_1$xi)]\n    N_xi_param &lt;- sum(is.na(xi_1$xi))\n    idx_xi_param &lt;- which(is.na(xi_1$xi))\n    tau_scale &lt;- 5\n    zeta_loc &lt;- 0\n    zeta_scale &lt;- 10\n  }\n)\n\n\n\n\nCode\nlegislators_init_1 &lt;- list(\n  list(xi_param = xi_1$init[is.na(xi_1$xi)])\n)\n\n\n\n\nCode\nmod_ideal_point_1 &lt;- stan_model(\"stan/ideal_point_1.stan\")\n\n\n\n\nCode\nlegislators_fit_1 &lt;- sampling(\n  mod_ideal_point_1,\n  data = legislators_data_1,\n  chains = 1,\n  iter = 500,\n  init = legislators_init_1,\n  refresh = 100,\n  pars = c(\"alpha\", \"beta\", \"xi\")\n)\n\n\n\nSAMPLING FOR MODEL 'anon_model' NOW (CHAIN 1).\nChain 1: \nChain 1: Gradient evaluation took 0.002007 seconds\nChain 1: 1000 transitions using 10 leapfrog steps per transition would take 20.07 seconds.\nChain 1: Adjust your expectations accordingly!\nChain 1: \nChain 1: \nChain 1: Iteration:   1 / 500 [  0%]  (Warmup)\nChain 1: Iteration: 100 / 500 [ 20%]  (Warmup)\nChain 1: Iteration: 200 / 500 [ 40%]  (Warmup)\nChain 1: Iteration: 251 / 500 [ 50%]  (Sampling)\nChain 1: Iteration: 350 / 500 [ 70%]  (Sampling)\nChain 1: Iteration: 450 / 500 [ 90%]  (Sampling)\nChain 1: Iteration: 500 / 500 [100%]  (Sampling)\nChain 1: \nChain 1:  Elapsed Time: 34.813 seconds (Warm-up)\nChain 1:                23.185 seconds (Sampling)\nChain 1:                57.998 seconds (Total)\nChain 1: \n\n\nWarning: The largest R-hat is NA, indicating chains have not mixed.\nRunning the chains for more iterations may help. See\nhttps://mc-stan.org/misc/warnings.html#r-hat\n\n\nWarning: Bulk Effective Samples Size (ESS) is too low, indicating posterior means and medians may be unreliable.\nRunning the chains for more iterations may help. See\nhttps://mc-stan.org/misc/warnings.html#bulk-ess\n\n\nWarning: Tail Effective Samples Size (ESS) is too low, indicating posterior variances and tail quantiles may be unreliable.\nRunning the chains for more iterations may help. See\nhttps://mc-stan.org/misc/warnings.html#tail-ess\n\n\nExtract the ideal point data:\n\n\nCode\nlegislator_summary_1 &lt;- bind_cols(\n  s109_legis_data,\n  as_tibble(\n    summary(legislators_fit_1, par = \"xi\")$summary\n  )\n) |&gt;\n  mutate(\n    legislator = fct_reorder(legislator, mean)\n  )\n\n\n\n\nCode\nggplot(\n  legislator_summary_1,\n  aes(\n    x = legislator,\n    y = mean,\n    ymin = `2.5%`,\n    ymax = `97.5%`,\n    colour = party\n  )\n) +\n  geom_pointrange() +\n  coord_flip() +\n  scale_color_manual(\n    values = c(\n      Democratic = \"blue\",\n      Independent = \"gray\",\n      Republican = \"red\"\n    )\n  ) +\n  labs(\n    y = expression(xi[i]),\n    x = \"\",\n    colour = \"Party\"\n  ) +\n  theme(legend.position = \"bottom\")\n\n\n\n\n\n\n\n\nFigure 1\n\n\n\n\n\n\n\nCode\nlegislator_summary_1 |&gt; write_csv(\"legislators.csv\")"
+    "text": "Identification by Fixing Legislator’s Ideal Points\nIdentification of latent state models can be challenging. The first method for identifying ideal point models is to fix the values of two legislators. These can be arbitrary, but if they are chosen along the ideological dimension of interest it can help the substantive interpretation.\nSince we know a priori, or expect, that the primary ideological dimension is Liberal-Conservative (Poole and Rosenthal 2001), I’ll fix the ideal points of the two party leaders in that congress.\nIn the 109th Congress, the Republican party was the majority party and Bill Frist (Tennessee) was the majority (Republican) leader, and Harry Reid (Nevada) wad the minority (Democratic) leader:\n\\[\n\\begin{aligned}[t]\n\\xi_\\text{FRIST (R TN)} & = 1 \\\\\n\\xi_\\text{REID (D NV)} & = -1\n\\end{aligned}\n\\]\nFor all of those give a weakly informative prior to the ideal points, and item difficulty and discrimination parameters,\n\\[\n\\begin{aligned}[t]\n\\xi_{i} &\\sim \\mathsf{Normal}(\\zeta, \\tau) \\\\\n\\zeta &\\sim \\mathsf{Normal}(0., 10) \\\\\n\\tau &\\sim \\mathsf{HalfCauchy}(0., 5) \\\\\n\\alpha_{j} &\\sim \\mathsf{Normal}(0, 10) \\\\\n\\beta_{j} &\\sim \\mathsf{Normal}(0, 2.5) && j \\in 1, \\dots, J\n\\end{aligned}\n\\]\n\n\nCode\n# mod_ideal_point_1 &lt;- stan_model(\"stan/ideal_point_1.stan\")\n\n\n\n\nCode\n# mod_ideal_point_1\n\n\n// ideal point model\n// identification:\n// - xi ~ hierarchical\n// - except fixed senators\ndata {\n  // number of individuals\n  int N;\n  // number of items\n  int K;\n  // observed votes\n  int&lt;lower = 0, upper = N * K&gt; Y_obs;\n  int y_idx_leg[Y_obs];\n  int y_idx_vote[Y_obs];\n  int y[Y_obs];\n  // priors\n  // on items\n  real alpha_loc;\n  real&lt;lower = 0.&gt; alpha_scale;\n  real beta_loc;\n  real&lt;lower = 0.&gt; beta_scale;\n  // on legislators\n  int N_xi_obs;\n  int idx_xi_obs[N_xi_obs];\n  vector[N_xi_obs] xi_obs;\n  int N_xi_param;\n  int idx_xi_param[N_xi_param];\n  // prior on ideal points\n  real zeta_loc;\n  real&lt;lower = 0.&gt; zeta_scale;\n  real tau_scale;\n}\nparameters {\n  // item difficulties\n  vector[K] alpha;\n  // item discrimination\n  vector[K] beta;\n  // unknown ideal points\n  vector[N_xi_param] xi_param;\n  // hyperpriors\n  real&lt;lower = 0.&gt; tau;\n  real&lt;lower = 0.&gt; zeta;\n}\ntransformed parameters {\n  // create xi from observed and parameter ideal points\n  vector[Y_obs] mu;\n  vector[N] xi;\n  xi[idx_xi_param] = xi_param;\n  xi[idx_xi_obs] = xi_obs;\n  for (i in 1:Y_obs) {\n    mu[i] = alpha[y_idx_vote[i]] + beta[y_idx_vote[i]] * xi[y_idx_leg[i]];\n  }\n}\nmodel {\n  alpha ~ normal(alpha_loc, alpha_scale);\n  beta ~ normal(beta_loc, beta_scale);\n  xi_param ~ normal(zeta, tau);\n  xi_obs ~ normal(zeta, tau);\n  zeta ~ normal(zeta_loc, zeta_scale);\n  tau ~ cauchy(0., tau_scale);\n  y ~ bernoulli_logit(mu);\n}\ngenerated quantities {\n  vector[Y_obs] log_lik;\n  for (i in 1:Y_obs) {\n    log_lik[i] = bernoulli_logit_lpmf(y[i] | mu[i]);\n  }\n}\nCreate a data frame with the fixed values for identification. Additionally, set initial values of ideal points: Republicans at xi = 1, Democrats at xi = -1, and independents at xi = 0. This may help speed up convergence.\n\n\nCode\nxi_1 &lt;- s109_legis_data |&gt;\n  mutate(\n    xi = if_else(\n      legislator == \"FRIST (R TN)\",\n      1,\n      if_else(\n        legislator == \"REID (D NV)\",\n        -1,\n        NA_real_\n      )\n    ),\n    init = if_else(\n      party == \"Republican\",\n      1,\n      if_else(party == \"Democratic\", -1, 0)\n    )\n  )\n\n\nDefine and setup all the data needed for this:\n\n\nCode\nlegislators_data_1 &lt;- within(list(), {\n    y &lt;- as.integer(s109_votes$yea)\n    y_idx_leg &lt;- as.integer(s109_votes$.legis_id)\n    y_idx_vote &lt;- as.integer(s109_votes$.rollcall_id)\n    Y_obs &lt;- length(y)\n    N &lt;- max(s109_votes$.legis_id)\n    K &lt;- max(s109_votes$.rollcall_id)\n    # priors\n    alpha_loc &lt;- 0\n    alpha_scale &lt;- 5\n    beta_loc &lt;- 0\n    beta_scale &lt;- 2.5\n    N_xi_obs &lt;- sum(!is.na(xi_1$xi))\n    idx_xi_obs &lt;- which(!is.na(xi_1$xi))\n    xi_obs &lt;- xi_1$xi[!is.na(xi_1$xi)]\n    N_xi_param &lt;- sum(is.na(xi_1$xi))\n    idx_xi_param &lt;- which(is.na(xi_1$xi))\n    tau_scale &lt;- 5\n    zeta_loc &lt;- 0\n    zeta_scale &lt;- 10\n  }\n)\n\n\n\n\nCode\nlegislators_init_1 &lt;- list(\n  list(xi_param = xi_1$init[is.na(xi_1$xi)])\n)\n\n\n\n\nCode\nmod_ideal_point_1 &lt;- stan_model(\"stan/ideal_point_1.stan\")\n\n\n\n\nCode\nlegislators_fit_1 &lt;- sampling(\n  mod_ideal_point_1,\n  data = legislators_data_1,\n  chains = 1,\n  iter = 500,\n  init = legislators_init_1,\n  refresh = 100,\n  pars = c(\"alpha\", \"beta\", \"xi\")\n)\n\n\n\nSAMPLING FOR MODEL 'anon_model' NOW (CHAIN 1).\nChain 1: \nChain 1: Gradient evaluation took 0.002034 seconds\nChain 1: 1000 transitions using 10 leapfrog steps per transition would take 20.34 seconds.\nChain 1: Adjust your expectations accordingly!\nChain 1: \nChain 1: \nChain 1: Iteration:   1 / 500 [  0%]  (Warmup)\nChain 1: Iteration: 100 / 500 [ 20%]  (Warmup)\nChain 1: Iteration: 200 / 500 [ 40%]  (Warmup)\nChain 1: Iteration: 251 / 500 [ 50%]  (Sampling)\nChain 1: Iteration: 350 / 500 [ 70%]  (Sampling)\nChain 1: Iteration: 450 / 500 [ 90%]  (Sampling)\nChain 1: Iteration: 500 / 500 [100%]  (Sampling)\nChain 1: \nChain 1:  Elapsed Time: 37.909 seconds (Warm-up)\nChain 1:                23.936 seconds (Sampling)\nChain 1:                61.845 seconds (Total)\nChain 1: \n\n\nWarning: The largest R-hat is NA, indicating chains have not mixed.\nRunning the chains for more iterations may help. See\nhttps://mc-stan.org/misc/warnings.html#r-hat\n\n\nWarning: Bulk Effective Samples Size (ESS) is too low, indicating posterior means and medians may be unreliable.\nRunning the chains for more iterations may help. See\nhttps://mc-stan.org/misc/warnings.html#bulk-ess\n\n\nWarning: Tail Effective Samples Size (ESS) is too low, indicating posterior variances and tail quantiles may be unreliable.\nRunning the chains for more iterations may help. See\nhttps://mc-stan.org/misc/warnings.html#tail-ess\n\n\nExtract the ideal point data:\n\n\nCode\nlegislator_summary_1 &lt;- bind_cols(\n  s109_legis_data,\n  as_tibble(\n    summary(legislators_fit_1, par = \"xi\")$summary\n  )\n) |&gt;\n  mutate(\n    legislator = fct_reorder(legislator, mean)\n  )\n\n\n\n\nCode\nggplot(\n  legislator_summary_1,\n  aes(\n    x = legislator,\n    y = mean,\n    ymin = `2.5%`,\n    ymax = `97.5%`,\n    colour = party\n  )\n) +\n  geom_pointrange() +\n  coord_flip() +\n  scale_color_manual(\n    values = c(\n      Democratic = \"blue\",\n      Independent = \"gray\",\n      Republican = \"red\"\n    )\n  ) +\n  labs(\n    y = expression(xi[i]),\n    x = \"\",\n    colour = \"Party\"\n  ) +\n  theme(legend.position = \"bottom\")\n\n\n\n\n\n\n\n\nFigure 1\n\n\n\n\n\n\n\nCode\nlegislator_summary_1 |&gt; write_csv(\"legislators.csv\")"
   },
   {
     "objectID": "writeups/hw2-guide/HW2_Guide.html",
@@ -2701,7 +2847,7 @@
     "href": "w09/index.html#double-robustness-to-the-rescue",
     "title": "Week 9: Doubly-Robust Estimation and Instrumental Variables",
     "section": "Double-Robustness to the Rescue!",
-    "text": "Double-Robustness to the Rescue!\n\n\nWrong regression model:\n\n\nCode\ndef compare_estimators(X_e, X_mu, D, y, seed):\n    df = generate_data(seed=seed)\n    e = estimate_e(df, X_e, D, LogisticRegression())\n    mu0, mu1 = estimate_mu(df, X_mu, D, y, LinearRegression())\n    slearn = mu1 - mu0\n    ipw = (df[D] / e - (1-df[D]) / (1-e)) * df[y]\n    aipw = slearn + df[D] / e * (df[y] - mu1) - (1-df[D]) / (1-e) * (df[y] - mu0)\n    return np.mean((slearn, ipw, aipw), axis=1)\n\ndef simulate_estimators(X_e, X_mu, D, y):\n    r = Parallel(n_jobs=8)(delayed(compare_estimators)(X_e, X_mu, D, y, i) for i in range(100))\n    df_tau = pd.DataFrame(r, columns=['S-learn', 'IPW', 'AIPW'])\n    return df_tau\n# The actual plots\nfig, ax = plt.subplots(figsize=(4,3.5))\nwrong_reg_df = simulate_estimators(\n  X_e=['male', 'age'], X_mu=['hours'], D=\"dark_mode\", y=\"read_time\"\n)\nwrong_reg_plot = sns.boxplot(\n  data=pd.melt(wrong_reg_df), x='variable', y='value', hue='variable',\n  ax=ax,\n  linewidth=2\n);\nwrong_reg_plot.set(\n  title=\"Distribution of $\\hat τ$\", xlabel='', ylabel=''\n);\nax.axhline(2, c='r', ls=':');\n\n\n&lt;&gt;:25: SyntaxWarning:\n\n\"\\h\" is an invalid escape sequence. Such sequences will not work in the future. Did you mean \"\\\\h\"? A raw string is also an option.\n\n&lt;&gt;:25: SyntaxWarning:\n\n\"\\h\" is an invalid escape sequence. Such sequences will not work in the future. Did you mean \"\\\\h\"? A raw string is also an option.\n\n/var/folders/n2/m7_fj5vx6c50_yj7g23mwmq00000gn/T/ipykernel_75186/2518988729.py:25: SyntaxWarning:\n\n\"\\h\" is an invalid escape sequence. Such sequences will not work in the future. Did you mean \"\\\\h\"? A raw string is also an option.\n\n\n\n\n\n\n\n\n\n\n\nWrong propensity score model:\n\n\nCode\nfig, ax = plt.subplots(figsize=(4, 3.5))\nwrong_ps_df = simulate_estimators(\n  ['age'], ['male', 'hours'], D=\"dark_mode\", y=\"read_time\"\n)\nwrong_ps_plot = sns.boxplot(\n  data=pd.melt(wrong_ps_df), x='variable', y='value', hue='variable',\n  ax=ax,\n  linewidth=2\n);\nax.set_title(\"Distribution of $\\hat τ$\");\nax.axhline(2, c='r', ls=':');\nplt.show()\n\n\n&lt;&gt;:10: SyntaxWarning:\n\n\"\\h\" is an invalid escape sequence. Such sequences will not work in the future. Did you mean \"\\\\h\"? A raw string is also an option.\n\n&lt;&gt;:10: SyntaxWarning:\n\n\"\\h\" is an invalid escape sequence. Such sequences will not work in the future. Did you mean \"\\\\h\"? A raw string is also an option.\n\n/var/folders/n2/m7_fj5vx6c50_yj7g23mwmq00000gn/T/ipykernel_75186/591257935.py:10: SyntaxWarning:\n\n\"\\h\" is an invalid escape sequence. Such sequences will not work in the future. Did you mean \"\\\\h\"? A raw string is also an option.",
+    "text": "Double-Robustness to the Rescue!\n\n\nWrong regression model:\n\n\nCode\ndef compare_estimators(X_e, X_mu, D, y, seed):\n    df = generate_data(seed=seed)\n    e = estimate_e(df, X_e, D, LogisticRegression())\n    mu0, mu1 = estimate_mu(df, X_mu, D, y, LinearRegression())\n    slearn = mu1 - mu0\n    ipw = (df[D] / e - (1-df[D]) / (1-e)) * df[y]\n    aipw = slearn + df[D] / e * (df[y] - mu1) - (1-df[D]) / (1-e) * (df[y] - mu0)\n    return np.mean((slearn, ipw, aipw), axis=1)\n\ndef simulate_estimators(X_e, X_mu, D, y):\n    r = Parallel(n_jobs=8)(delayed(compare_estimators)(X_e, X_mu, D, y, i) for i in range(100))\n    df_tau = pd.DataFrame(r, columns=['S-learn', 'IPW', 'AIPW'])\n    return df_tau\n# The actual plots\nfig, ax = plt.subplots(figsize=(4,3.5))\nwrong_reg_df = simulate_estimators(\n  X_e=['male', 'age'], X_mu=['hours'], D=\"dark_mode\", y=\"read_time\"\n)\nwrong_reg_plot = sns.boxplot(\n  data=pd.melt(wrong_reg_df), x='variable', y='value', hue='variable',\n  ax=ax,\n  linewidth=2\n);\nwrong_reg_plot.set(\n  title=\"Distribution of $\\hat τ$\", xlabel='', ylabel=''\n);\nax.axhline(2, c='r', ls=':');\n\n\n&lt;&gt;:25: SyntaxWarning:\n\n\"\\h\" is an invalid escape sequence. Such sequences will not work in the future. Did you mean \"\\\\h\"? A raw string is also an option.\n\n&lt;&gt;:25: SyntaxWarning:\n\n\"\\h\" is an invalid escape sequence. Such sequences will not work in the future. Did you mean \"\\\\h\"? A raw string is also an option.\n\n/var/folders/n2/m7_fj5vx6c50_yj7g23mwmq00000gn/T/ipykernel_79738/2518988729.py:25: SyntaxWarning:\n\n\"\\h\" is an invalid escape sequence. Such sequences will not work in the future. Did you mean \"\\\\h\"? A raw string is also an option.\n\n\n\n\n\n\n\n\n\n\n\nWrong propensity score model:\n\n\nCode\nfig, ax = plt.subplots(figsize=(4, 3.5))\nwrong_ps_df = simulate_estimators(\n  ['age'], ['male', 'hours'], D=\"dark_mode\", y=\"read_time\"\n)\nwrong_ps_plot = sns.boxplot(\n  data=pd.melt(wrong_ps_df), x='variable', y='value', hue='variable',\n  ax=ax,\n  linewidth=2\n);\nax.set_title(\"Distribution of $\\hat τ$\");\nax.axhline(2, c='r', ls=':');\nplt.show()\n\n\n&lt;&gt;:10: SyntaxWarning:\n\n\"\\h\" is an invalid escape sequence. Such sequences will not work in the future. Did you mean \"\\\\h\"? A raw string is also an option.\n\n&lt;&gt;:10: SyntaxWarning:\n\n\"\\h\" is an invalid escape sequence. Such sequences will not work in the future. Did you mean \"\\\\h\"? A raw string is also an option.\n\n/var/folders/n2/m7_fj5vx6c50_yj7g23mwmq00000gn/T/ipykernel_79738/591257935.py:10: SyntaxWarning:\n\n\"\\h\" is an invalid escape sequence. Such sequences will not work in the future. Did you mean \"\\\\h\"? A raw string is also an option.",
     "crumbs": [
       "Week 9: {{< var w09.date-md >}}"
     ]

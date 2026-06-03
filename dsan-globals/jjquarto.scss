@@ -7,6 +7,15 @@ body {
     font-family: "Computer Modern Sans", sans-serif;
 }
 
+/* 
+// :root {
+//   // --bs-badge-padding-x: 0.65em;
+//   --bs-badge-padding-x: 0.5em;
+//   // --bs-badge-padding-y: 0.35em;
+//   --bs-badge-padding-y: 0.2em;
+// }
+*/
+
 a.disabled {
     /* Make the disabled links grayish */
     color: gray;
@@ -147,6 +156,9 @@ border: 1px solid #dee2e6 !important;
 
 .code-black code {
     color: black !important;
+}
+.code-white code {
+  color: white !important;
 }
 
 .cols-clip .column {

@@ -7,9 +7,9 @@ format:
     df-print: kable
 ---
 
-Use the **tabs below** to view the point distributions for different assignments.
+Assignments will be distributed and submitted via the course's [JupyterHub server](https://guhub.io). Documentation for the "AutoHint" system can be found [here](https://jjacobs.me/jah)
 
-The distributions are imported from Google Sheets mainly for transparency: so that you can see exactly how totals are computed as a sum of the individual points allocated for each test!
+Use the **tabs below** to view the point distributions for different assignments.^[The distributions are imported from Google Sheets mainly for transparency: so that you can see exactly how totals are computed as a sum of the individual points allocated for each test!]
 
 ```{r}
 #| label: points-table-fn

@@ -43,3 +43,39 @@ cor(z1_df$X, z1_df$Y)
 
 :::
 ::::
+
+---
+
+<td><span data-qmd="**RQ 2:** Attitude-Behavior Consistency (ABC) [@lee_bayesian_2013] <span class='badge text-bg-secondary' style='padding-top: 0.2em; padding-bottom: 0.2em; padding-left: 0.4em; padding-right: 0.4em; margin-right: 0.1em;'><code style='color: white;'>#</code>PGMs</span><span class='badge text-bg-secondary' style='padding-top: 0.2em; padding-bottom: 0.2em; padding-left: 0.4em; padding-right: 0.4em; margin-right: 0.1em;'><code style='color: white;'>#</code>MischievousMiguel</span><span class='badge text-bg-secondary' style='padding-top: 0.2em; padding-bottom: 0.2em; padding-left: 0.4em; padding-right: 0.4em;'><code style='color: white;'>#</code>PyMC</span>"></span></td>
+
+---
+
+## ...Your Second Causal Diagram
+
+## Getting Shot By A Firing Squad {.crunch-title .crunch-quarto-figure}
+
+:::: {layout="[1,1]" layout-align="center"}
+::: {#firing-squad-img}
+
+![](images/causal_firing_squad.svg){fig-align="center" width="360"}
+
+:::
+::: {#firing-squad-table}
+
+| $O$ | $C$ | $A$ | $B$ | $D$ |
+| - | - | - | - | - |
+| 0 | 0 | 0 | 0 | 0 |
+| 1 | 1 | 1 | 1 | 1 |
+| 0 | 0 | 0 | 0 | 0 |
+| 0 | 0 | 0 | 0 | 0 |
+| 1 | 1 | 1 | 1 | 1 |
+
+$$
+\begin{align*}
+\Pr(D) &= 0.4 \\
+\Pr(D \mid A) &= 1
+\end{align*}
+$$
+
+:::
+::::
