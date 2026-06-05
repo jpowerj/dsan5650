@@ -205,11 +205,11 @@ The main assignment in the course will be your **final project**, submitted at t
 
 | Main Quest | Due Date | ✅s Possible |
 | - | - |:-:|
-| [HW1: {{< var hw1.title >}}]({{< var hw1.url >}}) | {{< var hw1.date-full >}} | 4 |
-| [HW2: {{< var hw2.title >}}]({{< var hw2.url >}}) | {{< var hw2.date-full >}} | 4 |
-| [HW3: {{< var hw3.title >}}]({{< var hw3.url >}}) | {{< var hw3.date-full >}} | 4 |
+| HW1: {{< var hw1.title >}} | {{< var hw1.date-full >}} | 4 |
+| HW2: {{< var hw2.title >}} | {{< var hw2.date-full >}} | 4 |
 | {{< var midterm.title >}} | {{< var midterm.date-full >}} | 4 |
-| [HW4: {{< var hw4.title >}}]({{< var hw4.url >}}) | {{< var hw4.date-full >}} | 4 |
+| HW3: {{< var hw3.title >}} | {{< var hw3.date-full >}} | 4 |
+| HW4: {{< var hw4.title >}} | {{< var hw4.date-full >}} | 4 |
 | [Final Project](./final.qmd) | {{< var final.date-full >}} | 6 |
 | Two Required Meetings with Instructors | | 1 |
 | **Total** | | **27** |
