@@ -3,6 +3,7 @@ title: "Estimating Legislators' Ideal Points From Voting Histories"
 sidebar: mainnav
 date: 2026-06-01
 bibliography: "../../_DSAN5650.bib"
+cache: true
 categories:
   - Demos
 format:

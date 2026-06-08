@@ -348,7 +348,7 @@ Jeff Jacobs
 <section>
 <section id="sensitivity-analysis-1-sensitivity-to-priors" class="title-slide slide level1 center" data-stack-name="Sensitivity to Priors">
 <h1>Sensitivity Analysis 1: Sensitivity to Priors</h1>
-<div id="cell-py-imports" class="cell" data-execution_count="1">
+<div id="py-imports" class="cell" data-execution_count="1">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
@@ -357,37 +357,38 @@ Jeff Jacobs
 <span id="cb1-4"><a></a><span class="im">import</span> seaborn <span class="im">as</span> sns</span>
 <span id="cb1-5"><a></a>cb_palette <span class="op">=</span> [<span class="st">'#e69f00'</span>,<span class="st">'#56b4e9'</span>,<span class="st">'#009e73'</span>]</span>
 <span id="cb1-6"><a></a>sns.set_palette(cb_palette)</span>
-<span id="cb1-7"><a></a><span class="im">import</span> patchworklib <span class="im">as</span> pw</span>
-<span id="cb1-8"><a></a><span class="im">import</span> pymc <span class="im">as</span> pm</span>
-<span id="cb1-9"><a></a><span class="im">import</span> arviz <span class="im">as</span> az</span>
-<span id="cb1-10"><a></a><span class="kw">def</span> draw_prior_sample(model, return_idata<span class="op">=</span><span class="va">False</span>):</span>
-<span id="cb1-11"><a></a>  <span class="cf">with</span> model:</span>
-<span id="cb1-12"><a></a>    prior_idata <span class="op">=</span> pm.sample_prior_predictive(draws<span class="op">=</span><span class="dv">10_000</span>, random_seed<span class="op">=</span><span class="dv">5650</span>)</span>
-<span id="cb1-13"><a></a>  prior_df <span class="op">=</span> prior_idata.prior.to_dataframe().reset_index().drop(columns<span class="op">=</span><span class="st">'chain'</span>)</span>
-<span id="cb1-14"><a></a>  <span class="cf">if</span> return_idata:</span>
-<span id="cb1-15"><a></a>    <span class="cf">return</span> prior_idata, prior_df</span>
-<span id="cb1-16"><a></a>  <span class="cf">return</span> prior_df</span>
-<span id="cb1-17"><a></a><span class="co"># Plotting function</span></span>
-<span id="cb1-18"><a></a><span class="kw">def</span> gen_dist_plot(dist_df, plot_title, size<span class="op">=</span><span class="st">'third'</span>, custom_ylim<span class="op">=</span><span class="va">None</span>):</span>
-<span id="cb1-19"><a></a>  plot_width <span class="op">=</span> <span class="dv">2</span></span>
-<span id="cb1-20"><a></a>  <span class="cf">if</span> size <span class="op">==</span> <span class="st">'quarter'</span>:</span>
-<span id="cb1-21"><a></a>    plot_width <span class="op">=</span> <span class="fl">1.5</span></span>
-<span id="cb1-22"><a></a>  plot_height <span class="op">=</span> <span class="fl">0.625</span> <span class="op">*</span> plot_width</span>
-<span id="cb1-23"><a></a>  plot_figsize <span class="op">=</span> (plot_width, plot_height)</span>
-<span id="cb1-24"><a></a>  ax <span class="op">=</span> pw.Brick(figsize<span class="op">=</span>plot_figsize)</span>
-<span id="cb1-25"><a></a>  sns.histplot(</span>
-<span id="cb1-26"><a></a>    x<span class="op">=</span><span class="st">"p_heads"</span>, data<span class="op">=</span>dist_df, ax<span class="op">=</span>ax,</span>
-<span id="cb1-27"><a></a>    bins<span class="op">=</span><span class="dv">25</span>, alpha<span class="op">=</span><span class="fl">0.8</span>, stat<span class="op">=</span><span class="st">'probability'</span></span>
-<span id="cb1-28"><a></a>  )<span class="op">;</span></span>
-<span id="cb1-29"><a></a>  ax.set_xlim(<span class="dv">0</span>, <span class="dv">1</span>)<span class="op">;</span></span>
-<span id="cb1-30"><a></a>  <span class="cf">if</span> custom_ylim <span class="kw">is</span> <span class="kw">not</span> <span class="va">None</span>:</span>
-<span id="cb1-31"><a></a>    ax.set_ylim(custom_ylim)</span>
-<span id="cb1-32"><a></a>  ax.set_title(plot_title)</span>
-<span id="cb1-33"><a></a>  <span class="cf">return</span> ax</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb1-7"><a></a><span class="im">import</span> pymc <span class="im">as</span> pm</span>
+<span id="cb1-8"><a></a><span class="im">import</span> arviz <span class="im">as</span> az</span>
+<span id="cb1-9"><a></a><span class="kw">def</span> draw_prior_sample(model, return_idata<span class="op">=</span><span class="va">False</span>):</span>
+<span id="cb1-10"><a></a>  <span class="cf">with</span> model:</span>
+<span id="cb1-11"><a></a>    prior_idata <span class="op">=</span> pm.sample_prior_predictive(draws<span class="op">=</span><span class="dv">10_000</span>, random_seed<span class="op">=</span><span class="dv">5650</span>)</span>
+<span id="cb1-12"><a></a>  prior_df <span class="op">=</span> prior_idata.prior.to_dataframe().reset_index().drop(columns<span class="op">=</span><span class="st">'chain'</span>)</span>
+<span id="cb1-13"><a></a>  <span class="cf">if</span> return_idata:</span>
+<span id="cb1-14"><a></a>    <span class="cf">return</span> prior_idata, prior_df</span>
+<span id="cb1-15"><a></a>  <span class="cf">return</span> prior_df</span>
+<span id="cb1-16"><a></a><span class="co"># Plotting function</span></span>
+<span id="cb1-17"><a></a><span class="kw">def</span> gen_dist_plot(</span>
+<span id="cb1-18"><a></a>  dist_df, plot_title, size<span class="op">=</span><span class="st">'third'</span>, custom_ylim<span class="op">=</span><span class="va">None</span></span>
+<span id="cb1-19"><a></a>):</span>
+<span id="cb1-20"><a></a>  plot_width <span class="op">=</span> <span class="dv">2</span></span>
+<span id="cb1-21"><a></a>  <span class="cf">if</span> size <span class="op">==</span> <span class="st">'quarter'</span>:</span>
+<span id="cb1-22"><a></a>    plot_width <span class="op">=</span> <span class="fl">1.5</span></span>
+<span id="cb1-23"><a></a>  plot_height <span class="op">=</span> <span class="fl">0.625</span> <span class="op">*</span> plot_width</span>
+<span id="cb1-24"><a></a>  plot_figsize <span class="op">=</span> (plot_width, plot_height)</span>
+<span id="cb1-25"><a></a>  fig <span class="op">=</span> plt.figure(figsize<span class="op">=</span>plot_figsize)</span>
+<span id="cb1-26"><a></a>  ax <span class="op">=</span> fig.gca()</span>
+<span id="cb1-27"><a></a>  sns.histplot(</span>
+<span id="cb1-28"><a></a>    x<span class="op">=</span><span class="st">"p_heads"</span>, data<span class="op">=</span>dist_df,</span>
+<span id="cb1-29"><a></a>    ax<span class="op">=</span>ax,</span>
+<span id="cb1-30"><a></a>    bins<span class="op">=</span><span class="dv">25</span>, alpha<span class="op">=</span><span class="fl">0.8</span>,</span>
+<span id="cb1-31"><a></a>    stat<span class="op">=</span><span class="st">'probability'</span>,</span>
+<span id="cb1-32"><a></a>  )<span class="op">;</span></span>
+<span id="cb1-33"><a></a>  ax.set_xlim(<span class="dv">0</span>, <span class="dv">1</span>)<span class="op">;</span></span>
+<span id="cb1-34"><a></a>  <span class="cf">if</span> custom_ylim <span class="kw">is</span> <span class="kw">not</span> <span class="va">None</span>:</span>
+<span id="cb1-35"><a></a>    ax.set_ylim(custom_ylim)</span>
+<span id="cb1-36"><a></a>  ax.set_title(plot_title)</span>
+<span id="cb1-37"><a></a>  <span class="cf">return</span> fig, ax</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
-<div id="py-imports" class="cell-output cell-output-display">
-<pre><code>&lt;Figure size 96x96 with 0 Axes&gt;</code></pre>
-</div>
 </div>
 </section>
 <section id="the-beta-distribution-textbetaalpha-beta-the-workhorse-prior" class="slide level2 smaller title-09 crunch-title crunch-quarto-figure crunch-ul crunch-img text-60">
@@ -403,22 +404,23 @@ Jeff Jacobs
 <div id="cell-beta00-plot" class="cell" data-execution_count="2">
 <details class="code-fold">
 <summary>Code</summary>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a></a><span class="co"># b00_df = pd.DataFrame({'p_heads': np.arange(0, 1+1/25, 1/25)})</span></span>
-<span id="cb3-2"><a></a><span class="co"># b00_df['Probability'] = 0</span></span>
-<span id="cb3-3"><a></a>ax <span class="op">=</span> pw.Brick(figsize<span class="op">=</span>(<span class="dv">2</span>, <span class="fl">1.25</span>))</span>
-<span id="cb3-4"><a></a>sns.histplot(</span>
-<span id="cb3-5"><a></a>  x<span class="op">=</span>[], ax<span class="op">=</span>ax, <span class="co"># data=b00_df</span></span>
-<span id="cb3-6"><a></a>)<span class="op">;</span></span>
-<span id="cb3-7"><a></a>ax.set_xlabel(<span class="st">'p_heads'</span>)<span class="op">;</span></span>
-<span id="cb3-8"><a></a>ax.set_ylabel(<span class="st">'Probability'</span>)</span>
-<span id="cb3-9"><a></a>ax.set_xticks([<span class="dv">0</span>, <span class="fl">0.25</span>, <span class="fl">0.5</span>, <span class="fl">0.75</span>, <span class="dv">1</span>])<span class="op">;</span></span>
-<span id="cb3-10"><a></a>ax.set_ylim(<span class="dv">0</span>, <span class="dv">1</span>)<span class="op">;</span></span>
-<span id="cb3-11"><a></a>ax.savefig()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a></a><span class="co"># b00_df = pd.DataFrame({'p_heads': np.arange(0, 1+1/25, 1/25)})</span></span>
+<span id="cb2-2"><a></a><span class="co"># b00_df['Probability'] = 0</span></span>
+<span id="cb2-3"><a></a>fig <span class="op">=</span> plt.figure(figsize<span class="op">=</span>(<span class="dv">2</span>, <span class="fl">1.25</span>))</span>
+<span id="cb2-4"><a></a>ax <span class="op">=</span> fig.gca()</span>
+<span id="cb2-5"><a></a>sns.histplot(</span>
+<span id="cb2-6"><a></a>  x<span class="op">=</span>[], <span class="co"># data=b00_df</span></span>
+<span id="cb2-7"><a></a>)<span class="op">;</span></span>
+<span id="cb2-8"><a></a>ax.set_xlabel(<span class="st">'p_heads'</span>)<span class="op">;</span></span>
+<span id="cb2-9"><a></a>ax.set_ylabel(<span class="st">'Probability'</span>)</span>
+<span id="cb2-10"><a></a>ax.set_xticks([<span class="dv">0</span>, <span class="fl">0.25</span>, <span class="fl">0.5</span>, <span class="fl">0.75</span>, <span class="dv">1</span>])<span class="op">;</span></span>
+<span id="cb2-11"><a></a>ax.set_ylim(<span class="dv">0</span>, <span class="dv">1</span>)<span class="op">;</span></span>
+<span id="cb2-12"><a></a>plt.show()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
-<div class="cell-output cell-output-display" data-execution_count="2">
+<div class="cell-output cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure>
-<p><img data-src="index_files/figure-revealjs/beta00-plot-output-1.png" id="beta00-plot" class="quarto-figure quarto-figure-center" width="280" height="190"></p>
+<p><img data-src="index_files/figure-revealjs/beta00-plot-output-1.png" id="beta00-plot" class="quarto-figure quarto-figure-center" width="232" height="157"></p>
 </figure>
 </div>
 </div>
@@ -430,24 +432,26 @@ Jeff Jacobs
 <div id="cell-beta10-plot" class="cell" data-execution_count="3">
 <details class="code-fold">
 <summary>Code</summary>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a></a>b10_df <span class="op">=</span> pd.DataFrame({</span>
-<span id="cb4-2"><a></a>  <span class="st">'draw'</span>: [<span class="dv">0</span>],</span>
-<span id="cb4-3"><a></a>  <span class="st">'p_heads'</span>: [<span class="dv">0</span>],</span>
-<span id="cb4-4"><a></a>})</span>
-<span id="cb4-5"><a></a>ax <span class="op">=</span> pw.Brick(figsize<span class="op">=</span>(<span class="dv">2</span>, <span class="fl">1.25</span>))</span>
-<span id="cb4-6"><a></a>sns.histplot(</span>
-<span id="cb4-7"><a></a>  x<span class="op">=</span><span class="st">'p_heads'</span>, stat<span class="op">=</span><span class="st">'probability'</span>, ax<span class="op">=</span>ax,</span>
-<span id="cb4-8"><a></a>  bins<span class="op">=</span><span class="dv">25</span>,</span>
-<span id="cb4-9"><a></a>  data<span class="op">=</span>b10_df</span>
-<span id="cb4-10"><a></a>)<span class="op">;</span></span>
-<span id="cb4-11"><a></a>ax.set_xlim(<span class="dv">0</span>, <span class="dv">1</span>)<span class="op">;</span></span>
-<span id="cb4-12"><a></a>ax.set_ylim(<span class="dv">0</span>, <span class="dv">1</span>)<span class="op">;</span></span>
-<span id="cb4-13"><a></a>ax.savefig()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a></a>b10_df <span class="op">=</span> pd.DataFrame({</span>
+<span id="cb3-2"><a></a>  <span class="st">'draw'</span>: [<span class="dv">0</span>],</span>
+<span id="cb3-3"><a></a>  <span class="st">'p_heads'</span>: [<span class="dv">0</span>],</span>
+<span id="cb3-4"><a></a>})</span>
+<span id="cb3-5"><a></a>fig <span class="op">=</span> plt.figure(figsize<span class="op">=</span>(<span class="dv">2</span>, <span class="fl">1.25</span>))</span>
+<span id="cb3-6"><a></a>ax <span class="op">=</span> fig.gca()</span>
+<span id="cb3-7"><a></a>sns.histplot(</span>
+<span id="cb3-8"><a></a>  x<span class="op">=</span><span class="st">'p_heads'</span>, stat<span class="op">=</span><span class="st">'probability'</span>,</span>
+<span id="cb3-9"><a></a>  ax<span class="op">=</span>ax,</span>
+<span id="cb3-10"><a></a>  bins<span class="op">=</span><span class="dv">25</span>,</span>
+<span id="cb3-11"><a></a>  data<span class="op">=</span>b10_df</span>
+<span id="cb3-12"><a></a>)<span class="op">;</span></span>
+<span id="cb3-13"><a></a>ax.set_xlim(<span class="dv">0</span>, <span class="dv">1</span>)<span class="op">;</span></span>
+<span id="cb3-14"><a></a>ax.set_ylim(<span class="dv">0</span>, <span class="dv">1</span>)<span class="op">;</span></span>
+<span id="cb3-15"><a></a>plt.show()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
-<div class="cell-output cell-output-display" data-execution_count="3">
+<div class="cell-output cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure>
-<p><img data-src="index_files/figure-revealjs/beta10-plot-output-1.png" id="beta10-plot" class="quarto-figure quarto-figure-center" width="280" height="190"></p>
+<p><img data-src="index_files/figure-revealjs/beta10-plot-output-1.png" id="beta10-plot" class="quarto-figure quarto-figure-center" width="227" height="157"></p>
 </figure>
 </div>
 </div>
@@ -459,24 +463,26 @@ Jeff Jacobs
 <div id="cell-beta01-plot" class="cell" data-execution_count="4">
 <details class="code-fold">
 <summary>Code</summary>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a></a>b01_df <span class="op">=</span> pd.DataFrame({</span>
-<span id="cb5-2"><a></a>  <span class="st">'draw'</span>: [<span class="dv">0</span>],</span>
-<span id="cb5-3"><a></a>  <span class="st">'p_heads'</span>: [<span class="dv">1</span>],</span>
-<span id="cb5-4"><a></a>})</span>
-<span id="cb5-5"><a></a>ax <span class="op">=</span> pw.Brick(figsize<span class="op">=</span>(<span class="dv">2</span>, <span class="fl">1.25</span>))</span>
-<span id="cb5-6"><a></a>sns.histplot(</span>
-<span id="cb5-7"><a></a>  x<span class="op">=</span><span class="st">'p_heads'</span>, stat<span class="op">=</span><span class="st">'probability'</span>, ax<span class="op">=</span>ax,</span>
-<span id="cb5-8"><a></a>  bins<span class="op">=</span><span class="dv">25</span>,</span>
-<span id="cb5-9"><a></a>  data<span class="op">=</span>b01_df</span>
-<span id="cb5-10"><a></a>)<span class="op">;</span></span>
-<span id="cb5-11"><a></a>ax.set_xlim(<span class="dv">0</span>, <span class="dv">1</span>)<span class="op">;</span></span>
-<span id="cb5-12"><a></a>ax.set_ylim(<span class="dv">0</span>, <span class="dv">1</span>)<span class="op">;</span></span>
-<span id="cb5-13"><a></a>ax.savefig()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a></a>b01_df <span class="op">=</span> pd.DataFrame({</span>
+<span id="cb4-2"><a></a>  <span class="st">'draw'</span>: [<span class="dv">0</span>],</span>
+<span id="cb4-3"><a></a>  <span class="st">'p_heads'</span>: [<span class="dv">1</span>],</span>
+<span id="cb4-4"><a></a>})</span>
+<span id="cb4-5"><a></a>fig <span class="op">=</span> plt.figure(figsize<span class="op">=</span>(<span class="dv">2</span>, <span class="fl">1.25</span>))</span>
+<span id="cb4-6"><a></a>ax <span class="op">=</span> fig.gca()</span>
+<span id="cb4-7"><a></a>sns.histplot(</span>
+<span id="cb4-8"><a></a>  x<span class="op">=</span><span class="st">'p_heads'</span>, stat<span class="op">=</span><span class="st">'probability'</span>,</span>
+<span id="cb4-9"><a></a>  ax<span class="op">=</span>ax,</span>
+<span id="cb4-10"><a></a>  bins<span class="op">=</span><span class="dv">25</span>,</span>
+<span id="cb4-11"><a></a>  data<span class="op">=</span>b01_df</span>
+<span id="cb4-12"><a></a>)<span class="op">;</span></span>
+<span id="cb4-13"><a></a>ax.set_xlim(<span class="dv">0</span>, <span class="dv">1</span>)<span class="op">;</span></span>
+<span id="cb4-14"><a></a>ax.set_ylim(<span class="dv">0</span>, <span class="dv">1</span>)<span class="op">;</span></span>
+<span id="cb4-15"><a></a>plt.show()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
-<div class="cell-output cell-output-display" data-execution_count="4">
+<div class="cell-output cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure>
-<p><img data-src="index_files/figure-revealjs/beta01-plot-output-1.png" id="beta01-plot" class="quarto-figure quarto-figure-center" width="280" height="190"></p>
+<p><img data-src="index_files/figure-revealjs/beta01-plot-output-1.png" id="beta01-plot" class="quarto-figure quarto-figure-center" width="227" height="157"></p>
 </figure>
 </div>
 </div>
@@ -490,19 +496,21 @@ Jeff Jacobs
 <div id="cell-fig-informative-prior" class="cell" data-crop="false" data-execution_count="5">
 <details class="code-fold">
 <summary>Code</summary>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb6"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a></a><span class="co"># Informative Prior</span></span>
-<span id="cb6-2"><a></a><span class="cf">with</span> pm.Model() <span class="im">as</span> informative_model:</span>
-<span id="cb6-3"><a></a>  p_heads <span class="op">=</span> pm.Beta(<span class="st">"p_heads"</span>, alpha<span class="op">=</span><span class="dv">2</span>, beta<span class="op">=</span><span class="dv">2</span>)</span>
-<span id="cb6-4"><a></a>  result <span class="op">=</span> pm.Bernoulli(<span class="st">"result"</span>, p<span class="op">=</span>p_heads)</span>
-<span id="cb6-5"><a></a>informative_df <span class="op">=</span> draw_prior_sample(informative_model)</span>
-<span id="cb6-6"><a></a>informative_plot <span class="op">=</span> gen_dist_plot(informative_df, <span class="st">"Beta(2, 2) Prior on p"</span>)<span class="op">;</span></span>
-<span id="cb6-7"><a></a>informative_plot.savefig()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a></a><span class="co"># Informative Prior</span></span>
+<span id="cb5-2"><a></a><span class="cf">with</span> pm.Model() <span class="im">as</span> informative_model:</span>
+<span id="cb5-3"><a></a>  p_heads <span class="op">=</span> pm.Beta(<span class="st">"p_heads"</span>, alpha<span class="op">=</span><span class="dv">2</span>, beta<span class="op">=</span><span class="dv">2</span>)</span>
+<span id="cb5-4"><a></a>  result <span class="op">=</span> pm.Bernoulli(<span class="st">"result"</span>, p<span class="op">=</span>p_heads)</span>
+<span id="cb5-5"><a></a>informative_df <span class="op">=</span> draw_prior_sample(informative_model)</span>
+<span id="cb5-6"><a></a>informative_fig, informative_ax <span class="op">=</span> gen_dist_plot(</span>
+<span id="cb5-7"><a></a>  informative_df, <span class="st">"Beta(2, 2) Prior on p"</span></span>
+<span id="cb5-8"><a></a>)<span class="op">;</span></span>
+<span id="cb5-9"><a></a>plt.show()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
-<div class="cell-output cell-output-display" data-execution_count="5">
+<div class="cell-output cell-output-display">
 <div id="fig-informative-prior" class="quarto-float quarto-figure quarto-figure-center" data-fig-align="center">
 <figure class="quarto-float quarto-float-fig">
 <div aria-describedby="fig-informative-prior-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img data-src="index_files/figure-revealjs/fig-informative-prior-output-1.png" class="quarto-figure quarto-figure-center" width="297" height="206">
+<img data-src="index_files/figure-revealjs/fig-informative-prior-output-1.png" class="quarto-figure quarto-figure-center" width="244" height="172">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-informative-prior-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 Fig&nbsp;1. <em>“I’ll start by assuming a <strong>fair</strong> coin”</em>
@@ -518,19 +526,21 @@ Fig&nbsp;1. <em>“I’ll start by assuming a <strong>fair</strong> coin”</em>
 <div id="cell-fig-weak-prior" class="cell" data-execution_count="6">
 <details class="code-fold">
 <summary>Code</summary>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb7"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a></a><span class="co"># Weakly Informative</span></span>
-<span id="cb7-2"><a></a><span class="cf">with</span> pm.Model() <span class="im">as</span> weak_model:</span>
-<span id="cb7-3"><a></a>  p_heads <span class="op">=</span> pm.Beta(<span class="st">"p_heads"</span>, alpha<span class="op">=</span><span class="dv">1</span>, beta<span class="op">=</span><span class="dv">1</span>)</span>
-<span id="cb7-4"><a></a>  result <span class="op">=</span> pm.Bernoulli(<span class="st">"result"</span>, p<span class="op">=</span>p_heads)</span>
-<span id="cb7-5"><a></a>weak_df <span class="op">=</span> draw_prior_sample(weak_model)</span>
-<span id="cb7-6"><a></a>weak_plot <span class="op">=</span> gen_dist_plot(weak_df, <span class="st">"Beta(1, 1) Prior on p"</span>)<span class="op">;</span></span>
-<span id="cb7-7"><a></a>weak_plot.savefig()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb6"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a></a><span class="co"># Weakly Informative</span></span>
+<span id="cb6-2"><a></a><span class="cf">with</span> pm.Model() <span class="im">as</span> weak_model:</span>
+<span id="cb6-3"><a></a>  p_heads <span class="op">=</span> pm.Beta(<span class="st">"p_heads"</span>, alpha<span class="op">=</span><span class="dv">1</span>, beta<span class="op">=</span><span class="dv">1</span>)</span>
+<span id="cb6-4"><a></a>  result <span class="op">=</span> pm.Bernoulli(<span class="st">"result"</span>, p<span class="op">=</span>p_heads)</span>
+<span id="cb6-5"><a></a>weak_df <span class="op">=</span> draw_prior_sample(weak_model)</span>
+<span id="cb6-6"><a></a>weak_fig, weak_ax <span class="op">=</span> gen_dist_plot(</span>
+<span id="cb6-7"><a></a>  weak_df, <span class="st">"Beta(1, 1) Prior on p"</span></span>
+<span id="cb6-8"><a></a>)<span class="op">;</span></span>
+<span id="cb6-9"><a></a>plt.show()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
-<div class="cell-output cell-output-display" data-execution_count="6">
+<div class="cell-output cell-output-display">
 <div id="fig-weak-prior" class="quarto-float quarto-figure quarto-figure-center" data-fig-align="center">
 <figure class="quarto-float quarto-float-fig">
 <div aria-describedby="fig-weak-prior-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img data-src="index_files/figure-revealjs/fig-weak-prior-output-1.png" class="quarto-figure quarto-figure-center" width="288" height="206">
+<img data-src="index_files/figure-revealjs/fig-weak-prior-output-1.png" class="quarto-figure quarto-figure-center" width="236" height="172">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-weak-prior-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 Fig&nbsp;2. <em>“I have no idea, I’ll assume all biases equally likely”</em>
@@ -546,20 +556,22 @@ Fig&nbsp;2. <em>“I have no idea, I’ll assume all biases equally likely”</e
 <div id="cell-fig-skeptical-prior" class="cell" data-execution_count="7">
 <details class="code-fold">
 <summary>Code</summary>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb8"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a></a><span class="co"># Skeptical / Jeffreys</span></span>
-<span id="cb8-2"><a></a><span class="cf">with</span> pm.Model() <span class="im">as</span> skeptical_model:</span>
-<span id="cb8-3"><a></a>  p_heads <span class="op">=</span> pm.Beta(<span class="st">"p_heads"</span>, alpha<span class="op">=</span><span class="fl">0.5</span>, beta<span class="op">=</span><span class="fl">0.5</span>)</span>
-<span id="cb8-4"><a></a>  result <span class="op">=</span> pm.Bernoulli(<span class="st">"result"</span>, p<span class="op">=</span>p_heads)</span>
-<span id="cb8-5"><a></a>skeptical_df <span class="op">=</span> draw_prior_sample(skeptical_model)</span>
-<span id="cb8-6"><a></a>skeptical_plot <span class="op">=</span> gen_dist_plot(skeptical_df, <span class="st">"Beta(0.5, 0.5) Prior on p"</span>)<span class="op">;</span></span>
-<span id="cb8-7"><a></a><span class="co"># And combine</span></span>
-<span id="cb8-8"><a></a>skeptical_plot.savefig()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb7"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a></a><span class="co"># Skeptical / Jeffreys</span></span>
+<span id="cb7-2"><a></a><span class="cf">with</span> pm.Model() <span class="im">as</span> skeptical_model:</span>
+<span id="cb7-3"><a></a>  p_heads <span class="op">=</span> pm.Beta(<span class="st">"p_heads"</span>, alpha<span class="op">=</span><span class="fl">0.5</span>, beta<span class="op">=</span><span class="fl">0.5</span>)</span>
+<span id="cb7-4"><a></a>  result <span class="op">=</span> pm.Bernoulli(<span class="st">"result"</span>, p<span class="op">=</span>p_heads)</span>
+<span id="cb7-5"><a></a>skeptical_df <span class="op">=</span> draw_prior_sample(skeptical_model)</span>
+<span id="cb7-6"><a></a>skeptical_fig, skeptical_ax <span class="op">=</span> gen_dist_plot(</span>
+<span id="cb7-7"><a></a>  skeptical_df, <span class="st">"Beta(0.5, 0.5) Prior on p"</span></span>
+<span id="cb7-8"><a></a>)<span class="op">;</span></span>
+<span id="cb7-9"><a></a><span class="co"># And combine</span></span>
+<span id="cb7-10"><a></a>plt.show()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
-<div class="cell-output cell-output-display" data-execution_count="7">
+<div class="cell-output cell-output-display">
 <div id="fig-skeptical-prior" class="quarto-float quarto-figure quarto-figure-center" data-fig-align="center">
 <figure class="quarto-float quarto-float-fig">
 <div aria-describedby="fig-skeptical-prior-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img data-src="index_files/figure-revealjs/fig-skeptical-prior-output-1.png" class="quarto-figure quarto-figure-center" width="288" height="206">
+<img data-src="index_files/figure-revealjs/fig-skeptical-prior-output-1.png" class="quarto-figure quarto-figure-center" width="247" height="172">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-skeptical-prior-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 Fig&nbsp;3. <em>“I don’t trust this coin, it’ll take lots of flips with H/T balance to convince me it’s fair!”</em>
@@ -578,17 +590,19 @@ Fig&nbsp;3. <em>“I don’t trust this coin, it’ll take lots of flips with H/
 <div id="cell-heads-more-likely" class="cell" data-execution_count="8">
 <details class="code-fold">
 <summary>Code</summary>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb9"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a></a><span class="cf">with</span> pm.Model() <span class="im">as</span> heads_model:</span>
-<span id="cb9-2"><a></a>  p_heads <span class="op">=</span> pm.Beta(<span class="st">"p_heads"</span>, alpha<span class="op">=</span><span class="dv">2</span>, beta<span class="op">=</span><span class="dv">1</span>)</span>
-<span id="cb9-3"><a></a>  result <span class="op">=</span> pm.Bernoulli(<span class="st">"result"</span>, p<span class="op">=</span>p_heads)</span>
-<span id="cb9-4"><a></a>heads_df <span class="op">=</span> draw_prior_sample(heads_model)</span>
-<span id="cb9-5"><a></a>heads_plot <span class="op">=</span> gen_dist_plot(heads_df, <span class="st">"Beta(2, 1) Prior on p"</span>)<span class="op">;</span></span>
-<span id="cb9-6"><a></a>heads_plot.savefig()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb8"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a></a><span class="cf">with</span> pm.Model() <span class="im">as</span> heads_model:</span>
+<span id="cb8-2"><a></a>  p_heads <span class="op">=</span> pm.Beta(<span class="st">"p_heads"</span>, alpha<span class="op">=</span><span class="dv">2</span>, beta<span class="op">=</span><span class="dv">1</span>)</span>
+<span id="cb8-3"><a></a>  result <span class="op">=</span> pm.Bernoulli(<span class="st">"result"</span>, p<span class="op">=</span>p_heads)</span>
+<span id="cb8-4"><a></a>heads_df <span class="op">=</span> draw_prior_sample(heads_model)</span>
+<span id="cb8-5"><a></a>heads_fig, heads_ax <span class="op">=</span> gen_dist_plot(</span>
+<span id="cb8-6"><a></a>  heads_df, <span class="st">"Beta(2, 1) Prior on p"</span></span>
+<span id="cb8-7"><a></a>)<span class="op">;</span></span>
+<span id="cb8-8"><a></a>plt.show()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
-<div class="cell-output cell-output-display" data-execution_count="8">
+<div class="cell-output cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure>
-<p><img data-src="index_files/figure-revealjs/heads-more-likely-output-1.png" id="heads-more-likely" class="quarto-figure quarto-figure-center" width="288" height="206"></p>
+<p><img data-src="index_files/figure-revealjs/heads-more-likely-output-1.png" id="heads-more-likely" class="quarto-figure quarto-figure-center" width="236" height="172"></p>
 </figure>
 </div>
 </div>
@@ -597,17 +611,19 @@ Fig&nbsp;3. <em>“I don’t trust this coin, it’ll take lots of flips with H/
 <div id="cell-tails-more-likely" class="cell" data-execution_count="9">
 <details class="code-fold">
 <summary>Code</summary>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb10"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a></a><span class="cf">with</span> pm.Model() <span class="im">as</span> tails_model:</span>
-<span id="cb10-2"><a></a>  p_heads <span class="op">=</span> pm.Beta(<span class="st">"p_heads"</span>, alpha<span class="op">=</span><span class="dv">1</span>, beta<span class="op">=</span><span class="dv">2</span>)</span>
-<span id="cb10-3"><a></a>  result <span class="op">=</span> pm.Bernoulli(<span class="st">"result"</span>, p<span class="op">=</span>p_heads)</span>
-<span id="cb10-4"><a></a>tails_df <span class="op">=</span> draw_prior_sample(tails_model)</span>
-<span id="cb10-5"><a></a>tails_plot <span class="op">=</span> gen_dist_plot(tails_df, <span class="st">"Beta(1, 2) Prior on p"</span>)<span class="op">;</span></span>
-<span id="cb10-6"><a></a>tails_plot.savefig()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb9"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a></a><span class="cf">with</span> pm.Model() <span class="im">as</span> tails_model:</span>
+<span id="cb9-2"><a></a>  p_heads <span class="op">=</span> pm.Beta(<span class="st">"p_heads"</span>, alpha<span class="op">=</span><span class="dv">1</span>, beta<span class="op">=</span><span class="dv">2</span>)</span>
+<span id="cb9-3"><a></a>  result <span class="op">=</span> pm.Bernoulli(<span class="st">"result"</span>, p<span class="op">=</span>p_heads)</span>
+<span id="cb9-4"><a></a>tails_df <span class="op">=</span> draw_prior_sample(tails_model)</span>
+<span id="cb9-5"><a></a>tails_fig, tails_ax <span class="op">=</span> gen_dist_plot(</span>
+<span id="cb9-6"><a></a>  tails_df, <span class="st">"Beta(1, 2) Prior on p"</span></span>
+<span id="cb9-7"><a></a>)<span class="op">;</span></span>
+<span id="cb9-8"><a></a>plt.show()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
-<div class="cell-output cell-output-display" data-execution_count="9">
+<div class="cell-output cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure>
-<p><img data-src="index_files/figure-revealjs/tails-more-likely-output-1.png" id="tails-more-likely" class="quarto-figure quarto-figure-center" width="288" height="206"></p>
+<p><img data-src="index_files/figure-revealjs/tails-more-likely-output-1.png" id="tails-more-likely" class="quarto-figure quarto-figure-center" width="236" height="172"></p>
 </figure>
 </div>
 </div>
@@ -618,17 +634,20 @@ Fig&nbsp;3. <em>“I don’t trust this coin, it’ll take lots of flips with H/
 <div id="cell-tails-very-likely" class="cell" data-execution_count="10">
 <details class="code-fold">
 <summary>Code</summary>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb11"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a></a><span class="cf">with</span> pm.Model() <span class="im">as</span> beta23_model:</span>
-<span id="cb11-2"><a></a>  p_heads <span class="op">=</span> pm.Beta(<span class="st">"p_heads"</span>, alpha<span class="op">=</span><span class="dv">2</span>, beta<span class="op">=</span><span class="dv">3</span>)</span>
-<span id="cb11-3"><a></a>  result <span class="op">=</span> pm.Bernoulli(<span class="st">"result"</span>, p<span class="op">=</span>p_heads)</span>
-<span id="cb11-4"><a></a>beta23_df <span class="op">=</span> draw_prior_sample(beta23_model)</span>
-<span id="cb11-5"><a></a>beta23_plot <span class="op">=</span> gen_dist_plot(beta23_df, <span class="st">"Beta(2, 3) Prior on p"</span>)<span class="op">;</span></span>
-<span id="cb11-6"><a></a>beta23_plot.savefig()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb10"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a></a><span class="cf">with</span> pm.Model() <span class="im">as</span> beta23_model:</span>
+<span id="cb10-2"><a></a>  p_heads <span class="op">=</span> pm.Beta(<span class="st">"p_heads"</span>, alpha<span class="op">=</span><span class="dv">2</span>, beta<span class="op">=</span><span class="dv">3</span>)</span>
+<span id="cb10-3"><a></a>  result <span class="op">=</span> pm.Bernoulli(<span class="st">"result"</span>, p<span class="op">=</span>p_heads)</span>
+<span id="cb10-4"><a></a>beta23_df <span class="op">=</span> draw_prior_sample(beta23_model)</span>
+<span id="cb10-5"><a></a>beta23_fig, beta23_ax <span class="op">=</span> gen_dist_plot(</span>
+<span id="cb10-6"><a></a>  beta23_df, <span class="st">"Beta(2, 3) Prior on p"</span></span>
+<span id="cb10-7"><a></a>)<span class="op">;</span></span>
+<span id="cb10-8"><a></a><span class="co"># beta23_plot.savefig()</span></span>
+<span id="cb10-9"><a></a>plt.show()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
-<div class="cell-output cell-output-display" data-execution_count="10">
+<div class="cell-output cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure>
-<p><img data-src="index_files/figure-revealjs/tails-very-likely-output-1.png" id="tails-very-likely" class="quarto-figure quarto-figure-center" width="297" height="206"></p>
+<p><img data-src="index_files/figure-revealjs/tails-very-likely-output-1.png" id="tails-very-likely" class="quarto-figure quarto-figure-center" width="244" height="172"></p>
 </figure>
 </div>
 </div>
@@ -637,17 +656,20 @@ Fig&nbsp;3. <em>“I don’t trust this coin, it’ll take lots of flips with H/
 <div id="cell-beta2030-model" class="cell" data-execution_count="11">
 <details class="code-fold">
 <summary>Code</summary>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb12"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a></a><span class="cf">with</span> pm.Model() <span class="im">as</span> beta100_model:</span>
-<span id="cb12-2"><a></a>  p_heads <span class="op">=</span> pm.Beta(<span class="st">"p_heads"</span>, alpha<span class="op">=</span><span class="dv">40</span>, beta<span class="op">=</span><span class="dv">60</span>)</span>
-<span id="cb12-3"><a></a>  result <span class="op">=</span> pm.Bernoulli(<span class="st">"result"</span>, p<span class="op">=</span>p_heads)</span>
-<span id="cb12-4"><a></a>beta100_df <span class="op">=</span> draw_prior_sample(beta100_model)</span>
-<span id="cb12-5"><a></a>beta100_plot <span class="op">=</span> gen_dist_plot(beta100_df, <span class="st">"Beta(40, 60) Prior on p"</span>)<span class="op">;</span></span>
-<span id="cb12-6"><a></a>beta100_plot.savefig()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb11"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a></a><span class="cf">with</span> pm.Model() <span class="im">as</span> beta100_model:</span>
+<span id="cb11-2"><a></a>  p_heads <span class="op">=</span> pm.Beta(<span class="st">"p_heads"</span>, alpha<span class="op">=</span><span class="dv">40</span>, beta<span class="op">=</span><span class="dv">60</span>)</span>
+<span id="cb11-3"><a></a>  result <span class="op">=</span> pm.Bernoulli(<span class="st">"result"</span>, p<span class="op">=</span>p_heads)</span>
+<span id="cb11-4"><a></a>beta100_df <span class="op">=</span> draw_prior_sample(beta100_model)</span>
+<span id="cb11-5"><a></a>beta100_fig, beta100_ax <span class="op">=</span> gen_dist_plot(</span>
+<span id="cb11-6"><a></a>  beta100_df, <span class="st">"Beta(40, 60) Prior on p"</span></span>
+<span id="cb11-7"><a></a>)<span class="op">;</span></span>
+<span id="cb11-8"><a></a><span class="co"># beta100_plot.savefig()</span></span>
+<span id="cb11-9"><a></a>plt.show()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
-<div class="cell-output cell-output-display" data-execution_count="11">
+<div class="cell-output cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure>
-<p><img data-src="index_files/figure-revealjs/beta2030-model-output-1.png" id="beta2030-model" class="quarto-figure quarto-figure-center" width="288" height="206"></p>
+<p><img data-src="index_files/figure-revealjs/beta2030-model-output-1.png" id="beta2030-model" class="quarto-figure quarto-figure-center" width="242" height="172"></p>
 </figure>
 </div>
 </div>
@@ -687,93 +709,93 @@ Fig&nbsp;3. <em>“I don’t trust this coin, it’ll take lots of flips with H/
 </table>
 <details class="code-fold">
 <summary>Code</summary>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb13"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
-<span id="cb13-2"><a></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
-<span id="cb13-3"><a></a>rng <span class="op">=</span> np.random.default_rng(seed<span class="op">=</span><span class="dv">5650</span>)</span>
-<span id="cb13-4"><a></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
-<span id="cb13-5"><a></a><span class="im">import</span> seaborn <span class="im">as</span> sns</span>
-<span id="cb13-6"><a></a>cb_palette <span class="op">=</span> [<span class="st">'#e69f00'</span>,<span class="st">'#56b4e9'</span>,<span class="st">'#009e73'</span>]</span>
-<span id="cb13-7"><a></a>sns.set_palette(cb_palette)</span>
-<span id="cb13-8"><a></a><span class="im">from</span> scipy.special <span class="im">import</span> expit</span>
-<span id="cb13-9"><a></a></span>
-<span id="cb13-10"><a></a><span class="co"># The original R code:</span></span>
-<span id="cb13-11"><a></a><span class="co"># sim_happiness &lt;- function( seed=1977 , N_years=1000 , max_age=65 , N_births=20 , aom=18 ) {</span></span>
-<span id="cb13-12"><a></a><span class="co">#     set.seed(seed)</span></span>
-<span id="cb13-13"><a></a><span class="co">#     H &lt;- M &lt;- A &lt;- c()</span></span>
-<span id="cb13-14"><a></a><span class="co">#     for ( t in 1:N_years ) {</span></span>
-<span id="cb13-15"><a></a><span class="co">#         A &lt;- A + 1 # age existing individuals</span></span>
-<span id="cb13-16"><a></a><span class="co">#         A &lt;- c( A , rep(1,N_births) ) # newborns</span></span>
-<span id="cb13-17"><a></a><span class="co">#         H &lt;- c( H , seq(from=-2,to=2,length.out=N_births) ) # sim happiness trait - never changes</span></span>
-<span id="cb13-18"><a></a><span class="co">#         M &lt;- c( M , rep(0,N_births) ) # not yet married</span></span>
-<span id="cb13-19"><a></a><span class="co">#         # for each person over 17, chance get married</span></span>
-<span id="cb13-20"><a></a><span class="co">#         for ( i in 1:length(A) ) {</span></span>
-<span id="cb13-21"><a></a><span class="co">#             if ( A[i] &gt;= aom &amp; M[i]==0 ) {</span></span>
-<span id="cb13-22"><a></a><span class="co">#                 M[i] &lt;- rbern(1,inv_logit(H[i]-4))</span></span>
-<span id="cb13-23"><a></a><span class="co">#             }</span></span>
-<span id="cb13-24"><a></a><span class="co">#         }</span></span>
-<span id="cb13-25"><a></a><span class="co">#         # mortality</span></span>
-<span id="cb13-26"><a></a><span class="co">#         deaths &lt;- which( A &gt; max_age )</span></span>
-<span id="cb13-27"><a></a><span class="co">#         if ( length(deaths)&gt;0 ) {</span></span>
-<span id="cb13-28"><a></a><span class="co">#             A &lt;- A[ -deaths ]</span></span>
-<span id="cb13-29"><a></a><span class="co">#             H &lt;- H[ -deaths ]</span></span>
-<span id="cb13-30"><a></a><span class="co">#             M &lt;- M[ -deaths ]</span></span>
-<span id="cb13-31"><a></a><span class="co">#        }</span></span>
-<span id="cb13-32"><a></a><span class="co">#     }</span></span>
-<span id="cb13-33"><a></a><span class="co">#     d &lt;- data.frame(age=A,married=M,happiness=H)</span></span>
-<span id="cb13-34"><a></a><span class="co">#     return(d)</span></span>
-<span id="cb13-35"><a></a></span>
-<span id="cb13-36"><a></a><span class="co"># DGP: happiness -&gt; marriage &lt;- age</span></span>
-<span id="cb13-37"><a></a>years <span class="op">=</span> <span class="dv">70</span></span>
-<span id="cb13-38"><a></a>num_births <span class="op">=</span> <span class="dv">41</span></span>
-<span id="cb13-39"><a></a>colnames <span class="op">=</span> [<span class="st">'age'</span>,<span class="st">'a'</span>,<span class="st">'h'</span>,<span class="st">'m'</span>]</span>
-<span id="cb13-40"><a></a>sim_dfs <span class="op">=</span> []</span>
-<span id="cb13-41"><a></a>A <span class="op">=</span> np.zeros(shape<span class="op">=</span>(num_births,<span class="dv">1</span>))</span>
-<span id="cb13-42"><a></a>H <span class="op">=</span> np.linspace(<span class="op">-</span><span class="dv">2</span>, <span class="dv">2</span>, num<span class="op">=</span>num_births)</span>
-<span id="cb13-43"><a></a>M <span class="op">=</span> np.zeros(shape<span class="op">=</span>(num_births,<span class="dv">1</span>))</span>
-<span id="cb13-44"><a></a><span class="kw">def</span> update_m(row):</span>
-<span id="cb13-45"><a></a>  <span class="cf">if</span> row[<span class="st">'m'</span>] <span class="op">==</span> <span class="dv">0</span>:</span>
-<span id="cb13-46"><a></a>    <span class="cf">return</span> <span class="bu">int</span>(rng.binomial(</span>
-<span id="cb13-47"><a></a>      n<span class="op">=</span><span class="dv">1</span>,</span>
-<span id="cb13-48"><a></a>      p<span class="op">=</span>expit(row[<span class="st">'h'</span>] <span class="op">-</span> <span class="fl">3.875</span>),</span>
-<span id="cb13-49"><a></a>      size<span class="op">=</span><span class="dv">1</span>,</span>
-<span id="cb13-50"><a></a>    )[<span class="dv">0</span>])</span>
-<span id="cb13-51"><a></a>  <span class="cf">return</span> <span class="dv">1</span></span>
-<span id="cb13-52"><a></a><span class="kw">def</span> sim_cohort_to(max_age):</span>
-<span id="cb13-53"><a></a>  sim_df <span class="op">=</span> pd.DataFrame({</span>
-<span id="cb13-54"><a></a>      <span class="st">'age'</span>: [<span class="dv">1</span> <span class="cf">for</span> _ <span class="kw">in</span> <span class="bu">range</span>(num_births)],</span>
-<span id="cb13-55"><a></a>      <span class="st">'h'</span>: np.linspace(<span class="op">-</span><span class="dv">2</span>, <span class="dv">2</span>, num<span class="op">=</span>num_births),</span>
-<span id="cb13-56"><a></a>      <span class="st">'m'</span>: [<span class="dv">0</span> <span class="cf">for</span> _ <span class="kw">in</span> <span class="bu">range</span>(num_births)],</span>
-<span id="cb13-57"><a></a>    }</span>
-<span id="cb13-58"><a></a>  )</span>
-<span id="cb13-59"><a></a>  <span class="cf">for</span> t <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">2</span>, max_age <span class="op">+</span> <span class="dv">1</span>):</span>
-<span id="cb13-60"><a></a>    sim_df[<span class="st">'age'</span>] <span class="op">=</span> sim_df[<span class="st">'age'</span>] <span class="op">+</span> <span class="dv">1</span></span>
-<span id="cb13-61"><a></a>    <span class="cf">if</span> t <span class="op">&gt;=</span> <span class="dv">18</span>:</span>
-<span id="cb13-62"><a></a>      sim_df[<span class="st">'m'</span>] <span class="op">=</span> sim_df.<span class="bu">apply</span>(update_m, axis<span class="op">=</span><span class="dv">1</span>)</span>
-<span id="cb13-63"><a></a>  <span class="cf">return</span> sim_df</span>
-<span id="cb13-64"><a></a>all_sim_dfs <span class="op">=</span> []</span>
-<span id="cb13-65"><a></a><span class="cf">for</span> cur_max_age <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">1</span>, <span class="dv">71</span>):</span>
-<span id="cb13-66"><a></a>  cur_sim_df <span class="op">=</span> sim_cohort_to(cur_max_age)</span>
-<span id="cb13-67"><a></a>  all_sim_dfs.append(cur_sim_df)</span>
-<span id="cb13-68"><a></a>full_sim_df <span class="op">=</span> pd.concat(all_sim_dfs)</span>
-<span id="cb13-69"><a></a></span>
-<span id="cb13-70"><a></a><span class="co"># And plot</span></span>
-<span id="cb13-71"><a></a>fig, ax <span class="op">=</span> plt.subplots(figsize<span class="op">=</span>(<span class="dv">8</span>, <span class="dv">4</span>))</span>
-<span id="cb13-72"><a></a>cbg_palette <span class="op">=</span> [<span class="st">'#c6c6c666'</span>] <span class="op">+</span> cb_palette</span>
-<span id="cb13-73"><a></a>full_sim_df[<span class="st">'m_label'</span>] <span class="op">=</span> full_sim_df[<span class="st">'m'</span>].<span class="bu">apply</span>(<span class="kw">lambda</span> x: <span class="st">"Unmarried"</span> <span class="cf">if</span> x <span class="op">==</span> <span class="dv">0</span> <span class="cf">else</span> <span class="st">"Married"</span>)</span>
-<span id="cb13-74"><a></a>full_sim_df <span class="op">=</span> full_sim_df.rename(columns<span class="op">=</span>{<span class="st">'age'</span>: <span class="st">'Age'</span>, <span class="st">'h'</span>: <span class="st">'Happiness'</span>})</span>
-<span id="cb13-75"><a></a>happiness_plot <span class="op">=</span> sns.scatterplot(</span>
-<span id="cb13-76"><a></a>  x<span class="op">=</span><span class="st">'Age'</span>, y<span class="op">=</span><span class="st">'Happiness'</span>, hue<span class="op">=</span><span class="st">'m_label'</span>,</span>
-<span id="cb13-77"><a></a>  data<span class="op">=</span>full_sim_df,</span>
-<span id="cb13-78"><a></a>  palette<span class="op">=</span>cbg_palette[:<span class="dv">2</span>],</span>
-<span id="cb13-79"><a></a>  s<span class="op">=</span><span class="dv">24</span>,</span>
-<span id="cb13-80"><a></a>  ax<span class="op">=</span>ax,</span>
-<span id="cb13-81"><a></a>  legend<span class="op">=</span><span class="va">True</span>,</span>
-<span id="cb13-82"><a></a>)<span class="op">;</span></span>
-<span id="cb13-83"><a></a><span class="co"># happiness_plot.move_legend("upper center", bbox_to_anchor=(0.5, 1.15), ncol=2);</span></span>
-<span id="cb13-84"><a></a>sns.move_legend(ax, <span class="st">"upper center"</span>, bbox_to_anchor<span class="op">=</span>(<span class="fl">0.5</span>, <span class="fl">1.15</span>), ncol<span class="op">=</span><span class="dv">2</span>)<span class="op">;</span></span>
-<span id="cb13-85"><a></a>happiness_plot.legend_.set_title(<span class="st">""</span>)<span class="op">;</span></span>
-<span id="cb13-86"><a></a>happiness_plot.axvline(x<span class="op">=</span><span class="fl">17.5</span>, color<span class="op">=</span><span class="st">'black'</span>, ls<span class="op">=</span><span class="st">'dashed'</span>, lw<span class="op">=</span><span class="dv">1</span>)<span class="op">;</span></span>
-<span id="cb13-87"><a></a>plt.show()<span class="op">;</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb12"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
+<span id="cb12-2"><a></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb12-3"><a></a>rng <span class="op">=</span> np.random.default_rng(seed<span class="op">=</span><span class="dv">5650</span>)</span>
+<span id="cb12-4"><a></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
+<span id="cb12-5"><a></a><span class="im">import</span> seaborn <span class="im">as</span> sns</span>
+<span id="cb12-6"><a></a>cb_palette <span class="op">=</span> [<span class="st">'#e69f00'</span>,<span class="st">'#56b4e9'</span>,<span class="st">'#009e73'</span>]</span>
+<span id="cb12-7"><a></a>sns.set_palette(cb_palette)</span>
+<span id="cb12-8"><a></a><span class="im">from</span> scipy.special <span class="im">import</span> expit</span>
+<span id="cb12-9"><a></a></span>
+<span id="cb12-10"><a></a><span class="co"># The original R code:</span></span>
+<span id="cb12-11"><a></a><span class="co"># sim_happiness &lt;- function( seed=1977 , N_years=1000 , max_age=65 , N_births=20 , aom=18 ) {</span></span>
+<span id="cb12-12"><a></a><span class="co">#     set.seed(seed)</span></span>
+<span id="cb12-13"><a></a><span class="co">#     H &lt;- M &lt;- A &lt;- c()</span></span>
+<span id="cb12-14"><a></a><span class="co">#     for ( t in 1:N_years ) {</span></span>
+<span id="cb12-15"><a></a><span class="co">#         A &lt;- A + 1 # age existing individuals</span></span>
+<span id="cb12-16"><a></a><span class="co">#         A &lt;- c( A , rep(1,N_births) ) # newborns</span></span>
+<span id="cb12-17"><a></a><span class="co">#         H &lt;- c( H , seq(from=-2,to=2,length.out=N_births) ) # sim happiness trait - never changes</span></span>
+<span id="cb12-18"><a></a><span class="co">#         M &lt;- c( M , rep(0,N_births) ) # not yet married</span></span>
+<span id="cb12-19"><a></a><span class="co">#         # for each person over 17, chance get married</span></span>
+<span id="cb12-20"><a></a><span class="co">#         for ( i in 1:length(A) ) {</span></span>
+<span id="cb12-21"><a></a><span class="co">#             if ( A[i] &gt;= aom &amp; M[i]==0 ) {</span></span>
+<span id="cb12-22"><a></a><span class="co">#                 M[i] &lt;- rbern(1,inv_logit(H[i]-4))</span></span>
+<span id="cb12-23"><a></a><span class="co">#             }</span></span>
+<span id="cb12-24"><a></a><span class="co">#         }</span></span>
+<span id="cb12-25"><a></a><span class="co">#         # mortality</span></span>
+<span id="cb12-26"><a></a><span class="co">#         deaths &lt;- which( A &gt; max_age )</span></span>
+<span id="cb12-27"><a></a><span class="co">#         if ( length(deaths)&gt;0 ) {</span></span>
+<span id="cb12-28"><a></a><span class="co">#             A &lt;- A[ -deaths ]</span></span>
+<span id="cb12-29"><a></a><span class="co">#             H &lt;- H[ -deaths ]</span></span>
+<span id="cb12-30"><a></a><span class="co">#             M &lt;- M[ -deaths ]</span></span>
+<span id="cb12-31"><a></a><span class="co">#        }</span></span>
+<span id="cb12-32"><a></a><span class="co">#     }</span></span>
+<span id="cb12-33"><a></a><span class="co">#     d &lt;- data.frame(age=A,married=M,happiness=H)</span></span>
+<span id="cb12-34"><a></a><span class="co">#     return(d)</span></span>
+<span id="cb12-35"><a></a></span>
+<span id="cb12-36"><a></a><span class="co"># DGP: happiness -&gt; marriage &lt;- age</span></span>
+<span id="cb12-37"><a></a>years <span class="op">=</span> <span class="dv">70</span></span>
+<span id="cb12-38"><a></a>num_births <span class="op">=</span> <span class="dv">41</span></span>
+<span id="cb12-39"><a></a>colnames <span class="op">=</span> [<span class="st">'age'</span>,<span class="st">'a'</span>,<span class="st">'h'</span>,<span class="st">'m'</span>]</span>
+<span id="cb12-40"><a></a>sim_dfs <span class="op">=</span> []</span>
+<span id="cb12-41"><a></a>A <span class="op">=</span> np.zeros(shape<span class="op">=</span>(num_births,<span class="dv">1</span>))</span>
+<span id="cb12-42"><a></a>H <span class="op">=</span> np.linspace(<span class="op">-</span><span class="dv">2</span>, <span class="dv">2</span>, num<span class="op">=</span>num_births)</span>
+<span id="cb12-43"><a></a>M <span class="op">=</span> np.zeros(shape<span class="op">=</span>(num_births,<span class="dv">1</span>))</span>
+<span id="cb12-44"><a></a><span class="kw">def</span> update_m(row):</span>
+<span id="cb12-45"><a></a>  <span class="cf">if</span> row[<span class="st">'m'</span>] <span class="op">==</span> <span class="dv">0</span>:</span>
+<span id="cb12-46"><a></a>    <span class="cf">return</span> <span class="bu">int</span>(rng.binomial(</span>
+<span id="cb12-47"><a></a>      n<span class="op">=</span><span class="dv">1</span>,</span>
+<span id="cb12-48"><a></a>      p<span class="op">=</span>expit(row[<span class="st">'h'</span>] <span class="op">-</span> <span class="fl">3.875</span>),</span>
+<span id="cb12-49"><a></a>      size<span class="op">=</span><span class="dv">1</span>,</span>
+<span id="cb12-50"><a></a>    )[<span class="dv">0</span>])</span>
+<span id="cb12-51"><a></a>  <span class="cf">return</span> <span class="dv">1</span></span>
+<span id="cb12-52"><a></a><span class="kw">def</span> sim_cohort_to(max_age):</span>
+<span id="cb12-53"><a></a>  sim_df <span class="op">=</span> pd.DataFrame({</span>
+<span id="cb12-54"><a></a>      <span class="st">'age'</span>: [<span class="dv">1</span> <span class="cf">for</span> _ <span class="kw">in</span> <span class="bu">range</span>(num_births)],</span>
+<span id="cb12-55"><a></a>      <span class="st">'h'</span>: np.linspace(<span class="op">-</span><span class="dv">2</span>, <span class="dv">2</span>, num<span class="op">=</span>num_births),</span>
+<span id="cb12-56"><a></a>      <span class="st">'m'</span>: [<span class="dv">0</span> <span class="cf">for</span> _ <span class="kw">in</span> <span class="bu">range</span>(num_births)],</span>
+<span id="cb12-57"><a></a>    }</span>
+<span id="cb12-58"><a></a>  )</span>
+<span id="cb12-59"><a></a>  <span class="cf">for</span> t <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">2</span>, max_age <span class="op">+</span> <span class="dv">1</span>):</span>
+<span id="cb12-60"><a></a>    sim_df[<span class="st">'age'</span>] <span class="op">=</span> sim_df[<span class="st">'age'</span>] <span class="op">+</span> <span class="dv">1</span></span>
+<span id="cb12-61"><a></a>    <span class="cf">if</span> t <span class="op">&gt;=</span> <span class="dv">18</span>:</span>
+<span id="cb12-62"><a></a>      sim_df[<span class="st">'m'</span>] <span class="op">=</span> sim_df.<span class="bu">apply</span>(update_m, axis<span class="op">=</span><span class="dv">1</span>)</span>
+<span id="cb12-63"><a></a>  <span class="cf">return</span> sim_df</span>
+<span id="cb12-64"><a></a>all_sim_dfs <span class="op">=</span> []</span>
+<span id="cb12-65"><a></a><span class="cf">for</span> cur_max_age <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">1</span>, <span class="dv">71</span>):</span>
+<span id="cb12-66"><a></a>  cur_sim_df <span class="op">=</span> sim_cohort_to(cur_max_age)</span>
+<span id="cb12-67"><a></a>  all_sim_dfs.append(cur_sim_df)</span>
+<span id="cb12-68"><a></a>full_sim_df <span class="op">=</span> pd.concat(all_sim_dfs)</span>
+<span id="cb12-69"><a></a></span>
+<span id="cb12-70"><a></a><span class="co"># And plot</span></span>
+<span id="cb12-71"><a></a>fig, ax <span class="op">=</span> plt.subplots(figsize<span class="op">=</span>(<span class="dv">8</span>, <span class="dv">4</span>))</span>
+<span id="cb12-72"><a></a>cbg_palette <span class="op">=</span> [<span class="st">'#c6c6c666'</span>] <span class="op">+</span> cb_palette</span>
+<span id="cb12-73"><a></a>full_sim_df[<span class="st">'m_label'</span>] <span class="op">=</span> full_sim_df[<span class="st">'m'</span>].<span class="bu">apply</span>(<span class="kw">lambda</span> x: <span class="st">"Unmarried"</span> <span class="cf">if</span> x <span class="op">==</span> <span class="dv">0</span> <span class="cf">else</span> <span class="st">"Married"</span>)</span>
+<span id="cb12-74"><a></a>full_sim_df <span class="op">=</span> full_sim_df.rename(columns<span class="op">=</span>{<span class="st">'age'</span>: <span class="st">'Age'</span>, <span class="st">'h'</span>: <span class="st">'Happiness'</span>})</span>
+<span id="cb12-75"><a></a>happiness_plot <span class="op">=</span> sns.scatterplot(</span>
+<span id="cb12-76"><a></a>  x<span class="op">=</span><span class="st">'Age'</span>, y<span class="op">=</span><span class="st">'Happiness'</span>, hue<span class="op">=</span><span class="st">'m_label'</span>,</span>
+<span id="cb12-77"><a></a>  data<span class="op">=</span>full_sim_df,</span>
+<span id="cb12-78"><a></a>  palette<span class="op">=</span>cbg_palette[:<span class="dv">2</span>],</span>
+<span id="cb12-79"><a></a>  s<span class="op">=</span><span class="dv">24</span>,</span>
+<span id="cb12-80"><a></a>  ax<span class="op">=</span>ax,</span>
+<span id="cb12-81"><a></a>  legend<span class="op">=</span><span class="va">True</span>,</span>
+<span id="cb12-82"><a></a>)<span class="op">;</span></span>
+<span id="cb12-83"><a></a><span class="co"># happiness_plot.move_legend("upper center", bbox_to_anchor=(0.5, 1.15), ncol=2);</span></span>
+<span id="cb12-84"><a></a>sns.move_legend(ax, <span class="st">"upper center"</span>, bbox_to_anchor<span class="op">=</span>(<span class="fl">0.5</span>, <span class="fl">1.15</span>), ncol<span class="op">=</span><span class="dv">2</span>)<span class="op">;</span></span>
+<span id="cb12-85"><a></a>happiness_plot.legend_.set_title(<span class="st">""</span>)<span class="op">;</span></span>
+<span id="cb12-86"><a></a>happiness_plot.axvline(x<span class="op">=</span><span class="fl">17.5</span>, color<span class="op">=</span><span class="st">'black'</span>, ls<span class="op">=</span><span class="st">'dashed'</span>, lw<span class="op">=</span><span class="dv">1</span>)<span class="op">;</span></span>
+<span id="cb12-87"><a></a>plt.show()<span class="op">;</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 <div class="quarto-layout-panel" data-layout="[65,35]">
 <div class="quarto-layout-row quarto-layout-valign-center">
@@ -782,7 +804,7 @@ Fig&nbsp;3. <em>“I don’t trust this coin, it’ll take lots of flips with H/
 <div class="cell-output cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure>
-<p><img data-src="index_files/figure-revealjs/happiness-plot-output-1.png" id="happiness-plot" class="quarto-figure quarto-figure-center" width="677" height="396"></p>
+<p><img data-src="index_files/figure-revealjs/happiness-plot-output-1.png" id="happiness-plot" class="quarto-figure quarto-figure-center" width="674" height="393"></p>
 </figure>
 </div>
 </div>
