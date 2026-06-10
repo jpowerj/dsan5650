@@ -7,7 +7,7 @@ bibliography: "../_DSAN5650.bib"
 date: 2026-06-10
 date-format: full
 lecnum: 4
-cache: true
+cache: false
 categories:
   - "Class Sessions"
 format:
