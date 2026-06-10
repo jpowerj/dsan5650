@@ -11,3 +11,9 @@ lubridate
 extraDistr
 patchwork
 latex2exp
+ggtext
+cmdstanr
+posterior
+rethinking
+dagitty
+ggdag
