@@ -1,5 +1,5 @@
 ---
-title: "Assignment Point Distributions"
+title: "Assignment Checkmark Distributions"
 subtitle: "DSAN 5650: Causal Inference for Computational Social Science"
 sidebar: mainnav
 format:
@@ -9,45 +9,51 @@ format:
 
 Assignments will be distributed and submitted via the course's [JupyterHub server](https://guhub.io). Documentation for the "AutoHint" system can be found [here](https://jjacobs.me/jah)
 
-Use the **tabs below** to view the point distributions for different assignments.^[The distributions are imported from Google Sheets mainly for transparency: so that you can see exactly how totals are computed as a sum of the individual points allocated for each test!]
+## Main Quests (28.2 Possible ✅s)
 
-```{r}
-#| label: points-table-fn
-#| warning: false
-#| echo: false
-library(tidyverse)
-gen_points_table <- function(hw_url) {
-  hw_df <- read_csv(hw_url)
-  hw_df <- hw_df |> drop_na(points)
-  hw_df$part <- as.character(hw_df$part)
-  hw_df$points <- as.character(hw_df$points)
-  hw_df$q_total <- as.character(hw_df$q_total)
-  hw_df$part_total <- as.character(hw_df$part_total)
-  hw_df <- hw_df |> mutate(
-    part = replace_na(part, ""),
-    part_total = replace_na(part_total, ""),
-    qid = replace_na(qid, ""),
-    q_total = replace_na(q_total, "")
-    # test_type = replace_na(test_type, "")
-  )
-  return(hw_df)
-}
-```
+These are the **required** assignments, for which you are expected to (a) make a good-faith attempt, and then (b) demonstrate understanding, by the end of the summer term.
 
-::: {.panel-tabset}
+| Main Quest | Due Date | ✅s Possible |
+| - | - |:-:|
+| HW1: {{< var hw1.title >}} | {{< var hw1.date-full >}} | **4** |
+| HW2: {{< var hw2.title >}} | {{< var hw2.date-full >}} | **4** |
+| {{< var midterm.title >}} | {{< var midterm.date-full >}} | **4** |
+| HW3: {{< var hw3.title >}} | {{< var hw3.date-full >}} | **4** |
+| HW4: {{< var hw4.title >}} | {{< var hw4.date-full >}} | **4** |
+| [Final Project](./final.qmd) | {{< var final.date-full >}} | **6** |
+| Two Required Meetings with Instructors | | **1** |
+| <i class='bi bi-arrow-return-right'></i> Pre-Midterm Consultation | Wednesday, **July 1** | *0.5* |
+| <i class='bi bi-arrow-return-right'></i> Final Project Consultation | Friday, **July 31** | *0.5* |
+| Lecture Attendance | | **1.2** |
+| **Total** | | **28.2** |
 
-## HW1
+: {tbl-colwidths="[55,25,20]"}
 
-<div style="height: 400px !important; max-height: 400px !important; overflow-y: scroll !important;">
+## Side Quests (18 Possible ✅s)
 
-```{r}
-#| label: hw1-points-table
-#| warning: false
-#| echo: false
-hw1_url <- "https://docs.google.com/spreadsheets/d/e/2PACX-1vRmtsonhPXNJ-OvGuroF3LajqBYksct2jZyIuPg9QyWSo8dZHOCFYEq8XzzGq-yf8feyYgCijKgLc12/pub?gid=0&single=true&output=csv"
-gen_points_table(hw1_url)
-```
+These are assignment which, although they are not mandatory for passing the course, are still essential material that (a) are made to enhance your understanding of various concepts throughout the term, and (b) can also be used as "starter code" if you decide to pursue one of these topics for your [Final Project](./final.qmd)!
 
-</div>
+| Side Quest | Due Date | ✅s Possible |
+| - | - |:-:|
+| **8 Lab Assignments** (1 ✅ each) | | **8** |
+| <i class='bi bi-arrow-return-right'></i> {{< var lab01.title >}} | {{< var lab01.date-md >}} | 1 |
+| <i class='bi bi-arrow-return-right'></i> {{< var lab02.title >}} | {{< var lab02.date-md >}} | 1 |
+| <i class='bi bi-arrow-return-right'></i> {{< var lab03.title >}} | {{< var lab03.date-md >}} | 1 |
+| <i class='bi bi-arrow-return-right'></i> {{< var lab04.title >}} | {{< var lab04.date-md >}} | 1 |
+| <i class='bi bi-arrow-return-right'></i> {{< var lab05.title >}} | {{< var lab05.date-md >}} | 1 |
+| <i class='bi bi-arrow-return-right'></i> {{< var lab06.title >}} | {{< var lab06.date-md >}} | 1 |
+| <i class='bi bi-arrow-return-right'></i> {{< var lab07.title >}} | {{< var lab07.date-md >}} | 1 |
+| <i class='bi bi-arrow-return-right'></i> {{< var lab08.title >}} | {{< var lab08.date-md >}} | 1 |
+| **8 Reading Adventures** (1 ✅ each) | | **8** |
+| <i class='bi bi-arrow-return-right'></i> {{< var reading01.title >}} | {{< var reading01.date-md >}} | 1 |
+| <i class='bi bi-arrow-return-right'></i> {{< var reading02.title >}} | {{< var reading02.date-md >}} | 1 |
+| <i class='bi bi-arrow-return-right'></i> {{< var reading03.title >}} | {{< var reading03.date-md >}} | 1 |
+| <i class='bi bi-arrow-return-right'></i> {{< var reading04.title >}} | {{< var reading04.date-md >}} | 1 |
+| <i class='bi bi-arrow-return-right'></i> {{< var reading05.title >}} | {{< var reading05.date-md >}} | 1 |
+| <i class='bi bi-arrow-return-right'></i> {{< var reading06.title >}} | {{< var reading06.date-md >}} | 1 |
+| <i class='bi bi-arrow-return-right'></i> {{< var reading07.title >}} | {{< var reading07.date-md >}} | 1 |
+| <i class='bi bi-arrow-return-right'></i> {{< var reading08.title >}} | {{< var reading08.date-md >}} | 1 |
+| Additional Meeting(s) with Instructors (0.5 each) | | 2 |
+| **Total** | | **18** |
 
-:::
+: {tbl-colwidths="[80,20]"}

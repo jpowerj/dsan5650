@@ -92,3 +92,67 @@ final:
   date-md: "Aug 7 (Friday), 5:59pm EDT"
   date-full: "Friday, **August 7**"
   url: "#"
+lab01:
+  title: "Lab 1: Novelty and Resonance in the Debates of the French Revolution, 1789-1791"
+  date-md: "Jul 1"
+  date-full: "Wednesday, **July 1**"
+lab02:
+  title: "Lab 2: DW-NOMINATE, Latent Ideology, and Campaign Financing"
+  date-md: "Jul 1"
+  date-full: "Wednesday, **July 1**"
+lab03:
+  title: "Lab 3: TBD"
+  date-md: "Jul 1"
+  date-full: "Wednesday, **July 1**"
+lab04:
+  title: "Lab 4: TBD"
+  date-md: "Jul 1"
+  date-full: "Wednesday, **July 1**"
+lab05:
+  title: "Lab 5: TBD"
+  date-md: "Aug 7"
+  date-full: "Wednesday, **July 1**"
+lab06:
+  title: "Lab 6: TBD"
+  date-md: "Aug 7"
+  date-full: "Wednesday, **July 1**"
+lab07:
+  title: "Lab 7: TBD"
+  date-md: "Aug 7"
+  date-full: "Wednesday, **July 1**"
+lab08:
+  title: "Lab 8: TBD"
+  date-md: "Aug 7"
+  date-full: "Wednesday, **July 1**"
+reading01:
+  title: "Reading Adventure 1: How to Do Things with Rhetoric"
+  date-md: "Jul 1"
+  date-full: "Wednesday, **July 1**"
+reading02:
+  title: "Reading Adventure 2: Ethnic Groups in Conflict"
+  date-md: "Jul 1"
+  date-full: "Wednesday, **July 1**"
+reading03:
+  title: "Reading Adventure 3: Hitler's Willing Executioners?"
+  date-md: "Jul 1"
+  date-full: "Wednesday, **July 1**"
+reading04:
+  title: "Reading Adventure 4: TBD"
+  date-md: "Jul 1"
+  date-full: "Wednesday, **July 1**"
+reading05:
+  title: "Reading Adventure 5: TBD"
+  date-md: "Aug 7"
+  date-full: "Wednesday, **July 1**"
+reading06:
+  title: "Reading Adventure 6: TBD"
+  date-md: "Aug 7"
+  date-full: "Wednesday, **July 1**"
+reading07:
+  title: "Reading Adventure 7: TBD"
+  date-md: "Aug 7"
+  date-full: "Wednesday, **July 1**"
+reading08:
+  title: "Reading Adventure 8: TBD"
+  date-md: "Aug 7"
+  date-full: "Wednesday, **July 1**"
