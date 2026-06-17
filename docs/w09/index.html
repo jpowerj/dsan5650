@@ -546,7 +546,7 @@ window.Quarto = {
     </ul>
     </div>
 <div class="quarto-sidebar-footer"><div class="sidebar-footer-item">
-<p><em>Updated 2026-06-13, 06:50:34 PM</em></p>
+<p><em>Updated 2026-06-17, 06:34:20 PM</em></p>
 </div></div></nav>
 <div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
@@ -805,7 +805,7 @@ window.Quarto = {
 <p><img src="images/modes.png" class="img-fluid quarto-figure quarto-figure-center figure-img"></p>
 </figure>
 </div>
-<div id="e4deccc9" class="cell" data-execution_count="1">
+<div id="d708ed7c" class="cell" data-execution_count="1">
 <div class="cell-output cell-output-stdout">
 <pre><code>&lt;table class="simpletable"&gt;
 &lt;tr&gt;
@@ -900,7 +900,7 @@ window.Quarto = {
 </section>
 <section id="what-does-the-data-look-like" class="level2">
 <h2 class="anchored" data-anchor-id="what-does-the-data-look-like">What Does the Data Look Like?</h2>
-<div id="94038463" class="cell" data-execution_count="3">
+<div id="80265b53" class="cell" data-execution_count="3">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="co">#ax = pw.Brick(figsize=(8,5))</span></span>
@@ -922,7 +922,7 @@ window.Quarto = {
 <div class="columns">
 <div class="column" style="width:50%;">
 <p>Enter <strong>Uber</strong>’s causal inference library: <a href="https://causalml.readthedocs.io/en/latest/about.html"><code>causalml</code></a></p>
-<div id="fa87d042" class="cell" data-df-print="kable" data-execution_count="4">
+<div id="a415e2a4" class="cell" data-df-print="kable" data-execution_count="4">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> IPython.display <span class="im">import</span> display, HTML</span>
@@ -1006,7 +1006,7 @@ window.Quarto = {
 </section>
 <section id="model-1-propensity-score" class="level2 smaller crunch-title crunch-img crunch-quarto-figure">
 <h2 class="smaller crunch-title crunch-img crunch-quarto-figure anchored" data-anchor-id="model-1-propensity-score">Model 1: Propensity Score</h2>
-<div id="c654837c" class="cell" data-execution_count="5">
+<div id="797e19bb" class="cell" data-execution_count="5">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> estimate_e(df, X, D, model_e):</span>
@@ -1032,7 +1032,7 @@ window.Quarto = {
 </div>
 </div>
 </div>
-<div id="e4e62529" class="cell" data-execution_count="6">
+<div id="1c20fcaa" class="cell" data-execution_count="6">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>w <span class="op">=</span> <span class="dv">1</span> <span class="op">/</span> (user_df[<span class="st">'e'</span>] <span class="op">*</span> user_df[<span class="st">"dark_mode"</span>] <span class="op">+</span> (<span class="dv">1</span><span class="op">-</span>user_df[<span class="st">'e'</span>]) <span class="op">*</span> (<span class="dv">1</span><span class="op">-</span>user_df[<span class="st">"dark_mode"</span>]))</span>
@@ -1078,7 +1078,7 @@ window.Quarto = {
 <ul>
 <li>First, with <code>scikit-learn</code>:</li>
 </ul>
-<div id="dcf6c5ef" class="cell" data-execution_count="7">
+<div id="f3a91279" class="cell" data-execution_count="7">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> estimate_mu(df, X, D, y, model_mu):</span>
@@ -1100,7 +1100,7 @@ window.Quarto = {
 <ul>
 <li>Enter <a href="https://econml.azurewebsites.net/index.html"><code>EconML</code></a>, Microsoft’s “Official” ML-based econometrics library 😎</li>
 </ul>
-<div id="5d8f781c" class="cell" data-execution_count="8">
+<div id="5f36891d" class="cell" data-execution_count="8">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> econml.dr <span class="im">import</span> LinearDRLearner</span>
@@ -1143,7 +1143,7 @@ window.Quarto = {
 <div class="columns">
 <div class="column" style="width:50%;">
 <p>Wrong <strong>regression</strong> model:</p>
-<div id="a1313e68" class="cell" data-execution_count="9">
+<div id="12969417" class="cell" data-execution_count="9">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> compare_estimators(X_e, X_mu, D, y, seed):</span>
@@ -1183,7 +1183,7 @@ window.Quarto = {
 
 "\h" is an invalid escape sequence. Such sequences will not work in the future. Did you mean "\\h"? A raw string is also an option.
 
-/var/folders/n2/m7_fj5vx6c50_yj7g23mwmq00000gn/T/ipykernel_61341/2518988729.py:25: SyntaxWarning:
+/var/folders/n2/m7_fj5vx6c50_yj7g23mwmq00000gn/T/ipykernel_49599/2518988729.py:25: SyntaxWarning:
 
 "\h" is an invalid escape sequence. Such sequences will not work in the future. Did you mean "\\h"? A raw string is also an option.
 </code></pre>
@@ -1198,7 +1198,7 @@ window.Quarto = {
 </div>
 </div><div class="column" style="width:50%;">
 <p>Wrong <strong>propensity score</strong> model:</p>
-<div id="ae96cd60" class="cell" data-execution_count="10">
+<div id="b3a0e449" class="cell" data-execution_count="10">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb13"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>fig, ax <span class="op">=</span> plt.subplots(figsize<span class="op">=</span>(<span class="dv">4</span>, <span class="fl">3.5</span>))</span>
@@ -1223,7 +1223,7 @@ window.Quarto = {
 
 "\h" is an invalid escape sequence. Such sequences will not work in the future. Did you mean "\\h"? A raw string is also an option.
 
-/var/folders/n2/m7_fj5vx6c50_yj7g23mwmq00000gn/T/ipykernel_61341/591257935.py:10: SyntaxWarning:
+/var/folders/n2/m7_fj5vx6c50_yj7g23mwmq00000gn/T/ipykernel_49599/591257935.py:10: SyntaxWarning:
 
 "\h" is an invalid escape sequence. Such sequences will not work in the future. Did you mean "\\h"? A raw string is also an option.
 </code></pre>

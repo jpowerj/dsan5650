@@ -92,26 +92,175 @@ source("mydrawdag.r")
 
 :::
 
-## Reading Adventure 2 {.crunch-title .crunch-quarto-layout-cell}
+## Reading Adventure 2: Measuring Ideology / Polarization {.smaller .crunch-title .title-09 .crunch-quarto-layout-cell}
 
-*Explaining polarization...*
+```{r}
+#| label: fig-congress-only
+#| fig-align: center
+#| fig-width: 8
+#| fig-cap: The "party gap" decreased from about 1900 until 1950, but has increased steadily since then
+congress_comb_df <- read_csv("assets/congress_means.csv") |>
+  rename(Chamber = chamber)
+gap_top <- 1.0 - max(congress_comb_df$party.mean.diff.d1)
+plot_ymin <- min(congress_comb_df$party.mean.diff.d1) - gap_top
+congress_comb_df |>
+  ggplot(aes(x=year, y=party.mean.diff.d1, color=Chamber, alpha=Chamber)) +
+  # geom_rect(
+  #   aes(xmin = 1941, xmax = 1945, ymin = -Inf, ymax = 1.0),
+  #   fill = "grey", alpha = 0.01, inherit.aes=FALSE,
+  # ) +
+  geom_rect(
+    aes(xmin = 1929, xmax = 1939, ymin = -Inf, ymax = 1.0),
+    fill = "grey", alpha = 0.01, inherit.aes=FALSE,
+  ) +
+  geom_text(
+    aes(
+      x=1929-1, y=0.4,
+      label="Great\nDepression",
+      hjust=1.0, vjust=0.0, lineheight=0.85
+    ),
+    inherit.aes=FALSE
+  ) +
+  geom_line() +
+  geom_point() +
+  theme_dsan(base_size=18) +
+  ylim(plot_ymin, 1.0) +
+  geom_hline(yintercept=1.0, linetype='dashed') +
+  scale_x_continuous(breaks = seq(1880, 2025, by=20)) +
+  scale_color_manual(
+    values=c("Combined"="black", "House"="#e69f00", "Senate"="#56b4e9")
+  ) +
+  scale_alpha_manual(
+    values=c("Combined"=0.9, "House"=0.45, "Senate"=0.45),
+  ) +
+  labs(
+    title="Post Civil War Polarization (1879-2025)",
+    x="Year",
+    y="Difference in Party Mean Ideology",
+  )
+```
 
-:::: {layout="[1,1]" layout-valign="center" layout-align="center"}
-::: {#ineq-left}
+## What Could Possibly Explain This? {.crunch-title .crunch-img}
 
-![](images/mccarty1.svg){fig-align="center" width="100%"}
+```{r}
+#| label: gini-plot
+#| fig-align: center
+#| fig-width: 9
+#| fig-height: 4
+gini_df <- read_csv("assets/mod_gini.csv")
+mod_congress_df <- read_csv("assets/mod_congress.csv")
+invert_rescale_gini <- function(scaled_vals, old_min, old_max, new_min, new_max) {
+  old_min <- 0.348
+  old_max <- 0.462
+  new_min <- 0.5
+  new_max <- 0.9
+  inv_factor <- (scaled_vals - new_min) / (new_max - new_min)
+  return(
+    inv_factor * (old_max - old_min) + old_min
+  )
+}
+ggplot() +
+  # geom_rect(
+  #   aes(xmin = 1941, xmax = 1945, ymin = -Inf, ymax = 1.0),
+  #   fill = "grey", alpha = 0.01, inherit.aes=FALSE,
+  # ) +
+  geom_rect(
+    aes(xmin = 1929, xmax = 1939, ymin = -Inf, ymax = Inf),
+    fill = "grey", alpha = 0.01, inherit.aes=FALSE,
+  ) +
+  # geom_text(
+  #   aes(
+  #     x=1929-1, y=0.4,
+  #     label="Great\nDepression",
+  #     hjust=1.0, vjust=0.0, lineheight=0.85
+  #   ),
+  #   inherit.aes=FALSE
+  # ) +
+  geom_line(data=mod_congress_df, aes(x=year, y=value, color=name)) +
+  geom_point(data=mod_congress_df, aes(x=year, y=value, color=name)) +
+  geom_line(data=gini_df, aes(x=year, y=gini_scaled, color=name)) +
+  geom_point(data=gini_df, aes(x=year, y=gini_scaled, color=name)) +
+  theme_dsan(base_size=14) +
+  scale_y_continuous(
+    "Difference in Party Mean Ideology", 
+    sec.axis = sec_axis(~ invert_rescale_gini(.), name = "Gini Coefficient")
+  ) +
+  labs(
+    title="20th Century Inequality (1914-2025)",
+    x="Year",
+    y="Difference in Party Mean Ideology",
+  ) +
+  theme(legend.title = element_blank())
+```
 
-:::
-::: {#ineq-right}
+```{r}
+#| label: gini-corr
+cong_gini_df <- inner_join(gini_df, mod_congress_df, by=join_by(year))
+cor(cong_gini_df$value.x, cong_gini_df$value.y, use="complete.obs")
+```
 
-![](images/mccarty2.svg){fig-align="center"}
+## But Inequality $\neq$ Wealth of Top 1%... {.crunch-title .title-09}
 
-:::
-::::
+```{r}
+#| label: wealth-plot
+#| fig-align: center
+#| fig-width: 9
+#| fig-height: 4
+income_df <- read_csv("assets/income_ineq.csv")
+invert_rescale_income <- function(scaled_vals, old_min, old_max, new_min, new_max) {
+  old_min <- 0.1035
+  old_max <- 0.2229
+  new_min <- 0.52
+  new_max <- 0.95
+  inv_factor <- (scaled_vals - new_min) / (new_max - new_min)
+  return(
+    inv_factor * (old_max - old_min) + old_min
+  )
+}
+ggplot() +
+  # geom_rect(
+  #   aes(xmin = 1941, xmax = 1945, ymin = -Inf, ymax = 1.0),
+  #   fill = "grey", alpha = 0.01, inherit.aes=FALSE,
+  # ) +
+  geom_rect(
+    aes(xmin = 1929, xmax = 1939, ymin = -Inf, ymax = Inf),
+    fill = "grey", alpha = 0.01, inherit.aes=FALSE,
+  ) +
+  # geom_text(
+  #   aes(
+  #     x=1929-1, y=0.4,
+  #     label="Great\nDepression",
+  #     hjust=1.0, vjust=0.0, lineheight=0.85
+  #   ),
+  #   inherit.aes=FALSE
+  # ) +
+  geom_line(data=mod_congress_df, aes(x=year, y=value, color=name)) +
+  geom_point(data=mod_congress_df, aes(x=year, y=value, color=name)) +
+  geom_line(data=income_df, aes(x=year, y=value, color=name)) +
+  geom_point(data=income_df, aes(x=year, y=value, color=name)) +
+  theme_dsan(base_size=14) +
+  scale_y_continuous(
+    "Difference in Party Mean Ideology", 
+    sec.axis = sec_axis(~ invert_rescale_income(.), name = "Top 1% Wealth Share")
+  ) +
+  labs(
+    title="Post Civil War Polarization (1914-2025)",
+    x="Year",
+  )
+```
+
+```{r}
+#| label: income-corr
+cong_income_df <- inner_join(income_df, mod_congress_df, by=join_by(year))
+cong_income_mod_df <- cong_income_df |> filter(year >= 1970)
+cor(cong_income_mod_df$value.x, cong_income_mod_df$value.y, use="complete.obs")
+```
 
 ## HW2: Multilevel Madness {.smaller data-name="Multilevel Madness"}
 
 ![](images/multilevel_eu.svg){fig-align="center"}
+
+We will open and look at it today after the break!
 
 # The Four Elemental Confounds... Today: What to *Do* About Them! {.smaller .crunch-title .crunch-quarto-figure .title-12 .crunch-quarto-layout-panel data-stack-name="Forks, Pipes, Colliders"}
 

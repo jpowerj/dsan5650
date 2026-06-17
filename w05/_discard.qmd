@@ -1,0 +1,12 @@
+:::: {layout="[1,1]" layout-valign="center" layout-align="center"}
+::: {#ineq-left}
+
+![](images/mccarty1.svg){fig-align="center" width="100%"}
+
+:::
+::: {#ineq-right}
+
+![](images/mccarty2.svg){fig-align="center"}
+
+:::
+::::
