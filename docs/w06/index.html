@@ -8,7 +8,7 @@
 
 <meta name="author" content="Jeff Jacobs">
 
-<title>Week 6: Bayesian Workflow, Midterm Pre-Review – DSAN 5650</title>
+<title>Week 6: Adaptive Pooling in Multilevel Models, Bayesian Workflow – DSAN 5650</title>
 <style>
 /* Default styles provided by pandoc.
 ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
@@ -100,9 +100,9 @@ div.csl-indent {
 <link href="../site_libs/quarto-html/quarto-syntax-highlighting-e44360b8a8db1e130c7792fece1c8032.css" rel="stylesheet" class="quarto-color-scheme-extra" id="quarto-text-highlighting-styles">
 <script src="../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../site_libs/bootstrap/bootstrap-4a417e23f99a56d4d814eb170677d87c.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
-<link href="../site_libs/bootstrap/bootstrap-dark-01ef419f6ea00ecf1db1b5ca054fd2e2.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
-<link href="../site_libs/bootstrap/bootstrap-4a417e23f99a56d4d814eb170677d87c.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
+<link href="../site_libs/bootstrap/bootstrap-c508e5823aeb0eee2bc86363ab9adc54.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="../site_libs/bootstrap/bootstrap-dark-4b3fe96eb762f4761fdef4f35c9a0022.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<link href="../site_libs/bootstrap/bootstrap-c508e5823aeb0eee2bc86363ab9adc54.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "sidebar",
   "copy-button": false,
@@ -543,7 +543,7 @@ window.Quarto = {
     </ul>
     </div>
 <div class="quarto-sidebar-footer"><div class="sidebar-footer-item">
-<p><em>Updated 2026-06-17, 06:34:20 PM</em></p>
+<p><em>Updated 2026-06-24, 06:30:01 PM</em></p>
 </div></div></nav>
 <div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
@@ -552,10 +552,12 @@ window.Quarto = {
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#logistics-table-setting" id="toc-logistics-table-setting" class="nav-link active" data-scroll-target="#logistics-table-setting">Logistics / Table-Setting</a>
+  <li><a href="#logistics-table-setting" id="toc-logistics-table-setting" class="nav-link active" data-scroll-target="#logistics-table-setting">Logistics / Table-Setting</a></li>
+  <li><a href="#bayesian-workflow-seed-planting" id="toc-bayesian-workflow-seed-planting" class="nav-link" data-scroll-target="#bayesian-workflow-seed-planting">Bayesian Workflow Seed-Planting</a></li>
+  <li><a href="#adaptive-pooling-in-multilevel-models" id="toc-adaptive-pooling-in-multilevel-models" class="nav-link" data-scroll-target="#adaptive-pooling-in-multilevel-models">Adaptive Pooling in Multilevel Models</a>
   <ul class="collapse">
-  <li><a href="#from-hws-to-midterm" id="toc-from-hws-to-midterm" class="nav-link" data-scroll-target="#from-hws-to-midterm">From HWs to Midterm</a></li>
-  <li><a href="#looking-forwards-post-midterm" id="toc-looking-forwards-post-midterm" class="nav-link" data-scroll-target="#looking-forwards-post-midterm">Looking Forwards (Post-Midterm)</a></li>
+  <li><a href="#pooling-none-full-and-adaptive" id="toc-pooling-none-full-and-adaptive" class="nav-link" data-scroll-target="#pooling-none-full-and-adaptive">Pooling: None, Full, and Adaptive</a></li>
+  <li><a href="#why-adaptive-none-or-full" id="toc-why-adaptive-none-or-full" class="nav-link" data-scroll-target="#why-adaptive-none-or-full">Why Adaptive &gt;&gt; None or Full?</a></li>
   </ul></li>
   <li><a href="#bayesian-workflow" id="toc-bayesian-workflow" class="nav-link" data-scroll-target="#bayesian-workflow">Bayesian Workflow</a>
   <ul class="collapse">
@@ -565,7 +567,7 @@ window.Quarto = {
   <li><a href="#why-do-we-need-subjective-priors" id="toc-why-do-we-need-subjective-priors" class="nav-link" data-scroll-target="#why-do-we-need-subjective-priors">Why Do We Need “Subjective” Priors?</a></li>
   <li><a href="#flat-vs.-informative-priors" id="toc-flat-vs.-informative-priors" class="nav-link" data-scroll-target="#flat-vs.-informative-priors">Flat vs.&nbsp;Informative Priors</a></li>
   </ul></li>
-  <li><a href="#lab-time" id="toc-lab-time" class="nav-link" data-scroll-target="#lab-time">Lab Time!</a>
+  <li><a href="#demos" id="toc-demos" class="nav-link" data-scroll-target="#demos">Demos!</a>
   <ul class="collapse">
   <li><a href="#references" id="toc-references" class="nav-link" data-scroll-target="#references">References</a></li>
   </ul></li>
@@ -578,7 +580,7 @@ window.Quarto = {
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Week 6: Bayesian Workflow, Midterm Pre-Review</h1>
+<h1 class="title">Week 6: Adaptive Pooling in Multilevel Models, Bayesian Workflow</h1>
 <p class="subtitle lead"><em>DSAN 5650: Causal Inference for Computational Social Science</em><br><span class="subsubtitle">Summer 2026, Georgetown University</span></p>
   <div class="quarto-categories">
     <div class="quarto-category">Class Sessions</div>
@@ -621,8 +623,8 @@ window.Quarto = {
 <center>
 <a class="h2" href="./slides.html" target="_blank">Open slides in new window →</a>
 </center>
-<section id="logistics-table-setting" class="level1 title-11" data-stack-name="Logistics">
-<h1 class="title-11" data-stack-name="Logistics">Logistics / Table-Setting</h1>
+<section id="logistics-table-setting" class="level1 title-11">
+<h1 class="title-11">Logistics / Table-Setting</h1>
 <div class="hidden">
 <p><span class="math display">\[
 \DeclareMathOperator*{\argmax}{argmax}
@@ -672,33 +674,72 @@ window.Quarto = {
 </div>
 </div>
 <ul>
-<li>Midterm will be <strong>27-Hour Take-Home Exam</strong></li>
-<li>A “Midterm” folder will magically appear on <a href="https://guhub.io">guhub.io</a> at <strong>9pm EDT</strong> on <strong>Wednesday, July 2</strong> (immediately after lecture ends), due <strong>11:59pm EDT</strong> on <strong>Thursday, July 3</strong></li>
-<li><span class="math inline">\(\leadsto\)</span> Lecture recording will be a <strong>video resource</strong> for you, providing all the necessary background for midterm questions (like the intro-to-Afrobarometer last week!)</li>
-</ul>
-<section id="from-hws-to-midterm" class="level2">
-<h2 class="anchored" data-anchor-id="from-hws-to-midterm">From HWs to Midterm</h2>
-<ul>
-<li>HWs: More focus on <strong>social science</strong> / more “in the weeds” (checking details, manipulating prior parameters, debugging, etc.)</li>
-<li>Midterm: More focus on <strong>causality</strong>, bc, in 2 hours I can test you on concepts and things like “What are the backdoor paths here? How would you close them?” more easily than on loading datasets, cleaning, fitting models, etc.</li>
+<li>Midterm will be <strong>52.5-Hour Take-Home Exam</strong></li>
+<li><code>Midterm</code> folder will magically appear on <a href="https://guhub.io">guhub.io</a> at <strong>7:30pm EDT</strong> on <strong>Weds July 1</strong> (immediately after 1hr intro-lecture ends), due <strong>11:59pm EDT</strong> on <strong>Friday July 3</strong></li>
+<li><span class="math inline">\(\leadsto\)</span> 1hr intro-lecture recording will be a <strong>video resource</strong> for you, providing necessary background for midterm questions (like the intro-to-Afrobarometer this week!)</li>
 </ul>
 </section>
-<section id="looking-forwards-post-midterm" class="level2">
-<h2 class="anchored" data-anchor-id="looking-forwards-post-midterm">Looking Forwards (Post-Midterm)</h2>
+<section id="bayesian-workflow-seed-planting" class="level1 crunch-title title-11 crunch-p ul-block">
+<h1 class="crunch-title title-11 crunch-p ul-block">Bayesian Workflow Seed-Planting</h1>
+<p><em>(Terms in HW2 we haven’t looked at yet!)</em></p>
+<div id="workflow-right" style="float: right;">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/hmm_clusters_single_dist.svg" class="img-fluid quarto-figure quarto-figure-center figure-img" width="420"></p>
+</figure>
+</div>
+</div>
 <ul>
-<li>More text analysis!</li>
-<li>Making the connection between <strong>modeling</strong> and <strong>predicting</strong></li>
+<li><span class="boxed-cb-bg">Prior</span>: Distribution over <strong>parameter values</strong> <strong><em>before</em></strong> seeing data</li>
+<li><span class="boxed-cb-bg">Prior Predictive</span>: Distribution over <strong>outcomes</strong>, <strong>before</strong> seeing data</li>
+<li><span class="boxed-cb-bg">Posterior</span>: Distribution over <strong>parameters</strong>, <strong>after</strong> seeing data</li>
+<li><span class="boxed-cb-bg">Posterior Predictive</span>: Distribution over <strong>outcomes</strong>, <strong>after</strong> seeing data</li>
+</ul>
+</section>
+<section id="adaptive-pooling-in-multilevel-models" class="level1" data-stack-name="Adaptive Pooling">
+<h1 data-stack-name="Adaptive Pooling">Adaptive Pooling in Multilevel Models</h1>
+<section id="pooling-none-full-and-adaptive" class="level2 smaller crunch-title">
+<h2 class="smaller crunch-title anchored" data-anchor-id="pooling-none-full-and-adaptive">Pooling: None, Full, and Adaptive</h2>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/pooling.jpg" class="img-fluid figure-img"></p>
+<figcaption>From <span class="citation" data-cites="gelman_data_2007">Gelman and Hill (<a href="#ref-gelman_data_2007" role="doc-biblioref">2007</a>)</span></figcaption>
+</figure>
+</div>
+<p><span class="math display">\[
+\hat{\alpha}_j^{\text {multilevel }} = \frac{\frac{n_j}{\sigma_y^2} \bar{y}_j+\frac{1}{\sigma_\alpha^2} \bar{y}_{\text {all }}}{\frac{n_j}{\sigma_y^2}+\frac{1}{\sigma_\alpha^2}}
+\]</span></p>
+</section>
+<section id="why-adaptive-none-or-full" class="level2 smaller crunch-title">
+<h2 class="smaller crunch-title anchored" data-anchor-id="why-adaptive-none-or-full">Why Adaptive &gt;&gt; None or Full?</h2>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/pooling-adaptive.jpg" class="img-fluid quarto-figure quarto-figure-center figure-img"></p>
+</figure>
+</div>
+<p><span class="math display">\[
+\alpha_j \sim \mathcal{N}(\mu_\alpha, \sigma_\alpha), \text{ for }j = 1, \ldots, J
+\]</span></p>
+<ul>
+<li>In the limit of <span class="math inline">\(\sigma_\alpha \rightarrow \infty\)</span>, the soft constraints do nothing, and there is no pooling;</li>
+<li>As <span class="math inline">\(\sigma_\alpha \rightarrow 0\)</span>, they pull the estimates all the way to zero, yielding the complete-pooling estimate</li>
 </ul>
 </section>
 </section>
-<section id="bayesian-workflow" class="level1" data-stack-name="HW2">
-<h1 data-stack-name="HW2">Bayesian Workflow</h1>
-<p><em>(There are a lot of words in HW2 that I haven’t had the chance to explain yet!)</em></p>
+<section id="bayesian-workflow" class="level1 crunch-title title-11 crunch-p ul-block" data-stack-name="Bayesian Workflow">
+<h1 class="crunch-title title-11 crunch-p ul-block" data-stack-name="Bayesian Workflow">Bayesian Workflow</h1>
+<div id="workflow-right" style="float: right;">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/hmm_clusters_single_dist.svg" class="img-fluid quarto-figure quarto-figure-center figure-img" width="420"></p>
+</figure>
+</div>
+</div>
 <ul>
-<li>Prior</li>
-<li>Prior Predictive</li>
-<li>Posterior</li>
-<li>Posterior Predictive</li>
+<li><span class="boxed-cb-bg">Prior</span>: Distribution over <strong>parameter values</strong> <strong><em>before</em></strong> seeing data</li>
+<li><span class="boxed-cb-bg">Prior Predictive</span>: Distribution over <strong>outcomes</strong>, <strong>before</strong> seeing data</li>
+<li><span class="boxed-cb-bg">Posterior</span>: Distribution over <strong>parameters</strong>, <strong>after</strong> seeing data</li>
+<li><span class="boxed-cb-bg">Posterior Predictive</span>: Distribution over <strong>outcomes</strong>, <strong>after</strong> seeing data</li>
 </ul>
 <section id="modeling-how-trees-become-forests" class="level2 smaller crunch-title title-11 crunch-ul crunch-li-6 crunch-img crunch-p crunch-quarto-figure">
 <h2 class="smaller crunch-title title-11 crunch-ul crunch-li-6 crunch-img crunch-p crunch-quarto-figure anchored" data-anchor-id="modeling-how-trees-become-forests">Modeling How Trees Become Forests</h2>
@@ -1107,12 +1148,19 @@ window.Quarto = {
 </div>
 </section>
 </section>
-<section id="lab-time" class="level1" data-stack-name="Bayesian Inference Lab">
-<h1 data-stack-name="Bayesian Inference Lab">Lab Time!</h1>
+<section id="demos" class="level1" data-stack-name="Demos">
+<h1 data-stack-name="Demos">Demos!</h1>
+<ul>
+<li><strong>HW2B Part 4: Reducing Uncertainty <span class="math inline">\(\leftrightarrow\)</span> “Sharpening” Knowledge of the State of the World</strong></li>
+<li><a href="https://jjacobs.me/dsan5650/writeups/informative-priors/FlatPriors_MiniLab.html"><strong>Lab 1: Skeptical, Weakly-Informative, and Strongly-Informative Priors</strong></a></li>
+<li><a href="https://jjacobs.me/dsan5650/writeups/hw2-guide/HW2_Guide.html"><strong>Lab 2: Weakly and Strongly-Informative NBA Priors</strong></a></li>
+</ul>
 <section id="references" class="level2">
 <h2 class="anchored" data-anchor-id="references">References</h2>
-<div id="refs" role="list">
-
+<div id="refs" class="references csl-bib-body hanging-indent" role="list">
+<div id="ref-gelman_data_2007" class="csl-entry" role="listitem">
+Gelman, Andrew, and Jennifer Hill. 2007. <em>Data <span>Analysis Using Regression</span> and <span>Multilevel</span>/<span>Hierarchical Models</span></em>. Cambridge University Press. <a href="https://www.dropbox.com/scl/fi/asbumi3g0gqa4xl9va7wp/Andrew-Gelman-Jennifer-Hill-Data-Analysis-Using-Regression-and-Multilevel_Hierarchical-Models.pdf?rlkey=zf8icjhm7rswvxrpm7d10m65o&amp;dl=1">https://www.dropbox.com/scl/fi/asbumi3g0gqa4xl9va7wp/Andrew-Gelman-Jennifer-Hill-Data-Analysis-Using-Regression-and-Multilevel_Hierarchical-Models.pdf?rlkey=zf8icjhm7rswvxrpm7d10m65o&amp;dl=1</a>.
+</div>
 </div>
 
 

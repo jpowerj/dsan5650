@@ -102,7 +102,6 @@
     div.csl-bib-body { }
     div.csl-entry {
       clear: both;
-      margin-bottom: 0em;
     }
     .hanging-indent div.csl-entry {
       margin-left:2em;
@@ -119,7 +118,7 @@
     div.csl-indent {
       margin-left: 2em;
     }  </style>
-  <link rel="stylesheet" href="../site_libs/revealjs/dist/theme/quarto-cf725044136d660596cab3cf1329af17.css">
+  <link rel="stylesheet" href="../site_libs/revealjs/dist/theme/quarto-5d3cee8ff390611bc6d7a4885fa1a5f8.css">
   <link href="../site_libs/revealjs/plugin/quarto-line-highlight/line-highlight.css" rel="stylesheet">
   <link href="../site_libs/revealjs/plugin/reveal-menu/menu.css" rel="stylesheet">
   <link href="../site_libs/revealjs/plugin/reveal-menu/quarto-menu.css" rel="stylesheet">
@@ -704,36 +703,11 @@ H_1 _||_ T | F</code></pre>
 <li><span class="math inline">\(M\)</span>: Moisture level</li>
 </ul>
 
-<img data-src="images/plant_moisture.jpeg" class="quarto-figure quarto-figure-center r-stretch"></section></section>
-<section>
-<section id="multilevel-modeling" class="title-slide slide level1 center" data-stack-name="Multilevel Models">
-<h1>Multilevel Modeling</h1>
-
-</section>
-<section id="pooling-none-full-and-adaptive" class="slide level2 smaller crunch-title">
-<h2>Pooling: None, Full, and Adaptive</h2>
-
-<img data-src="images/pooling.jpg" class="r-stretch quarto-figure-center"><p class="caption">From <span class="citation" data-cites="gelman_data_2007">Gelman and Hill (<a href="#/references" role="doc-biblioref" onclick="">2007</a>)</span></p><p><span class="math display">\[
-\hat{\alpha}_j^{\text {multilevel }} = \frac{\frac{n_j}{\sigma_y^2} \bar{y}_j+\frac{1}{\sigma_\alpha^2} \bar{y}_{\text {all }}}{\frac{n_j}{\sigma_y^2}+\frac{1}{\sigma_\alpha^2}}
-\]</span></p>
-</section>
-<section id="why-adaptive-none-or-full" class="slide level2 smaller crunch-title">
-<h2>Why Adaptive &gt;&gt; None or Full?</h2>
-
-<img data-src="images/pooling-adaptive.jpg" class="quarto-figure quarto-figure-center r-stretch"><p><span class="math display">\[
-\alpha_j \sim \mathcal{N}(\mu_\alpha, \sigma_\alpha), \text{ for }j = 1, \ldots, J
-\]</span></p>
-<ul>
-<li>In the limit of <span class="math inline">\(\sigma_\alpha \rightarrow \infty\)</span>, the soft constraints do nothing, and there is no pooling;</li>
-<li>As <span class="math inline">\(\sigma_\alpha \rightarrow 0\)</span>, they pull the estimates all the way to zero, yielding the complete-pooling estimate</li>
-</ul>
-</section>
+<img data-src="images/plant_moisture.jpeg" class="quarto-figure quarto-figure-center r-stretch"></section>
 <section id="references" class="slide level2 smaller scrollable">
 <h2>References</h2>
-<div id="refs" class="references csl-bib-body hanging-indent" data-entry-spacing="0" role="list">
-<div id="ref-gelman_data_2007" class="csl-entry" role="listitem">
-Gelman, Andrew, and Jennifer Hill. 2007. <em><a href="https://www.dropbox.com/scl/fi/asbumi3g0gqa4xl9va7wp/Andrew-Gelman-Jennifer-Hill-Data-Analysis-Using-Regression-and-Multilevel_Hierarchical-Models.pdf?rlkey=zf8icjhm7rswvxrpm7d10m65o&amp;dl=1">Data <span>Analysis Using Regression</span> and <span>Multilevel</span>/<span>Hierarchical Models</span></a></em>. Cambridge University Press.
-</div>
+<div id="refs" role="list">
+
 </div>
 
 

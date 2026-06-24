@@ -1,5 +1,5 @@
 ---
-title: "Week 6: Bayesian Workflow, Midterm Pre-Review"
+title: "Week 6: Adaptive Pooling in Multilevel Models, Bayesian Workflow"
 subtitle: "*DSAN 5650: Causal Inference for Computational Social Science*<br><span class='subsubtitle'>Summer 2026, Georgetown University</span>"
 author: "Jeff Jacobs"
 institute: "[`jj1088@georgetown.edu`](mailto:jj1088@georgetown.edu)"
@@ -51,7 +51,7 @@ format:
 
 :::
 
-# Logistics / Table-Setting {.title-11 data-stack-name="Logistics"}
+# Logistics / Table-Setting {.title-11}
 
 {{< include ../dsan-globals/_globals-tex.qmd >}}
 
@@ -64,28 +64,58 @@ source("../dsan-globals/_globals.r")
 
 :::
 
-* Midterm will be **27-Hour Take-Home Exam**
-* A "Midterm" folder will magically appear on [guhub.io](https://guhub.io) at **9pm EDT** on **Wednesday, July 2** (immediately after lecture ends), due **11:59pm EDT** on **Thursday, July 3**
-* $\leadsto$ Lecture recording will be a **video resource** for you, providing all the necessary background for midterm questions (like the intro-to-Afrobarometer last week!)
+* Midterm will be **52.5-Hour Take-Home Exam**
+* `Midterm` folder will magically appear on [guhub.io](https://guhub.io) at **7:30pm EDT** on **Weds July 1** (immediately after 1hr intro-lecture ends), due **11:59pm EDT** on **Friday July 3**
+* $\leadsto$ 1hr intro-lecture recording will be a **video resource** for you, providing necessary background for midterm questions (like the intro-to-Afrobarometer this week!)
 
-## From HWs to Midterm
+# Bayesian Workflow Seed-Planting {.crunch-title .title-11 .crunch-p .ul-block}
 
-* HWs: More focus on **social science** / more "in the weeds" (checking details, manipulating prior parameters, debugging, etc.)
-* Midterm: More focus on **causality**, bc, in 2 hours I can test you on concepts and things like "What are the backdoor paths here? How would you close them?" more easily than on loading datasets, cleaning, fitting models, etc.
+*(Terms in HW2 we haven't looked at yet!)*
 
-## Looking Forwards (Post-Midterm)
+::: {#workflow-right style="float: right;"}
 
-* More text analysis!
-* Making the connection between **modeling** and **predicting**
+![](images/hmm_clusters_single_dist.svg){fig-align="center" width="420"}
 
-# Bayesian Workflow {data-stack-name="HW2"}
+:::
 
-*(There are a lot of words in HW2 that I haven't had the chance to explain yet!)*
+* [Prior]{.boxed-cb-bg}: Distribution over **parameter values** ***before*** seeing data
+* [Prior Predictive]{.boxed-cb-bg}: Distribution over **outcomes**, **before** seeing data
+* [Posterior]{.boxed-cb-bg}: Distribution over **parameters**, **after** seeing data
+* [Posterior Predictive]{.boxed-cb-bg}: Distribution over **outcomes**, **after** seeing data
 
-* Prior
-* Prior Predictive
-* Posterior
-* Posterior Predictive
+# Adaptive Pooling in Multilevel Models {data-stack-name="Adaptive Pooling"}
+
+## Pooling: None, Full, and Adaptive {.smaller .crunch-title}
+
+![From @gelman_data_2007](images/pooling.jpg){fig-align="center"}
+
+$$
+\hat{\alpha}_j^{\text {multilevel }} = \frac{\frac{n_j}{\sigma_y^2} \bar{y}_j+\frac{1}{\sigma_\alpha^2} \bar{y}_{\text {all }}}{\frac{n_j}{\sigma_y^2}+\frac{1}{\sigma_\alpha^2}}
+$$
+
+## Why Adaptive >> None or Full? {.smaller .crunch-title}
+
+![](images/pooling-adaptive.jpg){fig-align="center"}
+
+$$
+\alpha_j \sim \mathcal{N}(\mu_\alpha, \sigma_\alpha), \text{ for }j = 1, \ldots, J
+$$
+
+* In the limit of $\sigma_\alpha \rightarrow \infty$, the soft constraints do nothing, and there is no pooling;
+* As $\sigma_\alpha \rightarrow 0$, they pull the estimates all the way to zero, yielding the complete-pooling estimate
+
+# Bayesian Workflow {.crunch-title .title-11 .crunch-p .ul-block data-stack-name="Bayesian Workflow"}
+
+::: {#workflow-right style="float: right;"}
+
+![](images/hmm_clusters_single_dist.svg){fig-align="center" width="420"}
+
+:::
+
+* [Prior]{.boxed-cb-bg}: Distribution over **parameter values** ***before*** seeing data
+* [Prior Predictive]{.boxed-cb-bg}: Distribution over **outcomes**, **before** seeing data
+* [Posterior]{.boxed-cb-bg}: Distribution over **parameters**, **after** seeing data
+* [Posterior Predictive]{.boxed-cb-bg}: Distribution over **outcomes**, **after** seeing data
 
 ## Modeling How Trees Become Forests {.smaller .crunch-title .title-11 .crunch-ul .crunch-li-6 .crunch-img .crunch-p .crunch-quarto-figure}
 
@@ -477,7 +507,11 @@ ggplot() +
 :::
 ::::
 
-# Lab Time! {data-stack-name="Bayesian Inference Lab"}
+# Demos! {data-stack-name="Demos"}
+
+* **HW2B Part 4: Reducing Uncertainty $\leftrightarrow$ "Sharpening" Knowledge of the State of the World**
+* [**Lab 1: Skeptical, Weakly-Informative, and Strongly-Informative Priors**](https://jjacobs.me/dsan5650/writeups/informative-priors/FlatPriors_MiniLab.html)
+* [**Lab 2: Weakly and Strongly-Informative NBA Priors**](https://jjacobs.me/dsan5650/writeups/hw2-guide/HW2_Guide.html)
 
 ## References
 

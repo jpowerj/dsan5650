@@ -458,27 +458,6 @@ coordinates( plant_dag ) <- list(
 # drawdag_jj(plant_dag, cex=3, lwd=4, arr.width=0.5, arr.length=0.5, arr.adj=0)
 ```
 
-# Multilevel Modeling {data-stack-name="Multilevel Models"}
-
-## Pooling: None, Full, and Adaptive {.smaller .crunch-title}
-
-![From @gelman_data_2007](images/pooling.jpg){fig-align="center"}
-
-$$
-\hat{\alpha}_j^{\text {multilevel }} = \frac{\frac{n_j}{\sigma_y^2} \bar{y}_j+\frac{1}{\sigma_\alpha^2} \bar{y}_{\text {all }}}{\frac{n_j}{\sigma_y^2}+\frac{1}{\sigma_\alpha^2}}
-$$
-
-## Why Adaptive >> None or Full? {.smaller .crunch-title}
-
-![](images/pooling-adaptive.jpg){fig-align="center"}
-
-$$
-\alpha_j \sim \mathcal{N}(\mu_\alpha, \sigma_\alpha), \text{ for }j = 1, \ldots, J
-$$
-
-* In the limit of $\sigma_\alpha \rightarrow \infty$, the soft constraints do nothing, and there is no pooling;
-* As $\sigma_\alpha \rightarrow 0$, they pull the estimates all the way to zero, yielding the complete-pooling estimate
-
 ## References
 
 ::: {#refs}

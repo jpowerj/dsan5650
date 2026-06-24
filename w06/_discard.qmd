@@ -192,3 +192,15 @@ ggMarginal(
   yparams = list(binwidth = 1)
 )
 ```
+
+---
+
+## From HWs to Midterm
+
+* HWs: More focus on **social science** / more "in the weeds" (checking details, manipulating prior parameters, debugging, etc.)
+* Midterm: More focus on **causality**, bc, in 2 hours I can test you on concepts and things like "What are the backdoor paths here? How would you close them?" more easily than on loading datasets, cleaning, fitting models, etc.
+
+---
+
+:::: {layout="[70,30]" layout-align="center" layout-valign="center"}
+::: {#workflow-left}
