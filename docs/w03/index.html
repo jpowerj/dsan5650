@@ -66,9 +66,9 @@ div.csl-indent {
 <link href="../site_libs/quarto-html/quarto-syntax-highlighting-e44360b8a8db1e130c7792fece1c8032.css" rel="stylesheet" class="quarto-color-scheme-extra" id="quarto-text-highlighting-styles">
 <script src="../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../site_libs/bootstrap/bootstrap-c508e5823aeb0eee2bc86363ab9adc54.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
-<link href="../site_libs/bootstrap/bootstrap-dark-4b3fe96eb762f4761fdef4f35c9a0022.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
-<link href="../site_libs/bootstrap/bootstrap-c508e5823aeb0eee2bc86363ab9adc54.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
+<link href="../site_libs/bootstrap/bootstrap-510e8dcf9e25c2f520533354b30b76ad.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="../site_libs/bootstrap/bootstrap-dark-b30b50cacc728bf5140a12b3b6b88f58.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<link href="../site_libs/bootstrap/bootstrap-510e8dcf9e25c2f520533354b30b76ad.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
 <script src="../site_libs/quarto-contrib/videojs/video.min.js"></script>
 <link href="../site_libs/quarto-contrib/videojs/video-js.css" rel="stylesheet">
 <script src="../site_libs/quarto-contrib/glightbox/glightbox.min.js"></script>
@@ -140,7 +140,6 @@ window.Quarto = {
 };
 </script>
 
-<link rel="stylesheet" href="../dsan-globals/jjstyles.css">
 </head>
 
 <body class="nav-sidebar floating quarto-light"><script id="quarto-html-before-body" type="application/javascript">
@@ -286,7 +285,8 @@ window.Quarto = {
       }
     };
     const authorPrefersDark = false;
-    const darkModeDefault = authorPrefersDark;
+    const queryPrefersDark = window.matchMedia('(prefers-color-scheme: dark)');
+    const darkModeDefault = queryPrefersDark.matches;
       document.querySelector('link#quarto-text-highlighting-styles.quarto-color-scheme-extra').rel = 'disabled-stylesheet';
       document.querySelector('link#quarto-bootstrap.quarto-color-scheme-extra').rel = 'disabled-stylesheet';
     let localAlternateSentinel = darkModeDefault ? 'alternate' : 'default';
@@ -299,6 +299,14 @@ window.Quarto = {
       toggleGiscusIfUsed(toAlternate, darkModeDefault);
       window.dispatchEvent(new Event('resize'));
     };
+    queryPrefersDark.addEventListener("change", e => {
+      if(window.localStorage.getItem("quarto-color-scheme") !== null)
+        return;
+      const alternate = e.matches
+      toggleColorMode(alternate);
+      localAlternateSentinel = e.matches ? 'alternate' : 'default'; // this is used alongside local storage!
+      toggleGiscusIfUsed(alternate, darkModeDefault);
+    });
     // Switch to dark mode if need be
     if (hasAlternateSentinel()) {
       toggleColorMode(true);
@@ -521,7 +529,7 @@ window.Quarto = {
     </ul>
     </div>
 <div class="quarto-sidebar-footer"><div class="sidebar-footer-item">
-<p><em>Updated 2026-06-24, 06:30:01 PM</em></p>
+<p><em>Updated 2026-06-26, 08:46:06 PM</em></p>
 </div></div></nav>
 <div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
@@ -845,7 +853,7 @@ Style vs.&nbsp;Content: <span class="citation" data-cites="wang_winning_2017">(<
 </section>
 <section id="data-generating-processes-dgps" class="level2 title-09 text-85 crunch-title crunch-ul crunch-quarto-figure crunch-quarto-layout-panel crunch-li-5">
 <h2 class="title-09 text-85 crunch-title crunch-ul crunch-quarto-figure crunch-quarto-layout-panel crunch-li-5 anchored" data-anchor-id="data-generating-processes-dgps">Data-Generating Processes (DGPs)</h2>
-<div class="quarto-layout-panel" data-layout="[55,45]" data-layout-align="center">
+<div class="quarto-layout-panel" data-layout-align="center" data-layout="[55,45]">
 <div class="quarto-layout-row quarto-layout-valign-center">
 <div id="dgps-5100" class="quarto-layout-cell" style="flex-basis: 55.0%;justify-content: center;">
 <ul>
@@ -1259,7 +1267,7 @@ Figure&nbsp;4: Your model failing to achieve its goal bc you haven’t yet disti
 <ul>
 <li>The (implicit) model in studies like <span class="citation" data-cites="iyengar_news_2010">Iyengar and Kinder (<a href="#ref-iyengar_news_2010" role="doc-biblioref">2010</a>)</span> is something like:</li>
 </ul>
-<div class="quarto-layout-panel" data-layout="[65,35]" data-layout-align="center">
+<div class="quarto-layout-panel" data-layout-align="center" data-layout="[65,35]">
 <div class="quarto-layout-row quarto-layout-valign-center">
 <div id="iyengar-text" class="quarto-layout-cell" style="flex-basis: 65.0%;justify-content: center;">
 <div class="quarto-figure quarto-figure-center">

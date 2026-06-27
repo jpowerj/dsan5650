@@ -1,10 +1,9 @@
 /*-- scss:defaults --*/
-$font-family-sans-serif: "Computer Modern Sans",
-sans-serif !default;
+$font-family-sans-serif: "Latin Mono Sans", "Computer Modern Sans", sans-serif !default;
 
 /*-- scss:rules --*/
 body {
-    font-family: "Computer Modern Sans", sans-serif;
+    font-family: "Latin Modern Sans", "Computer Modern Sans", sans-serif;
 }
 
 /* 
@@ -599,7 +598,7 @@ figcaption {
 .sticky-head {
     position: sticky;
     top: 0;
-    background-color: white;
+    background-color: $body-bg;
     /* border-bottom: 2px solid gray !important; */
     border-top: none !important;
     border-bottom: none !important;

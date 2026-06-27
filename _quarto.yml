@@ -91,11 +91,21 @@ website:
 format:
   html:
     theme:
-      light: [default, "./dsan-globals/jjquarto.scss"]
-      dark: [darkly, "./dsan-globals/jjquarto.scss"]
-    css: "./dsan-globals/jjstyles.css"
+      light:
+        - default
+        - "./dsan-globals/jjquarto.scss"
+        - "./dsan-globals/jjquarto-light.scss"
+      dark:
+        - darkly
+        - "./dsan-globals/jjquarto.scss"
+        - "./dsan-globals/jjquarto-dark.scss"
+    # css: "./dsan-globals/jjstyles.css"
+    respect-user-color-scheme: true
     toc: true
     link-external-newwindow: true
     link-external-icon: true
     include-in-header:
-      text: "<script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js' integrity='sha512-v2CJ7UaYy4JwqLDIrZUI/4hqeoQieOmAZNXBeQyjo21dadnwR+8ZaIJVT8EE2iyI61OV8e6M8PP2/4hpQINQ/g==' crossorigin='anonymous' referrerpolicy='no-referrer'></script><link rel='stylesheet' type='text/css' href='https://cdn.jsdelivr.net/gh/dreampulse/computer-modern-web-font@master/fonts.css'><script src='/sidebar.js'></script>"
+      text: |
+        <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js' integrity='sha512-v2CJ7UaYy4JwqLDIrZUI/4hqeoQieOmAZNXBeQyjo21dadnwR+8ZaIJVT8EE2iyI61OV8e6M8PP2/4hpQINQ/g==' crossorigin='anonymous' referrerpolicy='no-referrer'></script>
+        <link rel='stylesheet' type='text/css' href='https://cdn.jsdelivr.net/gh/sugina-dev/latin-modern-web@1.0.1/style/latinmodern-sans.css'>
+        <script src='/sidebar.js'></script>
