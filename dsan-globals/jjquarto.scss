@@ -1,9 +1,24 @@
 /*-- scss:defaults --*/
-$font-family-sans-serif: "Latin Mono Sans", "Computer Modern Sans", sans-serif !default;
+$font-family-sans-serif:
+  // "Archivo",
+  "Latin Mono Sans",
+  "Computer Modern Sans",
+  sans-serif;
 
 /*-- scss:rules --*/
+// @font-face {
+//   font-family: 'Archivo';
+//   font-weight: 400;
+//   font-style: normal;
+//   src: url("assets/Archivo-Regular.woff2") format('woff2');
+// }
+
 body {
-    font-family: "Latin Modern Sans", "Computer Modern Sans", sans-serif;
+  font-family:
+    // "Archivo",
+    "Latin Modern Sans",
+    "Computer Modern Sans",
+    sans-serif;
 }
 
 /* 
