@@ -551,7 +551,7 @@ window.Quarto = {
     </ul>
     </div>
 <div class="quarto-sidebar-footer"><div class="sidebar-footer-item">
-<p><em>Updated 2026-07-08, 11:53:52 AM</em></p>
+<p><em>Updated 2026-07-08, 05:43:56 PM</em></p>
 </div></div></nav>
 <div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
@@ -562,9 +562,10 @@ window.Quarto = {
   <ul>
   <li><a href="#schedule" id="toc-schedule" class="nav-link active" data-scroll-target="#schedule">Schedule</a></li>
   <li><a href="#final-projects" id="toc-final-projects" class="nav-link" data-scroll-target="#final-projects">Final Projects</a></li>
-  <li><a href="#ecological-inference" id="toc-ecological-inference" class="nav-link" data-scroll-target="#ecological-inference">Ecological Inference</a>
+  <li><a href="#ecological-inference-ei" id="toc-ecological-inference-ei" class="nav-link" data-scroll-target="#ecological-inference-ei">Ecological Inference (EI)</a>
   <ul class="collapse">
   <li><a href="#logic-probability-theory-with-pre-0-or-1" id="toc-logic-probability-theory-with-pre-0-or-1" class="nav-link" data-scroll-target="#logic-probability-theory-with-pre-0-or-1">Logic = Probability Theory with <span class="math inline">\(\Pr(E) = 0\)</span> or <span class="math inline">\(1\)</span></a></li>
+  <li><a href="#times-2-setup" id="toc-times-2-setup" class="nav-link" data-scroll-target="#times-2-setup"><span class="math inline">\(2 \times 2\)</span> Setup</a></li>
   <li><a href="#stage-1-tomography-plots" id="toc-stage-1-tomography-plots" class="nav-link" data-scroll-target="#stage-1-tomography-plots">Stage 1: Tomography Plots</a></li>
   <li><a href="#stage-2-statistical-model" id="toc-stage-2-statistical-model" class="nav-link" data-scroll-target="#stage-2-statistical-model">Stage 2: Statistical Model</a></li>
   <li><a href="#posterior-estimates" id="toc-posterior-estimates" class="nav-link" data-scroll-target="#posterior-estimates">Posterior Estimates</a></li>
@@ -774,10 +775,67 @@ window.Quarto = {
 <li>Choose a path by <strong>Tuesday, July 15, 6:30pm EDT</strong></li>
 </ul>
 </section>
-<section id="ecological-inference" class="level1" data-stack-name="Ecological Inference">
-<h1 data-stack-name="Ecological Inference">Ecological Inference</h1>
+<section id="ecological-inference-ei" class="level1 crunch-title title-12 crunch-img text-85" data-stack-name="Ecological Inference">
+<h1 class="crunch-title title-12 crunch-img text-85" data-stack-name="Ecological Inference">Ecological Inference (EI)</h1>
+<div class="quarto-layout-panel" data-layout-align="center" data-layout="[35,65]">
+<div class="quarto-layout-row quarto-layout-valign-center">
+<div id="ei-left" class="quarto-layout-cell" style="flex-basis: 35.0%;justify-content: center;">
+<ul>
+<li>Here, our <strong>priors</strong> will encode <strong>logical constraints</strong> (weakly-informative)</li>
+<li>Then, our <strong>statistical model</strong> will model <strong>probabilities of micro-level statistics</strong> subject to these constraints</li>
+</ul>
+</div>
+<div id="ei-right" class="quarto-layout-cell" style="flex-basis: 65.0%;justify-content: center;">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/tomography.jpeg" class="img-fluid figure-img" style="width:80.0%"></p>
+<figcaption><span class="material-symbols-outlined">potted_plant</span> Here <strong>lines</strong> represent <strong>logical constraints</strong> on parameters, while the ellipses are <strong>contours</strong> of the probability distribution <strong>pooling</strong> this information</figcaption>
+</figure>
+</div>
+</div>
+</div>
+</div>
 <section id="logic-probability-theory-with-pre-0-or-1" class="level2">
 <h2 class="anchored" data-anchor-id="logic-probability-theory-with-pre-0-or-1">Logic = Probability Theory with <span class="math inline">\(\Pr(E) = 0\)</span> or <span class="math inline">\(1\)</span></h2>
+<ul>
+<li><a href="https://observablehq.com/@jpowerj/ecological-inference">Tomography Plot Demo</a></li>
+</ul>
+</section>
+<section id="times-2-setup" class="level2">
+<h2 class="anchored" data-anchor-id="times-2-setup"><span class="math inline">\(2 \times 2\)</span> Setup</h2>
+<table class="caption-top table">
+<tbody>
+<tr class="odd">
+<td style="border-bottom: 0px solid white"></td>
+<td colspan="2" style="text-align: center; border-bottom: none;"><strong>Occupation</strong></td>
+<td style="border-bottom: none"></td>
+</tr>
+<tr class="even">
+<td style="text-align: center; border-right: 1px solid; border-bottom: 1px solid;"><strong>Vote Choice</strong></td>
+<td style="text-align: center; border-bottom: 1px solid;">Blue-Collar</td>
+<td style="text-align: center; border-bottom: 1px solid; border-right: 1px solid;">Non-Blue-Collar</td>
+<td style="text-align: center; border-bottom: 1px solid; border-top: 0px solid white;"><strong>Total</strong></td>
+</tr>
+<tr class="odd">
+<td style="text-align: center; border-right: 1px solid;">Nazis</td>
+<td style="text-align: center;"><span class="math inline">\(W_{i1}\)</span></td>
+<td style="text-align: center; border-right: 1px solid;"><span class="math inline">\(W_{i2}\)</span></td>
+<td style="text-align: center;"><span class="math inline">\(Y_i\)</span></td>
+</tr>
+<tr class="even">
+<td style="text-align: center; border-right: 1px solid; border-bottom: 1px solid;">Other</td>
+<td style="text-align: center; border-bottom: 1px solid;"><span class="math inline">\(1 - W_{i1}\)</span></td>
+<td style="text-align: center; border-right: 1px solid; border-bottom: 1px solid;"><span class="math inline">\(1 - W_{i2}\)</span></td>
+<td style="text-align: center; border-bottom: 1px solid;"><span class="math inline">\(1 - Y_i\)</span></td>
+</tr>
+<tr class="odd">
+<td style="text-align: center; border-right: 1px solid;"><strong>Total</strong></td>
+<td style="text-align: center;"><span class="math inline">\(X_i\)</span></td>
+<td style="text-align: center; border-right: 1px solid;"><span class="math inline">\(1 - X_i\)</span></td>
+<td style="text-align: center;"><span class="math inline">\(1\)</span></td>
+</tr>
+</tbody>
+</table>
 </section>
 <section id="stage-1-tomography-plots" class="level2">
 <h2 class="anchored" data-anchor-id="stage-1-tomography-plots">Stage 1: Tomography Plots</h2>
