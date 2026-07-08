@@ -383,7 +383,7 @@
     "href": "w08/slides.html#times-2-setup",
     "title": "Week 8: Ecological Inference, Propensity Scores",
     "section": "\\(2 \\times 2\\) Setup",
-    "text": "\\(2 \\times 2\\) Setup\n\n\n\n\nOccupation\n\n\n\nVote Choice\nBlue-Collar\nNon-Blue-Collar\nTotal\n\n\nNazis\n\\(W_{i1}\\)\n\\(W_{i2}\\)\n\\(Y_i\\)\n\n\nOther\n\\(1 - W_{i1}\\)\n\\(1 - W_{i2}\\)\n\\(1 - Y_i\\)\n\n\nTotal\n\\(X_i\\)\n\\(1 - X_i\\)\n\\(1\\)"
+    "text": "\\(2 \\times 2\\) Setup\n\n\n\n\nStatus\n\n\n\nVote Choice\nUnemployed\nEmployed\nTotal\n\n\nNazis\n\\(W_{i1}\\)\n\\(W_{i2}\\)\n\\(Y_i\\)\n\n\nOther\n\\(1 - W_{i1}\\)\n\\(1 - W_{i2}\\)\n\\(1 - Y_i\\)\n\n\nTotal\n\\(X_i\\)\n\\(1 - X_i\\)\n\\(1\\)"
   },
   {
     "objectID": "w08/slides.html#stage-1-tomography-plots",
@@ -515,7 +515,7 @@
     "href": "w08/index.html#times-2-setup",
     "title": "Week 8: Ecological Inference, Propensity Scores",
     "section": "\\(2 \\times 2\\) Setup",
-    "text": "\\(2 \\times 2\\) Setup\n\n\n\n\nOccupation\n\n\n\nVote Choice\nBlue-Collar\nNon-Blue-Collar\nTotal\n\n\nNazis\n\\(W_{i1}\\)\n\\(W_{i2}\\)\n\\(Y_i\\)\n\n\nOther\n\\(1 - W_{i1}\\)\n\\(1 - W_{i2}\\)\n\\(1 - Y_i\\)\n\n\nTotal\n\\(X_i\\)\n\\(1 - X_i\\)\n\\(1\\)",
+    "text": "\\(2 \\times 2\\) Setup\n\n\n\n\nStatus\n\n\n\nVote Choice\nUnemployed\nEmployed\nTotal\n\n\nNazis\n\\(W_{i1}\\)\n\\(W_{i2}\\)\n\\(Y_i\\)\n\n\nOther\n\\(1 - W_{i1}\\)\n\\(1 - W_{i2}\\)\n\\(1 - Y_i\\)\n\n\nTotal\n\\(X_i\\)\n\\(1 - X_i\\)\n\\(1\\)",
     "crumbs": [
       "Week 8: {{< var w08.date-md >}}"
     ]
