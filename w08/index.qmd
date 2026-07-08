@@ -89,7 +89,21 @@ source("../dsan-globals/_globals.r")
   * <i class='bi bi-2-circle'></i> Taking an existing project/interest (e.g., from 5300) and **pushing towards the causality asymptote**
 * Choose a path by **Tuesday, July 15, 6:30pm EDT** 
 
-# Ecological Inference {data-stack-name="Ecological Inference"}
+# Ecological Inference (EI) {.crunch-title .title-12 .crunch-img .text-85 data-stack-name="Ecological Inference"}
+
+:::: {layout="[35,65]" layout-align="center" layout-valign="center"}
+::: {#ei-left}
+
+* Here, our **priors** will encode **logical constraints** (weakly-informative)
+* Then, our **statistical model** will model **probabilities of micro-level statistics** subject to these constraints
+
+:::
+::: {#ei-right}
+
+![[potted_plant]{.material-symbols-outlined} Here **lines** represent **logical constraints** on parameters, while the ellipses are **contours** of the probability distribution **pooling** this information](images/tomography.jpeg){fig-align="center" width="80%"}
+
+:::
+::::
 
 ## Logic = Probability Theory with $\Pr(E) = 0$ or $1$
 
