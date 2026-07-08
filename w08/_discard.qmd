@@ -13,3 +13,16 @@ cm.est_via_weighting()
 
 print(cm.estimates)
 ```
+
+---
+
+| | 7:30pm | 7:50pm | [Final Project Pep Talk &rarr;](#final-projects) |
+
+---
+
+## Roadmap for Part 2 {.title-11}
+
+* $\downarrow$ Focus on abstract concepts / terminology
+* $\uparrow$ Focus on **data analysis**
+* (Should hopefully start to feel more like other DSAN classes!)
+* ($\Rightarrow$ Need you to take specific examples I pick and **analogize them** to your field(s) of interest)

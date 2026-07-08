@@ -473,6 +473,21 @@ figcaption {
     font-size: 70% !important;
 }
 
+.material-symbols-outlined {
+  margin-top: 5px;
+  margin-right: -6px;
+  vertical-align: -5px;
+  font-size: 2rem;
+  background-color: lightgrey;
+  border: 2px solid lightgrey;
+  border-radius: 8px;
+  font-variation-settings:
+  'FILL' 0,
+  'wght' 400,
+  'GRAD' 0,
+  'opsz' 60
+}
+
 .crunch-footnotes aside {
     margin-top: 0px !important;
 }

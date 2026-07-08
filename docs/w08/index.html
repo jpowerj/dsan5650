@@ -8,7 +8,7 @@
 
 <meta name="author" content="Jeff Jacobs">
 
-<title>Week 8: Propensity Score Weighting – DSAN 5650</title>
+<title>Week 8: Ecological Inference, Propensity Scores – DSAN 5650</title>
 <style>
 /* Default styles provided by pandoc.
 ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
@@ -100,9 +100,9 @@ div.csl-indent {
 <link href="../site_libs/quarto-html/quarto-syntax-highlighting-e44360b8a8db1e130c7792fece1c8032.css" rel="stylesheet" class="quarto-color-scheme-extra" id="quarto-text-highlighting-styles">
 <script src="../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../site_libs/bootstrap/bootstrap-510e8dcf9e25c2f520533354b30b76ad.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
-<link href="../site_libs/bootstrap/bootstrap-dark-b30b50cacc728bf5140a12b3b6b88f58.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
-<link href="../site_libs/bootstrap/bootstrap-510e8dcf9e25c2f520533354b30b76ad.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
+<link href="../site_libs/bootstrap/bootstrap-7847c04eceb4fa21c2e0c9cfc5856fed.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="../site_libs/bootstrap/bootstrap-dark-36e80825e7e0c9ea96432514366a5873.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<link href="../site_libs/bootstrap/bootstrap-7847c04eceb4fa21c2e0c9cfc5856fed.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "sidebar",
   "copy-button": false,
@@ -551,7 +551,7 @@ window.Quarto = {
     </ul>
     </div>
 <div class="quarto-sidebar-footer"><div class="sidebar-footer-item">
-<p><em>Updated 2026-06-26, 09:12:39 PM</em></p>
+<p><em>Updated 2026-07-08, 11:53:52 AM</em></p>
 </div></div></nav>
 <div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
@@ -560,11 +560,15 @@ window.Quarto = {
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#schedule" id="toc-schedule" class="nav-link active" data-scroll-target="#schedule">Schedule</a>
-  <ul class="collapse">
-  <li><a href="#roadmap-for-part-2" id="toc-roadmap-for-part-2" class="nav-link" data-scroll-target="#roadmap-for-part-2">Roadmap for Part 2</a></li>
-  </ul></li>
+  <li><a href="#schedule" id="toc-schedule" class="nav-link active" data-scroll-target="#schedule">Schedule</a></li>
   <li><a href="#final-projects" id="toc-final-projects" class="nav-link" data-scroll-target="#final-projects">Final Projects</a></li>
+  <li><a href="#ecological-inference" id="toc-ecological-inference" class="nav-link" data-scroll-target="#ecological-inference">Ecological Inference</a>
+  <ul class="collapse">
+  <li><a href="#logic-probability-theory-with-pre-0-or-1" id="toc-logic-probability-theory-with-pre-0-or-1" class="nav-link" data-scroll-target="#logic-probability-theory-with-pre-0-or-1">Logic = Probability Theory with <span class="math inline">\(\Pr(E) = 0\)</span> or <span class="math inline">\(1\)</span></a></li>
+  <li><a href="#stage-1-tomography-plots" id="toc-stage-1-tomography-plots" class="nav-link" data-scroll-target="#stage-1-tomography-plots">Stage 1: Tomography Plots</a></li>
+  <li><a href="#stage-2-statistical-model" id="toc-stage-2-statistical-model" class="nav-link" data-scroll-target="#stage-2-statistical-model">Stage 2: Statistical Model</a></li>
+  <li><a href="#posterior-estimates" id="toc-posterior-estimates" class="nav-link" data-scroll-target="#posterior-estimates">Posterior Estimates</a></li>
+  </ul></li>
   <li><a href="#propensity-score-weighting" id="toc-propensity-score-weighting" class="nav-link" data-scroll-target="#propensity-score-weighting">Propensity Score Weighting</a>
   <ul class="collapse">
   <li><a href="#working-example-growth-mindset" id="toc-working-example-growth-mindset" class="nav-link" data-scroll-target="#working-example-growth-mindset">Working Example: Growth Mindset(!)</a></li>
@@ -577,8 +581,11 @@ window.Quarto = {
   <li><a href="#inverse-probability-of-treatment-weighting" id="toc-inverse-probability-of-treatment-weighting" class="nav-link" data-scroll-target="#inverse-probability-of-treatment-weighting">Inverse Probability-of-Treatment Weighting</a></li>
   <li><a href="#the-final-result" id="toc-the-final-result" class="nav-link" data-scroll-target="#the-final-result">The Final Result!</a></li>
   </ul></li>
-  <li><a href="#what-if-we-have-many-covariates" id="toc-what-if-we-have-many-covariates" class="nav-link" data-scroll-target="#what-if-we-have-many-covariates">…What If We Have <em>Many</em> Covariates?</a>
+  <li><a href="#what-if-we-have-many-covariates" id="toc-what-if-we-have-many-covariates" class="nav-link" data-scroll-target="#what-if-we-have-many-covariates">…What If We Have <em>Many</em> Covariates?</a></li>
+  <li><a href="#potted_plant-causal-inferences-with-text" id="toc-potted_plant-causal-inferences-with-text" class="nav-link" data-scroll-target="#potted_plant-causal-inferences-with-text"><span class="material-symbols-outlined">potted_plant</span> Causal Inferences with Text</a>
   <ul class="collapse">
+  <li><a href="#discovered-topics-depend-on-the-data" id="toc-discovered-topics-depend-on-the-data" class="nav-link" data-scroll-target="#discovered-topics-depend-on-the-data">“Discovered” Topics <em>Depend on the Data</em> 😟</a></li>
+  <li><a href="#the-solution-sample-splitting" id="toc-the-solution-sample-splitting" class="nav-link" data-scroll-target="#the-solution-sample-splitting">The Solution? <em>Sample Splitting!</em></a></li>
   <li><a href="#references" id="toc-references" class="nav-link" data-scroll-target="#references">References</a></li>
   </ul></li>
   </ul>
@@ -590,7 +597,7 @@ window.Quarto = {
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Week 8: Propensity Score Weighting</h1>
+<h1 class="title">Week 8: Ecological Inference, Propensity Scores</h1>
 <p class="subtitle lead"><em>DSAN 5650: Causal Inference for Computational Social Science</em><br><span class="subsubtitle">Summer 2026, Georgetown University</span></p>
   <div class="quarto-categories">
     <div class="quarto-category">Class Sessions</div>
@@ -655,26 +662,38 @@ window.Quarto = {
 <tr class="odd">
 <td style="text-align: left;"><strong>Lecture</strong></td>
 <td style="text-align: left;">6:30pm</td>
-<td style="text-align: left;">7:00pm</td>
+<td style="text-align: left;">6:40pm</td>
 <td style="text-align: left;"><a href="#final-projects">Final Project Pep Talk →</a></td>
 </tr>
 <tr class="even">
 <td style="text-align: left;"></td>
-<td style="text-align: left;">7:00pm</td>
-<td style="text-align: left;">7:50pm</td>
-<td style="text-align: left;"><a href="#propensity-score-weighting">Controlling For Things vs.&nbsp;Matching/Weighting →</a></td>
+<td style="text-align: left;">6:40pm</td>
+<td style="text-align: left;">7:15pm</td>
+<td style="text-align: left;"><a href="#ecological-inference">Ecological Inference →</a></td>
 </tr>
 <tr class="odd">
-<td style="text-align: left;"><strong>Break!</strong></td>
-<td style="text-align: left;">7:50pm</td>
-<td style="text-align: left;">8:00pm</td>
 <td style="text-align: left;"></td>
+<td style="text-align: left;">7:15pm</td>
+<td style="text-align: left;">8:00pm</td>
+<td style="text-align: left;"><a href="#propensity-score-weighting">Controlling For Things vs.&nbsp;Matching/Weighting →</a></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><strong>Break!</strong></td>
+<td style="text-align: left;">8:00pm</td>
+<td style="text-align: left;">8:10pm</td>
+<td style="text-align: left;"></td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"></td>
+<td style="text-align: left;">8:10pm</td>
+<td style="text-align: left;">8:30pm</td>
+<td style="text-align: left;"><a href="#what-if-we-have-many-covariates">Propensity Score Lab →</a></td>
 </tr>
 <tr class="even">
 <td style="text-align: left;"></td>
-<td style="text-align: left;">8:00pm</td>
+<td style="text-align: left;">8:30pm</td>
 <td style="text-align: left;">9:00pm</td>
-<td style="text-align: left;"><a href="#what-if-we-have-many-covariates">Propensity Score Lab →</a></td>
+<td style="text-align: left;"><a href="">Causal Inferences with Text →</a></td>
 </tr>
 </tbody>
 </table>
@@ -743,18 +762,9 @@ window.Quarto = {
 </details>
 </div>
 </div>
-<section id="roadmap-for-part-2" class="level2 title-11">
-<h2 class="title-11 anchored" data-anchor-id="roadmap-for-part-2">Roadmap for Part 2</h2>
-<ul>
-<li><span class="math inline">\(\downarrow\)</span> Focus on abstract concepts / terminology</li>
-<li><span class="math inline">\(\uparrow\)</span> Focus on <strong>data analysis</strong></li>
-<li>(Should hopefully start to feel more like other DSAN classes!)</li>
-<li>(<span class="math inline">\(\Rightarrow\)</span> Need you to take specific examples I pick and <strong>analogize them</strong> to your field(s) of interest)</li>
-</ul>
 </section>
-</section>
-<section id="final-projects" class="level1" data-stack-name="Final Projects">
-<h1 data-stack-name="Final Projects">Final Projects</h1>
+<section id="final-projects" class="level1" data-name="Final Projects">
+<h1 data-name="Final Projects">Final Projects</h1>
 <ul>
 <li>Notion! Then, choose a path (rough draft of paths):
 <ul>
@@ -763,6 +773,21 @@ window.Quarto = {
 </ul></li>
 <li>Choose a path by <strong>Tuesday, July 15, 6:30pm EDT</strong></li>
 </ul>
+</section>
+<section id="ecological-inference" class="level1" data-stack-name="Ecological Inference">
+<h1 data-stack-name="Ecological Inference">Ecological Inference</h1>
+<section id="logic-probability-theory-with-pre-0-or-1" class="level2">
+<h2 class="anchored" data-anchor-id="logic-probability-theory-with-pre-0-or-1">Logic = Probability Theory with <span class="math inline">\(\Pr(E) = 0\)</span> or <span class="math inline">\(1\)</span></h2>
+</section>
+<section id="stage-1-tomography-plots" class="level2">
+<h2 class="anchored" data-anchor-id="stage-1-tomography-plots">Stage 1: Tomography Plots</h2>
+</section>
+<section id="stage-2-statistical-model" class="level2">
+<h2 class="anchored" data-anchor-id="stage-2-statistical-model">Stage 2: Statistical Model</h2>
+</section>
+<section id="posterior-estimates" class="level2">
+<h2 class="anchored" data-anchor-id="posterior-estimates">Posterior Estimates</h2>
+</section>
 </section>
 <section id="propensity-score-weighting" class="level1 title-11 crunch-title crunch-ul crunch-quarto-layout-panel crunch-img text-75 crunch-li-8" data-stack-name="Propensity Scores">
 <h1 class="title-11 crunch-title crunch-ul crunch-quarto-layout-panel crunch-img text-75 crunch-li-8" data-stack-name="Propensity Scores">Propensity Score Weighting</h1>
@@ -1380,11 +1405,212 @@ Standard error: HC0 robust (adjusted for estimation of weights)</code></pre>
 <li>Curse of dimensionality…</li>
 <li>Lab Time!</li>
 </ul>
+</section>
+<section id="potted_plant-causal-inferences-with-text" class="level1 smaller crunch-title title-10 crunch-ul crunch-p" data-stack-name="Causal NLP">
+<h1 class="smaller crunch-title title-10 crunch-ul crunch-p" data-stack-name="Causal NLP"><span class="material-symbols-outlined">potted_plant</span> Causal Inferences with Text</h1>
+<p><em>(The necessity for <strong>sample splitting</strong>!)</em></p>
+<ul>
+<li>Recall the <strong>media effects</strong> example from <a href="https://jjacobs.me/dsan5650/w03/#studying-fake-news">Week 3</a>; here an experiment where:</li>
+<li><strong>Treatment</strong> (<span class="math inline">\(D_i = 1\)</span>) watches <strong>presidential debate</strong> (control doesn’t watch anything)</li>
+<li><strong>Outcome</strong> <span class="math inline">\(Y_i\)</span>: We estimate a <strong>topic model</strong> of the respondent’s verbal answer to “what do you think are the most important issues in US politics today?”</li>
+</ul>
+<div id="tbl-naoki" class="quarto-float quarto-figure quarto-figure-center anchored" data-cap-location="bottom">
+<figure class="quarto-float quarto-float-tbl figure">
+<div aria-describedby="tbl-naoki-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<table class="caption-top table">
+<colgroup>
+<col style="width: 33%">
+<col style="width: 33%">
+<col style="width: 33%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: center;"></th>
+<th style="text-align: center;"><span class="math inline">\(Y_i \mid \textsf{do}(D_i \leftarrow 1)\)</span></th>
+<th style="text-align: center;"><span class="math inline">\(Y_i \mid \textsf{do}(D_i \leftarrow 0)\)</span></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;">Person 1</td>
+<td style="text-align: center;">Candidate’s Morals</td>
+<td style="text-align: center;">Taxes</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">Person 2</td>
+<td style="text-align: center;">Candidate’s Morals</td>
+<td style="text-align: center;">Taxes</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">Person 3</td>
+<td style="text-align: center;">Polarization</td>
+<td style="text-align: center;">Immigration</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">Person 4</td>
+<td style="text-align: center;">Polarization</td>
+<td style="text-align: center;">Immigration</td>
+</tr>
+</tbody>
+</table>
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-tbl" id="tbl-naoki-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Table&nbsp;1: From <span class="citation" data-cites="egami_how_2022">Egami et al. (<a href="#ref-egami_how_2022" role="doc-biblioref">2022</a>)</span>
+</figcaption>
+</figure>
+</div>
+<section id="discovered-topics-depend-on-the-data" class="level2 smaller crunch-title title-11 table-85">
+<h2 class="smaller crunch-title title-11 table-85 anchored" data-anchor-id="discovered-topics-depend-on-the-data">“Discovered” Topics <em>Depend on the Data</em> 😟</h2>
+<div id="tbl-naoki" class="quarto-float quarto-figure quarto-figure-center anchored" data-cap-location="bottom">
+<figure class="quarto-float quarto-float-tbl figure">
+<div aria-describedby="tbl-naoki-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<table class="caption-top table">
+<colgroup>
+<col style="width: 25%">
+<col style="width: 37%">
+<col style="width: 37%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: right;"></th>
+<th style="text-align: center;"><span class="math inline">\(Y_i \mid \textsf{do}(D_i \leftarrow 1)\)</span></th>
+<th style="text-align: center;"><span class="math inline">\(Y_i \mid \textsf{do}(D_i \leftarrow 0)\)</span></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: right;">Person 1</td>
+<td style="text-align: center;">Candidate’s Morals</td>
+<td style="text-align: center;">Taxes</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">Person 2</td>
+<td style="text-align: center;">Candidate’s Morals</td>
+<td style="text-align: center;">Taxes</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">Person 3</td>
+<td style="text-align: center;">Polarization</td>
+<td style="text-align: center;">Immigration</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">Person 4</td>
+<td style="text-align: center;">Polarization</td>
+<td style="text-align: center;">Immigration</td>
+</tr>
+</tbody>
+</table>
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-tbl" id="tbl-naoki-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Table&nbsp;2: From <span class="citation" data-cites="egami_how_2022">Egami et al. (<a href="#ref-egami_how_2022" role="doc-biblioref">2022</a>)</span>
+</figcaption>
+</figure>
+</div>
+<div class="columns">
+<div class="column" style="width:50%;">
+<div id="tbl-world1" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-tbl figure">
+<figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-world1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Table&nbsp;3: Realized assignments and outcomes in World 1
+</figcaption>
+<div aria-describedby="tbl-world1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th style="text-align: center;"></th>
+<th style="text-align: center;">Actual Assignment</th>
+<th style="text-align: center;">Outcome <span class="math inline">\(Y_i\)</span></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;">Person 1</td>
+<td style="text-align: center;"><span class="math inline">\(D_1 = 1\)</span></td>
+<td style="text-align: center;">Morals</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">Person 2</td>
+<td style="text-align: center;"><span class="math inline">\(D_2 = 1\)</span></td>
+<td style="text-align: center;">Morals</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">Person 3</td>
+<td style="text-align: center;"><span class="math inline">\(D_3 = 0\)</span></td>
+<td style="text-align: center;">Immigration</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">Person 4</td>
+<td style="text-align: center;"><span class="math inline">\(D_4 = 0\)</span></td>
+<td style="text-align: center;">Immigration</td>
+</tr>
+</tbody>
+</table>
+</div>
+</figure>
+</div>
+</div><div class="column" style="width:50%;">
+<div id="tbl-world2" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-tbl figure">
+<figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-world2-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Table&nbsp;4: Realized assignments and outcomes in World 2
+</figcaption>
+<div aria-describedby="tbl-world2-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th style="text-align: center;"></th>
+<th style="text-align: center;">Actual Assignment</th>
+<th style="text-align: center;">Outcome <span class="math inline">\(Y_i\)</span></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;">Person 1</td>
+<td style="text-align: center;"><span class="math inline">\(D_1 = 1\)</span></td>
+<td style="text-align: center;">Morals</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">Person 2</td>
+<td style="text-align: center;"><span class="math inline">\(D_2 = 0\)</span></td>
+<td style="text-align: center;">Taxes</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">Person 3</td>
+<td style="text-align: center;"><span class="math inline">\(D_3 = 1\)</span></td>
+<td style="text-align: center;">Polarization</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">Person 4</td>
+<td style="text-align: center;"><span class="math inline">\(D_4 = 0\)</span></td>
+<td style="text-align: center;">Immigration</td>
+</tr>
+</tbody>
+</table>
+</div>
+</figure>
+</div>
+</div>
+</div>
+</section>
+<section id="the-solution-sample-splitting" class="level2 crunch-title crunch-ul">
+<h2 class="crunch-title crunch-ul anchored" data-anchor-id="the-solution-sample-splitting">The Solution? <em>Sample Splitting!</em></h2>
+<ul>
+<li>Machine learning noticed this long ago: the goal is a model that <strong>generalizes</strong>, not <strong>memorizes!</strong></li>
+</ul>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/sample_split.jpg" class="img-fluid quarto-figure quarto-figure-center figure-img"></p>
+</figure>
+</div>
+</section>
 <section id="references" class="level2">
 <h2 class="anchored" data-anchor-id="references">References</h2>
 <div id="refs" class="references csl-bib-body hanging-indent" role="list">
 <div id="ref-athey_estimating_2019" class="csl-entry" role="listitem">
 Athey, Susan, and Stefan Wager. 2019. <span>“Estimating <span>Treatment Effects</span> with <span>Causal Forests</span>: <span>An Application</span>.”</span> Pre-published February 20. <a href="https://doi.org/10.48550/arXiv.1902.07409">https://doi.org/10.48550/arXiv.1902.07409</a>.
+</div>
+<div id="ref-egami_how_2022" class="csl-entry" role="listitem">
+Egami, Naoki, Christian J. Fong, Justin Grimmer, Margaret E. Roberts, and Brandon M. Stewart. 2022. <span>“How to Make Causal Inferences Using Texts.”</span> <em>Science Advances</em> 8 (42): eabg2652. <a href="https://doi.org/10.1126/sciadv.abg2652">https://doi.org/10.1126/sciadv.abg2652</a>.
 </div>
 <div id="ref-rosenbaum_central_1983" class="csl-entry" role="listitem">
 Rosenbaum, Paul R., and Donald B. Rubin. 1983. <span>“The <span>Central Role</span> of the <span>Propensity Score</span> in <span>Observational Studies</span> for <span>Causal Effects</span>.”</span> <em>Biometrika</em> 70 (1): 41–55. <a href="https://doi.org/10.2307/2335942">https://doi.org/10.2307/2335942</a>.
