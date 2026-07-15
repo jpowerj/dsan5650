@@ -1,5 +1,5 @@
 ---
-title: "Week 10: Text-as-Data"
+title: "Week 10: Doubly-Robust Estimation, Text-as-Data"
 subtitle: "*DSAN 5650: Causal Inference for Computational Social Science*<br><span class='subsubtitle'>Summer 2026, Georgetown University</span>"
 author: "Jeff Jacobs"
 institute: "[`jj1088@georgetown.edu`](mailto:jj1088@georgetown.edu)"
@@ -80,6 +80,8 @@ Today's Planned Schedule:
 * **Final Submission**:
     * ***Submitted*** via Canvas by **Friday, August 8th**, 5:59pm EDT
 
+
+
 ## Independent vs. Dependent Variables {.smaller .title-09 .crunch-title .crunch-quarto-figure .crunch-quarto-layout-panel .crunch-ul .crunch-img .crunch-p}
 
 :::: {layout="[1,1]" layout-valign="center"}
@@ -125,6 +127,123 @@ Today's Planned Schedule:
   * [Differences in earnings]
   * [Probability of news story]
 * Start with dependent var $\Rightarrow$ *"What are the causes of this effect?"*
+
+:::
+::::
+
+# Double Robustness {data-stack-name="Double Robustness" .smaller}
+
+* Propensity Score Weighting seems so much easier than all the hard work of modeling... why can't we just propensity score all the things and be done with it!?
+* By using **doubly-robust** estimation methods, you can:
+  * <i class='bi bi-1-circle'></i> Carefully develop a **covariate adjustment strategy** (then use e.g. regression),
+  * <i class='bi bi-2-circle'></i> Carefully develop a **propensity score strategy**, and then
+  * <i class='bi bi-3-circle'></i> Be only as wrong as the least-wrong of <i class='bi bi-1-circle'></i> and <i class='bi bi-2-circle'></i>!!
+
+![*With doubly-robust estimation, as long as the answer is either True or False you're good!*](images/false-true.png){fig-align="center"}
+
+## Doubly-Robust Estimation {.smaller .crunch-title .crunch-quarto-layout-panel .crunch-quarto-figure}
+
+:::: {layout="[1,1]" layout-align="center" layout-valign="center"}
+::: {.column width="50%"}
+
+![Super cool example courtesy of [Matteo Courthoud](https://matteocourthoud.github.io/post/aipw/)!](images/darkmode.svg){fig-align="center" width="40%"}
+
+:::
+::: {.column width="50%"}
+
+![](images/modes.png){fig-align="center" width="80%"}
+
+:::
+::::
+
+{{< embed ./darkmode_example.ipynb#darkmode-setup echo=true >}}
+
+<center>
+
+...So, is this a causal effect? Does dark theme **cause** users to spend less time reading?
+
+</center>
+
+## Unit of Observation: (Article, Reader) {.title-10 .smaller .crunch-title}
+
+*(...since I couldn't figure out how to fit it on the last slide)*
+
+{{< embed darkmode_example.ipynb#page-read-data echo=true >}}
+
+## What Does the Data Look Like? {.smaller .crunch-title .title-11 .crunch-img}
+
+{{< embed darkmode_example.ipynb#fig-darkmode-pairplot echo=true >}}
+
+## Control-Treatment Balance {.smaller .crunch-title .table-90}
+
+:::: {.columns}
+::: {.column width="50%"}
+
+Enter **Uber**'s causal inference library: [`causalml`](https://causalml.readthedocs.io/en/latest/about.html)
+
+{{< embed darkmode_example.ipynb#darkmode-balance-table echo=true >}}
+
+:::
+::: {.column width="50%"}
+
+And then `WeightIt` to generate a "love plot":
+
+![](images/loveplot.png){fig-align="center"}
+
+:::
+::::
+
+## *Augmented* Inverse Propensity Weighting (AIPW) {.smaller .crunch-title .title-09 .math-90}
+
+$$
+\begin{align*}
+\hat \tau_{AIPW} &= \frac{1}{n} \sum_{i=1}^{n} \left( \text{RegEst}(X_i) + \text{PropensityAdj}(X_i, Y_i) \right) \\
+\text{RegEst}(X_i) &= \hat \mu^{(1)}(X_i) - \hat \mu^{(0)}(X_i) \\
+\text{PropensityAdj}(X_i, Y_i) &= \frac{D_i}{\hat{\mathtt{e}}(X_i)} \left( Y_i - \hat \mu^{(1)}(X_i) \right) - \frac{(1-D_i) }{1-\hat{\mathtt{e}}(X_i)} \left( Y_i - \hat \mu^{(0)}(X_i) \right)
+\end{align*}
+$$
+
+* $\mu^{(d)}(x)$ is the **response function**, i.e. the expected value of the outcome, conditional on observable characteristics $x$ and treatment status $d$
+* $\hat{\texttt{e}}(X)$ is the **estimated propensity score**.
+
+$$
+\begin{align*}
+\mu^{(d)}(x) &= \mathbb E \left[ Y_i \ \big | \ X_i = x, D_i = d \right] \\
+\mathtt{e}(x) &= \mathbb E \left[ D_i = 1 \ \big | \ X_i = x \right]
+\end{align*}
+$$
+
+## Model 1: Propensity Score {.smaller .crunch-title .crunch-img .crunch-quarto-figure}
+
+{{< embed darkmode_example.ipynb#model1-propensity-score echo=true >}}
+
+{{< embed darkmode_example.ipynb#model1-result echo=true >}}
+
+## Model 2: Regression with Controls {.smaller}
+
+First, with `scikit-learn`:
+
+{{< embed darkmode_example.ipynb#model2-sklearn echo=true >}}
+
+Enter [`EconML`](https://econml.azurewebsites.net/index.html), Microsoft's "Official" ML-based econometrics library 😎
+
+{{< embed darkmode_example.ipynb#model2-econml echo=true >}}
+
+## Double-Robustness to the Rescue! {.smaller}
+
+:::: {.columns}
+::: {.column width="50%"}
+
+Wrong **regression** model:
+
+{{< embed darkmode_example.ipynb#double-wrong-reg echo=true >}}
+
+:::
+::: {.column width="50%"}
+
+Wrong **propensity score** model:
+
+{{< embed darkmode_example.ipynb#double-wrong-ps echo=true >}}
 
 :::
 ::::

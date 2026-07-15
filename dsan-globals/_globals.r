@@ -70,6 +70,16 @@ remove_legend <- function() {
   )
 }
 
+transparent_bg <- function() {
+  return(
+    theme(
+      panel.background = ggplot2::element_rect(fill='transparent'),
+      plot.background = ggplot2::element_rect(fill='transparent', color=NA),
+      legend.background = element_rect(fill = "transparent", colour = NA),
+    )
+  )
+}
+
 # Global functions
 get_rss <- function(model) {
   return(sum(summary(model)$residuals^2))

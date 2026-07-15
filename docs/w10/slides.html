@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en"><head>
 <link href="../favicon.png" rel="icon" type="image/png">
-<script src="../site_libs/clipboard/clipboard.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.min.js" integrity="sha384-ZvpUoO/+PpLXR1lu4jmpXWu80pZlYUAfxl5NsBMWOEPSjUn/6Z/hRTt8+pR6L4N2" crossorigin="anonymous"></script><script src="../site_libs/clipboard/clipboard.min.js"></script>
 <script src="../site_libs/quarto-html/tabby.min.js"></script>
 <script src="../site_libs/quarto-html/popper.min.js"></script>
 <script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
@@ -11,7 +11,7 @@
   <meta name="generator" content="quarto-1.10.3">
 
   <meta name="author" content="Jeff Jacobs">
-  <title>DSAN 5650 – Week 10: Text-as-Data</title>
+  <title>DSAN 5650 – Week 10: Doubly-Robust Estimation, Text-as-Data</title>
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
@@ -32,6 +32,72 @@
       margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
       vertical-align: middle;
     }
+    /* CSS for syntax highlighting */
+    html { -webkit-text-size-adjust: 100%; }
+    pre > code.sourceCode { white-space: pre; position: relative; }
+    pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+    pre > code.sourceCode > span:empty { height: 1.2em; }
+    .sourceCode { overflow: visible; }
+    code.sourceCode > span { color: inherit; text-decoration: inherit; }
+    div.sourceCode { margin: 1em 0; }
+    pre.sourceCode { margin: 0; }
+    @media screen {
+    div.sourceCode { overflow: auto; }
+    }
+    @media print {
+    pre > code.sourceCode { white-space: pre-wrap; }
+    pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+    }
+    pre.numberSource code
+      { counter-reset: source-line 0; }
+    pre.numberSource code > span
+      { position: relative; left: -4em; counter-increment: source-line; }
+    pre.numberSource code > span > a:first-child::before
+      { content: counter(source-line);
+        position: relative; left: -1em; text-align: right; vertical-align: baseline;
+        border: none; display: inline-block;
+        -webkit-touch-callout: none; -webkit-user-select: none;
+        -khtml-user-select: none; -moz-user-select: none;
+        -ms-user-select: none; user-select: none;
+        padding: 0 4px; width: 4em;
+        color: #aaaaaa;
+      }
+    pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+    div.sourceCode
+      { color: #003b4f; background-color: #f1f3f5; }
+    @media screen {
+    pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+    }
+    code span { color: #003b4f; } /* Normal */
+    code span.al { color: #ad0000; } /* Alert */
+    code span.an { color: #5e5e5e; } /* Annotation */
+    code span.at { color: #657422; } /* Attribute */
+    code span.bn { color: #ad0000; } /* BaseN */
+    code span.bu { } /* BuiltIn */
+    code span.cf { color: #003b4f; font-weight: bold; } /* ControlFlow */
+    code span.ch { color: #20794d; } /* Char */
+    code span.cn { color: #8f5902; } /* Constant */
+    code span.co { color: #5e5e5e; } /* Comment */
+    code span.cv { color: #5e5e5e; font-style: italic; } /* CommentVar */
+    code span.do { color: #5e5e5e; font-style: italic; } /* Documentation */
+    code span.dt { color: #ad0000; } /* DataType */
+    code span.dv { color: #ad0000; } /* DecVal */
+    code span.er { color: #ad0000; } /* Error */
+    code span.ex { } /* Extension */
+    code span.fl { color: #ad0000; } /* Float */
+    code span.fu { color: #4758ab; } /* Function */
+    code span.im { color: #00769e; } /* Import */
+    code span.in { color: #5e5e5e; } /* Information */
+    code span.kw { color: #003b4f; font-weight: bold; } /* Keyword */
+    code span.op { color: #5e5e5e; } /* Operator */
+    code span.ot { color: #003b4f; } /* Other */
+    code span.pp { color: #ad0000; } /* Preprocessor */
+    code span.sc { color: #5e5e5e; } /* SpecialChar */
+    code span.ss { color: #20794d; } /* SpecialString */
+    code span.st { color: #20794d; } /* String */
+    code span.va { color: #111111; } /* Variable */
+    code span.vs { color: #20794d; } /* VerbatimString */
+    code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
     /* CSS for citations */
     div.csl-bib-body { }
     div.csl-entry {
@@ -146,6 +212,9 @@
       margin-right: 0; 
     }
   </style>
+  <script src="https://cdn.jsdelivr.net/npm/requirejs@2.3.6/require.min.js" integrity="sha384-c9c+LnTbwQ3aujuU7ULEPVvgLs+Fn6fJUvIGTsuu1ZcCf11fiEubah0ttpca4ntM sha384-6V1/AdqZRWk1KAlWbKBlGhN7VG4iE/yAZcO6NZPMF8od0vukrvr0tg4qY6NSrItx" crossorigin="anonymous"></script>
+  
+  <script type="application/javascript">define('jquery', [],function() {return window.jQuery;})</script>
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css"><link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/gh/dreampulse/computer-modern-web-font@master/fonts.css">
 </head>
 <body class="quarto-light">
@@ -153,7 +222,7 @@
     <div class="slides">
 
 <section id="title-slide" class="quarto-title-block center">
-  <h1 class="title">Week 10: Text-as-Data</h1>
+  <h1 class="title">Week 10: Doubly-Robust Estimation, Text-as-Data</h1>
   <p class="subtitle"><em>DSAN 5650: Causal Inference for Computational Social Science</em><br><span class="subsubtitle">Summer 2026, Georgetown University</span></p>
 
 <div class="quarto-title-authors">
@@ -330,6 +399,544 @@ Jeff Jacobs
 </ul></li>
 <li>Start with dependent var <span class="math inline">\(\Rightarrow\)</span> <em>“What are the causes of this effect?”</em></li>
 </ul>
+</div></div>
+</section></section>
+<section>
+<section id="double-robustness" class="title-slide slide level1 smaller center" data-stack-name="Double Robustness">
+<h1>Double Robustness</h1>
+<ul>
+<li>Propensity Score Weighting seems so much easier than all the hard work of modeling… why can’t we just propensity score all the things and be done with it!?</li>
+<li>By using <strong>doubly-robust</strong> estimation methods, you can:
+<ul>
+<li><i class="bi bi-1-circle"></i> Carefully develop a <strong>covariate adjustment strategy</strong> (then use e.g.&nbsp;regression),</li>
+<li><i class="bi bi-2-circle"></i> Carefully develop a <strong>propensity score strategy</strong>, and then</li>
+<li><i class="bi bi-3-circle"></i> Be only as wrong as the least-wrong of <i class="bi bi-1-circle"></i> and <i class="bi bi-2-circle"></i>!!</li>
+</ul></li>
+</ul>
+
+<img data-src="images/false-true.png" class="r-stretch quarto-figure-center"><p class="caption"><em>With doubly-robust estimation, as long as the answer is either True or False you’re good!</em></p></section>
+<section id="doubly-robust-estimation" class="slide level2 smaller crunch-title crunch-quarto-layout-panel crunch-quarto-figure">
+<h2>Doubly-Robust Estimation</h2>
+<div class="quarto-layout-panel" data-layout-align="center" data-layout="[1,1]">
+<div class="quarto-layout-row quarto-layout-valign-center">
+<div class="column quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="images/darkmode.svg" style="width:40.0%"></p>
+<figcaption>Super cool example courtesy of <a href="https://matteocourthoud.github.io/post/aipw/">Matteo Courthoud</a>!</figcaption>
+</figure>
+</div>
+</div><div class="column quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="images/modes.png" class="quarto-figure quarto-figure-center"></p>
+</figure>
+</div>
+</div></div>
+</div>
+<div class="quarto-embed-nb-cell" data-notebook="/Users/jpj/gtown-local/dsan5650/w10/darkmode_example.ipynb" data-notebook-title="The actual plots" data-notebook-cellid="cell-darkmode-setup">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
+<span id="cb1-2"><a></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb1-3"><a></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
+<span id="cb1-4"><a></a><span class="im">import</span> seaborn <span class="im">as</span> sns</span>
+<span id="cb1-5"><a></a></span>
+<span id="cb1-6"><a></a><span class="im">from</span> IPython.display <span class="im">import</span> HTML</span>
+<span id="cb1-7"><a></a></span>
+<span id="cb1-8"><a></a><span class="im">import</span> statsmodels.formula.api <span class="im">as</span> smf</span>
+<span id="cb1-9"><a></a><span class="im">from</span> causalml.match <span class="im">import</span> create_table_one</span>
+<span id="cb1-10"><a></a><span class="im">from</span> joblib <span class="im">import</span> Parallel, delayed</span>
+<span id="cb1-11"><a></a><span class="im">from</span> sklearn.linear_model <span class="im">import</span> LogisticRegression</span>
+<span id="cb1-12"><a></a></span>
+<span id="cb1-13"><a></a><span class="kw">def</span> generate_data(N<span class="op">=</span><span class="dv">300</span>, seed<span class="op">=</span><span class="dv">1</span>):</span>
+<span id="cb1-14"><a></a>  np.random.seed(seed)</span>
+<span id="cb1-15"><a></a>  </span>
+<span id="cb1-16"><a></a>  <span class="co"># Control variables</span></span>
+<span id="cb1-17"><a></a>  male <span class="op">=</span> np.random.binomial(<span class="dv">1</span>, <span class="fl">0.45</span>, N)</span>
+<span id="cb1-18"><a></a>  age <span class="op">=</span> np.rint(<span class="dv">18</span> <span class="op">+</span> np.random.beta(<span class="dv">2</span>, <span class="dv">2</span>, N)<span class="op">*</span><span class="dv">50</span>)</span>
+<span id="cb1-19"><a></a>  hours <span class="op">=</span> np.minimum(np.<span class="bu">round</span>(np.random.lognormal(<span class="dv">5</span>, <span class="fl">1.3</span>, N), <span class="dv">1</span>), <span class="dv">2000</span>)</span>
+<span id="cb1-20"><a></a>  </span>
+<span id="cb1-21"><a></a>  <span class="co"># Treatment</span></span>
+<span id="cb1-22"><a></a>  pr <span class="op">=</span> np.maximum(<span class="dv">0</span>, np.minimum(<span class="dv">1</span>, <span class="fl">0.8</span> <span class="op">+</span> <span class="fl">0.3</span><span class="op">*</span>male <span class="op">-</span> np.sqrt(age<span class="op">-</span><span class="dv">18</span>)<span class="op">/</span><span class="dv">10</span>))</span>
+<span id="cb1-23"><a></a>  dark_mode <span class="op">=</span> np.random.binomial(<span class="dv">1</span>, pr, N)<span class="op">==</span><span class="dv">1</span></span>
+<span id="cb1-24"><a></a>  </span>
+<span id="cb1-25"><a></a>  <span class="co"># Outcome</span></span>
+<span id="cb1-26"><a></a>  read_time <span class="op">=</span> np.<span class="bu">round</span>(np.random.normal(<span class="dv">10</span> <span class="op">-</span> <span class="dv">4</span><span class="op">*</span>male <span class="op">+</span> <span class="dv">2</span><span class="op">*</span>np.log(hours) <span class="op">+</span> <span class="dv">2</span><span class="op">*</span>dark_mode, <span class="dv">4</span>, N), <span class="dv">1</span>)</span>
+<span id="cb1-27"><a></a></span>
+<span id="cb1-28"><a></a>  <span class="co"># Generate the dataframe</span></span>
+<span id="cb1-29"><a></a>  df <span class="op">=</span> pd.DataFrame({<span class="st">'read_time'</span>: read_time, <span class="st">'dark_mode'</span>: dark_mode, <span class="st">'male'</span>: male, <span class="st">'age'</span>: age, <span class="st">'hours'</span>: hours})</span>
+<span id="cb1-30"><a></a></span>
+<span id="cb1-31"><a></a>  <span class="cf">return</span> df</span>
+<span id="cb1-32"><a></a></span>
+<span id="cb1-33"><a></a>user_df <span class="op">=</span> generate_data(N<span class="op">=</span><span class="dv">300</span>)</span>
+<span id="cb1-34"><a></a>ols_model <span class="op">=</span> smf.ols(<span class="st">"read_time ~ dark_mode"</span>, data<span class="op">=</span>user_df).fit()</span>
+<span id="cb1-35"><a></a>ols_summary <span class="op">=</span> ols_model.summary()</span>
+<span id="cb1-36"><a></a>results_as_html <span class="op">=</span> ols_summary.tables[<span class="dv">1</span>].as_html()</span>
+<span id="cb1-37"><a></a>HTML(results_as_html)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
+<table class="simpletable">
+<tbody>
+<tr class="odd">
+<td></td>
+<th data-quarto-table-cell-role="th">coef</th>
+<th data-quarto-table-cell-role="th">std err</th>
+<th data-quarto-table-cell-role="th">t</th>
+<th data-quarto-table-cell-role="th">P&gt;|t|</th>
+<th data-quarto-table-cell-role="th">[0.025</th>
+<th data-quarto-table-cell-role="th">0.975]</th>
+</tr>
+<tr class="even">
+<th data-quarto-table-cell-role="th">Intercept</th>
+<td>19.1748</td>
+<td>0.402</td>
+<td>47.661</td>
+<td>0.000</td>
+<td>18.383</td>
+<td>19.967</td>
+</tr>
+<tr class="odd">
+<th data-quarto-table-cell-role="th">dark_mode[T.True]</th>
+<td>-0.4446</td>
+<td>0.571</td>
+<td>-0.779</td>
+<td>0.437</td>
+<td>-1.568</td>
+<td>0.679</td>
+</tr>
+</tbody>
+</table>
+</div>
+<center>
+<p>…So, is this a causal effect? Does dark theme <strong>cause</strong> users to spend less time reading?</p>
+</center>
+</section>
+<section id="unit-of-observation-article-reader" class="slide level2 title-10 smaller crunch-title">
+<h2>Unit of Observation: (Article, Reader)</h2>
+<p><em>(…since I couldn’t figure out how to fit it on the last slide)</em></p>
+<div class="quarto-embed-nb-cell" data-notebook="/Users/jpj/gtown-local/dsan5650/w10/darkmode_example.ipynb" data-notebook-title="The actual plots" data-notebook-cellid="cell-page-read-data">
+<div id="cell-page-read-data" class="cell" data-execution_count="29">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a></a>user_df.head()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
+<div id="page-read-data" class="cell-output cell-output-display" data-execution_count="29">
+<div>
+<style scoped="">
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+
+<table class="dataframe" data-border="1">
+<thead>
+<tr class="header" style="text-align: right;">
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th">read_time</th>
+<th data-quarto-table-cell-role="th">dark_mode</th>
+<th data-quarto-table-cell-role="th">male</th>
+<th data-quarto-table-cell-role="th">age</th>
+<th data-quarto-table-cell-role="th">hours</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<th data-quarto-table-cell-role="th">0</th>
+<td>14.4</td>
+<td>False</td>
+<td>0</td>
+<td>43.0</td>
+<td>65.6</td>
+</tr>
+<tr class="even">
+<th data-quarto-table-cell-role="th">1</th>
+<td>15.4</td>
+<td>False</td>
+<td>1</td>
+<td>55.0</td>
+<td>125.4</td>
+</tr>
+<tr class="odd">
+<th data-quarto-table-cell-role="th">2</th>
+<td>20.9</td>
+<td>True</td>
+<td>0</td>
+<td>23.0</td>
+<td>642.6</td>
+</tr>
+<tr class="even">
+<th data-quarto-table-cell-role="th">3</th>
+<td>20.0</td>
+<td>False</td>
+<td>0</td>
+<td>41.0</td>
+<td>129.1</td>
+</tr>
+<tr class="odd">
+<th data-quarto-table-cell-role="th">4</th>
+<td>21.5</td>
+<td>True</td>
+<td>0</td>
+<td>29.0</td>
+<td>190.2</td>
+</tr>
+</tbody>
+</table>
+
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id="what-does-the-data-look-like" class="slide level2 smaller crunch-title title-11 crunch-img">
+<h2>What Does the Data Look Like?</h2>
+<div class="quarto-embed-nb-cell" data-notebook="/Users/jpj/gtown-local/dsan5650/w10/darkmode_example.ipynb" data-notebook-title="The actual plots" data-notebook-cellid="cell-fig-darkmode-pairplot">
+<div id="cell-fig-darkmode-pairplot" class="cell" data-execution_count="34">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a></a><span class="im">import</span> matplotlib</span>
+<span id="cb3-2"><a></a>matplotlib.rcParams[<span class="st">'axes.grid'</span>] <span class="op">=</span> <span class="va">False</span></span>
+<span id="cb3-3"><a></a>matplotlib.rcParams[<span class="st">'savefig.transparent'</span>] <span class="op">=</span> <span class="va">True</span></span>
+<span id="cb3-4"><a></a>sns.pairplot(</span>
+<span id="cb3-5"><a></a>  data<span class="op">=</span>user_df,</span>
+<span id="cb3-6"><a></a>  height<span class="op">=</span><span class="fl">1.5</span>, aspect<span class="op">=</span><span class="fl">1.75</span>,</span>
+<span id="cb3-7"><a></a>)</span>
+<span id="cb3-8"><a></a>plt.show()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
+<div class="cell-output cell-output-display">
+<div id="fig-darkmode-pairplot" class="quarto-float quarto-figure quarto-figure-center" data-fig-align="center">
+<figure class="quarto-float quarto-float-fig">
+<div aria-describedby="fig-darkmode-pairplot-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img data-src="index_files/figure-revealjs/darkmode_example-fig-darkmode-pairplot-output-1.png" class="quarto-figure quarto-figure-center">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-darkmode-pairplot-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;1: Pairplot of variables in the light mode vs.&nbsp;dark mode dataset
+</figcaption>
+</figure>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id="control-treatment-balance" class="slide level2 smaller crunch-title table-90">
+<h2>Control-Treatment Balance</h2>
+<div class="columns">
+<div class="column" style="width:50%;">
+<p>Enter <strong>Uber</strong>’s causal inference library: <a href="https://causalml.readthedocs.io/en/latest/about.html"><code>causalml</code></a></p>
+<div class="quarto-embed-nb-cell" data-notebook="/Users/jpj/gtown-local/dsan5650/w10/darkmode_example.ipynb" data-notebook-title="The actual plots" data-notebook-cellid="cell-darkmode-balance-table">
+<div id="cell-darkmode-balance-table" class="cell" data-df-print="kable" data-execution_count="35">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a></a><span class="im">from</span> IPython.display <span class="im">import</span> display, HTML</span>
+<span id="cb4-2"><a></a>X <span class="op">=</span> [<span class="st">'male'</span>, <span class="st">'age'</span>, <span class="st">'hours'</span>]</span>
+<span id="cb4-3"><a></a>table1 <span class="op">=</span> create_table_one(user_df, <span class="st">'dark_mode'</span>, X)</span>
+<span id="cb4-4"><a></a>user_df.to_csv(<span class="st">"assets/user_df.csv"</span>)</span>
+<span id="cb4-5"><a></a>table1.to_csv(<span class="st">"assets/table1.csv"</span>)</span>
+<span id="cb4-6"><a></a>HTML(table1.to_html())</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
+<div id="darkmode-balance-table" class="cell-output cell-output-display" data-execution_count="35">
+<table class="dataframe" data-border="1">
+<thead>
+<tr class="header" style="text-align: right;">
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th">Control</th>
+<th data-quarto-table-cell-role="th">Treatment</th>
+<th data-quarto-table-cell-role="th">SMD</th>
+</tr>
+<tr class="even">
+<th data-quarto-table-cell-role="th">Variable</th>
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th"></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<th data-quarto-table-cell-role="th">n</th>
+<td>151</td>
+<td>149</td>
+<td></td>
+</tr>
+<tr class="even">
+<th data-quarto-table-cell-role="th">age</th>
+<td>46.01 (9.79)</td>
+<td>39.09 (11.53)</td>
+<td>-0.6469</td>
+</tr>
+<tr class="odd">
+<th data-quarto-table-cell-role="th">hours</th>
+<td>337.78 (464.00)</td>
+<td>328.57 (442.12)</td>
+<td>-0.0203</td>
+</tr>
+<tr class="even">
+<th data-quarto-table-cell-role="th">male</th>
+<td>0.34 (0.47)</td>
+<td>0.66 (0.48)</td>
+<td>0.6732</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+</div><div class="column" style="width:50%;">
+<p>And then <code>WeightIt</code> to generate a “love plot”:</p>
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="images/loveplot.png" class="quarto-figure quarto-figure-center"></p>
+</figure>
+</div>
+</div></div>
+</section>
+<section id="augmented-inverse-propensity-weighting-aipw" class="slide level2 smaller crunch-title title-09 math-90">
+<h2><em>Augmented</em> Inverse Propensity Weighting (AIPW)</h2>
+<p><span class="math display">\[
+\begin{align*}
+\hat \tau_{AIPW} &amp;= \frac{1}{n} \sum_{i=1}^{n} \left( \text{RegEst}(X_i) + \text{PropensityAdj}(X_i, Y_i) \right) \\
+\text{RegEst}(X_i) &amp;= \hat \mu^{(1)}(X_i) - \hat \mu^{(0)}(X_i) \\
+\text{PropensityAdj}(X_i, Y_i) &amp;= \frac{D_i}{\hat{\mathtt{e}}(X_i)} \left( Y_i - \hat \mu^{(1)}(X_i) \right) - \frac{(1-D_i) }{1-\hat{\mathtt{e}}(X_i)} \left( Y_i - \hat \mu^{(0)}(X_i) \right)
+\end{align*}
+\]</span></p>
+<ul>
+<li><span class="math inline">\(\mu^{(d)}(x)\)</span> is the <strong>response function</strong>, i.e.&nbsp;the expected value of the outcome, conditional on observable characteristics <span class="math inline">\(x\)</span> and treatment status <span class="math inline">\(d\)</span></li>
+<li><span class="math inline">\(\hat{\texttt{e}}(X)\)</span> is the <strong>estimated propensity score</strong>.</li>
+</ul>
+<p><span class="math display">\[
+\begin{align*}
+\mu^{(d)}(x) &amp;= \mathbb E \left[ Y_i \ \big | \ X_i = x, D_i = d \right] \\
+\mathtt{e}(x) &amp;= \mathbb E \left[ D_i = 1 \ \big | \ X_i = x \right]
+\end{align*}
+\]</span></p>
+</section>
+<section id="model-1-propensity-score" class="slide level2 smaller crunch-title crunch-img crunch-quarto-figure">
+<h2>Model 1: Propensity Score</h2>
+<div class="quarto-embed-nb-cell" data-notebook="/Users/jpj/gtown-local/dsan5650/w10/darkmode_example.ipynb" data-notebook-title="The actual plots" data-notebook-cellid="cell-model1-propensity-score">
+<div id="cell-model1-propensity-score" class="cell" data-execution_count="36">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a></a><span class="kw">def</span> estimate_e(df, X, D, model_e):</span>
+<span id="cb5-2"><a></a>    e <span class="op">=</span> model_e.fit(df[X], df[D]).predict_proba(df[X])[:,<span class="dv">1</span>]</span>
+<span id="cb5-3"><a></a>    <span class="cf">return</span> e</span>
+<span id="cb5-4"><a></a>user_df[<span class="st">'e'</span>] <span class="op">=</span> estimate_e(user_df, X, <span class="st">"dark_mode"</span>, LogisticRegression())</span>
+<span id="cb5-5"><a></a>fig, ax <span class="op">=</span> plt.subplots(figsize<span class="op">=</span>(<span class="dv">7</span>,<span class="fl">2.75</span>))</span>
+<span id="cb5-6"><a></a>sns.kdeplot(</span>
+<span id="cb5-7"><a></a>  x<span class="op">=</span><span class="st">'e'</span>, hue<span class="op">=</span><span class="st">'dark_mode'</span>, data<span class="op">=</span>user_df,</span>
+<span id="cb5-8"><a></a>  <span class="co"># bins=30,</span></span>
+<span id="cb5-9"><a></a>  <span class="co">#stat='density',</span></span>
+<span id="cb5-10"><a></a>  common_norm<span class="op">=</span><span class="va">False</span>,</span>
+<span id="cb5-11"><a></a>  fill<span class="op">=</span><span class="va">True</span>,</span>
+<span id="cb5-12"><a></a>  ax<span class="op">=</span>ax</span>
+<span id="cb5-13"><a></a>)<span class="op">;</span></span>
+<span id="cb5-14"><a></a>ax.set_xlabel(<span class="st">"$e(X)$"</span>)<span class="op">;</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
+<div class="cell-output cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="index_files/figure-revealjs/darkmode_example-model1-propensity-score-output-1.png" id="model1-propensity-score" class="quarto-figure quarto-figure-center"></p>
+</figure>
+</div>
+</div>
+</div>
+</div>
+<div class="quarto-embed-nb-cell" data-notebook="/Users/jpj/gtown-local/dsan5650/w10/darkmode_example.ipynb" data-notebook-title="The actual plots" data-notebook-cellid="cell-model1-result">
+<div id="cell-model1-result" class="cell" data-execution_count="37">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb6"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a></a>weights_denom <span class="op">=</span> user_df[<span class="st">'e'</span>] <span class="op">*</span> user_df[<span class="st">"dark_mode"</span>] <span class="op">+</span> (<span class="dv">1</span> <span class="op">-</span> user_df[<span class="st">'e'</span>]) <span class="op">*</span> (<span class="dv">1</span> <span class="op">-</span> user_df[<span class="st">"dark_mode"</span>])</span>
+<span id="cb6-2"><a></a>inv_weights <span class="op">=</span> <span class="dv">1</span> <span class="op">/</span> weights_denom</span>
+<span id="cb6-3"><a></a>smf.wls(</span>
+<span id="cb6-4"><a></a>  <span class="st">"read_time ~ dark_mode"</span>,</span>
+<span id="cb6-5"><a></a>  weights<span class="op">=</span>inv_weights,</span>
+<span id="cb6-6"><a></a>  data<span class="op">=</span>user_df</span>
+<span id="cb6-7"><a></a>).fit().summary().tables[<span class="dv">1</span>]</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
+<div id="model1-result" class="cell-output cell-output-display" data-execution_count="37">
+<table class="simpletable">
+<tbody>
+<tr class="odd">
+<td></td>
+<th data-quarto-table-cell-role="th">coef</th>
+<th data-quarto-table-cell-role="th">std err</th>
+<th data-quarto-table-cell-role="th">t</th>
+<th data-quarto-table-cell-role="th">P&gt;|t|</th>
+<th data-quarto-table-cell-role="th">[0.025</th>
+<th data-quarto-table-cell-role="th">0.975]</th>
+</tr>
+<tr class="even">
+<th data-quarto-table-cell-role="th">Intercept</th>
+<td>18.5871</td>
+<td>0.412</td>
+<td>45.158</td>
+<td>0.000</td>
+<td>17.777</td>
+<td>19.397</td>
+</tr>
+<tr class="odd">
+<th data-quarto-table-cell-role="th">dark_mode[T.True]</th>
+<td>1.0486</td>
+<td>0.581</td>
+<td>1.805</td>
+<td>0.072</td>
+<td>-0.095</td>
+<td>2.192</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+</section>
+<section id="model-2-regression-with-controls" class="slide level2 smaller">
+<h2>Model 2: Regression with Controls</h2>
+<p>First, with <code>scikit-learn</code>:</p>
+<div class="quarto-embed-nb-cell" data-notebook="/Users/jpj/gtown-local/dsan5650/w10/darkmode_example.ipynb" data-notebook-title="The actual plots" data-notebook-cellid="cell-model2-sklearn">
+<div id="model2-sklearn" class="cell" data-execution_count="43">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb7"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a></a><span class="im">from</span> sklearn.linear_model <span class="im">import</span> LinearRegression</span>
+<span id="cb7-2"><a></a></span>
+<span id="cb7-3"><a></a><span class="kw">def</span> estimate_mu(df, X, D, y, model_mu):</span>
+<span id="cb7-4"><a></a>  mu <span class="op">=</span> model_mu.fit(df[X <span class="op">+</span> [D]], df[y])</span>
+<span id="cb7-5"><a></a>  mu0 <span class="op">=</span> mu.predict(df[X <span class="op">+</span> [D]].assign(dark_mode<span class="op">=</span><span class="dv">0</span>))</span>
+<span id="cb7-6"><a></a>  mu1 <span class="op">=</span> mu.predict(df[X <span class="op">+</span> [D]].assign(dark_mode<span class="op">=</span><span class="dv">1</span>))</span>
+<span id="cb7-7"><a></a>  <span class="cf">return</span> mu0, mu1</span>
+<span id="cb7-8"><a></a></span>
+<span id="cb7-9"><a></a>mu0, mu1 <span class="op">=</span> estimate_mu(</span>
+<span id="cb7-10"><a></a>  user_df, X, <span class="st">"dark_mode"</span>, <span class="st">"read_time"</span>, LinearRegression()</span>
+<span id="cb7-11"><a></a>)</span>
+<span id="cb7-12"><a></a><span class="bu">print</span>(<span class="ss">f'mean(mu0) = </span><span class="sc">{</span>np<span class="sc">.</span>mean(mu0)<span class="sc">:.2f}</span><span class="ss">, mean(mu1) = </span><span class="sc">{</span>np<span class="sc">.</span>mean(mu1)<span class="sc">:.2f}</span><span class="ss">'</span>)</span>
+<span id="cb7-13"><a></a><span class="bu">print</span>(<span class="ss">f'Difference = </span><span class="sc">{</span>np<span class="sc">.</span>mean(mu1 <span class="op">-</span> mu0)<span class="sc">:.2f}</span><span class="ss">'</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>mean(mu0) = 18.27, mean(mu1) = 19.65
+Difference = 1.39</code></pre>
+</div>
+</div>
+</div>
+<p>Enter <a href="https://econml.azurewebsites.net/index.html"><code>EconML</code></a>, Microsoft’s “Official” ML-based econometrics library 😎</p>
+<div class="quarto-embed-nb-cell" data-notebook="/Users/jpj/gtown-local/dsan5650/w10/darkmode_example.ipynb" data-notebook-title="The actual plots" data-notebook-cellid="cell-model2-econml">
+<div id="cell-model2-econml" class="cell" data-execution_count="39">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb9"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a></a><span class="im">from</span> econml.dr <span class="im">import</span> LinearDRLearner</span>
+<span id="cb9-2"><a></a></span>
+<span id="cb9-3"><a></a>model <span class="op">=</span> LinearDRLearner(</span>
+<span id="cb9-4"><a></a>  model_propensity<span class="op">=</span>LogisticRegression(),</span>
+<span id="cb9-5"><a></a>  model_regression<span class="op">=</span>LinearRegression(),</span>
+<span id="cb9-6"><a></a>  random_state<span class="op">=</span><span class="dv">5650</span></span>
+<span id="cb9-7"><a></a>)</span>
+<span id="cb9-8"><a></a>model.fit(Y<span class="op">=</span>user_df[<span class="st">"read_time"</span>], T<span class="op">=</span>user_df[<span class="st">"dark_mode"</span>], X<span class="op">=</span>user_df[X])<span class="op">;</span></span>
+<span id="cb9-9"><a></a>model.ate_inference(X<span class="op">=</span>user_df[X].values, T0<span class="op">=</span><span class="dv">0</span>, T1<span class="op">=</span><span class="dv">1</span>).summary().tables[<span class="dv">0</span>]</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
+<div id="model2-econml" class="cell-output cell-output-display" data-execution_count="39">
+<table class="simpletable">
+<caption>Uncertainty of Mean Point Estimate</caption>
+<tbody>
+<tr class="odd">
+<th data-quarto-table-cell-role="th">mean_point</th>
+<th data-quarto-table-cell-role="th">stderr_mean</th>
+<th data-quarto-table-cell-role="th">zstat</th>
+<th data-quarto-table-cell-role="th">pvalue</th>
+<th data-quarto-table-cell-role="th">ci_mean_lower</th>
+<th data-quarto-table-cell-role="th">ci_mean_upper</th>
+</tr>
+<tr class="even">
+<td>1.321</td>
+<td>0.549</td>
+<td>2.409</td>
+<td>0.016</td>
+<td>0.246</td>
+<td>2.396</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+</section>
+<section id="double-robustness-to-the-rescue" class="slide level2 smaller">
+<h2>Double-Robustness to the Rescue!</h2>
+<div class="columns">
+<div class="column" style="width:50%;">
+<p>Wrong <strong>regression</strong> model:</p>
+<div class="quarto-embed-nb-cell" data-notebook="/Users/jpj/gtown-local/dsan5650/w10/darkmode_example.ipynb" data-notebook-title="The actual plots" data-notebook-cellid="cell-double-wrong-reg">
+<div id="cell-double-wrong-reg" class="cell" data-execution_count="44">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb10"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a></a><span class="kw">def</span> compare_estimators(X_e, X_mu, D, y, seed):</span>
+<span id="cb10-2"><a></a>    df <span class="op">=</span> generate_data(seed<span class="op">=</span>seed)</span>
+<span id="cb10-3"><a></a>    e <span class="op">=</span> estimate_e(df, X_e, D, LogisticRegression())</span>
+<span id="cb10-4"><a></a>    mu0, mu1 <span class="op">=</span> estimate_mu(df, X_mu, D, y, LinearRegression())</span>
+<span id="cb10-5"><a></a>    slearn <span class="op">=</span> mu1 <span class="op">-</span> mu0</span>
+<span id="cb10-6"><a></a>    ipw <span class="op">=</span> (df[D] <span class="op">/</span> e <span class="op">-</span> (<span class="dv">1</span><span class="op">-</span>df[D]) <span class="op">/</span> (<span class="dv">1</span><span class="op">-</span>e)) <span class="op">*</span> df[y]</span>
+<span id="cb10-7"><a></a>    aipw <span class="op">=</span> slearn <span class="op">+</span> df[D] <span class="op">/</span> e <span class="op">*</span> (df[y] <span class="op">-</span> mu1) <span class="op">-</span> (<span class="dv">1</span><span class="op">-</span>df[D]) <span class="op">/</span> (<span class="dv">1</span><span class="op">-</span>e) <span class="op">*</span> (df[y] <span class="op">-</span> mu0)</span>
+<span id="cb10-8"><a></a>    <span class="cf">return</span> np.mean((slearn, ipw, aipw), axis<span class="op">=</span><span class="dv">1</span>)</span>
+<span id="cb10-9"><a></a></span>
+<span id="cb10-10"><a></a><span class="kw">def</span> simulate_estimators(X_e, X_mu, D, y):</span>
+<span id="cb10-11"><a></a>    r <span class="op">=</span> Parallel(n_jobs<span class="op">=</span><span class="dv">8</span>)(delayed(compare_estimators)(X_e, X_mu, D, y, i) <span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">100</span>))</span>
+<span id="cb10-12"><a></a>    df_tau <span class="op">=</span> pd.DataFrame(r, columns<span class="op">=</span>[<span class="st">'S-learn'</span>, <span class="st">'IPW'</span>, <span class="st">'AIPW'</span>])</span>
+<span id="cb10-13"><a></a>    <span class="cf">return</span> df_tau</span>
+<span id="cb10-14"><a></a><span class="co"># The actual plots</span></span>
+<span id="cb10-15"><a></a>fig, ax <span class="op">=</span> plt.subplots(figsize<span class="op">=</span>(<span class="dv">4</span>,<span class="fl">3.5</span>))</span>
+<span id="cb10-16"><a></a>wrong_reg_df <span class="op">=</span> simulate_estimators(</span>
+<span id="cb10-17"><a></a>  X_e<span class="op">=</span>[<span class="st">'male'</span>, <span class="st">'age'</span>], X_mu<span class="op">=</span>[<span class="st">'hours'</span>], D<span class="op">=</span><span class="st">"dark_mode"</span>, y<span class="op">=</span><span class="st">"read_time"</span></span>
+<span id="cb10-18"><a></a>)</span>
+<span id="cb10-19"><a></a>wrong_reg_plot <span class="op">=</span> sns.boxplot(</span>
+<span id="cb10-20"><a></a>  data<span class="op">=</span>pd.melt(wrong_reg_df), x<span class="op">=</span><span class="st">'variable'</span>, y<span class="op">=</span><span class="st">'value'</span>, hue<span class="op">=</span><span class="st">'variable'</span>,</span>
+<span id="cb10-21"><a></a>  ax<span class="op">=</span>ax,</span>
+<span id="cb10-22"><a></a>  linewidth<span class="op">=</span><span class="dv">2</span></span>
+<span id="cb10-23"><a></a>)<span class="op">;</span></span>
+<span id="cb10-24"><a></a>wrong_reg_plot.<span class="bu">set</span>(</span>
+<span id="cb10-25"><a></a>  title<span class="op">=</span><span class="st">"Distribution of $</span><span class="er">\</span><span class="st">hat τ$"</span>, xlabel<span class="op">=</span><span class="st">''</span>, ylabel<span class="op">=</span><span class="st">''</span></span>
+<span id="cb10-26"><a></a>)<span class="op">;</span></span>
+<span id="cb10-27"><a></a>ax.axhline(<span class="dv">2</span>, c<span class="op">=</span><span class="st">'r'</span>, ls<span class="op">=</span><span class="st">':'</span>)<span class="op">;</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
+<div class="cell-output cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="index_files/figure-revealjs/darkmode_example-double-wrong-reg-output-1.png" id="double-wrong-reg" class="quarto-figure quarto-figure-center"></p>
+</figure>
+</div>
+</div>
+</div>
+</div>
+</div><div class="column" style="width:50%;">
+<p>Wrong <strong>propensity score</strong> model:</p>
+<div class="quarto-embed-nb-cell" data-notebook="/Users/jpj/gtown-local/dsan5650/w10/darkmode_example.ipynb" data-notebook-title="The actual plots" data-notebook-cellid="cell-double-wrong-ps">
+<div id="cell-double-wrong-ps" class="cell" data-execution_count="45">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb11"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a></a>fig, ax <span class="op">=</span> plt.subplots(figsize<span class="op">=</span>(<span class="dv">4</span>, <span class="fl">3.5</span>))</span>
+<span id="cb11-2"><a></a>wrong_ps_df <span class="op">=</span> simulate_estimators(</span>
+<span id="cb11-3"><a></a>  [<span class="st">'age'</span>], [<span class="st">'male'</span>, <span class="st">'hours'</span>], D<span class="op">=</span><span class="st">"dark_mode"</span>, y<span class="op">=</span><span class="st">"read_time"</span></span>
+<span id="cb11-4"><a></a>)</span>
+<span id="cb11-5"><a></a>wrong_ps_plot <span class="op">=</span> sns.boxplot(</span>
+<span id="cb11-6"><a></a>  data<span class="op">=</span>pd.melt(wrong_ps_df), x<span class="op">=</span><span class="st">'variable'</span>, y<span class="op">=</span><span class="st">'value'</span>, hue<span class="op">=</span><span class="st">'variable'</span>,</span>
+<span id="cb11-7"><a></a>  ax<span class="op">=</span>ax,</span>
+<span id="cb11-8"><a></a>  linewidth<span class="op">=</span><span class="dv">2</span></span>
+<span id="cb11-9"><a></a>)<span class="op">;</span></span>
+<span id="cb11-10"><a></a>ax.set_title(<span class="st">"Distribution of $</span><span class="er">\</span><span class="st">hat τ$"</span>)<span class="op">;</span></span>
+<span id="cb11-11"><a></a>ax.axhline(<span class="dv">2</span>, c<span class="op">=</span><span class="st">'r'</span>, ls<span class="op">=</span><span class="st">':'</span>)<span class="op">;</span></span>
+<span id="cb11-12"><a></a>plt.show()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
+<div class="cell-output cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="index_files/figure-revealjs/darkmode_example-double-wrong-ps-output-1.png" id="double-wrong-ps" class="quarto-figure quarto-figure-center"></p>
+</figure>
+</div>
+</div>
+</div>
+</div>
 </div></div>
 </section></section>
 <section>
