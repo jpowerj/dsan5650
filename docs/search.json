@@ -2724,11 +2724,11 @@
     ]
   },
   {
-    "objectID": "w10/index.html#birthday-as-instrument",
-    "href": "w10/index.html#birthday-as-instrument",
+    "objectID": "w10/index.html#demo-birthday-as-instrument",
+    "href": "w10/index.html#demo-birthday-as-instrument",
     "title": "Week 10: Doubly-Robust Estimation, Text-as-Data",
-    "section": "Birthday as Instrument",
-    "text": "Birthday as Instrument\n\nMini-Lab Time!",
+    "section": "Demo: Birthday as Instrument",
+    "text": "Demo: Birthday as Instrument\n\nBirthdays as Instruments for Catholic School Effects",
     "crumbs": [
       "Week 10: {{< var w10.date-md >}}"
     ]
@@ -2877,11 +2877,11 @@
     "text": "Double-Robustness to the Rescue!\n\n\nWrong regression model:\n\n\n\nCode\ndef compare_estimators(X_e, X_mu, D, y, seed):\n    df = generate_data(seed=seed)\n    e = estimate_e(df, X_e, D, LogisticRegression())\n    mu0, mu1 = estimate_mu(df, X_mu, D, y, LinearRegression())\n    slearn = mu1 - mu0\n    ipw = (df[D] / e - (1-df[D]) / (1-e)) * df[y]\n    aipw = slearn + df[D] / e * (df[y] - mu1) - (1-df[D]) / (1-e) * (df[y] - mu0)\n    return np.mean((slearn, ipw, aipw), axis=1)\n\ndef simulate_estimators(X_e, X_mu, D, y):\n    r = Parallel(n_jobs=8)(delayed(compare_estimators)(X_e, X_mu, D, y, i) for i in range(100))\n    df_tau = pd.DataFrame(r, columns=['S-learn', 'IPW', 'AIPW'])\n    return df_tau\n# The actual plots\nfig, ax = plt.subplots(figsize=(4,3.5))\nwrong_reg_df = simulate_estimators(\n  X_e=['male', 'age'], X_mu=['hours'], D=\"dark_mode\", y=\"read_time\"\n)\nwrong_reg_plot = sns.boxplot(\n  data=pd.melt(wrong_reg_df), x='variable', y='value', hue='variable',\n  ax=ax,\n  linewidth=2\n);\nwrong_reg_plot.set(\n  title=\"Distribution of $\\hat τ$\", xlabel='', ylabel=''\n);\nax.axhline(2, c='r', ls=':');\n\n\n\n\n\n\n\n\n\n\n\nWrong propensity score model:\n\n\n\nCode\nfig, ax = plt.subplots(figsize=(4, 3.5))\nwrong_ps_df = simulate_estimators(\n  ['age'], ['male', 'hours'], D=\"dark_mode\", y=\"read_time\"\n)\nwrong_ps_plot = sns.boxplot(\n  data=pd.melt(wrong_ps_df), x='variable', y='value', hue='variable',\n  ax=ax,\n  linewidth=2\n);\nax.set_title(\"Distribution of $\\hat τ$\");\nax.axhline(2, c='r', ls=':');\nplt.show()"
   },
   {
-    "objectID": "w10/slides.html#birthday-as-instrument",
-    "href": "w10/slides.html#birthday-as-instrument",
+    "objectID": "w10/slides.html#demo-birthday-as-instrument",
+    "href": "w10/slides.html#demo-birthday-as-instrument",
     "title": "Week 10: Doubly-Robust Estimation, Text-as-Data",
-    "section": "Birthday as Instrument",
-    "text": "Birthday as Instrument\n\nMini-Lab Time!"
+    "section": "Demo: Birthday as Instrument",
+    "text": "Demo: Birthday as Instrument\n\nBirthdays as Instruments for Catholic School Effects"
   },
   {
     "objectID": "w10/slides.html#discovered-topics-depend-on-the-data",
@@ -2944,7 +2944,7 @@
     "href": "index.html",
     "title": "DSAN 5650: Causal Inference for Computational Social Science",
     "section": "",
-    "text": "Welcome to the homepage for DSAN 5650: Causal Inference for Computational Social Science at Georgetown University, for the Summer 2026 session!\nThe course meets on Wednesdays from 6:30pm to 9:00pm online, via the Zoom Link provided in the sidebar.\nCheck out the syllabus (or any other link in the sidebar) for more info! Or, use the following links to view notes for individual weeks:\n\n\n\n\n\n\nTitle\n\n\n\nDate\n\n\n\n\n\n\n\n\nWeek 1: Science from Particles to People\n\n\nMay 20\n\n\n\n\n\n\nWeek 2: Probabilistic Graphical Models (PGMs)\n\n\nMay 27\n\n\n\n\n\n\nWeek 3: From PGMs to Causal Diagrams\n\n\nJune 3\n\n\n\n\n\n\nWeek 4: Clearing the Path from Cause to Effect\n\n\nJune 10\n\n\n\n\n\n\nWeek 5: Multilevel Madness, Closing Backdoor Paths\n\n\nJune 17\n\n\n\n\n\n\nWeek 6: Adaptive Pooling in Multilevel Models, Bayesian Workflow\n\n\nJune 24\n\n\n\n\n\n\nWeek 7: Midterm Introduction\n\n\nJuly 1\n\n\n\n\n\n\nWeek 8: Ecological Inference, Propensity Scores\n\n\nJuly 8\n\n\n\n\n\n\nWeek 9: Doubly-Robust Estimation and Instrumental Variables\n\n\nJuly 15\n\n\n\n\n\n\nWeek 10: Doubly-Robust Estimation, Text-as-Data\n\n\nJuly 22\n\n\n\n\n\n\nWeek 11: Sensitivity Analysis\n\n\nJuly 29\n\n\n\n\n\n\nWeek 12: Causal Forests for Heterogeneous Treatment Effects\n\n\nAugust 5\n\n\n\n\n\n\nNo matching items\n\nCourse Description:\nThis course provides students with the opportunity to take the analytical skills, machine learning algorithms, and statistical methods learned throughout their first year in the program and explore how they can be employed towards carrying out rigorous, original research in the behavioral and social sciences. With a particular emphasis on tackling the additional challenges which arise when moving from associational to causal inference, particularly when only observational (as opposed to experimental) data is available, students will become proficient in cutting-edge causal Machine Learning techniques such as propensity score matching, synthetic controls, causal program evaluation, inverse social welfare function estimation from panel data, and Double-Debiased Machine Learning.\nIn-class examples will cover continuous, discrete-choice, and textual data from a wide swath of social and behavioral sciences: economics, political science, sociology, anthropology, quantitative history, and digital humanities. After gaining experience through in-class labs and homework assignments focused on reproducing key findings from recent journal articles in each of these disciplines, students will spend the final weeks of the course on a final project demonstrating their ability to develop, evaluate, and test the robustness of a causal hypothesis.\nPrerequisites: DSAN 5000, DSAN 5100 (DSAN 5300 recommended but not required)",
+    "text": "Welcome to the homepage for DSAN 5650: Causal Inference for Computational Social Science at Georgetown University, for the Summer 2026 session!\nThe course meets on Wednesdays from 6:30pm to 9:00pm online, via the Zoom Link provided in the sidebar.\nCheck out the syllabus (or any other link in the sidebar) for more info! Or, use the following links to view notes for individual weeks:\n\n\n\n\n\n\nTitle\n\n\n\nDate\n\n\n\n\n\n\n\n\nWeek 1: Science from Particles to People\n\n\nMay 20\n\n\n\n\n\n\nWeek 2: Probabilistic Graphical Models (PGMs)\n\n\nMay 27\n\n\n\n\n\n\nWeek 3: From PGMs to Causal Diagrams\n\n\nJune 3\n\n\n\n\n\n\nWeek 4: Clearing the Path from Cause to Effect\n\n\nJune 10\n\n\n\n\n\n\nWeek 5: Multilevel Madness, Closing Backdoor Paths\n\n\nJune 17\n\n\n\n\n\n\nWeek 6: Adaptive Pooling in Multilevel Models, Bayesian Workflow\n\n\nJune 24\n\n\n\n\n\n\nWeek 7: Midterm Introduction\n\n\nJuly 1\n\n\n\n\n\n\nWeek 8: Ecological Inference, Propensity Scores\n\n\nJuly 8\n\n\n\n\n\n\nWeek 9: Propensity Scores, Regression Discontinuity, and Causal NLP\n\n\nJuly 15\n\n\n\n\n\n\nWeek 10: Doubly-Robust Estimation, Text-as-Data\n\n\nJuly 22\n\n\n\n\n\n\nWeek 11: Sensitivity Analysis\n\n\nJuly 29\n\n\n\n\n\n\nWeek 12: Causal Forests for Heterogeneous Treatment Effects\n\n\nAugust 5\n\n\n\n\n\n\nNo matching items\n\nCourse Description:\nThis course provides students with the opportunity to take the analytical skills, machine learning algorithms, and statistical methods learned throughout their first year in the program and explore how they can be employed towards carrying out rigorous, original research in the behavioral and social sciences. With a particular emphasis on tackling the additional challenges which arise when moving from associational to causal inference, particularly when only observational (as opposed to experimental) data is available, students will become proficient in cutting-edge causal Machine Learning techniques such as propensity score matching, synthetic controls, causal program evaluation, inverse social welfare function estimation from panel data, and Double-Debiased Machine Learning.\nIn-class examples will cover continuous, discrete-choice, and textual data from a wide swath of social and behavioral sciences: economics, political science, sociology, anthropology, quantitative history, and digital humanities. After gaining experience through in-class labs and homework assignments focused on reproducing key findings from recent journal articles in each of these disciplines, students will spend the final weeks of the course on a final project demonstrating their ability to develop, evaluate, and test the robustness of a causal hypothesis.\nPrerequisites: DSAN 5000, DSAN 5100 (DSAN 5300 recommended but not required)",
     "crumbs": [
       "<i class='bi bi-house pe-1'></i> Home"
     ]
@@ -2952,7 +2952,7 @@
   {
     "objectID": "w09/index.html",
     "href": "w09/index.html",
-    "title": "Week 9: Doubly-Robust Estimation and Instrumental Variables",
+    "title": "Week 9: Propensity Scores, Regression Discontinuity, and Causal NLP",
     "section": "",
     "text": "Open slides in new window →",
     "crumbs": [
@@ -2962,7 +2962,7 @@
   {
     "objectID": "w09/index.html#option-1-modeling-social-phenomena-with-pgms",
     "href": "w09/index.html#option-1-modeling-social-phenomena-with-pgms",
-    "title": "Week 9: Doubly-Robust Estimation and Instrumental Variables",
+    "title": "Week 9: Propensity Scores, Regression Discontinuity, and Causal NLP",
     "section": "Option 1: Modeling Social Phenomena with PGMs",
     "text": "Option 1: Modeling Social Phenomena with PGMs\n\n\n\n\n\n\n\n\n\nFigure 1: PGMs used to model movie character “personas” in Bamman et al. (2013)\n\n\n\n\n\n\n\\(D\\): Number of movies\n\\(E\\): Number of characters in a given movie\n\\(W\\): Tuples pairing words in the movie descriptions with roles (e.g., HERO or VILLAIN)",
     "crumbs": [
@@ -2972,7 +2972,7 @@
   {
     "objectID": "w09/index.html#option-2-pushing-towards-the-asymptote-of-causality",
     "href": "w09/index.html#option-2-pushing-towards-the-asymptote-of-causality",
-    "title": "Week 9: Doubly-Robust Estimation and Instrumental Variables",
+    "title": "Week 9: Propensity Scores, Regression Discontinuity, and Causal NLP",
     "section": "Option 2: Pushing Towards the Asymptote of Causality",
     "text": "Option 2: Pushing Towards the Asymptote of Causality\n\n\nCode\nlibrary(tidyverse) |&gt; suppressPackageStartupMessages()\nrug_df &lt;- read_csv(\"assets/rugged_data.csv\", show_col_types=FALSE)\n# Compute Box-Cox params\nbc_params &lt;- car::powerTransform(\n  object = cbind(\n    rug_df$rgdppc_2000,\n    rug_df$rugged\n  )\n)\nrug_df &lt;- rug_df |&gt; mutate(\n  continent = ifelse(cont_africa == 1, \"African\", \"Non-African\"),\n  gdpc_transformed = rgdppc_2000_m ^ bc_params$lambda[1],\n  rugged_transformed = rugged ^ bc_params$lambda[2],\n)\nrug_df |&gt; ggplot(aes(\n  x = rugged_transformed,\n  y = gdpc_transformed\n)) +\n  geom_text(aes(label=isocode), size=3) +\n  geom_smooth(method=\"lm\", fullrange=TRUE) +\n  facet_wrap(~ continent) +\n  theme_classic() +\n  theme(\n    panel.background = ggplot2::element_rect(fill='transparent'),\n    plot.background = ggplot2::element_rect(fill='transparent', color=NA),\n    plot.title = element_text(hjust=0.5),\n  ) +\n  labs(\n    title=\"Differential Effects of Ruggedness by Continent\",\n    x=\"Terrain Ruggedness\",\n    y=\"Log GDP Per Capita, 2000\",\n  )\n\n\n\n\n\n\n\n\nFigure 2: Results from Nunn and Puga (2012), where the causal impact of terrain ruggedness on present-day GDP per capita reverses direction when considering African vs. non-African countries!",
     "crumbs": [
@@ -2982,7 +2982,7 @@
   {
     "objectID": "w09/index.html#how-exactly-do-we-adjust-for-hatmathttemathbfx",
     "href": "w09/index.html#how-exactly-do-we-adjust-for-hatmathttemathbfx",
-    "title": "Week 9: Doubly-Robust Estimation and Instrumental Variables",
+    "title": "Week 9: Propensity Scores, Regression Discontinuity, and Causal NLP",
     "section": "How Exactly Do We Adjust For \\(\\hat{\\mathtt{e}}(\\mathbf{X})\\)?",
     "text": "How Exactly Do We Adjust For \\(\\hat{\\mathtt{e}}(\\mathbf{X})\\)?\n\n\nSimulation example: smoking reduction\n\n\n\n\n\n\nCode\nlibrary(tidyverse)\nlibrary(Rlab)\n\n\nRlab 4.5.1 attached.\n\n\n\nAttaching package: 'Rlab'\n\n\nThe following object is masked from 'package:dplyr':\n\n    count\n\n\nThe following object is masked from 'package:tibble':\n\n    view\n\n\nThe following objects are masked from 'package:stats':\n\n    dexp, dgamma, dweibull, pexp, pgamma, pweibull, qexp, qgamma,\n    qweibull, rexp, rgamma, rweibull\n\n\nThe following object is masked from 'package:datasets':\n\n    precip\n\n\nCode\nset.seed(5650)\nn &lt;- 250\nmotiv_vals &lt;- runif(n, 0, 1)\nenroll_vals &lt;- ifelse(\n  motiv_vals &lt; 0.25,\n  0,\n  # We know motiv &gt; 0.25\n  ifelse(\n    motiv_vals &gt; 0.75,\n    1,\n    # We know 0.25 &lt; motiv &lt; 0.75\n    rbern(n, prob=(motiv_vals - 0.125)*1.5)\n  )\n)\n\n\nWarning in rbinom(n, size = 1, prob = prob): NAs produced\n\n\nCode\nncigs_vals &lt;- rbinom(n, size=30, prob=0.6-0.2*enroll_vals)\nsmoke_df &lt;- tibble(\n  motiv=motiv_vals,\n  enroll=enroll_vals,\n  ncigs=ncigs_vals\n)\n(smoke_mean_df &lt;- smoke_df |&gt; group_by(enroll) |&gt; summarize(mean_ncigs=mean(ncigs)))\n\n\n\n\n\n\nenroll\nmean_ncigs\n\n\n\n\n0\n17.88060\n\n\n1\n12.26724\n\n\n\n\n\n\nCode\nnaive_smoke_lm &lt;- lm(ncigs ~ enroll, data=smoke_df)\nsummary(naive_smoke_lm) |&gt; broom::tidy() |&gt;\n  select(term, estimate)\n\n\n\n\n\n\nterm\nestimate\n\n\n\n\n(Intercept)\n17.880597\n\n\nenroll\n-5.613356\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nCode\nsmoke_df |&gt; ggplot(aes(x=enroll, y=ncigs)) +\n  geom_boxplot(\n    aes(group=enroll),\n    width=0.5\n  ) +\n  geom_smooth(\n    method='lm',\n    formula='y ~ x',\n    se=TRUE\n  ) +\n  geom_point(\n    data=smoke_mean_df,\n    aes(x=enroll, y=mean_ncigs),\n    size=3\n  ) +\n  theme_dsan(base_size=24) +\n  transparent_bg() +\n  labs(\n    title=\"Naïve Estimate of Program Effectiveness\",\n    x=\"Enrolled?\",\n    y=\"Cigarettes Per Day\",\n  ) +\n  scale_x_continuous(breaks=c(0, 1))",
     "crumbs": [
@@ -2992,7 +2992,7 @@
   {
     "objectID": "w09/index.html#inverse-probability-of-treatment-weighting",
     "href": "w09/index.html#inverse-probability-of-treatment-weighting",
-    "title": "Week 9: Doubly-Robust Estimation and Instrumental Variables",
+    "title": "Week 9: Propensity Scores, Regression Discontinuity, and Causal NLP",
     "section": "Inverse Probability-of-Treatment Weighting",
     "text": "Inverse Probability-of-Treatment Weighting\n\n\n\n\nCode\neprop_model &lt;- glm(enroll ~ motiv, family='binomial', data=smoke_df)\neprop_preds &lt;- predict(eprop_model, type=\"response\")\nsmoke_df &lt;- smoke_df |&gt; mutate(pred=eprop_preds)\n# Use the preds to compute IPW\nsmoke_df &lt;- smoke_df |&gt; rowwise() |&gt; mutate(\n  ipw=ifelse(enroll, 1/pred, 1/(1-pred))\n) |&gt; arrange(pred)\n#smoke_df\nsmoke_df |&gt; mutate(enroll=factor(enroll)) |&gt;\n  ggplot(aes(x=motiv, y=ncigs, color=enroll)) +\n  geom_point() +\n  theme_dsan(base_size=24) +\n  labs(title=\"Before Weighting\") +\n  transparent_bg()\n\n\n\n\n\n\n\n\n\n\n\n\nCode\nsmoke_df |&gt; mutate(enroll=factor(enroll)) |&gt;\n  ggplot(aes(\n    x=motiv, y=ncigs, color=enroll, size=ipw,\n    alpha=log(ipw-1)\n  )) +\n  geom_point() +\n  guides(alpha=\"none\") +\n  theme_dsan(base_size=24) +\n  labs(title=\"After Weighting\") +\n  transparent_bg()\n\n\n\n\n\n\n\n\n\n\n\n\nCode\nsmoke_df |&gt;\n  ggplot(aes(x=motiv)) +\n  # Predictions\n  geom_point(\n    aes(y=enroll, color=factor(enroll))\n  ) +\n  # Values\n  geom_point(\n    aes(y=pred, color=factor(enroll))\n  ) +\n  labs(color=\"enroll\") +\n  theme_dsan(base_size=24) +\n  transparent_bg() +\n  labs(title=\"Propensity to Enroll\")\nipw_min &lt;- min(smoke_df$ipw)\nipw_max &lt;- max(smoke_df$ipw)\nsmoke_df &lt;- smoke_df |&gt; mutate(\n  ipw_scaled = (ipw - ipw_min) / (ipw_max - ipw_min)\n)\nsmoke_df |&gt;\n  ggplot(aes(x=motiv)) +\n  # Predictions\n  geom_point(\n    aes(y=enroll, color=factor(enroll))\n  ) +\n  # Values\n  geom_point(\n    aes(y=ipw_scaled, color=factor(enroll))\n  ) +\n  theme_dsan(base_size=24) +\n  transparent_bg() +\n  labs(\n    title=\"Inverse Probability-of-Treatment Weights (IPTW)\",\n    color=\"enroll\"\n  )\n\n\n\n\n\n↓\n\n\n\n\n\n\n\n\n\n\n\n\n\n→\n\n\n\n\n↑",
     "crumbs": [
@@ -3002,7 +3002,7 @@
   {
     "objectID": "w09/index.html#the-final-result",
     "href": "w09/index.html#the-final-result",
-    "title": "Week 9: Doubly-Robust Estimation and Instrumental Variables",
+    "title": "Week 9: Propensity Scores, Regression Discontinuity, and Causal NLP",
     "section": "The Final Result!",
     "text": "The Final Result!\n\n\nCode\nlm_with_weights &lt;- lm(ncigs ~ enroll,\n  data=smoke_df, weights=smoke_df$ipw\n)\nsummary(lm_with_weights) |&gt; broom::tidy() |&gt;\n  select(term, estimate, std.error)\n\n\n\n\n\n\nterm\nestimate\nstd.error\n\n\n\n\n(Intercept)\n18.10133\n0.2466712\n\n\nenroll\n-5.66453\n0.3571696\n\n\n\n\n\n\n\n\nCode\nlibrary(WeightIt)\nW &lt;- weightit(\n  enroll ~ motiv, data = smoke_df, ps=\"pred\"\n)\nsmoke_weighted_lm &lt;- lm_weightit(\n  ncigs ~ enroll, data = smoke_df, weightit = W\n)\nsummary(smoke_weighted_lm, ci = FALSE)\n\n\n\nCall:\nlm_weightit(formula = ncigs ~ enroll, data = smoke_df, weightit = W)\n\nCoefficients:\n            Estimate Std. Error z value Pr(&gt;|z|)    \n(Intercept)  18.1013     0.2479   73.02   &lt;1e-06 ***\nenroll       -5.6645     0.5463  -10.37   &lt;1e-06 ***\nStandard error: HC0 robust\n\n\n\n\nCode\nW_default &lt;- weightit(\n  enroll ~ motiv, data = smoke_df\n)\nsmoke_default_lm &lt;- lm_weightit(\n  ncigs ~ enroll, data = smoke_df,\n  weightit = W_default\n)\nsummary(smoke_default_lm, ci = FALSE)\n\n\n\nCall:\nlm_weightit(formula = ncigs ~ enroll, data = smoke_df, weightit = W_default)\n\nCoefficients:\n            Estimate Std. Error z value Pr(&gt;|z|)    \n(Intercept)  18.1013     0.2441   74.16   &lt;1e-06 ***\nenroll       -5.6645     0.5444  -10.41   &lt;1e-06 ***\nStandard error: HC0 robust (adjusted for estimation of weights)",
     "crumbs": [
@@ -3010,9 +3010,29 @@
     ]
   },
   {
+    "objectID": "w09/index.html#example-1-close-elections",
+    "href": "w09/index.html#example-1-close-elections",
+    "title": "Week 9: Propensity Scores, Regression Discontinuity, and Causal NLP",
+    "section": "Example 1: Close Elections",
+    "text": "Example 1: Close Elections\n\nWhen one’s margin of victory switches from a negative number to a positive number, we would expect a large, discontinuous, positive jump in the personal wealth of electoral candidates, if serving in office actually financially benefits them. (Imai 2018)\n\n\n\nCode\nlibrary(tidyverse) |&gt; suppressPackageStartupMessages()\n# load the data and subset them into two parties\nMPs &lt;- read_csv(\"assets/mps.csv\")\n\n\nRows: 427 Columns: 10\n── Column specification ────────────────────────────────────────────────────────\nDelimiter: \",\"\nchr (4): surname, firstname, party, region\ndbl (6): ln.gross, ln.net, yob, yod, margin.pre, margin\n\nℹ Use `spec()` to retrieve the full column specification for this data.\nℹ Specify the column types or set `show_col_types = FALSE` to quiet this message.\n\n\nCode\nMPs |&gt; head()\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nsurname\nfirstname\nparty\nln.gross\nln.net\nyob\nyod\nmargin.pre\nregion\nmargin\n\n\n\n\nLlewellyn\nDavid\ntory\n12.13591\n12.135906\n1916\n1992\nNA\nWales\n0.0569040\n\n\nMorris\nClaud\nlabour\n12.44809\n12.448091\n1920\n2000\nNA\nSouth West England\n-0.0497383\n\n\nWalker\nGeorge\ntory\n12.42845\n10.349009\n1914\n1999\n-0.0571682\nNorth East England\n-0.0415887\n\n\nWalker\nHarold\nlabour\n11.91845\n12.395034\n1927\n2003\n-0.0725089\nYorkshire and Humberside\n0.0232952\n\n\nWaring\nJohn\ntory\n13.52022\n13.520219\n1923\n1989\n-0.2696896\nGreater London\n-0.2300058\n\n\nBrown\nRonald\nlabour\n12.46051\n9.631837\n1921\n2002\n0.3409587\nGreater London\n0.3679703",
+    "crumbs": [
+      "Week 9: {{< var w09.date-md >}}"
+    ]
+  },
+  {
+    "objectID": "w09/index.html#sudden-jumps-in-wealth-at-election-threshold",
+    "href": "w09/index.html#sudden-jumps-in-wealth-at-election-threshold",
+    "title": "Week 9: Propensity Scores, Regression Discontinuity, and Causal NLP",
+    "section": "Sudden “Jumps” in Wealth at Election Threshold!",
+    "text": "Sudden “Jumps” in Wealth at Election Threshold!\n\n\n\n\nCode\nlibrary(modelr)\nlibrary(tidyr)\nlibrary(broom)\n\n\n\nAttaching package: 'broom'\n\n\nThe following object is masked from 'package:modelr':\n\n    bootstrap\n\n\nCode\n## load the data\n\n## Subset the data\nlabour_winners &lt;- filter(MPs, party == \"labour\", margin &gt; 0)\nlabour_losers &lt;- filter(MPs, party == \"labour\", margin &lt; 0)\ntory_winners &lt;- filter(MPs, party == \"tory\", margin &gt; 0)\ntory_losers &lt;- filter(MPs, party == \"tory\", margin &lt; 0)\n\n### the regressions\nlabour_fit_win &lt;- lm(ln.net ~ margin, data = labour_winners)\nlabour_fit_lose &lt;- lm(ln.net ~ margin, data = labour_losers)\ntory_fit_win &lt;- lm(ln.net ~ margin, data = tory_winners)\ntory_fit_lose &lt;- lm(ln.net ~ margin, data = tory_losers)\n\ny1_labour_win &lt;- labour_winners %&gt;% \n  data_grid(margin) %&gt;%\n  add_predictions(labour_fit_win)\n\ny2_labour_lose &lt;- labour_losers %&gt;%\n  data_grid(margin) %&gt;%\n  add_predictions(labour_fit_lose)\n\ny1_tory_win &lt;- tory_winners %&gt;% \n  data_grid(margin) %&gt;%\n  add_predictions(tory_fit_win)\n\ny2_tory_lose &lt;- tory_losers %&gt;%\n  data_grid(margin) %&gt;%\n  add_predictions(tory_fit_lose)\n## setting the ggplot theme\ntheme_set(theme_classic(base_size = 22))\n## Labour\nggplot() +\n  geom_point(data = labour_winners,\n             mapping = aes(x = margin, y = ln.net), shape = 1, alpha=0.6) +\n  geom_point(data = labour_losers,\n             mapping = aes(x = margin, y = ln.net), shape = 1, alpha=0.6) +\n  geom_line(data = y1_labour_win,\n            mapping = aes(x = margin, y = pred), \n            color = \"blue\", size = 1, linewidth=2) +\n  geom_line(data = y2_labour_lose,\n            mapping = aes(x = margin, y = pred), \n            color = \"blue\", size = 1, linewidth=2) +\n  geom_vline(xintercept = 0,\n             linetype = \"dashed\") +\n  labs(x = \"Margin of victory\", \n       y = \"log net wealth at death\",\n       title = \"Labour\") +\n  xlim(-0.5, 0.5) +\n  ylim(6, 18) +\n  transparent_bg()\n\n\nWarning: Using `size` aesthetic for lines was deprecated in ggplot2 3.4.0.\nℹ Please use `linewidth` instead.\n\n\n\n\n\n\n\n\n\n\n\n\nCode\n## Tory\nggplot() +\n  geom_point(data = tory_winners,\n             mapping = aes(x = margin, y = ln.net), shape = 1, alpha=0.6) +\n  geom_point(data = tory_losers,\n             mapping = aes(x = margin, y = ln.net), shape = 1, alpha=0.6) +\n  geom_line(data = y1_tory_win,\n            mapping = aes(x = margin, y = pred), \n            color = \"blue\", size = 1, linewidth=2) +\n  geom_line(data = y2_tory_lose,\n            mapping = aes(x = margin, y = pred), \n            color = \"blue\", size = 1, linewidth=1) +\n  geom_vline(xintercept = 0,\n             linetype = \"dashed\") +\n  labs(x = \"Margin of victory\", \n       y = \"log net wealth at death\",\n       title = \"Tory\") +\n  xlim(-0.5, 0.5) +\n  ylim(6, 18) +\n  transparent_bg()",
+    "crumbs": [
+      "Week 9: {{< var w09.date-md >}}"
+    ]
+  },
+  {
     "objectID": "w09/index.html#discovered-topics-depend-on-the-data",
     "href": "w09/index.html#discovered-topics-depend-on-the-data",
-    "title": "Week 9: Doubly-Robust Estimation and Instrumental Variables",
+    "title": "Week 9: Propensity Scores, Regression Discontinuity, and Causal NLP",
     "section": "“Discovered” Topics Depend on the Data 😟",
     "text": "“Discovered” Topics Depend on the Data 😟\n\n\n\n\n\n\n\n\n\n\n\n\n\\(Y_i \\mid \\textsf{do}(D_i \\leftarrow 1)\\)\n\\(Y_i \\mid \\textsf{do}(D_i \\leftarrow 0)\\)\n\n\n\n\nPerson 1\nCandidate’s Morals\nTaxes\n\n\nPerson 2\nCandidate’s Morals\nTaxes\n\n\nPerson 3\nPolarization\nImmigration\n\n\nPerson 4\nPolarization\nImmigration\n\n\n\n\n\nTable 2: From Egami et al. (2022)\n\n\n\n\n\n\n\n\nTable 3: Realized assignments and outcomes in World 1\n\n\n\n\n\n\nActual Assignment\nOutcome \\(Y_i\\)\n\n\n\n\nPerson 1\n\\(D_1 = 1\\)\nMorals\n\n\nPerson 2\n\\(D_2 = 1\\)\nMorals\n\n\nPerson 3\n\\(D_3 = 0\\)\nImmigration\n\n\nPerson 4\n\\(D_4 = 0\\)\nImmigration\n\n\n\n\n\n\n\n\n\n\nTable 4: Realized assignments and outcomes in World 2\n\n\n\n\n\n\nActual Assignment\nOutcome \\(Y_i\\)\n\n\n\n\nPerson 1\n\\(D_1 = 1\\)\nMorals\n\n\nPerson 2\n\\(D_2 = 0\\)\nTaxes\n\n\nPerson 3\n\\(D_3 = 1\\)\nPolarization\n\n\nPerson 4\n\\(D_4 = 0\\)\nImmigration",
     "crumbs": [
@@ -3022,7 +3042,7 @@
   {
     "objectID": "w09/index.html#the-solution-sample-splitting",
     "href": "w09/index.html#the-solution-sample-splitting",
-    "title": "Week 9: Doubly-Robust Estimation and Instrumental Variables",
+    "title": "Week 9: Propensity Scores, Regression Discontinuity, and Causal NLP",
     "section": "The Solution? Sample Splitting!",
     "text": "The Solution? Sample Splitting!\n\nMachine learning noticed this long ago: the goal is a model that generalizes, not memorizes!",
     "crumbs": [
@@ -3032,9 +3052,9 @@
   {
     "objectID": "w09/index.html#references",
     "href": "w09/index.html#references",
-    "title": "Week 9: Doubly-Robust Estimation and Instrumental Variables",
+    "title": "Week 9: Propensity Scores, Regression Discontinuity, and Causal NLP",
     "section": "References",
-    "text": "References\n\n\nBamman, David, Brendan O’Connor, and Noah A. Smith. 2013. “Learning Latent Personas of Film Characters.” In Proceedings of the 51st Annual Meeting of the Association for Computational Linguistics (Volume 1: Long Papers), edited by Hinrich Schuetze, Pascale Fung, and Massimo Poesio. Association for Computational Linguistics. https://aclanthology.org/P13-1035/.\n\n\nEgami, Naoki, Christian J. Fong, Justin Grimmer, Margaret E. Roberts, and Brandon M. Stewart. 2022. “How to Make Causal Inferences Using Texts.” Science Advances 8 (42): eabg2652. https://doi.org/10.1126/sciadv.abg2652.\n\n\nNunn, Nathan, and Diego Puga. 2012. “Ruggedness: The Blessing of Bad Geography in Africa.” The Review of Economics and Statistics 94 (1): 20–36. https://www.jstor.org/stable/41349158.",
+    "text": "References\n\n\nBamman, David, Brendan O’Connor, and Noah A. Smith. 2013. “Learning Latent Personas of Film Characters.” In Proceedings of the 51st Annual Meeting of the Association for Computational Linguistics (Volume 1: Long Papers), edited by Hinrich Schuetze, Pascale Fung, and Massimo Poesio. Association for Computational Linguistics. https://aclanthology.org/P13-1035/.\n\n\nEgami, Naoki, Christian J. Fong, Justin Grimmer, Margaret E. Roberts, and Brandon M. Stewart. 2022. “How to Make Causal Inferences Using Texts.” Science Advances 8 (42): eabg2652. https://doi.org/10.1126/sciadv.abg2652.\n\n\nImai, Kosuke. 2018. Quantitative Social Science: An Introduction. Princeton University Press. https://books.google.com?id=T3GYDwAAQBAJ.\n\n\nNunn, Nathan, and Diego Puga. 2012. “Ruggedness: The Blessing of Bad Geography in Africa.” The Review of Economics and Statistics 94 (1): 20–36. https://www.jstor.org/stable/41349158.",
     "crumbs": [
       "Week 9: {{< var w09.date-md >}}"
     ]
@@ -3042,58 +3062,72 @@
   {
     "objectID": "w09/slides.html#option-1-modeling-social-phenomena-with-pgms",
     "href": "w09/slides.html#option-1-modeling-social-phenomena-with-pgms",
-    "title": "Week 9: Doubly-Robust Estimation and Instrumental Variables",
+    "title": "Week 9: Propensity Scores, Regression Discontinuity, and Causal NLP",
     "section": "Option 1: Modeling Social Phenomena with PGMs",
     "text": "Option 1: Modeling Social Phenomena with PGMs\n\n\n\n\n\n\n\n\n\nFigure 1: PGMs used to model movie character “personas” in Bamman et al. (2013)\n\n\n\n\n\n\\(D\\): Number of movies\n\\(E\\): Number of characters in a given movie\n\\(W\\): Tuples pairing words in the movie descriptions with roles (e.g., HERO or VILLAIN)"
   },
   {
     "objectID": "w09/slides.html#option-2-pushing-towards-the-asymptote-of-causality",
     "href": "w09/slides.html#option-2-pushing-towards-the-asymptote-of-causality",
-    "title": "Week 9: Doubly-Robust Estimation and Instrumental Variables",
+    "title": "Week 9: Propensity Scores, Regression Discontinuity, and Causal NLP",
     "section": "Option 2: Pushing Towards the Asymptote of Causality",
     "text": "Option 2: Pushing Towards the Asymptote of Causality\n\n\nCode\nlibrary(tidyverse) |&gt; suppressPackageStartupMessages()\nrug_df &lt;- read_csv(\"assets/rugged_data.csv\", show_col_types=FALSE)\n# Compute Box-Cox params\nbc_params &lt;- car::powerTransform(\n  object = cbind(\n    rug_df$rgdppc_2000,\n    rug_df$rugged\n  )\n)\nrug_df &lt;- rug_df |&gt; mutate(\n  continent = ifelse(cont_africa == 1, \"African\", \"Non-African\"),\n  gdpc_transformed = rgdppc_2000_m ^ bc_params$lambda[1],\n  rugged_transformed = rugged ^ bc_params$lambda[2],\n)\nrug_df |&gt; ggplot(aes(\n  x = rugged_transformed,\n  y = gdpc_transformed\n)) +\n  geom_text(aes(label=isocode), size=3) +\n  geom_smooth(method=\"lm\", fullrange=TRUE) +\n  facet_wrap(~ continent) +\n  theme_classic() +\n  theme(\n    panel.background = ggplot2::element_rect(fill='transparent'),\n    plot.background = ggplot2::element_rect(fill='transparent', color=NA),\n    plot.title = element_text(hjust=0.5),\n  ) +\n  labs(\n    title=\"Differential Effects of Ruggedness by Continent\",\n    x=\"Terrain Ruggedness\",\n    y=\"Log GDP Per Capita, 2000\",\n  )\n\n\n\n\nFigure 2: Results from Nunn and Puga (2012), where the causal impact of terrain ruggedness on present-day GDP per capita reverses direction when considering African vs. non-African countries!"
   },
   {
     "objectID": "w09/slides.html#how-exactly-do-we-adjust-for-hatmathttemathbfx",
     "href": "w09/slides.html#how-exactly-do-we-adjust-for-hatmathttemathbfx",
-    "title": "Week 9: Doubly-Robust Estimation and Instrumental Variables",
+    "title": "Week 9: Propensity Scores, Regression Discontinuity, and Causal NLP",
     "section": "How Exactly Do We Adjust For \\(\\hat{\\mathtt{e}}(\\mathbf{X})\\)?",
     "text": "How Exactly Do We Adjust For \\(\\hat{\\mathtt{e}}(\\mathbf{X})\\)?\n\n\nSimulation example: smoking reduction\n\n\n\n\n\n\nCode\nlibrary(tidyverse)\nlibrary(Rlab)\nset.seed(5650)\nn &lt;- 250\nmotiv_vals &lt;- runif(n, 0, 1)\nenroll_vals &lt;- ifelse(\n  motiv_vals &lt; 0.25,\n  0,\n  # We know motiv &gt; 0.25\n  ifelse(\n    motiv_vals &gt; 0.75,\n    1,\n    # We know 0.25 &lt; motiv &lt; 0.75\n    rbern(n, prob=(motiv_vals - 0.125)*1.5)\n  )\n)\nncigs_vals &lt;- rbinom(n, size=30, prob=0.6-0.2*enroll_vals)\nsmoke_df &lt;- tibble(\n  motiv=motiv_vals,\n  enroll=enroll_vals,\n  ncigs=ncigs_vals\n)\n(smoke_mean_df &lt;- smoke_df |&gt; group_by(enroll) |&gt; summarize(mean_ncigs=mean(ncigs)))\n\n\n\n\n\n\nenroll\nmean_ncigs\n\n\n\n\n0\n17.88060\n\n\n1\n12.26724\n\n\n\n\n\n\nCode\nnaive_smoke_lm &lt;- lm(ncigs ~ enroll, data=smoke_df)\nsummary(naive_smoke_lm) |&gt; broom::tidy() |&gt;\n  select(term, estimate)\n\n\n\n\n\n\nterm\nestimate\n\n\n\n\n(Intercept)\n17.880597\n\n\nenroll\n-5.613356\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nCode\nsmoke_df |&gt; ggplot(aes(x=enroll, y=ncigs)) +\n  geom_boxplot(\n    aes(group=enroll),\n    width=0.5\n  ) +\n  geom_smooth(\n    method='lm',\n    formula='y ~ x',\n    se=TRUE\n  ) +\n  geom_point(\n    data=smoke_mean_df,\n    aes(x=enroll, y=mean_ncigs),\n    size=3\n  ) +\n  theme_dsan(base_size=24) +\n  transparent_bg() +\n  labs(\n    title=\"Naïve Estimate of Program Effectiveness\",\n    x=\"Enrolled?\",\n    y=\"Cigarettes Per Day\",\n  ) +\n  scale_x_continuous(breaks=c(0, 1))"
   },
   {
     "objectID": "w09/slides.html#inverse-probability-of-treatment-weighting",
     "href": "w09/slides.html#inverse-probability-of-treatment-weighting",
-    "title": "Week 9: Doubly-Robust Estimation and Instrumental Variables",
+    "title": "Week 9: Propensity Scores, Regression Discontinuity, and Causal NLP",
     "section": "Inverse Probability-of-Treatment Weighting",
     "text": "Inverse Probability-of-Treatment Weighting\n\n\n\n\nCode\neprop_model &lt;- glm(enroll ~ motiv, family='binomial', data=smoke_df)\neprop_preds &lt;- predict(eprop_model, type=\"response\")\nsmoke_df &lt;- smoke_df |&gt; mutate(pred=eprop_preds)\n# Use the preds to compute IPW\nsmoke_df &lt;- smoke_df |&gt; rowwise() |&gt; mutate(\n  ipw=ifelse(enroll, 1/pred, 1/(1-pred))\n) |&gt; arrange(pred)\n#smoke_df\nsmoke_df |&gt; mutate(enroll=factor(enroll)) |&gt;\n  ggplot(aes(x=motiv, y=ncigs, color=enroll)) +\n  geom_point() +\n  theme_dsan(base_size=24) +\n  labs(title=\"Before Weighting\") +\n  transparent_bg()\n\n\n\n\n\n\n\n\n\n\n\n\nCode\nsmoke_df |&gt; mutate(enroll=factor(enroll)) |&gt;\n  ggplot(aes(\n    x=motiv, y=ncigs, color=enroll, size=ipw,\n    alpha=log(ipw-1)\n  )) +\n  geom_point() +\n  guides(alpha=\"none\") +\n  theme_dsan(base_size=24) +\n  labs(title=\"After Weighting\") +\n  transparent_bg()\n\n\n\n\n\n\n\n\n\n\n\nCode\nsmoke_df |&gt;\n  ggplot(aes(x=motiv)) +\n  # Predictions\n  geom_point(\n    aes(y=enroll, color=factor(enroll))\n  ) +\n  # Values\n  geom_point(\n    aes(y=pred, color=factor(enroll))\n  ) +\n  labs(color=\"enroll\") +\n  theme_dsan(base_size=24) +\n  transparent_bg() +\n  labs(title=\"Propensity to Enroll\")\nipw_min &lt;- min(smoke_df$ipw)\nipw_max &lt;- max(smoke_df$ipw)\nsmoke_df &lt;- smoke_df |&gt; mutate(\n  ipw_scaled = (ipw - ipw_min) / (ipw_max - ipw_min)\n)\nsmoke_df |&gt;\n  ggplot(aes(x=motiv)) +\n  # Predictions\n  geom_point(\n    aes(y=enroll, color=factor(enroll))\n  ) +\n  # Values\n  geom_point(\n    aes(y=ipw_scaled, color=factor(enroll))\n  ) +\n  theme_dsan(base_size=24) +\n  transparent_bg() +\n  labs(\n    title=\"Inverse Probability-of-Treatment Weights (IPTW)\",\n    color=\"enroll\"\n  )\n\n\n\n\n\n↓\n\n\n\n\n\n\n\n\n\n\n\n\n\n→\n\n\n\n\n↑"
   },
   {
     "objectID": "w09/slides.html#the-final-result",
     "href": "w09/slides.html#the-final-result",
-    "title": "Week 9: Doubly-Robust Estimation and Instrumental Variables",
+    "title": "Week 9: Propensity Scores, Regression Discontinuity, and Causal NLP",
     "section": "The Final Result!",
     "text": "The Final Result!\n\n\n\nCode\nlm_with_weights &lt;- lm(ncigs ~ enroll,\n  data=smoke_df, weights=smoke_df$ipw\n)\nsummary(lm_with_weights) |&gt; broom::tidy() |&gt;\n  select(term, estimate, std.error)\n\n\n\n\n\n\n\nterm\nestimate\nstd.error\n\n\n\n\n(Intercept)\n18.10133\n0.2466712\n\n\nenroll\n-5.66453\n0.3571696\n\n\n\n\n\n\n\n\n\nCode\nlibrary(WeightIt)\nW &lt;- weightit(\n  enroll ~ motiv, data = smoke_df, ps=\"pred\"\n)\nsmoke_weighted_lm &lt;- lm_weightit(\n  ncigs ~ enroll, data = smoke_df, weightit = W\n)\nsummary(smoke_weighted_lm, ci = FALSE)\n\n\n\n\nCall:\nlm_weightit(formula = ncigs ~ enroll, data = smoke_df, weightit = W)\n\nCoefficients:\n            Estimate Std. Error z value Pr(&gt;|z|)    \n(Intercept)  18.1013     0.2479   73.02   &lt;1e-06 ***\nenroll       -5.6645     0.5463  -10.37   &lt;1e-06 ***\nStandard error: HC0 robust\n\n\n\n\n\nCode\nW_default &lt;- weightit(\n  enroll ~ motiv, data = smoke_df\n)\nsmoke_default_lm &lt;- lm_weightit(\n  ncigs ~ enroll, data = smoke_df,\n  weightit = W_default\n)\nsummary(smoke_default_lm, ci = FALSE)\n\n\n\n\nCall:\nlm_weightit(formula = ncigs ~ enroll, data = smoke_df, weightit = W_default)\n\nCoefficients:\n            Estimate Std. Error z value Pr(&gt;|z|)    \n(Intercept)  18.1013     0.2441   74.16   &lt;1e-06 ***\nenroll       -5.6645     0.5444  -10.41   &lt;1e-06 ***\nStandard error: HC0 robust (adjusted for estimation of weights)"
   },
   {
+    "objectID": "w09/slides.html#example-1-close-elections",
+    "href": "w09/slides.html#example-1-close-elections",
+    "title": "Week 9: Propensity Scores, Regression Discontinuity, and Causal NLP",
+    "section": "Example 1: Close Elections",
+    "text": "Example 1: Close Elections\n\nWhen one’s margin of victory switches from a negative number to a positive number, we would expect a large, discontinuous, positive jump in the personal wealth of electoral candidates, if serving in office actually financially benefits them. (Imai 2018)\n\n\n\nCode\nlibrary(tidyverse) |&gt; suppressPackageStartupMessages()\n# load the data and subset them into two parties\nMPs &lt;- read_csv(\"assets/mps.csv\")\nMPs |&gt; head()\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nsurname\nfirstname\nparty\nln.gross\nln.net\nyob\nyod\nmargin.pre\nregion\nmargin\n\n\n\n\nLlewellyn\nDavid\ntory\n12.13591\n12.135906\n1916\n1992\nNA\nWales\n0.0569040\n\n\nMorris\nClaud\nlabour\n12.44809\n12.448091\n1920\n2000\nNA\nSouth West England\n-0.0497383\n\n\nWalker\nGeorge\ntory\n12.42845\n10.349009\n1914\n1999\n-0.0571682\nNorth East England\n-0.0415887\n\n\nWalker\nHarold\nlabour\n11.91845\n12.395034\n1927\n2003\n-0.0725089\nYorkshire and Humberside\n0.0232952\n\n\nWaring\nJohn\ntory\n13.52022\n13.520219\n1923\n1989\n-0.2696896\nGreater London\n-0.2300058\n\n\nBrown\nRonald\nlabour\n12.46051\n9.631837\n1921\n2002\n0.3409587\nGreater London\n0.3679703"
+  },
+  {
+    "objectID": "w09/slides.html#sudden-jumps-in-wealth-at-election-threshold",
+    "href": "w09/slides.html#sudden-jumps-in-wealth-at-election-threshold",
+    "title": "Week 9: Propensity Scores, Regression Discontinuity, and Causal NLP",
+    "section": "Sudden “Jumps” in Wealth at Election Threshold!",
+    "text": "Sudden “Jumps” in Wealth at Election Threshold!\n\n\n\n\nCode\nlibrary(modelr)\nlibrary(tidyr)\nlibrary(broom)\n## load the data\n\n## Subset the data\nlabour_winners &lt;- filter(MPs, party == \"labour\", margin &gt; 0)\nlabour_losers &lt;- filter(MPs, party == \"labour\", margin &lt; 0)\ntory_winners &lt;- filter(MPs, party == \"tory\", margin &gt; 0)\ntory_losers &lt;- filter(MPs, party == \"tory\", margin &lt; 0)\n\n### the regressions\nlabour_fit_win &lt;- lm(ln.net ~ margin, data = labour_winners)\nlabour_fit_lose &lt;- lm(ln.net ~ margin, data = labour_losers)\ntory_fit_win &lt;- lm(ln.net ~ margin, data = tory_winners)\ntory_fit_lose &lt;- lm(ln.net ~ margin, data = tory_losers)\n\ny1_labour_win &lt;- labour_winners %&gt;% \n  data_grid(margin) %&gt;%\n  add_predictions(labour_fit_win)\n\ny2_labour_lose &lt;- labour_losers %&gt;%\n  data_grid(margin) %&gt;%\n  add_predictions(labour_fit_lose)\n\ny1_tory_win &lt;- tory_winners %&gt;% \n  data_grid(margin) %&gt;%\n  add_predictions(tory_fit_win)\n\ny2_tory_lose &lt;- tory_losers %&gt;%\n  data_grid(margin) %&gt;%\n  add_predictions(tory_fit_lose)\n## setting the ggplot theme\ntheme_set(theme_classic(base_size = 22))\n## Labour\nggplot() +\n  geom_point(data = labour_winners,\n             mapping = aes(x = margin, y = ln.net), shape = 1, alpha=0.6) +\n  geom_point(data = labour_losers,\n             mapping = aes(x = margin, y = ln.net), shape = 1, alpha=0.6) +\n  geom_line(data = y1_labour_win,\n            mapping = aes(x = margin, y = pred), \n            color = \"blue\", size = 1, linewidth=2) +\n  geom_line(data = y2_labour_lose,\n            mapping = aes(x = margin, y = pred), \n            color = \"blue\", size = 1, linewidth=2) +\n  geom_vline(xintercept = 0,\n             linetype = \"dashed\") +\n  labs(x = \"Margin of victory\", \n       y = \"log net wealth at death\",\n       title = \"Labour\") +\n  xlim(-0.5, 0.5) +\n  ylim(6, 18) +\n  transparent_bg()\n\n\n\n\n\n\n\n\n\n\n\n\nCode\n## Tory\nggplot() +\n  geom_point(data = tory_winners,\n             mapping = aes(x = margin, y = ln.net), shape = 1, alpha=0.6) +\n  geom_point(data = tory_losers,\n             mapping = aes(x = margin, y = ln.net), shape = 1, alpha=0.6) +\n  geom_line(data = y1_tory_win,\n            mapping = aes(x = margin, y = pred), \n            color = \"blue\", size = 1, linewidth=2) +\n  geom_line(data = y2_tory_lose,\n            mapping = aes(x = margin, y = pred), \n            color = \"blue\", size = 1, linewidth=1) +\n  geom_vline(xintercept = 0,\n             linetype = \"dashed\") +\n  labs(x = \"Margin of victory\", \n       y = \"log net wealth at death\",\n       title = \"Tory\") +\n  xlim(-0.5, 0.5) +\n  ylim(6, 18) +\n  transparent_bg()"
+  },
+  {
     "objectID": "w09/slides.html#discovered-topics-depend-on-the-data",
     "href": "w09/slides.html#discovered-topics-depend-on-the-data",
-    "title": "Week 9: Doubly-Robust Estimation and Instrumental Variables",
+    "title": "Week 9: Propensity Scores, Regression Discontinuity, and Causal NLP",
     "section": "“Discovered” Topics Depend on the Data 😟",
     "text": "“Discovered” Topics Depend on the Data 😟\n\n\n\n\n\n\n\n\n\n\n\n\n\\(Y_i \\mid \\textsf{do}(D_i \\leftarrow 1)\\)\n\\(Y_i \\mid \\textsf{do}(D_i \\leftarrow 0)\\)\n\n\n\n\nPerson 1\nCandidate’s Morals\nTaxes\n\n\nPerson 2\nCandidate’s Morals\nTaxes\n\n\nPerson 3\nPolarization\nImmigration\n\n\nPerson 4\nPolarization\nImmigration\n\n\n\n\n\nTable 2: From Egami et al. (2022)\n\n\n\n\n\n\n\n\nTable 3: Realized assignments and outcomes in World 1\n\n\n\n\n\n\nActual Assignment\nOutcome \\(Y_i\\)\n\n\n\n\nPerson 1\n\\(D_1 = 1\\)\nMorals\n\n\nPerson 2\n\\(D_2 = 1\\)\nMorals\n\n\nPerson 3\n\\(D_3 = 0\\)\nImmigration\n\n\nPerson 4\n\\(D_4 = 0\\)\nImmigration\n\n\n\n\n\n\n\n\n\n\nTable 4: Realized assignments and outcomes in World 2\n\n\n\n\n\n\nActual Assignment\nOutcome \\(Y_i\\)\n\n\n\n\nPerson 1\n\\(D_1 = 1\\)\nMorals\n\n\nPerson 2\n\\(D_2 = 0\\)\nTaxes\n\n\nPerson 3\n\\(D_3 = 1\\)\nPolarization\n\n\nPerson 4\n\\(D_4 = 0\\)\nImmigration"
   },
   {
     "objectID": "w09/slides.html#the-solution-sample-splitting",
     "href": "w09/slides.html#the-solution-sample-splitting",
-    "title": "Week 9: Doubly-Robust Estimation and Instrumental Variables",
+    "title": "Week 9: Propensity Scores, Regression Discontinuity, and Causal NLP",
     "section": "The Solution? Sample Splitting!",
     "text": "The Solution? Sample Splitting!\n\nMachine learning noticed this long ago: the goal is a model that generalizes, not memorizes!"
   },
   {
     "objectID": "w09/slides.html#references",
     "href": "w09/slides.html#references",
-    "title": "Week 9: Doubly-Robust Estimation and Instrumental Variables",
+    "title": "Week 9: Propensity Scores, Regression Discontinuity, and Causal NLP",
     "section": "References",
-    "text": "References\n\n\nBamman, David, Brendan O’Connor, and Noah A. Smith. 2013. “Learning Latent Personas of Film Characters.” In Proceedings of the 51st Annual Meeting of the Association for Computational Linguistics (Volume 1: Long Papers), edited by Hinrich Schuetze, Pascale Fung, and Massimo Poesio. Association for Computational Linguistics. https://aclanthology.org/P13-1035/.\n\n\nEgami, Naoki, Christian J. Fong, Justin Grimmer, Margaret E. Roberts, and Brandon M. Stewart. 2022. “How to Make Causal Inferences Using Texts.” Science Advances 8 (42): eabg2652. https://doi.org/10.1126/sciadv.abg2652.\n\n\nNunn, Nathan, and Diego Puga. 2012. “Ruggedness: The Blessing of Bad Geography in Africa.” The Review of Economics and Statistics 94 (1): 20–36. https://www.jstor.org/stable/41349158."
+    "text": "References\n\n\nBamman, David, Brendan O’Connor, and Noah A. Smith. 2013. “Learning Latent Personas of Film Characters.” In Proceedings of the 51st Annual Meeting of the Association for Computational Linguistics (Volume 1: Long Papers), edited by Hinrich Schuetze, Pascale Fung, and Massimo Poesio. Association for Computational Linguistics. https://aclanthology.org/P13-1035/.\n\n\nEgami, Naoki, Christian J. Fong, Justin Grimmer, Margaret E. Roberts, and Brandon M. Stewart. 2022. “How to Make Causal Inferences Using Texts.” Science Advances 8 (42): eabg2652. https://doi.org/10.1126/sciadv.abg2652.\n\n\nImai, Kosuke. 2018. Quantitative Social Science: An Introduction. Princeton University Press. https://books.google.com?id=T3GYDwAAQBAJ.\n\n\nNunn, Nathan, and Diego Puga. 2012. “Ruggedness: The Blessing of Bad Geography in Africa.” The Review of Economics and Statistics 94 (1): 20–36. https://www.jstor.org/stable/41349158."
   },
   {
     "objectID": "w01/index.html",

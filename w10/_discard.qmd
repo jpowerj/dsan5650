@@ -1,0 +1,12 @@
+
+# Hard Mode: When Conditioning Isn't an Option / Can't Fix Things {.title-09 .crunch-title .text-90 data-name="Instrumental Variables"}
+
+* Approaches we've discussed thus far depend on the ability to **adjust for** (e.g., by conditioning-on and/or purposefully-not-conditioning-on) **confounders themselves** (e.g., in regression), or on **propensity scores**
+* Enter **Instrumental Variables!** (this week), **Specification of Mechanisms / Front-Door Pathways** (next week)
+* $\leadsto$ Find **"natural experiments"**, randomizations or pseudo-randomizations in society that allow us to replicate the "holy grail" of random assignment
+
+::: {.notes}
+
+I... always ask economists why it isn't explained like this, and they always say "it's more complicated than that", and then they explain the complications and I think I understand them but still think that this is a good way to describe the gist!
+
+:::

@@ -60,7 +60,8 @@ Today's Planned Schedule:
 | | Start | End | Topic |
 |:- |:- |:- |:- |
 | **Lecture** | 6:30pm | 6:45pm | [Final Projects: Dependent vs. Independent Vars &rarr;](#final-projects-independent-vs.-dependent-variables) |
-| | 6:45pm | 7:10pm | [Instrumental Variables Lite &rarr;](#instrumental-variables)
+| | 6:45pm | 7:10pm | [Instrumental Variables Lite &rarr;](#instrumental-variables) |
+| | 7:30pm | 8:00pm | [When Conditioning Won't Cut It: IVs &rarr;](#hard-mode-when-conditioning-cant-fix-things) |
 | | 7:10pm | 8:00pm | [Text-as-Data Part 1: TAD in General &rarr;](#text-as-data-part-1-tad-in-general) |
 | **Break!** | 8:00pm | 8:10pm | |
 | | 8:10pm | 9:00pm | [Text-as-Data Part 2: Causal Text Analysis &rarr;](#text-as-data-part-2-causal-inferences-with-text) |
@@ -278,9 +279,13 @@ $$
 \beta_{\text{IV}} = \frac{\text{Cov}[Y, Z]}{\text{Cov}[D,Z]}
 $$
 
-## Birthday as Instrument
+## Demo: Birthday as Instrument
 
-* Mini-Lab Time!
+<center>
+
+[Birthdays as Instruments for Catholic School Effects](../writeups/birthday-instrument/)
+
+</center>
 
 # Text-as-Data Part 1: TAD in General {.crunch-title .title-09 data-stack-name="Text-as-Data"}
 

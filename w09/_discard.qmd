@@ -154,3 +154,10 @@ X3 --> Y
 class D,Y included;
 class X1,X2,X3 excluded;
 ```
+
+---
+
+# ...What If We Have *Many* Covariates? {data-stack-name="Many Covariates"}
+
+* Curse of dimensionality...
+* Lab Time!

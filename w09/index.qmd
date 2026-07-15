@@ -1,5 +1,5 @@
 ---
-title: "Week 9: Doubly-Robust Estimation and Instrumental Variables"
+title: "Week 9: Propensity Scores, Regression Discontinuity, and Causal NLP"
 subtitle: "*DSAN 5650: Causal Inference for Computational Social Science*<br><span class='subsubtitle'>Summer 2026, Georgetown University</span>"
 author: "Jeff Jacobs"
 institute: "[`jj1088@georgetown.edu`](mailto:jj1088@georgetown.edu)"
@@ -61,11 +61,11 @@ Today's Planned Schedule:
 
 | | Start | End | Topic |
 |:- |:- |:- |:- |
-| **Lecture** | 6:30pm | 6:45pm | [Final Project Tings &rarr;](#final-project-tings) |
-| | 6:45pm | 7:20pm | [Double Robustness &rarr;](#double-robustness)
-| | 7:20pm | 8:00pm | [When Conditioning Won't Cut It: IVs &rarr;](#hard-mode-when-conditioning-cant-fix-things) |
+| **Lecture** | 6:30pm | 7:00pm | [Final Project Templates &rarr;](#final-project-templates) |
+| | 7:00pm | 7:30pm | [Propensity Score Weighting &rarr;](#recap-propensity-scores)
+| | 7:30pm | 8:00pm | [Regression Discontinuity &rarr;](#)
 | **Break!** | 8:00pm | 8:10pm | |
-| | 8:10pm | 9:00pm | [Drawing Causal Inferences from Text Data &rarr;](#lab-causal-inference-with-text) |
+| | 8:30pm | 9:00pm | [Violations of Causal Inference Axioms in NLP and Network Analysis &rarr;](#lab-causal-inference-with-text) |
 
 : {tbl-colwidths="[12,12,12,64]"}
 
@@ -380,10 +380,113 @@ smoke_default_lm <- lm_weightit(
 summary(smoke_default_lm, ci = FALSE)
 ```
 
-# ...What If We Have *Many* Covariates? {data-stack-name="Many Covariates"}
+# Regression Discontinuity {data-stack-name="Regression Discontinuity"}
 
-* Curse of dimensionality...
-* Lab Time!
+## Example 1: Close Elections {.smaller .crunch-title}
+
+> *When one's margin of victory switches from a negative number to a positive number, we would expect a large, discontinuous, positive jump in the personal wealth of electoral candidates, if serving in office actually financially benefits them.* [@imai_quantitative_2018]
+
+```{r}
+#| label: rd-mps
+#| code-fold: true
+library(tidyverse) |> suppressPackageStartupMessages()
+# load the data and subset them into two parties
+MPs <- read_csv("assets/mps.csv")
+MPs |> head()
+```
+
+## Sudden "Jumps" in Wealth at Election Threshold! {.smaller .crunch-title .title-11}
+
+:::: {.columns}
+::: {.column width="50%"}
+
+```{r, dev = "svg", dev.args=list(bg="transparent")}
+#| fig-height: 8
+library(modelr)
+library(tidyr)
+library(broom)
+## load the data
+
+## Subset the data
+labour_winners <- filter(MPs, party == "labour", margin > 0)
+labour_losers <- filter(MPs, party == "labour", margin < 0)
+tory_winners <- filter(MPs, party == "tory", margin > 0)
+tory_losers <- filter(MPs, party == "tory", margin < 0)
+
+### the regressions
+labour_fit_win <- lm(ln.net ~ margin, data = labour_winners)
+labour_fit_lose <- lm(ln.net ~ margin, data = labour_losers)
+tory_fit_win <- lm(ln.net ~ margin, data = tory_winners)
+tory_fit_lose <- lm(ln.net ~ margin, data = tory_losers)
+
+y1_labour_win <- labour_winners %>% 
+  data_grid(margin) %>%
+  add_predictions(labour_fit_win)
+
+y2_labour_lose <- labour_losers %>%
+  data_grid(margin) %>%
+  add_predictions(labour_fit_lose)
+
+y1_tory_win <- tory_winners %>% 
+  data_grid(margin) %>%
+  add_predictions(tory_fit_win)
+
+y2_tory_lose <- tory_losers %>%
+  data_grid(margin) %>%
+  add_predictions(tory_fit_lose)
+## setting the ggplot theme
+theme_set(theme_classic(base_size = 22))
+## Labour
+ggplot() +
+  geom_point(data = labour_winners,
+             mapping = aes(x = margin, y = ln.net), shape = 1, alpha=0.6) +
+  geom_point(data = labour_losers,
+             mapping = aes(x = margin, y = ln.net), shape = 1, alpha=0.6) +
+  geom_line(data = y1_labour_win,
+            mapping = aes(x = margin, y = pred), 
+            color = "blue", size = 1, linewidth=2) +
+  geom_line(data = y2_labour_lose,
+            mapping = aes(x = margin, y = pred), 
+            color = "blue", size = 1, linewidth=2) +
+  geom_vline(xintercept = 0,
+             linetype = "dashed") +
+  labs(x = "Margin of victory", 
+       y = "log net wealth at death",
+       title = "Labour") +
+  xlim(-0.5, 0.5) +
+  ylim(6, 18) +
+  transparent_bg()
+```
+
+:::
+::: {.column width="50%"}
+
+```{r, dev = "svg", dev.args=list(bg="transparent")}
+#| fig-height: 8
+## Tory
+ggplot() +
+  geom_point(data = tory_winners,
+             mapping = aes(x = margin, y = ln.net), shape = 1, alpha=0.6) +
+  geom_point(data = tory_losers,
+             mapping = aes(x = margin, y = ln.net), shape = 1, alpha=0.6) +
+  geom_line(data = y1_tory_win,
+            mapping = aes(x = margin, y = pred), 
+            color = "blue", size = 1, linewidth=2) +
+  geom_line(data = y2_tory_lose,
+            mapping = aes(x = margin, y = pred), 
+            color = "blue", size = 1, linewidth=1) +
+  geom_vline(xintercept = 0,
+             linetype = "dashed") +
+  labs(x = "Margin of victory", 
+       y = "log net wealth at death",
+       title = "Tory") +
+  xlim(-0.5, 0.5) +
+  ylim(6, 18) +
+  transparent_bg()
+```
+
+:::
+::::
 
 # [potted_plant]{.material-symbols-outlined} Causal Inferences with Text {.smaller .crunch-title .title-10 .crunch-ul .crunch-p data-stack-name="Causal NLP"}
 
@@ -445,24 +548,6 @@ summary(smoke_default_lm, ci = FALSE)
 * Machine learning noticed this long ago: the goal is a model that **generalizes**, not **memorizes!**
 
 ![](images/sample_split.jpg){fig-align="center"}
-
-# Hard Mode: When Conditioning Isn't an Option / Can't Fix Things {.title-09 .crunch-title .text-90 data-name="Instrumental Variables"}
-
-* Approaches we've discussed thus far depend on the ability to **adjust for** (e.g., by conditioning-on and/or purposefully-not-conditioning-on) **confounders themselves** (e.g., in regression), or on **propensity scores**
-* Enter **Instrumental Variables!** (this week), **Specification of Mechanisms / Front-Door Pathways** (next week)
-* $\leadsto$ Find **"natural experiments"**, randomizations or pseudo-randomizations in society that allow us to replicate the "holy grail" of random assignment
-
-::: {.notes}
-
-I... always ask economists why it isn't explained like this, and they always say "it's more complicated than that", and then they explain the complications and I think I understand them but still think that this is a good way to describe the gist!
-
-:::
-
-# Lab: Instrumental Variable Estimation
-
-# Lab: Causal Inference with Text {data-stack-name="Text-as-Data"}
-
-* Lab Time!
 
 ## References
 

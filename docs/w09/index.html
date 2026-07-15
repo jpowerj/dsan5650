@@ -8,7 +8,7 @@
 
 <meta name="author" content="Jeff Jacobs">
 
-<title>Week 9: Doubly-Robust Estimation and Instrumental Variables – DSAN 5650</title>
+<title>Week 9: Propensity Scores, Regression Discontinuity, and Causal NLP – DSAN 5650</title>
 <style>
 /* Default styles provided by pandoc.
 ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
@@ -551,7 +551,7 @@ window.Quarto = {
     </ul>
     </div>
 <div class="quarto-sidebar-footer"><div class="sidebar-footer-item">
-<p><em>Updated 2026-07-15, 04:51:54 PM</em></p>
+<p><em>Updated 2026-07-15, 06:34:43 PM</em></p>
 </div></div></nav>
 <div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
@@ -572,16 +572,15 @@ window.Quarto = {
   <li><a href="#inverse-probability-of-treatment-weighting" id="toc-inverse-probability-of-treatment-weighting" class="nav-link" data-scroll-target="#inverse-probability-of-treatment-weighting">Inverse Probability-of-Treatment Weighting</a></li>
   <li><a href="#the-final-result" id="toc-the-final-result" class="nav-link" data-scroll-target="#the-final-result">The Final Result!</a></li>
   </ul></li>
-  <li><a href="#what-if-we-have-many-covariates" id="toc-what-if-we-have-many-covariates" class="nav-link" data-scroll-target="#what-if-we-have-many-covariates">…What If We Have <em>Many</em> Covariates?</a></li>
+  <li><a href="#regression-discontinuity" id="toc-regression-discontinuity" class="nav-link" data-scroll-target="#regression-discontinuity">Regression Discontinuity</a>
+  <ul class="collapse">
+  <li><a href="#example-1-close-elections" id="toc-example-1-close-elections" class="nav-link" data-scroll-target="#example-1-close-elections">Example 1: Close Elections</a></li>
+  <li><a href="#sudden-jumps-in-wealth-at-election-threshold" id="toc-sudden-jumps-in-wealth-at-election-threshold" class="nav-link" data-scroll-target="#sudden-jumps-in-wealth-at-election-threshold">Sudden “Jumps” in Wealth at Election Threshold!</a></li>
+  </ul></li>
   <li><a href="#potted_plant-causal-inferences-with-text" id="toc-potted_plant-causal-inferences-with-text" class="nav-link" data-scroll-target="#potted_plant-causal-inferences-with-text"><span class="material-symbols-outlined">potted_plant</span> Causal Inferences with Text</a>
   <ul class="collapse">
   <li><a href="#discovered-topics-depend-on-the-data" id="toc-discovered-topics-depend-on-the-data" class="nav-link" data-scroll-target="#discovered-topics-depend-on-the-data">“Discovered” Topics <em>Depend on the Data</em> 😟</a></li>
   <li><a href="#the-solution-sample-splitting" id="toc-the-solution-sample-splitting" class="nav-link" data-scroll-target="#the-solution-sample-splitting">The Solution? <em>Sample Splitting!</em></a></li>
-  </ul></li>
-  <li><a href="#hard-mode-when-conditioning-isnt-an-option-cant-fix-things" id="toc-hard-mode-when-conditioning-isnt-an-option-cant-fix-things" class="nav-link" data-scroll-target="#hard-mode-when-conditioning-isnt-an-option-cant-fix-things">Hard Mode: When Conditioning Isn’t an Option / Can’t Fix Things</a></li>
-  <li><a href="#lab-instrumental-variable-estimation" id="toc-lab-instrumental-variable-estimation" class="nav-link" data-scroll-target="#lab-instrumental-variable-estimation">Lab: Instrumental Variable Estimation</a></li>
-  <li><a href="#lab-causal-inference-with-text" id="toc-lab-causal-inference-with-text" class="nav-link" data-scroll-target="#lab-causal-inference-with-text">Lab: Causal Inference with Text</a>
-  <ul class="collapse">
   <li><a href="#references" id="toc-references" class="nav-link" data-scroll-target="#references">References</a></li>
   </ul></li>
   </ul>
@@ -593,7 +592,7 @@ window.Quarto = {
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Week 9: Doubly-Robust Estimation and Instrumental Variables</h1>
+<h1 class="title">Week 9: Propensity Scores, Regression Discontinuity, and Causal NLP</h1>
 <p class="subtitle lead"><em>DSAN 5650: Causal Inference for Computational Social Science</em><br><span class="subsubtitle">Summer 2026, Georgetown University</span></p>
   <div class="quarto-categories">
     <div class="quarto-category">Class Sessions</div>
@@ -658,20 +657,20 @@ window.Quarto = {
 <tr class="odd">
 <td style="text-align: left;"><strong>Lecture</strong></td>
 <td style="text-align: left;">6:30pm</td>
-<td style="text-align: left;">6:45pm</td>
-<td style="text-align: left;"><a href="#final-project-tings">Final Project Tings →</a></td>
+<td style="text-align: left;">7:00pm</td>
+<td style="text-align: left;"><a href="#final-project-templates">Final Project Templates →</a></td>
 </tr>
 <tr class="even">
 <td style="text-align: left;"></td>
-<td style="text-align: left;">6:45pm</td>
-<td style="text-align: left;">7:20pm</td>
-<td style="text-align: left;"><a href="#double-robustness">Double Robustness →</a></td>
+<td style="text-align: left;">7:00pm</td>
+<td style="text-align: left;">7:30pm</td>
+<td style="text-align: left;"><a href="#recap-propensity-scores">Propensity Score Weighting →</a></td>
 </tr>
 <tr class="odd">
 <td style="text-align: left;"></td>
-<td style="text-align: left;">7:20pm</td>
+<td style="text-align: left;">7:30pm</td>
 <td style="text-align: left;">8:00pm</td>
-<td style="text-align: left;"><a href="#hard-mode-when-conditioning-cant-fix-things">When Conditioning Won’t Cut It: IVs →</a></td>
+<td style="text-align: left;"><a href="#">Regression Discontinuity →</a></td>
 </tr>
 <tr class="even">
 <td style="text-align: left;"><strong>Break!</strong></td>
@@ -681,9 +680,9 @@ window.Quarto = {
 </tr>
 <tr class="odd">
 <td style="text-align: left;"></td>
-<td style="text-align: left;">8:10pm</td>
+<td style="text-align: left;">8:30pm</td>
 <td style="text-align: left;">9:00pm</td>
-<td style="text-align: left;"><a href="#lab-causal-inference-with-text">Drawing Causal Inferences from Text Data →</a></td>
+<td style="text-align: left;"><a href="#lab-causal-inference-with-text">Violations of Causal Inference Axioms in NLP and Network Analysis →</a></td>
 </tr>
 </tbody>
 </table>
@@ -743,7 +742,7 @@ window.Quarto = {
 </ul>
 <section id="option-1-modeling-social-phenomena-with-pgms" class="level2 smaller crunch-title title-10">
 <h2 class="smaller crunch-title title-10 anchored" data-anchor-id="option-1-modeling-social-phenomena-with-pgms">Option 1: Modeling Social Phenomena with PGMs</h2>
-<div class="quarto-layout-panel" data-layout-align="center" data-layout="[1,1]">
+<div class="quarto-layout-panel" data-layout="[1,1]" data-layout-align="center">
 <div class="quarto-layout-row quarto-layout-valign-center">
 <div class="column quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
 <div id="fig-bamman" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
@@ -1213,12 +1212,264 @@ Standard error: HC0 robust (adjusted for estimation of weights)</code></pre>
 </div>
 </section>
 </section>
-<section id="what-if-we-have-many-covariates" class="level1" data-stack-name="Many Covariates">
-<h1 data-stack-name="Many Covariates">…What If We Have <em>Many</em> Covariates?</h1>
-<ul>
-<li>Curse of dimensionality…</li>
-<li>Lab Time!</li>
-</ul>
+<section id="regression-discontinuity" class="level1" data-stack-name="Regression Discontinuity">
+<h1 data-stack-name="Regression Discontinuity">Regression Discontinuity</h1>
+<section id="example-1-close-elections" class="level2 smaller crunch-title">
+<h2 class="smaller crunch-title anchored" data-anchor-id="example-1-close-elections">Example 1: Close Elections</h2>
+<blockquote class="blockquote">
+<p><em>When one’s margin of victory switches from a negative number to a positive number, we would expect a large, discontinuous, positive jump in the personal wealth of electoral candidates, if serving in office actually financially benefits them.</em> <span class="citation" data-cites="imai_quantitative_2018">(<a href="#ref-imai_quantitative_2018" role="doc-biblioref">Imai 2018</a>)</span></p>
+</blockquote>
+<div class="cell" data-layout-align="center">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb23"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse) <span class="sc">|&gt;</span> <span class="fu">suppressPackageStartupMessages</span>()</span>
+<span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a><span class="co"># load the data and subset them into two parties</span></span>
+<span id="cb23-3"><a href="#cb23-3" aria-hidden="true" tabindex="-1"></a>MPs <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">"assets/mps.csv"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
+<div class="cell-output cell-output-stderr">
+<pre><code>Rows: 427 Columns: 10
+── Column specification ────────────────────────────────────────────────────────
+Delimiter: ","
+chr (4): surname, firstname, party, region
+dbl (6): ln.gross, ln.net, yob, yod, margin.pre, margin
+
+ℹ Use `spec()` to retrieve the full column specification for this data.
+ℹ Specify the column types or set `show_col_types = FALSE` to quiet this message.</code></pre>
+</div>
+<details class="code-fold">
+<summary>Code</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb25"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a>MPs <span class="sc">|&gt;</span> <span class="fu">head</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
+<div class="cell-output-display">
+<div class="kable-table">
+<table class="caption-top table table-sm table-striped small">
+<colgroup>
+<col style="width: 9%">
+<col style="width: 9%">
+<col style="width: 6%">
+<col style="width: 8%">
+<col style="width: 9%">
+<col style="width: 4%">
+<col style="width: 4%">
+<col style="width: 10%">
+<col style="width: 24%">
+<col style="width: 10%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: left;">surname</th>
+<th style="text-align: left;">firstname</th>
+<th style="text-align: left;">party</th>
+<th style="text-align: right;">ln.gross</th>
+<th style="text-align: right;">ln.net</th>
+<th style="text-align: right;">yob</th>
+<th style="text-align: right;">yod</th>
+<th style="text-align: right;">margin.pre</th>
+<th style="text-align: left;">region</th>
+<th style="text-align: right;">margin</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">Llewellyn</td>
+<td style="text-align: left;">David</td>
+<td style="text-align: left;">tory</td>
+<td style="text-align: right;">12.13591</td>
+<td style="text-align: right;">12.135906</td>
+<td style="text-align: right;">1916</td>
+<td style="text-align: right;">1992</td>
+<td style="text-align: right;">NA</td>
+<td style="text-align: left;">Wales</td>
+<td style="text-align: right;">0.0569040</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Morris</td>
+<td style="text-align: left;">Claud</td>
+<td style="text-align: left;">labour</td>
+<td style="text-align: right;">12.44809</td>
+<td style="text-align: right;">12.448091</td>
+<td style="text-align: right;">1920</td>
+<td style="text-align: right;">2000</td>
+<td style="text-align: right;">NA</td>
+<td style="text-align: left;">South West England</td>
+<td style="text-align: right;">-0.0497383</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Walker</td>
+<td style="text-align: left;">George</td>
+<td style="text-align: left;">tory</td>
+<td style="text-align: right;">12.42845</td>
+<td style="text-align: right;">10.349009</td>
+<td style="text-align: right;">1914</td>
+<td style="text-align: right;">1999</td>
+<td style="text-align: right;">-0.0571682</td>
+<td style="text-align: left;">North East England</td>
+<td style="text-align: right;">-0.0415887</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Walker</td>
+<td style="text-align: left;">Harold</td>
+<td style="text-align: left;">labour</td>
+<td style="text-align: right;">11.91845</td>
+<td style="text-align: right;">12.395034</td>
+<td style="text-align: right;">1927</td>
+<td style="text-align: right;">2003</td>
+<td style="text-align: right;">-0.0725089</td>
+<td style="text-align: left;">Yorkshire and Humberside</td>
+<td style="text-align: right;">0.0232952</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Waring</td>
+<td style="text-align: left;">John</td>
+<td style="text-align: left;">tory</td>
+<td style="text-align: right;">13.52022</td>
+<td style="text-align: right;">13.520219</td>
+<td style="text-align: right;">1923</td>
+<td style="text-align: right;">1989</td>
+<td style="text-align: right;">-0.2696896</td>
+<td style="text-align: left;">Greater London</td>
+<td style="text-align: right;">-0.2300058</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Brown</td>
+<td style="text-align: left;">Ronald</td>
+<td style="text-align: left;">labour</td>
+<td style="text-align: right;">12.46051</td>
+<td style="text-align: right;">9.631837</td>
+<td style="text-align: right;">1921</td>
+<td style="text-align: right;">2002</td>
+<td style="text-align: right;">0.3409587</td>
+<td style="text-align: left;">Greater London</td>
+<td style="text-align: right;">0.3679703</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+</section>
+<section id="sudden-jumps-in-wealth-at-election-threshold" class="level2 smaller crunch-title title-11">
+<h2 class="smaller crunch-title title-11 anchored" data-anchor-id="sudden-jumps-in-wealth-at-election-threshold">Sudden “Jumps” in Wealth at Election Threshold!</h2>
+<div class="columns">
+<div class="column" style="width:50%;">
+<div class="cell" data-layout-align="center">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb26"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(modelr)</span>
+<span id="cb26-2"><a href="#cb26-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyr)</span>
+<span id="cb26-3"><a href="#cb26-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(broom)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
+<div class="cell-output cell-output-stderr">
+<pre><code>
+Attaching package: 'broom'</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>The following object is masked from 'package:modelr':
+
+    bootstrap</code></pre>
+</div>
+<details class="code-fold">
+<summary>Code</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb29"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a><span class="do">## load the data</span></span>
+<span id="cb29-2"><a href="#cb29-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb29-3"><a href="#cb29-3" aria-hidden="true" tabindex="-1"></a><span class="do">## Subset the data</span></span>
+<span id="cb29-4"><a href="#cb29-4" aria-hidden="true" tabindex="-1"></a>labour_winners <span class="ot">&lt;-</span> <span class="fu">filter</span>(MPs, party <span class="sc">==</span> <span class="st">"labour"</span>, margin <span class="sc">&gt;</span> <span class="dv">0</span>)</span>
+<span id="cb29-5"><a href="#cb29-5" aria-hidden="true" tabindex="-1"></a>labour_losers <span class="ot">&lt;-</span> <span class="fu">filter</span>(MPs, party <span class="sc">==</span> <span class="st">"labour"</span>, margin <span class="sc">&lt;</span> <span class="dv">0</span>)</span>
+<span id="cb29-6"><a href="#cb29-6" aria-hidden="true" tabindex="-1"></a>tory_winners <span class="ot">&lt;-</span> <span class="fu">filter</span>(MPs, party <span class="sc">==</span> <span class="st">"tory"</span>, margin <span class="sc">&gt;</span> <span class="dv">0</span>)</span>
+<span id="cb29-7"><a href="#cb29-7" aria-hidden="true" tabindex="-1"></a>tory_losers <span class="ot">&lt;-</span> <span class="fu">filter</span>(MPs, party <span class="sc">==</span> <span class="st">"tory"</span>, margin <span class="sc">&lt;</span> <span class="dv">0</span>)</span>
+<span id="cb29-8"><a href="#cb29-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb29-9"><a href="#cb29-9" aria-hidden="true" tabindex="-1"></a><span class="do">### the regressions</span></span>
+<span id="cb29-10"><a href="#cb29-10" aria-hidden="true" tabindex="-1"></a>labour_fit_win <span class="ot">&lt;-</span> <span class="fu">lm</span>(ln.net <span class="sc">~</span> margin, <span class="at">data =</span> labour_winners)</span>
+<span id="cb29-11"><a href="#cb29-11" aria-hidden="true" tabindex="-1"></a>labour_fit_lose <span class="ot">&lt;-</span> <span class="fu">lm</span>(ln.net <span class="sc">~</span> margin, <span class="at">data =</span> labour_losers)</span>
+<span id="cb29-12"><a href="#cb29-12" aria-hidden="true" tabindex="-1"></a>tory_fit_win <span class="ot">&lt;-</span> <span class="fu">lm</span>(ln.net <span class="sc">~</span> margin, <span class="at">data =</span> tory_winners)</span>
+<span id="cb29-13"><a href="#cb29-13" aria-hidden="true" tabindex="-1"></a>tory_fit_lose <span class="ot">&lt;-</span> <span class="fu">lm</span>(ln.net <span class="sc">~</span> margin, <span class="at">data =</span> tory_losers)</span>
+<span id="cb29-14"><a href="#cb29-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb29-15"><a href="#cb29-15" aria-hidden="true" tabindex="-1"></a>y1_labour_win <span class="ot">&lt;-</span> labour_winners <span class="sc">%&gt;%</span> </span>
+<span id="cb29-16"><a href="#cb29-16" aria-hidden="true" tabindex="-1"></a>  <span class="fu">data_grid</span>(margin) <span class="sc">%&gt;%</span></span>
+<span id="cb29-17"><a href="#cb29-17" aria-hidden="true" tabindex="-1"></a>  <span class="fu">add_predictions</span>(labour_fit_win)</span>
+<span id="cb29-18"><a href="#cb29-18" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb29-19"><a href="#cb29-19" aria-hidden="true" tabindex="-1"></a>y2_labour_lose <span class="ot">&lt;-</span> labour_losers <span class="sc">%&gt;%</span></span>
+<span id="cb29-20"><a href="#cb29-20" aria-hidden="true" tabindex="-1"></a>  <span class="fu">data_grid</span>(margin) <span class="sc">%&gt;%</span></span>
+<span id="cb29-21"><a href="#cb29-21" aria-hidden="true" tabindex="-1"></a>  <span class="fu">add_predictions</span>(labour_fit_lose)</span>
+<span id="cb29-22"><a href="#cb29-22" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb29-23"><a href="#cb29-23" aria-hidden="true" tabindex="-1"></a>y1_tory_win <span class="ot">&lt;-</span> tory_winners <span class="sc">%&gt;%</span> </span>
+<span id="cb29-24"><a href="#cb29-24" aria-hidden="true" tabindex="-1"></a>  <span class="fu">data_grid</span>(margin) <span class="sc">%&gt;%</span></span>
+<span id="cb29-25"><a href="#cb29-25" aria-hidden="true" tabindex="-1"></a>  <span class="fu">add_predictions</span>(tory_fit_win)</span>
+<span id="cb29-26"><a href="#cb29-26" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb29-27"><a href="#cb29-27" aria-hidden="true" tabindex="-1"></a>y2_tory_lose <span class="ot">&lt;-</span> tory_losers <span class="sc">%&gt;%</span></span>
+<span id="cb29-28"><a href="#cb29-28" aria-hidden="true" tabindex="-1"></a>  <span class="fu">data_grid</span>(margin) <span class="sc">%&gt;%</span></span>
+<span id="cb29-29"><a href="#cb29-29" aria-hidden="true" tabindex="-1"></a>  <span class="fu">add_predictions</span>(tory_fit_lose)</span>
+<span id="cb29-30"><a href="#cb29-30" aria-hidden="true" tabindex="-1"></a><span class="do">## setting the ggplot theme</span></span>
+<span id="cb29-31"><a href="#cb29-31" aria-hidden="true" tabindex="-1"></a><span class="fu">theme_set</span>(<span class="fu">theme_classic</span>(<span class="at">base_size =</span> <span class="dv">22</span>))</span>
+<span id="cb29-32"><a href="#cb29-32" aria-hidden="true" tabindex="-1"></a><span class="do">## Labour</span></span>
+<span id="cb29-33"><a href="#cb29-33" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>() <span class="sc">+</span></span>
+<span id="cb29-34"><a href="#cb29-34" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">data =</span> labour_winners,</span>
+<span id="cb29-35"><a href="#cb29-35" aria-hidden="true" tabindex="-1"></a>             <span class="at">mapping =</span> <span class="fu">aes</span>(<span class="at">x =</span> margin, <span class="at">y =</span> ln.net), <span class="at">shape =</span> <span class="dv">1</span>, <span class="at">alpha=</span><span class="fl">0.6</span>) <span class="sc">+</span></span>
+<span id="cb29-36"><a href="#cb29-36" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">data =</span> labour_losers,</span>
+<span id="cb29-37"><a href="#cb29-37" aria-hidden="true" tabindex="-1"></a>             <span class="at">mapping =</span> <span class="fu">aes</span>(<span class="at">x =</span> margin, <span class="at">y =</span> ln.net), <span class="at">shape =</span> <span class="dv">1</span>, <span class="at">alpha=</span><span class="fl">0.6</span>) <span class="sc">+</span></span>
+<span id="cb29-38"><a href="#cb29-38" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_line</span>(<span class="at">data =</span> y1_labour_win,</span>
+<span id="cb29-39"><a href="#cb29-39" aria-hidden="true" tabindex="-1"></a>            <span class="at">mapping =</span> <span class="fu">aes</span>(<span class="at">x =</span> margin, <span class="at">y =</span> pred), </span>
+<span id="cb29-40"><a href="#cb29-40" aria-hidden="true" tabindex="-1"></a>            <span class="at">color =</span> <span class="st">"blue"</span>, <span class="at">size =</span> <span class="dv">1</span>, <span class="at">linewidth=</span><span class="dv">2</span>) <span class="sc">+</span></span>
+<span id="cb29-41"><a href="#cb29-41" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_line</span>(<span class="at">data =</span> y2_labour_lose,</span>
+<span id="cb29-42"><a href="#cb29-42" aria-hidden="true" tabindex="-1"></a>            <span class="at">mapping =</span> <span class="fu">aes</span>(<span class="at">x =</span> margin, <span class="at">y =</span> pred), </span>
+<span id="cb29-43"><a href="#cb29-43" aria-hidden="true" tabindex="-1"></a>            <span class="at">color =</span> <span class="st">"blue"</span>, <span class="at">size =</span> <span class="dv">1</span>, <span class="at">linewidth=</span><span class="dv">2</span>) <span class="sc">+</span></span>
+<span id="cb29-44"><a href="#cb29-44" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_vline</span>(<span class="at">xintercept =</span> <span class="dv">0</span>,</span>
+<span id="cb29-45"><a href="#cb29-45" aria-hidden="true" tabindex="-1"></a>             <span class="at">linetype =</span> <span class="st">"dashed"</span>) <span class="sc">+</span></span>
+<span id="cb29-46"><a href="#cb29-46" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">"Margin of victory"</span>, </span>
+<span id="cb29-47"><a href="#cb29-47" aria-hidden="true" tabindex="-1"></a>       <span class="at">y =</span> <span class="st">"log net wealth at death"</span>,</span>
+<span id="cb29-48"><a href="#cb29-48" aria-hidden="true" tabindex="-1"></a>       <span class="at">title =</span> <span class="st">"Labour"</span>) <span class="sc">+</span></span>
+<span id="cb29-49"><a href="#cb29-49" aria-hidden="true" tabindex="-1"></a>  <span class="fu">xlim</span>(<span class="sc">-</span><span class="fl">0.5</span>, <span class="fl">0.5</span>) <span class="sc">+</span></span>
+<span id="cb29-50"><a href="#cb29-50" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ylim</span>(<span class="dv">6</span>, <span class="dv">18</span>) <span class="sc">+</span></span>
+<span id="cb29-51"><a href="#cb29-51" aria-hidden="true" tabindex="-1"></a>  <span class="fu">transparent_bg</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning: Using `size` aesthetic for lines was deprecated in ggplot2 3.4.0.
+ℹ Please use `linewidth` instead.</code></pre>
+</div>
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="index_files/figure-html/unnamed-chunk-1-1.svg" class="img-fluid quarto-figure quarto-figure-center figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+</div><div class="column" style="width:50%;">
+<div class="cell" data-layout-align="center">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb31"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a><span class="do">## Tory</span></span>
+<span id="cb31-2"><a href="#cb31-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>() <span class="sc">+</span></span>
+<span id="cb31-3"><a href="#cb31-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">data =</span> tory_winners,</span>
+<span id="cb31-4"><a href="#cb31-4" aria-hidden="true" tabindex="-1"></a>             <span class="at">mapping =</span> <span class="fu">aes</span>(<span class="at">x =</span> margin, <span class="at">y =</span> ln.net), <span class="at">shape =</span> <span class="dv">1</span>, <span class="at">alpha=</span><span class="fl">0.6</span>) <span class="sc">+</span></span>
+<span id="cb31-5"><a href="#cb31-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">data =</span> tory_losers,</span>
+<span id="cb31-6"><a href="#cb31-6" aria-hidden="true" tabindex="-1"></a>             <span class="at">mapping =</span> <span class="fu">aes</span>(<span class="at">x =</span> margin, <span class="at">y =</span> ln.net), <span class="at">shape =</span> <span class="dv">1</span>, <span class="at">alpha=</span><span class="fl">0.6</span>) <span class="sc">+</span></span>
+<span id="cb31-7"><a href="#cb31-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_line</span>(<span class="at">data =</span> y1_tory_win,</span>
+<span id="cb31-8"><a href="#cb31-8" aria-hidden="true" tabindex="-1"></a>            <span class="at">mapping =</span> <span class="fu">aes</span>(<span class="at">x =</span> margin, <span class="at">y =</span> pred), </span>
+<span id="cb31-9"><a href="#cb31-9" aria-hidden="true" tabindex="-1"></a>            <span class="at">color =</span> <span class="st">"blue"</span>, <span class="at">size =</span> <span class="dv">1</span>, <span class="at">linewidth=</span><span class="dv">2</span>) <span class="sc">+</span></span>
+<span id="cb31-10"><a href="#cb31-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_line</span>(<span class="at">data =</span> y2_tory_lose,</span>
+<span id="cb31-11"><a href="#cb31-11" aria-hidden="true" tabindex="-1"></a>            <span class="at">mapping =</span> <span class="fu">aes</span>(<span class="at">x =</span> margin, <span class="at">y =</span> pred), </span>
+<span id="cb31-12"><a href="#cb31-12" aria-hidden="true" tabindex="-1"></a>            <span class="at">color =</span> <span class="st">"blue"</span>, <span class="at">size =</span> <span class="dv">1</span>, <span class="at">linewidth=</span><span class="dv">1</span>) <span class="sc">+</span></span>
+<span id="cb31-13"><a href="#cb31-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_vline</span>(<span class="at">xintercept =</span> <span class="dv">0</span>,</span>
+<span id="cb31-14"><a href="#cb31-14" aria-hidden="true" tabindex="-1"></a>             <span class="at">linetype =</span> <span class="st">"dashed"</span>) <span class="sc">+</span></span>
+<span id="cb31-15"><a href="#cb31-15" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">"Margin of victory"</span>, </span>
+<span id="cb31-16"><a href="#cb31-16" aria-hidden="true" tabindex="-1"></a>       <span class="at">y =</span> <span class="st">"log net wealth at death"</span>,</span>
+<span id="cb31-17"><a href="#cb31-17" aria-hidden="true" tabindex="-1"></a>       <span class="at">title =</span> <span class="st">"Tory"</span>) <span class="sc">+</span></span>
+<span id="cb31-18"><a href="#cb31-18" aria-hidden="true" tabindex="-1"></a>  <span class="fu">xlim</span>(<span class="sc">-</span><span class="fl">0.5</span>, <span class="fl">0.5</span>) <span class="sc">+</span></span>
+<span id="cb31-19"><a href="#cb31-19" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ylim</span>(<span class="dv">6</span>, <span class="dv">18</span>) <span class="sc">+</span></span>
+<span id="cb31-20"><a href="#cb31-20" aria-hidden="true" tabindex="-1"></a>  <span class="fu">transparent_bg</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="index_files/figure-html/unnamed-chunk-2-1.svg" class="img-fluid quarto-figure quarto-figure-center figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
 </section>
 <section id="potted_plant-causal-inferences-with-text" class="level1 smaller crunch-title title-10 crunch-ul crunch-p" data-stack-name="Causal NLP">
 <h1 class="smaller crunch-title title-10 crunch-ul crunch-p" data-stack-name="Causal NLP"><span class="material-symbols-outlined">potted_plant</span> Causal Inferences with Text</h1>
@@ -1417,26 +1668,6 @@ Table&nbsp;4: Realized assignments and outcomes in World 2
 </figure>
 </div>
 </section>
-</section>
-<section id="hard-mode-when-conditioning-isnt-an-option-cant-fix-things" class="level1 title-09 crunch-title text-90" data-name="Instrumental Variables">
-<h1 class="title-09 crunch-title text-90" data-name="Instrumental Variables">Hard Mode: When Conditioning Isn’t an Option / Can’t Fix Things</h1>
-<ul>
-<li>Approaches we’ve discussed thus far depend on the ability to <strong>adjust for</strong> (e.g., by conditioning-on and/or purposefully-not-conditioning-on) <strong>confounders themselves</strong> (e.g., in regression), or on <strong>propensity scores</strong></li>
-<li>Enter <strong>Instrumental Variables!</strong> (this week), <strong>Specification of Mechanisms / Front-Door Pathways</strong> (next week)</li>
-<li><span class="math inline">\(\leadsto\)</span> Find <strong>“natural experiments”</strong>, randomizations or pseudo-randomizations in society that allow us to replicate the “holy grail” of random assignment</li>
-</ul>
-<div class="notes">
-<p>I… always ask economists why it isn’t explained like this, and they always say “it’s more complicated than that”, and then they explain the complications and I think I understand them but still think that this is a good way to describe the gist!</p>
-</div>
-</section>
-<section id="lab-instrumental-variable-estimation" class="level1">
-<h1>Lab: Instrumental Variable Estimation</h1>
-</section>
-<section id="lab-causal-inference-with-text" class="level1" data-stack-name="Text-as-Data">
-<h1 data-stack-name="Text-as-Data">Lab: Causal Inference with Text</h1>
-<ul>
-<li>Lab Time!</li>
-</ul>
 <section id="references" class="level2">
 <h2 class="anchored" data-anchor-id="references">References</h2>
 <div id="refs" class="references csl-bib-body hanging-indent" role="list">
@@ -1445,6 +1676,9 @@ Bamman, David, Brendan O’Connor, and Noah A. Smith. 2013. <span>“Learning <s
 </div>
 <div id="ref-egami_how_2022" class="csl-entry" role="listitem">
 Egami, Naoki, Christian J. Fong, Justin Grimmer, Margaret E. Roberts, and Brandon M. Stewart. 2022. <span>“How to Make Causal Inferences Using Texts.”</span> <em>Science Advances</em> 8 (42): eabg2652. <a href="https://doi.org/10.1126/sciadv.abg2652">https://doi.org/10.1126/sciadv.abg2652</a>.
+</div>
+<div id="ref-imai_quantitative_2018" class="csl-entry" role="listitem">
+Imai, Kosuke. 2018. <em>Quantitative <span>Social Science</span>: <span>An Introduction</span></em>. Princeton University Press. <a href="https://books.google.com?id=T3GYDwAAQBAJ">https://books.google.com?id=T3GYDwAAQBAJ</a>.
 </div>
 <div id="ref-nunn_ruggedness_2012" class="csl-entry" role="listitem">
 Nunn, Nathan, and Diego Puga. 2012. <span>“Ruggedness: <span>The Blessing</span> of <span>Bad Geography</span> in <span>Africa</span>.”</span> <em>The Review of Economics and Statistics</em> 94 (1): 20–36. <a href="https://www.jstor.org/stable/41349158">https://www.jstor.org/stable/41349158</a>.
