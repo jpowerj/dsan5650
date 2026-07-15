@@ -39,8 +39,9 @@ For each lecture (especially from Week 8 onwards), our hope is that there are so
 
 **Moving from *vaguely-thinking-about* to *formally modeling***
 
-* **Example 1.1**: **HW3A** walks you through how PGMs can be used to "link" survey-based and experimental studies of the same social phenomenon (employer discrimination on the basis of criminal record and race)
-* <b>Example 1.2</b>: Writeup on Modeling <b><i>Cahiers de Doléances</i></b> <i>(Coming soon!)</i></li>
+See the [example project template for Option 1](https://jjacobs.me/dsan5650-project-modeling/), which uses the following PGM to model the latent "personas" (`VILLAIN`, `SURFER DUDE`) which then manifest in particular movie characters. Full descriptions of the PGM variables are given in the paper, but you can get a sense for what's happening by noting the variables which define each **plate**: $D$ represents the number of **movies**, $E$ represents the number of **characters** in a given movie, and $W$ represents tuples pairing **words** in the movie descriptions with **roles** (think of, e.g., `HERO` or `VILLAIN`) that may be associated with those words.
+
+![The two PGMs used to model movie character "personas" in @bamman_learning_2013](images/film-pgms.svg){fig-align="center" width="80%"}
 
 :::
 
@@ -48,8 +49,47 @@ For each lecture (especially from Week 8 onwards), our hope is that there are so
 
 **Taking an existing *associational* analysis and tackling confounders**
 
-* **Example 2.1**: **HW3B** walks you through how propensity score weighting can be used to enhance an existing associational analysis, by taking a "first step" towards removing **confounders** 
-* **Example 2.2**: Writeup on improving estimates of **labor market monopsony** *(Coming soon!)*
+See the [example project template for Option 2](https://jjacobs.me/dsan5650-project-modeling/), which takes existing studies of present-day GDP by country and shows how important it is (for the sake of assessing **causal** impacts, rather than just associations between variables) to include the **confounding variable** of **continent**: here the causal impact of **Terrain Ruggedness** on present-day GDP per capita is **positive** for countries within Africa, but **negative** everywhere else in the world!
+
+```{r, dev = "svg", dev.args=list(bg="transparent")}
+#| label: fig-nunn-plot
+#| warning: false
+#| code-fold: true
+#| fig-align: center
+#| fig-cap: Results from @nunn_ruggedness_2012, where the causal impact of terrain ruggedness on present-day GDP per capita **reverses direction** when considering African vs. non-African countries!
+library(tidyverse) |> suppressPackageStartupMessages()
+rug_df <- read_csv("assets/rugged_data.csv", show_col_types=FALSE)
+# Compute Box-Cox params
+bc_params <- car::powerTransform(
+  object = cbind(
+    rug_df$rgdppc_2000,
+    rug_df$rugged
+  )
+)
+rug_df <- rug_df |> mutate(
+  continent = ifelse(cont_africa == 1, "African", "Non-African"),
+  gdpc_transformed = rgdppc_2000_m ^ bc_params$lambda[1],
+  rugged_transformed = rugged ^ bc_params$lambda[2],
+)
+rug_df |> ggplot(aes(
+  x = rugged_transformed,
+  y = gdpc_transformed
+)) +
+  geom_text(aes(label=isocode), size=3) +
+  geom_smooth(method="lm", fullrange=TRUE) +
+  facet_wrap(~ continent) +
+  theme_classic() +
+  theme(
+    panel.background = ggplot2::element_rect(fill='transparent'),
+    plot.background = ggplot2::element_rect(fill='transparent', color=NA),
+    plot.title = element_text(hjust=0.5),
+  ) +
+  labs(
+    title="Differential Effects of Ruggedness by Continent",
+    x="Terrain Ruggedness",
+    y="Log GDP Per Capita, 2000",
+  )
+```
 
 :::
 

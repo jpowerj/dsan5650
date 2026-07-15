@@ -25,6 +25,41 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
+/* CSS for syntax highlighting */
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
 /* CSS for citations */
 div.csl-bib-body { }
 div.csl-entry {
@@ -608,11 +643,13 @@ div.callout-important > .callout-header {
 </div>
 <div class="callout-body-container callout-body">
 <p><strong>Moving from <em>vaguely-thinking-about</em> to <em>formally modeling</em></strong></p>
-<ul>
-<li><strong>Example 1.1</strong>: <strong>HW3A</strong> walks you through how PGMs can be used to “link” survey-based and experimental studies of the same social phenomenon (employer discrimination on the basis of criminal record and race)</li>
-<li><b>Example 1.2</b>: Writeup on Modeling <b><i>Cahiers de Doléances</i></b> <i>(Coming soon!)</i>
-</li>
-</ul>
+<p>See the <a href="https://jjacobs.me/dsan5650-project-modeling/">example project template for Option 1</a>, which uses the following PGM to model the latent “personas” (<code>VILLAIN</code>, <code>SURFER DUDE</code>) which then manifest in particular movie characters. Full descriptions of the PGM variables are given in the paper, but you can get a sense for what’s happening by noting the variables which define each <strong>plate</strong>: <span class="math inline">\(D\)</span> represents the number of <strong>movies</strong>, <span class="math inline">\(E\)</span> represents the number of <strong>characters</strong> in a given movie, and <span class="math inline">\(W\)</span> represents tuples pairing <strong>words</strong> in the movie descriptions with <strong>roles</strong> (think of, e.g., <code>HERO</code> or <code>VILLAIN</code>) that may be associated with those words.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/film-pgms.svg" class="img-fluid figure-img" style="width:80.0%"></p>
+<figcaption>The two PGMs used to model movie character “personas” in <span class="citation" data-cites="bamman_learning_2013">Bamman et al. (<a href="#ref-bamman_learning_2013" role="doc-biblioref">2013</a>)</span></figcaption>
+</figure>
+</div>
 </div>
 </div>
 <div class="callout callout-style-default callout-important no-icon callout-titled" title="Option 2: Pushing Towards the Asymptote of Causality">
@@ -626,10 +663,56 @@ div.callout-important > .callout-header {
 </div>
 <div class="callout-body-container callout-body">
 <p><strong>Taking an existing <em>associational</em> analysis and tackling confounders</strong></p>
-<ul>
-<li><strong>Example 2.1</strong>: <strong>HW3B</strong> walks you through how propensity score weighting can be used to enhance an existing associational analysis, by taking a “first step” towards removing <strong>confounders</strong></li>
-<li><strong>Example 2.2</strong>: Writeup on improving estimates of <strong>labor market monopsony</strong> <em>(Coming soon!)</em></li>
-</ul>
+<p>See the <a href="https://jjacobs.me/dsan5650-project-modeling/">example project template for Option 2</a>, which takes existing studies of present-day GDP by country and shows how important it is (for the sake of assessing <strong>causal</strong> impacts, rather than just associations between variables) to include the <strong>confounding variable</strong> of <strong>continent</strong>: here the causal impact of <strong>Terrain Ruggedness</strong> on present-day GDP per capita is <strong>positive</strong> for countries within Africa, but <strong>negative</strong> everywhere else in the world!</p>
+<div class="cell" data-layout-align="center">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse) <span class="sc">|&gt;</span> <span class="fu">suppressPackageStartupMessages</span>()</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>rug_df <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">"assets/rugged_data.csv"</span>, <span class="at">show_col_types=</span><span class="cn">FALSE</span>)</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Compute Box-Cox params</span></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>bc_params <span class="ot">&lt;-</span> car<span class="sc">::</span><span class="fu">powerTransform</span>(</span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">object =</span> <span class="fu">cbind</span>(</span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>    rug_df<span class="sc">$</span>rgdppc_2000,</span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>    rug_df<span class="sc">$</span>rugged</span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>  )</span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a>rug_df <span class="ot">&lt;-</span> rug_df <span class="sc">|&gt;</span> <span class="fu">mutate</span>(</span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a>  <span class="at">continent =</span> <span class="fu">ifelse</span>(cont_africa <span class="sc">==</span> <span class="dv">1</span>, <span class="st">"African"</span>, <span class="st">"Non-African"</span>),</span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a>  <span class="at">gdpc_transformed =</span> rgdppc_2000_m <span class="sc">^</span> bc_params<span class="sc">$</span>lambda[<span class="dv">1</span>],</span>
+<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a>  <span class="at">rugged_transformed =</span> rugged <span class="sc">^</span> bc_params<span class="sc">$</span>lambda[<span class="dv">2</span>],</span>
+<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a>rug_df <span class="sc">|&gt;</span> <span class="fu">ggplot</span>(<span class="fu">aes</span>(</span>
+<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a>  <span class="at">x =</span> rugged_transformed,</span>
+<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a>  <span class="at">y =</span> gdpc_transformed</span>
+<span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a>)) <span class="sc">+</span></span>
+<span id="cb1-19"><a href="#cb1-19" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_text</span>(<span class="fu">aes</span>(<span class="at">label=</span>isocode), <span class="at">size=</span><span class="dv">3</span>) <span class="sc">+</span></span>
+<span id="cb1-20"><a href="#cb1-20" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_smooth</span>(<span class="at">method=</span><span class="st">"lm"</span>, <span class="at">fullrange=</span><span class="cn">TRUE</span>) <span class="sc">+</span></span>
+<span id="cb1-21"><a href="#cb1-21" aria-hidden="true" tabindex="-1"></a>  <span class="fu">facet_wrap</span>(<span class="sc">~</span> continent) <span class="sc">+</span></span>
+<span id="cb1-22"><a href="#cb1-22" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_classic</span>() <span class="sc">+</span></span>
+<span id="cb1-23"><a href="#cb1-23" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(</span>
+<span id="cb1-24"><a href="#cb1-24" aria-hidden="true" tabindex="-1"></a>    <span class="at">panel.background =</span> ggplot2<span class="sc">::</span><span class="fu">element_rect</span>(<span class="at">fill=</span><span class="st">'transparent'</span>),</span>
+<span id="cb1-25"><a href="#cb1-25" aria-hidden="true" tabindex="-1"></a>    <span class="at">plot.background =</span> ggplot2<span class="sc">::</span><span class="fu">element_rect</span>(<span class="at">fill=</span><span class="st">'transparent'</span>, <span class="at">color=</span><span class="cn">NA</span>),</span>
+<span id="cb1-26"><a href="#cb1-26" aria-hidden="true" tabindex="-1"></a>    <span class="at">plot.title =</span> <span class="fu">element_text</span>(<span class="at">hjust=</span><span class="fl">0.5</span>),</span>
+<span id="cb1-27"><a href="#cb1-27" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">+</span></span>
+<span id="cb1-28"><a href="#cb1-28" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(</span>
+<span id="cb1-29"><a href="#cb1-29" aria-hidden="true" tabindex="-1"></a>    <span class="at">title=</span><span class="st">"Differential Effects of Ruggedness by Continent"</span>,</span>
+<span id="cb1-30"><a href="#cb1-30" aria-hidden="true" tabindex="-1"></a>    <span class="at">x=</span><span class="st">"Terrain Ruggedness"</span>,</span>
+<span id="cb1-31"><a href="#cb1-31" aria-hidden="true" tabindex="-1"></a>    <span class="at">y=</span><span class="st">"Log GDP Per Capita, 2000"</span>,</span>
+<span id="cb1-32"><a href="#cb1-32" aria-hidden="true" tabindex="-1"></a>  )</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
+<div class="cell-output-display">
+<div id="fig-nunn-plot" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-nunn-plot-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="final_files/figure-html/fig-nunn-plot-1.svg" class="img-fluid quarto-figure quarto-figure-center figure-img" width="672">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-nunn-plot-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;1: Results from <span class="citation" data-cites="nunn_ruggedness_2012">Nunn and Puga (<a href="#ref-nunn_ruggedness_2012" role="doc-biblioref">2012</a>)</span>, where the causal impact of terrain ruggedness on present-day GDP per capita <strong>reverses direction</strong> when considering African vs.&nbsp;non-African countries!
+</figcaption>
+</figure>
+</div>
+</div>
+</div>
 </div>
 </div>
 </section>
@@ -717,8 +800,13 @@ div.callout-important > .callout-header {
 </section>
 <section id="references" class="level2">
 <h2 class="anchored" data-anchor-id="references">References</h2>
-<div id="refs" role="list">
-
+<div id="refs" class="references csl-bib-body hanging-indent" role="list">
+<div id="ref-bamman_learning_2013" class="csl-entry" role="listitem">
+Bamman, David, Brendan O’Connor, and Noah A. Smith. 2013. <span>“Learning <span>Latent Personas</span> of <span>Film Characters</span>.”</span> In <em>Proceedings of the 51st <span>Annual Meeting</span> of the <span>Association</span> for <span>Computational Linguistics</span> (<span>Volume</span> 1: <span>Long Papers</span>)</em>, edited by Hinrich Schuetze, Pascale Fung, and Massimo Poesio. Association for Computational Linguistics. <a href="https://aclanthology.org/P13-1035/">https://aclanthology.org/P13-1035/</a>.
+</div>
+<div id="ref-nunn_ruggedness_2012" class="csl-entry" role="listitem">
+Nunn, Nathan, and Diego Puga. 2012. <span>“Ruggedness: <span>The Blessing</span> of <span>Bad Geography</span> in <span>Africa</span>.”</span> <em>The Review of Economics and Statistics</em> 94 (1): 20–36. <a href="https://www.jstor.org/stable/41349158">https://www.jstor.org/stable/41349158</a>.
+</div>
 </div>
 
 
