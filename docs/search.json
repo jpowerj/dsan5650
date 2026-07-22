@@ -2688,7 +2688,7 @@
     "href": "w10/index.html#augmented-inverse-propensity-weighting-aipw",
     "title": "Week 10: Doubly-Robust Estimation, Text-as-Data",
     "section": "Augmented Inverse Propensity Weighting (AIPW)",
-    "text": "Augmented Inverse Propensity Weighting (AIPW)\n\\[\n\\begin{align*}\n\\hat \\tau_{AIPW} &= \\frac{1}{n} \\sum_{i=1}^{n} \\left( \\text{RegEst}(X_i) + \\text{PropensityAdj}(X_i, Y_i) \\right) \\\\\n\\text{RegEst}(X_i) &= \\hat \\mu^{(1)}(X_i) - \\hat \\mu^{(0)}(X_i) \\\\\n\\text{PropensityAdj}(X_i, Y_i) &= \\frac{D_i}{\\hat{\\mathtt{e}}(X_i)} \\left( Y_i - \\hat \\mu^{(1)}(X_i) \\right) - \\frac{(1-D_i) }{1-\\hat{\\mathtt{e}}(X_i)} \\left( Y_i - \\hat \\mu^{(0)}(X_i) \\right)\n\\end{align*}\n\\]\n\n\\(\\mu^{(d)}(x)\\) is the response function, i.e. the expected value of the outcome, conditional on observable characteristics \\(x\\) and treatment status \\(d\\)\n\\(\\hat{\\texttt{e}}(X)\\) is the estimated propensity score.\n\n\\[\n\\begin{align*}\n\\mu^{(d)}(x) &= \\mathbb E \\left[ Y_i \\ \\big | \\ X_i = x, D_i = d \\right] \\\\\n\\mathtt{e}(x) &= \\mathbb E \\left[ D_i = 1 \\ \\big | \\ X_i = x \\right]\n\\end{align*}\n\\]",
+    "text": "Augmented Inverse Propensity Weighting (AIPW)\n\\[\n\\hat\\tau = \\frac{1}{n}\\sum_i \\left[ \\hat\\mu_1(X_i) - \\hat\\mu_0(X_i) + \\frac{T_i(Y_i - \\hat\\mu_1(X_i))}{\\hat e(X_i)} - \\frac{(1-T_i)(Y_i - \\hat\\mu_0(X_i))}{1-\\hat e(X_i)} \\right]\n\\]",
     "crumbs": [
       "Week 10: {{< var w10.date-md >}}"
     ]
@@ -2853,7 +2853,7 @@
     "href": "w10/slides.html#augmented-inverse-propensity-weighting-aipw",
     "title": "Week 10: Doubly-Robust Estimation, Text-as-Data",
     "section": "Augmented Inverse Propensity Weighting (AIPW)",
-    "text": "Augmented Inverse Propensity Weighting (AIPW)\n\\[\n\\begin{align*}\n\\hat \\tau_{AIPW} &= \\frac{1}{n} \\sum_{i=1}^{n} \\left( \\text{RegEst}(X_i) + \\text{PropensityAdj}(X_i, Y_i) \\right) \\\\\n\\text{RegEst}(X_i) &= \\hat \\mu^{(1)}(X_i) - \\hat \\mu^{(0)}(X_i) \\\\\n\\text{PropensityAdj}(X_i, Y_i) &= \\frac{D_i}{\\hat{\\mathtt{e}}(X_i)} \\left( Y_i - \\hat \\mu^{(1)}(X_i) \\right) - \\frac{(1-D_i) }{1-\\hat{\\mathtt{e}}(X_i)} \\left( Y_i - \\hat \\mu^{(0)}(X_i) \\right)\n\\end{align*}\n\\]\n\n\\(\\mu^{(d)}(x)\\) is the response function, i.e. the expected value of the outcome, conditional on observable characteristics \\(x\\) and treatment status \\(d\\)\n\\(\\hat{\\texttt{e}}(X)\\) is the estimated propensity score.\n\n\\[\n\\begin{align*}\n\\mu^{(d)}(x) &= \\mathbb E \\left[ Y_i \\ \\big | \\ X_i = x, D_i = d \\right] \\\\\n\\mathtt{e}(x) &= \\mathbb E \\left[ D_i = 1 \\ \\big | \\ X_i = x \\right]\n\\end{align*}\n\\]"
+    "text": "Augmented Inverse Propensity Weighting (AIPW)\n\\[\n\\hat\\tau = \\frac{1}{n}\\sum_i \\left[ \\hat\\mu_1(X_i) - \\hat\\mu_0(X_i) + \\frac{T_i(Y_i - \\hat\\mu_1(X_i))}{\\hat e(X_i)} - \\frac{(1-T_i)(Y_i - \\hat\\mu_0(X_i))}{1-\\hat e(X_i)} \\right]\n\\]"
   },
   {
     "objectID": "w10/slides.html#model-1-propensity-score",
@@ -3473,6 +3473,40 @@
     "text": "Footnotes\n\n\nFor similar reasons, audiobooks may provide more effective ways to digest some topics in the course!↩︎",
     "crumbs": [
       "Resources"
+    ]
+  },
+  {
+    "objectID": "w10/slides.html#final-project-huddle",
+    "href": "w10/slides.html#final-project-huddle",
+    "title": "Week 10: Doubly-Robust Estimation, Text-as-Data",
+    "section": "Final Project Huddle",
+    "text": "Final Project Huddle\n\n🥳 You’re doing great 🥳\n\n\n\n\n\n\n\n\n\nReminder: The two options are not mutually exclusive: let the research question drive your trajectory!\nEmerging Theme 1 What is required to take [thing people already study], push it into the realm of causality?\nI can measure change in text property (sentiment, topic) before and after event… how do I know event caused change?\nEmerging Theme 2 I have an outcome (“puzzle”) \\(Y\\), plus a treatment \\(T\\) that I think causes it… How do I concretely “connect the dots” from \\(T\\) to \\(Y\\)?\nEx: I think introduction of Fox News Channel caused increased polarization…\nIn Both Cases Start project with the associational connections, then explore possibilities of (a) controlling for forks/pipes, (b) existence of colliders, (c) if there’s some “exogenous variation” you can exploit (stand-in for coin flip)"
+  },
+  {
+    "objectID": "w10/slides.html#text-as-outcome",
+    "href": "w10/slides.html#text-as-outcome",
+    "title": "Week 10: Doubly-Robust Estimation, Text-as-Data",
+    "section": "Text as Outcome",
+    "text": "Text as Outcome\n\n“Has 9/11 changed the focus of Congress on different topics?”"
+  },
+  {
+    "objectID": "w10/index.html#final-project-huddle",
+    "href": "w10/index.html#final-project-huddle",
+    "title": "Week 10: Doubly-Robust Estimation, Text-as-Data",
+    "section": "Final Project Huddle",
+    "text": "Final Project Huddle\n\n🥳 You’re doing great 🥳\n\n\n\n\n\n\n\n\n\nReminder: The two options are not mutually exclusive: let the research question drive your trajectory!\nEmerging Theme 1 What is required to take [thing people already study], push it into the realm of causality?\nI can measure change in text property (sentiment, topic) before and after event… how do I know event caused change?\nEmerging Theme 2 I have an outcome (“puzzle”) \\(Y\\), plus a treatment \\(T\\) that I think causes it… How do I concretely “connect the dots” from \\(T\\) to \\(Y\\)?\nEx: I think introduction of Fox News Channel caused increased polarization…\nIn Both Cases Start project with the associational connections, then explore possibilities of (a) controlling for forks/pipes, (b) existence of colliders, (c) if there’s some “exogenous variation” you can exploit (stand-in for coin flip)",
+    "crumbs": [
+      "Week 10: {{< var w10.date-md >}}"
+    ]
+  },
+  {
+    "objectID": "w10/index.html#text-as-outcome",
+    "href": "w10/index.html#text-as-outcome",
+    "title": "Week 10: Doubly-Robust Estimation, Text-as-Data",
+    "section": "Text as Outcome",
+    "text": "Text as Outcome\n\n“Has 9/11 changed the focus of Congress on different topics?”",
+    "crumbs": [
+      "Week 10: {{< var w10.date-md >}}"
     ]
   }
 ]

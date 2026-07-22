@@ -99,7 +99,6 @@ format:
         - darkly
         - "./dsan-globals/jjquarto.scss"
         - "./dsan-globals/jjquarto-dark.scss"
-    # css: "./dsan-globals/jjstyles.css"
     respect-user-color-scheme: true
     toc: true
     link-external-newwindow: true

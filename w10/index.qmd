@@ -22,9 +22,14 @@ format:
     link-external-newwindow: true
     echo: true
     code-fold: true
-    theme: [default, "../dsan-globals/jjquarto.scss"]
+    theme:
+      - default
+      - "../dsan-globals/jjquarto.scss"
+      - "../dsan-globals/jjquarto-light.scss"
     include-in-header:
-      text: "<link rel='stylesheet' href='https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css'><link rel='stylesheet' type='text/css' href='https://cdn.jsdelivr.net/gh/dreampulse/computer-modern-web-font@master/fonts.css'>"
+      text: |
+        <link rel='stylesheet' href='https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css'>
+        <link rel='stylesheet' type='text/css' href='https://cdn.jsdelivr.net/gh/dreampulse/computer-modern-web-font@master/fonts.css'>
     slide-number: true
     simplemenu:
       flat: true
@@ -42,7 +47,9 @@ format:
     echo: true
     code-fold: true
     include-in-header:
-      text: "<link rel='stylesheet' href='https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css'><link rel='stylesheet' type='text/css' href='https://cdn.jsdelivr.net/gh/dreampulse/computer-modern-web-font@master/fonts.css'>"
+      text: |
+        <link rel='stylesheet' href='https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css'>
+        <link rel='stylesheet' type='text/css' href='https://cdn.jsdelivr.net/gh/dreampulse/computer-modern-web-font@master/fonts.css'>
 ---
 
 ::: {.content-visible unless-format="revealjs"}
@@ -59,7 +66,7 @@ Today's Planned Schedule:
 
 | | Start | End | Topic |
 |:- |:- |:- |:- |
-| **Lecture** | 6:30pm | 6:45pm | [Final Projects: Dependent vs. Independent Vars &rarr;](#final-projects-independent-vs.-dependent-variables) |
+| **Lecture** | 6:30pm | 6:45pm | [Final Projects &rarr;](#final-projects-independent-vs.-dependent-variables) |
 | | 6:45pm | 7:10pm | [Instrumental Variables Lite &rarr;](#instrumental-variables) |
 | | 7:30pm | 8:00pm | [When Conditioning Won't Cut It: IVs &rarr;](#hard-mode-when-conditioning-cant-fix-things) |
 | | 7:10pm | 8:00pm | [Text-as-Data Part 1: TAD in General &rarr;](#text-as-data-part-1-tad-in-general) |
@@ -70,69 +77,40 @@ Today's Planned Schedule:
 
 {{< include ../dsan-globals/_globals-tex.qmd >}}
 
-# Final Project Timeline {.smaller data-stack-name="Final Projects"}
+# Final Project Timeline {.smaller .title-13 .crunch-title data-stack-name="Final Projects"}
 
-* **Proposal (Abstract on Notion)**:
-    * ***Submitted*** to instructors by Tuesday, July 15th, 6:30pm EDT ✅
-    * ***Approved*** by an instructor by Tuesday, July 22nd, 6:30pm EDT ✅
-* **Final Draft**:
-    * ***Submitted*** to instructors for review by **Friday, August 1st**, 5:59pm EDT
-    * ***Approved*** by an instructor by **Monday, August 4th**, 11:59pm EDT
+* **First Draft**:
+  * ***Submitted*** on Canvas to instructors for review by **Friday, July 31st**, 5:59pm EDT
+  * ***Approved*** on Canvas (instructor comment) by **Wednesday, August 5th**, 11:59pm
 * **Final Submission**:
-    * ***Submitted*** via Canvas by **Friday, August 8th**, 5:59pm EDT
+  * ***Submitted*** via Canvas by **Friday, August 7th**, 5:59pm
+  * ***Graded*** by **Friday, August 14th**, 11:59pm
+* **Final Project Gallery** (Opt-Out Allowed)
+  * Projects **contribute to scientific knowledge!** (Example later today 🤯)
+  * Need to know your audience+goal: [Business case](https://en.wikipedia.org/wiki/Business_case)? Policy recommendations? Research findings?
 
-
-
-## Independent vs. Dependent Variables {.smaller .title-09 .crunch-title .crunch-quarto-figure .crunch-quarto-layout-panel .crunch-ul .crunch-img .crunch-p}
-
-:::: {layout="[1,1]" layout-valign="center"}
-::: {#puzzle}
-
-* Starting point: puzzle in social world!
-  * *Why are **fertility rates** dropping in these countries?*
-  * *What explains the move from "quietism" to **"Political Islam"**?*
-  * *What behaviors produce **positive health outcomes** in old age?*
-
-:::
-::: {#indep-dep-pgm}
-
-![](images/pgm_general.svg){fig-align="center" width="580" .nostretch}
-
-:::
-::::
-
-:::: {.columns}
-::: {.column width="50%"}
+## Final Project Huddle {.smaller .title-11 .crunch-title .crunch-quarto-figure .crunch-quarto-layout-panel .crunch-ul .crunch-img .crunch-p .ul-block .crunch-li-8}
 
 <center>
 
-**Independent** Variable / Treatment $D$
+**🥳 You're doing great 🥳**
 
 </center>
 
-* What happens when...
-  * [Someone gets a degree/internship]
-  * [There are casualties in a conflict]
-* Start with independent var $\Rightarrow$ *"What are the effects of this cause?"*
+<div style='float: right;'>
 
-:::
-::: {.column width="50%"}
+![](images/pgm_finalprojects_split.svg){fig-align="center" width="540" .nostretch}
 
-<center>
+</div>
 
-**Dependent** Variable / Outcome $Y$
+* Reminder: The two options are **not mutually exclusive**: let the research question drive your trajectory!
+* [Emerging Theme 1]{.badge} What is required to take [thing people already study], push it into the realm of **causality**?
+* *I can **measure** change in **text** property (sentiment, topic) before and after **event**... how do I know event **caused** change?*
+* [Emerging Theme 2]{.badge} I have an outcome ("puzzle") $Y$, plus a treatment $T$ that I think causes it... How do I concretely "connect the dots" from $T$ to $Y$?
+* *Ex: I think introduction of Fox News Channel caused increased polarization...*
+* [In Both Cases]{.badge} Start project with the **associational** connections, then explore possibilities of (a) controlling for forks/pipes, (b) existence of colliders, (c) if there's some "exogenous variation" you can exploit (stand-in for coin flip)
 
-</center>
-
-* *"I wonder what **explains this?**"*
-  * [Differences in earnings]
-  * [Probability of news story]
-* Start with dependent var $\Rightarrow$ *"What are the causes of this effect?"*
-
-:::
-::::
-
-# Double Robustness {data-stack-name="Double Robustness" .smaller}
+# Double Robustness {.crunch-title .title-13 data-stack-name="Double Robustness" .smaller}
 
 * Propensity Score Weighting seems so much easier than all the hard work of modeling... why can't we just propensity score all the things and be done with it!?
 * By using **doubly-robust** estimation methods, you can:
@@ -197,22 +175,9 @@ And then `WeightIt` to generate a "love plot":
 ## *Augmented* Inverse Propensity Weighting (AIPW) {.smaller .crunch-title .title-09 .math-90}
 
 $$
-\begin{align*}
-\hat \tau_{AIPW} &= \frac{1}{n} \sum_{i=1}^{n} \left( \text{RegEst}(X_i) + \text{PropensityAdj}(X_i, Y_i) \right) \\
-\text{RegEst}(X_i) &= \hat \mu^{(1)}(X_i) - \hat \mu^{(0)}(X_i) \\
-\text{PropensityAdj}(X_i, Y_i) &= \frac{D_i}{\hat{\mathtt{e}}(X_i)} \left( Y_i - \hat \mu^{(1)}(X_i) \right) - \frac{(1-D_i) }{1-\hat{\mathtt{e}}(X_i)} \left( Y_i - \hat \mu^{(0)}(X_i) \right)
-\end{align*}
+\hat\tau = \frac{1}{n}\sum_i \left[ \hat\mu_1(X_i) - \hat\mu_0(X_i) + \frac{T_i(Y_i - \hat\mu_1(X_i))}{\hat e(X_i)} - \frac{(1-T_i)(Y_i - \hat\mu_0(X_i))}{1-\hat e(X_i)} \right]
 $$
 
-* $\mu^{(d)}(x)$ is the **response function**, i.e. the expected value of the outcome, conditional on observable characteristics $x$ and treatment status $d$
-* $\hat{\texttt{e}}(X)$ is the **estimated propensity score**.
-
-$$
-\begin{align*}
-\mu^{(d)}(x) &= \mathbb E \left[ Y_i \ \big | \ X_i = x, D_i = d \right] \\
-\mathtt{e}(x) &= \mathbb E \left[ D_i = 1 \ \big | \ X_i = x \right]
-\end{align*}
-$$
 
 ## Model 1: Propensity Score {.smaller .crunch-title .crunch-img .crunch-quarto-figure}
 
@@ -398,6 +363,10 @@ $$
 ## Textual Influence Over Time
 
 ![](images/novelty-resonance-marxism.svg){fig-align="center"}
+
+## Text as *Outcome*
+
+* ["Has 9/11 changed the focus of Congress on different topics?"](https://web.stanford.edu/class/cs224n/final-reports/256564135.pdf)
 
 ## References
 
