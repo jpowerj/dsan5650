@@ -200,7 +200,7 @@
     "href": "syllabus.html#schedule",
     "title": "Syllabus",
     "section": "Schedule",
-    "text": "Schedule\nThe following is a rough map of what we will work through together throughout the semester; given that everyone learns at a different pace, my aim is to leave us with a good amount of flexibility in terms of how much time we spend on each topic: if I find that it takes me longer than a week to convey a certain topic in sufficient depth, for example, then I view it as a strength rather than a weakness of the course that we can then rearrange the calendar below by adding an extra week on that particular topic! Similarly, if it seems like I am spending too much time on a topic, to the point that students seem bored or impatient to move onto the next topic, we can move a topic intended for the next week to the current week!\n\n\n\n\n\n\n\n\n\nUnit\nWeek\nDate\nTopic\n\n\n\n\nUnit 1: The Language of Causal Modeling\n1\nMay 20\nFrom a Science of Particles to a Science of People\n\n\n\nRecommended Readings\n\n\n\nSanta Fe Institute online course: Introduction to Renormalization, up through Video 5, Coarse Graining II: Entropy2\n\n\n\n2\nMay 27\nProbabilistic Graphical Models (PGMs) as Data-Generating Processes (DGPs)\n\n\n\nRecommended Readings\n\n\n\nKoller and Friedman (2009), Chapter 2: Foundations. Especially pp. 15-34, as a helpful DSAN 5100 refresher!\n\n\nUnit 2: Doin Thangs\n3\nJun 3\nFrom PGMs to Causal Diagrams\n\n\n\n4\nJun 10\nClearing the Path from Cause to Effect\n\n\nUnit 3: Matching Apples to Apples\n5\nJun 17\nMultilevel Modeling, Closing Backdoor Paths\n\n\n\n6\nJun 24\nAdaptive Pooling in Multilevel Models, Bayesian Workflow\n\n\nMidterm Week\n7\nJul 1\nMidterm Introduction51-Hour Take-Home Midterm released, 9:00pm EDT\n\n\n\n\nJul 3 (Friday)\n[Deliverable, 11:59pm EDT] 51-Hour Take-Home Midterm\n\n\nUnit 4: Machine Learning for Causal Inference\n8\nJul 8\nEI, Propensity Scores\n\n\n\n9\nJul 15\nDoubly-Robust Estimation and Instrumental Variables\n\n\n\n10\nJul 22\nText-as-Data\n\n\n\n11\nJul 29\nSensitivity Analysis\n\n\nFinal Project Zone\n12\nAug 5\nCausal Forests for Heterogeneous Treatment Effects\n\n\n\n\nAug 7 (Friday), 5:59pm EDT\n[Deliverable] Final Project",
+    "text": "Schedule\nThe following is a rough map of what we will work through together throughout the semester; given that everyone learns at a different pace, my aim is to leave us with a good amount of flexibility in terms of how much time we spend on each topic: if I find that it takes me longer than a week to convey a certain topic in sufficient depth, for example, then I view it as a strength rather than a weakness of the course that we can then rearrange the calendar below by adding an extra week on that particular topic! Similarly, if it seems like I am spending too much time on a topic, to the point that students seem bored or impatient to move onto the next topic, we can move a topic intended for the next week to the current week!\n\n\n\n\n\n\n\n\n\nUnit\nWeek\nDate\nTopic\n\n\n\n\nUnit 1: The Language of Causal Modeling\n1\nMay 20\nFrom a Science of Particles to a Science of People\n\n\n\nRecommended Readings\n\n\n\nSanta Fe Institute online course: Introduction to Renormalization, up through Video 5, Coarse Graining II: Entropy2\n\n\n\n2\nMay 27\nProbabilistic Graphical Models (PGMs) as Data-Generating Processes (DGPs)\n\n\n\nRecommended Readings\n\n\n\nKoller and Friedman (2009), Chapter 2: Foundations. Especially pp. 15-34, as a helpful DSAN 5100 refresher!\n\n\nUnit 2: Doin Thangs\n3\nJun 3\nFrom PGMs to Causal Diagrams\n\n\n\n4\nJun 10\nClearing the Path from Cause to Effect\n\n\nUnit 3: Matching Apples to Apples\n5\nJun 17\nMultilevel Modeling, Closing Backdoor Paths\n\n\n\n6\nJun 24\nAdaptive Pooling in Multilevel Models, Bayesian Workflow\n\n\nMidterm Week\n7\nJul 1\nMidterm Introduction51-Hour Take-Home Midterm released, 9:00pm EDT\n\n\n\n\nJul 3 (Friday)\n[Deliverable, 11:59pm EDT] 51-Hour Take-Home Midterm\n\n\nUnit 4: Machine Learning for Causal Inference\n8\nJul 8\nEI, Propensity Scores\n\n\n\n9\nJul 15\nDoubly-Robust Estimation and Instrumental Variables\n\n\n\n10\nJul 22\nText-as-Data\n\n\n\n11\nJul 29\nFrom Robustness to Sensitivity Analysis\n\n\nFinal Project Zone\n12\nAug 5\nCausal Forests for Heterogeneous Treatment Effects\n\n\n\n\nAug 7 (Friday), 5:59pm EDT\n[Deliverable] Final Project",
     "crumbs": [
       "Syllabus"
     ]
@@ -712,7 +712,7 @@
   {
     "objectID": "w11/index.html",
     "href": "w11/index.html",
-    "title": "Week 11: Sensitivity Analysis",
+    "title": "Week 11: Double-Checking Is Possible, Infinity-Checking Is Not (Robustness and Sensitivity Analysis)",
     "section": "",
     "text": "Open slides in new window →",
     "crumbs": [
@@ -722,7 +722,7 @@
   {
     "objectID": "w11/index.html#topic-models",
     "href": "w11/index.html#topic-models",
-    "title": "Week 11: Sensitivity Analysis",
+    "title": "Week 11: Double-Checking Is Possible, Infinity-Checking Is Not (Robustness and Sensitivity Analysis)",
     "section": "Topic Models",
     "text": "Topic Models\n\nIntuition is just: let’s model latent topics “underlying” observed words\n\n\n\n\nSection\nKeywords\n\n\n\n\nU.S. News\nstate, court, federal, republican\n\n\nWorld News\ngovernment, country, officials, minister\n\n\nArts\nmusic, show, art, dance\n\n\nSports\ngame, league, team, coach\n\n\nReal Estate\nhome, bedrooms, bathrooms, building\n\n\n\n\nAlready, by just classifying articles based on these keyword counts:\n\n\n\n\n\nArts\nReal Estate\nSports\nU.S. News\nWorld News\n\n\n\n\nCorrect\n3020\n690\n4860\n1330\n1730\n\n\nIncorrect\n750\n60\n370\n1100\n590\n\n\nAccuracy\n0.801\n0.920\n0.929\n0.547\n0.746",
     "crumbs": [
@@ -732,7 +732,7 @@
   {
     "objectID": "w11/index.html#topic-models-as-pgms",
     "href": "w11/index.html#topic-models-as-pgms",
-    "title": "Week 11: Sensitivity Analysis",
+    "title": "Week 11: Double-Checking Is Possible, Infinity-Checking Is Not (Robustness and Sensitivity Analysis)",
     "section": "Topic Models as PGMs",
     "text": "Topic Models as PGMs\n\n\n\nFrom Blei (2012)\n\n\n\n…Unlocks a world of social modeling through text!",
     "crumbs": [
@@ -742,7 +742,7 @@
   {
     "objectID": "w11/index.html#cross-sectional-analysis",
     "href": "w11/index.html#cross-sectional-analysis",
-    "title": "Week 11: Sensitivity Analysis",
+    "title": "Week 11: Double-Checking Is Possible, Infinity-Checking Is Not (Robustness and Sensitivity Analysis)",
     "section": "Cross-Sectional Analysis",
     "text": "Cross-Sectional Analysis\nBlaydes et al. (2018)",
     "crumbs": [
@@ -752,7 +752,7 @@
   {
     "objectID": "w11/index.html#influence-over-time",
     "href": "w11/index.html#influence-over-time",
-    "title": "Week 11: Sensitivity Analysis",
+    "title": "Week 11: Double-Checking Is Possible, Infinity-Checking Is Not (Robustness and Sensitivity Analysis)",
     "section": "Influence Over Time",
     "text": "Influence Over Time\n\n\n\nFrom Barron et al. (2018)",
     "crumbs": [
@@ -762,7 +762,7 @@
   {
     "objectID": "w11/index.html#textual-influence-over-time",
     "href": "w11/index.html#textual-influence-over-time",
-    "title": "Week 11: Sensitivity Analysis",
+    "title": "Week 11: Double-Checking Is Possible, Infinity-Checking Is Not (Robustness and Sensitivity Analysis)",
     "section": "Textual Influence Over Time",
     "text": "Textual Influence Over Time",
     "crumbs": [
@@ -772,7 +772,7 @@
   {
     "objectID": "w11/index.html#the-beta-distribution-textbetaalpha-beta-the-workhorse-prior",
     "href": "w11/index.html#the-beta-distribution-textbetaalpha-beta-the-workhorse-prior",
-    "title": "Week 11: Sensitivity Analysis",
+    "title": "Week 11: Double-Checking Is Possible, Infinity-Checking Is Not (Robustness and Sensitivity Analysis)",
     "section": "The Beta Distribution \\(\\text{Beta}(\\alpha, \\beta)\\): The “Workhorse” Prior!",
     "text": "The Beta Distribution \\(\\text{Beta}(\\alpha, \\beta)\\): The “Workhorse” Prior!\n\nBiased coin framing: \\(\\alpha\\) is “pseudo-count” of heads, \\(\\beta\\) = “pseudo-count” of tails\n\n\n\n\n \\(p \\sim\\) “\\(\\text{Beta}(0, 0)\\)”\n\n\n\nCode\n# b00_df = pd.DataFrame({'p_heads': np.arange(0, 1+1/25, 1/25)})\n# b00_df['Probability'] = 0\nfig = plt.figure(figsize=(2, 1.25))\nax = fig.gca()\nsns.histplot(\n  x=[], # data=b00_df\n);\nax.set_xlabel('p_heads');\nax.set_ylabel('Probability')\nax.set_xticks([0, 0.25, 0.5, 0.75, 1]);\nax.set_ylim(0, 1);\nplt.show()\n\n\n\n\n\n\n\n\n\n\n\n \\(p \\sim\\) “\\(\\text{Beta}(1, 0)\\)”\n\n\n\nCode\nb10_df = pd.DataFrame({\n  'draw': [0],\n  'p_heads': [0],\n})\nfig = plt.figure(figsize=(2, 1.25))\nax = fig.gca()\nsns.histplot(\n  x='p_heads', stat='probability',\n  ax=ax,\n  bins=25,\n  data=b10_df\n);\nax.set_xlim(0, 1);\nax.set_ylim(0, 1);\nplt.show()\n\n\n\n\n\n\n\n\n\n\n\n \\(p \\sim\\) “\\(\\text{Beta}(0, 1)\\)”\n\n\n\nCode\nb01_df = pd.DataFrame({\n  'draw': [0],\n  'p_heads': [1],\n})\nfig = plt.figure(figsize=(2, 1.25))\nax = fig.gca()\nsns.histplot(\n  x='p_heads', stat='probability',\n  ax=ax,\n  bins=25,\n  data=b01_df\n);\nax.set_xlim(0, 1);\nax.set_ylim(0, 1);\nplt.show()\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n Informative Prior\n\n\n\nCode\n# Informative Prior\nwith pm.Model() as informative_model:\n  p_heads = pm.Beta(\"p_heads\", alpha=2, beta=2)\n  result = pm.Bernoulli(\"result\", p=p_heads)\ninformative_df = draw_prior_sample(informative_model)\ninformative_fig, informative_ax = gen_dist_plot(\n  informative_df, \"Beta(2, 2) Prior on p\"\n);\nplt.show()\n\n\nSampling: [p_heads, result]\n\n\n\n\n\n\n\n\nFig 1. “I’ll start by assuming a fair coin”\n\n\n\n\n\n\n\n Weak Prior\n\n\n\nCode\n# Weakly Informative\nwith pm.Model() as weak_model:\n  p_heads = pm.Beta(\"p_heads\", alpha=1, beta=1)\n  result = pm.Bernoulli(\"result\", p=p_heads)\nweak_df = draw_prior_sample(weak_model)\nweak_fig, weak_ax = gen_dist_plot(\n  weak_df, \"Beta(1, 1) Prior on p\"\n);\nplt.show()\n\n\nSampling: [p_heads, result]\n\n\n\n\n\n\n\n\nFig 2. “I have no idea, I’ll assume all biases equally likely”\n\n\n\n\n\n\n\n Skeptical (Jeffreys) Prior\n\n\n\nCode\n# Skeptical / Jeffreys\nwith pm.Model() as skeptical_model:\n  p_heads = pm.Beta(\"p_heads\", alpha=0.5, beta=0.5)\n  result = pm.Bernoulli(\"result\", p=p_heads)\nskeptical_df = draw_prior_sample(skeptical_model)\nskeptical_fig, skeptical_ax = gen_dist_plot(\n  skeptical_df, \"Beta(0.5, 0.5) Prior on p\"\n);\n# And combine\nplt.show()\n\n\nSampling: [p_heads, result]\n\n\n\n\n\n\n\n\nFig 3. “I don’t trust this coin, it’ll take lots of flips with H/T balance to convince me it’s fair!”",
     "crumbs": [
@@ -782,7 +782,7 @@
   {
     "objectID": "w11/index.html#modeling-domain-knowledge-with-priors",
     "href": "w11/index.html#modeling-domain-knowledge-with-priors",
-    "title": "Week 11: Sensitivity Analysis",
+    "title": "Week 11: Double-Checking Is Possible, Infinity-Checking Is Not (Robustness and Sensitivity Analysis)",
     "section": "Modeling Domain Knowledge with Priors",
     "text": "Modeling Domain Knowledge with Priors\nPopulation proportion framing: \\(\\frac{\\alpha}{\\alpha + \\beta}\\) = mean, \\(\\alpha + \\beta\\) = “precision”\n\n\n\n\nCode\nwith pm.Model() as heads_model:\n  p_heads = pm.Beta(\"p_heads\", alpha=2, beta=1)\n  result = pm.Bernoulli(\"result\", p=p_heads)\nheads_df = draw_prior_sample(heads_model)\nheads_fig, heads_ax = gen_dist_plot(\n  heads_df, \"Beta(2, 1) Prior on p\"\n);\nplt.show()\n\n\nSampling: [p_heads, result]\n\n\n\n\n\n\n\n\n\n\n\n\nCode\nwith pm.Model() as tails_model:\n  p_heads = pm.Beta(\"p_heads\", alpha=1, beta=2)\n  result = pm.Bernoulli(\"result\", p=p_heads)\ntails_df = draw_prior_sample(tails_model)\ntails_fig, tails_ax = gen_dist_plot(\n  tails_df, \"Beta(1, 2) Prior on p\"\n);\nplt.show()\n\n\nSampling: [p_heads, result]\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nCode\nwith pm.Model() as beta23_model:\n  p_heads = pm.Beta(\"p_heads\", alpha=2, beta=3)\n  result = pm.Bernoulli(\"result\", p=p_heads)\nbeta23_df = draw_prior_sample(beta23_model)\nbeta23_fig, beta23_ax = gen_dist_plot(\n  beta23_df, \"Beta(2, 3) Prior on p\"\n);\n# beta23_plot.savefig()\nplt.show()\n\n\nSampling: [p_heads, result]\n\n\n\n\n\n\n\n\n\n\n\n\nCode\nwith pm.Model() as beta100_model:\n  p_heads = pm.Beta(\"p_heads\", alpha=40, beta=60)\n  result = pm.Bernoulli(\"result\", p=p_heads)\nbeta100_df = draw_prior_sample(beta100_model)\nbeta100_fig, beta100_ax = gen_dist_plot(\n  beta100_df, \"Beta(40, 60) Prior on p\"\n);\n# beta100_plot.savefig()\nplt.show()\n\n\nSampling: [p_heads, result]",
     "crumbs": [
@@ -792,7 +792,7 @@
   {
     "objectID": "w11/index.html#does-aging-cause-sadness",
     "href": "w11/index.html#does-aging-cause-sadness",
-    "title": "Week 11: Sensitivity Analysis",
+    "title": "Week 11: Double-Checking Is Possible, Infinity-Checking Is Not (Robustness and Sensitivity Analysis)",
     "section": "Does Aging Cause Sadness?",
     "text": "Does Aging Cause Sadness?\n\n\n\n\nEach year, 20 people are born with uniformly-distributed happiness values\n\n\n\nEach year, each person ages one year; Happiness does not change\n\n\n\nAt age 18, individuals can become married; Odds of marriage each year proportional to individual's happiness; Once married, they remain married\n\n\n\nAt age 70 individuals leave the sample (They move to Boca Raton, Florida)\n\n\n\n\nCode\nimport pandas as pd\nimport numpy as np\nrng = np.random.default_rng(seed=5650)\nimport matplotlib.pyplot as plt\nimport seaborn as sns\ncb_palette = ['#e69f00','#56b4e9','#009e73']\nsns.set_palette(cb_palette)\nfrom scipy.special import expit\n\n# The original R code:\n# sim_happiness &lt;- function( seed=1977 , N_years=1000 , max_age=65 , N_births=20 , aom=18 ) {\n#     set.seed(seed)\n#     H &lt;- M &lt;- A &lt;- c()\n#     for ( t in 1:N_years ) {\n#         A &lt;- A + 1 # age existing individuals\n#         A &lt;- c( A , rep(1,N_births) ) # newborns\n#         H &lt;- c( H , seq(from=-2,to=2,length.out=N_births) ) # sim happiness trait - never changes\n#         M &lt;- c( M , rep(0,N_births) ) # not yet married\n#         # for each person over 17, chance get married\n#         for ( i in 1:length(A) ) {\n#             if ( A[i] &gt;= aom & M[i]==0 ) {\n#                 M[i] &lt;- rbern(1,inv_logit(H[i]-4))\n#             }\n#         }\n#         # mortality\n#         deaths &lt;- which( A &gt; max_age )\n#         if ( length(deaths)&gt;0 ) {\n#             A &lt;- A[ -deaths ]\n#             H &lt;- H[ -deaths ]\n#             M &lt;- M[ -deaths ]\n#        }\n#     }\n#     d &lt;- data.frame(age=A,married=M,happiness=H)\n#     return(d)\n\n# DGP: happiness -&gt; marriage &lt;- age\nyears = 70\nnum_births = 41\ncolnames = ['age','a','h','m']\nsim_dfs = []\nA = np.zeros(shape=(num_births,1))\nH = np.linspace(-2, 2, num=num_births)\nM = np.zeros(shape=(num_births,1))\ndef update_m(row):\n  if row['m'] == 0:\n    return int(rng.binomial(\n      n=1,\n      p=expit(row['h'] - 3.875),\n      size=1,\n    )[0])\n  return 1\ndef sim_cohort_to(max_age):\n  sim_df = pd.DataFrame({\n      'age': [1 for _ in range(num_births)],\n      'h': np.linspace(-2, 2, num=num_births),\n      'm': [0 for _ in range(num_births)],\n    }\n  )\n  for t in range(2, max_age + 1):\n    sim_df['age'] = sim_df['age'] + 1\n    if t &gt;= 18:\n      sim_df['m'] = sim_df.apply(update_m, axis=1)\n  return sim_df\nall_sim_dfs = []\nfor cur_max_age in range(1, 71):\n  cur_sim_df = sim_cohort_to(cur_max_age)\n  all_sim_dfs.append(cur_sim_df)\nfull_sim_df = pd.concat(all_sim_dfs)\n\n# And plot\nfig, ax = plt.subplots(figsize=(8, 4))\ncbg_palette = ['#c6c6c666'] + cb_palette\nfull_sim_df['m_label'] = full_sim_df['m'].apply(lambda x: \"Unmarried\" if x == 0 else \"Married\")\nfull_sim_df = full_sim_df.rename(columns={'age': 'Age', 'h': 'Happiness'})\nhappiness_plot = sns.scatterplot(\n  x='Age', y='Happiness', hue='m_label',\n  data=full_sim_df,\n  palette=cbg_palette[:2],\n  s=24,\n  ax=ax,\n  legend=True,\n);\n# happiness_plot.move_legend(\"upper center\", bbox_to_anchor=(0.5, 1.15), ncol=2);\nsns.move_legend(ax, \"upper center\", bbox_to_anchor=(0.5, 1.15), ncol=2);\nhappiness_plot.legend_.set_title(\"\");\nhappiness_plot.axvline(x=17.5, color='black', ls='dashed', lw=1);\nplt.show();\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nHappiness by Age, 70 birth cohorts of size 41 each (DC minimum marriage age = 18)\n\n\n…What’s happening here? \\(\\textsf{Happy} \\rightarrow {}^{🤔}\\textsf{Marriage}^{🤔} \\leftarrow \\textsf{Age}\\)",
     "crumbs": [
@@ -802,7 +802,7 @@
   {
     "objectID": "w11/index.html#references",
     "href": "w11/index.html#references",
-    "title": "Week 11: Sensitivity Analysis",
+    "title": "Week 11: Double-Checking Is Possible, Infinity-Checking Is Not (Robustness and Sensitivity Analysis)",
     "section": "References",
     "text": "References\n\n\nBarron, Alexander T. J., Jenny Huang, Rebecca L. Spang, and Simon DeDeo. 2018. “Individuals, Institutions, and Innovation in the Debates of the French Revolution.” Proceedings of the National Academy of Sciences 115 (18): 4607–12. https://doi.org/10.1073/pnas.1717729115.\n\n\nBlaydes, Lisa, Justin Grimmer, and Alison McQueen. 2018. “Mirrors for Princes and Sultans: Advice on the Art of Governance in the Medieval Christian and Islamic Worlds.” The Journal of Politics 80 (4): 1150–67. https://doi.org/10.1086/699246.\n\n\nBlei, David M. 2012. “Probabilistic Topic Models.” Commun. ACM 55 (4): 77–84. https://doi.org/10.1145/2133806.2133826.",
     "crumbs": [
@@ -2634,11 +2634,11 @@
     ]
   },
   {
-    "objectID": "w10/index.html#independent-vs.-dependent-variables",
-    "href": "w10/index.html#independent-vs.-dependent-variables",
+    "objectID": "w10/index.html#final-project-huddle",
+    "href": "w10/index.html#final-project-huddle",
     "title": "Week 10: Doubly-Robust Estimation, Text-as-Data",
-    "section": "Independent vs. Dependent Variables",
-    "text": "Independent vs. Dependent Variables\n\n\n\n\nStarting point: puzzle in social world!\n\nWhy are fertility rates dropping in these countries?\nWhat explains the move from “quietism” to “Political Islam”?\nWhat behaviors produce positive health outcomes in old age?\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nIndependent Variable / Treatment \\(D\\)\n\n\nWhat happens when…\n\n[Someone gets a degree/internship]\n[There are casualties in a conflict]\n\nStart with independent var \\(\\Rightarrow\\) “What are the effects of this cause?”\n\n\n\nDependent Variable / Outcome \\(Y\\)\n\n\n“I wonder what explains this?”\n\n[Differences in earnings]\n[Probability of news story]\n\nStart with dependent var \\(\\Rightarrow\\) “What are the causes of this effect?”",
+    "section": "Final Project Huddle",
+    "text": "Final Project Huddle\n\n🥳 You’re doing great 🥳\n\n\n\n\n\n\n\n\n\nReminder: The two options are not mutually exclusive: let the research question drive your trajectory!\nEmerging Theme 1 What is required to take [thing people already study], push it into the realm of causality?\nI can measure change in text property (sentiment, topic) before and after event… how do I know event caused change?\nEmerging Theme 2 I have an outcome (“puzzle”) \\(Y\\), plus a treatment \\(T\\) that I think causes it… How do I concretely “connect the dots” from \\(T\\) to \\(Y\\)?\nEx: I think introduction of Fox News Channel caused increased polarization…\nIn Both Cases Start project with the associational connections, then explore possibilities of (a) controlling for forks/pipes, (b) existence of colliders, (c) if there’s some “exogenous variation” you can exploit (stand-in for coin flip)",
     "crumbs": [
       "Week 10: {{< var w10.date-md >}}"
     ]
@@ -2804,6 +2804,16 @@
     ]
   },
   {
+    "objectID": "w10/index.html#text-as-outcome",
+    "href": "w10/index.html#text-as-outcome",
+    "title": "Week 10: Doubly-Robust Estimation, Text-as-Data",
+    "section": "Text as Outcome",
+    "text": "Text as Outcome\n\n“Has 9/11 changed the focus of Congress on different topics?”",
+    "crumbs": [
+      "Week 10: {{< var w10.date-md >}}"
+    ]
+  },
+  {
     "objectID": "w10/index.html#references",
     "href": "w10/index.html#references",
     "title": "Week 10: Doubly-Robust Estimation, Text-as-Data",
@@ -2814,11 +2824,11 @@
     ]
   },
   {
-    "objectID": "w10/slides.html#independent-vs.-dependent-variables",
-    "href": "w10/slides.html#independent-vs.-dependent-variables",
+    "objectID": "w10/slides.html#final-project-huddle",
+    "href": "w10/slides.html#final-project-huddle",
     "title": "Week 10: Doubly-Robust Estimation, Text-as-Data",
-    "section": "Independent vs. Dependent Variables",
-    "text": "Independent vs. Dependent Variables\n\n\n\n\nStarting point: puzzle in social world!\n\nWhy are fertility rates dropping in these countries?\nWhat explains the move from “quietism” to “Political Islam”?\nWhat behaviors produce positive health outcomes in old age?\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nIndependent Variable / Treatment \\(D\\)\n\n\nWhat happens when…\n\n[Someone gets a degree/internship]\n[There are casualties in a conflict]\n\nStart with independent var \\(\\Rightarrow\\) “What are the effects of this cause?”\n\n\n\nDependent Variable / Outcome \\(Y\\)\n\n\n“I wonder what explains this?”\n\n[Differences in earnings]\n[Probability of news story]\n\nStart with dependent var \\(\\Rightarrow\\) “What are the causes of this effect?”"
+    "section": "Final Project Huddle",
+    "text": "Final Project Huddle\n\n🥳 You’re doing great 🥳\n\n\n\n\n\n\n\n\n\nReminder: The two options are not mutually exclusive: let the research question drive your trajectory!\nEmerging Theme 1 What is required to take [thing people already study], push it into the realm of causality?\nI can measure change in text property (sentiment, topic) before and after event… how do I know event caused change?\nEmerging Theme 2 I have an outcome (“puzzle”) \\(Y\\), plus a treatment \\(T\\) that I think causes it… How do I concretely “connect the dots” from \\(T\\) to \\(Y\\)?\nEx: I think introduction of Fox News Channel caused increased polarization…\nIn Both Cases Start project with the associational connections, then explore possibilities of (a) controlling for forks/pipes, (b) existence of colliders, (c) if there’s some “exogenous variation” you can exploit (stand-in for coin flip)"
   },
   {
     "objectID": "w10/slides.html#doubly-robust-estimation",
@@ -2933,6 +2943,13 @@
     "text": "Textual Influence Over Time"
   },
   {
+    "objectID": "w10/slides.html#text-as-outcome",
+    "href": "w10/slides.html#text-as-outcome",
+    "title": "Week 10: Doubly-Robust Estimation, Text-as-Data",
+    "section": "Text as Outcome",
+    "text": "Text as Outcome\n\n“Has 9/11 changed the focus of Congress on different topics?”"
+  },
+  {
     "objectID": "w10/slides.html#references",
     "href": "w10/slides.html#references",
     "title": "Week 10: Doubly-Robust Estimation, Text-as-Data",
@@ -2944,7 +2961,7 @@
     "href": "index.html",
     "title": "DSAN 5650: Causal Inference for Computational Social Science",
     "section": "",
-    "text": "Welcome to the homepage for DSAN 5650: Causal Inference for Computational Social Science at Georgetown University, for the Summer 2026 session!\nThe course meets on Wednesdays from 6:30pm to 9:00pm online, via the Zoom Link provided in the sidebar.\nCheck out the syllabus (or any other link in the sidebar) for more info! Or, use the following links to view notes for individual weeks:\n\n\n\n\n\n\nTitle\n\n\n\nDate\n\n\n\n\n\n\n\n\nWeek 1: Science from Particles to People\n\n\nMay 20\n\n\n\n\n\n\nWeek 2: Probabilistic Graphical Models (PGMs)\n\n\nMay 27\n\n\n\n\n\n\nWeek 3: From PGMs to Causal Diagrams\n\n\nJune 3\n\n\n\n\n\n\nWeek 4: Clearing the Path from Cause to Effect\n\n\nJune 10\n\n\n\n\n\n\nWeek 5: Multilevel Madness, Closing Backdoor Paths\n\n\nJune 17\n\n\n\n\n\n\nWeek 6: Adaptive Pooling in Multilevel Models, Bayesian Workflow\n\n\nJune 24\n\n\n\n\n\n\nWeek 7: Midterm Introduction\n\n\nJuly 1\n\n\n\n\n\n\nWeek 8: Ecological Inference, Propensity Scores\n\n\nJuly 8\n\n\n\n\n\n\nWeek 9: Propensity Scores, Regression Discontinuity, and Causal NLP\n\n\nJuly 15\n\n\n\n\n\n\nWeek 10: Doubly-Robust Estimation, Text-as-Data\n\n\nJuly 22\n\n\n\n\n\n\nWeek 11: Sensitivity Analysis\n\n\nJuly 29\n\n\n\n\n\n\nWeek 12: Causal Forests for Heterogeneous Treatment Effects\n\n\nAugust 5\n\n\n\n\n\n\nNo matching items\n\nCourse Description:\nThis course provides students with the opportunity to take the analytical skills, machine learning algorithms, and statistical methods learned throughout their first year in the program and explore how they can be employed towards carrying out rigorous, original research in the behavioral and social sciences. With a particular emphasis on tackling the additional challenges which arise when moving from associational to causal inference, particularly when only observational (as opposed to experimental) data is available, students will become proficient in cutting-edge causal Machine Learning techniques such as propensity score matching, synthetic controls, causal program evaluation, inverse social welfare function estimation from panel data, and Double-Debiased Machine Learning.\nIn-class examples will cover continuous, discrete-choice, and textual data from a wide swath of social and behavioral sciences: economics, political science, sociology, anthropology, quantitative history, and digital humanities. After gaining experience through in-class labs and homework assignments focused on reproducing key findings from recent journal articles in each of these disciplines, students will spend the final weeks of the course on a final project demonstrating their ability to develop, evaluate, and test the robustness of a causal hypothesis.\nPrerequisites: DSAN 5000, DSAN 5100 (DSAN 5300 recommended but not required)",
+    "text": "Welcome to the homepage for DSAN 5650: Causal Inference for Computational Social Science at Georgetown University, for the Summer 2026 session!\nThe course meets on Wednesdays from 6:30pm to 9:00pm online, via the Zoom Link provided in the sidebar.\nCheck out the syllabus (or any other link in the sidebar) for more info! Or, use the following links to view notes for individual weeks:\n\n\n\n\n\n\nTitle\n\n\n\nDate\n\n\n\n\n\n\n\n\nWeek 1: Science from Particles to People\n\n\nMay 20\n\n\n\n\n\n\nWeek 2: Probabilistic Graphical Models (PGMs)\n\n\nMay 27\n\n\n\n\n\n\nWeek 3: From PGMs to Causal Diagrams\n\n\nJune 3\n\n\n\n\n\n\nWeek 4: Clearing the Path from Cause to Effect\n\n\nJune 10\n\n\n\n\n\n\nWeek 5: Multilevel Madness, Closing Backdoor Paths\n\n\nJune 17\n\n\n\n\n\n\nWeek 6: Adaptive Pooling in Multilevel Models, Bayesian Workflow\n\n\nJune 24\n\n\n\n\n\n\nWeek 7: Midterm Introduction\n\n\nJuly 1\n\n\n\n\n\n\nWeek 8: Ecological Inference, Propensity Scores\n\n\nJuly 8\n\n\n\n\n\n\nWeek 9: Propensity Scores, Regression Discontinuity, and Causal NLP\n\n\nJuly 15\n\n\n\n\n\n\nWeek 10: Doubly-Robust Estimation, Text-as-Data\n\n\nJuly 22\n\n\n\n\n\n\nWeek 11: Double-Checking Is Possible, Infinity-Checking Is Not (Robustness and Sensitivity Analysis)\n\n\nJuly 29\n\n\n\n\n\n\nWeek 12: Causal Forests for Heterogeneous Treatment Effects\n\n\nAugust 5\n\n\n\n\n\n\nNo matching items\n\nCourse Description:\nThis course provides students with the opportunity to take the analytical skills, machine learning algorithms, and statistical methods learned throughout their first year in the program and explore how they can be employed towards carrying out rigorous, original research in the behavioral and social sciences. With a particular emphasis on tackling the additional challenges which arise when moving from associational to causal inference, particularly when only observational (as opposed to experimental) data is available, students will become proficient in cutting-edge causal Machine Learning techniques such as propensity score matching, synthetic controls, causal program evaluation, inverse social welfare function estimation from panel data, and Double-Debiased Machine Learning.\nIn-class examples will cover continuous, discrete-choice, and textual data from a wide swath of social and behavioral sciences: economics, political science, sociology, anthropology, quantitative history, and digital humanities. After gaining experience through in-class labs and homework assignments focused on reproducing key findings from recent journal articles in each of these disciplines, students will spend the final weeks of the course on a final project demonstrating their ability to develop, evaluate, and test the robustness of a causal hypothesis.\nPrerequisites: DSAN 5000, DSAN 5100 (DSAN 5300 recommended but not required)",
     "crumbs": [
       "<i class='bi bi-house pe-1'></i> Home"
     ]
@@ -3473,40 +3490,6 @@
     "text": "Footnotes\n\n\nFor similar reasons, audiobooks may provide more effective ways to digest some topics in the course!↩︎",
     "crumbs": [
       "Resources"
-    ]
-  },
-  {
-    "objectID": "w10/slides.html#final-project-huddle",
-    "href": "w10/slides.html#final-project-huddle",
-    "title": "Week 10: Doubly-Robust Estimation, Text-as-Data",
-    "section": "Final Project Huddle",
-    "text": "Final Project Huddle\n\n🥳 You’re doing great 🥳\n\n\n\n\n\n\n\n\n\nReminder: The two options are not mutually exclusive: let the research question drive your trajectory!\nEmerging Theme 1 What is required to take [thing people already study], push it into the realm of causality?\nI can measure change in text property (sentiment, topic) before and after event… how do I know event caused change?\nEmerging Theme 2 I have an outcome (“puzzle”) \\(Y\\), plus a treatment \\(T\\) that I think causes it… How do I concretely “connect the dots” from \\(T\\) to \\(Y\\)?\nEx: I think introduction of Fox News Channel caused increased polarization…\nIn Both Cases Start project with the associational connections, then explore possibilities of (a) controlling for forks/pipes, (b) existence of colliders, (c) if there’s some “exogenous variation” you can exploit (stand-in for coin flip)"
-  },
-  {
-    "objectID": "w10/slides.html#text-as-outcome",
-    "href": "w10/slides.html#text-as-outcome",
-    "title": "Week 10: Doubly-Robust Estimation, Text-as-Data",
-    "section": "Text as Outcome",
-    "text": "Text as Outcome\n\n“Has 9/11 changed the focus of Congress on different topics?”"
-  },
-  {
-    "objectID": "w10/index.html#final-project-huddle",
-    "href": "w10/index.html#final-project-huddle",
-    "title": "Week 10: Doubly-Robust Estimation, Text-as-Data",
-    "section": "Final Project Huddle",
-    "text": "Final Project Huddle\n\n🥳 You’re doing great 🥳\n\n\n\n\n\n\n\n\n\nReminder: The two options are not mutually exclusive: let the research question drive your trajectory!\nEmerging Theme 1 What is required to take [thing people already study], push it into the realm of causality?\nI can measure change in text property (sentiment, topic) before and after event… how do I know event caused change?\nEmerging Theme 2 I have an outcome (“puzzle”) \\(Y\\), plus a treatment \\(T\\) that I think causes it… How do I concretely “connect the dots” from \\(T\\) to \\(Y\\)?\nEx: I think introduction of Fox News Channel caused increased polarization…\nIn Both Cases Start project with the associational connections, then explore possibilities of (a) controlling for forks/pipes, (b) existence of colliders, (c) if there’s some “exogenous variation” you can exploit (stand-in for coin flip)",
-    "crumbs": [
-      "Week 10: {{< var w10.date-md >}}"
-    ]
-  },
-  {
-    "objectID": "w10/index.html#text-as-outcome",
-    "href": "w10/index.html#text-as-outcome",
-    "title": "Week 10: Doubly-Robust Estimation, Text-as-Data",
-    "section": "Text as Outcome",
-    "text": "Text as Outcome\n\n“Has 9/11 changed the focus of Congress on different topics?”",
-    "crumbs": [
-      "Week 10: {{< var w10.date-md >}}"
     ]
   }
 ]
