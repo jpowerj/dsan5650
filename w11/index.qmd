@@ -65,59 +65,55 @@ format:
 
 :::
 
-```{=html}
+# Final Project Progress Report / Draft: Friday, 11:59pm EDT {data-name="Final Projects"}
 
+* [On Canvas](https://georgetown.instructure.com/courses/231688/assignments/1394145)
+* **Help us help you!**
+* [Rubber duck debugging](https://en.wikipedia.org/wiki/Rubber_duck_debugging)
+
+# Robustness and Sensitivity Analysis: Complementary! {data-stack-name="Sensitivity Analysis"}
+
+## Car Safety Metaphor {.smaller .crunch-title}
+
+* **Robustness**: Doing stuff to **maximize "safety" (from getting causal effect wrong)**
+
+```{=html}
+<table>
+<thead>
+</thead>
+<tbody>
+<tr>
+  <td colspan='2' style='border-bottom: none;'></td>
+  <td colspan='2' class='tdc tdvc'><span data-qmd="Seatbelts Installed?[*Covariates Adjusted?*]{.mini-row}</small>"></span></td>
+</tr>
+<tr>
+  <td style='border-bottom: none;'></td>
+  <td></td>
+  <td class='tdc'>No</td>
+  <td class='tdc'>Yes</td>
+</tr>
+<tr>
+  <td rowspan="2" class='tdc tdvc' style='border-bottom: none;'><span data-qmd="Airbag Installed?[*Propensity Score Estimated?*]{.mini-row}"></span></td>
+  <td class='tdc tdvc'>No</td>
+  <td class='tdc tdvc'>OLS</td>
+  <td class='tdc tdvc'>OLS + "Controls"</td>
+</tr>
+<tr>
+  <td class='tdc tdvc'>Yes</td>
+  <td class='tdc tdvc'>IPW</td>
+  <td class='tdc tdvc'><b>Doubly Robust!</b> 🥳</td>
+</tr>
+</tbody>
+</table>
 ```
 
-# Final Project Drafts: Friday, 5:59pm EDT {data-name="Final Projects"}
+* **Sensitivity Analysis**: What is the "breaking point" of my safety measures?
+* $\Pr($Not enough time for airbag to inflate$) \propto$ speed
+* $\leadsto$ Over 100mph, $\Pr($Not enough time for airbag to inflate$) > 0.95$
+* $\Pr($Wrong causal effect$) \propto$ correlation of omitted confounder with treatment, outcome
+* $\leadsto$ Over $\rho = 0.6$, $\Pr($Wrong causal effect$) > 0.95$
 
-* On Canvas!
-* Think of it as a **skeleton** of the final project
-* Final submission = draft + missing pieces filled in
-
-# Topic Models Over Space and Time {data-stack-name="Topic Models"}
-
-## Topic Models {.smaller .crunch-title .crunch-ul .table-90}
-
-* Intuition is just: let's model **latent topics** "underlying" **observed words**
-
-| Section | Keywords |
-| - | - |
-| U.S. News | state, court, federal, republican |
-| World News | government, country, officials, minister |
-| Arts | music, show, art, dance |
-| Sports | game, league, team, coach |
-| Real Estate | home, bedrooms, bathrooms, building |
-
-* Already, by just classifying articles based on these keyword counts:
-
-| | Arts | Real Estate | Sports | U.S. News | World News | Total |
-|-:|:-:|:-:|:-:|:-:|:-:|
-| **Correct** | 3020 | 690 | 4860 | 1330 | 1730 | 11630 |
-| **Incorrect** | 750 | 60 | 370 | 1100 | 590 | 2870 |
-| **Accuracy** | 0.801 | 0.920 | 0.929 | 0.547 | 0.746 | 0.802 |
-
-## Topic Models as PGMs {.smaller .crunch-title .crunch-img}
-
-![From @blei_probabilistic_2012](images/lda.jpg){fig-align="center"}
-
-<center>
-
-*...Unlocks a world of social modeling through text!*
-
-</center>
-
-## Cross-Sectional Analysis
-
-@blaydes_mirrors_2018
-
-## Influence Over Time
-
-![From @barron_individuals_2018](images/novelty_transience.png){fig-align="center"}
-
-## Textual Influence Over Time
-
-![](images/novelty-resonance-marxism.svg){fig-align="center"}
+<!-- Sensitivity Analysis 1: Sensitivity to Priors -->
 
 # Sensitivity Analysis 1: Sensitivity to Priors {data-stack-name="Sensitivity to Priors"}
 
@@ -405,7 +401,7 @@ plt.show()
 :::
 ::::
 
-# Sensitivity Analysis 2: How Sensitive Are My Results to *Omitted/Included Variable Bias*? {.smaller .title-10 .crunch-title data-stack-name="Included Variable Bias"}
+# Sensitivity Analysis 2: How Sensitive Are My Results to *Included Variable Bias*? {.smaller .title-10 .crunch-title data-stack-name="Included Variable Bias"}
 
 * You probably know about **omitted variable bias** from previous classes / intuition... but, **included variable bias?**
 * That's right folks... **colliders** can be agents of chaos, laying waste to our best, most meticulously-planned-out models
@@ -413,7 +409,6 @@ plt.show()
 ![](images/mood_crop.jpg){fig-align="center"}
 
 ## Does Aging Cause Sadness? {.text-70 .table-90 .crunch-title .crunch-ul .crunch-quarto-figure .crunch-img .crunch-quarto-layout-panel .crunch-quarto-layout-cell .crunch-figure .crunch-figcaption .inline-80}
-
 
 ```{=html}
 <table>
@@ -550,6 +545,93 @@ Happiness by Age, 70 birth cohorts of size 41 each (DC minimum marriage age = 18
 $\textsf{Happy} \rightarrow {}^{🤔}\textsf{Marriage}^{🤔} \leftarrow \textsf{Age}$
 
 </center>
+
+:::
+::::
+
+# Sensitivity Analysis 3: How Sensitive Are My Results to *Omitted Variable Bias*? {.smaller .title-10 .crunch-title data-stack-name="Omitted Variable Bias"}
+
+## Assessing the Impact of Omitted Vars {.smaller .crunch-title .title-10 .math-90 .crunch-math .crunch-ul}
+
+* Working example: [**PCPSR**](https://www.pcpsr.org/en), People's Company for Public Survey Research (شركة الشعب الأبحاث المسحية)
+* What is **causal impact** of **experiencing violence** on **support for armed struggle?**
+* Researcher A models this scenario as:
+
+$$
+\textsf{ArmedStruggle}_i = \alpha^\text{res} + \tau^\text{res} \textsf{DirectHarm}_i + \hat{\beta}_\text{c}^\text{res}\textsf{RefugeeCamp}_i + \textsf{Muhaf}_i \hat{\boldsymbol \beta}_\text{m}^\text{res} + \hat{\varepsilon}^\text{res}
+$$
+
+* Researcher B instead prefers:
+
+$$
+\textsf{ArmedStruggle}_i = \alpha + \tau \textsf{DirectHarm}_i + \hat{\beta}_\text{c}\textsf{RefugeeCamp}_i + \textsf{Muhaf}_i \hat{\boldsymbol \beta}_{\text{m}} + \boxed{\hat{\gamma}\textsf{PFLP}_i} + \hat{\varepsilon}^{\text{full}}
+$$
+
+> Our earlier estimate $\tau_{\text{res}}$ would differ from our target quantity $\tau$: but **how badly?**
+> 
+> How strong would the confounder(s) have to be to change the estimates in such a way **to affect the main conclusions** of a study?
+
+## The Classical OVB Equation {.smaller .crunch-title .title-12 .crunch-ul .crunch-math .footnotes-0 .math-90 .inline-90}
+
+* Remember that $T$ is our **treatment** variable! ($\mathbf{X}$ = covariates, $Y$ = outcome)
+* In a perfect world, we would estimate $Y = \hat{\tau}T + \mathbf{X} \hat{\beta} + \hat{\gamma}Z+ \varepsilon_{\text{full}}$
+* But, $Z$ is **unobserved** $\leadsto$ **"restricted"** model $Y = \hat{\tau}_{\text{res}}T + \mathbf{X} \hat{\beta}_{\text{res}} + \varepsilon_{\text{res}}$
+* What is the "gap" between $\hat{\tau}$ and $\hat{\tau}^{\text{res}}$? $\text{OVB} = \hat{\tau}_{\text{res}} - \hat{\tau}$
+
+:::: {.columns}
+::: {.column width="40%"}
+
+$$
+\begin{align*}
+\hat{\tau}_{\text{res}} &= \frac{
+  \text{Cov}[T^{\top \mathbf{X}}, Y^{\top \mathbf{X}}]
+}{
+  \text{Var}[T^{\top \mathbf{X}}]
+} \\
+&= \frac{
+  \text{Cov}[T^{\top \mathbf{X}}, \hat{\tau}T^{\top \mathbf{X}} + \hat{\gamma}Z^{\top \mathbf{X}}]
+}{
+  \text{Var}[T^{\top \mathbf{X}}]
+} \\
+&= \hat{\tau} + \hat{\gamma}\frac{
+  \text{Cov}[T^{\top \mathbf{X}}, Z^{\top \mathbf{X}}]
+}{
+  \text{Var}[T^{\top \mathbf{X}}]
+} \\
+&= \hat{\tau} + \hat{\gamma}\hat{\delta} \\
+\implies \text{OVB} &= \hat{\tau}_{\text{res}} - \hat{\tau} = \overbrace{
+  \boxed{\hat{\gamma} \times \hat{\delta}}
+}^{\mathclap{\text{Impact} \, \times \, \text{Imbalance}}}
+\end{align*}
+$$
+
+:::
+::: {.column width="60%"}
+
+![](images/sensitivity.svg){fig-align="center" width="360"}
+
+:::
+::::
+
+::: {.aside}
+
+The ability to produce **orthogonalized** ($\top \mathbf{X}$) versions of vars in the model utilizes the [Frisch-Waugh-Lovell Theorem](https://en.wikipedia.org/wiki/Frisch%E2%80%93Waugh%E2%80%93Lovell_theorem)
+
+:::
+
+## More Generally
+
+* What if we don't have a **specific** omitted variable in mind? We just want to know the expected impact **if** there were omitted vars... Enter "Partial $R^2$"
+
+:::: {.columns}
+::: {.column width="50%"}
+
+![](images/r2.svg){fig-align="center"}
+
+:::
+::: {.column width="50%"}
+
+![](images/r2_extreme.svg){fig-align="center"}
 
 :::
 ::::

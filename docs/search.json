@@ -14,46 +14,11 @@
     "text": "Sensitivity Analysis\n\nSo you’ve got an estimate of a causal effect! What now? Two possible next steps…\n Sensitivity Analysis: Check robustness of your results\n\nModeling choices → one point in param space (garden of forking paths)\nIf results “truly” hold, shouldn’t disappear with small changes in parameters/choices\nLast week: Can re-estimate with informative → weak → skeptical priors\nThis week: Simulate how “strong” omissions would have to be to “ruin” finding\n\n Heterogeneous Treatment Effects: How does the effect vary btwn subgroups?\n\nExample today: PROGRESA (Cash transfer poverty-alleviation program in Mexico)\nProgram has an overall causal effect, but also a greater causal effect on indigenous households, relative to non-indigenous\nHow can we find group-specific effects? Causal forests!"
   },
   {
-    "objectID": "w12/slides.html#does-aging-cause-sadness",
-    "href": "w12/slides.html#does-aging-cause-sadness",
-    "title": "Week 12: Causal Forests for Heterogeneous Treatment Effects",
-    "section": "Does Aging Cause Sadness?",
-    "text": "Does Aging Cause Sadness?"
-  },
-  {
-    "objectID": "w12/slides.html#assessing-the-impact-of-omitted-included-vars",
-    "href": "w12/slides.html#assessing-the-impact-of-omitted-included-vars",
-    "title": "Week 12: Causal Forests for Heterogeneous Treatment Effects",
-    "section": "Assessing the Impact of Omitted / Included Vars",
-    "text": "Assessing the Impact of Omitted / Included Vars\n\nWorking example from Cinelli and Hazlett (2020): War in Darfur (2004-2020)\nWhat is the causal impact of experiencing violence on support for a peace deal\nResearcher A models this scenario as:\n\n\\[\n\\textsf{PeaceIndex} = \\tau_{\\text{res}} \\textsf{DirectHarm} + \\hat{\\beta}_{\\text{f},\\text{res}}\\textsf{Female} + \\textsf{Village} \\hat{\\boldsymbol \\beta}_{\\text{v},\\text{res}} + \\mathbf{X} \\hat{\\boldsymbol \\beta}_{\\text{res}} + \\hat{\\varepsilon}_{\\text{res}}\n\\]\n\nResearcher B instead prefers:\n\n\\[\n\\textsf{PeaceIndex} = \\tau \\textsf{DirectHarm} + \\hat{\\beta}_{\\text{f}}\\textsf{Female} + \\textsf{Village} \\hat{\\boldsymbol \\beta}_{\\text{v}} + \\mathbf{X} \\hat{\\boldsymbol \\beta} + \\boxed{\\hat{\\gamma}\\textsf{Center}} + \\hat{\\varepsilon}_{\\text{full}}\n\\]\n\nOur earlier estimate \\(\\tau_{\\text{res}}\\) would differ from our target quantity \\(\\tau\\): but how badly? […] How strong would the confounder(s) have to be to change the estimates in such a way to affect the main conclusions of a study?"
-  },
-  {
-    "objectID": "w12/slides.html#the-classical-ovb-equation",
-    "href": "w12/slides.html#the-classical-ovb-equation",
-    "title": "Week 12: Causal Forests for Heterogeneous Treatment Effects",
-    "section": "The Classical OVB Equation",
-    "text": "The Classical OVB Equation\n\nRemember that \\(D\\) is our treatment variable! (\\(\\mathbf{X}\\) = covariates, \\(Y\\) = outcome)\nIn a perfect world, we would estimate \\(Y = \\hat{\\tau}D + \\mathbf{X} \\hat{\\beta} + \\hat{\\gamma}Z+ \\varepsilon_{\\text{full}}\\)\nBut, \\(Z\\) is unobserved \\(\\leadsto\\) “restricted” model \\(Y = \\hat{\\tau}_{\\text{res}}D + \\mathbf{X} \\hat{\\beta}_{\\text{res}} + \\varepsilon_{\\text{res}}\\)\nWhat is the “gap” between \\(\\hat{\\tau}\\) and \\(\\hat{\\tau}^{\\text{res}}\\)? \\(\\text{OVB} = \\hat{\\tau}_{\\text{res}} - \\hat{\\tau}\\)\n\n\n\n\\[\n\\begin{align*}\n\\hat{\\tau}_{\\text{res}} &= \\frac{\n  \\text{Cov}[D^{\\top \\mathbf{X}}, Y^{\\top \\mathbf{X}}]\n}{\n  \\text{Var}[D^{\\top \\mathbf{X}}]\n} \\\\\n&= \\frac{\n  \\text{Cov}[D^{\\top \\mathbf{X}}, \\hat{\\tau}D^{\\top \\mathbf{X}} + \\hat{\\gamma}Z^{\\top \\mathbf{X}}]\n}{\n  \\text{Var}[D^{\\top \\mathbf{X}}]\n} \\\\\n&= \\hat{\\tau} + \\hat{\\gamma}\\frac{\n  \\text{Cov}[D^{\\top \\mathbf{X}}, Z^{\\top \\mathbf{X}}]\n}{\n  \\text{Var}[D^{\\top \\mathbf{X}}]\n} \\\\\n&= \\hat{\\tau} + \\hat{\\gamma}\\hat{\\delta} \\\\\n\\implies \\text{OVB} &= \\hat{\\tau}_{\\text{res}} - \\hat{\\tau} = \\overbrace{\n  \\boxed{\\hat{\\gamma} \\times \\hat{\\delta}}\n}^{\\mathclap{\\text{Impact} \\, \\times \\, \\text{Imbalance}}}\n\\end{align*}\n\\]\n\n\n\n\n\n\n\n\n\nThe ability to produce orthogonalized (\\(\\top \\mathbf{X}\\)) versions of vars in the model utilizes the Frisch-Waugh-Lovell Theorem"
-  },
-  {
-    "objectID": "w12/slides.html#more-generally",
-    "href": "w12/slides.html#more-generally",
-    "title": "Week 12: Causal Forests for Heterogeneous Treatment Effects",
-    "section": "More Generally",
-    "text": "More Generally\n\nWhat if we don’t have a specific omitted variable in mind? We just want to know the expected impact if there were omitted vars… Enter “Partial \\(R^2\\)”"
-  },
-  {
-    "objectID": "w12/slides.html#progresa",
-    "href": "w12/slides.html#progresa",
-    "title": "Week 12: Causal Forests for Heterogeneous Treatment Effects",
-    "section": "PROGRESA",
-    "text": "PROGRESA"
-  },
-  {
     "objectID": "w12/slides.html#references",
     "href": "w12/slides.html#references",
     "title": "Week 12: Causal Forests for Heterogeneous Treatment Effects",
     "section": "References",
-    "text": "References\n\n\nCinelli, Carlos, and Chad Hazlett. 2020. “Making Sense of Sensitivity: Extending Omitted Variable Bias.” Journal of the Royal Statistical Society Series B: Statistical Methodology 82 (1): 39–67. https://doi.org/10.1111/rssb.12348."
+    "text": "References"
   },
   {
     "objectID": "w12/index.html",
@@ -86,61 +51,11 @@
     ]
   },
   {
-    "objectID": "w12/index.html#does-aging-cause-sadness",
-    "href": "w12/index.html#does-aging-cause-sadness",
-    "title": "Week 12: Causal Forests for Heterogeneous Treatment Effects",
-    "section": "Does Aging Cause Sadness?",
-    "text": "Does Aging Cause Sadness?",
-    "crumbs": [
-      "Week 12: {{< var w12.date-md >}}"
-    ]
-  },
-  {
-    "objectID": "w12/index.html#assessing-the-impact-of-omitted-included-vars",
-    "href": "w12/index.html#assessing-the-impact-of-omitted-included-vars",
-    "title": "Week 12: Causal Forests for Heterogeneous Treatment Effects",
-    "section": "Assessing the Impact of Omitted / Included Vars",
-    "text": "Assessing the Impact of Omitted / Included Vars\n\nWorking example from Cinelli and Hazlett (2020): War in Darfur (2004-2020)\nWhat is the causal impact of experiencing violence on support for a peace deal\nResearcher A models this scenario as:\n\n\\[\n\\textsf{PeaceIndex} = \\tau_{\\text{res}} \\textsf{DirectHarm} + \\hat{\\beta}_{\\text{f},\\text{res}}\\textsf{Female} + \\textsf{Village} \\hat{\\boldsymbol \\beta}_{\\text{v},\\text{res}} + \\mathbf{X} \\hat{\\boldsymbol \\beta}_{\\text{res}} + \\hat{\\varepsilon}_{\\text{res}}\n\\]\n\nResearcher B instead prefers:\n\n\\[\n\\textsf{PeaceIndex} = \\tau \\textsf{DirectHarm} + \\hat{\\beta}_{\\text{f}}\\textsf{Female} + \\textsf{Village} \\hat{\\boldsymbol \\beta}_{\\text{v}} + \\mathbf{X} \\hat{\\boldsymbol \\beta} + \\boxed{\\hat{\\gamma}\\textsf{Center}} + \\hat{\\varepsilon}_{\\text{full}}\n\\]\n\nOur earlier estimate \\(\\tau_{\\text{res}}\\) would differ from our target quantity \\(\\tau\\): but how badly? […] How strong would the confounder(s) have to be to change the estimates in such a way to affect the main conclusions of a study?",
-    "crumbs": [
-      "Week 12: {{< var w12.date-md >}}"
-    ]
-  },
-  {
-    "objectID": "w12/index.html#the-classical-ovb-equation",
-    "href": "w12/index.html#the-classical-ovb-equation",
-    "title": "Week 12: Causal Forests for Heterogeneous Treatment Effects",
-    "section": "The Classical OVB Equation",
-    "text": "The Classical OVB Equation\n\nRemember that \\(D\\) is our treatment variable! (\\(\\mathbf{X}\\) = covariates, \\(Y\\) = outcome)\nIn a perfect world, we would estimate \\(Y = \\hat{\\tau}D + \\mathbf{X} \\hat{\\beta} + \\hat{\\gamma}Z+ \\varepsilon_{\\text{full}}\\)\nBut, \\(Z\\) is unobserved \\(\\leadsto\\) “restricted” model \\(Y = \\hat{\\tau}_{\\text{res}}D + \\mathbf{X} \\hat{\\beta}_{\\text{res}} + \\varepsilon_{\\text{res}}\\)\nWhat is the “gap” between \\(\\hat{\\tau}\\) and \\(\\hat{\\tau}^{\\text{res}}\\)? \\(\\text{OVB} = \\hat{\\tau}_{\\text{res}} - \\hat{\\tau}\\)\n\n\n\n\\[\n\\begin{align*}\n\\hat{\\tau}_{\\text{res}} &= \\frac{\n  \\text{Cov}[D^{\\top \\mathbf{X}}, Y^{\\top \\mathbf{X}}]\n}{\n  \\text{Var}[D^{\\top \\mathbf{X}}]\n} \\\\\n&= \\frac{\n  \\text{Cov}[D^{\\top \\mathbf{X}}, \\hat{\\tau}D^{\\top \\mathbf{X}} + \\hat{\\gamma}Z^{\\top \\mathbf{X}}]\n}{\n  \\text{Var}[D^{\\top \\mathbf{X}}]\n} \\\\\n&= \\hat{\\tau} + \\hat{\\gamma}\\frac{\n  \\text{Cov}[D^{\\top \\mathbf{X}}, Z^{\\top \\mathbf{X}}]\n}{\n  \\text{Var}[D^{\\top \\mathbf{X}}]\n} \\\\\n&= \\hat{\\tau} + \\hat{\\gamma}\\hat{\\delta} \\\\\n\\implies \\text{OVB} &= \\hat{\\tau}_{\\text{res}} - \\hat{\\tau} = \\overbrace{\n  \\boxed{\\hat{\\gamma} \\times \\hat{\\delta}}\n}^{\\mathclap{\\text{Impact} \\, \\times \\, \\text{Imbalance}}}\n\\end{align*}\n\\]\n\n\n\n\n\n\n\n\n\n\nThe ability to produce orthogonalized (\\(\\top \\mathbf{X}\\)) versions of vars in the model utilizes the Frisch-Waugh-Lovell Theorem",
-    "crumbs": [
-      "Week 12: {{< var w12.date-md >}}"
-    ]
-  },
-  {
-    "objectID": "w12/index.html#more-generally",
-    "href": "w12/index.html#more-generally",
-    "title": "Week 12: Causal Forests for Heterogeneous Treatment Effects",
-    "section": "More Generally",
-    "text": "More Generally\n\nWhat if we don’t have a specific omitted variable in mind? We just want to know the expected impact if there were omitted vars… Enter “Partial \\(R^2\\)”",
-    "crumbs": [
-      "Week 12: {{< var w12.date-md >}}"
-    ]
-  },
-  {
-    "objectID": "w12/index.html#progresa",
-    "href": "w12/index.html#progresa",
-    "title": "Week 12: Causal Forests for Heterogeneous Treatment Effects",
-    "section": "PROGRESA",
-    "text": "PROGRESA",
-    "crumbs": [
-      "Week 12: {{< var w12.date-md >}}"
-    ]
-  },
-  {
     "objectID": "w12/index.html#references",
     "href": "w12/index.html#references",
     "title": "Week 12: Causal Forests for Heterogeneous Treatment Effects",
     "section": "References",
-    "text": "References\n\n\nCinelli, Carlos, and Chad Hazlett. 2020. “Making Sense of Sensitivity: Extending Omitted Variable Bias.” Journal of the Royal Statistical Society Series B: Statistical Methodology 82 (1): 39–67. https://doi.org/10.1111/rssb.12348.",
+    "text": "References",
     "crumbs": [
       "Week 12: {{< var w12.date-md >}}"
     ]
@@ -647,39 +562,11 @@
     "text": "Code\nimport pandas as pd\nimport numpy as np\nimport matplotlib.pyplot as plt\nimport seaborn as sns\n\nfrom IPython.display import HTML\n\nimport statsmodels.formula.api as smf\nfrom causalml.match import create_table_one\nfrom joblib import Parallel, delayed\nfrom sklearn.linear_model import LogisticRegression\n\ndef generate_data(N=300, seed=1):\n  np.random.seed(seed)\n  \n  # Control variables\n  male = np.random.binomial(1, 0.45, N)\n  age = np.rint(18 + np.random.beta(2, 2, N)*50)\n  hours = np.minimum(np.round(np.random.lognormal(5, 1.3, N), 1), 2000)\n  \n  # Treatment\n  pr = np.maximum(0, np.minimum(1, 0.8 + 0.3*male - np.sqrt(age-18)/10))\n  dark_mode = np.random.binomial(1, pr, N)==1\n  \n  # Outcome\n  read_time = np.round(np.random.normal(10 - 4*male + 2*np.log(hours) + 2*dark_mode, 4, N), 1)\n\n  # Generate the dataframe\n  df = pd.DataFrame({'read_time': read_time, 'dark_mode': dark_mode, 'male': male, 'age': age, 'hours': hours})\n\n  return df\n\nuser_df = generate_data(N=300)\nols_model = smf.ols(\"read_time ~ dark_mode\", data=user_df).fit()\nols_summary = ols_model.summary()\nresults_as_html = ols_summary.tables[1].as_html()\nHTML(results_as_html)\n\n\n\n\n\ncoef\nstd err\nt\nP&gt;|t|\n[0.025\n0.975]\n\n\nIntercept\n19.1748\n0.402\n47.661\n0.000\n18.383\n19.967\n\n\ndark_mode[T.True]\n-0.4446\n0.571\n-0.779\n0.437\n-1.568\n0.679\n\n\n\n\nuser_df.head()\n\n\n\n\n\n\n\n\nread_time\ndark_mode\nmale\nage\nhours\n\n\n\n\n0\n14.4\nFalse\n0\n43.0\n65.6\n\n\n1\n15.4\nFalse\n1\n55.0\n125.4\n\n\n2\n20.9\nTrue\n0\n23.0\n642.6\n\n\n3\n20.0\nFalse\n0\n41.0\n129.1\n\n\n4\n21.5\nTrue\n0\n29.0\n190.2\n\n\n\n\n\n\n\n\n\nCode\nimport matplotlib\nmatplotlib.rcParams['axes.grid'] = False\nmatplotlib.rcParams['savefig.transparent'] = True\nsns.pairplot(\n  data=user_df,\n  height=1.5, aspect=1.75,\n)\nplt.show()\n\n\n\n\n\n\n\n\nFigure 1: Pairplot of variables in the light mode vs. dark mode dataset\n\n\n\n\n\n\nfrom IPython.display import display, HTML\nX = ['male', 'age', 'hours']\ntable1 = create_table_one(user_df, 'dark_mode', X)\nuser_df.to_csv(\"assets/user_df.csv\")\ntable1.to_csv(\"assets/table1.csv\")\nHTML(table1.to_html())\n\n\n\n\n\nControl\nTreatment\nSMD\n\n\nVariable\n\n\n\n\n\n\n\nn\n151\n149\n\n\n\nage\n46.01 (9.79)\n39.09 (11.53)\n-0.6469\n\n\nhours\n337.78 (464.00)\n328.57 (442.12)\n-0.0203\n\n\nmale\n0.34 (0.47)\n0.66 (0.48)\n0.6732\n\n\n\n\n\n\ndef estimate_e(df, X, D, model_e):\n    e = model_e.fit(df[X], df[D]).predict_proba(df[X])[:,1]\n    return e\nuser_df['e'] = estimate_e(user_df, X, \"dark_mode\", LogisticRegression())\nfig, ax = plt.subplots(figsize=(7,2.75))\nsns.kdeplot(\n  x='e', hue='dark_mode', data=user_df,\n  # bins=30,\n  #stat='density',\n  common_norm=False,\n  fill=True,\n  ax=ax\n);\nax.set_xlabel(\"$e(X)$\");\n\n\n\n\n\n\n\n\n\n\nCode\nweights_denom = user_df['e'] * user_df[\"dark_mode\"] + (1 - user_df['e']) * (1 - user_df[\"dark_mode\"])\ninv_weights = 1 / weights_denom\nsmf.wls(\n  \"read_time ~ dark_mode\",\n  weights=inv_weights,\n  data=user_df\n).fit().summary().tables[1]\n\n\n\n\n\n\ncoef\nstd err\nt\nP&gt;|t|\n[0.025\n0.975]\n\n\nIntercept\n18.5871\n0.412\n45.158\n0.000\n17.777\n19.397\n\n\ndark_mode[T.True]\n1.0486\n0.581\n1.805\n0.072\n-0.095\n2.192\n\n\n\n\n\n\n\nCode\nfrom sklearn.linear_model import LinearRegression\n\ndef estimate_mu(df, X, D, y, model_mu):\n  mu = model_mu.fit(df[X + [D]], df[y])\n  mu0 = mu.predict(df[X + [D]].assign(dark_mode=0))\n  mu1 = mu.predict(df[X + [D]].assign(dark_mode=1))\n  return mu0, mu1\n\nmu0, mu1 = estimate_mu(\n  user_df, X, \"dark_mode\", \"read_time\", LinearRegression()\n)\nprint(f'mean(mu0) = {np.mean(mu0):.2f}, mean(mu1) = {np.mean(mu1):.2f}')\nprint(f'Difference = {np.mean(mu1 - mu0):.2f}')\n\n\nmean(mu0) = 18.27, mean(mu1) = 19.65\nDifference = 1.39\n\n\n\n\nCode\nfrom econml.dr import LinearDRLearner\n\nmodel = LinearDRLearner(\n  model_propensity=LogisticRegression(),\n  model_regression=LinearRegression(),\n  random_state=5650\n)\nmodel.fit(Y=user_df[\"read_time\"], T=user_df[\"dark_mode\"], X=user_df[X]);\nmodel.ate_inference(X=user_df[X].values, T0=0, T1=1).summary().tables[0]\n\n\n\nUncertainty of Mean Point Estimate\n\n\nmean_point\nstderr_mean\nzstat\npvalue\nci_mean_lower\nci_mean_upper\n\n\n1.321\n0.549\n2.409\n0.016\n0.246\n2.396\n\n\n\n\n\n\n\nCode\ndef compare_estimators(X_e, X_mu, D, y, seed):\n    df = generate_data(seed=seed)\n    e = estimate_e(df, X_e, D, LogisticRegression())\n    mu0, mu1 = estimate_mu(df, X_mu, D, y, LinearRegression())\n    slearn = mu1 - mu0\n    ipw = (df[D] / e - (1-df[D]) / (1-e)) * df[y]\n    aipw = slearn + df[D] / e * (df[y] - mu1) - (1-df[D]) / (1-e) * (df[y] - mu0)\n    return np.mean((slearn, ipw, aipw), axis=1)\n\ndef simulate_estimators(X_e, X_mu, D, y):\n    r = Parallel(n_jobs=8)(delayed(compare_estimators)(X_e, X_mu, D, y, i) for i in range(100))\n    df_tau = pd.DataFrame(r, columns=['S-learn', 'IPW', 'AIPW'])\n    return df_tau\n# The actual plots\nfig, ax = plt.subplots(figsize=(4,3.5))\nwrong_reg_df = simulate_estimators(\n  X_e=['male', 'age'], X_mu=['hours'], D=\"dark_mode\", y=\"read_time\"\n)\nwrong_reg_plot = sns.boxplot(\n  data=pd.melt(wrong_reg_df), x='variable', y='value', hue='variable',\n  ax=ax,\n  linewidth=2\n);\nwrong_reg_plot.set(\n  title=\"Distribution of $\\hat τ$\", xlabel='', ylabel=''\n);\nax.axhline(2, c='r', ls=':');\n\n\n&lt;positron-console-cell-44&gt;:28: SyntaxWarning: \"\\h\" is an invalid escape sequence. Such sequences will not work in the future. Did you mean \"\\\\h\"? A raw string is also an option.\n\n\n\n\n\n\n\n\n\n\n\nCode\nfig, ax = plt.subplots(figsize=(4, 3.5))\nwrong_ps_df = simulate_estimators(\n  ['age'], ['male', 'hours'], D=\"dark_mode\", y=\"read_time\"\n)\nwrong_ps_plot = sns.boxplot(\n  data=pd.melt(wrong_ps_df), x='variable', y='value', hue='variable',\n  ax=ax,\n  linewidth=2\n);\nax.set_title(\"Distribution of $\\hat τ$\");\nax.axhline(2, c='r', ls=':');\nplt.show()\n\n\n&lt;positron-console-cell-45&gt;:13: SyntaxWarning: \"\\h\" is an invalid escape sequence. Such sequences will not work in the future. Did you mean \"\\\\h\"? A raw string is also an option."
   },
   {
-    "objectID": "w11/slides.html#topic-models",
-    "href": "w11/slides.html#topic-models",
+    "objectID": "w11/slides.html#car-safety-metaphor",
+    "href": "w11/slides.html#car-safety-metaphor",
     "title": "Week 11: Double-Checking Is Possible, Infinity-Checking Is Not (Robustness and Sensitivity Analysis)",
-    "section": "Topic Models",
-    "text": "Topic Models\n\nIntuition is just: let’s model latent topics “underlying” observed words\n\n\n\n\nSection\nKeywords\n\n\n\n\nU.S. News\nstate, court, federal, republican\n\n\nWorld News\ngovernment, country, officials, minister\n\n\nArts\nmusic, show, art, dance\n\n\nSports\ngame, league, team, coach\n\n\nReal Estate\nhome, bedrooms, bathrooms, building\n\n\n\n\nAlready, by just classifying articles based on these keyword counts:\n\n\n\n\n\nArts\nReal Estate\nSports\nU.S. News\nWorld News\n\n\n\n\nCorrect\n3020\n690\n4860\n1330\n1730\n\n\nIncorrect\n750\n60\n370\n1100\n590\n\n\nAccuracy\n0.801\n0.920\n0.929\n0.547\n0.746"
-  },
-  {
-    "objectID": "w11/slides.html#topic-models-as-pgms",
-    "href": "w11/slides.html#topic-models-as-pgms",
-    "title": "Week 11: Double-Checking Is Possible, Infinity-Checking Is Not (Robustness and Sensitivity Analysis)",
-    "section": "Topic Models as PGMs",
-    "text": "Topic Models as PGMs\n\nFrom Blei (2012)\n…Unlocks a world of social modeling through text!"
-  },
-  {
-    "objectID": "w11/slides.html#cross-sectional-analysis",
-    "href": "w11/slides.html#cross-sectional-analysis",
-    "title": "Week 11: Double-Checking Is Possible, Infinity-Checking Is Not (Robustness and Sensitivity Analysis)",
-    "section": "Cross-Sectional Analysis",
-    "text": "Cross-Sectional Analysis\nBlaydes et al. (2018)"
-  },
-  {
-    "objectID": "w11/slides.html#influence-over-time",
-    "href": "w11/slides.html#influence-over-time",
-    "title": "Week 11: Double-Checking Is Possible, Infinity-Checking Is Not (Robustness and Sensitivity Analysis)",
-    "section": "Influence Over Time",
-    "text": "Influence Over Time\n\nFrom Barron et al. (2018)"
-  },
-  {
-    "objectID": "w11/slides.html#textual-influence-over-time",
-    "href": "w11/slides.html#textual-influence-over-time",
-    "title": "Week 11: Double-Checking Is Possible, Infinity-Checking Is Not (Robustness and Sensitivity Analysis)",
-    "section": "Textual Influence Over Time",
-    "text": "Textual Influence Over Time"
+    "section": "Car Safety Metaphor",
+    "text": "Car Safety Metaphor\n\nRobustness: Doing stuff to maximize “safety” (from getting causal effect wrong)\n\n\n\n\n\nSeatbelts Installed?Covariates Adjusted?\n\n\n\n\nNo\nYes\n\n\nAirbag Installed?Propensity Score Estimated?\nNo\nOLS\nOLS + \"Controls\"\n\n\nYes\nIPW\nDoubly Robust! 🥳\n\n\n\n\nSensitivity Analysis: What is the “breaking point” of my safety measures?\n\\(\\Pr(\\)Not enough time for airbag to inflate\\() \\propto\\) speed\n\\(\\leadsto\\) Over 100mph, \\(\\Pr(\\)Not enough time for airbag to inflate\\() &gt; 0.95\\)\n\\(\\Pr(\\)Wrong causal effect\\() \\propto\\) correlation of omitted confounder with treatment, outcome\n\\(\\leadsto\\) Over \\(\\rho = 0.6\\), \\(\\Pr(\\)Wrong causal effect\\() &gt; 0.95\\)"
   },
   {
     "objectID": "w11/slides.html#the-beta-distribution-textbetaalpha-beta-the-workhorse-prior",
@@ -703,11 +590,32 @@
     "text": "Does Aging Cause Sadness?\n\n\n\n\nEach year, 20 people are born with uniformly-distributed happiness values\n\n\n\nEach year, each person ages one year; Happiness does not change\n\n\n\nAt age 18, individuals can become married; Odds of marriage each year proportional to individual's happiness; Once married, they remain married\n\n\n\nAt age 70 individuals leave the sample (They move to Boca Raton, Florida)\n\n\n\n\nCode\nimport pandas as pd\nimport numpy as np\nrng = np.random.default_rng(seed=5650)\nimport matplotlib.pyplot as plt\nimport seaborn as sns\ncb_palette = ['#e69f00','#56b4e9','#009e73']\nsns.set_palette(cb_palette)\nfrom scipy.special import expit\n\n# The original R code:\n# sim_happiness &lt;- function( seed=1977 , N_years=1000 , max_age=65 , N_births=20 , aom=18 ) {\n#     set.seed(seed)\n#     H &lt;- M &lt;- A &lt;- c()\n#     for ( t in 1:N_years ) {\n#         A &lt;- A + 1 # age existing individuals\n#         A &lt;- c( A , rep(1,N_births) ) # newborns\n#         H &lt;- c( H , seq(from=-2,to=2,length.out=N_births) ) # sim happiness trait - never changes\n#         M &lt;- c( M , rep(0,N_births) ) # not yet married\n#         # for each person over 17, chance get married\n#         for ( i in 1:length(A) ) {\n#             if ( A[i] &gt;= aom & M[i]==0 ) {\n#                 M[i] &lt;- rbern(1,inv_logit(H[i]-4))\n#             }\n#         }\n#         # mortality\n#         deaths &lt;- which( A &gt; max_age )\n#         if ( length(deaths)&gt;0 ) {\n#             A &lt;- A[ -deaths ]\n#             H &lt;- H[ -deaths ]\n#             M &lt;- M[ -deaths ]\n#        }\n#     }\n#     d &lt;- data.frame(age=A,married=M,happiness=H)\n#     return(d)\n\n# DGP: happiness -&gt; marriage &lt;- age\nyears = 70\nnum_births = 41\ncolnames = ['age','a','h','m']\nsim_dfs = []\nA = np.zeros(shape=(num_births,1))\nH = np.linspace(-2, 2, num=num_births)\nM = np.zeros(shape=(num_births,1))\ndef update_m(row):\n  if row['m'] == 0:\n    return int(rng.binomial(\n      n=1,\n      p=expit(row['h'] - 3.875),\n      size=1,\n    )[0])\n  return 1\ndef sim_cohort_to(max_age):\n  sim_df = pd.DataFrame({\n      'age': [1 for _ in range(num_births)],\n      'h': np.linspace(-2, 2, num=num_births),\n      'm': [0 for _ in range(num_births)],\n    }\n  )\n  for t in range(2, max_age + 1):\n    sim_df['age'] = sim_df['age'] + 1\n    if t &gt;= 18:\n      sim_df['m'] = sim_df.apply(update_m, axis=1)\n  return sim_df\nall_sim_dfs = []\nfor cur_max_age in range(1, 71):\n  cur_sim_df = sim_cohort_to(cur_max_age)\n  all_sim_dfs.append(cur_sim_df)\nfull_sim_df = pd.concat(all_sim_dfs)\n\n# And plot\nfig, ax = plt.subplots(figsize=(8, 4))\ncbg_palette = ['#c6c6c666'] + cb_palette\nfull_sim_df['m_label'] = full_sim_df['m'].apply(lambda x: \"Unmarried\" if x == 0 else \"Married\")\nfull_sim_df = full_sim_df.rename(columns={'age': 'Age', 'h': 'Happiness'})\nhappiness_plot = sns.scatterplot(\n  x='Age', y='Happiness', hue='m_label',\n  data=full_sim_df,\n  palette=cbg_palette[:2],\n  s=24,\n  ax=ax,\n  legend=True,\n);\n# happiness_plot.move_legend(\"upper center\", bbox_to_anchor=(0.5, 1.15), ncol=2);\nsns.move_legend(ax, \"upper center\", bbox_to_anchor=(0.5, 1.15), ncol=2);\nhappiness_plot.legend_.set_title(\"\");\nhappiness_plot.axvline(x=17.5, color='black', ls='dashed', lw=1);\nplt.show();\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nHappiness by Age, 70 birth cohorts of size 41 each (DC minimum marriage age = 18)\n\n\n…What’s happening here? \\(\\textsf{Happy} \\rightarrow {}^{🤔}\\textsf{Marriage}^{🤔} \\leftarrow \\textsf{Age}\\)"
   },
   {
+    "objectID": "w11/slides.html#assessing-the-impact-of-omitted-vars",
+    "href": "w11/slides.html#assessing-the-impact-of-omitted-vars",
+    "title": "Week 11: Double-Checking Is Possible, Infinity-Checking Is Not (Robustness and Sensitivity Analysis)",
+    "section": "Assessing the Impact of Omitted Vars",
+    "text": "Assessing the Impact of Omitted Vars\n\nWorking example: PCPSR, People’s Company for Public Survey Research (شركة الشعب الأبحاث المسحية)\nWhat is causal impact of experiencing violence on support for armed struggle?\nResearcher A models this scenario as:\n\n\\[\n\\textsf{ArmedStruggle}_i = \\alpha^\\text{res} + \\tau^\\text{res} \\textsf{DirectHarm}_i + \\hat{\\beta}_\\text{c}^\\text{res}\\textsf{RefugeeCamp}_i + \\textsf{Muhaf}_i \\hat{\\boldsymbol \\beta}_\\text{m}^\\text{res} + \\hat{\\varepsilon}^\\text{res}\n\\]\n\nResearcher B instead prefers:\n\n\\[\n\\textsf{ArmedStruggle}_i = \\alpha + \\tau \\textsf{DirectHarm}_i + \\hat{\\beta}_\\text{c}\\textsf{RefugeeCamp}_i + \\textsf{Muhaf}_i \\hat{\\boldsymbol \\beta}_{\\text{m}} + \\boxed{\\hat{\\gamma}\\textsf{PFLP}_i} + \\hat{\\varepsilon}^{\\text{full}}\n\\]\n\nOur earlier estimate \\(\\tau_{\\text{res}}\\) would differ from our target quantity \\(\\tau\\): but how badly?\nHow strong would the confounder(s) have to be to change the estimates in such a way to affect the main conclusions of a study?"
+  },
+  {
+    "objectID": "w11/slides.html#the-classical-ovb-equation",
+    "href": "w11/slides.html#the-classical-ovb-equation",
+    "title": "Week 11: Double-Checking Is Possible, Infinity-Checking Is Not (Robustness and Sensitivity Analysis)",
+    "section": "The Classical OVB Equation",
+    "text": "The Classical OVB Equation\n\nRemember that \\(T\\) is our treatment variable! (\\(\\mathbf{X}\\) = covariates, \\(Y\\) = outcome)\nIn a perfect world, we would estimate \\(Y = \\hat{\\tau}T + \\mathbf{X} \\hat{\\beta} + \\hat{\\gamma}Z+ \\varepsilon_{\\text{full}}\\)\nBut, \\(Z\\) is unobserved \\(\\leadsto\\) “restricted” model \\(Y = \\hat{\\tau}_{\\text{res}}T + \\mathbf{X} \\hat{\\beta}_{\\text{res}} + \\varepsilon_{\\text{res}}\\)\nWhat is the “gap” between \\(\\hat{\\tau}\\) and \\(\\hat{\\tau}^{\\text{res}}\\)? \\(\\text{OVB} = \\hat{\\tau}_{\\text{res}} - \\hat{\\tau}\\)\n\n\n\n\\[\n\\begin{align*}\n\\hat{\\tau}_{\\text{res}} &= \\frac{\n  \\text{Cov}[T^{\\top \\mathbf{X}}, Y^{\\top \\mathbf{X}}]\n}{\n  \\text{Var}[T^{\\top \\mathbf{X}}]\n} \\\\\n&= \\frac{\n  \\text{Cov}[T^{\\top \\mathbf{X}}, \\hat{\\tau}T^{\\top \\mathbf{X}} + \\hat{\\gamma}Z^{\\top \\mathbf{X}}]\n}{\n  \\text{Var}[T^{\\top \\mathbf{X}}]\n} \\\\\n&= \\hat{\\tau} + \\hat{\\gamma}\\frac{\n  \\text{Cov}[T^{\\top \\mathbf{X}}, Z^{\\top \\mathbf{X}}]\n}{\n  \\text{Var}[T^{\\top \\mathbf{X}}]\n} \\\\\n&= \\hat{\\tau} + \\hat{\\gamma}\\hat{\\delta} \\\\\n\\implies \\text{OVB} &= \\hat{\\tau}_{\\text{res}} - \\hat{\\tau} = \\overbrace{\n  \\boxed{\\hat{\\gamma} \\times \\hat{\\delta}}\n}^{\\mathclap{\\text{Impact} \\, \\times \\, \\text{Imbalance}}}\n\\end{align*}\n\\]\n\n\n\n\n\n\n\n\n\nThe ability to produce orthogonalized (\\(\\top \\mathbf{X}\\)) versions of vars in the model utilizes the Frisch-Waugh-Lovell Theorem"
+  },
+  {
+    "objectID": "w11/slides.html#more-generally",
+    "href": "w11/slides.html#more-generally",
+    "title": "Week 11: Double-Checking Is Possible, Infinity-Checking Is Not (Robustness and Sensitivity Analysis)",
+    "section": "More Generally",
+    "text": "More Generally\n\nWhat if we don’t have a specific omitted variable in mind? We just want to know the expected impact if there were omitted vars… Enter “Partial \\(R^2\\)”"
+  },
+  {
     "objectID": "w11/slides.html#references",
     "href": "w11/slides.html#references",
     "title": "Week 11: Double-Checking Is Possible, Infinity-Checking Is Not (Robustness and Sensitivity Analysis)",
     "section": "References",
-    "text": "References\n\n\nBarron, Alexander T. J., Jenny Huang, Rebecca L. Spang, and Simon DeDeo. 2018. “Individuals, Institutions, and Innovation in the Debates of the French Revolution.” Proceedings of the National Academy of Sciences 115 (18): 4607–12. https://doi.org/10.1073/pnas.1717729115.\n\n\nBlaydes, Lisa, Justin Grimmer, and Alison McQueen. 2018. “Mirrors for Princes and Sultans: Advice on the Art of Governance in the Medieval Christian and Islamic Worlds.” The Journal of Politics 80 (4): 1150–67. https://doi.org/10.1086/699246.\n\n\nBlei, David M. 2012. “Probabilistic Topic Models.” Commun. ACM 55 (4): 77–84. https://doi.org/10.1145/2133806.2133826."
+    "text": "References"
   },
   {
     "objectID": "w11/index.html",
@@ -720,51 +628,11 @@
     ]
   },
   {
-    "objectID": "w11/index.html#topic-models",
-    "href": "w11/index.html#topic-models",
+    "objectID": "w11/index.html#car-safety-metaphor",
+    "href": "w11/index.html#car-safety-metaphor",
     "title": "Week 11: Double-Checking Is Possible, Infinity-Checking Is Not (Robustness and Sensitivity Analysis)",
-    "section": "Topic Models",
-    "text": "Topic Models\n\nIntuition is just: let’s model latent topics “underlying” observed words\n\n\n\n\nSection\nKeywords\n\n\n\n\nU.S. News\nstate, court, federal, republican\n\n\nWorld News\ngovernment, country, officials, minister\n\n\nArts\nmusic, show, art, dance\n\n\nSports\ngame, league, team, coach\n\n\nReal Estate\nhome, bedrooms, bathrooms, building\n\n\n\n\nAlready, by just classifying articles based on these keyword counts:\n\n\n\n\n\nArts\nReal Estate\nSports\nU.S. News\nWorld News\n\n\n\n\nCorrect\n3020\n690\n4860\n1330\n1730\n\n\nIncorrect\n750\n60\n370\n1100\n590\n\n\nAccuracy\n0.801\n0.920\n0.929\n0.547\n0.746",
-    "crumbs": [
-      "Week 11: {{< var w11.date-md >}}"
-    ]
-  },
-  {
-    "objectID": "w11/index.html#topic-models-as-pgms",
-    "href": "w11/index.html#topic-models-as-pgms",
-    "title": "Week 11: Double-Checking Is Possible, Infinity-Checking Is Not (Robustness and Sensitivity Analysis)",
-    "section": "Topic Models as PGMs",
-    "text": "Topic Models as PGMs\n\n\n\nFrom Blei (2012)\n\n\n\n…Unlocks a world of social modeling through text!",
-    "crumbs": [
-      "Week 11: {{< var w11.date-md >}}"
-    ]
-  },
-  {
-    "objectID": "w11/index.html#cross-sectional-analysis",
-    "href": "w11/index.html#cross-sectional-analysis",
-    "title": "Week 11: Double-Checking Is Possible, Infinity-Checking Is Not (Robustness and Sensitivity Analysis)",
-    "section": "Cross-Sectional Analysis",
-    "text": "Cross-Sectional Analysis\nBlaydes et al. (2018)",
-    "crumbs": [
-      "Week 11: {{< var w11.date-md >}}"
-    ]
-  },
-  {
-    "objectID": "w11/index.html#influence-over-time",
-    "href": "w11/index.html#influence-over-time",
-    "title": "Week 11: Double-Checking Is Possible, Infinity-Checking Is Not (Robustness and Sensitivity Analysis)",
-    "section": "Influence Over Time",
-    "text": "Influence Over Time\n\n\n\nFrom Barron et al. (2018)",
-    "crumbs": [
-      "Week 11: {{< var w11.date-md >}}"
-    ]
-  },
-  {
-    "objectID": "w11/index.html#textual-influence-over-time",
-    "href": "w11/index.html#textual-influence-over-time",
-    "title": "Week 11: Double-Checking Is Possible, Infinity-Checking Is Not (Robustness and Sensitivity Analysis)",
-    "section": "Textual Influence Over Time",
-    "text": "Textual Influence Over Time",
+    "section": "Car Safety Metaphor",
+    "text": "Car Safety Metaphor\n\nRobustness: Doing stuff to maximize “safety” (from getting causal effect wrong)\n\n\n\n\n\nSeatbelts Installed?Covariates Adjusted?\n\n\n\n\nNo\nYes\n\n\nAirbag Installed?Propensity Score Estimated?\nNo\nOLS\nOLS + \"Controls\"\n\n\nYes\nIPW\nDoubly Robust! 🥳\n\n\n\n\nSensitivity Analysis: What is the “breaking point” of my safety measures?\n\\(\\Pr(\\)Not enough time for airbag to inflate\\() \\propto\\) speed\n\\(\\leadsto\\) Over 100mph, \\(\\Pr(\\)Not enough time for airbag to inflate\\() &gt; 0.95\\)\n\\(\\Pr(\\)Wrong causal effect\\() \\propto\\) correlation of omitted confounder with treatment, outcome\n\\(\\leadsto\\) Over \\(\\rho = 0.6\\), \\(\\Pr(\\)Wrong causal effect\\() &gt; 0.95\\)",
     "crumbs": [
       "Week 11: {{< var w11.date-md >}}"
     ]
@@ -800,11 +668,41 @@
     ]
   },
   {
+    "objectID": "w11/index.html#assessing-the-impact-of-omitted-vars",
+    "href": "w11/index.html#assessing-the-impact-of-omitted-vars",
+    "title": "Week 11: Double-Checking Is Possible, Infinity-Checking Is Not (Robustness and Sensitivity Analysis)",
+    "section": "Assessing the Impact of Omitted Vars",
+    "text": "Assessing the Impact of Omitted Vars\n\nWorking example: PCPSR, People’s Company for Public Survey Research (شركة الشعب الأبحاث المسحية)\nWhat is causal impact of experiencing violence on support for armed struggle?\nResearcher A models this scenario as:\n\n\\[\n\\textsf{ArmedStruggle}_i = \\alpha^\\text{res} + \\tau^\\text{res} \\textsf{DirectHarm}_i + \\hat{\\beta}_\\text{c}^\\text{res}\\textsf{RefugeeCamp}_i + \\textsf{Muhaf}_i \\hat{\\boldsymbol \\beta}_\\text{m}^\\text{res} + \\hat{\\varepsilon}^\\text{res}\n\\]\n\nResearcher B instead prefers:\n\n\\[\n\\textsf{ArmedStruggle}_i = \\alpha + \\tau \\textsf{DirectHarm}_i + \\hat{\\beta}_\\text{c}\\textsf{RefugeeCamp}_i + \\textsf{Muhaf}_i \\hat{\\boldsymbol \\beta}_{\\text{m}} + \\boxed{\\hat{\\gamma}\\textsf{PFLP}_i} + \\hat{\\varepsilon}^{\\text{full}}\n\\]\n\nOur earlier estimate \\(\\tau_{\\text{res}}\\) would differ from our target quantity \\(\\tau\\): but how badly?\nHow strong would the confounder(s) have to be to change the estimates in such a way to affect the main conclusions of a study?",
+    "crumbs": [
+      "Week 11: {{< var w11.date-md >}}"
+    ]
+  },
+  {
+    "objectID": "w11/index.html#the-classical-ovb-equation",
+    "href": "w11/index.html#the-classical-ovb-equation",
+    "title": "Week 11: Double-Checking Is Possible, Infinity-Checking Is Not (Robustness and Sensitivity Analysis)",
+    "section": "The Classical OVB Equation",
+    "text": "The Classical OVB Equation\n\nRemember that \\(T\\) is our treatment variable! (\\(\\mathbf{X}\\) = covariates, \\(Y\\) = outcome)\nIn a perfect world, we would estimate \\(Y = \\hat{\\tau}T + \\mathbf{X} \\hat{\\beta} + \\hat{\\gamma}Z+ \\varepsilon_{\\text{full}}\\)\nBut, \\(Z\\) is unobserved \\(\\leadsto\\) “restricted” model \\(Y = \\hat{\\tau}_{\\text{res}}T + \\mathbf{X} \\hat{\\beta}_{\\text{res}} + \\varepsilon_{\\text{res}}\\)\nWhat is the “gap” between \\(\\hat{\\tau}\\) and \\(\\hat{\\tau}^{\\text{res}}\\)? \\(\\text{OVB} = \\hat{\\tau}_{\\text{res}} - \\hat{\\tau}\\)\n\n\n\n\\[\n\\begin{align*}\n\\hat{\\tau}_{\\text{res}} &= \\frac{\n  \\text{Cov}[T^{\\top \\mathbf{X}}, Y^{\\top \\mathbf{X}}]\n}{\n  \\text{Var}[T^{\\top \\mathbf{X}}]\n} \\\\\n&= \\frac{\n  \\text{Cov}[T^{\\top \\mathbf{X}}, \\hat{\\tau}T^{\\top \\mathbf{X}} + \\hat{\\gamma}Z^{\\top \\mathbf{X}}]\n}{\n  \\text{Var}[T^{\\top \\mathbf{X}}]\n} \\\\\n&= \\hat{\\tau} + \\hat{\\gamma}\\frac{\n  \\text{Cov}[T^{\\top \\mathbf{X}}, Z^{\\top \\mathbf{X}}]\n}{\n  \\text{Var}[T^{\\top \\mathbf{X}}]\n} \\\\\n&= \\hat{\\tau} + \\hat{\\gamma}\\hat{\\delta} \\\\\n\\implies \\text{OVB} &= \\hat{\\tau}_{\\text{res}} - \\hat{\\tau} = \\overbrace{\n  \\boxed{\\hat{\\gamma} \\times \\hat{\\delta}}\n}^{\\mathclap{\\text{Impact} \\, \\times \\, \\text{Imbalance}}}\n\\end{align*}\n\\]\n\n\n\n\n\n\n\n\n\n\nThe ability to produce orthogonalized (\\(\\top \\mathbf{X}\\)) versions of vars in the model utilizes the Frisch-Waugh-Lovell Theorem",
+    "crumbs": [
+      "Week 11: {{< var w11.date-md >}}"
+    ]
+  },
+  {
+    "objectID": "w11/index.html#more-generally",
+    "href": "w11/index.html#more-generally",
+    "title": "Week 11: Double-Checking Is Possible, Infinity-Checking Is Not (Robustness and Sensitivity Analysis)",
+    "section": "More Generally",
+    "text": "More Generally\n\nWhat if we don’t have a specific omitted variable in mind? We just want to know the expected impact if there were omitted vars… Enter “Partial \\(R^2\\)”",
+    "crumbs": [
+      "Week 11: {{< var w11.date-md >}}"
+    ]
+  },
+  {
     "objectID": "w11/index.html#references",
     "href": "w11/index.html#references",
     "title": "Week 11: Double-Checking Is Possible, Infinity-Checking Is Not (Robustness and Sensitivity Analysis)",
     "section": "References",
-    "text": "References\n\n\nBarron, Alexander T. J., Jenny Huang, Rebecca L. Spang, and Simon DeDeo. 2018. “Individuals, Institutions, and Innovation in the Debates of the French Revolution.” Proceedings of the National Academy of Sciences 115 (18): 4607–12. https://doi.org/10.1073/pnas.1717729115.\n\n\nBlaydes, Lisa, Justin Grimmer, and Alison McQueen. 2018. “Mirrors for Princes and Sultans: Advice on the Art of Governance in the Medieval Christian and Islamic Worlds.” The Journal of Politics 80 (4): 1150–67. https://doi.org/10.1086/699246.\n\n\nBlei, David M. 2012. “Probabilistic Topic Models.” Commun. ACM 55 (4): 77–84. https://doi.org/10.1145/2133806.2133826.",
+    "text": "References",
     "crumbs": [
       "Week 11: {{< var w11.date-md >}}"
     ]

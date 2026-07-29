@@ -1,0 +1,285 @@
+# Sensitivity Analysis 1: Sensitivity to Priors {data-stack-name="Sensitivity to Priors"}
+
+```{python}
+#| label: py-imports
+#| fig-align: center
+import pandas as pd
+import numpy as np
+import matplotlib.pyplot as plt
+import seaborn as sns
+cb_palette = ['#e69f00','#56b4e9','#009e73']
+sns.set_palette(cb_palette)
+import pymc as pm
+import arviz as az
+def draw_prior_sample(model, return_idata=False):
+  with model:
+    prior_idata = pm.sample_prior_predictive(draws=10_000, random_seed=5650)
+  prior_df = prior_idata.prior.to_dataframe().reset_index().drop(columns='chain')
+  if return_idata:
+    return prior_idata, prior_df
+  return prior_df
+# Plotting function
+def gen_dist_plot(
+  dist_df, plot_title, size='third', custom_ylim=None
+):
+  plot_width = 2
+  if size == 'quarter':
+    plot_width = 1.5
+  plot_height = 0.625 * plot_width
+  plot_figsize = (plot_width, plot_height)
+  fig = plt.figure(figsize=plot_figsize)
+  ax = fig.gca()
+  sns.histplot(
+    x="p_heads", data=dist_df,
+    ax=ax,
+    bins=25, alpha=0.8,
+    stat='probability',
+  );
+  ax.set_xlim(0, 1);
+  if custom_ylim is not None:
+    ax.set_ylim(custom_ylim)
+  ax.set_title(plot_title)
+  return fig, ax
+```
+
+## The Beta Distribution $\text{Beta}(\alpha, \beta)$: The "Workhorse" Prior! {.smaller .title-09 .crunch-title .crunch-quarto-figure .crunch-ul .crunch-img .text-60}
+
+<center style='margin: 5px;'>
+
+[**Biased coin** framing: $\alpha$ is "pseudo-count" of **heads**, $\beta$ = "pseudo-count" of **tails**]{style="border: 1px solid black; padding: 5px;"}
+
+</center>
+
+:::: {.columns}
+::: {.column width="33%"}
+
+<center>
+
+<i class='bi bi-1-circle'></i> $p \sim$ "$\text{Beta}(0, 0)$"
+
+</center>
+
+```{python}
+#| label: beta00-plot
+#| fig-align: center
+# b00_df = pd.DataFrame({'p_heads': np.arange(0, 1+1/25, 1/25)})
+# b00_df['Probability'] = 0
+fig = plt.figure(figsize=(2, 1.25))
+ax = fig.gca()
+sns.histplot(
+  x=[], # data=b00_df
+);
+ax.set_xlabel('p_heads');
+ax.set_ylabel('Probability')
+ax.set_xticks([0, 0.25, 0.5, 0.75, 1]);
+ax.set_ylim(0, 1);
+plt.show()
+```
+
+:::
+::: {.column width="33%"}
+
+<center>
+
+<i class='bi bi-2-circle'></i> $p \sim$ "$\text{Beta}(1, 0)$"
+
+</center>
+
+```{python}
+#| label: beta10-plot
+#| fig-align: center
+b10_df = pd.DataFrame({
+  'draw': [0],
+  'p_heads': [0],
+})
+fig = plt.figure(figsize=(2, 1.25))
+ax = fig.gca()
+sns.histplot(
+  x='p_heads', stat='probability',
+  ax=ax,
+  bins=25,
+  data=b10_df
+);
+ax.set_xlim(0, 1);
+ax.set_ylim(0, 1);
+plt.show()
+```
+
+:::
+::: {.column width="33%"}
+
+<center>
+
+<i class='bi bi-3-circle'></i> $p \sim$ "$\text{Beta}(0, 1)$"
+
+</center>
+
+```{python}
+#| label: beta01-plot
+#| fig-align: center
+b01_df = pd.DataFrame({
+  'draw': [0],
+  'p_heads': [1],
+})
+fig = plt.figure(figsize=(2, 1.25))
+ax = fig.gca()
+sns.histplot(
+  x='p_heads', stat='probability',
+  ax=ax,
+  bins=25,
+  data=b01_df
+);
+ax.set_xlim(0, 1);
+ax.set_ylim(0, 1);
+plt.show()
+```
+
+:::
+::::
+
+:::: {.columns}
+::: {.column width="33%"}
+
+<center>
+<i class='bi bi-4-circle'></i> **Informative** Prior
+</center>
+
+```{python}
+#| label: fig-informative-prior
+#| crop: false
+#| fig-align: center
+#| fig-cap: "*\"I'll start by assuming a **fair** coin\"*"
+# Informative Prior
+with pm.Model() as informative_model:
+  p_heads = pm.Beta("p_heads", alpha=2, beta=2)
+  result = pm.Bernoulli("result", p=p_heads)
+informative_df = draw_prior_sample(informative_model)
+informative_fig, informative_ax = gen_dist_plot(
+  informative_df, "Beta(2, 2) Prior on p"
+);
+plt.show()
+```
+
+:::
+::: {.column width="33%"}
+
+<center>
+<i class='bi bi-5-circle'></i> **Weak** Prior
+</center>
+
+```{python}
+#| label: fig-weak-prior
+#| fig-align: center
+#| fig-cap: "*\"I have no idea, I'll assume all biases equally likely\"*"
+# Weakly Informative
+with pm.Model() as weak_model:
+  p_heads = pm.Beta("p_heads", alpha=1, beta=1)
+  result = pm.Bernoulli("result", p=p_heads)
+weak_df = draw_prior_sample(weak_model)
+weak_fig, weak_ax = gen_dist_plot(
+  weak_df, "Beta(1, 1) Prior on p"
+);
+plt.show()
+```
+
+:::
+::: {.column width="33%"}
+
+<center>
+<i class='bi bi-6-circle'></i> **Skeptical** (Jeffreys) Prior
+</center>
+
+```{python}
+#| label: fig-skeptical-prior
+#| fig-align: center
+#| fig-cap: "*\"I don't trust this coin, it'll take lots of flips with H/T balance to convince me it's fair!\"*"
+# Skeptical / Jeffreys
+with pm.Model() as skeptical_model:
+  p_heads = pm.Beta("p_heads", alpha=0.5, beta=0.5)
+  result = pm.Bernoulli("result", p=p_heads)
+skeptical_df = draw_prior_sample(skeptical_model)
+skeptical_fig, skeptical_ax = gen_dist_plot(
+  skeptical_df, "Beta(0.5, 0.5) Prior on p"
+);
+# And combine
+plt.show()
+```
+
+:::
+::::
+
+## Modeling *Domain Knowledge* with Priors {.smaller .crunch-title .title-12}
+
+**Population proportion** framing: $\frac{\alpha}{\alpha + \beta}$ = mean, $\alpha + \beta$ = "precision"
+
+:::: {.columns}
+::: {.column width="50%"}
+
+```{python}
+#| label: heads-more-likely
+#| fig-align: center
+with pm.Model() as heads_model:
+  p_heads = pm.Beta("p_heads", alpha=2, beta=1)
+  result = pm.Bernoulli("result", p=p_heads)
+heads_df = draw_prior_sample(heads_model)
+heads_fig, heads_ax = gen_dist_plot(
+  heads_df, "Beta(2, 1) Prior on p"
+);
+plt.show()
+```
+
+:::
+::: {.column width="50%"}
+
+```{python}
+#| label: tails-more-likely
+#| fig-align: center
+with pm.Model() as tails_model:
+  p_heads = pm.Beta("p_heads", alpha=1, beta=2)
+  result = pm.Bernoulli("result", p=p_heads)
+tails_df = draw_prior_sample(tails_model)
+tails_fig, tails_ax = gen_dist_plot(
+  tails_df, "Beta(1, 2) Prior on p"
+);
+plt.show()
+```
+
+:::
+::::
+
+:::: {.columns}
+::: {.column width="50%"}
+
+```{python}
+#| label: tails-very-likely
+#| fig-align: center
+with pm.Model() as beta23_model:
+  p_heads = pm.Beta("p_heads", alpha=2, beta=3)
+  result = pm.Bernoulli("result", p=p_heads)
+beta23_df = draw_prior_sample(beta23_model)
+beta23_fig, beta23_ax = gen_dist_plot(
+  beta23_df, "Beta(2, 3) Prior on p"
+);
+# beta23_plot.savefig()
+plt.show()
+```
+
+:::
+::: {.column width="50%"}
+
+```{python}
+#| label: beta2030-model
+#| fig-align: center
+with pm.Model() as beta100_model:
+  p_heads = pm.Beta("p_heads", alpha=40, beta=60)
+  result = pm.Bernoulli("result", p=p_heads)
+beta100_df = draw_prior_sample(beta100_model)
+beta100_fig, beta100_ax = gen_dist_plot(
+  beta100_df, "Beta(40, 60) Prior on p"
+);
+# beta100_plot.savefig()
+plt.show()
+```
+
+:::
+::::

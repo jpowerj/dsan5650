@@ -1,3 +1,37 @@
+# Topic Models Over Space and Time {data-stack-name="Topic Models"}
+
+## Topic Models {.smaller .crunch-title .crunch-ul .table-90}
+
+* Intuition is just: let's model **latent topics** "underlying" **observed words**
+
+| Section | Keywords |
+| - | - |
+| U.S. News | state, court, federal, republican |
+| World News | government, country, officials, minister |
+| Arts | music, show, art, dance |
+| Sports | game, league, team, coach |
+| Real Estate | home, bedrooms, bathrooms, building |
+
+* Already, by just classifying articles based on these keyword counts:
+
+| | Arts | Real Estate | Sports | U.S. News | World News | Total |
+|-:|:-:|:-:|:-:|:-:|:-:|
+| **Correct** | 3020 | 690 | 4860 | 1330 | 1730 | 11630 |
+| **Incorrect** | 750 | 60 | 370 | 1100 | 590 | 2870 |
+| **Accuracy** | 0.801 | 0.920 | 0.929 | 0.547 | 0.746 | 0.802 |
+
+## Topic Models as PGMs {.smaller .crunch-title .crunch-img}
+
+![From @blei_probabilistic_2012](images/lda.jpg){fig-align="center"}
+
+<center>
+
+*...Unlocks a world of social modeling through text!*
+
+</center>
+
+---
+
 ```{python}
 # A = np.column_stack((A,new_ages))
 # new_happiness = np.linspace(-2, 2, num=n_births)

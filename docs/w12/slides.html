@@ -52,7 +52,7 @@
     div.csl-indent {
       margin-left: 2em;
     }  </style>
-  <link rel="stylesheet" href="../site_libs/revealjs/dist/theme/quarto-ecf5af099f18e17d9cf5fbe6a64c848c.css">
+  <link rel="stylesheet" href="../site_libs/revealjs/dist/theme/quarto-f35c282fb6109d1781891229bb4a23a8.css">
   <link href="../site_libs/revealjs/plugin/quarto-line-highlight/line-highlight.css" rel="stylesheet">
   <link href="../site_libs/revealjs/plugin/reveal-menu/menu.css" rel="stylesheet">
   <link href="../site_libs/revealjs/plugin/reveal-menu/quarto-menu.css" rel="stylesheet">
@@ -287,117 +287,11 @@ Jeff Jacobs
 <li>How can we find group-specific effects? <strong>Causal forests!</strong></li>
 </ul></li>
 </ul>
-</section></section>
-<section>
-<section id="sensitivity-analysis-2-how-sensitive-are-my-results-to-omittedincluded-variable-bias" class="title-slide slide level1 smaller title-10 crunch-title center" data-stack-name="Included Variable Bias">
-<h1>Sensitivity Analysis 2: How Sensitive Are My Results to <em>Omitted/Included Variable Bias</em>?</h1>
-<ul>
-<li>You probably know about <strong>omitted variable bias</strong> from previous classes / intuition… but, <strong>included variable bias?</strong></li>
-<li>That’s right folks… <strong>colliders</strong> can be agents of chaos, laying waste to our best, most meticulously-planned-out models</li>
-</ul>
-
-<img data-src="images/mood_crop.jpg" class="quarto-figure quarto-figure-center r-stretch"></section>
-<section id="does-aging-cause-sadness" class="slide level2 smaller crunch-title title-11 crunch-ul crunch-quarto-figure table-80 crunch-img crunch-quarto-layout-panel crunch-quarto-layout-cell crunch-figure crunch-figcaption inline-70 crunch-p">
-<h2>Does Aging Cause Sadness?</h2>
-</section>
-<section id="assessing-the-impact-of-omitted-included-vars" class="slide level2 smaller crunch-title title-10 math-90 crunch-math crunch-ul">
-<h2>Assessing the Impact of Omitted / Included Vars</h2>
-<ul>
-<li>Working example from <span class="citation" data-cites="cinelli_making_2020">Cinelli and Hazlett (<a href="#/references" role="doc-biblioref" onclick="">2020</a>)</span>: <a href="https://en.wikipedia.org/wiki/War_in_Darfur">War in Darfur (2004-2020)</a></li>
-<li>What is the <strong>causal impact</strong> of <strong>experiencing violence</strong> on <strong>support for a peace deal</strong></li>
-<li>Researcher A models this scenario as:</li>
-</ul>
-<p><span class="math display">\[
-\textsf{PeaceIndex} = \tau_{\text{res}} \textsf{DirectHarm} + \hat{\beta}_{\text{f},\text{res}}\textsf{Female} + \textsf{Village} \hat{\boldsymbol \beta}_{\text{v},\text{res}} + \mathbf{X} \hat{\boldsymbol \beta}_{\text{res}} + \hat{\varepsilon}_{\text{res}}
-\]</span></p>
-<ul>
-<li>Researcher B instead prefers:</li>
-</ul>
-<p><span class="math display">\[
-\textsf{PeaceIndex} = \tau \textsf{DirectHarm} + \hat{\beta}_{\text{f}}\textsf{Female} + \textsf{Village} \hat{\boldsymbol \beta}_{\text{v}} + \mathbf{X} \hat{\boldsymbol \beta} + \boxed{\hat{\gamma}\textsf{Center}} + \hat{\varepsilon}_{\text{full}}
-\]</span></p>
-<blockquote>
-<p>Our earlier estimate <span class="math inline">\(\tau_{\text{res}}\)</span> would differ from our target quantity <span class="math inline">\(\tau\)</span>: but how badly? […] How strong would the confounder(s) have to be to change the estimates in such a way to affect the main conclusions of a study?</p>
-</blockquote>
-</section>
-<section id="the-classical-ovb-equation" class="slide level2 smaller crunch-title title-12 crunch-ul crunch-math footnotes-0 math-90 inline-90">
-<h2>The Classical OVB Equation</h2>
-<ul>
-<li>Remember that <span class="math inline">\(D\)</span> is our <strong>treatment</strong> variable! (<span class="math inline">\(\mathbf{X}\)</span> = covariates, <span class="math inline">\(Y\)</span> = outcome)</li>
-<li>In a perfect world, we would estimate <span class="math inline">\(Y = \hat{\tau}D + \mathbf{X} \hat{\beta} + \hat{\gamma}Z+ \varepsilon_{\text{full}}\)</span></li>
-<li>But, <span class="math inline">\(Z\)</span> is <strong>unobserved</strong> <span class="math inline">\(\leadsto\)</span> <strong>“restricted”</strong> model <span class="math inline">\(Y = \hat{\tau}_{\text{res}}D + \mathbf{X} \hat{\beta}_{\text{res}} + \varepsilon_{\text{res}}\)</span></li>
-<li>What is the “gap” between <span class="math inline">\(\hat{\tau}\)</span> and <span class="math inline">\(\hat{\tau}^{\text{res}}\)</span>? <span class="math inline">\(\text{OVB} = \hat{\tau}_{\text{res}} - \hat{\tau}\)</span></li>
-</ul>
-<div class="columns">
-<div class="column" style="width:40%;">
-<p><span class="math display">\[
-\begin{align*}
-\hat{\tau}_{\text{res}} &amp;= \frac{
-  \text{Cov}[D^{\top \mathbf{X}}, Y^{\top \mathbf{X}}]
-}{
-  \text{Var}[D^{\top \mathbf{X}}]
-} \\
-&amp;= \frac{
-  \text{Cov}[D^{\top \mathbf{X}}, \hat{\tau}D^{\top \mathbf{X}} + \hat{\gamma}Z^{\top \mathbf{X}}]
-}{
-  \text{Var}[D^{\top \mathbf{X}}]
-} \\
-&amp;= \hat{\tau} + \hat{\gamma}\frac{
-  \text{Cov}[D^{\top \mathbf{X}}, Z^{\top \mathbf{X}}]
-}{
-  \text{Var}[D^{\top \mathbf{X}}]
-} \\
-&amp;= \hat{\tau} + \hat{\gamma}\hat{\delta} \\
-\implies \text{OVB} &amp;= \hat{\tau}_{\text{res}} - \hat{\tau} = \overbrace{
-  \boxed{\hat{\gamma} \times \hat{\delta}}
-}^{\mathclap{\text{Impact} \, \times \, \text{Imbalance}}}
-\end{align*}
-\]</span></p>
-</div><div class="column" style="width:60%;">
-<div class="quarto-figure quarto-figure-center">
-<figure>
-<p><img data-src="images/sensitivity.svg" class="quarto-figure quarto-figure-center" width="360"></p>
-</figure>
-</div>
-</div></div>
-
-<aside><div>
-<p>The ability to produce <strong>orthogonalized</strong> (<span class="math inline">\(\top \mathbf{X}\)</span>) versions of vars in the model utilizes the <a href="https://en.wikipedia.org/wiki/Frisch%E2%80%93Waugh%E2%80%93Lovell_theorem">Frisch-Waugh-Lovell Theorem</a></p>
-</div></aside></section>
-<section id="more-generally" class="slide level2">
-<h2>More Generally</h2>
-<ul>
-<li>What if we don’t have a <strong>specific</strong> omitted variable in mind? We just want to know the expected impact <strong>if</strong> there were omitted vars… Enter “Partial <span class="math inline">\(R^2\)</span>”</li>
-</ul>
-<div class="columns">
-<div class="column" style="width:50%;">
-<div class="quarto-figure quarto-figure-center">
-<figure>
-<p><img data-src="images/r2.svg" class="quarto-figure quarto-figure-center"></p>
-</figure>
-</div>
-</div><div class="column" style="width:50%;">
-<div class="quarto-figure quarto-figure-center">
-<figure>
-<p><img data-src="images/r2_extreme.svg" class="quarto-figure quarto-figure-center"></p>
-</figure>
-</div>
-</div></div>
-</section></section>
-<section>
-<section id="heterogeneous-treatment-effects" class="title-slide slide level1 center" data-stack-name="HTEs">
-<h1>Heterogeneous Treatment Effects</h1>
-
-</section>
-<section id="progresa" class="slide level2">
-<h2>PROGRESA</h2>
 </section>
 <section id="references" class="slide level2 smaller scrollable">
 <h2>References</h2>
-<div id="refs" class="references csl-bib-body hanging-indent" role="list">
-<div id="ref-cinelli_making_2020" class="csl-entry" role="listitem">
-Cinelli, Carlos, and Chad Hazlett. 2020. <span>“Making <span>Sense</span> of <span>Sensitivity</span>: <span>Extending Omitted Variable Bias</span>.”</span> <em>Journal of the Royal Statistical Society Series B: Statistical Methodology</em> 82 (1): 39–67. <a href="https://doi.org/10.1111/rssb.12348">https://doi.org/10.1111/rssb.12348</a>.
-</div>
+<div id="refs" role="list">
+
 </div>
 
 

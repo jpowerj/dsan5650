@@ -118,7 +118,7 @@
     div.csl-indent {
       margin-left: 2em;
     }  </style>
-  <link rel="stylesheet" href="../site_libs/revealjs/dist/theme/quarto-ce1a3cd1ca63927014624401ff331dc8.css">
+  <link rel="stylesheet" href="../site_libs/revealjs/dist/theme/quarto-8e5945df1125072c05822e38eb06da4b.css">
   <link href="../site_libs/revealjs/plugin/quarto-line-highlight/line-highlight.css" rel="stylesheet">
   <link href="../site_libs/revealjs/plugin/reveal-menu/menu.css" rel="stylesheet">
   <link href="../site_libs/revealjs/plugin/reveal-menu/quarto-menu.css" rel="stylesheet">
@@ -241,120 +241,59 @@ Jeff Jacobs
 
   <p class="date">Wednesday, July 29, 2026</p>
 </section>
-<section class="slide level2">
-
-
-</section>
-<section id="final-project-drafts-friday-559pm-edt" class="title-slide slide level1 center" data-name="Final Projects">
-<h1>Final Project Drafts: Friday, 5:59pm EDT</h1>
+<section id="final-project-progress-report-draft-friday-1159pm-edt" class="title-slide slide level1 center" data-name="Final Projects">
+<h1>Final Project Progress Report / Draft: Friday, 11:59pm EDT</h1>
 <ul>
-<li>On Canvas!</li>
-<li>Think of it as a <strong>skeleton</strong> of the final project</li>
-<li>Final submission = draft + missing pieces filled in</li>
+<li><a href="https://georgetown.instructure.com/courses/231688/assignments/1394145">On Canvas</a></li>
+<li><strong>Help us help you!</strong></li>
+<li><a href="https://en.wikipedia.org/wiki/Rubber_duck_debugging">Rubber duck debugging</a></li>
 </ul>
 </section>
 
 <section>
-<section id="topic-models-over-space-and-time" class="title-slide slide level1 center" data-stack-name="Topic Models">
-<h1>Topic Models Over Space and Time</h1>
+<section id="robustness-and-sensitivity-analysis-complementary" class="title-slide slide level1 center" data-stack-name="Sensitivity Analysis">
+<h1>Robustness and Sensitivity Analysis: Complementary!</h1>
 
 </section>
-<section id="topic-models" class="slide level2 smaller crunch-title crunch-ul table-90">
-<h2>Topic Models</h2>
+<section id="car-safety-metaphor" class="slide level2 smaller crunch-title">
+<h2>Car Safety Metaphor</h2>
 <ul>
-<li>Intuition is just: let’s model <strong>latent topics</strong> “underlying” <strong>observed words</strong></li>
+<li><strong>Robustness</strong>: Doing stuff to <strong>maximize “safety” (from getting causal effect wrong)</strong></li>
 </ul>
 <table>
-<thead>
-<tr class="header">
-<th>Section</th>
-<th>Keywords</th>
-</tr>
-</thead>
 <tbody>
 <tr class="odd">
-<td>U.S. News</td>
-<td>state, court, federal, republican</td>
+<td colspan="2" style="border-bottom: none"></td>
+<td colspan="2" class="tdc tdvc">Seatbelts Installed?<span class="mini-row"><em>Covariates Adjusted?</em></span></td>
 </tr>
 <tr class="even">
-<td>World News</td>
-<td>government, country, officials, minister</td>
+<td style="border-bottom: none"></td>
+<td></td>
+<td class="tdc">No</td>
+<td class="tdc">Yes</td>
 </tr>
 <tr class="odd">
-<td>Arts</td>
-<td>music, show, art, dance</td>
+<td rowspan="2" class="tdc tdvc" style="border-bottom: none">Airbag Installed?<span class="mini-row"><em>Propensity Score Estimated?</em></span></td>
+<td class="tdc tdvc">No</td>
+<td class="tdc tdvc">OLS</td>
+<td class="tdc tdvc">OLS + "Controls"</td>
 </tr>
 <tr class="even">
-<td>Sports</td>
-<td>game, league, team, coach</td>
-</tr>
-<tr class="odd">
-<td>Real Estate</td>
-<td>home, bedrooms, bathrooms, building</td>
+<td class="tdc tdvc">Yes</td>
+<td class="tdc tdvc">IPW</td>
+<td class="tdc tdvc"><strong>Doubly Robust!</strong> 🥳</td>
 </tr>
 </tbody>
 </table>
 <ul>
-<li>Already, by just classifying articles based on these keyword counts:</li>
+<li><strong>Sensitivity Analysis</strong>: What is the “breaking point” of my safety measures?</li>
+<li><span class="math inline">\(\Pr(\)</span>Not enough time for airbag to inflate<span class="math inline">\() \propto\)</span> speed</li>
+<li><span class="math inline">\(\leadsto\)</span> Over 100mph, <span class="math inline">\(\Pr(\)</span>Not enough time for airbag to inflate<span class="math inline">\() &gt; 0.95\)</span></li>
+<li><span class="math inline">\(\Pr(\)</span>Wrong causal effect<span class="math inline">\() \propto\)</span> correlation of omitted confounder with treatment, outcome</li>
+<li><span class="math inline">\(\leadsto\)</span> Over <span class="math inline">\(\rho = 0.6\)</span>, <span class="math inline">\(\Pr(\)</span>Wrong causal effect<span class="math inline">\() &gt; 0.95\)</span></li>
 </ul>
-<table>
-<thead>
-<tr class="header">
-<th style="text-align: right;"></th>
-<th style="text-align: center;">Arts</th>
-<th style="text-align: center;">Real Estate</th>
-<th style="text-align: center;">Sports</th>
-<th style="text-align: center;">U.S. News</th>
-<th style="text-align: center;">World News</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td style="text-align: right;"><strong>Correct</strong></td>
-<td style="text-align: center;">3020</td>
-<td style="text-align: center;">690</td>
-<td style="text-align: center;">4860</td>
-<td style="text-align: center;">1330</td>
-<td style="text-align: center;">1730</td>
-</tr>
-<tr class="even">
-<td style="text-align: right;"><strong>Incorrect</strong></td>
-<td style="text-align: center;">750</td>
-<td style="text-align: center;">60</td>
-<td style="text-align: center;">370</td>
-<td style="text-align: center;">1100</td>
-<td style="text-align: center;">590</td>
-</tr>
-<tr class="odd">
-<td style="text-align: right;"><strong>Accuracy</strong></td>
-<td style="text-align: center;">0.801</td>
-<td style="text-align: center;">0.920</td>
-<td style="text-align: center;">0.929</td>
-<td style="text-align: center;">0.547</td>
-<td style="text-align: center;">0.746</td>
-</tr>
-</tbody>
-</table>
-</section>
-<section id="topic-models-as-pgms" class="slide level2 smaller crunch-title crunch-img">
-<h2>Topic Models as PGMs</h2>
-
-<img data-src="images/lda.jpg" class="r-stretch quarto-figure-center"><p class="caption">From <span class="citation" data-cites="blei_probabilistic_2012">Blei (<a href="#/references" role="doc-biblioref" onclick="">2012</a>)</span></p><center>
-<p><em>…Unlocks a world of social modeling through text!</em></p>
-</center>
-</section>
-<section id="cross-sectional-analysis" class="slide level2">
-<h2>Cross-Sectional Analysis</h2>
-<p><span class="citation" data-cites="blaydes_mirrors_2018">Blaydes et al. (<a href="#/references" role="doc-biblioref" onclick="">2018</a>)</span></p>
-</section>
-<section id="influence-over-time" class="slide level2">
-<h2>Influence Over Time</h2>
-
-<img data-src="images/novelty_transience.png" class="r-stretch quarto-figure-center"><p class="caption">From <span class="citation" data-cites="barron_individuals_2018">Barron et al. (<a href="#/references" role="doc-biblioref" onclick="">2018</a>)</span></p></section>
-<section id="textual-influence-over-time" class="slide level2">
-<h2>Textual Influence Over Time</h2>
-
-<img data-src="images/novelty-resonance-marxism.svg" class="quarto-figure quarto-figure-center r-stretch"></section></section>
+<!-- Sensitivity Analysis 1: Sensitivity to Priors -->
+</section></section>
 <section>
 <section id="sensitivity-analysis-1-sensitivity-to-priors" class="title-slide slide level1 center" data-stack-name="Sensitivity to Priors">
 <h1>Sensitivity Analysis 1: Sensitivity to Priors</h1>
@@ -687,8 +626,8 @@ Fig&nbsp;3. <em>“I don’t trust this coin, it’ll take lots of flips with H/
 </div></div>
 </section></section>
 <section>
-<section id="sensitivity-analysis-2-how-sensitive-are-my-results-to-omittedincluded-variable-bias" class="title-slide slide level1 smaller title-10 crunch-title center" data-stack-name="Included Variable Bias">
-<h1>Sensitivity Analysis 2: How Sensitive Are My Results to <em>Omitted/Included Variable Bias</em>?</h1>
+<section id="sensitivity-analysis-2-how-sensitive-are-my-results-to-included-variable-bias" class="title-slide slide level1 smaller title-10 crunch-title center" data-stack-name="Included Variable Bias">
+<h1>Sensitivity Analysis 2: How Sensitive Are My Results to <em>Included Variable Bias</em>?</h1>
 <ul>
 <li>You probably know about <strong>omitted variable bias</strong> from previous classes / intuition… but, <strong>included variable bias?</strong></li>
 <li>That’s right folks… <strong>colliders</strong> can be agents of chaos, laying waste to our best, most meticulously-planned-out models</li>
@@ -830,19 +769,101 @@ Fig&nbsp;3. <em>“I don’t trust this coin, it’ll take lots of flips with H/
 </div>
 </div>
 </div>
+</section></section>
+<section>
+<section id="sensitivity-analysis-3-how-sensitive-are-my-results-to-omitted-variable-bias" class="title-slide slide level1 smaller title-10 crunch-title center" data-stack-name="Omitted Variable Bias">
+<h1>Sensitivity Analysis 3: How Sensitive Are My Results to <em>Omitted Variable Bias</em>?</h1>
+
+</section>
+<section id="assessing-the-impact-of-omitted-vars" class="slide level2 smaller crunch-title title-10 math-90 crunch-math crunch-ul">
+<h2>Assessing the Impact of Omitted Vars</h2>
+<ul>
+<li>Working example: <a href="https://www.pcpsr.org/en"><strong>PCPSR</strong></a>, People’s Company for Public Survey Research (شركة الشعب الأبحاث المسحية)</li>
+<li>What is <strong>causal impact</strong> of <strong>experiencing violence</strong> on <strong>support for armed struggle?</strong></li>
+<li>Researcher A models this scenario as:</li>
+</ul>
+<p><span class="math display">\[
+\textsf{ArmedStruggle}_i = \alpha^\text{res} + \tau^\text{res} \textsf{DirectHarm}_i + \hat{\beta}_\text{c}^\text{res}\textsf{RefugeeCamp}_i + \textsf{Muhaf}_i \hat{\boldsymbol \beta}_\text{m}^\text{res} + \hat{\varepsilon}^\text{res}
+\]</span></p>
+<ul>
+<li>Researcher B instead prefers:</li>
+</ul>
+<p><span class="math display">\[
+\textsf{ArmedStruggle}_i = \alpha + \tau \textsf{DirectHarm}_i + \hat{\beta}_\text{c}\textsf{RefugeeCamp}_i + \textsf{Muhaf}_i \hat{\boldsymbol \beta}_{\text{m}} + \boxed{\hat{\gamma}\textsf{PFLP}_i} + \hat{\varepsilon}^{\text{full}}
+\]</span></p>
+<blockquote>
+<p>Our earlier estimate <span class="math inline">\(\tau_{\text{res}}\)</span> would differ from our target quantity <span class="math inline">\(\tau\)</span>: but <strong>how badly?</strong></p>
+<p>How strong would the confounder(s) have to be to change the estimates in such a way <strong>to affect the main conclusions</strong> of a study?</p>
+</blockquote>
+</section>
+<section id="the-classical-ovb-equation" class="slide level2 smaller crunch-title title-12 crunch-ul crunch-math footnotes-0 math-90 inline-90">
+<h2>The Classical OVB Equation</h2>
+<ul>
+<li>Remember that <span class="math inline">\(T\)</span> is our <strong>treatment</strong> variable! (<span class="math inline">\(\mathbf{X}\)</span> = covariates, <span class="math inline">\(Y\)</span> = outcome)</li>
+<li>In a perfect world, we would estimate <span class="math inline">\(Y = \hat{\tau}T + \mathbf{X} \hat{\beta} + \hat{\gamma}Z+ \varepsilon_{\text{full}}\)</span></li>
+<li>But, <span class="math inline">\(Z\)</span> is <strong>unobserved</strong> <span class="math inline">\(\leadsto\)</span> <strong>“restricted”</strong> model <span class="math inline">\(Y = \hat{\tau}_{\text{res}}T + \mathbf{X} \hat{\beta}_{\text{res}} + \varepsilon_{\text{res}}\)</span></li>
+<li>What is the “gap” between <span class="math inline">\(\hat{\tau}\)</span> and <span class="math inline">\(\hat{\tau}^{\text{res}}\)</span>? <span class="math inline">\(\text{OVB} = \hat{\tau}_{\text{res}} - \hat{\tau}\)</span></li>
+</ul>
+<div class="columns">
+<div class="column" style="width:40%;">
+<p><span class="math display">\[
+\begin{align*}
+\hat{\tau}_{\text{res}} &amp;= \frac{
+  \text{Cov}[T^{\top \mathbf{X}}, Y^{\top \mathbf{X}}]
+}{
+  \text{Var}[T^{\top \mathbf{X}}]
+} \\
+&amp;= \frac{
+  \text{Cov}[T^{\top \mathbf{X}}, \hat{\tau}T^{\top \mathbf{X}} + \hat{\gamma}Z^{\top \mathbf{X}}]
+}{
+  \text{Var}[T^{\top \mathbf{X}}]
+} \\
+&amp;= \hat{\tau} + \hat{\gamma}\frac{
+  \text{Cov}[T^{\top \mathbf{X}}, Z^{\top \mathbf{X}}]
+}{
+  \text{Var}[T^{\top \mathbf{X}}]
+} \\
+&amp;= \hat{\tau} + \hat{\gamma}\hat{\delta} \\
+\implies \text{OVB} &amp;= \hat{\tau}_{\text{res}} - \hat{\tau} = \overbrace{
+  \boxed{\hat{\gamma} \times \hat{\delta}}
+}^{\mathclap{\text{Impact} \, \times \, \text{Imbalance}}}
+\end{align*}
+\]</span></p>
+</div><div class="column" style="width:60%;">
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="images/sensitivity.svg" class="quarto-figure quarto-figure-center" width="360"></p>
+</figure>
+</div>
+</div></div>
+
+<aside><div>
+<p>The ability to produce <strong>orthogonalized</strong> (<span class="math inline">\(\top \mathbf{X}\)</span>) versions of vars in the model utilizes the <a href="https://en.wikipedia.org/wiki/Frisch%E2%80%93Waugh%E2%80%93Lovell_theorem">Frisch-Waugh-Lovell Theorem</a></p>
+</div></aside></section>
+<section id="more-generally" class="slide level2">
+<h2>More Generally</h2>
+<ul>
+<li>What if we don’t have a <strong>specific</strong> omitted variable in mind? We just want to know the expected impact <strong>if</strong> there were omitted vars… Enter “Partial <span class="math inline">\(R^2\)</span>”</li>
+</ul>
+<div class="columns">
+<div class="column" style="width:50%;">
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="images/r2.svg" class="quarto-figure quarto-figure-center"></p>
+</figure>
+</div>
+</div><div class="column" style="width:50%;">
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="images/r2_extreme.svg" class="quarto-figure quarto-figure-center"></p>
+</figure>
+</div>
+</div></div>
 </section>
 <section id="references" class="slide level2 smaller scrollable">
 <h2>References</h2>
-<div id="refs" class="references csl-bib-body hanging-indent" role="list">
-<div id="ref-barron_individuals_2018" class="csl-entry" role="listitem">
-Barron, Alexander T. J., Jenny Huang, Rebecca L. Spang, and Simon DeDeo. 2018. <span>“Individuals, <span>Institutions</span>, and <span>Innovation</span> in the <span>Debates</span> of the <span>French Revolution</span>.”</span> <em>Proceedings of the National Academy of Sciences</em> 115 (18): 4607–12. <a href="https://doi.org/10.1073/pnas.1717729115">https://doi.org/10.1073/pnas.1717729115</a>.
-</div>
-<div id="ref-blaydes_mirrors_2018" class="csl-entry" role="listitem">
-Blaydes, Lisa, Justin Grimmer, and Alison McQueen. 2018. <span>“Mirrors for <span>Princes</span> and <span>Sultans</span>: <span>Advice</span> on the <span>Art</span> of <span>Governance</span> in the <span>Medieval Christian</span> and <span>Islamic Worlds</span>.”</span> <em>The Journal of Politics</em> 80 (4): 1150–67. <a href="https://doi.org/10.1086/699246">https://doi.org/10.1086/699246</a>.
-</div>
-<div id="ref-blei_probabilistic_2012" class="csl-entry" role="listitem">
-Blei, David M. 2012. <span>“Probabilistic Topic Models.”</span> <em>Commun. ACM</em> 55 (4): 77–84. <a href="https://doi.org/10.1145/2133806.2133826">https://doi.org/10.1145/2133806.2133826</a>.
-</div>
+<div id="refs" role="list">
+
 </div>
 
 
