@@ -1,5 +1,5 @@
 ---
-title: "Week 11: Sensitivity Analysis"
+title: "Week 11: Double-Checking Is Possible, Infinity-Checking Is Not (Robustness and Sensitivity Analysis)"
 subtitle: "*DSAN 5650: Causal Inference for Computational Social Science*<br><span class='subsubtitle'>Summer 2026, Georgetown University</span>"
 author: "Jeff Jacobs"
 institute: "[`jj1088@georgetown.edu`](mailto:jj1088@georgetown.edu)"
