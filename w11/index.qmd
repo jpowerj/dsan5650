@@ -131,7 +131,7 @@ import arviz as az
 def draw_prior_sample(model, return_idata=False):
   with model:
     prior_idata = pm.sample_prior_predictive(draws=10_000, random_seed=5650)
-  prior_df = prior_idata.prior.to_dataframe().reset_index().drop(columns='chain')
+  prior_df = prior_idata.prior.ds.to_dataframe().reset_index().drop(columns='chain')
   if return_idata:
     return prior_idata, prior_df
   return prior_df

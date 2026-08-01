@@ -100,9 +100,9 @@ div.csl-indent {
 <link href="../site_libs/quarto-html/quarto-syntax-highlighting-e44360b8a8db1e130c7792fece1c8032.css" rel="stylesheet" class="quarto-color-scheme-extra" id="quarto-text-highlighting-styles">
 <script src="../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../site_libs/bootstrap/bootstrap-8423bf8e01beed15368eac4979edfe67.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="../site_libs/bootstrap/bootstrap-78ced6ce8c5bb281e14dca79f1f55c24.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
 <link href="../site_libs/bootstrap/bootstrap-dark-c6fae4d992d4a095a7850f952268ac93.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
-<link href="../site_libs/bootstrap/bootstrap-8423bf8e01beed15368eac4979edfe67.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
+<link href="../site_libs/bootstrap/bootstrap-78ced6ce8c5bb281e14dca79f1f55c24.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "sidebar",
   "copy-button": false,
@@ -551,7 +551,7 @@ window.Quarto = {
     </ul>
     </div>
 <div class="quarto-sidebar-footer"><div class="sidebar-footer-item">
-<p><em>Updated 2026-07-29, 06:32:50 PM</em></p>
+<p><em>Updated 2026-07-31, 09:13:19 PM</em></p>
 </div></div></nav>
 <div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
@@ -699,7 +699,7 @@ window.Quarto = {
 <span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> draw_prior_sample(model, return_idata<span class="op">=</span><span class="va">False</span>):</span>
 <span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a>  <span class="cf">with</span> model:</span>
 <span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a>    prior_idata <span class="op">=</span> pm.sample_prior_predictive(draws<span class="op">=</span><span class="dv">10_000</span>, random_seed<span class="op">=</span><span class="dv">5650</span>)</span>
-<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a>  prior_df <span class="op">=</span> prior_idata.prior.to_dataframe().reset_index().drop(columns<span class="op">=</span><span class="st">'chain'</span>)</span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a>  prior_df <span class="op">=</span> prior_idata.prior.ds.to_dataframe().reset_index().drop(columns<span class="op">=</span><span class="st">'chain'</span>)</span>
 <span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span> return_idata:</span>
 <span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> prior_idata, prior_df</span>
 <span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a>  <span class="cf">return</span> prior_df</span>
@@ -756,7 +756,7 @@ window.Quarto = {
 <div class="cell-output cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="index_files/figure-html/beta00-plot-output-1.png" id="beta00-plot" class="quarto-figure quarto-figure-center anchored figure-img" width="232" height="157"></p>
+<p><img src="index_files/figure-html/beta00-plot-output-1.png" id="beta00-plot" class="quarto-figure quarto-figure-center anchored figure-img" width="233" height="158"></p>
 </figure>
 </div>
 </div>
@@ -787,7 +787,7 @@ window.Quarto = {
 <div class="cell-output cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="index_files/figure-html/beta10-plot-output-1.png" id="beta10-plot" class="quarto-figure quarto-figure-center anchored figure-img" width="227" height="157"></p>
+<p><img src="index_files/figure-html/beta10-plot-output-1.png" id="beta10-plot" class="quarto-figure quarto-figure-center anchored figure-img" width="229" height="158"></p>
 </figure>
 </div>
 </div>
@@ -818,7 +818,7 @@ window.Quarto = {
 <div class="cell-output cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="index_files/figure-html/beta01-plot-output-1.png" id="beta01-plot" class="quarto-figure quarto-figure-center anchored figure-img" width="227" height="157"></p>
+<p><img src="index_files/figure-html/beta01-plot-output-1.png" id="beta01-plot" class="quarto-figure quarto-figure-center anchored figure-img" width="229" height="158"></p>
 </figure>
 </div>
 </div>
@@ -850,7 +850,7 @@ window.Quarto = {
 <div id="fig-informative-prior" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-informative-prior-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="index_files/figure-html/fig-informative-prior-output-2.png" class="quarto-figure quarto-figure-center figure-img" width="244" height="172">
+<img src="index_files/figure-html/fig-informative-prior-output-2.png" class="quarto-figure quarto-figure-center figure-img" width="246" height="173">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-informative-prior-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 Fig&nbsp;1. <em>“I’ll start by assuming a <strong>fair</strong> coin”</em>
@@ -883,7 +883,7 @@ Fig&nbsp;1. <em>“I’ll start by assuming a <strong>fair</strong> coin”</em>
 <div id="fig-weak-prior" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-weak-prior-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="index_files/figure-html/fig-weak-prior-output-2.png" class="quarto-figure quarto-figure-center figure-img" width="236" height="172">
+<img src="index_files/figure-html/fig-weak-prior-output-2.png" class="quarto-figure quarto-figure-center figure-img" width="237" height="173">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-weak-prior-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 Fig&nbsp;2. <em>“I have no idea, I’ll assume all biases equally likely”</em>
@@ -917,7 +917,7 @@ Fig&nbsp;2. <em>“I have no idea, I’ll assume all biases equally likely”</e
 <div id="fig-skeptical-prior" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-skeptical-prior-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="index_files/figure-html/fig-skeptical-prior-output-2.png" class="quarto-figure quarto-figure-center figure-img" width="247" height="172">
+<img src="index_files/figure-html/fig-skeptical-prior-output-2.png" class="quarto-figure quarto-figure-center figure-img" width="248" height="173">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-skeptical-prior-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 Fig&nbsp;3. <em>“I don’t trust this coin, it’ll take lots of flips with H/T balance to convince me it’s fair!”</em>
@@ -952,7 +952,7 @@ Fig&nbsp;3. <em>“I don’t trust this coin, it’ll take lots of flips with H/
 <div class="cell-output cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="index_files/figure-html/heads-more-likely-output-2.png" id="heads-more-likely" class="quarto-figure quarto-figure-center anchored figure-img" width="236" height="172"></p>
+<p><img src="index_files/figure-html/heads-more-likely-output-2.png" id="heads-more-likely" class="quarto-figure quarto-figure-center anchored figure-img" width="237" height="173"></p>
 </figure>
 </div>
 </div>
@@ -976,7 +976,7 @@ Fig&nbsp;3. <em>“I don’t trust this coin, it’ll take lots of flips with H/
 <div class="cell-output cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="index_files/figure-html/tails-more-likely-output-2.png" id="tails-more-likely" class="quarto-figure quarto-figure-center anchored figure-img" width="236" height="172"></p>
+<p><img src="index_files/figure-html/tails-more-likely-output-2.png" id="tails-more-likely" class="quarto-figure quarto-figure-center anchored figure-img" width="237" height="173"></p>
 </figure>
 </div>
 </div>
@@ -1004,7 +1004,7 @@ Fig&nbsp;3. <em>“I don’t trust this coin, it’ll take lots of flips with H/
 <div class="cell-output cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="index_files/figure-html/tails-very-likely-output-2.png" id="tails-very-likely" class="quarto-figure quarto-figure-center anchored figure-img" width="244" height="172"></p>
+<p><img src="index_files/figure-html/tails-very-likely-output-2.png" id="tails-very-likely" class="quarto-figure quarto-figure-center anchored figure-img" width="246" height="173"></p>
 </figure>
 </div>
 </div>
@@ -1029,7 +1029,7 @@ Fig&nbsp;3. <em>“I don’t trust this coin, it’ll take lots of flips with H/
 <div class="cell-output cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="index_files/figure-html/beta2030-model-output-2.png" id="beta2030-model" class="quarto-figure quarto-figure-center anchored figure-img" width="242" height="172"></p>
+<p><img src="index_files/figure-html/beta2030-model-output-2.png" id="beta2030-model" class="quarto-figure quarto-figure-center anchored figure-img" width="243" height="173"></p>
 </figure>
 </div>
 </div>
@@ -1168,7 +1168,7 @@ Fig&nbsp;3. <em>“I don’t trust this coin, it’ll take lots of flips with H/
 <div class="cell-output cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="index_files/figure-html/happiness-plot-output-1.png" id="happiness-plot" class="quarto-figure quarto-figure-center anchored figure-img" width="674" height="393"></p>
+<p><img src="index_files/figure-html/happiness-plot-output-1.png" id="happiness-plot" class="quarto-figure quarto-figure-center anchored figure-img" width="676" height="394"></p>
 </figure>
 </div>
 </div>

@@ -118,7 +118,7 @@
     div.csl-indent {
       margin-left: 2em;
     }  </style>
-  <link rel="stylesheet" href="../site_libs/revealjs/dist/theme/quarto-8e5945df1125072c05822e38eb06da4b.css">
+  <link rel="stylesheet" href="../site_libs/revealjs/dist/theme/quarto-20f70169ac3b6c07deba2d14565c7bee.css">
   <link href="../site_libs/revealjs/plugin/quarto-line-highlight/line-highlight.css" rel="stylesheet">
   <link href="../site_libs/revealjs/plugin/reveal-menu/menu.css" rel="stylesheet">
   <link href="../site_libs/revealjs/plugin/reveal-menu/quarto-menu.css" rel="stylesheet">
@@ -311,7 +311,7 @@ Jeff Jacobs
 <span id="cb1-9"><a></a><span class="kw">def</span> draw_prior_sample(model, return_idata<span class="op">=</span><span class="va">False</span>):</span>
 <span id="cb1-10"><a></a>  <span class="cf">with</span> model:</span>
 <span id="cb1-11"><a></a>    prior_idata <span class="op">=</span> pm.sample_prior_predictive(draws<span class="op">=</span><span class="dv">10_000</span>, random_seed<span class="op">=</span><span class="dv">5650</span>)</span>
-<span id="cb1-12"><a></a>  prior_df <span class="op">=</span> prior_idata.prior.to_dataframe().reset_index().drop(columns<span class="op">=</span><span class="st">'chain'</span>)</span>
+<span id="cb1-12"><a></a>  prior_df <span class="op">=</span> prior_idata.prior.ds.to_dataframe().reset_index().drop(columns<span class="op">=</span><span class="st">'chain'</span>)</span>
 <span id="cb1-13"><a></a>  <span class="cf">if</span> return_idata:</span>
 <span id="cb1-14"><a></a>    <span class="cf">return</span> prior_idata, prior_df</span>
 <span id="cb1-15"><a></a>  <span class="cf">return</span> prior_df</span>
@@ -369,7 +369,7 @@ Jeff Jacobs
 <div class="cell-output cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure>
-<p><img data-src="index_files/figure-revealjs/beta00-plot-output-1.png" id="beta00-plot" class="quarto-figure quarto-figure-center" width="232" height="157"></p>
+<p><img data-src="index_files/figure-revealjs/beta00-plot-output-1.png" id="beta00-plot" class="quarto-figure quarto-figure-center" width="233" height="158"></p>
 </figure>
 </div>
 </div>
@@ -400,7 +400,7 @@ Jeff Jacobs
 <div class="cell-output cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure>
-<p><img data-src="index_files/figure-revealjs/beta10-plot-output-1.png" id="beta10-plot" class="quarto-figure quarto-figure-center" width="227" height="157"></p>
+<p><img data-src="index_files/figure-revealjs/beta10-plot-output-1.png" id="beta10-plot" class="quarto-figure quarto-figure-center" width="229" height="158"></p>
 </figure>
 </div>
 </div>
@@ -431,7 +431,7 @@ Jeff Jacobs
 <div class="cell-output cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure>
-<p><img data-src="index_files/figure-revealjs/beta01-plot-output-1.png" id="beta01-plot" class="quarto-figure quarto-figure-center" width="227" height="157"></p>
+<p><img data-src="index_files/figure-revealjs/beta01-plot-output-1.png" id="beta01-plot" class="quarto-figure quarto-figure-center" width="229" height="158"></p>
 </figure>
 </div>
 </div>
@@ -459,7 +459,7 @@ Jeff Jacobs
 <div id="fig-informative-prior" class="quarto-float quarto-figure quarto-figure-center" data-fig-align="center">
 <figure class="quarto-float quarto-float-fig">
 <div aria-describedby="fig-informative-prior-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img data-src="index_files/figure-revealjs/fig-informative-prior-output-1.png" class="quarto-figure quarto-figure-center" width="244" height="172">
+<img data-src="index_files/figure-revealjs/fig-informative-prior-output-1.png" class="quarto-figure quarto-figure-center" width="246" height="173">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-informative-prior-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 Fig&nbsp;1. <em>“I’ll start by assuming a <strong>fair</strong> coin”</em>
@@ -489,7 +489,7 @@ Fig&nbsp;1. <em>“I’ll start by assuming a <strong>fair</strong> coin”</em>
 <div id="fig-weak-prior" class="quarto-float quarto-figure quarto-figure-center" data-fig-align="center">
 <figure class="quarto-float quarto-float-fig">
 <div aria-describedby="fig-weak-prior-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img data-src="index_files/figure-revealjs/fig-weak-prior-output-1.png" class="quarto-figure quarto-figure-center" width="236" height="172">
+<img data-src="index_files/figure-revealjs/fig-weak-prior-output-1.png" class="quarto-figure quarto-figure-center" width="237" height="173">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-weak-prior-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 Fig&nbsp;2. <em>“I have no idea, I’ll assume all biases equally likely”</em>
@@ -520,7 +520,7 @@ Fig&nbsp;2. <em>“I have no idea, I’ll assume all biases equally likely”</e
 <div id="fig-skeptical-prior" class="quarto-float quarto-figure quarto-figure-center" data-fig-align="center">
 <figure class="quarto-float quarto-float-fig">
 <div aria-describedby="fig-skeptical-prior-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img data-src="index_files/figure-revealjs/fig-skeptical-prior-output-1.png" class="quarto-figure quarto-figure-center" width="247" height="172">
+<img data-src="index_files/figure-revealjs/fig-skeptical-prior-output-1.png" class="quarto-figure quarto-figure-center" width="248" height="173">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-skeptical-prior-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 Fig&nbsp;3. <em>“I don’t trust this coin, it’ll take lots of flips with H/T balance to convince me it’s fair!”</em>
@@ -551,7 +551,7 @@ Fig&nbsp;3. <em>“I don’t trust this coin, it’ll take lots of flips with H/
 <div class="cell-output cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure>
-<p><img data-src="index_files/figure-revealjs/heads-more-likely-output-1.png" id="heads-more-likely" class="quarto-figure quarto-figure-center" width="236" height="172"></p>
+<p><img data-src="index_files/figure-revealjs/heads-more-likely-output-1.png" id="heads-more-likely" class="quarto-figure quarto-figure-center" width="237" height="173"></p>
 </figure>
 </div>
 </div>
@@ -572,7 +572,7 @@ Fig&nbsp;3. <em>“I don’t trust this coin, it’ll take lots of flips with H/
 <div class="cell-output cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure>
-<p><img data-src="index_files/figure-revealjs/tails-more-likely-output-1.png" id="tails-more-likely" class="quarto-figure quarto-figure-center" width="236" height="172"></p>
+<p><img data-src="index_files/figure-revealjs/tails-more-likely-output-1.png" id="tails-more-likely" class="quarto-figure quarto-figure-center" width="237" height="173"></p>
 </figure>
 </div>
 </div>
@@ -596,7 +596,7 @@ Fig&nbsp;3. <em>“I don’t trust this coin, it’ll take lots of flips with H/
 <div class="cell-output cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure>
-<p><img data-src="index_files/figure-revealjs/tails-very-likely-output-1.png" id="tails-very-likely" class="quarto-figure quarto-figure-center" width="244" height="172"></p>
+<p><img data-src="index_files/figure-revealjs/tails-very-likely-output-1.png" id="tails-very-likely" class="quarto-figure quarto-figure-center" width="246" height="173"></p>
 </figure>
 </div>
 </div>
@@ -618,7 +618,7 @@ Fig&nbsp;3. <em>“I don’t trust this coin, it’ll take lots of flips with H/
 <div class="cell-output cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure>
-<p><img data-src="index_files/figure-revealjs/beta2030-model-output-1.png" id="beta2030-model" class="quarto-figure quarto-figure-center" width="242" height="172"></p>
+<p><img data-src="index_files/figure-revealjs/beta2030-model-output-1.png" id="beta2030-model" class="quarto-figure quarto-figure-center" width="243" height="173"></p>
 </figure>
 </div>
 </div>
@@ -753,7 +753,7 @@ Fig&nbsp;3. <em>“I don’t trust this coin, it’ll take lots of flips with H/
 <div class="cell-output cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure>
-<p><img data-src="index_files/figure-revealjs/happiness-plot-output-1.png" id="happiness-plot" class="quarto-figure quarto-figure-center" width="674" height="393"></p>
+<p><img data-src="index_files/figure-revealjs/happiness-plot-output-1.png" id="happiness-plot" class="quarto-figure quarto-figure-center" width="676" height="394"></p>
 </figure>
 </div>
 </div>
