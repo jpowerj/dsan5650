@@ -101,7 +101,21 @@ For the two options described above, the following info boxes describe the struc
 
 **Moving from *vaguely-thinking-about* to *formally modeling***
 
-*(Coming soon!)*
+An effective project following this option is one that uses the machinery of PGMs to **enhance our understanding of a given social phenomenon**, by taking e.g. a qualitative "hunch" we might have about how something works (like the gendered nature of film roles, in the example project template) and then nailing down (a) the relevant pieces of the phenomenon as **nodes** in the PGM and (b) their interrelationships as **edges** in the PGM. The structure of your deliverable, therefore, should generally look as follows:
+
+1.  Clearly state the **social phenomenon** you're aiming to model (e.g., in the Option 1 template, gendered film roles; or in Reading Adventure 2, Congressional voting and its polarization over time), and then argue for the utility of PGMs to sharpen what may be a **vague, qualitative understanding** one might have about this phenomenon
+
+    Reading Adventure 2 is again helpful as an example here, since the DW-NOMINATE model discussed there essentially allowed researchers to quantitatively *measure* political factors that were often argued about but rarely "resolved": in place of debates around e.g. *whether* the US Congress was polarized or not, researchers could now capture the degree of polarization quantitatively (by measuring clustering relative to principal components of legislative voting data), and subsequently link it to data on other phenonema like campaign finance.
+
+    Returning to the gendered film roles example, the beginning of an Option 1 project about this phenomenon could include something like:
+    
+    > *In place of vague discussions and claims of improved gender representation in Hollywood, our unsupervised model's ability to identify the `HERO` role and its skew towards male actors will also enable researchers to quantitatively track **how much** progress was made, e.g. across different decades, or in response to different SAG-AFTRA policies.*
+
+2.  Once you've argued for the utility of capturing aspects of the social phenomenon with PGMs, include the PGM itself (generated via PyMC, graphviz, dagitty, or any other library that you're comfortable with!), and provide a table like Table 1 in the template explaining what each **variable** in the PGM captures.
+
+3.  Finally, you should present a novel **finding** that you were able to derive by applying your model to data on some social phenomenon. This is where the notion that Jeff talked about early on in the course, of how **science builds on previous studies** (and how Bayes' Rule tells us specifically how we should **update** our understanding of a phenomenon after carrying out a project), becomes relevant! Because, here is where you should report anything **surprising** that you found, relative to what you expected going into the project.
+
+    Consider the Innovation in French Revolutionary debates paper discussed in Lab 1, for example: the researchers who carried out that study, along with many people reading it, were surprised at how certain speechmakers who are typically considered less influential than Robespierre nonetheless registered extremely high "scores" on the Novelty and Resonance measures. This novel finding, in turn, led researchers to go back and re-analyze the speeches made by these surprisingly-influential delegates, and re-evaluate whose ideas impacted the eventual form of the First French Republic!
 
 :::
 

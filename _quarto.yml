@@ -18,9 +18,6 @@ website:
     contents:
       - text: "<i class='bi bi-house pe-1'></i> Home"
         href: index.qmd
-      - text: "Coding Workshop <i class='bi bi-box-arrow-up-right ps-1'></i>"
-        href: "https://jjacobs.me/dsan5650-workshop"
-        target: "_blank"
       - text: "Syllabus"
         href: syllabus.qmd
       - text: "Resources"
@@ -86,6 +83,9 @@ website:
         target: "_blank"
       - text: "Observable Notebooks <i class='bi bi-box-arrow-up-right ps-1'></i>"
         href: "https://observablehq.com/collection/@jpowerj/dsan-5650-causal-inference-for-computational-socia"
+        target: "_blank"
+      - text: "Coding Workshop <i class='bi bi-box-arrow-up-right ps-1'></i>"
+        href: "https://jjacobs.me/dsan5650-workshop"
         target: "_blank"
 
 format:

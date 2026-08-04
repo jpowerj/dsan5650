@@ -101,9 +101,9 @@ div.csl-indent {
 <link href="site_libs/quarto-html/quarto-syntax-highlighting-e44360b8a8db1e130c7792fece1c8032.css" rel="stylesheet" class="quarto-color-scheme-extra" id="quarto-text-highlighting-styles">
 <script src="site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap-78ced6ce8c5bb281e14dca79f1f55c24.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="site_libs/bootstrap/bootstrap-78ae27563897cf36506b313fad4ea506.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
 <link href="site_libs/bootstrap/bootstrap-dark-c6fae4d992d4a095a7850f952268ac93.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
-<link href="site_libs/bootstrap/bootstrap-78ced6ce8c5bb281e14dca79f1f55c24.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
+<link href="site_libs/bootstrap/bootstrap-78ae27563897cf36506b313fad4ea506.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "sidebar",
   "copy-button": false,
@@ -383,12 +383,6 @@ window.Quarto = {
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="https://jjacobs.me/dsan5650-workshop" class="sidebar-item-text sidebar-link" target="_blank">
- <span class="menu-text">Coding Workshop <i class="bi bi-box-arrow-up-right ps-1"></i></span></a>
-  </div>
-</li>
-        <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
   <a href="./syllabus.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Syllabus</span></a>
   </div>
@@ -551,10 +545,16 @@ window.Quarto = {
  <span class="menu-text">Observable Notebooks <i class="bi bi-box-arrow-up-right ps-1"></i></span></a>
   </div>
 </li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="https://jjacobs.me/dsan5650-workshop" class="sidebar-item-text sidebar-link" target="_blank">
+ <span class="menu-text">Coding Workshop <i class="bi bi-box-arrow-up-right ps-1"></i></span></a>
+  </div>
+</li>
     </ul>
     </div>
 <div class="quarto-sidebar-footer"><div class="sidebar-footer-item">
-<p><em>Updated 2026-07-31, 09:13:19 PM</em></p>
+<p><em>Updated 2026-08-04, 04:38:42 PM</em></p>
 </div></div></nav>
 <div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
@@ -732,7 +732,18 @@ Figure&nbsp;1: Results from <span class="citation" data-cites="nunn_ruggedness_2
 <div id="callout-3" class="callout-3-contents callout-collapse collapse show">
 <div class="callout-body-container callout-body">
 <p><strong>Moving from <em>vaguely-thinking-about</em> to <em>formally modeling</em></strong></p>
-<p><em>(Coming soon!)</em></p>
+<p>An effective project following this option is one that uses the machinery of PGMs to <strong>enhance our understanding of a given social phenomenon</strong>, by taking e.g.&nbsp;a qualitative “hunch” we might have about how something works (like the gendered nature of film roles, in the example project template) and then nailing down (a) the relevant pieces of the phenomenon as <strong>nodes</strong> in the PGM and (b) their interrelationships as <strong>edges</strong> in the PGM. The structure of your deliverable, therefore, should generally look as follows:</p>
+<ol type="1">
+<li><p>Clearly state the <strong>social phenomenon</strong> you’re aiming to model (e.g., in the Option 1 template, gendered film roles; or in Reading Adventure 2, Congressional voting and its polarization over time), and then argue for the utility of PGMs to sharpen what may be a <strong>vague, qualitative understanding</strong> one might have about this phenomenon</p>
+<p>Reading Adventure 2 is again helpful as an example here, since the DW-NOMINATE model discussed there essentially allowed researchers to quantitatively <em>measure</em> political factors that were often argued about but rarely “resolved”: in place of debates around e.g.&nbsp;<em>whether</em> the US Congress was polarized or not, researchers could now capture the degree of polarization quantitatively (by measuring clustering relative to principal components of legislative voting data), and subsequently link it to data on other phenonema like campaign finance.</p>
+<p>Returning to the gendered film roles example, the beginning of an Option 1 project about this phenomenon could include something like:</p>
+<blockquote class="blockquote">
+<p><em>In place of vague discussions and claims of improved gender representation in Hollywood, our unsupervised model’s ability to identify the <code>HERO</code> role and its skew towards male actors will also enable researchers to quantitatively track <strong>how much</strong> progress was made, e.g.&nbsp;across different decades, or in response to different SAG-AFTRA policies.</em></p>
+</blockquote></li>
+<li><p>Once you’ve argued for the utility of capturing aspects of the social phenomenon with PGMs, include the PGM itself (generated via PyMC, graphviz, dagitty, or any other library that you’re comfortable with!), and provide a table like Table 1 in the template explaining what each <strong>variable</strong> in the PGM captures.</p></li>
+<li><p>Finally, you should present a novel <strong>finding</strong> that you were able to derive by applying your model to data on some social phenomenon. This is where the notion that Jeff talked about early on in the course, of how <strong>science builds on previous studies</strong> (and how Bayes’ Rule tells us specifically how we should <strong>update</strong> our understanding of a phenomenon after carrying out a project), becomes relevant! Because, here is where you should report anything <strong>surprising</strong> that you found, relative to what you expected going into the project.</p>
+<p>Consider the Innovation in French Revolutionary debates paper discussed in Lab 1, for example: the researchers who carried out that study, along with many people reading it, were surprised at how certain speechmakers who are typically considered less influential than Robespierre nonetheless registered extremely high “scores” on the Novelty and Resonance measures. This novel finding, in turn, led researchers to go back and re-analyze the speeches made by these surprisingly-influential delegates, and re-evaluate whose ideas impacted the eventual form of the First French Republic!</p></li>
+</ol>
 </div>
 </div>
 </div>

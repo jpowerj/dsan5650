@@ -29,31 +29,19 @@ These are the **required** assignments, for which you are expected to (a) make a
 
 : {tbl-colwidths="[55,25,20]"}
 
-## Side Quests (18 Possible ✅s)
+## Side Quests (10 Possible ✅s)
 
 These are assignment which, although they are not mandatory for passing the course, are still essential material that (a) are made to enhance your understanding of various concepts throughout the term, and (b) can also be used as "starter code" if you decide to pursue one of these topics for your [Final Project](./final.qmd)!
 
 | Side Quest | Due Date | ✅s Possible |
 | - | - |:-:|
-| **8 Lab Assignments** (1 ✅ each) | | **8** |
-| <i class='bi bi-arrow-return-right'></i> {{< var lab01.title >}} | {{< var lab01.date-md >}} | 1 |
-| <i class='bi bi-arrow-return-right'></i> {{< var lab02.title >}} | {{< var lab02.date-md >}} | 1 |
-| <i class='bi bi-arrow-return-right'></i> {{< var lab03.title >}} | {{< var lab03.date-md >}} | 1 |
-| <i class='bi bi-arrow-return-right'></i> {{< var lab04.title >}} | {{< var lab04.date-md >}} | 1 |
-| <i class='bi bi-arrow-return-right'></i> {{< var lab05.title >}} | {{< var lab05.date-md >}} | 1 |
-| <i class='bi bi-arrow-return-right'></i> {{< var lab06.title >}} | {{< var lab06.date-md >}} | 1 |
-| <i class='bi bi-arrow-return-right'></i> {{< var lab07.title >}} | {{< var lab07.date-md >}} | 1 |
-| <i class='bi bi-arrow-return-right'></i> {{< var lab08.title >}} | {{< var lab08.date-md >}} | 1 |
-| **8 Reading Adventures** (1 ✅ each) | | **8** |
-| <i class='bi bi-arrow-return-right'></i> {{< var reading01.title >}} | {{< var reading01.date-md >}} | 1 |
-| <i class='bi bi-arrow-return-right'></i> {{< var reading02.title >}} | {{< var reading02.date-md >}} | 1 |
-| <i class='bi bi-arrow-return-right'></i> {{< var reading03.title >}} | {{< var reading03.date-md >}} | 1 |
-| <i class='bi bi-arrow-return-right'></i> {{< var reading04.title >}} | {{< var reading04.date-md >}} | 1 |
-| <i class='bi bi-arrow-return-right'></i> {{< var reading05.title >}} | {{< var reading05.date-md >}} | 1 |
-| <i class='bi bi-arrow-return-right'></i> {{< var reading06.title >}} | {{< var reading06.date-md >}} | 1 |
-| <i class='bi bi-arrow-return-right'></i> {{< var reading07.title >}} | {{< var reading07.date-md >}} | 1 |
-| <i class='bi bi-arrow-return-right'></i> {{< var reading08.title >}} | {{< var reading08.date-md >}} | 1 |
+| **2 Lab Assignments** (1 ✅ each) | | **4** |
+| <i class='bi bi-arrow-return-right'></i> {{< var lab01.title >}} | {{< var lab01.date-md >}} | 2 |
+| <i class='bi bi-arrow-return-right'></i> {{< var lab02.title >}} | {{< var lab02.date-md >}} | 2 |
+| **2 Reading Adventures** (1 ✅ each) | | **4** |
+| <i class='bi bi-arrow-return-right'></i> {{< var reading01.title >}} | {{< var reading01.date-md >}} | 2 |
+| <i class='bi bi-arrow-return-right'></i> {{< var reading02.title >}} | {{< var reading02.date-md >}} | 2 |
 | Additional Meeting(s) with Instructors (0.5 each) | | 2 |
-| **Total** | | **18** |
+| **Total** | | **10** |
 
 : {tbl-colwidths="[80,20]"}

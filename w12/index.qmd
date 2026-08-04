@@ -1,5 +1,5 @@
 ---
-title: "Week 12: Causal Forests for Heterogeneous Treatment Effects"
+title: "Week 12: Bayesian Decision Theory, Causal Forests"
 subtitle: "*DSAN 5650: Causal Inference for Computational Social Science*<br><span class='subsubtitle'>Summer 2026, Georgetown University</span>"
 author: "Jeff Jacobs"
 institute: "[`jj1088@georgetown.edu`](mailto:jj1088@georgetown.edu)"
@@ -24,7 +24,10 @@ format:
     link-external-newwindow: true
     echo: true
     code-fold: true
-    theme: [default, "../dsan-globals/jjquarto.scss"]
+    theme:
+      - default
+      - "../dsan-globals/jjquarto.scss"
+      - "../dsan-globals/jjquarto-light.scss"
     include-in-header:
       text: "<link rel='stylesheet' href='https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css'><link rel='stylesheet' type='text/css' href='https://cdn.jsdelivr.net/gh/dreampulse/computer-modern-web-font@master/fonts.css'>"
     slide-number: true
@@ -61,7 +64,7 @@ Today's Planned Schedule:
 
 | | Start | End | Topic |
 |:- |:- |:- |:- |
-| **Lecture** | 6:30pm | 6:45pm | [Final Projects &rarr;](#final-project--end-of-term-things) |
+| **Lecture** | 6:30pm | 6:45pm | [Final Projects Final Roundup &rarr;](#final-project--end-of-term-things) |
 | | 6:45pm | 7:10pm | [Included Variable Bias &rarr;](#does-aging-cause-sadness)
 | | 7:10pm | 8:00pm | [Heterogeneous Treatment Effects &rarr;](#heterogeneous-treatment-effects) |
 | **Break!** | 8:00pm | 8:10pm | |
