@@ -1,5 +1,5 @@
 ---
-title: "Week 12: Bayesian Decision Theory, Causal Forests"
+title: "Week 12: Bayesian Decision Theory"
 subtitle: "*DSAN 5650: Causal Inference for Computational Social Science*<br><span class='subsubtitle'>Summer 2026, Georgetown University</span>"
 author: "Jeff Jacobs"
 institute: "[`jj1088@georgetown.edu`](mailto:jj1088@georgetown.edu)"
@@ -58,14 +58,14 @@ format:
 
 :::
 
-# Schedule {.smaller .crunch-title .crunch-callout .code-90 data-stack-name="Schedule"}
+## Schedule {.smaller .crunch-title .crunch-callout .code-90 data-name="Schedule"}
 
 Today's Planned Schedule:
 
 | | Start | End | Topic |
 |:- |:- |:- |:- |
-| **Lecture** | 6:30pm | 6:45pm | [Final Projects Final Roundup &rarr;](#final-project--end-of-term-things) |
-| | 6:45pm | 7:10pm | [Included Variable Bias &rarr;](#does-aging-cause-sadness)
+| **Lecture** | 6:30pm | 7:00pm | [Why Should We Use Bayes' Rule? &rarr;](#why-should-we-use-bayes-rule) |
+| | 6:45pm | 7:10pm | [Why Should We Think *Causally* About Decisions? &rarr;](#does-aging-cause-sadness)
 | | 7:10pm | 8:00pm | [Heterogeneous Treatment Effects &rarr;](#heterogeneous-treatment-effects) |
 | **Break!** | 8:00pm | 8:10pm | |
 | | 8:10pm | 9:00pm | [Causal Forests &rarr;](#causal-forests) |
@@ -74,23 +74,33 @@ Today's Planned Schedule:
 
 {{< include ../dsan-globals/_globals-tex.qmd >}}
 
-## Final Project / End of Term Things
+## Why Should We Use Bayes' Rule At All? {.smaller data-name="Dutch Books"}
 
-* **Midterm** grading will be done TONIGHT
-* **Submit button** for HW3 / HW4 TONIGHT
+Assume Big Dave has the following beliefs about the likelihood of events $P$ and $Q$:
 
-## Sensitivity Analysis {.smaller .crunch-title}
+| $p$ | $q$ | $\Pr(P = p, Q = q)$ |
+|:-:|:-:|:-:|
+| 0 | 0 | 1/4 |
+| 0 | 1 | 1/4 |
+| 1 | 0 | 1/4 |
+| 1 | 1 | 1/4 |
 
-* So you've got an estimate of a causal effect! What now? Two possible next steps...
-* <i class='bi bi-1-circle'></i> **Sensitivity Analysis**: Check **robustness** of your results
-  * Modeling choices &rarr; **one point** in param space (*garden of forking paths*)
-  * If results "truly" hold, shouldn't disappear with small changes in parameters/choices
-  * *Last week*: Can re-estimate with **informative** &rarr; **weak** &rarr; **skeptical** priors
-  * *This week*: Simulate **how "strong"** omissions would have to be to **"ruin" finding**
-* <i class='bi bi-2-circle'></i> **Heterogeneous Treatment Effects**: How does the effect **vary** btwn subgroups?
-  * Example today: PROGRESA (Cash transfer poverty-alleviation program in Mexico)
-  * Program has an **overall** causal effect, but also a **greater** causal effect on **indigenous** households, relative to non-indigenous
-  * How can we find group-specific effects? **Causal forests!**
+But decides **not** to use Bayes' Rule to update after learning $Q = 1$: he just decides... he likes 0.6, so $\Pr(P = p \mid Q = 1) = 0.6$...
+
+## The Dutch Ticket
+
+<div style='border: 2px solid black;'>
+
+* If Q is true, this ticket entitles the bearer to $1 if P is true and nothing otherwise.
+* If Q is false, this ticket may be returned to the seller for a full refund of its purchase price.
+
+</div>
+
+## Why Should We Focus On *Causality* When Making Our Decisions? {data-name="Causal Decision Theory"}
+
+* **Savage's Rule**
+* $\leadsto$ **Jeffrey's Rule** (no relation)
+* $\leadsto$ **Causal Decision Theory!**
 
 ## References
 

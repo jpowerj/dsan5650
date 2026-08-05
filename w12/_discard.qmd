@@ -35,3 +35,18 @@
 # ax.legend();
 # ax.savefig()
 ```
+
+---
+
+## Sensitivity Analysis {.smaller .crunch-title}
+
+* So you've got an estimate of a causal effect! What now? Two possible next steps...
+* <i class='bi bi-1-circle'></i> **Sensitivity Analysis**: Check **robustness** of your results
+  * Modeling choices &rarr; **one point** in param space (*garden of forking paths*)
+  * If results "truly" hold, shouldn't disappear with small changes in parameters/choices
+  * *Last week*: Can re-estimate with **informative** &rarr; **weak** &rarr; **skeptical** priors
+  * *This week*: Simulate **how "strong"** omissions would have to be to **"ruin" finding**
+* <i class='bi bi-2-circle'></i> **Heterogeneous Treatment Effects**: How does the effect **vary** btwn subgroups?
+  * Example today: PROGRESA (Cash transfer poverty-alleviation program in Mexico)
+  * Program has an **overall** causal effect, but also a **greater** causal effect on **indigenous** households, relative to non-indigenous
+  * How can we find group-specific effects? **Causal forests!**

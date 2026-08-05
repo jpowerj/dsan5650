@@ -8,7 +8,7 @@
 
 <meta name="author" content="Jeff Jacobs">
 
-<title>Week 12: Bayesian Decision Theory, Causal Forests – DSAN 5650</title>
+<title>Week 12: Bayesian Decision Theory – DSAN 5650</title>
 <style>
 /* Default styles provided by pandoc.
 ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
@@ -516,7 +516,7 @@ window.Quarto = {
     </ul>
     </div>
 <div class="quarto-sidebar-footer"><div class="sidebar-footer-item">
-<p><em>Updated 2026-08-04, 08:04:55 PM</em></p>
+<p><em>Updated 2026-08-05, 06:35:38 PM</em></p>
 </div></div></nav>
 <div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
@@ -525,12 +525,11 @@ window.Quarto = {
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#schedule" id="toc-schedule" class="nav-link active" data-scroll-target="#schedule">Schedule</a>
-  <ul class="collapse">
-  <li><a href="#final-project-end-of-term-things" id="toc-final-project-end-of-term-things" class="nav-link" data-scroll-target="#final-project-end-of-term-things">Final Project / End of Term Things</a></li>
-  <li><a href="#sensitivity-analysis" id="toc-sensitivity-analysis" class="nav-link" data-scroll-target="#sensitivity-analysis">Sensitivity Analysis</a></li>
+  <li><a href="#schedule" id="toc-schedule" class="nav-link active" data-scroll-target="#schedule">Schedule</a></li>
+  <li><a href="#why-should-we-use-bayes-rule-at-all" id="toc-why-should-we-use-bayes-rule-at-all" class="nav-link" data-scroll-target="#why-should-we-use-bayes-rule-at-all">Why Should We Use Bayes’ Rule At All?</a></li>
+  <li><a href="#the-dutch-ticket" id="toc-the-dutch-ticket" class="nav-link" data-scroll-target="#the-dutch-ticket">The Dutch Ticket</a></li>
+  <li><a href="#why-should-we-focus-on-causality-when-making-our-decisions" id="toc-why-should-we-focus-on-causality-when-making-our-decisions" class="nav-link" data-scroll-target="#why-should-we-focus-on-causality-when-making-our-decisions">Why Should We Focus On <em>Causality</em> When Making Our Decisions?</a></li>
   <li><a href="#references" id="toc-references" class="nav-link" data-scroll-target="#references">References</a></li>
-  </ul></li>
   </ul>
 <div class="toc-actions"><ul><li><a href="https://github.com/jpowerj/dsan5650/blob/main/w12/index.qmd" target="_blank" class="toc-action"><i class="bi bi-github"></i>View source</a></li></ul></div><div class="quarto-alternate-formats"><h2>Other Formats</h2><ul><li><a href="slides.html"><i class="bi bi-file-slides"></i>RevealJS</a></li></ul></div></nav>
     </div>
@@ -540,7 +539,7 @@ window.Quarto = {
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Week 12: Bayesian Decision Theory, Causal Forests</h1>
+<h1 class="title">Week 12: Bayesian Decision Theory</h1>
 <p class="subtitle lead"><em>DSAN 5650: Causal Inference for Computational Social Science</em><br><span class="subsubtitle">Summer 2026, Georgetown University</span></p>
   <div class="quarto-categories">
     <div class="quarto-category">Class Sessions</div>
@@ -583,8 +582,8 @@ window.Quarto = {
 <center>
 <a class="h2" href="./slides.html" target="_blank">Open slides in new window →</a>
 </center>
-<section id="schedule" class="level1 smaller crunch-title crunch-callout code-90" data-stack-name="Schedule">
-<h1 class="smaller crunch-title crunch-callout code-90" data-stack-name="Schedule">Schedule</h1>
+<section id="schedule" class="level2 smaller crunch-title crunch-callout code-90" data-name="Schedule">
+<h2 class="smaller crunch-title crunch-callout code-90 anchored" data-name="Schedule" data-anchor-id="schedule">Schedule</h2>
 <p>Today’s Planned Schedule:</p>
 <table class="table">
 <colgroup>
@@ -605,14 +604,14 @@ window.Quarto = {
 <tr class="odd">
 <td style="text-align: left;"><strong>Lecture</strong></td>
 <td style="text-align: left;">6:30pm</td>
-<td style="text-align: left;">6:45pm</td>
-<td style="text-align: left;"><a href="#final-project--end-of-term-things">Final Projects Final Roundup →</a></td>
+<td style="text-align: left;">7:00pm</td>
+<td style="text-align: left;"><a href="#why-should-we-use-bayes-rule">Why Should We Use Bayes’ Rule? →</a></td>
 </tr>
 <tr class="even">
 <td style="text-align: left;"></td>
 <td style="text-align: left;">6:45pm</td>
 <td style="text-align: left;">7:10pm</td>
-<td style="text-align: left;"><a href="#does-aging-cause-sadness">Included Variable Bias →</a></td>
+<td style="text-align: left;"><a href="#does-aging-cause-sadness">Why Should We Think <em>Causally</em> About Decisions? →</a></td>
 </tr>
 <tr class="odd">
 <td style="text-align: left;"></td>
@@ -674,30 +673,58 @@ window.Quarto = {
 \newcommand{\bigVar}[1]{\text{Var}\mkern-4mu \left[ #1 \right]}
 \]</span></p>
 </div>
-<section id="final-project-end-of-term-things" class="level2">
-<h2 class="anchored" data-anchor-id="final-project-end-of-term-things">Final Project / End of Term Things</h2>
-<ul>
-<li><strong>Midterm</strong> grading will be done TONIGHT</li>
-<li><strong>Submit button</strong> for HW3 / HW4 TONIGHT</li>
-</ul>
 </section>
-<section id="sensitivity-analysis" class="level2 smaller crunch-title">
-<h2 class="smaller crunch-title anchored" data-anchor-id="sensitivity-analysis">Sensitivity Analysis</h2>
+<section id="why-should-we-use-bayes-rule-at-all" class="level2 smaller" data-name="Dutch Books">
+<h2 class="smaller anchored" data-name="Dutch Books" data-anchor-id="why-should-we-use-bayes-rule-at-all">Why Should We Use Bayes’ Rule At All?</h2>
+<p>Assume Big Dave has the following beliefs about the likelihood of events <span class="math inline">\(P\)</span> and <span class="math inline">\(Q\)</span>:</p>
+<table class="table">
+<thead>
+<tr class="header">
+<th style="text-align: center;"><span class="math inline">\(p\)</span></th>
+<th style="text-align: center;"><span class="math inline">\(q\)</span></th>
+<th style="text-align: center;"><span class="math inline">\(\Pr(P = p, Q = q)\)</span></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;">0</td>
+<td style="text-align: center;">0</td>
+<td style="text-align: center;">1/4</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">0</td>
+<td style="text-align: center;">1</td>
+<td style="text-align: center;">1/4</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">1</td>
+<td style="text-align: center;">0</td>
+<td style="text-align: center;">1/4</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">1</td>
+<td style="text-align: center;">1</td>
+<td style="text-align: center;">1/4</td>
+</tr>
+</tbody>
+</table>
+<p>But decides <strong>not</strong> to use Bayes’ Rule to update after learning <span class="math inline">\(Q = 1\)</span>: he just decides… he likes 0.6, so <span class="math inline">\(\Pr(P = p \mid Q = 1) = 0.6\)</span>…</p>
+</section>
+<section id="the-dutch-ticket" class="level2">
+<h2 class="anchored" data-anchor-id="the-dutch-ticket">The Dutch Ticket</h2>
+<div style="border: 2px solid black;">
 <ul>
-<li>So you’ve got an estimate of a causal effect! What now? Two possible next steps…</li>
-<li><i class="bi bi-1-circle"></i> <strong>Sensitivity Analysis</strong>: Check <strong>robustness</strong> of your results
+<li>If Q is true, this ticket entitles the bearer to $1 if P is true and nothing otherwise.</li>
+<li>If Q is false, this ticket may be returned to the seller for a full refund of its purchase price.</li>
+</ul>
+</div>
+</section>
+<section id="why-should-we-focus-on-causality-when-making-our-decisions" class="level2" data-name="Causal Decision Theory">
+<h2 data-name="Causal Decision Theory" class="anchored" data-anchor-id="why-should-we-focus-on-causality-when-making-our-decisions">Why Should We Focus On <em>Causality</em> When Making Our Decisions?</h2>
 <ul>
-<li>Modeling choices → <strong>one point</strong> in param space (<em>garden of forking paths</em>)</li>
-<li>If results “truly” hold, shouldn’t disappear with small changes in parameters/choices</li>
-<li><em>Last week</em>: Can re-estimate with <strong>informative</strong> → <strong>weak</strong> → <strong>skeptical</strong> priors</li>
-<li><em>This week</em>: Simulate <strong>how “strong”</strong> omissions would have to be to <strong>“ruin” finding</strong></li>
-</ul></li>
-<li><i class="bi bi-2-circle"></i> <strong>Heterogeneous Treatment Effects</strong>: How does the effect <strong>vary</strong> btwn subgroups?
-<ul>
-<li>Example today: PROGRESA (Cash transfer poverty-alleviation program in Mexico)</li>
-<li>Program has an <strong>overall</strong> causal effect, but also a <strong>greater</strong> causal effect on <strong>indigenous</strong> households, relative to non-indigenous</li>
-<li>How can we find group-specific effects? <strong>Causal forests!</strong></li>
-</ul></li>
+<li><strong>Savage’s Rule</strong></li>
+<li><span class="math inline">\(\leadsto\)</span> <strong>Jeffrey’s Rule</strong> (no relation)</li>
+<li><span class="math inline">\(\leadsto\)</span> <strong>Causal Decision Theory!</strong></li>
 </ul>
 </section>
 <section id="references" class="level2">
@@ -707,7 +734,6 @@ window.Quarto = {
 </div>
 
 
-</section>
 </section>
 
 </main> <!-- /main -->

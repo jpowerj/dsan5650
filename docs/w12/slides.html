@@ -11,7 +11,7 @@
   <meta name="generator" content="quarto-1.10.3">
 
   <meta name="author" content="Jeff Jacobs">
-  <title>DSAN 5650 – Week 12: Bayesian Decision Theory, Causal Forests</title>
+  <title>DSAN 5650 – Week 12: Bayesian Decision Theory</title>
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
@@ -153,7 +153,7 @@
     <div class="slides">
 
 <section id="title-slide" class="quarto-title-block center">
-  <h1 class="title">Week 12: Bayesian Decision Theory, Causal Forests</h1>
+  <h1 class="title">Week 12: Bayesian Decision Theory</h1>
   <p class="subtitle"><em>DSAN 5650: Causal Inference for Computational Social Science</em><br><span class="subsubtitle">Summer 2026, Georgetown University</span></p>
 
 <div class="quarto-title-authors">
@@ -169,9 +169,8 @@ Jeff Jacobs
 
   <p class="date">Wednesday, August 5, 2026</p>
 </section>
-<section>
-<section id="schedule" class="title-slide slide level1 smaller crunch-title crunch-callout code-90 center" data-stack-name="Schedule">
-<h1>Schedule</h1>
+<section id="schedule" class="slide level2 smaller crunch-title crunch-callout code-90" data-name="Schedule">
+<h2>Schedule</h2>
 <p>Today’s Planned Schedule:</p>
 <table>
 <colgroup>
@@ -192,14 +191,14 @@ Jeff Jacobs
 <tr class="odd">
 <td style="text-align: left;"><strong>Lecture</strong></td>
 <td style="text-align: left;">6:30pm</td>
-<td style="text-align: left;">6:45pm</td>
-<td style="text-align: left;"><a href="#/final-project--end-of-term-things">Final Projects Final Roundup →</a></td>
+<td style="text-align: left;">7:00pm</td>
+<td style="text-align: left;"><a href="#/why-should-we-use-bayes-rule">Why Should We Use Bayes’ Rule? →</a></td>
 </tr>
 <tr class="even">
 <td style="text-align: left;"></td>
 <td style="text-align: left;">6:45pm</td>
 <td style="text-align: left;">7:10pm</td>
-<td style="text-align: left;"><a href="#/does-aging-cause-sadness">Included Variable Bias →</a></td>
+<td style="text-align: left;"><a href="#/does-aging-cause-sadness">Why Should We Think <em>Causally</em> About Decisions? →</a></td>
 </tr>
 <tr class="odd">
 <td style="text-align: left;"></td>
@@ -262,30 +261,57 @@ Jeff Jacobs
 \]</span></p>
 </div>
 </section>
-<section id="final-project-end-of-term-things" class="slide level2">
-<h2>Final Project / End of Term Things</h2>
-<ul>
-<li><strong>Midterm</strong> grading will be done TONIGHT</li>
-<li><strong>Submit button</strong> for HW3 / HW4 TONIGHT</li>
-</ul>
+<section id="why-should-we-use-bayes-rule-at-all" class="slide level2 smaller" data-name="Dutch Books">
+<h2>Why Should We Use Bayes’ Rule At All?</h2>
+<p>Assume Big Dave has the following beliefs about the likelihood of events <span class="math inline">\(P\)</span> and <span class="math inline">\(Q\)</span>:</p>
+<table>
+<thead>
+<tr class="header">
+<th style="text-align: center;"><span class="math inline">\(p\)</span></th>
+<th style="text-align: center;"><span class="math inline">\(q\)</span></th>
+<th style="text-align: center;"><span class="math inline">\(\Pr(P = p, Q = q)\)</span></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;">0</td>
+<td style="text-align: center;">0</td>
+<td style="text-align: center;">1/4</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">0</td>
+<td style="text-align: center;">1</td>
+<td style="text-align: center;">1/4</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">1</td>
+<td style="text-align: center;">0</td>
+<td style="text-align: center;">1/4</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">1</td>
+<td style="text-align: center;">1</td>
+<td style="text-align: center;">1/4</td>
+</tr>
+</tbody>
+</table>
+<p>But decides <strong>not</strong> to use Bayes’ Rule to update after learning <span class="math inline">\(Q = 1\)</span>: he just decides… he likes 0.6, so <span class="math inline">\(\Pr(P = p \mid Q = 1) = 0.6\)</span>…</p>
 </section>
-<section id="sensitivity-analysis" class="slide level2 smaller crunch-title">
-<h2>Sensitivity Analysis</h2>
+<section id="the-dutch-ticket" class="slide level2">
+<h2>The Dutch Ticket</h2>
+<div style="border: 2px solid black;">
 <ul>
-<li>So you’ve got an estimate of a causal effect! What now? Two possible next steps…</li>
-<li><i class="bi bi-1-circle"></i> <strong>Sensitivity Analysis</strong>: Check <strong>robustness</strong> of your results
+<li>If Q is true, this ticket entitles the bearer to $1 if P is true and nothing otherwise.</li>
+<li>If Q is false, this ticket may be returned to the seller for a full refund of its purchase price.</li>
+</ul>
+</div>
+</section>
+<section id="why-should-we-focus-on-causality-when-making-our-decisions" class="slide level2" data-name="Causal Decision Theory">
+<h2>Why Should We Focus On <em>Causality</em> When Making Our Decisions?</h2>
 <ul>
-<li>Modeling choices → <strong>one point</strong> in param space (<em>garden of forking paths</em>)</li>
-<li>If results “truly” hold, shouldn’t disappear with small changes in parameters/choices</li>
-<li><em>Last week</em>: Can re-estimate with <strong>informative</strong> → <strong>weak</strong> → <strong>skeptical</strong> priors</li>
-<li><em>This week</em>: Simulate <strong>how “strong”</strong> omissions would have to be to <strong>“ruin” finding</strong></li>
-</ul></li>
-<li><i class="bi bi-2-circle"></i> <strong>Heterogeneous Treatment Effects</strong>: How does the effect <strong>vary</strong> btwn subgroups?
-<ul>
-<li>Example today: PROGRESA (Cash transfer poverty-alleviation program in Mexico)</li>
-<li>Program has an <strong>overall</strong> causal effect, but also a <strong>greater</strong> causal effect on <strong>indigenous</strong> households, relative to non-indigenous</li>
-<li>How can we find group-specific effects? <strong>Causal forests!</strong></li>
-</ul></li>
+<li><strong>Savage’s Rule</strong></li>
+<li><span class="math inline">\(\leadsto\)</span> <strong>Jeffrey’s Rule</strong> (no relation)</li>
+<li><span class="math inline">\(\leadsto\)</span> <strong>Causal Decision Theory!</strong></li>
 </ul>
 </section>
 <section id="references" class="slide level2 smaller scrollable">
@@ -295,11 +321,11 @@ Jeff Jacobs
 </div>
 
 
-</section></section>
+</section>
     </div>
   <div class="quarto-auto-generated-content" style="display: none;">
 <div class="footer footer-default">
-<p>DSAN 5650 Week 12: Causal Forests</p>
+<p>DSAN 5650 Week 12: Bayesian Decision Theory</p>
 </div>
 </div></div>
 

@@ -1,29 +1,43 @@
 [
   {
-    "objectID": "w12/slides.html#final-project-end-of-term-things",
-    "href": "w12/slides.html#final-project-end-of-term-things",
-    "title": "Week 12: Bayesian Decision Theory, Causal Forests",
-    "section": "Final Project / End of Term Things",
-    "text": "Final Project / End of Term Things\n\nMidterm grading will be done TONIGHT\nSubmit button for HW3 / HW4 TONIGHT"
+    "objectID": "w12/slides.html#schedule",
+    "href": "w12/slides.html#schedule",
+    "title": "Week 12: Bayesian Decision Theory",
+    "section": "Schedule",
+    "text": "Schedule\nToday’s Planned Schedule:\n\n\n\n\n\n\n\n\n\n\nStart\nEnd\nTopic\n\n\n\n\nLecture\n6:30pm\n7:00pm\nWhy Should We Use Bayes’ Rule? →\n\n\n\n6:45pm\n7:10pm\nWhy Should We Think Causally About Decisions? →\n\n\n\n7:10pm\n8:00pm\nHeterogeneous Treatment Effects →\n\n\nBreak!\n8:00pm\n8:10pm\n\n\n\n\n8:10pm\n9:00pm\nCausal Forests →\n\n\n\n\n\\[\n\\DeclareMathOperator*{\\argmax}{argmax}\n\\DeclareMathOperator*{\\argmin}{argmin}\n\\newcommand{\\bigexp}[1]{\\exp\\mkern-4mu\\left[ #1 \\right]}\n\\newcommand{\\bigexpect}[1]{\\mathbb{E}\\mkern-4mu \\left[ #1 \\right]}\n\\newcommand{\\definedas}{\\overset{\\small\\text{def}}{=}}\n\\newcommand{\\definedalign}{\\overset{\\phantom{\\text{defn}}}{=}}\n\\newcommand{\\eqeventual}{\\overset{\\text{eventually}}{=}}\n\\newcommand{\\Err}{\\text{Err}}\n\\newcommand{\\expect}[1]{\\mathbb{E}[#1]}\n\\newcommand{\\expectsq}[1]{\\mathbb{E}^2[#1]}\n\\newcommand{\\fw}[1]{\\texttt{#1}}\n\\newcommand{\\given}{\\mid}\n\\newcommand{\\green}[1]{\\color{green}{#1}}\n\\newcommand{\\heads}{\\outcome{heads}}\n\\newcommand{\\iid}{\\overset{\\text{\\small{iid}}}{\\sim}}\n\\newcommand{\\lik}{\\mathcal{L}}\n\\newcommand{\\loglik}{\\ell}\n\\DeclareMathOperator*{\\maximize}{maximize}\n\\DeclareMathOperator*{\\minimize}{minimize}\n\\newcommand{\\mle}{\\textsf{ML}}\n\\newcommand{\\nimplies}{\\;\\not\\!\\!\\!\\!\\implies}\n\\newcommand{\\orange}[1]{\\color{orange}{#1}}\n\\newcommand{\\outcome}[1]{\\textsf{#1}}\n\\newcommand{\\param}[1]{{\\color{purple} #1}}\n\\newcommand{\\pgsamplespace}{\\{\\green{1},\\green{2},\\green{3},\\purp{4},\\purp{5},\\purp{6}\\}}\n\\newcommand{\\pedge}[2]{\\require{enclose}\\enclose{circle}{~{#1}~} \\rightarrow \\; \\enclose{circle}{\\kern.01em {#2}~\\kern.01em}}\n\\newcommand{\\pnode}[1]{\\require{enclose}\\enclose{circle}{\\kern.1em {#1} \\kern.1em}}\n\\newcommand{\\ponode}[1]{\\require{enclose}\\enclose{box}[background=lightgray]{{#1}}}\n\\newcommand{\\pnodesp}[1]{\\require{enclose}\\enclose{circle}{~{#1}~}}\n\\newcommand{\\purp}[1]{\\color{purple}{#1}}\n\\newcommand{\\sign}{\\text{Sign}}\n\\newcommand{\\spacecap}{\\; \\cap \\;}\n\\newcommand{\\spacewedge}{\\; \\wedge \\;}\n\\newcommand{\\tails}{\\outcome{tails}}\n\\newcommand{\\Var}[1]{\\text{Var}[#1]}\n\\newcommand{\\bigVar}[1]{\\text{Var}\\mkern-4mu \\left[ #1 \\right]}\n\\]"
   },
   {
-    "objectID": "w12/slides.html#sensitivity-analysis",
-    "href": "w12/slides.html#sensitivity-analysis",
-    "title": "Week 12: Bayesian Decision Theory, Causal Forests",
-    "section": "Sensitivity Analysis",
-    "text": "Sensitivity Analysis\n\nSo you’ve got an estimate of a causal effect! What now? Two possible next steps…\n Sensitivity Analysis: Check robustness of your results\n\nModeling choices → one point in param space (garden of forking paths)\nIf results “truly” hold, shouldn’t disappear with small changes in parameters/choices\nLast week: Can re-estimate with informative → weak → skeptical priors\nThis week: Simulate how “strong” omissions would have to be to “ruin” finding\n\n Heterogeneous Treatment Effects: How does the effect vary btwn subgroups?\n\nExample today: PROGRESA (Cash transfer poverty-alleviation program in Mexico)\nProgram has an overall causal effect, but also a greater causal effect on indigenous households, relative to non-indigenous\nHow can we find group-specific effects? Causal forests!"
+    "objectID": "w12/slides.html#why-should-we-use-bayes-rule-at-all",
+    "href": "w12/slides.html#why-should-we-use-bayes-rule-at-all",
+    "title": "Week 12: Bayesian Decision Theory",
+    "section": "Why Should We Use Bayes’ Rule At All?",
+    "text": "Why Should We Use Bayes’ Rule At All?\nAssume Big Dave has the following beliefs about the likelihood of events \\(P\\) and \\(Q\\):\n\n\n\n\\(p\\)\n\\(q\\)\n\\(\\Pr(P = p, Q = q)\\)\n\n\n\n\n0\n0\n1/4\n\n\n0\n1\n1/4\n\n\n1\n0\n1/4\n\n\n1\n1\n1/4\n\n\n\nBut decides not to use Bayes’ Rule to update after learning \\(Q = 1\\): he just decides… he likes 0.6, so \\(\\Pr(P = p \\mid Q = 1) = 0.6\\)…"
+  },
+  {
+    "objectID": "w12/slides.html#the-dutch-ticket",
+    "href": "w12/slides.html#the-dutch-ticket",
+    "title": "Week 12: Bayesian Decision Theory",
+    "section": "The Dutch Ticket",
+    "text": "The Dutch Ticket\n\n\nIf Q is true, this ticket entitles the bearer to $1 if P is true and nothing otherwise.\nIf Q is false, this ticket may be returned to the seller for a full refund of its purchase price."
+  },
+  {
+    "objectID": "w12/slides.html#why-should-we-focus-on-causality-when-making-our-decisions",
+    "href": "w12/slides.html#why-should-we-focus-on-causality-when-making-our-decisions",
+    "title": "Week 12: Bayesian Decision Theory",
+    "section": "Why Should We Focus On Causality When Making Our Decisions?",
+    "text": "Why Should We Focus On Causality When Making Our Decisions?\n\nSavage’s Rule\n\\(\\leadsto\\) Jeffrey’s Rule (no relation)\n\\(\\leadsto\\) Causal Decision Theory!"
   },
   {
     "objectID": "w12/slides.html#references",
     "href": "w12/slides.html#references",
-    "title": "Week 12: Bayesian Decision Theory, Causal Forests",
+    "title": "Week 12: Bayesian Decision Theory",
     "section": "References",
     "text": "References"
   },
   {
     "objectID": "w12/index.html",
     "href": "w12/index.html",
-    "title": "Week 12: Bayesian Decision Theory, Causal Forests",
+    "title": "Week 12: Bayesian Decision Theory",
     "section": "",
     "text": "Open slides in new window →",
     "crumbs": [
@@ -31,21 +45,41 @@
     ]
   },
   {
-    "objectID": "w12/index.html#final-project-end-of-term-things",
-    "href": "w12/index.html#final-project-end-of-term-things",
-    "title": "Week 12: Bayesian Decision Theory, Causal Forests",
-    "section": "Final Project / End of Term Things",
-    "text": "Final Project / End of Term Things\n\nMidterm grading will be done TONIGHT\nSubmit button for HW3 / HW4 TONIGHT",
+    "objectID": "w12/index.html#schedule",
+    "href": "w12/index.html#schedule",
+    "title": "Week 12: Bayesian Decision Theory",
+    "section": "Schedule",
+    "text": "Schedule\nToday’s Planned Schedule:\n\n\n\n\n\n\n\n\n\n\nStart\nEnd\nTopic\n\n\n\n\nLecture\n6:30pm\n7:00pm\nWhy Should We Use Bayes’ Rule? →\n\n\n\n6:45pm\n7:10pm\nWhy Should We Think Causally About Decisions? →\n\n\n\n7:10pm\n8:00pm\nHeterogeneous Treatment Effects →\n\n\nBreak!\n8:00pm\n8:10pm\n\n\n\n\n8:10pm\n9:00pm\nCausal Forests →\n\n\n\n\n\\[\n\\DeclareMathOperator*{\\argmax}{argmax}\n\\DeclareMathOperator*{\\argmin}{argmin}\n\\newcommand{\\bigexp}[1]{\\exp\\mkern-4mu\\left[ #1 \\right]}\n\\newcommand{\\bigexpect}[1]{\\mathbb{E}\\mkern-4mu \\left[ #1 \\right]}\n\\newcommand{\\definedas}{\\overset{\\small\\text{def}}{=}}\n\\newcommand{\\definedalign}{\\overset{\\phantom{\\text{defn}}}{=}}\n\\newcommand{\\eqeventual}{\\overset{\\text{eventually}}{=}}\n\\newcommand{\\Err}{\\text{Err}}\n\\newcommand{\\expect}[1]{\\mathbb{E}[#1]}\n\\newcommand{\\expectsq}[1]{\\mathbb{E}^2[#1]}\n\\newcommand{\\fw}[1]{\\texttt{#1}}\n\\newcommand{\\given}{\\mid}\n\\newcommand{\\green}[1]{\\color{green}{#1}}\n\\newcommand{\\heads}{\\outcome{heads}}\n\\newcommand{\\iid}{\\overset{\\text{\\small{iid}}}{\\sim}}\n\\newcommand{\\lik}{\\mathcal{L}}\n\\newcommand{\\loglik}{\\ell}\n\\DeclareMathOperator*{\\maximize}{maximize}\n\\DeclareMathOperator*{\\minimize}{minimize}\n\\newcommand{\\mle}{\\textsf{ML}}\n\\newcommand{\\nimplies}{\\;\\not\\!\\!\\!\\!\\implies}\n\\newcommand{\\orange}[1]{\\color{orange}{#1}}\n\\newcommand{\\outcome}[1]{\\textsf{#1}}\n\\newcommand{\\param}[1]{{\\color{purple} #1}}\n\\newcommand{\\pgsamplespace}{\\{\\green{1},\\green{2},\\green{3},\\purp{4},\\purp{5},\\purp{6}\\}}\n\\newcommand{\\pedge}[2]{\\require{enclose}\\enclose{circle}{~{#1}~} \\rightarrow \\; \\enclose{circle}{\\kern.01em {#2}~\\kern.01em}}\n\\newcommand{\\pnode}[1]{\\require{enclose}\\enclose{circle}{\\kern.1em {#1} \\kern.1em}}\n\\newcommand{\\ponode}[1]{\\require{enclose}\\enclose{box}[background=lightgray]{{#1}}}\n\\newcommand{\\pnodesp}[1]{\\require{enclose}\\enclose{circle}{~{#1}~}}\n\\newcommand{\\purp}[1]{\\color{purple}{#1}}\n\\newcommand{\\sign}{\\text{Sign}}\n\\newcommand{\\spacecap}{\\; \\cap \\;}\n\\newcommand{\\spacewedge}{\\; \\wedge \\;}\n\\newcommand{\\tails}{\\outcome{tails}}\n\\newcommand{\\Var}[1]{\\text{Var}[#1]}\n\\newcommand{\\bigVar}[1]{\\text{Var}\\mkern-4mu \\left[ #1 \\right]}\n\\]",
     "crumbs": [
       "Week 12: {{< var w12.date-md >}}"
     ]
   },
   {
-    "objectID": "w12/index.html#sensitivity-analysis",
-    "href": "w12/index.html#sensitivity-analysis",
-    "title": "Week 12: Bayesian Decision Theory, Causal Forests",
-    "section": "Sensitivity Analysis",
-    "text": "Sensitivity Analysis\n\nSo you’ve got an estimate of a causal effect! What now? Two possible next steps…\n Sensitivity Analysis: Check robustness of your results\n\nModeling choices → one point in param space (garden of forking paths)\nIf results “truly” hold, shouldn’t disappear with small changes in parameters/choices\nLast week: Can re-estimate with informative → weak → skeptical priors\nThis week: Simulate how “strong” omissions would have to be to “ruin” finding\n\n Heterogeneous Treatment Effects: How does the effect vary btwn subgroups?\n\nExample today: PROGRESA (Cash transfer poverty-alleviation program in Mexico)\nProgram has an overall causal effect, but also a greater causal effect on indigenous households, relative to non-indigenous\nHow can we find group-specific effects? Causal forests!",
+    "objectID": "w12/index.html#why-should-we-use-bayes-rule-at-all",
+    "href": "w12/index.html#why-should-we-use-bayes-rule-at-all",
+    "title": "Week 12: Bayesian Decision Theory",
+    "section": "Why Should We Use Bayes’ Rule At All?",
+    "text": "Why Should We Use Bayes’ Rule At All?\nAssume Big Dave has the following beliefs about the likelihood of events \\(P\\) and \\(Q\\):\n\n\n\n\\(p\\)\n\\(q\\)\n\\(\\Pr(P = p, Q = q)\\)\n\n\n\n\n0\n0\n1/4\n\n\n0\n1\n1/4\n\n\n1\n0\n1/4\n\n\n1\n1\n1/4\n\n\n\nBut decides not to use Bayes’ Rule to update after learning \\(Q = 1\\): he just decides… he likes 0.6, so \\(\\Pr(P = p \\mid Q = 1) = 0.6\\)…",
+    "crumbs": [
+      "Week 12: {{< var w12.date-md >}}"
+    ]
+  },
+  {
+    "objectID": "w12/index.html#the-dutch-ticket",
+    "href": "w12/index.html#the-dutch-ticket",
+    "title": "Week 12: Bayesian Decision Theory",
+    "section": "The Dutch Ticket",
+    "text": "The Dutch Ticket\n\n\nIf Q is true, this ticket entitles the bearer to $1 if P is true and nothing otherwise.\nIf Q is false, this ticket may be returned to the seller for a full refund of its purchase price.",
+    "crumbs": [
+      "Week 12: {{< var w12.date-md >}}"
+    ]
+  },
+  {
+    "objectID": "w12/index.html#why-should-we-focus-on-causality-when-making-our-decisions",
+    "href": "w12/index.html#why-should-we-focus-on-causality-when-making-our-decisions",
+    "title": "Week 12: Bayesian Decision Theory",
+    "section": "Why Should We Focus On Causality When Making Our Decisions?",
+    "text": "Why Should We Focus On Causality When Making Our Decisions?\n\nSavage’s Rule\n\\(\\leadsto\\) Jeffrey’s Rule (no relation)\n\\(\\leadsto\\) Causal Decision Theory!",
     "crumbs": [
       "Week 12: {{< var w12.date-md >}}"
     ]
@@ -53,7 +87,7 @@
   {
     "objectID": "w12/index.html#references",
     "href": "w12/index.html#references",
-    "title": "Week 12: Bayesian Decision Theory, Causal Forests",
+    "title": "Week 12: Bayesian Decision Theory",
     "section": "References",
     "text": "References",
     "crumbs": [
@@ -115,7 +149,7 @@
     "href": "syllabus.html#schedule",
     "title": "Syllabus",
     "section": "Schedule",
-    "text": "Schedule\nThe following is a rough map of what we will work through together throughout the semester; given that everyone learns at a different pace, my aim is to leave us with a good amount of flexibility in terms of how much time we spend on each topic: if I find that it takes me longer than a week to convey a certain topic in sufficient depth, for example, then I view it as a strength rather than a weakness of the course that we can then rearrange the calendar below by adding an extra week on that particular topic! Similarly, if it seems like I am spending too much time on a topic, to the point that students seem bored or impatient to move onto the next topic, we can move a topic intended for the next week to the current week!\n\n\n\n\n\n\n\n\n\nUnit\nWeek\nDate\nTopic\n\n\n\n\nUnit 1: The Language of Causal Modeling\n1\nMay 20\nFrom a Science of Particles to a Science of People\n\n\n\nRecommended Readings\n\n\n\nSanta Fe Institute online course: Introduction to Renormalization, up through Video 5, Coarse Graining II: Entropy2\n\n\n\n2\nMay 27\nProbabilistic Graphical Models (PGMs) as Data-Generating Processes (DGPs)\n\n\n\nRecommended Readings\n\n\n\nKoller and Friedman (2009), Chapter 2: Foundations. Especially pp. 15-34, as a helpful DSAN 5100 refresher!\n\n\nUnit 2: Doin Thangs\n3\nJun 3\nFrom PGMs to Causal Diagrams\n\n\n\n4\nJun 10\nClearing the Path from Cause to Effect\n\n\nUnit 3: Matching Apples to Apples\n5\nJun 17\nMultilevel Modeling, Closing Backdoor Paths\n\n\n\n6\nJun 24\nAdaptive Pooling in Multilevel Models, Bayesian Workflow\n\n\nMidterm Week\n7\nJul 1\nMidterm Introduction51-Hour Take-Home Midterm released, 9:00pm EDT\n\n\n\n\nJul 3 (Friday)\n[Deliverable, 11:59pm EDT] 51-Hour Take-Home Midterm\n\n\nUnit 4: Machine Learning for Causal Inference\n8\nJul 8\nEI, Propensity Scores\n\n\n\n9\nJul 15\nDoubly-Robust Estimation and Instrumental Variables\n\n\n\n10\nJul 22\nText-as-Data\n\n\n\n11\nJul 29\nFrom Robustness to Sensitivity Analysis\n\n\nFinal Project Zone\n12\nAug 5\nCausal Forests for Heterogeneous Treatment Effects\n\n\n\n\nAug 7 (Friday), 5:59pm EDT\n[Deliverable] Final Project",
+    "text": "Schedule\nThe following is a rough map of what we will work through together throughout the semester; given that everyone learns at a different pace, my aim is to leave us with a good amount of flexibility in terms of how much time we spend on each topic: if I find that it takes me longer than a week to convey a certain topic in sufficient depth, for example, then I view it as a strength rather than a weakness of the course that we can then rearrange the calendar below by adding an extra week on that particular topic! Similarly, if it seems like I am spending too much time on a topic, to the point that students seem bored or impatient to move onto the next topic, we can move a topic intended for the next week to the current week!\n\n\n\n\n\n\n\n\n\nUnit\nWeek\nDate\nTopic\n\n\n\n\nUnit 1: The Language of Causal Modeling\n1\nMay 20\nFrom a Science of Particles to a Science of People\n\n\n\nRecommended Readings\n\n\n\nSanta Fe Institute online course: Introduction to Renormalization, up through Video 5, Coarse Graining II: Entropy2\n\n\n\n2\nMay 27\nProbabilistic Graphical Models (PGMs) as Data-Generating Processes (DGPs)\n\n\n\nRecommended Readings\n\n\n\nKoller and Friedman (2009), Chapter 2: Foundations. Especially pp. 15-34, as a helpful DSAN 5100 refresher!\n\n\nUnit 2: Doin Thangs\n3\nJun 3\nFrom PGMs to Causal Diagrams\n\n\n\n4\nJun 10\nClearing the Path from Cause to Effect\n\n\nUnit 3: Matching Apples to Apples\n5\nJun 17\nMultilevel Modeling, Closing Backdoor Paths\n\n\n\n6\nJun 24\nAdaptive Pooling in Multilevel Models, Bayesian Workflow\n\n\nMidterm Week\n7\nJul 1\nMidterm Introduction51-Hour Take-Home Midterm released, 9:00pm EDT\n\n\n\n\nJul 3 (Friday)\n[Deliverable, 11:59pm EDT] 51-Hour Take-Home Midterm\n\n\nUnit 4: Machine Learning for Causal Inference\n8\nJul 8\nEI, Propensity Scores\n\n\n\n9\nJul 15\nDoubly-Robust Estimation and Instrumental Variables\n\n\n\n10\nJul 22\nText-as-Data\n\n\n\n11\nJul 29\nFrom Robustness to Sensitivity Analysis\n\n\nFinal Project Zone\n12\nAug 5\nBayesian Decision Theory\n\n\n\n\nAug 7 (Friday), 5:59pm EDT\n[Deliverable] Final Project",
     "crumbs": [
       "Syllabus"
     ]
@@ -2825,7 +2859,7 @@
     "href": "index.html",
     "title": "DSAN 5650: Causal Inference for Computational Social Science",
     "section": "",
-    "text": "Welcome to the homepage for DSAN 5650: Causal Inference for Computational Social Science at Georgetown University, for the Summer 2026 session!\nThe course meets on Wednesdays from 6:30pm to 9:00pm online, via the Zoom Link provided in the sidebar.\nCheck out the syllabus (or any other link in the sidebar) for more info! Or, use the following links to view notes for individual weeks:\n\n\n\n\n\n\nTitle\n\n\n\nDate\n\n\n\n\n\n\n\n\nWeek 1: Science from Particles to People\n\n\nMay 20\n\n\n\n\n\n\nWeek 2: Probabilistic Graphical Models (PGMs)\n\n\nMay 27\n\n\n\n\n\n\nWeek 3: From PGMs to Causal Diagrams\n\n\nJune 3\n\n\n\n\n\n\nWeek 4: Clearing the Path from Cause to Effect\n\n\nJune 10\n\n\n\n\n\n\nWeek 5: Multilevel Madness, Closing Backdoor Paths\n\n\nJune 17\n\n\n\n\n\n\nWeek 6: Adaptive Pooling in Multilevel Models, Bayesian Workflow\n\n\nJune 24\n\n\n\n\n\n\nWeek 7: Midterm Introduction\n\n\nJuly 1\n\n\n\n\n\n\nWeek 8: Ecological Inference, Propensity Scores\n\n\nJuly 8\n\n\n\n\n\n\nWeek 9: Propensity Scores, Regression Discontinuity, and Causal NLP\n\n\nJuly 15\n\n\n\n\n\n\nWeek 10: Doubly-Robust Estimation, Text-as-Data\n\n\nJuly 22\n\n\n\n\n\n\nWeek 11: Double-Checking Is Possible, Infinity-Checking Is Not (Robustness and Sensitivity Analysis)\n\n\nJuly 29\n\n\n\n\n\n\nWeek 12: Bayesian Decision Theory, Causal Forests\n\n\nAugust 5\n\n\n\n\n\n\nNo matching items\n\nCourse Description:\nThis course provides students with the opportunity to take the analytical skills, machine learning algorithms, and statistical methods learned throughout their first year in the program and explore how they can be employed towards carrying out rigorous, original research in the behavioral and social sciences. With a particular emphasis on tackling the additional challenges which arise when moving from associational to causal inference, particularly when only observational (as opposed to experimental) data is available, students will become proficient in cutting-edge causal Machine Learning techniques such as propensity score matching, synthetic controls, causal program evaluation, inverse social welfare function estimation from panel data, and Double-Debiased Machine Learning.\nIn-class examples will cover continuous, discrete-choice, and textual data from a wide swath of social and behavioral sciences: economics, political science, sociology, anthropology, quantitative history, and digital humanities. After gaining experience through in-class labs and homework assignments focused on reproducing key findings from recent journal articles in each of these disciplines, students will spend the final weeks of the course on a final project demonstrating their ability to develop, evaluate, and test the robustness of a causal hypothesis.\nPrerequisites: DSAN 5000, DSAN 5100 (DSAN 5300 recommended but not required)",
+    "text": "Welcome to the homepage for DSAN 5650: Causal Inference for Computational Social Science at Georgetown University, for the Summer 2026 session!\nThe course meets on Wednesdays from 6:30pm to 9:00pm online, via the Zoom Link provided in the sidebar.\nCheck out the syllabus (or any other link in the sidebar) for more info! Or, use the following links to view notes for individual weeks:\n\n\n\n\n\n\nTitle\n\n\n\nDate\n\n\n\n\n\n\n\n\nWeek 1: Science from Particles to People\n\n\nMay 20\n\n\n\n\n\n\nWeek 2: Probabilistic Graphical Models (PGMs)\n\n\nMay 27\n\n\n\n\n\n\nWeek 3: From PGMs to Causal Diagrams\n\n\nJune 3\n\n\n\n\n\n\nWeek 4: Clearing the Path from Cause to Effect\n\n\nJune 10\n\n\n\n\n\n\nWeek 5: Multilevel Madness, Closing Backdoor Paths\n\n\nJune 17\n\n\n\n\n\n\nWeek 6: Adaptive Pooling in Multilevel Models, Bayesian Workflow\n\n\nJune 24\n\n\n\n\n\n\nWeek 7: Midterm Introduction\n\n\nJuly 1\n\n\n\n\n\n\nWeek 8: Ecological Inference, Propensity Scores\n\n\nJuly 8\n\n\n\n\n\n\nWeek 9: Propensity Scores, Regression Discontinuity, and Causal NLP\n\n\nJuly 15\n\n\n\n\n\n\nWeek 10: Doubly-Robust Estimation, Text-as-Data\n\n\nJuly 22\n\n\n\n\n\n\nWeek 11: Double-Checking Is Possible, Infinity-Checking Is Not (Robustness and Sensitivity Analysis)\n\n\nJuly 29\n\n\n\n\n\n\nWeek 12: Bayesian Decision Theory\n\n\nAugust 5\n\n\n\n\n\n\nNo matching items\n\nCourse Description:\nThis course provides students with the opportunity to take the analytical skills, machine learning algorithms, and statistical methods learned throughout their first year in the program and explore how they can be employed towards carrying out rigorous, original research in the behavioral and social sciences. With a particular emphasis on tackling the additional challenges which arise when moving from associational to causal inference, particularly when only observational (as opposed to experimental) data is available, students will become proficient in cutting-edge causal Machine Learning techniques such as propensity score matching, synthetic controls, causal program evaluation, inverse social welfare function estimation from panel data, and Double-Debiased Machine Learning.\nIn-class examples will cover continuous, discrete-choice, and textual data from a wide swath of social and behavioral sciences: economics, political science, sociology, anthropology, quantitative history, and digital humanities. After gaining experience through in-class labs and homework assignments focused on reproducing key findings from recent journal articles in each of these disciplines, students will spend the final weeks of the course on a final project demonstrating their ability to develop, evaluate, and test the robustness of a causal hypothesis.\nPrerequisites: DSAN 5000, DSAN 5100 (DSAN 5300 recommended but not required)",
     "crumbs": [
       "<i class='bi bi-house pe-1'></i> Home"
     ]

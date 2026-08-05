@@ -60,8 +60,8 @@ w11:
   date-md: "Jul 29"
 w12:
   weeknum: 12
-  title: "Causal Forests for Heterogeneous Treatment Effects"
-  footer: "Causal Forests"
+  title: "Bayesian Decision Theory"
+  footer: "Bayesian Decision Theory"
   date-md: "Aug 5"
 hw1:
   title: "Probabilistic Graphical Models (PGMs) of Data-Generating Processes (DGPs)"
