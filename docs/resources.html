@@ -518,7 +518,7 @@ window.Quarto = {
     </ul>
     </div>
 <div class="quarto-sidebar-footer"><div class="sidebar-footer-item">
-<p><em>Updated 2026-08-05, 06:35:38 PM</em></p>
+<p><em>Updated 2026-08-06, 01:56:06 PM</em></p>
 </div></div></nav>
 <div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
@@ -538,6 +538,7 @@ window.Quarto = {
   <ul class="collapse">
   <li><a href="#causality" id="toc-causality" class="nav-link" data-scroll-target="#causality">Causality</a></li>
   <li><a href="#computational-social-science" id="toc-computational-social-science" class="nav-link" data-scroll-target="#computational-social-science">Computational Social Science</a></li>
+  <li><a href="#foundations-of-the-bayesian-approach" id="toc-foundations-of-the-bayesian-approach" class="nav-link" data-scroll-target="#foundations-of-the-bayesian-approach">Foundations of the Bayesian Approach</a></li>
   </ul></li>
   <li><a href="#applied-examples" id="toc-applied-examples" class="nav-link" data-scroll-target="#applied-examples">Applied Examples</a>
   <ul class="collapse">
@@ -721,7 +722,8 @@ window.Quarto = {
 <li>The chapter near the middle discusses how to use e.g.&nbsp;Bayes Factor and log-likelihood methods to <em>compare</em> the different models introduced in the earlier chapters, and then finally</li>
 <li>The chapters at the end apply all of the above, by taking a series of prominent research topics in Cognitive Science and showing how to effectively model them via PGMs and Bayesian inference.</li>
 </ul>
-<p><i class="bi bi-3-circle"></i> <strong><span class="citation" data-cites="gelman_bayesian_2013">Gelman et al. (<a href="#ref-gelman_bayesian_2013" role="doc-biblioref">2013</a>)</span>, <em>Bayesian Data Analysis</em></strong></p>
+<p><i class="bi bi-3-circle"></i> <strong><span class="citation" data-cites="gelman_bayesian_2013">Gelman et al. (<a href="#ref-gelman_bayesian_2013" role="doc-biblioref">2013</a>)</span>, <em>Bayesian Data Analysis (Third Edition)</em></strong></p>
+<p>Contains info on Bayesian Workflow throughout, plus important chapters on <strong>Multilevel Modeling</strong> (Ch 5) and <strong>Bayesian Decision Analysis</strong> (Ch 9) – the latter was referenced in the <a href="./writeups/bayesian-workflow/">writeup on Bayesian Workflow</a></p>
 </section>
 <section id="multilevel-modeling" class="level3">
 <h3 class="anchored" data-anchor-id="multilevel-modeling">Multilevel Modeling</h3>
@@ -741,10 +743,16 @@ window.Quarto = {
 </section>
 <section id="computational-social-science" class="level3">
 <h3 class="anchored" data-anchor-id="computational-social-science">Computational Social Science</h3>
-<p><i class="bi bi-3-circle"></i>**<span class="citation" data-cites="gelman_bayesian_2013">Gelman et al. (<a href="#ref-gelman_bayesian_2013" role="doc-biblioref">2013</a>)</span>, *Bayesian Data Analysis (Third Edition)**</p>
-<p>Contains info on Bayesian Workflow throughout, plus important chapters on <strong>Multilevel Modeling</strong> (Ch 5) and <strong>Bayesian Decision Analysis</strong> (Ch 9) – the latter was referenced in the <a href="">writeup on Bayesian Workflow</a></p>
-<p><i class="bi bi-4-circle"></i> <strong><span class="citation" data-cites="sperber_explaining_1996">Sperber (<a href="#ref-sperber_explaining_1996" role="doc-biblioref">1996</a>)</span>, <em>Explaining Culture: A Naturalistic Approach</em></strong></p>
+<p><i class="bi bi-1-circle"></i> <strong><span class="citation" data-cites="sperber_explaining_1996">Sperber (<a href="#ref-sperber_explaining_1996" role="doc-biblioref">1996</a>)</span>, <em>Explaining Culture: A Naturalistic Approach</em></strong></p>
 <p>Mentioned in a footnote in <a href="./w01/index.html">Week 1</a>, this is a surprisingly-old book that made waves in certain communities (like, e.g., among people like me who geek about studying culture quantitatively), by essentially proposing a “research program” for the rigorous quantitative/empirical study of culture. In Jeff’s perfect world, this book would spark a progress-narrative in the same way that <span class="citation" data-cites="hume_enquiry_1748">Hume (<a href="#ref-hume_enquiry_1748" role="doc-biblioref">1748</a>)</span></p>
+</section>
+<section id="foundations-of-the-bayesian-approach" class="level3">
+<h3 class="anchored" data-anchor-id="foundations-of-the-bayesian-approach">Foundations of the Bayesian Approach</h3>
+<p><i class="bi bi-1-circle"></i> <strong><span class="citation" data-cites="titelbaum_fundamentals_2022">Titelbaum (<a href="#ref-titelbaum_fundamentals_2022" role="doc-biblioref">2022</a>)</span>, <em>Fundamentals of Bayesian Epistemology</em></strong></p>
+<p>This book really only comes into play in Week 12, where we focus in very specifically on just two chapters (out of order relative to the book, but in order relative to the lecture topics!):</p>
+<p><em>Chapter 9: Dutch Book Arguments</em>, specifically pages 315 to 316, goes over the argument for using Bayes’ Rule to update prior knowledge in light of new information (the gist being that, any <em>other</em> updating rule will lead to beliefs that render you susceptible to a series of bets that are “fair” to you under these beliefs, but which are actually guaranteed to lose money)</p>
+<p><em>Chapter 7: Decision Theory</em> provides a really great “walkthrough” of how one can <strong>fuse</strong> Bayesian probability with a (consequentialist) analysis of optimal decision-making. That is, once you have used Bayes’ Rule to derive a posterior distribution over states of the world (optimally incorporating the information available to you, per the Dutch Book argument!), how can you optimally <strong>act on</strong> the posterior probabilities you’ve derived?</p>
+<p>Intuitively, you might start by assigning <strong>utility values</strong> to actions and outcomes (how good or bad it would be for you to take action <span class="math inline">\(a\)</span> vs.&nbsp;action <span class="math inline">\(b\)</span> if the state of the world turns out to be <span class="math inline">\(S_1\)</span> vs.&nbsp;<span class="math inline">\(S_2\)</span>), and then choosing the action that produces the highest <strong>expected utility</strong>. This approach works for decisions like whether to bring an umbrella on a trip, since your choice won’t affect the probability of rain, but <em>fails</em> when the decision itself affects the outcome probabilities (like deciding whether or not to study for a test). To “fix” this issue, you need some <em>methodology</em> for <strong>estimating the causal impacts</strong> that your decisions will have on the probabilities of each outcome… in other words, the topics from Weeks 1 to 11 of this very course 😉</p>
 </section>
 </section>
 <section id="applied-examples" class="level2">
@@ -841,6 +849,9 @@ Pearl, Judea, and Dana Mackenzie. 2018. <em><a href="https://www.dropbox.com/scl
 </div>
 <div id="ref-sperber_explaining_1996" class="csl-entry" role="listitem">
 Sperber, Dan. 1996. <em><a href="https://www.dropbox.com/scl/fi/he6idaajr6vopybv13qhd/Explaining-Culture-A-Naturalistic-Approach.pdf?rlkey=8oyhnsu5ycet4osstft252jaw&amp;dl=1">Explaining <span>Culture</span>: <span>A Naturalistic Approach</span></a></em>. Cambridge: Blackwell.
+</div>
+<div id="ref-titelbaum_fundamentals_2022" class="csl-entry" role="listitem">
+Titelbaum, Michael G. 2022. <em><a href="https://www.dropbox.com/scl/fi/ywohd3dyddcstdy3msls3/Michael-G.-Titelbaum-Fundamentals-of-Bayesian-Epistemology.pdf?rlkey=sazfvzj9yncn2fr86qzfbooyi&amp;dl=1">Fundamentals of <span>Bayesian</span> Epistemology</a></em>. First edition. New York, NY: Oxford University Press.
 </div>
 </div></section><section id="footnotes" class="footnotes footnotes-end-of-document" role="doc-endnotes"><h2 class="anchored quarto-appendix-heading">Footnotes</h2>
 

@@ -130,7 +130,9 @@ I wasn't sure whether to place this in the "topic-specific" or "reference texts"
 * The chapter near the middle discusses how to use e.g. Bayes Factor and log-likelihood methods to *compare* the different models introduced in the earlier chapters, and then finally
 * The chapters at the end apply all of the above, by taking a series of prominent research topics in Cognitive Science and showing how to effectively model them via PGMs and Bayesian inference.
 
-<i class='bi bi-3-circle'></i> **@gelman_bayesian_2013, *Bayesian Data Analysis***
+<i class='bi bi-3-circle'></i> **@gelman_bayesian_2013, *Bayesian Data Analysis (Third Edition)***
+
+Contains info on Bayesian Workflow throughout, plus important chapters on **Multilevel Modeling** (Ch 5) and **Bayesian Decision Analysis** (Ch 9) -- the latter was referenced in the [writeup on Bayesian Workflow](./writeups/bayesian-workflow/)
 
 ### Multilevel Modeling
 
@@ -154,13 +156,21 @@ This book serves as the philosophical "jumping off point" for causality: you can
 
 ### Computational Social Science
 
-<i class='bi bi-3-circle'></i>**@gelman_bayesian_2013, *Bayesian Data Analysis (Third Edition)**
-
-Contains info on Bayesian Workflow throughout, plus important chapters on **Multilevel Modeling** (Ch 5) and **Bayesian Decision Analysis** (Ch 9) -- the latter was referenced in the [writeup on Bayesian Workflow]()
-
-<i class='bi bi-4-circle'></i> **@sperber_explaining_1996, *Explaining Culture: A Naturalistic Approach***
+<i class='bi bi-1-circle'></i> **@sperber_explaining_1996, *Explaining Culture: A Naturalistic Approach***
 
 Mentioned in a footnote in [Week 1](./w01/index.qmd), this is a surprisingly-old book that made waves in certain communities (like, e.g., among people like me who geek about studying culture quantitatively), by essentially proposing a "research program" for the rigorous quantitative/empirical study of culture. In Jeff's perfect world, this book would spark a progress-narrative in the same way that @hume_enquiry_1748
+
+### Foundations of the Bayesian Approach
+
+<i class='bi bi-1-circle'></i> **@titelbaum_fundamentals_2022, *Fundamentals of Bayesian Epistemology***
+
+This book really only comes into play in Week 12, where we focus in very specifically on just two chapters (out of order relative to the book, but in order relative to the lecture topics!):
+
+*Chapter 9: Dutch Book Arguments*, specifically pages 315 to 316, goes over the argument for using Bayes' Rule to update prior knowledge in light of new information (the gist being that, any *other* updating rule will lead to beliefs that render you susceptible to a series of bets that are "fair" to you under these beliefs, but which are actually guaranteed to lose money)
+
+*Chapter 7: Decision Theory* provides a really great "walkthrough" of how one can **fuse** Bayesian probability with a (consequentialist) analysis of optimal decision-making. That is, once you have used Bayes' Rule to derive a posterior distribution over states of the world (optimally incorporating the information available to you, per the Dutch Book argument!), how can you optimally **act on** the posterior probabilities you've derived?
+
+Intuitively, you might start by assigning **utility values** to actions and outcomes (how good or bad it would be for you to take action $a$ vs. action $b$ if the state of the world turns out to be $S_1$ vs. $S_2$), and then choosing the action that produces the highest **expected utility**. This approach works for decisions like whether to bring an umbrella on a trip, since your choice won't affect the probability of rain, but *fails* when the decision itself affects the outcome probabilities (like deciding whether or not to study for a test). To "fix" this issue, you need some *methodology* for **estimating the causal impacts** that your decisions will have on the probabilities of each outcome... in other words, the topics from Weeks 1 to 11 of this very course 😉
 
 ## Applied Examples
 
