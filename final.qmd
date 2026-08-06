@@ -130,8 +130,6 @@ The structure of your deliverable should be as follows:
 3. You should then **explicitly state a course topic** which can be used to address this shortcoming, and **justify its use**: for example, can a propensity score-based analysis be used to balance the treatment and control groups?
     i. For example, recall the point from Week 8 that *propensity scores can only be used when there is sufficient **common support*** between the treatment and control groups in a dataset! In that week's simulated smoking-cessation example, the DGP for the relationship between `motivation` and `enrollment` gave rise to a scenario where we did **not** have common support for the **lowest and highest 25%** of people with respect to `motivation` score (since *nobody* from the lowest 25% enrolled, while *everybody* from the highest 25% enrolled). We **did**, however, have common support for the middle 50%, since this middle 50% had a mixture of enrollers and non-enrollers. For your project, then, if you choose to pursue a propensity score-based analysis, you'll need to be explicit about the specific **subset(s)** of your **population** for which the propensity-weighted estimate(s) are valid.
 
-*(Remainder coming soon!)*
-
 :::
 
 ## Individual vs. Group Projects
@@ -148,10 +146,10 @@ Expectations for group projects will **scale** based on the number of members in
     * ***Submitted*** to instructors by Tuesday, July 15th, 6:30pm EDT
     * ***Approved*** by an instructor by Tuesday, July 22nd, 6:30pm EDT
 * **Final Draft**:
-    * ***Submitted*** to instructors for review by Friday, August 1st, 5:59pm EDT
-    * ***Approved*** by an instructor by Monday, August 4th, 11:59pm EDT
+    * ***Submitted*** to instructors for review by Friday, July 31st, 5:59pm EDT
+    * ***Approved*** by an instructor by Wednesday, August 5th, 11:59pm EDT
 * **Final Submission**:
-    * ***Submitted*** via Canvas by Friday, August 8th, 5:59pm EDT
+    * ***Submitted*** via Canvas by Friday, August 7th, 11:59pm EDT
 
 ## Submission Format
 
